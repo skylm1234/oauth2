@@ -1,0 +1,23 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstVipTableItemExProtobuf";
+
+message	ConstVipTableItemEx  {
+	optional	uint32	id = 1;
+	optional	uint32	level = 2;
+	optional	uint32	charge = 3;
+	optional	string	itemid = 4;
+	optional	string	award = 5;
+	optional	uint32	chanllege = 6;
+	optional	uint32	backpack_max = 7;
+	optional	uint32	freerefresh_times_stone = 8;
+	optional	uint32	freerefresh_times_honor = 9;
+	optional	uint32	freerefresh_times_gold = 10;
+	optional	uint32	timeval_offline_kill_monster_rate = 11;
+	optional	uint32	skip_timeval = 12;
+	optional	string	des = 13;
+	optional	uint32	tianti = 14;
+	optional	uint32	tianti_reset = 15;
+}

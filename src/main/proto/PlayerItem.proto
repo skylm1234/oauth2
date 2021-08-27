@@ -1,0 +1,10 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "PlayerItemProtobuf";
+
+message	PlayerItem  {
+	optional	string	key = 10;
+	optional	int64	value = 11;
+}

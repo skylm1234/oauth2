@@ -1,0 +1,36 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstLevelUpgradeTableItemExProtobuf";
+
+message	ConstLevelUpgradeTableItemEx  {
+	optional	uint32	id = 1;
+	optional	uint32	lv = 2;
+	optional	uint32	start0 = 3;
+	optional	uint32	start1 = 4;
+	optional	uint32	start2 = 5;
+	optional	uint32	start3 = 6;
+	optional	uint32	start4 = 7;
+	optional	uint32	start5 = 8;
+	optional	uint32	start6 = 9;
+	optional	uint32	start7 = 10;
+	optional	uint32	start8 = 11;
+	optional	uint32	start9 = 12;
+	optional	uint32	start10 = 13;
+	optional	uint32	start11 = 14;
+	optional	uint32	start12 = 15;
+	optional	uint32	start13 = 16;
+	optional	uint32	start14 = 17;
+	optional	uint32	start15 = 18;
+	optional	uint32	start16 = 19;
+	optional	uint32	start17 = 20;
+	optional	uint32	start18 = 21;
+	optional	uint32	start19 = 22;
+	optional	uint32	start20 = 23;
+	optional	uint32	start21 = 24;
+	optional	uint32	start22 = 25;
+	optional	uint32	start23 = 26;
+	optional	uint32	start24 = 27;
+	optional	uint32	start25 = 28;
+}

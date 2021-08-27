@@ -1,0 +1,17 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstSkillScriptsSkillTableItemExProtobuf";
+
+message	ConstSkillScriptsSkillTableItemEx  {
+	optional	string	id = 1;
+	optional	string	description = 2;
+	optional	string	effect = 3;
+	optional	string	icon = 4;
+	optional	string	action = 5;
+	optional	string	levels = 6;
+	optional	string	logic = 7;
+	optional	string	name = 8;
+	optional	uint32	priority = 9;
+}

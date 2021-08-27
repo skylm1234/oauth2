@@ -1,0 +1,23 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstSkillScriptsRoleTableItemExProtobuf";
+
+message	ConstSkillScriptsRoleTableItemEx  {
+	optional	string	name = 1;
+	optional	uint32	attack = 2;
+	optional	string	attack01_audio = 3;
+	optional	string	attack02_audio = 4;
+	optional	string	attack03_audio = 5;
+	optional	uint32	crit = 6;
+	optional	string	death_audio = 7;
+	optional	uint32	defense = 8;
+	optional	uint32	dge = 9;
+	optional	string	hit_audio = 10;
+	optional	uint32	hp = 11;
+	optional	string	normalSkill = 12;
+	optional	string	skills = 13;
+	optional	uint32	speed = 14;
+	optional	string	type = 15;
+}

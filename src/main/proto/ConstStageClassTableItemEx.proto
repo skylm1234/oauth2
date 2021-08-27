@@ -1,0 +1,11 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstStageClassTableItemExProtobuf";
+
+message	ConstStageClassTableItemEx  {
+	optional	uint32	id = 1;
+	optional	uint32	class_type = 2;
+	optional	string	name = 3;
+}

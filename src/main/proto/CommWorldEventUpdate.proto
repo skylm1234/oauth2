@@ -1,0 +1,13 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "CommWorldEventUpdateProtobuf";
+
+message	CommWorldEventUpdate  {
+	optional	uint32	type = 10;
+	optional	string	info = 11;
+	optional	string	foo = 12;
+	optional	string	bar = 13;
+	optional	uint32	bee = 14;
+}

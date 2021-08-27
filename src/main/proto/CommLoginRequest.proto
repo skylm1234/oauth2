@@ -1,0 +1,12 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "CommLoginRequestProtobuf";
+
+message	CommLoginRequest  {
+	optional	string	identifier = 10;
+	optional	uint32	version = 11;
+	optional	string	cipher = 12;
+	optional	string	data = 13;
+}

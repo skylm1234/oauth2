@@ -1,0 +1,39 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstVipDailyTableItemExProtobuf";
+
+message	ConstVipDailyTableItemEx  {
+	optional	uint32	id = 1;
+	optional	string	daily1 = 2;
+	optional	string	daily2 = 3;
+	optional	string	daily3 = 4;
+	optional	string	daily4 = 5;
+	optional	string	daily5 = 6;
+	optional	string	daily6 = 7;
+	optional	string	daily7 = 8;
+	optional	string	daily8 = 9;
+	optional	string	daily9 = 10;
+	optional	string	daily10 = 11;
+	optional	string	daily11 = 12;
+	optional	string	daily12 = 13;
+	optional	string	daily13 = 14;
+	optional	string	daily14 = 15;
+	optional	string	daily15 = 16;
+	optional	string	daily16 = 17;
+	optional	string	daily17 = 18;
+	optional	string	daily18 = 19;
+	optional	string	daily19 = 20;
+	optional	string	daily20 = 21;
+	optional	string	daily21 = 22;
+	optional	string	daily22 = 23;
+	optional	string	daily23 = 24;
+	optional	string	daily24 = 25;
+	optional	string	daily25 = 26;
+	optional	string	daily26 = 27;
+	optional	string	daily27 = 28;
+	optional	string	daily28 = 29;
+	optional	string	daily29 = 30;
+	optional	string	daily30 = 31;
+}

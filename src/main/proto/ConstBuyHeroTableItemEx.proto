@@ -1,0 +1,17 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstBuyHeroTableItemExProtobuf";
+
+message	ConstBuyHeroTableItemEx  {
+	optional	uint32	type = 1;
+	optional	string	desc = 2;
+	optional	string	dropid = 3;
+	optional	string	award = 4;
+	optional	string	consume = 5;
+	optional	string	amount = 7;
+	optional	uint32	coolwn = 8;
+	optional	uint32	day_limit = 9;
+	optional	uint32	chips = 10;
+}

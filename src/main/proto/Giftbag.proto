@@ -1,0 +1,13 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "GiftbagProtobuf";
+
+message	Giftbag  {
+	optional	string	identifier = 10;
+	optional	string	icon = 11;
+	optional	string	desc = 12;
+	optional	string	action = 13;
+	optional	string	other = 14;
+}

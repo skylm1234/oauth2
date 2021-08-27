@@ -1,0 +1,10 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "HeroSkillProtobuf";
+
+message	HeroSkill  {
+	optional	string	type = 10;
+	optional	uint32	level = 11;
+}

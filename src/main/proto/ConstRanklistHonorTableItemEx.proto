@@ -1,0 +1,14 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstRanklistHonorTableItemExProtobuf";
+
+message	ConstRanklistHonorTableItemEx  {
+	optional	uint32	id = 1;
+	optional	uint32	section_fomula = 2;
+	optional	string	section = 3;
+	optional	string	award_fomula = 4;
+	optional	string	award = 5;
+	optional	string	time = 6;
+}

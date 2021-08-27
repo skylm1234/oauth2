@@ -1,0 +1,12 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "StoreItemProtobuf";
+
+message	StoreItem  {
+	optional	string	name = 10;
+	optional	uint32	number = 11;
+	optional	string	cost_type = 12;
+	optional	uint32	cost_number = 13;
+}

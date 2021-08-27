@@ -1,0 +1,12 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstPvpBasicTableItemExProtobuf";
+
+message	ConstPvpBasicTableItemEx  {
+	optional	uint32	id = 1;
+	optional	uint32	range_min = 2;
+	optional	uint32	range_max = 3;
+	optional	string	range = 4;
+}

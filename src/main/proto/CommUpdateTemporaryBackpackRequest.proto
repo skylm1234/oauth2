@@ -1,0 +1,10 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "CommUpdateTemporaryBackpackRequestProtobuf";
+
+message	CommUpdateTemporaryBackpackRequest  {
+	optional	uint32	monsters = 10;
+	optional	uint32	goblins = 11;
+}
