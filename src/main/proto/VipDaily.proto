@@ -1,0 +1,72 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "VipDailyProtobuf";
+
+message VipDaily {
+  	/**id*/
+	uint32	id = 1;
+	/**daily1*/
+	string	daily1 = 2;
+	/**daily2*/
+	string	daily2 = 3;
+	/**daily3*/
+	string	daily3 = 4;
+	/**daily4*/
+	string	daily4 = 5;
+	/**daily5*/
+	string	daily5 = 6;
+	/**daily6*/
+	string	daily6 = 7;
+	/**daily7*/
+	string	daily7 = 8;
+	/**daily8*/
+	string	daily8 = 9;
+	/**daily9*/
+	string	daily9 = 10;
+	/**daily10*/
+	string	daily10 = 11;
+	/**daily11*/
+	string	daily11 = 12;
+	/**daily12*/
+	string	daily12 = 13;
+	/**daily13*/
+	string	daily13 = 14;
+	/**daily14*/
+	string	daily14 = 15;
+	/**daily15*/
+	string	daily15 = 16;
+	/**daily16*/
+	string	daily16 = 17;
+	/**daily17*/
+	string	daily17 = 18;
+	/**daily18*/
+	string	daily18 = 19;
+	/**daily19*/
+	string	daily19 = 20;
+	/**daily20*/
+	string	daily20 = 21;
+	/**daily21*/
+	string	daily21 = 22;
+	/**daily22*/
+	string	daily22 = 23;
+	/**daily23*/
+	string	daily23 = 24;
+	/**daily24*/
+	string	daily24 = 25;
+	/**daily25*/
+	string	daily25 = 26;
+	/**daily26*/
+	string	daily26 = 27;
+	/**daily27*/
+	string	daily27 = 28;
+	/**daily28*/
+	string	daily28 = 29;
+	/**daily29*/
+	string	daily29 = 30;
+	/**daily30*/
+	string	daily30 = 31;
+
+
+}

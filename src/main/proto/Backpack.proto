@@ -1,0 +1,20 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "BackpackProtobuf";
+
+message Backpack {
+  	/**等级*/
+	uint32	level = 1;
+	/**金币max*/
+	uint32	gold_max = 2;
+	/**经验max*/
+	uint32	exp_max = 3;
+	/**物品max个数*/
+	uint32	item_max = 4;
+	/**升级需求公式*/
+	string	prerequests = 5;
+
+
+}

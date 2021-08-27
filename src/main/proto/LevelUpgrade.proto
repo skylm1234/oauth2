@@ -1,0 +1,66 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "LevelUpgradeProtobuf";
+
+message LevelUpgrade {
+  	/**id*/
+	uint32	id = 1;
+	/**lv*/
+	uint32	lv = 2;
+	/**start0*/
+	uint32	start0 = 3;
+	/**start1*/
+	uint32	start1 = 4;
+	/**start2*/
+	uint32	start2 = 5;
+	/**start3*/
+	uint32	start3 = 6;
+	/**start4*/
+	uint32	start4 = 7;
+	/**start5*/
+	uint32	start5 = 8;
+	/**start6*/
+	uint32	start6 = 9;
+	/**start7*/
+	uint32	start7 = 10;
+	/**start8*/
+	uint32	start8 = 11;
+	/**start9*/
+	uint32	start9 = 12;
+	/**start10*/
+	uint32	start10 = 13;
+	/**start11*/
+	uint32	start11 = 14;
+	/**start12*/
+	uint32	start12 = 15;
+	/**start13*/
+	uint32	start13 = 16;
+	/**start14*/
+	uint32	start14 = 17;
+	/**start15*/
+	uint32	start15 = 18;
+	/**start16*/
+	uint32	start16 = 19;
+	/**start17*/
+	uint32	start17 = 20;
+	/**start18*/
+	uint32	start18 = 21;
+	/**start19*/
+	uint32	start19 = 22;
+	/**start20*/
+	uint32	start20 = 23;
+	/**start21*/
+	uint32	start21 = 24;
+	/**start22*/
+	uint32	start22 = 25;
+	/**start23*/
+	uint32	start23 = 26;
+	/**start24*/
+	uint32	start24 = 27;
+	/**start25*/
+	uint32	start25 = 28;
+
+
+}

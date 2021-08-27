@@ -1,0 +1,54 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "StageClassProtobuf";
+
+message StageClass {
+  	/**id*/
+	uint32	id = 1;
+	/**关卡名*/
+	string	name = 2;
+	/**分类*/
+	uint32	class_type = 3;
+	/**关卡开启前置关卡*/
+	uint32	prerequest = 4;
+	/**难度*/
+	uint32	mode = 5;
+	/**图标*/
+	string	icon = 6;
+	/**图标变色*/
+	string	icon_color = 7;
+	/**背景*/
+	string	bg = 8;
+	/**背景变色*/
+	string	bg_color = 9;
+	/**关卡推荐战斗力*/
+	uint32	recommand_power = 10;
+	/**小怪id*/
+	string	monsters = 11;
+	/**小怪属性*/
+	string	monsters_attributes = 12;
+	/**bossid*/
+	string	boss = 13;
+	/**boss属性*/
+	string	boss_attributes = 14;
+	/**怪物最大数量*/
+	uint32	monsters_max = 15;
+	/**哥布林参数*/
+	string	goblin = 16;
+	/**关卡基础收益*/
+	string	basic_award = 17;
+	/**击杀小怪收益*/
+	string	monsters_killed_award = 18;
+	/**击杀boss奖励*/
+	string	boss_award = 19;
+	/**波数*/
+	uint32	wave = 20;
+	/**小怪技能*/
+	string	monster_skill_level = 21;
+	/**BOSS技能等级*/
+	string	boss_skill_level = 22;
+
+
+}

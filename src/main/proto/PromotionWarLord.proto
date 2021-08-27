@@ -1,0 +1,16 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "PromotionWarLordProtobuf";
+
+message PromotionWarLord {
+  	/**活动类型*/
+	uint32	type = 1;
+	/**活动分组名*/
+	string	name = 2;
+	/**排序*/
+	uint32	q = 3;
+
+
+}

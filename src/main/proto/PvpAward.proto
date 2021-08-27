@@ -1,0 +1,16 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "PvpAwardProtobuf";
+
+message PvpAward {
+  	/**id*/
+	uint32	id = 1;
+	/**胜利个数*/
+	uint32	vectory_times = 2;
+	/**奖励*/
+	string	award = 3;
+
+
+}

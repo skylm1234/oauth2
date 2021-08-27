@@ -1,0 +1,20 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "SkillSettleProtobuf";
+
+message SkillSettle {
+  	/**id*/
+	uint32	id = 1;
+	/**类型Type*/
+	string	name = 2;
+	/**优先级priority*/
+	uint32	priority = 3;
+	/**说明*/
+	string	descrition = 4;
+	/**公式*/
+	string	equation = 5;
+
+
+}

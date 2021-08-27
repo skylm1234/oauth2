@@ -1,0 +1,20 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "NamedProtobuf";
+
+message Named {
+  	/**名字前缀*/
+	string	name = 1;
+	/**是否需要加dot*/
+	uint32	dot = 2;
+	/**中文名字*/
+	string	title = 3;
+	/**描述*/
+	string	desc = 4;
+	/**图标*/
+	string	icon = 5;
+
+
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ExpbookProtobuf";
+
+message Expbook {
+  	/**id*/
+	string	id = 1;
+	/**名字*/
+	string	name = 2;
+	/**简介*/
+	string	desc = 3;
+	/**增加经验*/
+	uint32	value = 4;
+	/**颜色*/
+	string	quality = 5;
+	/**图标*/
+	string	icon = 6;
+
+
+}

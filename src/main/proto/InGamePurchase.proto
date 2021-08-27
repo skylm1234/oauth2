@@ -1,0 +1,20 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "InGamePurchaseProtobuf";
+
+message InGamePurchase {
+  	/**id*/
+	string	id = 1;
+	/**石头*/
+	uint32	stone = 2;
+	/**简介*/
+	string	desc = 3;
+	/**图标*/
+	string	icon = 4;
+	/**花费*/
+	uint32	cost = 5;
+
+
+}

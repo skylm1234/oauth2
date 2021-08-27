@@ -1,0 +1,40 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "SkillScriptsRoleProtobuf";
+
+message SkillScriptsRole {
+  	/**null*/
+	string	name = 1;
+	/**null*/
+	int32	attack = 2;
+	/**null*/
+	string	attack01_audio = 3;
+	/**null*/
+	string	attack02_audio = 4;
+	/**null*/
+	string	attack03_audio = 5;
+	/**null*/
+	int32	crit = 6;
+	/**null*/
+	string	death_audio = 7;
+	/**null*/
+	int32	defense = 8;
+	/**null*/
+	int32	dodge = 9;
+	/**null*/
+	string	hit_audio = 10;
+	/**null*/
+	int32	hp = 11;
+	/**null*/
+	string	normalSkill = 12;
+	/**null*/
+	string	skills = 13;
+	/**null*/
+	int32	speed = 14;
+	/**null*/
+	string	type = 15;
+
+
+}

@@ -1,0 +1,62 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "HeroProtobuf";
+
+message Hero {
+  	/**id*/
+	uint32	id = 1;
+	/**name*/
+	string	name = 2;
+	/**type*/
+	uint32	type = 3;
+	/**角色说明*/
+	string	desc = 4;
+	/**初始颜色*/
+	uint32	color = 5;
+	/**基础4属性*/
+	string	basic = 6;
+	/**基础4属性等级成长*/
+	string	basic_upgrade = 7;
+	/**技能*/
+	string	skill = 8;
+	/**星级提升成长 固定值*/
+	string	star_upgrade = 9;
+	/**碎片数量*/
+	uint32	chips = 10;
+	/**缘分组1*/
+	string	group1 = 11;
+	/**缘分组1技能*/
+	string	group1_skill = 12;
+	/**缘分组2*/
+	string	group2 = 13;
+	/**缘分组2技能*/
+	string	group2_skill = 14;
+	/**普通攻击*/
+	string	skill_a = 15;
+	/**手动技能*/
+	string	skill1 = 16;
+	/**null*/
+	string	skill1_name = 17;
+	/**自动技能*/
+	string	skill2 = 18;
+	/**null*/
+	string	skill2_name = 19;
+	/**被动技能*/
+	string	skill3 = 20;
+	/**null*/
+	string	skill3_name = 21;
+	/**被动技能*/
+	string	skill4 = 22;
+	/**null*/
+	string	skill4_name = 23;
+	/**阵容1*/
+	string	squad1 = 24;
+	/**阵容2*/
+	string	squad2 = 25;
+	/**复活单价*/
+	uint32	alive = 26;
+
+
+}

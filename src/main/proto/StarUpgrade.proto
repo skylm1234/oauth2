@@ -1,0 +1,16 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "StarUpgradeProtobuf";
+
+message StarUpgrade {
+  	/**id*/
+	uint32	id = 1;
+	/**星级*/
+	uint32	star = 2;
+	/**消耗*/
+	string	consume = 3;
+
+
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "BlackNicknameProtobuf";
+
+message BlackNickname {
+  	/**昵称*/
+	string	nickname = 1;
+
+
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ExchangeProtobuf";
+
+message Exchange {
+  	/**类型*/
+	uint32	type = 1;
+	/**stone*/
+	uint32	stone = 2;
+	/**金币*/
+	uint32	amount = 3;
+	/**简介*/
+	string	desc = 4;
+
+
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "PvpBasicProtobuf";
+
+message PvpBasic {
+  	/**id*/
+	uint32	id = 1;
+	/**范围(最大战力的上下浮动比例)*/
+	string	range = 2;
+
+
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "NewStoreDiscountProtobuf";
+
+message NewStoreDiscount {
+  	/**id*/
+	uint32	id = 1;
+	/**商店格子*/
+	uint32	places = 2;
+	/**商店物品相关*/
+	string	items = 3;
+	/**类型*/
+	uint32	type = 4;
+
+
+}

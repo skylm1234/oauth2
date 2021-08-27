@@ -1,0 +1,16 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "NewStoreRefreshProtobuf";
+
+message NewStoreRefresh {
+  	/**id*/
+	uint32	id = 1;
+	/**商店名*/
+	string	name = 2;
+	/**商店刷新时间*/
+	string	refresh_time = 3;
+
+
+}

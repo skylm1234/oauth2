@@ -1,0 +1,20 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "MonsterProtobuf";
+
+message Monster {
+  	/**id*/
+	uint32	id = 1;
+	/**name*/
+	string	name = 2;
+	/**角色造型*/
+	string	model = 3;
+	/**变色*/
+	string	color = 4;
+	/**拥有技能*/
+	string	skill = 5;
+
+
+}

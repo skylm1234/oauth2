@@ -1,0 +1,32 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "PromotionProtobuf";
+
+message Promotion {
+  	/**id*/
+	uint32	id = 1;
+	/**标题*/
+	string	title = 2;
+	/**关键字*/
+	string	key = 3;
+	/**类型*/
+	uint32	type = 4;
+	/**desc*/
+	string	desc = 5;
+	/**比较类型 < <= = >= > 从0开始*/
+	uint32	compare_type = 6;
+	/**参数*/
+	uint32	parameter = 7;
+	/**precondition*/
+	uint32	precondition = 8;
+	/**下一个任务*/
+	uint32	next = 9;
+	/**奖励*/
+	string	award = 10;
+	/**进度*/
+	string	percent = 11;
+
+
+}

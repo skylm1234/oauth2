@@ -1,0 +1,18 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "PvpRefreshProtobuf";
+
+message PvpRefresh {
+  	/**id*/
+	uint32	id = 1;
+	/**单次刷新可战斗次数*/
+	uint32	battle_times_each_refresh = 2;
+	/**刷新时间*/
+	uint32	refresh_time = 3;
+	/**购买次数x1花费*/
+	string	consume = 4;
+
+
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "QualityUpgradeProtobuf";
+
+message QualityUpgrade {
+  	/**id*/
+	uint32	id = 1;
+	/**品质*/
+	uint32	quality = 2;
+	/**品质说明*/
+	string	desc = 3;
+	/**消耗*/
+	string	consume = 4;
+
+
+}

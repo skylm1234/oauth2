@@ -1,0 +1,26 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "BuyHeroProtobuf";
+
+message BuyHero {
+  	/**类型*/
+	uint32	type = 1;
+	/**类型*/
+	string	desc = 2;
+	/**公式*/
+	string	award = 3;
+	/**消费种类*/
+	string	consume = 4;
+	/**数量*/
+	string	amount = 5;
+	/**冷却时间（收费抽取冷却之后可以免费抽取）*/
+	uint32	cooldown = 6;
+	/**每日可抽取次数*/
+	uint32	day_limit = 7;
+	/**抽取获得碎片*/
+	uint32	chips = 8;
+
+
+}

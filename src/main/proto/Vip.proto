@@ -1,0 +1,38 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "VipProtobuf";
+
+message Vip {
+  	/**id*/
+	uint32	id = 1;
+	/**vip等级*/
+	uint32	level = 2;
+	/**需要充值*/
+	uint32	charge = 3;
+	/**获得道具id*/
+	string	award = 4;
+	/**排行榜挑战次数*/
+	uint32	chanllege = 5;
+	/**可开启包裹等级上限*/
+	uint32	backpack_max = 6;
+	/**stone免费刷新次数*/
+	uint32	freerefresh_times_stone = 7;
+	/**honor免费刷新次数*/
+	uint32	freerefresh_times_honor = 8;
+	/**gold免费刷新次数*/
+	uint32	freerefresh_times_gold = 9;
+	/**离线遇怪间隔*/
+	uint32	timeval_offline_kill_monster_rate = 10;
+	/**跳过时间*/
+	uint32	skip_timeval = 11;
+	/**描述*/
+	string	des = 12;
+	/**天梯榜挑战次数*/
+	uint32	tianti = 13;
+	/**天梯榜挑战次数重置消耗*/
+	uint32	tianti_reset = 14;
+
+
+}

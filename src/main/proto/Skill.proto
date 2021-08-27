@@ -1,0 +1,30 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "SkillProtobuf";
+
+message Skill {
+  	/**id*/
+	string	id = 1;
+	/**技能名*/
+	string	name = 2;
+	/**技能图标*/
+	string	skill_icon = 3;
+	/**描述*/
+	string	desc = 4;
+	/**技能开启消耗*/
+	string	active_consume = 5;
+	/**技能升级消耗*/
+	string	upgrade_consume = 6;
+	/**等级和CD*/
+	string	cooldown = 7;
+	/**技能各等级属性*/
+	string	levelvalue = 8;
+	/**逻辑脚本*/
+	string	logic = 9;
+	/**目标选择*/
+	string	selecter = 10;
+
+
+}

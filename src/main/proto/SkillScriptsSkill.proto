@@ -1,0 +1,28 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "SkillScriptsSkillProtobuf";
+
+message SkillScriptsSkill {
+  	/**null*/
+	string	id = 1;
+	/**null*/
+	string	description = 2;
+	/**null*/
+	string	effect = 3;
+	/**null*/
+	string	icon = 4;
+	/**null*/
+	string	action = 5;
+	/**null*/
+	string	levels = 6;
+	/**null*/
+	string	logic = 7;
+	/**null*/
+	string	name = 8;
+	/**null*/
+	int32	priority = 9;
+
+
+}
