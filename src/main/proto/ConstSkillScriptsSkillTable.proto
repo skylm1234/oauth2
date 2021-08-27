@@ -1,0 +1,9 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstSkillScriptsSkillTableProtobuf";
+
+message	ConstSkillScriptsSkillTable  {
+	repeated	ConstSkillScriptsSkillTableItemEx	items = 1;
+}

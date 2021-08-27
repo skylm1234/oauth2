@@ -26,12 +26,13 @@ public class CommGenProto {
 		main2();
 	}
 
-	private static String  head = "syntax = \"proto3\";\n" +
+	private static String head = "syntax = \"proto3\";\n" +
 			"//生成文件所在包名\n" +
 			"option java_package = \"com.gejian.pixel.proto\";\n" +
 			"//生成的java文件名\n" +
 			"option java_outer_classname = \"${ClassName}Protobuf\";\n" +
 			"\n";
+
 	public static void main2() {
 		String outPutFilePath = "/Users/zhouqiang/workspace/pixel/java-pixel/src/main/resources/txt/";
 		String protoFile = "/Users/zhouqiang/workspace/pixel/java-pixel/src/main/resources/proto";
@@ -43,38 +44,46 @@ public class CommGenProto {
 			String className = "";
 			for (String str : strings) {
 				str = str.trim();
-				if (str.indexOf("message") > 1 || (str.startsWith("message") && str.contains("."))){
-					sb = new StringBuilder();
-					break;
-				}
 				if (str.startsWith("message")) {
+					String[] split = str.split("\\.");
+					if (split.length > 0) {
+						str = split[split.length - 1];
+					}
 					String message = str.replace("message", "").replace("\"", "")
 							.trim()
 							.toLowerCase();
 					className = StrUtil.upperFirst(StrUtil.toCamelCase(message));
 					sb.append("").append("message").append("\t").append(className).append("  ").append("{\n");
 				} else {
-					if (StrUtil.isBlank(str)){
+
+					if (StrUtil.isBlank(str)) {
 						continue;
 					}
 					String[] s = str.trim().split(" ");
-					if (s.length == 3){
-						sb.append("\t").append("optional").append("\t").append(s[1].replace(",","").trim())
-								.append("\t").append(s[0].replace(",","").trim())
+					if (s.length == 3) {
+						sb.append("\t").append("optional").append("\t").append(s[1].replace(",", "").trim())
+								.append("\t").append(s[0].replace(",", "").trim())
 								.append(" = ").append(s[2]).append(";\n");
-					} else {
+					} else if (s.length == 5) {
+						String clazName = s[4].replace("\"","").trim().toLowerCase();
+						String clazzName = StrUtil.upperFirst(StrUtil.toCamelCase(clazName));
+						sb.append("\t").append(s[0]).append("\t").append(clazzName)
+								.append("\t").append(s[1].replace(",", "").trim())
+								.append(" = ").append(s[3].replace(",","").trim()).append(";\n");
+					}else {
 						sb.append("\t").append(s[0]).append("\t").append(s[2].replace(",", "").trim())
 								.append("\t").append(s[1].replace(",", "").trim())
 								.append(" = ").append(s[3]).append(";\n");
 					}
 
+
 				}
 			}
-			if (StrUtil.isNotBlank(sb.toString())){
+			if (StrUtil.isNotBlank(sb.toString())) {
 				sb.append("}");
 				String result = sb.toString().replace("${ClassName}", className);
 				String path = protoFile + "/" + className + ".proto";
-				FileUtil.writeUtf8String(result,path);
+				FileUtil.writeUtf8String(result, path);
 				FileUtil.del(file);
 			}
 

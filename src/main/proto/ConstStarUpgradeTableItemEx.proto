@@ -1,0 +1,12 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstStarUpgradeTableItemExProtobuf";
+
+message	ConstStarUpgradeTableItemEx  {
+	optional	uint32	id = 1;
+	optional	uint32	star = 2;
+	optional	ConstStarUpgradeTableItemEx.constStarUpgradeTableItemExConsumeExpand	consume_expand = 3;
+	optional	string	consume = 4;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstBackpackTableItemExProtobuf";
+
+message	ConstBackpackTableItemEx  {
+	optional	uint32	level = 1;
+	optional	uint32	gold_max = 2;
+	optional	uint32	exp_max = 3;
+	optional	uint32	item_max = 4;
+	optional	ConstBackpackTableItemEx.constBackpackTableItemExFomula	fomula = 5;
+	optional	string	prerequests = 6;
+}

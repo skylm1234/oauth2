@@ -1,0 +1,14 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "CommChatRequestProtobuf";
+
+message	CommChatRequest  {
+	optional	uint32	channel = 10;
+	optional	uint32	timestamp = 11;
+	optional	uint32	sender = 12;
+	optional	string	sender_nickname = 13;
+	optional	string	message = 14;
+	repeated	string	expand = 15;
+}

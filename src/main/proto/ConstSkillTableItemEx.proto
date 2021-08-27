@@ -1,0 +1,20 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstSkillTableItemExProtobuf";
+
+message	ConstSkillTableItemEx  {
+	optional	string	id = 1;
+	optional	string	name = 2;
+	optional	string	skill_icon = 3;
+	optional	string	desc = 4;
+	optional	ConstSkillTableItemEx.constSkillTableItemExActiveConsumeFomula	active_consume_fomula = 5;
+	optional	string	active_consume = 6;
+	optional	ConstSkillTableItemEx.constSkillTableItemExUpgradeConsumeFomula	upgrade_consume_fomula = 7;
+	optional	string	upgrade_consume = 8;
+	optional	string	coolwn = 9;
+	optional	string	levelvalue = 10;
+	optional	string	logic = 11;
+	optional	string	selecter = 12;
+}

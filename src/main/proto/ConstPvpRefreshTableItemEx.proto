@@ -1,0 +1,13 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstPvpRefreshTableItemExProtobuf";
+
+message	ConstPvpRefreshTableItemEx  {
+	optional	uint32	id = 1;
+	optional	uint32	battle_times_each_refresh = 2;
+	optional	uint32	refresh_time = 3;
+	optional	ConstPvpRefreshTableItemEx.constPvpRefreshTableItemExConsumeFomula	consume_fomula = 4;
+	optional	string	consume = 5;
+}

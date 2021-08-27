@@ -1,0 +1,33 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstTablesProtobuf";
+
+message	ConstTables  {
+	optional	ConstBackpackTable	backpacks = 10;
+	optional	ConstBuyHeroTable	buy_heros = 11;
+	optional	ConstStageTable	stages = 12;
+	optional	ConstStageClassTable	stage_class = 13;
+	optional	ConstSkillTable	skills = 14;
+	optional	ConstSkill2Table	skills2 = 15;
+	optional	ConstHeroTable	heros = 16;
+	optional	ConstMonsterTable	monsters = 17;
+	optional	ConstLevelUpgradeTable	level_upgrades = 18;
+	optional	ConstStarUpgradeTable	star_upgrades = 19;
+	optional	ConstQualityUpgradeTable	quality_upgrades = 20;
+	optional	ConstExpbookTable	expbooks = 21;
+	optional	ConstVipTable	vips = 22;
+	optional	ConstInGamePurchaseTable	in_game_purchases = 23;
+	optional	ConstExchangeTable	exchanges = 24;
+	optional	ConstPvpBasicTable	pvp_basics = 25;
+	optional	ConstPvpRefreshTable	pvp_refreshs = 26;
+	optional	ConstPvpAwardTable	pvp_awards = 27;
+	optional	ConstDropTable	drops = 28;
+	optional	ConstPromotionTable	promotions = 31;
+	optional	ConstPromotionTypeNameTable	promotions_names = 32;
+	optional	ConstNamedTable	names = 36;
+	optional	ConstQualityUpgradeRateTable	quality_upgrade_rates = 37;
+	optional	ConstSkillScriptsSkillTable	skill_scripts_skills = 38;
+	optional	ConstSkillScriptsRoleTable	skill_scripts_roles = 39;
+}

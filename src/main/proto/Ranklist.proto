@@ -1,0 +1,12 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "RanklistProtobuf";
+
+message	Ranklist  {
+	repeated	PlayerItem	ranks = 10;
+	optional	int32	myrank = 11;
+	optional	uint32	timestamp = 12;
+	repeated	uint32	mark = 13;
+}

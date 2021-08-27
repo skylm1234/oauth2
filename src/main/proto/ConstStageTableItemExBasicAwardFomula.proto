@@ -1,0 +1,11 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstStageTableItemExBasicAwardFomulaProtobuf";
+
+message	ConstStageTableItemExBasicAwardFomula  {
+	optional	uint32	time = 1;
+	optional	uint32	gold = 2;
+	optional	uint32	exp = 3;
+}

@@ -1,0 +1,37 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstHeroTableItemExProtobuf";
+
+message	ConstHeroTableItemEx  {
+	optional	uint32	id = 1;
+	optional	string	name = 2;
+	optional	uint32	type = 3;
+	optional	string	desc = 4;
+	optional	uint32	color = 5;
+	optional	ConstHeroTableItemEx.constHeroTableItemExBasicExpand	basic_expand = 6;
+	optional	string	basic = 7;
+	optional	ConstHeroTableItemEx.constHeroTableItemExBasicUpgradeExpand	basic_upgrade_expand = 8;
+	optional	string	basic_upgrade = 9;
+	optional	string	skill = 10;
+	optional	ConstHeroTableItemEx.constHeroTableItemExStarUpgradeFomula	star_upgrade_fomula = 11;
+	optional	string	star_upgrade = 12;
+	optional	uint32	chips = 13;
+	optional	string	group1 = 14;
+	optional	string	group1_skill = 15;
+	optional	string	group2 = 16;
+	optional	string	group2_skill = 17;
+	optional	string	skill_a = 18;
+	optional	string	skill1 = 19;
+	optional	string	skill1_name = 20;
+	optional	string	skill2 = 21;
+	optional	string	skill2_name = 22;
+	optional	string	skill3 = 23;
+	optional	string	skill3_name = 24;
+	optional	string	skill4 = 25;
+	optional	string	skill4_name = 26;
+	optional	string	squad1 = 27;
+	optional	string	squad2 = 28;
+	optional	uint32	alive = 29;
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "PlayerStoreProtobuf";
+
+message	PlayerStore  {
+	repeated	StoreItem	goods0 = 10;
+	repeated	StoreItem	goods1 = 11;
+	repeated	StoreItem	goods2 = 12;
+	repeated	StoreItem	goods3 = 13;
+	repeated	StoreItem	goods4 = 14;
+	repeated	StoreItem	goods5 = 15;
+	repeated	StoreItem	goods6 = 16;
+}

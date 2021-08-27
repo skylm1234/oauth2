@@ -1,0 +1,20 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "PlayerBlockProtobuf";
+
+message	PlayerBlock  {
+	repeated	PlayerString	archives = 10;
+	repeated	PlayerObject	giftbags_object = 11;
+	repeated	PlayerString	giftbags = 12;
+	repeated	PlayerObject	heros_object = 13;
+	repeated	PlayerString	heros = 14;
+	repeated	PlayerString	items = 15;
+	repeated	PlayerString	store = 16;
+	repeated	PlayerString	strings = 17;
+	repeated	PlayerString	teams = 18;
+	repeated	PlayerString	temp_backpack = 19;
+	repeated	PlayerString	temp_backpack_items = 20;
+	repeated	PlayerItem	teams_pvp = 21;
+}

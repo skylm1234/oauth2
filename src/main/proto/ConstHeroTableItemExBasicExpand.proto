@@ -1,0 +1,12 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstHeroTableItemExBasicExpandProtobuf";
+
+message	ConstHeroTableItemExBasicExpand  {
+	optional	uint32	hp = 1;
+	optional	uint32	attack = 2;
+	optional	uint32	defense = 3;
+	optional	uint32	speed = 4;
+}

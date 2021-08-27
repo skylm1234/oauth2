@@ -1,0 +1,16 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf";
+
+message	ConstHeroTableItemExStarUpgradeFomulaStar24  {
+	optional	uint32	hp = 1;
+	optional	uint32	attack = 2;
+	optional	uint32	defense = 3;
+	optional	uint32	speed = 4;
+	optional	uint32	hp_upgrade = 5;
+	optional	uint32	attack_upgrade = 6;
+	optional	uint32	defense_upgrade = 7;
+	optional	uint32	speed_upgrade = 8;
+}

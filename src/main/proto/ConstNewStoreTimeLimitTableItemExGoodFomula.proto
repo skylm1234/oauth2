@@ -1,0 +1,15 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.gejian.pixel.proto";
+//生成的java文件名
+option java_outer_classname = "ConstNewStoreTimeLimitTableItemExGoodFomulaProtobuf";
+
+message	ConstNewStoreTimeLimitTableItemExGoodFomula  {
+	optional	string	good_prefix = 1;
+	optional	uint32	from = 2;
+	optional	uint32	to = 3;
+	optional	uint32	factor = 4;
+	optional	uint32	number = 5;
+	optional	string	cost = 6;
+	optional	uint32	cost_number = 7;
+}
