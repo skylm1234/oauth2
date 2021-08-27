@@ -1,0 +1,29 @@
+server:
+  port: 4567
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.110.143:13306/ourgame?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&autoReconnect=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    hikari:
+      max-lifetime: 500000
+  redis:
+    host: 110.40.133.131
+    port: 16379
+    password: 2JIY3SsfTNr8
+
+# mybaits-plus配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
