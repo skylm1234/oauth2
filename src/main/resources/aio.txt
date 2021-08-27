@@ -1,0 +1,1372 @@
+GoogleProtobufDescriptorPool.generated_pool.build 
+  file("aio.proto", syntax => proto3) 
+    message "MessageBase" 
+      optional name, string, 1
+      optional data, bytes, 2
+    end
+    message "CONST_SKILL_SCRIPTS_SKILL_TABLE_ITEM_EX"
+      optional id, string, 1
+      optional description, string, 2
+      optional effect, string, 3
+      optional icon, string, 4
+      optional action, string, 5
+      optional levels, string, 6
+      optional logic, string, 7
+      optional name, string, 8
+      optional priority, uint32, 9
+    end
+    message "CONST_SKILL_SCRIPTS_SKILL_TABLE"
+      repeated items, message, 1, "CONST_SKILL_SCRIPTS_SKILL_TABLE_ITEM_EX"
+    end
+    message "CONST_SKILL_SCRIPTS_ROLE_TABLE_ITEM_EX"
+      optional name, string, 1
+      optional attack, uint32, 2
+      optional attack01_audio, string, 3
+      optional attack02_audio, string, 4
+      optional attack03_audio, string, 5
+      optional crit, uint32, 6
+      optional death_audio, string, 7
+      optional defense, uint32, 8
+      optional dge, uint32, 9
+      optional hit_audio, string, 10
+      optional hp, uint32, 11
+      optional normalSkill, string, 12
+      optional skills, string, 13
+      optional speed, uint32, 14
+      optional type, string, 15
+    end
+    message "CONST_SKILL_SCRIPTS_ROLE_TABLE"
+      repeated items, message, 1, "CONST_SKILL_SCRIPTS_ROLE_TABLE_ITEM_EX"
+    end
+    message "CONST_DROP_TABLE_ITEM_EX"
+      optional id, string, 1
+      optional content, string, 2
+      optional desc, string, 3
+      optional desc2, string, 4
+    end
+    message "CONST_DROP_TABLE"
+      repeated items, message, 1, "CONST_DROP_TABLE_ITEM_EX"
+    end
+    message "CONST_VIP_DAILY_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional daily1, string, 2
+      optional daily2, string, 3
+      optional daily3, string, 4
+      optional daily4, string, 5
+      optional daily5, string, 6
+      optional daily6, string, 7
+      optional daily7, string, 8
+      optional daily8, string, 9
+      optional daily9, string, 10
+      optional daily10, string, 11
+      optional daily11, string, 12
+      optional daily12, string, 13
+      optional daily13, string, 14
+      optional daily14, string, 15
+      optional daily15, string, 16
+      optional daily16, string, 17
+      optional daily17, string, 18
+      optional daily18, string, 19
+      optional daily19, string, 20
+      optional daily20, string, 21
+      optional daily21, string, 22
+      optional daily22, string, 23
+      optional daily23, string, 24
+      optional daily24, string, 25
+      optional daily25, string, 26
+      optional daily26, string, 27
+      optional daily27, string, 28
+      optional daily28, string, 29
+      optional daily29, string, 30
+      optional daily30, string, 31
+    end
+    message "CONST_VIP_DAILY_TABLE"
+      repeated items, message, 1, "CONST_VIP_DAILY_TABLE_ITEM_EX"
+    end
+    message "CONST_RANKLIST_HONOR_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional section_fomula, uint32, 2
+      optional section, string, 3
+      optional award_fomula, string, 4
+      optional award, string, 5
+      optional time, string, 6
+    end
+    message "CONST_RANKLIST_HONOR_TABLE"
+      repeated items, message, 1, "CONST_RANKLIST_HONOR_TABLE_ITEM_EX"
+    end
+    message "CONST_RANKLIST_POWER_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional section_fomula, uint32, 2
+      optional section, string, 3
+      optional award_fomula, string, 4
+      optional award, string, 5
+      optional time, string, 6
+    end
+    message "CONST_RANKLIST_POWER_TABLE"
+      repeated items, message, 1, "CONST_RANKLIST_POWER_TABLE_ITEM_EX"
+    end
+    message "CONST_RANKLIST_RICH_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional section_fomula, uint32, 2
+      optional section, string, 3
+      optional award_fomula, string, 4
+      optional award, string, 5
+      optional time, string, 6
+    end
+    message "CONST_RANKLIST_RICH_TABLE"
+      repeated items, message, 1, "CONST_RANKLIST_RICH_TABLE_ITEM_EX"
+    end
+    message "CONST_BACKPACK_TABLE_ITEM_EX"
+      optional level, uint32, 1
+      optional gold_max, uint32, 2
+      optional exp_max, uint32, 3
+      optional item_max, uint32, 4
+      optional fomula, message, 5, "CONST_BACKPACK_TABLE_ITEM_EX.CONST_BACKPACK_TABLE_ITEM_EX_FOMULA"
+      optional prerequests, string, 6
+    end
+    message "CONST_BACKPACK_TABLE_ITEM_EX.CONST_BACKPACK_TABLE_ITEM_EX_FOMULA"
+      optional stone, uint32, 1
+    end
+    message "CONST_BACKPACK_TABLE"
+      repeated items, message, 1, "CONST_BACKPACK_TABLE_ITEM_EX"
+    end
+    message "CONST_BUY_HERO_TABLE_ITEM_EX"
+      optional type, uint32, 1
+      optional desc, string, 2
+      optional dropid, string, 3
+      optional award, string, 4
+      optional consume, string, 5
+      optional amount, string, 7
+      optional coolwn, uint32, 8
+      optional day_limit, uint32, 9
+      optional chips, uint32, 10
+    end
+    message "CONST_BUY_HERO_TABLE"
+      repeated items, message, 1, "CONST_BUY_HERO_TABLE_ITEM_EX"
+    end
+    message "CONST_STAGE_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional name, string, 2
+      optional class_type, uint32, 3
+      optional prerequest, uint32, 4
+      optional mode, uint32, 5
+      optional icon, string, 6
+      optional icon_color, string, 7
+      optional bg, string, 8
+      optional bg_color, string, 9
+      optional recommand_power, uint32, 10
+      optional monsters, string, 11
+      optional monsters_attributes, string, 12
+      optional boss, string, 13
+      optional boss_attributes, string, 14
+      optional monsters_max, uint32, 15
+      optional goblin_fomula, message, 16, "CONST_STAGE_TABLE_ITEM_EX.CONST_STAGE_TABLE_ITEM_EX_GOBLIN_FOMULA"
+      optional goblin, string, 17
+      optional basic_award_fomula, message, 18, "CONST_STAGE_TABLE_ITEM_EX.CONST_STAGE_TABLE_ITEM_EX_BASIC_AWARD_FOMULA"
+      optional basic_award, string, 19
+      optional monsters_killed_award_fomula, message, 20, "CONST_STAGE_TABLE_ITEM_EX.CONST_STAGE_TABLE_ITEM_EX_MONSTERS_KILLED_AWARD_FOMULA"
+      optional monsters_killed_award, string, 21
+      optional boss_award_fomula, message, 22, "CONST_STAGE_TABLE_ITEM_EX.CONST_STAGE_TABLE_ITEM_EX_BOSS_AWARD_FOMULA"
+      optional boss_award, string, 23
+      optional wave, uint32, 24
+      optional monster_skill_level, string, 25
+      optional boss_skill_level, string, 26
+    end
+    message "CONST_STAGE_TABLE_ITEM_EX.CONST_STAGE_TABLE_ITEM_EX_GOBLIN_FOMULA"
+      optional pro, string, 1
+      optional monster, string, 2
+      optional hp, string, 3
+      optional dropid, string, 4
+    end
+    message "CONST_STAGE_TABLE_ITEM_EX.CONST_STAGE_TABLE_ITEM_EX_BASIC_AWARD_FOMULA"
+      optional time, uint32, 1
+      optional gold, uint32, 2
+      optional exp, uint32, 3
+    end
+    message "CONST_STAGE_TABLE_ITEM_EX.CONST_STAGE_TABLE_ITEM_EX_MONSTERS_KILLED_AWARD_FOMULA"
+      optional dropid, string, 1
+      optional dropid_bosskilled, string, 2
+    end
+    message "CONST_STAGE_TABLE_ITEM_EX.CONST_STAGE_TABLE_ITEM_EX_BOSS_AWARD_FOMULA"
+      optional dropid, string, 1
+    end
+    message "CONST_STAGE_TABLE"
+      repeated items, message, 1, "CONST_STAGE_TABLE_ITEM_EX"
+    end
+    message "CONST_STAGE_CLASS_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional class_type, uint32, 2
+      optional name, string, 3
+    end
+    message "CONST_STAGE_CLASS_TABLE"
+      repeated items, message, 1, "CONST_STAGE_CLASS_TABLE_ITEM_EX"
+    end
+    message "CONST_SKILL2_TABLE_ITEM_EX"
+      optional id, string, 1
+      optional name, string, 2
+      optional icon, string, 3
+      optional description, string, 4
+      optional priority, string, 5
+      optional action, string, 6
+      optional effect, string, 7
+      optional levels, string, 8
+      optional logic, string, 9
+    end
+    message "CONST_SKILL2_TABLE"
+      repeated items, message, 1, "CONST_SKILL2_TABLE_ITEM_EX"
+    end
+    message "CONST_PROMOTION_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional title, string, 2
+      optional key, string, 3
+      optional type, uint32, 4
+      optional desc, string, 5
+      optional compare_type, uint32, 6
+      optional parameter, uint32, 7
+      optional precondition, uint32, 8
+      optional next, uint32, 9
+      optional award, string, 10
+      optional percent, string, 11
+    end
+    message "CONST_PROMOTION_TABLE"
+      repeated items, message, 1, "CONST_PROMOTION_TABLE_ITEM_EX"
+    end
+    message "CONST_PROMOTION_TYPE_NAME_TABLE_ITEM_EX"
+      optional type, uint32, 1
+      optional name, string, 2
+      optional q, uint32, 3
+      optional group, uint32, 4
+      optional group_name, string, 5
+    end
+    message "CONST_PROMOTION_TYPE_NAME_TABLE"
+      repeated items, message, 1, "CONST_PROMOTION_TYPE_NAME_TABLE_ITEM_EX"
+    end
+    message "CONST_NAMED_TABLE_ITEM_EX"
+      optional name, string, 1
+      optional t, uint32, 2
+      optional title, string, 3
+      optional desc, string, 4
+      optional icon, string, 5
+    end
+    message "CONST_NAMED_TABLE"
+      repeated items, message, 1, "CONST_NAMED_TABLE_ITEM_EX"
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX"
+      optional id, string, 1
+      optional name, string, 2
+      optional skill_icon, string, 3
+      optional desc, string, 4
+      optional active_consume_fomula, message, 5, "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_ACTIVE_CONSUME_FOMULA"
+      optional active_consume, string, 6
+      optional upgrade_consume_fomula, message, 7, "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA"
+      optional upgrade_consume, string, 8
+      optional coolwn, string, 9
+      optional levelvalue, string, 10
+      optional logic, string, 11
+      optional selecter, string, 12
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_ACTIVE_CONSUME_FOMULA"
+      optional gold, uint32, 1
+      optional book, uint32, 2
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA"
+      optional X1, message, 1, "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X1"
+      optional X2, message, 2, "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X2"
+      optional X3, message, 3, "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X3"
+      optional X4, message, 4, "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X4"
+      optional X5, message, 5, "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X5"
+      optional X6, message, 6, "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X6"
+      optional X7, message, 7, "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X7"
+      optional X8, message, 8, "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X8"
+      optional X9, message, 9, "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X9"
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X1"
+      optional gold, uint32, 1
+      optional book, uint32, 2
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X2"
+      optional gold, uint32, 1
+      optional book, uint32, 2
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X3"
+      optional gold, uint32, 1
+      optional book, uint32, 2
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X4"
+      optional gold, uint32, 1
+      optional book, uint32, 2
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X5"
+      optional gold, uint32, 1
+      optional book, uint32, 2
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X6"
+      optional gold, uint32, 1
+      optional book, uint32, 2
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X7"
+      optional gold, uint32, 1
+      optional book, uint32, 2
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X8"
+      optional gold, uint32, 1
+      optional book, uint32, 2
+    end
+    message "CONST_SKILL_TABLE_ITEM_EX.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA.CONST_SKILL_TABLE_ITEM_EX_UPGRADE_CONSUME_FOMULA_X9"
+      optional gold, uint32, 1
+      optional book, uint32, 2
+    end
+    message "CONST_SKILL_TABLE"
+      repeated items, message, 1, "CONST_SKILL_TABLE_ITEM_EX"
+    end
+    message "CONST_HERO_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional name, string, 2
+      optional type, uint32, 3
+      optional desc, string, 4
+      optional color, uint32, 5
+      optional basic_expand, message, 6, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_BASIC_EXPAND"
+      optional basic, string, 7
+      optional basic_upgrade_expand, message, 8, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_BASIC_UPGRADE_EXPAND"
+      optional basic_upgrade, string, 9
+      optional skill, string, 10
+      optional star_upgrade_fomula, message, 11, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA"
+      optional star_upgrade, string, 12
+      optional chips, uint32, 13
+      optional group1, string, 14
+      optional group1_skill, string, 15
+      optional group2, string, 16
+      optional group2_skill, string, 17
+      optional skill_a, string, 18
+      optional skill1, string, 19
+      optional skill1_name, string, 20
+      optional skill2, string, 21
+      optional skill2_name, string, 22
+      optional skill3, string, 23
+      optional skill3_name, string, 24
+      optional skill4, string, 25
+      optional skill4_name, string, 26
+      optional squad1, string, 27
+      optional squad2, string, 28
+      optional alive, uint32, 29
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_BASIC_EXPAND"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_BASIC_UPGRADE_EXPAND"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA"
+      optional star_1, message, 1, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_1"
+      optional star_2, message, 2, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_2"
+      optional star_3, message, 3, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_3"
+      optional star_4, message, 4, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_4"
+      optional star_5, message, 5, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_5"
+      optional star_6, message, 6, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_6"
+      optional star_7, message, 7, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_7"
+      optional star_8, message, 8, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_8"
+      optional star_9, message, 9, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_9"
+      optional star_10, message, 10, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_10"
+      optional star_11, message, 11, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_11"
+      optional star_12, message, 12, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_12"
+      optional star_13, message, 13, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_13"
+      optional star_14, message, 14, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_14"
+      optional star_15, message, 15, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_15"
+      optional star_16, message, 16, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_16"
+      optional star_17, message, 17, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_17"
+      optional star_18, message, 18, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_18"
+      optional star_19, message, 19, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_19"
+      optional star_20, message, 20, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_20"
+      optional star_21, message, 21, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_21"
+      optional star_22, message, 22, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_22"
+      optional star_23, message, 23, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_23"
+      optional star_24, message, 24, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_24"
+      optional star_25, message, 25, "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_25"
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_1"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_2"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_3"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_4"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_5"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_6"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_7"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_8"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_9"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_10"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_11"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_12"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_13"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_14"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_15"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_16"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_17"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_18"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_19"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_20"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_21"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_22"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_23"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_24"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE_ITEM_EX.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA.CONST_HERO_TABLE_ITEM_EX_STAR_UPGRADE_FOMULA_STAR_25"
+      optional hp, uint32, 1
+      optional attack, uint32, 2
+      optional defense, uint32, 3
+      optional speed, uint32, 4
+      optional hp_upgrade, uint32, 5
+      optional attack_upgrade, uint32, 6
+      optional defense_upgrade, uint32, 7
+      optional speed_upgrade, uint32, 8
+    end
+    message "CONST_HERO_TABLE"
+      repeated items, message, 1, "CONST_HERO_TABLE_ITEM_EX"
+    end
+    message "CONST_MONSTER_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional name, string, 2
+      optional model, string, 3
+      optional color, string, 4
+      optional skill, string, 5
+    end
+    message "CONST_MONSTER_TABLE"
+      repeated items, message, 1, "CONST_MONSTER_TABLE_ITEM_EX"
+    end
+    message "CONST_LEVEL_UPGRADE_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional lv, uint32, 2
+      optional start0, uint32, 3
+      optional start1, uint32, 4
+      optional start2, uint32, 5
+      optional start3, uint32, 6
+      optional start4, uint32, 7
+      optional start5, uint32, 8
+      optional start6, uint32, 9
+      optional start7, uint32, 10
+      optional start8, uint32, 11
+      optional start9, uint32, 12
+      optional start10, uint32, 13
+      optional start11, uint32, 14
+      optional start12, uint32, 15
+      optional start13, uint32, 16
+      optional start14, uint32, 17
+      optional start15, uint32, 18
+      optional start16, uint32, 19
+      optional start17, uint32, 20
+      optional start18, uint32, 21
+      optional start19, uint32, 22
+      optional start20, uint32, 23
+      optional start21, uint32, 24
+      optional start22, uint32, 25
+      optional start23, uint32, 26
+      optional start24, uint32, 27
+      optional start25, uint32, 28
+    end
+    message "CONST_LEVEL_UPGRADE_TABLE"
+      repeated items, message, 1, "CONST_LEVEL_UPGRADE_TABLE_ITEM_EX"
+    end
+    message "CONST_STAR_UPGRADE_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional star, uint32, 2
+      optional consume_expand, message, 3, "CONST_STAR_UPGRADE_TABLE_ITEM_EX.CONST_STAR_UPGRADE_TABLE_ITEM_EX_CONSUME_EXPAND"
+      optional consume, string, 4
+    end
+    message "CONST_STAR_UPGRADE_TABLE_ITEM_EX.CONST_STAR_UPGRADE_TABLE_ITEM_EX_CONSUME_EXPAND"
+      optional gold, uint32, 1
+      optional private_soulchip, uint32, 2
+    end
+    message "CONST_STAR_UPGRADE_TABLE"
+      repeated items, message, 1, "CONST_STAR_UPGRADE_TABLE_ITEM_EX"
+    end
+    message "CONST_QUALITY_UPGRADE_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional quality, uint32, 2
+      optional desc, string, 3
+      optional consume_expand, message, 4, "CONST_QUALITY_UPGRADE_TABLE_ITEM_EX.CONST_QUALITY_UPGRADE_TABLE_ITEM_EX_CONSUME_EXPAND"
+      optional consume, string, 5
+    end
+    message "CONST_QUALITY_UPGRADE_TABLE_ITEM_EX.CONST_QUALITY_UPGRADE_TABLE_ITEM_EX_CONSUME_EXPAND"
+      optional private_soulchip, uint32, 1
+    end
+    message "CONST_QUALITY_UPGRADE_TABLE"
+      repeated items, message, 1, "CONST_QUALITY_UPGRADE_TABLE_ITEM_EX"
+    end
+    message "CONST_QUALITY_UPGRADE_RATE_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional quality, uint32, 2
+      optional desc, string, 3
+      optional up, string, 4
+    end
+    message "CONST_QUALITY_UPGRADE_RATE_TABLE"
+      repeated items, message, 1, "CONST_QUALITY_UPGRADE_RATE_TABLE_ITEM_EX"
+    end
+    message "CONST_EXPBOOK_TABLE_ITEM_EX"
+      optional id, string, 1
+      optional name, string, 2
+      optional desc, string, 3
+      optional value, uint32, 4
+      optional quality, string, 5
+      optional icon, string, 6
+    end
+    message "CONST_EXPBOOK_TABLE"
+      repeated items, message, 1, "CONST_EXPBOOK_TABLE_ITEM_EX"
+    end
+    message "CONST_VIP_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional level, uint32, 2
+      optional charge, uint32, 3
+      optional itemid, string, 4
+      optional award, string, 5
+      optional chanllege, uint32, 6
+      optional backpack_max, uint32, 7
+      optional freerefresh_times_stone, uint32, 8
+      optional freerefresh_times_honor, uint32, 9
+      optional freerefresh_times_gold, uint32, 10
+      optional timeval_offline_kill_monster_rate, uint32, 11
+      optional skip_timeval, uint32, 12
+      optional des, string, 13
+      optional tianti, uint32, 14
+      optional tianti_reset, uint32, 15
+    end
+    message "CONST_VIP_TABLE"
+      repeated items, message, 1, "CONST_VIP_TABLE_ITEM_EX"
+    end
+    message "CONST_NEW_STORE_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional places, uint32, 2
+      optional good_fomula, message, 3, "CONST_NEW_STORE_TABLE_ITEM_EX.CONST_NEW_STORE_TABLE_ITEM_EX_GOOD_FOMULA"
+      optional items, string, 4
+    end
+    message "CONST_NEW_STORE_TABLE_ITEM_EX.CONST_NEW_STORE_TABLE_ITEM_EX_GOOD_FOMULA"
+      optional good_prefix, string, 1
+      optional from, uint32, 2
+      optional to, uint32, 3
+      optional factor, uint32, 4
+      optional number, uint32, 5
+      optional cost, string, 6
+      optional cost_number, uint32, 7
+    end
+    message "CONST_NEW_STORE_TABLE"
+      repeated items, message, 1, "CONST_NEW_STORE_TABLE_ITEM_EX"
+    end
+    message "CONST_NEW_STORE_REFRESH_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional name, string, 2
+      optional refresh_time, string, 3
+    end
+    message "CONST_NEW_STORE_REFRESH_TABLE"
+      repeated items, message, 1, "CONST_NEW_STORE_REFRESH_TABLE_ITEM_EX"
+    end
+    message "CONST_NEW_STORE_HOT_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional places, uint32, 2
+      optional good_fomula, message, 3, "CONST_NEW_STORE_HOT_TABLE_ITEM_EX.CONST_NEW_STORE_HOT_TABLE_ITEM_EX_GOOD_FOMULA"
+      optional items, string, 4
+      optional type, uint32, 5
+    end
+    message "CONST_NEW_STORE_HOT_TABLE_ITEM_EX.CONST_NEW_STORE_HOT_TABLE_ITEM_EX_GOOD_FOMULA"
+      optional good_prefix, string, 1
+      optional from, uint32, 2
+      optional to, uint32, 3
+      optional factor, uint32, 4
+      optional number, uint32, 5
+      optional cost, string, 6
+      optional cost_number, uint32, 7
+    end
+    message "CONST_NEW_STORE_HOT_TABLE"
+      repeated items, message, 1, "CONST_NEW_STORE_HOT_TABLE_ITEM_EX"
+    end
+    message "CONST_NEW_STORE_DISCOUNT_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional places, uint32, 2
+      optional good_fomula, message, 3, "CONST_NEW_STORE_DISCOUNT_TABLE_ITEM_EX.CONST_NEW_STORE_DISCOUNT_TABLE_ITEM_EX_GOOD_FOMULA"
+      optional items, string, 4
+      optional type, uint32, 5
+    end
+    message "CONST_NEW_STORE_DISCOUNT_TABLE_ITEM_EX.CONST_NEW_STORE_DISCOUNT_TABLE_ITEM_EX_GOOD_FOMULA"
+      optional good_prefix, string, 1
+      optional from, uint32, 2
+      optional to, uint32, 3
+      optional factor, uint32, 4
+      optional number, uint32, 5
+      optional cost, string, 6
+      optional cost_number, uint32, 7
+    end
+    message "CONST_NEW_STORE_DISCOUNT_TABLE"
+      repeated items, message, 1, "CONST_NEW_STORE_DISCOUNT_TABLE_ITEM_EX"
+    end
+    message "CONST_NEW_STORE_TIME_LIMIT_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional places, uint32, 2
+      optional good_fomula, message, 3, "CONST_NEW_STORE_TIME_LIMIT_TABLE_ITEM_EX.CONST_NEW_STORE_TIME_LIMIT_TABLE_ITEM_EX_GOOD_FOMULA"
+      optional items, string, 4
+      optional type, uint32, 5
+    end
+    message "CONST_NEW_STORE_TIME_LIMIT_TABLE_ITEM_EX.CONST_NEW_STORE_TIME_LIMIT_TABLE_ITEM_EX_GOOD_FOMULA"
+      optional good_prefix, string, 1
+      optional from, uint32, 2
+      optional to, uint32, 3
+      optional factor, uint32, 4
+      optional number, uint32, 5
+      optional cost, string, 6
+      optional cost_number, uint32, 7
+    end
+    message "CONST_NEW_STORE_TIME_LIMIT_TABLE"
+      repeated items, message, 1, "CONST_NEW_STORE_TIME_LIMIT_TABLE_ITEM_EX"
+    end
+    message "CONST_IN_GAME_PURCHASE_TABLE_ITEM_EX"
+      optional id, string, 1
+      optional stone, uint32, 2
+      optional desc, string, 3
+      optional icon, string, 4
+      optional cost, uint32, 5
+    end
+    message "CONST_IN_GAME_PURCHASE_TABLE"
+      repeated items, message, 1, "CONST_IN_GAME_PURCHASE_TABLE_ITEM_EX"
+    end
+    message "CONST_EXCHANGE_TABLE_ITEM_EX"
+      optional type, uint32, 1
+      optional stone, uint32, 2
+      optional amount, uint32, 3
+      optional desc, string, 4
+    end
+    message "CONST_EXCHANGE_TABLE"
+      repeated items, message, 1, "CONST_EXCHANGE_TABLE_ITEM_EX"
+    end
+    message "CONST_BLACK_NICKNAME_TABLE_ITEM_EX"
+      optional nickname, string, 1
+    end
+    message "CONST_BLACK_NICKNAME_TABLE"
+      repeated items, message, 1, "CONST_BLACK_NICKNAME_TABLE_ITEM_EX"
+    end
+    message "CONST_PVP_BASIC_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional range_min, uint32, 2
+      optional range_max, uint32, 3
+      optional range, string, 4
+    end
+    message "CONST_PVP_BASIC_TABLE"
+      repeated items, message, 1, "CONST_PVP_BASIC_TABLE_ITEM_EX"
+    end
+    message "CONST_PVP_REFRESH_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional battle_times_each_refresh, uint32, 2
+      optional refresh_time, uint32, 3
+      optional consume_fomula, message, 4, "CONST_PVP_REFRESH_TABLE_ITEM_EX.CONST_PVP_REFRESH_TABLE_ITEM_EX_CONSUME_FOMULA"
+      optional consume, string, 5
+    end
+    message "CONST_PVP_REFRESH_TABLE_ITEM_EX.CONST_PVP_REFRESH_TABLE_ITEM_EX_CONSUME_FOMULA"
+      optional stone, uint32, 1
+    end
+    message "CONST_PVP_REFRESH_TABLE"
+      repeated items, message, 1, "CONST_PVP_REFRESH_TABLE_ITEM_EX"
+    end
+    message "CONST_PVP_AWARD_TABLE_ITEM_EX"
+      optional id, uint32, 1
+      optional vectory_times, uint32, 2
+      optional award_fomula, message, 3, "CONST_PVP_AWARD_TABLE_ITEM_EX.CONST_PVP_AWARD_TABLE_ITEM_EX_AWARD_FOMULA"
+      optional award, string, 4
+    end
+    message "CONST_PVP_AWARD_TABLE_ITEM_EX.CONST_PVP_AWARD_TABLE_ITEM_EX_AWARD_FOMULA"
+      optional firstofday, string, 1
+      optional other, string, 2
+    end
+    message "CONST_PVP_AWARD_TABLE"
+      repeated items, message, 1, "CONST_PVP_AWARD_TABLE_ITEM_EX"
+    end
+    message "CONST_TABLES"
+      optional backpacks, message, 10, "CONST_BACKPACK_TABLE"
+      optional buy_heros, message, 11, "CONST_BUY_HERO_TABLE"
+      optional stages, message, 12, "CONST_STAGE_TABLE"
+      optional stage_class, message, 13, "CONST_STAGE_CLASS_TABLE"
+      optional skills, message, 14, "CONST_SKILL_TABLE"
+      optional skills2, message, 15, "CONST_SKILL2_TABLE"
+      optional heros, message, 16, "CONST_HERO_TABLE"
+      optional monsters, message, 17, "CONST_MONSTER_TABLE"
+      optional level_upgrades, message, 18, "CONST_LEVEL_UPGRADE_TABLE"
+      optional star_upgrades, message, 19, "CONST_STAR_UPGRADE_TABLE"
+      optional quality_upgrades, message, 20, "CONST_QUALITY_UPGRADE_TABLE"
+      optional expbooks, message, 21, "CONST_EXPBOOK_TABLE"
+      optional vips, message, 22, "CONST_VIP_TABLE"
+      optional in_game_purchases, message, 23, "CONST_IN_GAME_PURCHASE_TABLE"
+      optional exchanges, message, 24, "CONST_EXCHANGE_TABLE"
+      optional pvp_basics, message, 25, "CONST_PVP_BASIC_TABLE"
+      optional pvp_refreshs, message, 26, "CONST_PVP_REFRESH_TABLE"
+      optional pvp_awards, message, 27, "CONST_PVP_AWARD_TABLE"
+      optional drops, message, 28, "CONST_DROP_TABLE"
+      optional promotions, message, 31, "CONST_PROMOTION_TABLE"
+      optional promotions_names, message, 32, "CONST_PROMOTION_TYPE_NAME_TABLE"
+      optional names, message, 36, "CONST_NAMED_TABLE"
+      optional quality_upgrade_rates, message, 37, "CONST_QUALITY_UPGRADE_RATE_TABLE"
+      optional skill_scripts_skills, message, 38, "CONST_SKILL_SCRIPTS_SKILL_TABLE"
+      optional skill_scripts_roles, message, 39, "CONST_SKILL_SCRIPTS_ROLE_TABLE"
+    end
+    message "PLAYER_ITEM"
+      optional key, string, 10
+      optional value, int64, 11
+    end
+    message "PLAYER_TEMPORARY_BACKPACK"
+      optional level, uint32, 10
+      optional type, uint32, 11
+      optional stage, uint32, 12
+      optional dungeon_enter_timestamp, uint32, 13
+      repeated items, message, 14, "PLAYER_ITEM"
+    end
+    message "HERO_BASIC_INFO"
+      optional id, uint32, 10
+      optional type, string, 11
+      optional level, uint32, 12
+      optional exp, uint32, 13
+      optional quality, uint32, 14
+      optional star, uint32, 15
+      optional grow_hp, uint32, 16
+      optional hp, uint32, 17
+      optional grow_def, uint32, 18
+      optional def, uint32, 19
+      optional grow_attack, uint32, 20
+      optional attack, uint32, 21
+      optional grow_speed, uint32, 22
+      optional speed, uint32, 23
+      repeated skills, message, 24, "HERO_SKILL"
+      optional number, uint32, 25
+    end
+    message "RANKLIST"
+      repeated ranks, message, 10, "PLAYER_ITEM"
+      optional myrank, int32, 11
+      optional timestamp, uint32, 12
+      repeated mark, uint32, 13
+    end
+    message "PLAYER_STRING"
+      optional key, string, 10
+      optional value, string, 11
+    end
+    message "STORE_ITEM"
+      optional name, string, 10
+      optional number, uint32, 11
+      optional cost_type, string, 12
+      optional cost_number, uint32, 13
+    end
+    message "PLAYER_STORE"
+      repeated goods0, message, 10, "STORE_ITEM"
+      repeated goods1, message, 11, "STORE_ITEM"
+      repeated goods2, message, 12, "STORE_ITEM"
+      repeated goods3, message, 13, "STORE_ITEM"
+      repeated goods4, message, 14, "STORE_ITEM"
+      repeated goods5, message, 15, "STORE_ITEM"
+      repeated goods6, message, 16, "STORE_ITEM"
+    end
+    message "GIFTBAG"
+      optional identifier, string, 10
+      optional icon, string, 11
+      optional desc, string, 12
+      optional action, string, 13
+      optional other, string, 14
+    end
+    message "PLAYER_INFO"
+      optional identifier, string, 10
+      repeated heros, message, 11, "HERO_BASIC_INFO"
+      repeated teams, message, 12, "PLAYER_ITEM"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated strings, message, 14, "PLAYER_STRING"
+      repeated giftbags, message, 15, "GIFTBAG"
+      optional backpack, message, 16, "PLAYER_TEMPORARY_BACKPACK"
+      optional store, message, 17, "PLAYER_STORE"
+      repeated ranks, message, 18, "RANKLIST"
+      repeated archives, message, 19, "PLAYER_ITEM"
+      repeated teams_pvp, message, 20, "PLAYER_ITEM"
+    end
+    message "HERO_SKILL"
+      optional type, string, 10
+      optional level, uint32, 11
+    end
+    message "COMM_LOGIN_REQUEST"
+      optional identifier, string, 10
+      optional version, uint32, 11
+      optional cipher, string, 12
+      optional data, string, 13
+    end
+    message "COMM_LOGIN_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_LOGIN_REQUEST"
+      optional timestamp, uint32, 12
+      optional player, message, 13, "PLAYER_INFO"
+      optional ping_interval, uint32, 14
+    end
+    message "COMM_SET_NICKNAME_REQUEST"
+      optional nickname, string, 10
+    end
+    message "COMM_SET_NICKNAME_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_SET_NICKNAME_REQUEST"
+    end
+    message "COMM_UPDATE_HERO_FORMATION_REQUEST"
+      repeated formations, message, 10, "PLAYER_ITEM"
+      optional type, uint32, 11
+    end
+    message "COMM_UPDATE_HERO_FORMATION_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_UPDATE_HERO_FORMATION_REQUEST"
+    end
+    message "COMM_UNLOCK_HERO_SKILL_REQUEST"
+      optional hero, string, 10
+      optional skill, string, 11
+    end
+    message "COMM_UNLOCK_HERO_SKILL_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_UNLOCK_HERO_SKILL_REQUEST"
+      repeated items, message, 12, "PLAYER_ITEM"
+      repeated archives, message, 13, "PLAYER_ITEM"
+    end
+    message "COMM_UPGRADE_HERO_SKILL_LEVEL_REQUEST"
+      optional hero, string, 10
+      optional skill, string, 11
+    end
+    message "COMM_UPGRADE_HERO_SKILL_LEVEL_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_UPGRADE_HERO_SKILL_LEVEL_REQUEST"
+      repeated items, message, 12, "PLAYER_ITEM"
+      repeated archives, message, 13, "PLAYER_ITEM"
+    end
+    message "COMM_LET_HERO_CONSUME_EXP_BOOK_REQUEST"
+      optional hero, string, 10
+      repeated books, string, 11
+    end
+    message "COMM_LET_HERO_CONSUME_EXP_BOOK_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_LET_HERO_CONSUME_EXP_BOOK_REQUEST"
+      repeated heros, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated archives, message, 14, "PLAYER_ITEM"
+    end
+    message "COMM_PING_REQUEST"
+      optional dummy, uint32, 10
+    end
+    message "COMM_PING_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_PING_REQUEST"
+      optional timestamp, uint32, 12
+    end
+    message "COMM_BUY_HERO_REQUEST"
+      optional type, uint32, 10
+    end
+    message "COMM_BUY_HERO_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_BUY_HERO_REQUEST"
+      repeated heros, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated teams, message, 14, "PLAYER_ITEM"
+      repeated archives, message, 15, "PLAYER_ITEM"
+      repeated teams_pvp, message, 16, "PLAYER_ITEM"
+    end
+    message "COMM_DAILY_CHECKIN_REQUEST"
+      optional immediately, uint32, 10
+    end
+    message "COMM_DAILY_CHECKIN_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_DAILY_CHECKIN_REQUEST"
+      repeated heros, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated archives, message, 14, "PLAYER_ITEM"
+    end
+    message "COMM_STAGE_PASSED_REQUEST"
+      optional type, uint32, 10
+      optional stage, uint32, 11
+    end
+    message "COMM_STAGE_PASSED_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_STAGE_PASSED_REQUEST"
+      repeated heros, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated archives, message, 14, "PLAYER_ITEM"
+    end
+    message "COMM_HERO_UPGRADE_STAR_REQUEST"
+      optional hero, string, 10
+    end
+    message "COMM_HERO_UPGRADE_STAR_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_HERO_UPGRADE_STAR_REQUEST"
+      repeated items, message, 12, "PLAYER_ITEM"
+      repeated archives, message, 13, "PLAYER_ITEM"
+    end
+    message "COMM_HERO_UPGRADE_QUALITY_REQUEST"
+      optional hero, string, 10
+    end
+    message "COMM_HERO_UPGRADE_QUALITY_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_HERO_UPGRADE_QUALITY_REQUEST"
+      repeated items, message, 12, "PLAYER_ITEM"
+      repeated archives, message, 13, "PLAYER_ITEM"
+      repeated heros, message, 14, "HERO_BASIC_INFO"
+    end
+    message "COMM_GET_PVP_VICTORY_AWARD_REQUEST"
+      optional type, uint32, 10
+      repeated items, message, 11, "PLAYER_ITEM"
+    end
+    message "COMM_GET_PVP_VICTORY_AWARD_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_GET_PVP_VICTORY_AWARD_REQUEST"
+      repeated hero, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated archives, message, 14, "PLAYER_ITEM"
+    end
+    message "COMM_PURCHASE_VERIFY_REQUEST"
+      optional receipt, string, 10
+      optional type, uint32, 11
+    end
+    message "COMM_PURCHASE_VERIFY_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_PURCHASE_VERIFY_REQUEST"
+      repeated heros, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated archives, message, 14, "PLAYER_ITEM"
+    end
+    message "COMM_ENTER_DUNGEON_REQUEST"
+      optional stage, uint32, 10
+      optional type, uint32, 11
+    end
+    message "COMM_ENTER_DUNGEON_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_ENTER_DUNGEON_REQUEST"
+      repeated items, message, 12, "PLAYER_ITEM"
+      repeated archives, message, 13, "PLAYER_ITEM"
+    end
+    message "COMM_UPDATE_TEMPORARY_BACKPACK_REQUEST"
+      optional monsters, uint32, 10
+      optional goblins, uint32, 11
+    end
+    message "COMM_UPDATE_TEMPORARY_BACKPACK_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_UPDATE_TEMPORARY_BACKPACK_REQUEST"
+      repeated items, message, 12, "PLAYER_ITEM"
+      repeated archives, message, 13, "PLAYER_ITEM"
+    end
+    message "COMM_HARVEST_TEMPORARY_BACKPACK_REQUEST"
+      optional monsters, uint32, 10
+      optional goblins, uint32, 11
+    end
+    message "COMM_HARVEST_TEMPORARY_BACKPACK_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_HARVEST_TEMPORARY_BACKPACK_REQUEST"
+      repeated heros, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated archives, message, 14, "PLAYER_ITEM"
+    end
+    message "COMM_UPGRADE_TEMPORARY_BACKPACK_REQUEST"
+      optional dummy, uint32, 10
+    end
+    message "COMM_UPGRADE_TEMPORARY_BACKPACK_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_UPGRADE_TEMPORARY_BACKPACK_REQUEST"
+      repeated items, message, 12, "PLAYER_ITEM"
+      repeated archives, message, 13, "PLAYER_ITEM"
+    end
+    message "COMM_RANKLIST_REQUEST"
+      optional dummy, uint32, 10
+    end
+    message "COMM_RANKLIST_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_RANKLIST_REQUEST"
+      repeated ranks, message, 12, "RANKLIST"
+    end
+    message "COMM_RANKLIST_RELATIVE_POWER_REQUEST"
+      optional dummy, uint32, 10
+    end
+    message "COMM_RANKLIST_RELATIVE_POWER_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_RANKLIST_RELATIVE_POWER_REQUEST"
+      repeated ranks, message, 12, "RANKLIST"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated archives, message, 14, "PLAYER_ITEM"
+    end
+    message "COMM_EXCHANGE_STONE_TO_GOLD_REQUEST"
+      optional type, uint32, 10
+      optional numbers, uint32, 11
+    end
+    message "COMM_EXCHANGE_STONE_TO_GOLD_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_EXCHANGE_STONE_TO_GOLD_REQUEST"
+      repeated items, message, 12, "PLAYER_ITEM"
+    end
+    message "COMM_REFRESH_STORE_REQUEST"
+      optional type, uint32, 10
+    end
+    message "COMM_REFRESH_STORE_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_REFRESH_STORE_REQUEST"
+      optional store, message, 12, "PLAYER_STORE"
+      repeated items, message, 13, "PLAYER_ITEM"
+    end
+    message "COMM_BUY_STORE_ITEM_REQUEST"
+      optional type, uint32, 10
+      optional index, uint32, 11
+      optional number, uint32, 12
+      optional expected, string, 13
+    end
+    message "COMM_BUY_STORE_ITEM_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_BUY_STORE_ITEM_REQUEST"
+      repeated heros, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated teams, message, 14, "PLAYER_ITEM"
+      repeated archives, message, 15, "PLAYER_ITEM"
+      repeated teams_pvp, message, 16, "PLAYER_ITEM"
+    end
+    message "COMM_DISMISS_HERO_REQUEST"
+      repeated heros, string, 10
+    end
+    message "COMM_DISMISS_HERO_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_DISMISS_HERO_REQUEST"
+      repeated items, message, 12, "PLAYER_ITEM"
+    end
+    message "COMM_GET_PVP_DATA_REQUEST"
+      optional identifier, string, 10
+      optional agree_buy_pvp_times, uint32, 11
+      optional tianti_data_expected, uint32, 12
+    end
+    message "COMM_GET_PVP_DATA_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_GET_PVP_DATA_REQUEST"
+      repeated heros, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated archives, message, 14, "PLAYER_ITEM"
+    end
+    message "COMM_GET_GIFTBAG_LIST_REQUEST"
+      optional dummy, uint32, 10
+    end
+    message "COMM_GET_GIFTBAG_LIST_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_GET_GIFTBAG_LIST_REQUEST"
+      repeated giftbags, message, 12, "GIFTBAG"
+      repeated archives, message, 13, "PLAYER_ITEM"
+    end
+    message "COMM_OPEN_GIFTBAG_REQUEST"
+      optional identifier, string, 10
+    end
+    message "COMM_OPEN_GIFTBAG_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_OPEN_GIFTBAG_REQUEST"
+      repeated heros, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated teams, message, 14, "PLAYER_ITEM"
+      repeated archives, message, 15, "PLAYER_ITEM"
+      repeated teams_pvp, message, 16, "PLAYER_ITEM"
+    end
+    message "COMM_COMPOUND_HERO_REQUEST"
+      optional hero, string, 10
+    end
+    message "COMM_COMPOUND_HERO_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_COMPOUND_HERO_REQUEST"
+      repeated heros, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated teams, message, 14, "PLAYER_ITEM"
+      repeated archives, message, 15, "PLAYER_ITEM"
+      repeated teams_pvp, message, 16, "PLAYER_ITEM"
+    end
+    message "COMM_QUERY_BUY_HERO_PRICE_REQUEST"
+      optional dummy, uint32, 10
+    end
+    message "COMM_QUERY_BUY_HERO_PRICE_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_QUERY_BUY_HERO_PRICE_REQUEST"
+      repeated prices, uint32, 12
+    end
+    message "COMM_WORLD_EVENT_UPDATE"
+      optional type, uint32, 10
+      optional info, string, 11
+      optional foo, string, 12
+      optional bar, string, 13
+      optional bee, uint32, 14
+    end
+    message "COMM_CHAT_REQUEST"
+      optional channel, uint32, 10
+      optional timestamp, uint32, 11
+      optional sender, uint32, 12
+      optional sender_nickname, string, 13
+      optional message, string, 14
+      repeated expand, string, 15
+    end
+    message "COMM_CHAT_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_CHAT_REQUEST"
+    end
+    message "COMM_GET_PROMOTION_AWARD_REQUEST"
+      optional promotion_id, uint32, 10
+    end
+    message "COMM_GET_PROMOTION_AWARD_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_GET_PROMOTION_AWARD_REQUEST"
+      repeated heros, message, 12, "HERO_BASIC_INFO"
+      repeated items, message, 13, "PLAYER_ITEM"
+      repeated teams, message, 14, "PLAYER_ITEM"
+      repeated archives, message, 15, "PLAYER_ITEM"
+      repeated strings, message, 16, "PLAYER_STRING"
+      repeated teams_pvp, message, 17, "PLAYER_ITEM"
+    end
+    message "COMM_COMBINE_ITEM_REQUEST"
+      optional item, string, 10
+    end
+    message "COMM_COMBINE_ITEM_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_COMBINE_ITEM_REQUEST"
+      repeated items, message, 13, "PLAYER_ITEM"
+    end
+    message "COMM_REDUCE_STONE_REQUEST"
+      optional amount, uint32, 10
+      optional parameter, string, 11
+    end
+    message "COMM_REDUCE_STONE_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_REDUCE_STONE_REQUEST"
+      repeated items, message, 13, "PLAYER_ITEM"
+    end
+    message "COMM_UPDATE_BINDING_ACCOUNT_REQUEST"
+      optional name, string, 10
+      optional password, string, 11
+    end
+    message "COMM_UPDATE_BINDING_ACCOUNT_RESPONSE"
+      optional result, uint32, 10
+      optional request, message, 11, "COMM_UPDATE_BINDING_ACCOUNT_REQUEST"
+    end
+    message "PLAYER_OBJECT"
+      optional name, string, 10
+      repeated items1, message, 11, "PLAYER_STRING"
+      repeated items2, message, 12, "PLAYER_STRING"
+    end
+    message "PLAYER_BLOCK"
+      repeated archives, message, 10, "PLAYER_STRING"
+      repeated giftbags_object, message, 11, "PLAYER_OBJECT"
+      repeated giftbags, message, 12, "PLAYER_STRING"
+      repeated heros_object, message, 13, "PLAYER_OBJECT"
+      repeated heros, message, 14, "PLAYER_STRING"
+      repeated items, message, 15, "PLAYER_STRING"
+      repeated store, message, 16, "PLAYER_STRING"
+      repeated strings, message, 17, "PLAYER_STRING"
+      repeated teams, message, 18, "PLAYER_STRING"
+      repeated temp_backpack, message, 19, "PLAYER_STRING"
+      repeated temp_backpack_items, message, 20, "PLAYER_STRING"
+      repeated teams_pvp, message, 21, "PLAYER_ITEM"
+    end
+  end
+end

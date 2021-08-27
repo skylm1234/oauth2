@@ -1,6 +1,12 @@
 server:
   port: 4567
 
+# Netty 服务配置 (自定义端口)
+socket:
+  netty:
+    port: 19999
+    debug: true
+
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
