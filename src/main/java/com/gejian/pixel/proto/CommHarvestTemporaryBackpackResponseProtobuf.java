@@ -24,49 +24,61 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
     int getResult();
 
     /**
-     * <pre>
-     *CommHarvestTemporaryBackpackRequest	request = 11;
-     *repeated	HeroBasicInfo	heros = 12;
-     * </pre>
-     *
+     * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+     */
+    boolean hasRequest();
+    /**
+     * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+     */
+    com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest getRequest();
+    /**
+     * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+     */
+    com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequestOrBuilder getRequestOrBuilder();
+
+    /**
+     * <code>repeated .HeroBasicInfo heros = 12;</code>
+     */
+    java.util.List<com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo> 
+        getHerosList();
+    /**
+     * <code>repeated .HeroBasicInfo heros = 12;</code>
+     */
+    com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo getHeros(int index);
+    /**
+     * <code>repeated .HeroBasicInfo heros = 12;</code>
+     */
+    int getHerosCount();
+    /**
+     * <code>repeated .HeroBasicInfo heros = 12;</code>
+     */
+    java.util.List<? extends com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfoOrBuilder> 
+        getHerosOrBuilderList();
+    /**
+     * <code>repeated .HeroBasicInfo heros = 12;</code>
+     */
+    com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfoOrBuilder getHerosOrBuilder(
+        int index);
+
+    /**
      * <code>repeated .PlayerItem items = 13;</code>
      */
     java.util.List<com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem> 
         getItemsList();
     /**
-     * <pre>
-     *CommHarvestTemporaryBackpackRequest	request = 11;
-     *repeated	HeroBasicInfo	heros = 12;
-     * </pre>
-     *
      * <code>repeated .PlayerItem items = 13;</code>
      */
     com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem getItems(int index);
     /**
-     * <pre>
-     *CommHarvestTemporaryBackpackRequest	request = 11;
-     *repeated	HeroBasicInfo	heros = 12;
-     * </pre>
-     *
      * <code>repeated .PlayerItem items = 13;</code>
      */
     int getItemsCount();
     /**
-     * <pre>
-     *CommHarvestTemporaryBackpackRequest	request = 11;
-     *repeated	HeroBasicInfo	heros = 12;
-     * </pre>
-     *
      * <code>repeated .PlayerItem items = 13;</code>
      */
     java.util.List<? extends com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItemOrBuilder> 
         getItemsOrBuilderList();
     /**
-     * <pre>
-     *CommHarvestTemporaryBackpackRequest	request = 11;
-     *repeated	HeroBasicInfo	heros = 12;
-     * </pre>
-     *
      * <code>repeated .PlayerItem items = 13;</code>
      */
     com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItemOrBuilder getItemsOrBuilder(
@@ -110,6 +122,7 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
     }
     private CommHarvestTemporaryBackpackResponse() {
       result_ = 0;
+      heros_ = java.util.Collections.emptyList();
       items_ = java.util.Collections.emptyList();
       archives_ = java.util.Collections.emptyList();
     }
@@ -143,19 +156,41 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
               result_ = input.readUInt32();
               break;
             }
+            case 90: {
+              com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest.Builder subBuilder = null;
+              if (request_ != null) {
+                subBuilder = request_.toBuilder();
+              }
+              request_ = input.readMessage(com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(request_);
+                request_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 98: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                heros_ = new java.util.ArrayList<com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              heros_.add(
+                  input.readMessage(com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.parser(), extensionRegistry));
+              break;
+            }
             case 106: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 items_ = new java.util.ArrayList<com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000008;
               }
               items_.add(
                   input.readMessage(com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.parser(), extensionRegistry));
               break;
             }
             case 114: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
                 archives_ = new java.util.ArrayList<com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000010;
               }
               archives_.add(
                   input.readMessage(com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.parser(), extensionRegistry));
@@ -176,10 +211,13 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          heros_ = java.util.Collections.unmodifiableList(heros_);
+        }
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           items_ = java.util.Collections.unmodifiableList(items_);
         }
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           archives_ = java.util.Collections.unmodifiableList(archives_);
         }
         this.unknownFields = unknownFields.build();
@@ -209,25 +247,71 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
       return result_;
     }
 
+    public static final int REQUEST_FIELD_NUMBER = 11;
+    private com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest request_;
+    /**
+     * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+     */
+    public boolean hasRequest() {
+      return request_ != null;
+    }
+    /**
+     * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+     */
+    public com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest getRequest() {
+      return request_ == null ? com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest.getDefaultInstance() : request_;
+    }
+    /**
+     * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+     */
+    public com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequestOrBuilder getRequestOrBuilder() {
+      return getRequest();
+    }
+
+    public static final int HEROS_FIELD_NUMBER = 12;
+    private java.util.List<com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo> heros_;
+    /**
+     * <code>repeated .HeroBasicInfo heros = 12;</code>
+     */
+    public java.util.List<com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo> getHerosList() {
+      return heros_;
+    }
+    /**
+     * <code>repeated .HeroBasicInfo heros = 12;</code>
+     */
+    public java.util.List<? extends com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfoOrBuilder> 
+        getHerosOrBuilderList() {
+      return heros_;
+    }
+    /**
+     * <code>repeated .HeroBasicInfo heros = 12;</code>
+     */
+    public int getHerosCount() {
+      return heros_.size();
+    }
+    /**
+     * <code>repeated .HeroBasicInfo heros = 12;</code>
+     */
+    public com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo getHeros(int index) {
+      return heros_.get(index);
+    }
+    /**
+     * <code>repeated .HeroBasicInfo heros = 12;</code>
+     */
+    public com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfoOrBuilder getHerosOrBuilder(
+        int index) {
+      return heros_.get(index);
+    }
+
     public static final int ITEMS_FIELD_NUMBER = 13;
     private java.util.List<com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem> items_;
     /**
-     * <pre>
-     *CommHarvestTemporaryBackpackRequest	request = 11;
-     *repeated	HeroBasicInfo	heros = 12;
-     * </pre>
-     *
      * <code>repeated .PlayerItem items = 13;</code>
      */
     public java.util.List<com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem> getItemsList() {
       return items_;
     }
     /**
-     * <pre>
-     *CommHarvestTemporaryBackpackRequest	request = 11;
-     *repeated	HeroBasicInfo	heros = 12;
-     * </pre>
-     *
      * <code>repeated .PlayerItem items = 13;</code>
      */
     public java.util.List<? extends com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItemOrBuilder> 
@@ -235,33 +319,18 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
       return items_;
     }
     /**
-     * <pre>
-     *CommHarvestTemporaryBackpackRequest	request = 11;
-     *repeated	HeroBasicInfo	heros = 12;
-     * </pre>
-     *
      * <code>repeated .PlayerItem items = 13;</code>
      */
     public int getItemsCount() {
       return items_.size();
     }
     /**
-     * <pre>
-     *CommHarvestTemporaryBackpackRequest	request = 11;
-     *repeated	HeroBasicInfo	heros = 12;
-     * </pre>
-     *
      * <code>repeated .PlayerItem items = 13;</code>
      */
     public com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem getItems(int index) {
       return items_.get(index);
     }
     /**
-     * <pre>
-     *CommHarvestTemporaryBackpackRequest	request = 11;
-     *repeated	HeroBasicInfo	heros = 12;
-     * </pre>
-     *
      * <code>repeated .PlayerItem items = 13;</code>
      */
     public com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItemOrBuilder getItemsOrBuilder(
@@ -321,6 +390,12 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
       if (result_ != 0) {
         output.writeUInt32(10, result_);
       }
+      if (request_ != null) {
+        output.writeMessage(11, getRequest());
+      }
+      for (int i = 0; i < heros_.size(); i++) {
+        output.writeMessage(12, heros_.get(i));
+      }
       for (int i = 0; i < items_.size(); i++) {
         output.writeMessage(13, items_.get(i));
       }
@@ -339,6 +414,14 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
       if (result_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(10, result_);
+      }
+      if (request_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getRequest());
+      }
+      for (int i = 0; i < heros_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, heros_.get(i));
       }
       for (int i = 0; i < items_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -366,6 +449,13 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
       boolean result = true;
       result = result && (getResult()
           == other.getResult());
+      result = result && (hasRequest() == other.hasRequest());
+      if (hasRequest()) {
+        result = result && getRequest()
+            .equals(other.getRequest());
+      }
+      result = result && getHerosList()
+          .equals(other.getHerosList());
       result = result && getItemsList()
           .equals(other.getItemsList());
       result = result && getArchivesList()
@@ -383,6 +473,14 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + RESULT_FIELD_NUMBER;
       hash = (53 * hash) + getResult();
+      if (hasRequest()) {
+        hash = (37 * hash) + REQUEST_FIELD_NUMBER;
+        hash = (53 * hash) + getRequest().hashCode();
+      }
+      if (getHerosCount() > 0) {
+        hash = (37 * hash) + HEROS_FIELD_NUMBER;
+        hash = (53 * hash) + getHerosList().hashCode();
+      }
       if (getItemsCount() > 0) {
         hash = (37 * hash) + ITEMS_FIELD_NUMBER;
         hash = (53 * hash) + getItemsList().hashCode();
@@ -519,6 +617,7 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getHerosFieldBuilder();
           getItemsFieldBuilder();
           getArchivesFieldBuilder();
         }
@@ -528,15 +627,27 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         super.clear();
         result_ = 0;
 
+        if (requestBuilder_ == null) {
+          request_ = null;
+        } else {
+          request_ = null;
+          requestBuilder_ = null;
+        }
+        if (herosBuilder_ == null) {
+          heros_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          herosBuilder_.clear();
+        }
         if (itemsBuilder_ == null) {
           items_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           itemsBuilder_.clear();
         }
         if (archivesBuilder_ == null) {
           archives_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           archivesBuilder_.clear();
         }
@@ -569,19 +680,33 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.result_ = result_;
+        if (requestBuilder_ == null) {
+          result.request_ = request_;
+        } else {
+          result.request_ = requestBuilder_.build();
+        }
+        if (herosBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            heros_ = java.util.Collections.unmodifiableList(heros_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.heros_ = heros_;
+        } else {
+          result.heros_ = herosBuilder_.build();
+        }
         if (itemsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
             items_ = java.util.Collections.unmodifiableList(items_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.items_ = items_;
         } else {
           result.items_ = itemsBuilder_.build();
         }
         if (archivesBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
             archives_ = java.util.Collections.unmodifiableList(archives_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.archives_ = archives_;
         } else {
@@ -639,11 +764,40 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         if (other.getResult() != 0) {
           setResult(other.getResult());
         }
+        if (other.hasRequest()) {
+          mergeRequest(other.getRequest());
+        }
+        if (herosBuilder_ == null) {
+          if (!other.heros_.isEmpty()) {
+            if (heros_.isEmpty()) {
+              heros_ = other.heros_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureHerosIsMutable();
+              heros_.addAll(other.heros_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.heros_.isEmpty()) {
+            if (herosBuilder_.isEmpty()) {
+              herosBuilder_.dispose();
+              herosBuilder_ = null;
+              heros_ = other.heros_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              herosBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getHerosFieldBuilder() : null;
+            } else {
+              herosBuilder_.addAllMessages(other.heros_);
+            }
+          }
+        }
         if (itemsBuilder_ == null) {
           if (!other.items_.isEmpty()) {
             if (items_.isEmpty()) {
               items_ = other.items_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureItemsIsMutable();
               items_.addAll(other.items_);
@@ -656,7 +810,7 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
               itemsBuilder_.dispose();
               itemsBuilder_ = null;
               items_ = other.items_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000008);
               itemsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getItemsFieldBuilder() : null;
@@ -669,7 +823,7 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
           if (!other.archives_.isEmpty()) {
             if (archives_.isEmpty()) {
               archives_ = other.archives_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureArchivesIsMutable();
               archives_.addAll(other.archives_);
@@ -682,7 +836,7 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
               archivesBuilder_.dispose();
               archivesBuilder_ = null;
               archives_ = other.archives_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000010);
               archivesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getArchivesFieldBuilder() : null;
@@ -747,12 +901,369 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         return this;
       }
 
+      private com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest request_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest, com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest.Builder, com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequestOrBuilder> requestBuilder_;
+      /**
+       * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+       */
+      public boolean hasRequest() {
+        return requestBuilder_ != null || request_ != null;
+      }
+      /**
+       * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+       */
+      public com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest getRequest() {
+        if (requestBuilder_ == null) {
+          return request_ == null ? com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest.getDefaultInstance() : request_;
+        } else {
+          return requestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+       */
+      public Builder setRequest(com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest value) {
+        if (requestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          request_ = value;
+          onChanged();
+        } else {
+          requestBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+       */
+      public Builder setRequest(
+          com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest.Builder builderForValue) {
+        if (requestBuilder_ == null) {
+          request_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+       */
+      public Builder mergeRequest(com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest value) {
+        if (requestBuilder_ == null) {
+          if (request_ != null) {
+            request_ =
+              com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest.newBuilder(request_).mergeFrom(value).buildPartial();
+          } else {
+            request_ = value;
+          }
+          onChanged();
+        } else {
+          requestBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+       */
+      public Builder clearRequest() {
+        if (requestBuilder_ == null) {
+          request_ = null;
+          onChanged();
+        } else {
+          request_ = null;
+          requestBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+       */
+      public com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest.Builder getRequestBuilder() {
+        
+        onChanged();
+        return getRequestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+       */
+      public com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequestOrBuilder getRequestOrBuilder() {
+        if (requestBuilder_ != null) {
+          return requestBuilder_.getMessageOrBuilder();
+        } else {
+          return request_ == null ?
+              com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest.getDefaultInstance() : request_;
+        }
+      }
+      /**
+       * <code>.CommHarvestTemporaryBackpackRequest request = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest, com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest.Builder, com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequestOrBuilder> 
+          getRequestFieldBuilder() {
+        if (requestBuilder_ == null) {
+          requestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest, com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest.Builder, com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequestOrBuilder>(
+                  getRequest(),
+                  getParentForChildren(),
+                  isClean());
+          request_ = null;
+        }
+        return requestBuilder_;
+      }
+
+      private java.util.List<com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo> heros_ =
+        java.util.Collections.emptyList();
+      private void ensureHerosIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          heros_ = new java.util.ArrayList<com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo>(heros_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo, com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.Builder, com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfoOrBuilder> herosBuilder_;
+
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public java.util.List<com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo> getHerosList() {
+        if (herosBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(heros_);
+        } else {
+          return herosBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public int getHerosCount() {
+        if (herosBuilder_ == null) {
+          return heros_.size();
+        } else {
+          return herosBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo getHeros(int index) {
+        if (herosBuilder_ == null) {
+          return heros_.get(index);
+        } else {
+          return herosBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public Builder setHeros(
+          int index, com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo value) {
+        if (herosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHerosIsMutable();
+          heros_.set(index, value);
+          onChanged();
+        } else {
+          herosBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public Builder setHeros(
+          int index, com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.Builder builderForValue) {
+        if (herosBuilder_ == null) {
+          ensureHerosIsMutable();
+          heros_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          herosBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public Builder addHeros(com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo value) {
+        if (herosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHerosIsMutable();
+          heros_.add(value);
+          onChanged();
+        } else {
+          herosBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public Builder addHeros(
+          int index, com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo value) {
+        if (herosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHerosIsMutable();
+          heros_.add(index, value);
+          onChanged();
+        } else {
+          herosBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public Builder addHeros(
+          com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.Builder builderForValue) {
+        if (herosBuilder_ == null) {
+          ensureHerosIsMutable();
+          heros_.add(builderForValue.build());
+          onChanged();
+        } else {
+          herosBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public Builder addHeros(
+          int index, com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.Builder builderForValue) {
+        if (herosBuilder_ == null) {
+          ensureHerosIsMutable();
+          heros_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          herosBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public Builder addAllHeros(
+          java.lang.Iterable<? extends com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo> values) {
+        if (herosBuilder_ == null) {
+          ensureHerosIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, heros_);
+          onChanged();
+        } else {
+          herosBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public Builder clearHeros() {
+        if (herosBuilder_ == null) {
+          heros_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          herosBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public Builder removeHeros(int index) {
+        if (herosBuilder_ == null) {
+          ensureHerosIsMutable();
+          heros_.remove(index);
+          onChanged();
+        } else {
+          herosBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.Builder getHerosBuilder(
+          int index) {
+        return getHerosFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfoOrBuilder getHerosOrBuilder(
+          int index) {
+        if (herosBuilder_ == null) {
+          return heros_.get(index);  } else {
+          return herosBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public java.util.List<? extends com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfoOrBuilder> 
+           getHerosOrBuilderList() {
+        if (herosBuilder_ != null) {
+          return herosBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(heros_);
+        }
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.Builder addHerosBuilder() {
+        return getHerosFieldBuilder().addBuilder(
+            com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.Builder addHerosBuilder(
+          int index) {
+        return getHerosFieldBuilder().addBuilder(
+            index, com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .HeroBasicInfo heros = 12;</code>
+       */
+      public java.util.List<com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.Builder> 
+           getHerosBuilderList() {
+        return getHerosFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo, com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.Builder, com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfoOrBuilder> 
+          getHerosFieldBuilder() {
+        if (herosBuilder_ == null) {
+          herosBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo, com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfo.Builder, com.gejian.pixel.proto.HeroBasicInfoProtobuf.HeroBasicInfoOrBuilder>(
+                  heros_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          heros_ = null;
+        }
+        return herosBuilder_;
+      }
+
       private java.util.List<com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem> items_ =
         java.util.Collections.emptyList();
       private void ensureItemsIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           items_ = new java.util.ArrayList<com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem>(items_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -760,11 +1271,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
           com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem, com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.Builder, com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItemOrBuilder> itemsBuilder_;
 
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public java.util.List<com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem> getItemsList() {
@@ -775,11 +1281,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         }
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public int getItemsCount() {
@@ -790,11 +1291,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         }
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem getItems(int index) {
@@ -805,11 +1301,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         }
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public Builder setItems(
@@ -827,11 +1318,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         return this;
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public Builder setItems(
@@ -846,11 +1332,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         return this;
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public Builder addItems(com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem value) {
@@ -867,11 +1348,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         return this;
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public Builder addItems(
@@ -889,11 +1365,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         return this;
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public Builder addItems(
@@ -908,11 +1379,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         return this;
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public Builder addItems(
@@ -927,11 +1393,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         return this;
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public Builder addAllItems(
@@ -947,17 +1408,12 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         return this;
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public Builder clearItems() {
         if (itemsBuilder_ == null) {
           items_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           itemsBuilder_.clear();
@@ -965,11 +1421,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         return this;
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public Builder removeItems(int index) {
@@ -983,11 +1434,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         return this;
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.Builder getItemsBuilder(
@@ -995,11 +1441,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         return getItemsFieldBuilder().getBuilder(index);
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItemOrBuilder getItemsOrBuilder(
@@ -1010,11 +1451,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         }
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public java.util.List<? extends com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItemOrBuilder> 
@@ -1026,11 +1462,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
         }
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.Builder addItemsBuilder() {
@@ -1038,11 +1469,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
             com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.getDefaultInstance());
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.Builder addItemsBuilder(
@@ -1051,11 +1477,6 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
             index, com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.getDefaultInstance());
       }
       /**
-       * <pre>
-       *CommHarvestTemporaryBackpackRequest	request = 11;
-       *repeated	HeroBasicInfo	heros = 12;
-       * </pre>
-       *
        * <code>repeated .PlayerItem items = 13;</code>
        */
       public java.util.List<com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.Builder> 
@@ -1069,7 +1490,7 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
           itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem, com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.Builder, com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItemOrBuilder>(
                   items_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           items_ = null;
@@ -1080,9 +1501,9 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
       private java.util.List<com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem> archives_ =
         java.util.Collections.emptyList();
       private void ensureArchivesIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           archives_ = new java.util.ArrayList<com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem>(archives_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000010;
          }
       }
 
@@ -1232,7 +1653,7 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
       public Builder clearArchives() {
         if (archivesBuilder_ == null) {
           archives_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           archivesBuilder_.clear();
@@ -1309,7 +1730,7 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
           archivesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem, com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.Builder, com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItemOrBuilder>(
                   archives_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           archives_ = null;
@@ -1384,12 +1805,16 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
   static {
     java.lang.String[] descriptorData = {
       "\n*CommHarvestTemporaryBackpackResponse.p" +
-      "roto\032\020PlayerItem.proto\"q\n$CommHarvestTem" +
-      "poraryBackpackResponse\022\016\n\006result\030\n \001(\r\022\032" +
-      "\n\005items\030\r \003(\0132\013.PlayerItem\022\035\n\010archives\030\016" +
-      " \003(\0132\013.PlayerItemBF\n\026com.gejian.pixel.pr" +
-      "otoB,CommHarvestTemporaryBackpackRespons" +
-      "eProtobufb\006proto3"
+      "roto\032)CommHarvestTemporaryBackpackReques" +
+      "t.proto\032\023HeroBasicInfo.proto\032\020PlayerItem" +
+      ".proto\"\307\001\n$CommHarvestTemporaryBackpackR" +
+      "esponse\022\016\n\006result\030\n \001(\r\0225\n\007request\030\013 \001(\013" +
+      "2$.CommHarvestTemporaryBackpackRequest\022\035" +
+      "\n\005heros\030\014 \003(\0132\016.HeroBasicInfo\022\032\n\005items\030\r" +
+      " \003(\0132\013.PlayerItem\022\035\n\010archives\030\016 \003(\0132\013.Pl" +
+      "ayerItemBF\n\026com.gejian.pixel.protoB,Comm" +
+      "HarvestTemporaryBackpackResponseProtobuf" +
+      "b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1402,6 +1827,8 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.getDescriptor(),
+          com.gejian.pixel.proto.HeroBasicInfoProtobuf.getDescriptor(),
           com.gejian.pixel.proto.PlayerItemProtobuf.getDescriptor(),
         }, assigner);
     internal_static_CommHarvestTemporaryBackpackResponse_descriptor =
@@ -1409,7 +1836,9 @@ public final class CommHarvestTemporaryBackpackResponseProtobuf {
     internal_static_CommHarvestTemporaryBackpackResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CommHarvestTemporaryBackpackResponse_descriptor,
-        new java.lang.String[] { "Result", "Items", "Archives", });
+        new java.lang.String[] { "Result", "Request", "Heros", "Items", "Archives", });
+    com.gejian.pixel.proto.CommHarvestTemporaryBackpackRequestProtobuf.getDescriptor();
+    com.gejian.pixel.proto.HeroBasicInfoProtobuf.getDescriptor();
     com.gejian.pixel.proto.PlayerItemProtobuf.getDescriptor();
   }
 

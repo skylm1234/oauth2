@@ -1,11 +1,14 @@
 package com.gejian.pixel.utils;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.HexUtil;
+import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import com.gejian.pixel.constants.Generated;
+import com.gejian.pixel.proto.CommWorldEventUpdateProtobuf;
 import com.gejian.pixel.proto.MessageBaseProtobuf;
 import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.proto.PlayerStringProtobuf;
@@ -13,6 +16,7 @@ import com.google.protobuf.Message;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -25,6 +29,7 @@ import java.util.Arrays;
  * @date 2021年08月30日 10:29
  * @description 公共工具类
  */
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class Helper {
@@ -245,8 +250,52 @@ public class Helper {
 	 * @param reply 回复的消息
 	 * @return
 	 */
-	public static void decrease_item_value(RedisTemplate redisTemplate, String identifier, String name, Integer delta, ChannelHandlerContext reply){
+	public static Boolean decrease_item_value(RedisTemplate redisTemplate, String identifier, String name, Integer delta, ChannelHandlerContext reply){
+		return increaseItemValue(redisTemplate, identifier, name, delta, reply);
+	}
 
+	/**
+	 *
+	 * @param ar 数组
+	 * @return
+	 */
+	public static Integer selectFromMultipleAward(Integer[][] ar){
+		for (int i = 0; i < ar.length; i++) {
+			if (i != 0){
+				ar[i][1] = ar[i][1] + ar[i-1][1];
+			}
+		}
+		Integer factor = 0;
+		if (ar[ar.length - 1][1] < 100){
+			factor = RandomUtil.randomInt(100);
+		}else {
+			factor = RandomUtil.randomInt(ar[ar.length - 1][1]);
+		}
+		for (int i = 0; i < ar.length; i++) {
+			if (factor<=ar[i][1]){
+				return i;
+			}
+		}
+		return null;
+	}
+
+
+	public static void boardcaseWorldEvent(String desc){
+		log.info("{} boardcast_world_event => {}",DateUtil.now(),desc);
+		CommWorldEventUpdateProtobuf.CommWorldEventUpdate event = CommWorldEventUpdateProtobuf.CommWorldEventUpdate
+				.newBuilder()
+				.setType(4)
+				.setInfo(desc)
+				.setFoo("\\0\\0\\0\\0")
+				.setBar("\\0\\0\\0")
+				.setBee(1)
+				.build();
+
+		MessageBaseProtobuf.MessageBase base = MessageBaseProtobuf.MessageBase
+				.newBuilder()
+				.setName("COMM_WORLD_EVENT_UPDATE")
+				.setData(event.toByteString())
+				.build();
 	}
 
 }

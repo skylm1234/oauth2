@@ -28,7 +28,7 @@ public class XlsGenProto {
 			"\n" +
 			"}";
 
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 		String excelFilePath = "/Users/zhouqiang/workspace/pixel/java-pixel/src/main/resources/excel";
 		String outPutFilePath = "/Users/zhouqiang/workspace/pixel/java-pixel/src/main/proto";
 		FileUtil.mkdir(outPutFilePath);
@@ -80,6 +80,14 @@ public class XlsGenProto {
 				e.printStackTrace();
 			}
 
+		}
+	}
+
+	public static void main(String[] args) {
+		String protoFilePath = "E:\\workspace\\java-pixel\\src\\main\\proto";
+		List<File> files = FileUtil.loopFiles(protoFilePath);
+		for (File file : files) {
+			System.out.println("protoc --java_out=E:\\workspace\\java-pixel\\src\\main\\java "+file.getName());
 		}
 	}
 
