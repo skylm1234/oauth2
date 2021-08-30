@@ -1,14 +1,11 @@
 syntax = "proto3";
 import "HeroBasicInfo.proto";
 import "PlayerItem.proto";
-import "PlayerItem.proto";
 import "PlayerString.proto";
 import "Giftbag.proto";
 import "PlayerTemporaryBackpack.proto";
 import "PlayerStore.proto";
 import "Ranklist.proto";
-import "PlayerItem.proto";
-import "PlayerItem.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名

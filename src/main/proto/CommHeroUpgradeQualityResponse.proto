@@ -1,7 +1,6 @@
 syntax = "proto3";
 import "CommHeroUpgradeQualityRequest.proto";
 import "PlayerItem.proto";
-import "PlayerItem.proto";
 import "HeroBasicInfo.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";

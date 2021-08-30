@@ -1,15 +1,6 @@
 syntax = "proto3";
 import "PlayerString.proto";
 import "PlayerObject.proto";
-import "PlayerString.proto";
-import "PlayerObject.proto";
-import "PlayerString.proto";
-import "PlayerString.proto";
-import "PlayerString.proto";
-import "PlayerString.proto";
-import "PlayerString.proto";
-import "PlayerString.proto";
-import "PlayerString.proto";
 import "PlayerItem.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
