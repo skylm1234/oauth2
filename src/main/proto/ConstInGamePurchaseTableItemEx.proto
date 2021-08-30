@@ -5,9 +5,9 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstInGamePurchaseTableItemExProtobuf";
 
 message	ConstInGamePurchaseTableItemEx  {
-	optional	string	id = 1;
-	optional	uint32	stone = 2;
-	optional	string	desc = 3;
-	optional	string	icon = 4;
-	optional	uint32	cost = 5;
+	 string	id = 1;
+	 uint32	stone = 2;
+	 string	desc = 3;
+	 string	icon = 4;
+	 uint32	cost = 5;
 }

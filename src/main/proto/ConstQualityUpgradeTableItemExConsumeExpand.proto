@@ -5,5 +5,5 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstQualityUpgradeTableItemExConsumeExpandProtobuf";
 
 message	ConstQualityUpgradeTableItemExConsumeExpand  {
-	optional	uint32	private_soulchip = 1;
+	 uint32	private_soulchip = 1;
 }

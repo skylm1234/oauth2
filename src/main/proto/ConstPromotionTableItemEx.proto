@@ -5,15 +5,15 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstPromotionTableItemExProtobuf";
 
 message	ConstPromotionTableItemEx  {
-	optional	uint32	id = 1;
-	optional	string	title = 2;
-	optional	string	key = 3;
-	optional	uint32	type = 4;
-	optional	string	desc = 5;
-	optional	uint32	compare_type = 6;
-	optional	uint32	parameter = 7;
-	optional	uint32	precondition = 8;
-	optional	uint32	next = 9;
-	optional	string	award = 10;
-	optional	string	percent = 11;
+	 uint32	id = 1;
+	 string	title = 2;
+	 string	key = 3;
+	 uint32	type = 4;
+	 string	desc = 5;
+	 uint32	compare_type = 6;
+	 uint32	parameter = 7;
+	 uint32	precondition = 8;
+	 uint32	next = 9;
+	 string	award = 10;
+	 string	percent = 11;
 }

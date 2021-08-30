@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommUpdateBindingAccountRequestProtobuf";
 
 message	CommUpdateBindingAccountRequest  {
-	optional	string	name = 10;
-	optional	string	password = 11;
+	 string	name = 10;
+	 string	password = 11;
 }

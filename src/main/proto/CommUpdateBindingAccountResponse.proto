@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommUpdateBindingAccountResponseProtobuf";
 
 message	CommUpdateBindingAccountResponse  {
-	optional	uint32	result = 10;
-	optional	CommUpdateBindingAccountRequest	request = 11;
+	 uint32	result = 10;
+	 CommUpdateBindingAccountRequest	request = 11;
 }

@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommSetNicknameResponseProtobuf";
 
 message	CommSetNicknameResponse  {
-	optional	uint32	result = 10;
-	optional	CommSetNicknameRequest	request = 11;
+	 uint32	result = 10;
+	 CommSetNicknameRequest	request = 11;
 }

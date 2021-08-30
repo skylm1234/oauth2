@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommStagePassedRequestProtobuf";
 
 message	CommStagePassedRequest  {
-	optional	uint32	type = 10;
-	optional	uint32	stage = 11;
+	 uint32	type = 10;
+	 uint32	stage = 11;
 }

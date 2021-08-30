@@ -5,9 +5,9 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstPromotionTypeNameTableItemExProtobuf";
 
 message	ConstPromotionTypeNameTableItemEx  {
-	optional	uint32	type = 1;
-	optional	string	name = 2;
-	optional	uint32	q = 3;
-	optional	uint32	group = 4;
-	optional	string	group_name = 5;
+	 uint32	type = 1;
+	 string	name = 2;
+	 uint32	q = 3;
+	 uint32	group = 4;
+	 string	group_name = 5;
 }

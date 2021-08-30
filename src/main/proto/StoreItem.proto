@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "StoreItemProtobuf";
 
 message	StoreItem  {
-	optional	string	name = 10;
-	optional	uint32	number = 11;
-	optional	string	cost_type = 12;
-	optional	uint32	cost_number = 13;
+	 string	name = 10;
+	 uint32	number = 11;
+	 string	cost_type = 12;
+	 uint32	cost_number = 13;
 }

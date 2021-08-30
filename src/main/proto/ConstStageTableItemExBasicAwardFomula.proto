@@ -5,7 +5,7 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstStageTableItemExBasicAwardFomulaProtobuf";
 
 message	ConstStageTableItemExBasicAwardFomula  {
-	optional	uint32	time = 1;
-	optional	uint32	gold = 2;
-	optional	uint32	exp = 3;
+	 uint32	time = 1;
+	 uint32	gold = 2;
+	 uint32	exp = 3;
 }

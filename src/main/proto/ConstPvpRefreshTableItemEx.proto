@@ -5,9 +5,9 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstPvpRefreshTableItemExProtobuf";
 
 message	ConstPvpRefreshTableItemEx  {
-	optional	uint32	id = 1;
-	optional	uint32	battle_times_each_refresh = 2;
-	optional	uint32	refresh_time = 3;
-	optional	ConstPvpRefreshTableItemEx.constPvpRefreshTableItemExConsumeFomula	consume_fomula = 4;
-	optional	string	consume = 5;
+	 uint32	id = 1;
+	 uint32	battle_times_each_refresh = 2;
+	 uint32	refresh_time = 3;
+	 ConstPvpRefreshTableItemEx.constPvpRefreshTableItemExConsumeFomula	consume_fomula = 4;
+	 string	consume = 5;
 }

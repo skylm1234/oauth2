@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommChatResponseProtobuf";
 
 message	CommChatResponse  {
-	optional	uint32	result = 10;
-	optional	CommChatRequest	request = 11;
+	 uint32	result = 10;
+	 CommChatRequest	request = 11;
 }

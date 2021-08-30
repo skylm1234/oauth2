@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommUpgradeTemporaryBackpackResponseProtobuf";
 
 message	CommUpgradeTemporaryBackpackResponse  {
-	optional	uint32	result = 10;
-	optional	CommUpgradeTemporaryBackpackRequest	request = 11;
+	 uint32	result = 10;
+	 CommUpgradeTemporaryBackpackRequest	request = 11;
 	repeated	PlayerItem	items = 12;
 	repeated	PlayerItem	archives = 13;
 }

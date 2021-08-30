@@ -5,13 +5,13 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstBuyHeroTableItemExProtobuf";
 
 message	ConstBuyHeroTableItemEx  {
-	optional	uint32	type = 1;
-	optional	string	desc = 2;
-	optional	string	dropid = 3;
-	optional	string	award = 4;
-	optional	string	consume = 5;
-	optional	string	amount = 7;
-	optional	uint32	coolwn = 8;
-	optional	uint32	day_limit = 9;
-	optional	uint32	chips = 10;
+	 uint32	type = 1;
+	 string	desc = 2;
+	 string	dropid = 3;
+	 string	award = 4;
+	 string	consume = 5;
+	 string	amount = 7;
+	 uint32	coolwn = 8;
+	 uint32	day_limit = 9;
+	 uint32	chips = 10;
 }

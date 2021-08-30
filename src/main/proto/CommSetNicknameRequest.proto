@@ -5,5 +5,5 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommSetNicknameRequestProtobuf";
 
 message	CommSetNicknameRequest  {
-	optional	string	nickname = 10;
+	 string	nickname = 10;
 }

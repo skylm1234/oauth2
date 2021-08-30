@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstStarUpgradeTableItemExProtobuf";
 
 message	ConstStarUpgradeTableItemEx  {
-	optional	uint32	id = 1;
-	optional	uint32	star = 2;
-	optional	ConstStarUpgradeTableItemEx.constStarUpgradeTableItemExConsumeExpand	consume_expand = 3;
-	optional	string	consume = 4;
+	 uint32	id = 1;
+	 uint32	star = 2;
+	 ConstStarUpgradeTableItemEx.constStarUpgradeTableItemExConsumeExpand	consume_expand = 3;
+	 string	consume = 4;
 }

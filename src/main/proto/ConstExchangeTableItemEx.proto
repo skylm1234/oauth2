@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstExchangeTableItemExProtobuf";
 
 message	ConstExchangeTableItemEx  {
-	optional	uint32	type = 1;
-	optional	uint32	stone = 2;
-	optional	uint32	amount = 3;
-	optional	string	desc = 4;
+	 uint32	type = 1;
+	 uint32	stone = 2;
+	 uint32	amount = 3;
+	 string	desc = 4;
 }

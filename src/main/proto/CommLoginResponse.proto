@@ -5,9 +5,9 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommLoginResponseProtobuf";
 
 message	CommLoginResponse  {
-	optional	uint32	result = 10;
-	optional	CommLoginRequest	request = 11;
-	optional	uint32	timestamp = 12;
-	optional	PlayerInfo	player = 13;
-	optional	uint32	ping_interval = 14;
+	 uint32	result = 10;
+	 CommLoginRequest	request = 11;
+	 uint32	timestamp = 12;
+	 PlayerInfo	player = 13;
+	 uint32	ping_interval = 14;
 }

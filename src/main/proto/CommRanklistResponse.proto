@@ -5,7 +5,7 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommRanklistResponseProtobuf";
 
 message	CommRanklistResponse  {
-	optional	uint32	result = 10;
-	optional	CommRanklistRequest	request = 11;
+	 uint32	result = 10;
+	 CommRanklistRequest	request = 11;
 	repeated	Ranklist	ranks = 12;
 }

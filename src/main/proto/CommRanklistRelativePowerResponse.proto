@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommRanklistRelativePowerResponseProtobuf";
 
 message	CommRanklistRelativePowerResponse  {
-	optional	uint32	result = 10;
-	optional	CommRanklistRelativePowerRequest	request = 11;
+	 uint32	result = 10;
+	 CommRanklistRelativePowerRequest	request = 11;
 	repeated	Ranklist	ranks = 12;
 	repeated	PlayerItem	items = 13;
 	repeated	PlayerItem	archives = 14;

@@ -5,7 +5,7 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommReduceStoneResponseProtobuf";
 
 message	CommReduceStoneResponse  {
-	optional	uint32	result = 10;
-	optional	CommReduceStoneRequest	request = 11;
+	 uint32	result = 10;
+	 CommReduceStoneRequest	request = 11;
 	repeated	PlayerItem	items = 13;
 }

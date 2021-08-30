@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommUnlockHeroSkillRequestProtobuf";
 
 message	CommUnlockHeroSkillRequest  {
-	optional	string	hero = 10;
-	optional	string	skill = 11;
+	 string	hero = 10;
+	 string	skill = 11;
 }

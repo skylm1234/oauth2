@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstPvpAwardTableItemExProtobuf";
 
 message	ConstPvpAwardTableItemEx  {
-	optional	uint32	id = 1;
-	optional	uint32	vectory_times = 2;
-	optional	ConstPvpAwardTableItemEx.constPvpAwardTableItemExAwardFomula	award_fomula = 3;
-	optional	string	award = 4;
+	 uint32	id = 1;
+	 uint32	vectory_times = 2;
+	 ConstPvpAwardTableItemEx.constPvpAwardTableItemExAwardFomula	award_fomula = 3;
+	 string	award = 4;
 }

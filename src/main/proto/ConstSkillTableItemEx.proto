@@ -5,16 +5,16 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstSkillTableItemExProtobuf";
 
 message	ConstSkillTableItemEx  {
-	optional	string	id = 1;
-	optional	string	name = 2;
-	optional	string	skill_icon = 3;
-	optional	string	desc = 4;
-	optional	ConstSkillTableItemEx.constSkillTableItemExActiveConsumeFomula	active_consume_fomula = 5;
-	optional	string	active_consume = 6;
-	optional	ConstSkillTableItemEx.constSkillTableItemExUpgradeConsumeFomula	upgrade_consume_fomula = 7;
-	optional	string	upgrade_consume = 8;
-	optional	string	coolwn = 9;
-	optional	string	levelvalue = 10;
-	optional	string	logic = 11;
-	optional	string	selecter = 12;
+	 string	id = 1;
+	 string	name = 2;
+	 string	skill_icon = 3;
+	 string	desc = 4;
+	 ConstSkillTableItemEx.constSkillTableItemExActiveConsumeFomula	active_consume_fomula = 5;
+	 string	active_consume = 6;
+	 ConstSkillTableItemEx.constSkillTableItemExUpgradeConsumeFomula	upgrade_consume_fomula = 7;
+	 string	upgrade_consume = 8;
+	 string	coolwn = 9;
+	 string	levelvalue = 10;
+	 string	logic = 11;
+	 string	selecter = 12;
 }

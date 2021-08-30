@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommLetHeroConsumeExpBookRequestProtobuf";
 
 message	CommLetHeroConsumeExpBookRequest  {
-	optional	string	hero = 10;
+	 string	hero = 10;
 	repeated	string	books = 11;
 }

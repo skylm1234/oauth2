@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommRefreshStoreResponseProtobuf";
 
 message	CommRefreshStoreResponse  {
-	optional	uint32	result = 10;
-	optional	CommRefreshStoreRequest	request = 11;
-	optional	PlayerStore	store = 12;
+	 uint32	result = 10;
+	 CommRefreshStoreRequest	request = 11;
+	 PlayerStore	store = 12;
 	repeated	PlayerItem	items = 13;
 }

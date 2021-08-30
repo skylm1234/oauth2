@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommBuyHeroResponseProtobuf";
 
 message	CommBuyHeroResponse  {
-	optional	uint32	result = 10;
-	optional	CommBuyHeroRequest	request = 11;
+	 uint32	result = 10;
+	 CommBuyHeroRequest	request = 11;
 	repeated	HeroBasicInfo	heros = 12;
 	repeated	PlayerItem	items = 13;
 	repeated	PlayerItem	teams = 14;

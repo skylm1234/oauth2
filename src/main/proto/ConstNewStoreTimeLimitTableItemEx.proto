@@ -5,9 +5,9 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstNewStoreTimeLimitTableItemExProtobuf";
 
 message	ConstNewStoreTimeLimitTableItemEx  {
-	optional	uint32	id = 1;
-	optional	uint32	places = 2;
-	optional	ConstNewStoreTimeLimitTableItemEx.constNewStoreTimeLimitTableItemExGoodFomula	good_fomula = 3;
-	optional	string	items = 4;
-	optional	uint32	type = 5;
+	 uint32	id = 1;
+	 uint32	places = 2;
+	 ConstNewStoreTimeLimitTableItemEx.constNewStoreTimeLimitTableItemExGoodFomula	good_fomula = 3;
+	 string	items = 4;
+	 uint32	type = 5;
 }

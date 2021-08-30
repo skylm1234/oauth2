@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstNewStoreTableItemExProtobuf";
 
 message	ConstNewStoreTableItemEx  {
-	optional	uint32	id = 1;
-	optional	uint32	places = 2;
-	optional	ConstNewStoreTableItemEx.constNewStoreTableItemExGoodFomula	good_fomula = 3;
-	optional	string	items = 4;
+	 uint32	id = 1;
+	 uint32	places = 2;
+	 ConstNewStoreTableItemEx.constNewStoreTableItemExGoodFomula	good_fomula = 3;
+	 string	items = 4;
 }

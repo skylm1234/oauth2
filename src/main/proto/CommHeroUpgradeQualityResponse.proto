@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommHeroUpgradeQualityResponseProtobuf";
 
 message	CommHeroUpgradeQualityResponse  {
-	optional	uint32	result = 10;
-	optional	CommHeroUpgradeQualityRequest	request = 11;
+	 uint32	result = 10;
+	 CommHeroUpgradeQualityRequest	request = 11;
 	repeated	PlayerItem	items = 12;
 	repeated	PlayerItem	archives = 13;
 	repeated	HeroBasicInfo	heros = 14;

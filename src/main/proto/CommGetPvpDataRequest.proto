@@ -5,7 +5,7 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommGetPvpDataRequestProtobuf";
 
 message	CommGetPvpDataRequest  {
-	optional	string	identifier = 10;
-	optional	uint32	agree_buy_pvp_times = 11;
-	optional	uint32	tianti_data_expected = 12;
+	 string	identifier = 10;
+	 uint32	agree_buy_pvp_times = 11;
+	 uint32	tianti_data_expected = 12;
 }

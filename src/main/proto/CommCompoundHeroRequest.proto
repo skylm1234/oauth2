@@ -5,5 +5,5 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommCompoundHeroRequestProtobuf";
 
 message	CommCompoundHeroRequest  {
-	optional	string	hero = 10;
+	 string	hero = 10;
 }

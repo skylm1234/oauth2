@@ -6,7 +6,7 @@ option java_outer_classname = "RanklistProtobuf";
 
 message	Ranklist  {
 	repeated	PlayerItem	ranks = 10;
-	optional	int32	myrank = 11;
-	optional	uint32	timestamp = 12;
+	 int32	myrank = 11;
+	 uint32	timestamp = 12;
 	repeated	uint32	mark = 13;
 }

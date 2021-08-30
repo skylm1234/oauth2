@@ -5,10 +5,10 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstExpbookTableItemExProtobuf";
 
 message	ConstExpbookTableItemEx  {
-	optional	string	id = 1;
-	optional	string	name = 2;
-	optional	string	desc = 3;
-	optional	uint32	value = 4;
-	optional	string	quality = 5;
-	optional	string	icon = 6;
+	 string	id = 1;
+	 string	name = 2;
+	 string	desc = 3;
+	 uint32	value = 4;
+	 string	quality = 5;
+	 string	icon = 6;
 }

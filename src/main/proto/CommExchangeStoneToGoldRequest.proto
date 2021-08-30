@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommExchangeStoneToGoldRequestProtobuf";
 
 message	CommExchangeStoneToGoldRequest  {
-	optional	uint32	type = 10;
-	optional	uint32	numbers = 11;
+	 uint32	type = 10;
+	 uint32	numbers = 11;
 }

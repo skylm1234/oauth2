@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstDropTableItemExProtobuf";
 
 message	ConstDropTableItemEx  {
-	optional	string	id = 1;
-	optional	string	content = 2;
-	optional	string	desc = 3;
-	optional	string	desc2 = 4;
+	 string	id = 1;
+	 string	content = 2;
+	 string	desc = 3;
+	 string	desc2 = 4;
 }

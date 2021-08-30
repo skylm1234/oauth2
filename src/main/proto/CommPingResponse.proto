@@ -5,7 +5,7 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommPingResponseProtobuf";
 
 message	CommPingResponse  {
-	optional	uint32	result = 10;
-	optional	CommPingRequest	request = 11;
-	optional	uint32	timestamp = 12;
+	 uint32	result = 10;
+	 CommPingRequest	request = 11;
+	 uint32	timestamp = 12;
 }

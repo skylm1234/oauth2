@@ -5,10 +5,10 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstBackpackTableItemExProtobuf";
 
 message	ConstBackpackTableItemEx  {
-	optional	uint32	level = 1;
-	optional	uint32	gold_max = 2;
-	optional	uint32	exp_max = 3;
-	optional	uint32	item_max = 4;
-	optional	ConstBackpackTableItemEx.constBackpackTableItemExFomula	fomula = 5;
-	optional	string	prerequests = 6;
+	 uint32	level = 1;
+	 uint32	gold_max = 2;
+	 uint32	exp_max = 3;
+	 uint32	item_max = 4;
+	 ConstBackpackTableItemEx.constBackpackTableItemExFomula	fomula = 5;
+	 string	prerequests = 6;
 }

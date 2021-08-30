@@ -5,7 +5,7 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommQueryBuyHeroPriceResponseProtobuf";
 
 message	CommQueryBuyHeroPriceResponse  {
-	optional	uint32	result = 10;
-	optional	CommQueryBuyHeroPriceRequest	request = 11;
+	 uint32	result = 10;
+	 CommQueryBuyHeroPriceRequest	request = 11;
 	repeated	uint32	prices = 12;
 }

@@ -6,5 +6,5 @@ option java_outer_classname = "CommUpdateHeroFormationRequestProtobuf";
 
 message	CommUpdateHeroFormationRequest  {
 	repeated	PlayerItem	formations = 10;
-	optional	uint32	type = 11;
+	 uint32	type = 11;
 }

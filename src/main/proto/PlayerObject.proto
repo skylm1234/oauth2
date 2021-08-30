@@ -5,7 +5,7 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "PlayerObjectProtobuf";
 
 message	PlayerObject  {
-	optional	string	name = 10;
+	 string	name = 10;
 	repeated	PlayerString	items1 = 11;
 	repeated	PlayerString	items2 = 12;
 }

@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommReduceStoneRequestProtobuf";
 
 message	CommReduceStoneRequest  {
-	optional	uint32	amount = 10;
-	optional	string	parameter = 11;
+	 uint32	amount = 10;
+	 string	parameter = 11;
 }

@@ -5,7 +5,7 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommCombineItemResponseProtobuf";
 
 message	CommCombineItemResponse  {
-	optional	uint32	result = 10;
-	optional	CommCombineItemRequest	request = 11;
+	 uint32	result = 10;
+	 CommCombineItemRequest	request = 11;
 	repeated	PlayerItem	items = 13;
 }

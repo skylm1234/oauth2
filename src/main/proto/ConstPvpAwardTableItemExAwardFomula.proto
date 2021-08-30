@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstPvpAwardTableItemExAwardFomulaProtobuf";
 
 message	ConstPvpAwardTableItemExAwardFomula  {
-	optional	string	firstofday = 1;
-	optional	string	other = 2;
+	 string	firstofday = 1;
+	 string	other = 2;
 }
