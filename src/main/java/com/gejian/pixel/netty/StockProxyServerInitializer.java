@@ -20,9 +20,11 @@ import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import io.netty.util.concurrent.EventExecutorGroup;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,11 +35,15 @@ import static io.netty.buffer.Unpooled.wrappedBuffer;
 @Component
 public class StockProxyServerInitializer extends ChannelInitializer<SocketChannel> {
 
-    @Value("${socket.netty.debug:false}")
+    @Value("${socket.netty.debug:true}")
     private boolean debug;
 
     @Autowired
     private StockProxyServerHandler stockProxyServerHandler;
+
+    @Autowired
+    private EventExecutorGroup processExecutor;
+
 
 
 //	@Override
