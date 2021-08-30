@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "PlayerStringProtobuf";
 
 message	PlayerString  {
-	string	key = 10;
-	string	value = 11;
+		string	key = 10;
+		string	value = 11;
 }

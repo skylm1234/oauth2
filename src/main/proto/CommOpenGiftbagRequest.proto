@@ -5,5 +5,5 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommOpenGiftbagRequestProtobuf";
 
 message	CommOpenGiftbagRequest  {
-	 string	identifier = 10;
+		string	identifier = 10;
 }

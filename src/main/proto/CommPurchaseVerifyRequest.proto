@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommPurchaseVerifyRequestProtobuf";
 
 message	CommPurchaseVerifyRequest  {
-	 string	receipt = 10;
-	 uint32	type = 11;
+		string	receipt = 10;
+		uint32	type = 11;
 }

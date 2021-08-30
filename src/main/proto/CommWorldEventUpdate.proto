@@ -5,9 +5,9 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommWorldEventUpdateProtobuf";
 
 message	CommWorldEventUpdate  {
-	 uint32	type = 10;
-	 string	info = 11;
-	 string	foo = 12;
-	 string	bar = 13;
-	 uint32	bee = 14;
+		uint32	type = 10;
+		string	info = 11;
+		string	foo = 12;
+		string	bar = 13;
+		uint32	bee = 14;
 }

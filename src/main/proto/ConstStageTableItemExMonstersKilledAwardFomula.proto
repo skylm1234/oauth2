@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstStageTableItemExMonstersKilledAwardFomulaProtobuf";
 
 message	ConstStageTableItemExMonstersKilledAwardFomula  {
-	 string	dropid = 1;
-	 string	dropid_bosskilled = 2;
+		string	dropid = 1;
+		string	dropid_bosskilled = 2;
 }

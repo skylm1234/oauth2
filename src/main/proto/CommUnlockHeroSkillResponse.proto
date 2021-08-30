@@ -1,12 +1,15 @@
 syntax = "proto3";
+import "CommUnlockHeroSkillRequest.proto";
+import "PlayerItem.proto";
+import "PlayerItem.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "CommUnlockHeroSkillResponseProtobuf";
 
 message	CommUnlockHeroSkillResponse  {
-	 uint32	result = 10;
-	 CommUnlockHeroSkillRequest	request = 11;
+		uint32	result = 10;
+		CommUnlockHeroSkillRequest	request = 11;
 	repeated	PlayerItem	items = 12;
 	repeated	PlayerItem	archives = 13;
 }

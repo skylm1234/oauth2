@@ -5,9 +5,9 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstMonsterTableItemExProtobuf";
 
 message	ConstMonsterTableItemEx  {
-	 uint32	id = 1;
-	 string	name = 2;
-	 string	model = 3;
-	 string	color = 4;
-	 string	skill = 5;
+		uint32	id = 1;
+		string	name = 2;
+		string	model = 3;
+		string	color = 4;
+		string	skill = 5;
 }

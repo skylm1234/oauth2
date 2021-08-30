@@ -1,13 +1,14 @@
 syntax = "proto3";
+import "ConstQualityUpgradeTableItemEx.constQualityUpgradeTableItemExConsumeExpand.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "ConstQualityUpgradeTableItemExProtobuf";
 
 message	ConstQualityUpgradeTableItemEx  {
-	 uint32	id = 1;
-	 uint32	quality = 2;
-	 string	desc = 3;
-	 ConstQualityUpgradeTableItemEx.constQualityUpgradeTableItemExConsumeExpand	consume_expand = 4;
-	 string	consume = 5;
+		uint32	id = 1;
+		uint32	quality = 2;
+		string	desc = 3;
+		ConstQualityUpgradeTableItemEx.constQualityUpgradeTableItemExConsumeExpand	consume_expand = 4;
+		string	consume = 5;
 }

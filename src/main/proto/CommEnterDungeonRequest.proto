@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommEnterDungeonRequestProtobuf";
 
 message	CommEnterDungeonRequest  {
-	 uint32	stage = 10;
-	 uint32	type = 11;
+		uint32	stage = 10;
+		uint32	type = 11;
 }

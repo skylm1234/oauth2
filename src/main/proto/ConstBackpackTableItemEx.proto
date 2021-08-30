@@ -1,14 +1,15 @@
 syntax = "proto3";
+import "ConstBackpackTableItemEx.constBackpackTableItemExFomula.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "ConstBackpackTableItemExProtobuf";
 
 message	ConstBackpackTableItemEx  {
-	 uint32	level = 1;
-	 uint32	gold_max = 2;
-	 uint32	exp_max = 3;
-	 uint32	item_max = 4;
-	 ConstBackpackTableItemEx.constBackpackTableItemExFomula	fomula = 5;
-	 string	prerequests = 6;
+		uint32	level = 1;
+		uint32	gold_max = 2;
+		uint32	exp_max = 3;
+		uint32	item_max = 4;
+		ConstBackpackTableItemEx.constBackpackTableItemExFomula	fomula = 5;
+		string	prerequests = 6;
 }

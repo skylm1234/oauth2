@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstPvpBasicTableItemExProtobuf";
 
 message	ConstPvpBasicTableItemEx  {
-	 uint32	id = 1;
-	 uint32	range_min = 2;
-	 uint32	range_max = 3;
-	 string	range = 4;
+		uint32	id = 1;
+		uint32	range_min = 2;
+		uint32	range_max = 3;
+		string	range = 4;
 }

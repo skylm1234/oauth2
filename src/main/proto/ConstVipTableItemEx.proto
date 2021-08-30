@@ -5,19 +5,19 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstVipTableItemExProtobuf";
 
 message	ConstVipTableItemEx  {
-	 uint32	id = 1;
-	 uint32	level = 2;
-	 uint32	charge = 3;
-	 string	itemid = 4;
-	 string	award = 5;
-	 uint32	chanllege = 6;
-	 uint32	backpack_max = 7;
-	 uint32	freerefresh_times_stone = 8;
-	 uint32	freerefresh_times_honor = 9;
-	 uint32	freerefresh_times_gold = 10;
-	 uint32	timeval_offline_kill_monster_rate = 11;
-	 uint32	skip_timeval = 12;
-	 string	des = 13;
-	 uint32	tianti = 14;
-	 uint32	tianti_reset = 15;
+		uint32	id = 1;
+		uint32	level = 2;
+		uint32	charge = 3;
+		string	itemid = 4;
+		string	award = 5;
+		uint32	chanllege = 6;
+		uint32	backpack_max = 7;
+		uint32	freerefresh_times_stone = 8;
+		uint32	freerefresh_times_honor = 9;
+		uint32	freerefresh_times_gold = 10;
+		uint32	timeval_offline_kill_monster_rate = 11;
+		uint32	skip_timeval = 12;
+		string	des = 13;
+		uint32	tianti = 14;
+		uint32	tianti_reset = 15;
 }

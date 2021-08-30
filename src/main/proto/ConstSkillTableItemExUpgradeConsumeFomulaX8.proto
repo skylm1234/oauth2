@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf";
 
 message	ConstSkillTableItemExUpgradeConsumeFomulaX8  {
-	 uint32	gold = 1;
-	 uint32	book = 2;
+		uint32	gold = 1;
+		uint32	book = 2;
 }

@@ -5,5 +5,5 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstBlackNicknameTableItemExProtobuf";
 
 message	ConstBlackNicknameTableItemEx  {
-	 string	nickname = 1;
+		string	nickname = 1;
 }

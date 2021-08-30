@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstQualityUpgradeRateTableItemExProtobuf";
 
 message	ConstQualityUpgradeRateTableItemEx  {
-	 uint32	id = 1;
-	 uint32	quality = 2;
-	 string	desc = 3;
-	 string	up = 4;
+		uint32	id = 1;
+		uint32	quality = 2;
+		string	desc = 3;
+		string	up = 4;
 }

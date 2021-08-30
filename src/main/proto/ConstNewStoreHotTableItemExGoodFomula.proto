@@ -5,11 +5,11 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstNewStoreHotTableItemExGoodFomulaProtobuf";
 
 message	ConstNewStoreHotTableItemExGoodFomula  {
-	 string	good_prefix = 1;
-	 uint32	from = 2;
-	 uint32	to = 3;
-	 uint32	factor = 4;
-	 uint32	number = 5;
-	 string	cost = 6;
-	 uint32	cost_number = 7;
+		string	good_prefix = 1;
+		uint32	from = 2;
+		uint32	to = 3;
+		uint32	factor = 4;
+		uint32	number = 5;
+		string	cost = 6;
+		uint32	cost_number = 7;
 }

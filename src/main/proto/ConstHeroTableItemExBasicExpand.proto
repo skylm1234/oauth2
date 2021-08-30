@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstHeroTableItemExBasicExpandProtobuf";
 
 message	ConstHeroTableItemExBasicExpand  {
-	 uint32	hp = 1;
-	 uint32	attack = 2;
-	 uint32	defense = 3;
-	 uint32	speed = 4;
+		uint32	hp = 1;
+		uint32	attack = 2;
+		uint32	defense = 3;
+		uint32	speed = 4;
 }

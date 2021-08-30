@@ -1,13 +1,14 @@
 syntax = "proto3";
+import "PlayerItem.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "PlayerTemporaryBackpackProtobuf";
 
 message	PlayerTemporaryBackpack  {
-	 uint32	level = 10;
-	 uint32	type = 11;
-	 uint32	stage = 12;
-	 uint32	dungeon_enter_timestamp = 13;
+		uint32	level = 10;
+		uint32	type = 11;
+		uint32	stage = 12;
+		uint32	dungeon_enter_timestamp = 13;
 	repeated	PlayerItem	items = 14;
 }

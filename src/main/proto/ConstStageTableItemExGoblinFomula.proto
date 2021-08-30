@@ -5,8 +5,8 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstStageTableItemExGoblinFomulaProtobuf";
 
 message	ConstStageTableItemExGoblinFomula  {
-	 string	pro = 1;
-	 string	monster = 2;
-	 string	hp = 3;
-	 string	dropid = 4;
+		string	pro = 1;
+		string	monster = 2;
+		string	hp = 3;
+		string	dropid = 4;
 }

@@ -5,10 +5,10 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommChatRequestProtobuf";
 
 message	CommChatRequest  {
-	 uint32	channel = 10;
-	 uint32	timestamp = 11;
-	 uint32	sender = 12;
-	 string	sender_nickname = 13;
-	 string	message = 14;
+		uint32	channel = 10;
+		uint32	timestamp = 11;
+		uint32	sender = 12;
+		string	sender_nickname = 13;
+		string	message = 14;
 	repeated	string	expand = 15;
 }

@@ -5,12 +5,12 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf";
 
 message	ConstHeroTableItemExStarUpgradeFomulaStar24  {
-	 uint32	hp = 1;
-	 uint32	attack = 2;
-	 uint32	defense = 3;
-	 uint32	speed = 4;
-	 uint32	hp_upgrade = 5;
-	 uint32	attack_upgrade = 6;
-	 uint32	defense_upgrade = 7;
-	 uint32	speed_upgrade = 8;
+		uint32	hp = 1;
+		uint32	attack = 2;
+		uint32	defense = 3;
+		uint32	speed = 4;
+		uint32	hp_upgrade = 5;
+		uint32	attack_upgrade = 6;
+		uint32	defense_upgrade = 7;
+		uint32	speed_upgrade = 8;
 }

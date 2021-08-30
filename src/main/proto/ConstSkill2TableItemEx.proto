@@ -5,13 +5,13 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstSkill2TableItemExProtobuf";
 
 message	ConstSkill2TableItemEx  {
-	 string	id = 1;
-	 string	name = 2;
-	 string	icon = 3;
-	 string	description = 4;
-	 string	priority = 5;
-	 string	action = 6;
-	 string	effect = 7;
-	 string	levels = 8;
-	 string	logic = 9;
+		string	id = 1;
+		string	name = 2;
+		string	icon = 3;
+		string	description = 4;
+		string	priority = 5;
+		string	action = 6;
+		string	effect = 7;
+		string	levels = 8;
+		string	logic = 9;
 }

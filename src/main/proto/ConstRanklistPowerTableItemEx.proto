@@ -5,10 +5,10 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstRanklistPowerTableItemExProtobuf";
 
 message	ConstRanklistPowerTableItemEx  {
-	 uint32	id = 1;
-	 uint32	section_fomula = 2;
-	 string	section = 3;
-	 string	award_fomula = 4;
-	 string	award = 5;
-	 string	time = 6;
+		uint32	id = 1;
+		uint32	section_fomula = 2;
+		string	section = 3;
+		string	award_fomula = 4;
+		string	award = 5;
+		string	time = 6;
 }

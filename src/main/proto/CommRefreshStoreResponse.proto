@@ -1,12 +1,15 @@
 syntax = "proto3";
+import "CommRefreshStoreRequest.proto";
+import "PlayerStore.proto";
+import "PlayerItem.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "CommRefreshStoreResponseProtobuf";
 
 message	CommRefreshStoreResponse  {
-	 uint32	result = 10;
-	 CommRefreshStoreRequest	request = 11;
-	 PlayerStore	store = 12;
+		uint32	result = 10;
+		CommRefreshStoreRequest	request = 11;
+		PlayerStore	store = 12;
 	repeated	PlayerItem	items = 13;
 }

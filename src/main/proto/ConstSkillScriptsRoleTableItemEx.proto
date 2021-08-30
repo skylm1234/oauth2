@@ -5,19 +5,19 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstSkillScriptsRoleTableItemExProtobuf";
 
 message	ConstSkillScriptsRoleTableItemEx  {
-	 string	name = 1;
-	 uint32	attack = 2;
-	 string	attack01_audio = 3;
-	 string	attack02_audio = 4;
-	 string	attack03_audio = 5;
-	 uint32	crit = 6;
-	 string	death_audio = 7;
-	 uint32	defense = 8;
-	 uint32	dge = 9;
-	 string	hit_audio = 10;
-	 uint32	hp = 11;
-	 string	normalSkill = 12;
-	 string	skills = 13;
-	 uint32	speed = 14;
-	 string	type = 15;
+		string	name = 1;
+		uint32	attack = 2;
+		string	attack01_audio = 3;
+		string	attack02_audio = 4;
+		string	attack03_audio = 5;
+		uint32	crit = 6;
+		string	death_audio = 7;
+		uint32	defense = 8;
+		uint32	dge = 9;
+		string	hit_audio = 10;
+		uint32	hp = 11;
+		string	normalSkill = 12;
+		string	skills = 13;
+		uint32	speed = 14;
+		string	type = 15;
 }

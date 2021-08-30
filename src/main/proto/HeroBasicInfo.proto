@@ -1,24 +1,25 @@
 syntax = "proto3";
+import "HeroSkill.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "HeroBasicInfoProtobuf";
 
 message	HeroBasicInfo  {
-	 uint32	id = 10;
-	 string	type = 11;
-	 uint32	level = 12;
-	 uint32	exp = 13;
-	 uint32	quality = 14;
-	 uint32	star = 15;
-	 uint32	grow_hp = 16;
-	 uint32	hp = 17;
-	 uint32	grow_def = 18;
-	 uint32	def = 19;
-	 uint32	grow_attack = 20;
-	 uint32	attack = 21;
-	 uint32	grow_speed = 22;
-	 uint32	speed = 23;
+		uint32	id = 10;
+		string	type = 11;
+		uint32	level = 12;
+		uint32	exp = 13;
+		uint32	quality = 14;
+		uint32	star = 15;
+		uint32	grow_hp = 16;
+		uint32	hp = 17;
+		uint32	grow_def = 18;
+		uint32	def = 19;
+		uint32	grow_attack = 20;
+		uint32	attack = 21;
+		uint32	grow_speed = 22;
+		uint32	speed = 23;
 	repeated	HeroSkill	skills = 24;
-	 uint32	number = 25;
+		uint32	number = 25;
 }

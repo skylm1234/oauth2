@@ -1,11 +1,13 @@
 syntax = "proto3";
+import "CommReduceStoneRequest.proto";
+import "PlayerItem.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "CommReduceStoneResponseProtobuf";
 
 message	CommReduceStoneResponse  {
-	 uint32	result = 10;
-	 CommReduceStoneRequest	request = 11;
+		uint32	result = 10;
+		CommReduceStoneRequest	request = 11;
 	repeated	PlayerItem	items = 13;
 }

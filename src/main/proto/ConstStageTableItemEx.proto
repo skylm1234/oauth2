@@ -1,34 +1,38 @@
 syntax = "proto3";
+import "ConstStageTableItemEx.constStageTableItemExGoblinFomula.proto";
+import "ConstStageTableItemEx.constStageTableItemExBasicAwardFomula.proto";
+import "ConstStageTableItemEx.constStageTableItemExMonstersKilledAwardFomula.proto";
+import "ConstStageTableItemEx.constStageTableItemExBossAwardFomula.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "ConstStageTableItemExProtobuf";
 
 message	ConstStageTableItemEx  {
-	 uint32	id = 1;
-	 string	name = 2;
-	 uint32	class_type = 3;
-	 uint32	prerequest = 4;
-	 uint32	mode = 5;
-	 string	icon = 6;
-	 string	icon_color = 7;
-	 string	bg = 8;
-	 string	bg_color = 9;
-	 uint32	recommand_power = 10;
-	 string	monsters = 11;
-	 string	monsters_attributes = 12;
-	 string	boss = 13;
-	 string	boss_attributes = 14;
-	 uint32	monsters_max = 15;
-	 ConstStageTableItemEx.constStageTableItemExGoblinFomula	goblin_fomula = 16;
-	 string	goblin = 17;
-	 ConstStageTableItemEx.constStageTableItemExBasicAwardFomula	basic_award_fomula = 18;
-	 string	basic_award = 19;
-	 ConstStageTableItemEx.constStageTableItemExMonstersKilledAwardFomula	monsters_killed_award_fomula = 20;
-	 string	monsters_killed_award = 21;
-	 ConstStageTableItemEx.constStageTableItemExBossAwardFomula	boss_award_fomula = 22;
-	 string	boss_award = 23;
-	 uint32	wave = 24;
-	 string	monster_skill_level = 25;
-	 string	boss_skill_level = 26;
+		uint32	id = 1;
+		string	name = 2;
+		uint32	class_type = 3;
+		uint32	prerequest = 4;
+		uint32	mode = 5;
+		string	icon = 6;
+		string	icon_color = 7;
+		string	bg = 8;
+		string	bg_color = 9;
+		uint32	recommand_power = 10;
+		string	monsters = 11;
+		string	monsters_attributes = 12;
+		string	boss = 13;
+		string	boss_attributes = 14;
+		uint32	monsters_max = 15;
+		ConstStageTableItemEx.constStageTableItemExGoblinFomula	goblin_fomula = 16;
+		string	goblin = 17;
+		ConstStageTableItemEx.constStageTableItemExBasicAwardFomula	basic_award_fomula = 18;
+		string	basic_award = 19;
+		ConstStageTableItemEx.constStageTableItemExMonstersKilledAwardFomula	monsters_killed_award_fomula = 20;
+		string	monsters_killed_award = 21;
+		ConstStageTableItemEx.constStageTableItemExBossAwardFomula	boss_award_fomula = 22;
+		string	boss_award = 23;
+		uint32	wave = 24;
+		string	monster_skill_level = 25;
+		string	boss_skill_level = 26;
 }

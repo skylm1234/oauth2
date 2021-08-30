@@ -1,12 +1,18 @@
 syntax = "proto3";
+import "CommOpenGiftbagRequest.proto";
+import "HeroBasicInfo.proto";
+import "PlayerItem.proto";
+import "PlayerItem.proto";
+import "PlayerItem.proto";
+import "PlayerItem.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "CommOpenGiftbagResponseProtobuf";
 
 message	CommOpenGiftbagResponse  {
-	 uint32	result = 10;
-	 CommOpenGiftbagRequest	request = 11;
+		uint32	result = 10;
+		CommOpenGiftbagRequest	request = 11;
 	repeated	HeroBasicInfo	heros = 12;
 	repeated	PlayerItem	items = 13;
 	repeated	PlayerItem	teams = 14;

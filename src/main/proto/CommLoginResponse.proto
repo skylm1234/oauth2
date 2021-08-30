@@ -1,13 +1,15 @@
 syntax = "proto3";
+import "CommLoginRequest.proto";
+import "PlayerInfo.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "CommLoginResponseProtobuf";
 
 message	CommLoginResponse  {
-	 uint32	result = 10;
-	 CommLoginRequest	request = 11;
-	 uint32	timestamp = 12;
-	 PlayerInfo	player = 13;
-	 uint32	ping_interval = 14;
+		uint32	result = 10;
+		CommLoginRequest	request = 11;
+		uint32	timestamp = 12;
+		PlayerInfo	player = 13;
+		uint32	ping_interval = 14;
 }

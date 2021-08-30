@@ -5,6 +5,6 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "CommUpdateTemporaryBackpackRequestProtobuf";
 
 message	CommUpdateTemporaryBackpackRequest  {
-	 uint32	monsters = 10;
-	 uint32	goblins = 11;
+		uint32	monsters = 10;
+		uint32	goblins = 11;
 }

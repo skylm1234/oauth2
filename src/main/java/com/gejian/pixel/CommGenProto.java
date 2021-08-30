@@ -27,6 +27,7 @@ public class CommGenProto {
 	}
 
 	private static String head = "syntax = \"proto3\";\n" +
+			"${importProto}"+
 			"//生成文件所在包名\n" +
 			"option java_package = \"com.gejian.pixel.proto\";\n" +
 			"//生成的java文件名\n" +
@@ -42,6 +43,7 @@ public class CommGenProto {
 			StringBuilder sb = new StringBuilder();
 			sb.append(head);
 			String className = "";
+			StringBuilder importProtoSb = new StringBuilder();
 			for (String str : strings) {
 				str = str.trim();
 				if (str.startsWith("message")) {
@@ -67,6 +69,7 @@ public class CommGenProto {
 					} else if (s.length == 5) {
 						String clazName = s[4].replace("\"","").trim().toLowerCase();
 						String clazzName = StrUtil.upperFirst(StrUtil.toCamelCase(clazName));
+						importProtoSb.append("import \"").append(clazzName).append(".proto\";\n");
 						sb.append("\t").append(s[0]).append("\t").append(clazzName)
 								.append("\t").append(s[1].replace(",", "").trim())
 								.append(" = ").append(s[3].replace(",","").trim()).append(";\n");
@@ -81,7 +84,9 @@ public class CommGenProto {
 			}
 			if (StrUtil.isNotBlank(sb.toString())) {
 				sb.append("}");
-				String result = sb.toString().replace("${ClassName}", className);
+				String result = sb.toString().replace("${ClassName}", className)
+						.replace("${importProto}", importProtoSb.toString())
+						.replace("optional","");
 				String path = protoFile + "/" + className + ".proto";
 				FileUtil.writeUtf8String(result, path);
 				FileUtil.del(file);

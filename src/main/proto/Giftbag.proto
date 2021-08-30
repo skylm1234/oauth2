@@ -5,9 +5,9 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "GiftbagProtobuf";
 
 message	Giftbag  {
-	 string	identifier = 10;
-	 string	icon = 11;
-	 string	desc = 12;
-	 string	action = 13;
-	 string	other = 14;
+		string	identifier = 10;
+		string	icon = 11;
+		string	desc = 12;
+		string	action = 13;
+		string	other = 14;
 }

@@ -1,18 +1,28 @@
 syntax = "proto3";
+import "HeroBasicInfo.proto";
+import "PlayerItem.proto";
+import "PlayerItem.proto";
+import "PlayerString.proto";
+import "Giftbag.proto";
+import "PlayerTemporaryBackpack.proto";
+import "PlayerStore.proto";
+import "Ranklist.proto";
+import "PlayerItem.proto";
+import "PlayerItem.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "PlayerInfoProtobuf";
 
 message	PlayerInfo  {
-	 string	identifier = 10;
+		string	identifier = 10;
 	repeated	HeroBasicInfo	heros = 11;
 	repeated	PlayerItem	teams = 12;
 	repeated	PlayerItem	items = 13;
 	repeated	PlayerString	strings = 14;
 	repeated	Giftbag	giftbags = 15;
-	 PlayerTemporaryBackpack	backpack = 16;
-	 PlayerStore	store = 17;
+		PlayerTemporaryBackpack	backpack = 16;
+		PlayerStore	store = 17;
 	repeated	Ranklist	ranks = 18;
 	repeated	PlayerItem	archives = 19;
 	repeated	PlayerItem	teams_pvp = 20;

@@ -5,9 +5,9 @@ option java_package = "com.gejian.pixel.proto";
 option java_outer_classname = "ConstNamedTableItemExProtobuf";
 
 message	ConstNamedTableItemEx  {
-	 string	name = 1;
-	 uint32	t = 2;
-	 string	title = 3;
-	 string	desc = 4;
-	 string	icon = 5;
+		string	name = 1;
+		uint32	t = 2;
+		string	title = 3;
+		string	desc = 4;
+		string	icon = 5;
 }

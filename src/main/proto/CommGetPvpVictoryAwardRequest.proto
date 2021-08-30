@@ -1,10 +1,11 @@
 syntax = "proto3";
+import "PlayerItem.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "CommGetPvpVictoryAwardRequestProtobuf";
 
 message	CommGetPvpVictoryAwardRequest  {
-	 uint32	type = 10;
+		uint32	type = 10;
 	repeated	PlayerItem	items = 11;
 }
