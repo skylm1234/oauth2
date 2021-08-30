@@ -200,12 +200,13 @@ public class Helper {
 	 */
 	public static Boolean increaseItemValue(RedisTemplate redisTemplate, String identifier, String name, Integer delta, ChannelHandlerContext reply){
 		if (delta>0) {
-			Object current = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
+			Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
+			long current = Long.parseLong(result+"");
 			if (reply!=null){
 				PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
 						.newBuilder()
 						.setKey(name)
-						.setValue(Long.parseLong(current+""))
+						.setValue(current)
 						.build();
 				MessageBaseProtobuf.MessageBase messageBase = MessageBaseProtobuf.MessageBase
 						.newBuilder()
@@ -213,25 +214,39 @@ public class Helper {
 						.build();
 				reply.channel().write(messageBase);
 			}
-
-		}else if (delta<0 ){
-			redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
-			/*
-				if current < 0 then
-					redis.hincrby("u:#{identifier}:items", name, delta * -1)
-					return false
-				else
-					if reply != nil then
-						item = PLAYER_ITEM.new
-						item.key = name
-						item.value = current.to_i
-						reply.items.push(item)
-					end
-				end
-			 */
-
+		}else if (delta<0){
+			Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
+			long current = Long.parseLong(result+"");
+			if (current<0){
+				redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta * -1);
+				return Boolean.FALSE;
+			}else {
+				PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
+						.newBuilder()
+						.setKey(name)
+						.setValue(current)
+						.build();
+				MessageBaseProtobuf.MessageBase messageBase = MessageBaseProtobuf.MessageBase
+						.newBuilder()
+						.setData(item.toByteString())
+						.build();
+				reply.channel().write(messageBase);
+			}
 		}
 		return Boolean.TRUE;
+	}
+
+	/**
+	 * 减少物品个数
+	 * @param redisTemplate redis
+	 * @param identifier 标识符
+	 * @param name 名称
+	 * @param delta 值
+	 * @param reply 回复的消息
+	 * @return
+	 */
+	public static void decrease_item_value(RedisTemplate redisTemplate, String identifier, String name, Integer delta, ChannelHandlerContext reply){
+
 	}
 
 }
