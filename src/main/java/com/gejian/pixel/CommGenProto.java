@@ -68,6 +68,10 @@ public class CommGenProto {
 								.append(" = ").append(s[2]).append(";\n");
 					} else if (s.length == 5) {
 						String clazName = s[4].replace("\"","").trim().toLowerCase();
+						String[] split = clazName.split("\\.");
+						if (split.length > 0) {
+							clazName = split[split.length - 1];
+						}
 						String clazzName = StrUtil.upperFirst(StrUtil.toCamelCase(clazName));
 						if (!importProtoSb.toString().contains(clazzName)){
 							importProtoSb.append("import \"").append(clazzName).append(".proto\";\n");

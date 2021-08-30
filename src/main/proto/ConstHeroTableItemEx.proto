@@ -1,7 +1,7 @@
 syntax = "proto3";
-import "ConstHeroTableItemEx.constHeroTableItemExBasicExpand.proto";
-import "ConstHeroTableItemEx.constHeroTableItemExBasicUpgradeExpand.proto";
-import "ConstHeroTableItemEx.constHeroTableItemExStarUpgradeFomula.proto";
+import "ConstHeroTableItemExBasicExpand.proto";
+import "ConstHeroTableItemExBasicUpgradeExpand.proto";
+import "ConstHeroTableItemExStarUpgradeFomula.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
@@ -13,12 +13,12 @@ message	ConstHeroTableItemEx  {
 		uint32	type = 3;
 		string	desc = 4;
 		uint32	color = 5;
-		ConstHeroTableItemEx.constHeroTableItemExBasicExpand	basic_expand = 6;
+		ConstHeroTableItemExBasicExpand	basic_expand = 6;
 		string	basic = 7;
-		ConstHeroTableItemEx.constHeroTableItemExBasicUpgradeExpand	basic_upgrade_expand = 8;
+		ConstHeroTableItemExBasicUpgradeExpand	basic_upgrade_expand = 8;
 		string	basic_upgrade = 9;
 		string	skill = 10;
-		ConstHeroTableItemEx.constHeroTableItemExStarUpgradeFomula	star_upgrade_fomula = 11;
+		ConstHeroTableItemExStarUpgradeFomula	star_upgrade_fomula = 11;
 		string	star_upgrade = 12;
 		uint32	chips = 13;
 		string	group1 = 14;

@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "ConstStarUpgradeTableItemEx.constStarUpgradeTableItemExConsumeExpand.proto";
+import "ConstStarUpgradeTableItemExConsumeExpand.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
@@ -8,6 +8,6 @@ option java_outer_classname = "ConstStarUpgradeTableItemExProtobuf";
 message	ConstStarUpgradeTableItemEx  {
 		uint32	id = 1;
 		uint32	star = 2;
-		ConstStarUpgradeTableItemEx.constStarUpgradeTableItemExConsumeExpand	consume_expand = 3;
+		ConstStarUpgradeTableItemExConsumeExpand	consume_expand = 3;
 		string	consume = 4;
 }

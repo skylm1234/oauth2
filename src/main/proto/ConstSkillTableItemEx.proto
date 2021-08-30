@@ -1,6 +1,6 @@
 syntax = "proto3";
-import "ConstSkillTableItemEx.constSkillTableItemExActiveConsumeFomula.proto";
-import "ConstSkillTableItemEx.constSkillTableItemExUpgradeConsumeFomula.proto";
+import "ConstSkillTableItemExActiveConsumeFomula.proto";
+import "ConstSkillTableItemExUpgradeConsumeFomula.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
@@ -11,9 +11,9 @@ message	ConstSkillTableItemEx  {
 		string	name = 2;
 		string	skill_icon = 3;
 		string	desc = 4;
-		ConstSkillTableItemEx.constSkillTableItemExActiveConsumeFomula	active_consume_fomula = 5;
+		ConstSkillTableItemExActiveConsumeFomula	active_consume_fomula = 5;
 		string	active_consume = 6;
-		ConstSkillTableItemEx.constSkillTableItemExUpgradeConsumeFomula	upgrade_consume_fomula = 7;
+		ConstSkillTableItemExUpgradeConsumeFomula	upgrade_consume_fomula = 7;
 		string	upgrade_consume = 8;
 		string	coolwn = 9;
 		string	levelvalue = 10;

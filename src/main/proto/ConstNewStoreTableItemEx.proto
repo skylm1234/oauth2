@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "ConstNewStoreTableItemEx.constNewStoreTableItemExGoodFomula.proto";
+import "ConstNewStoreTableItemExGoodFomula.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
@@ -8,6 +8,6 @@ option java_outer_classname = "ConstNewStoreTableItemExProtobuf";
 message	ConstNewStoreTableItemEx  {
 		uint32	id = 1;
 		uint32	places = 2;
-		ConstNewStoreTableItemEx.constNewStoreTableItemExGoodFomula	good_fomula = 3;
+		ConstNewStoreTableItemExGoodFomula	good_fomula = 3;
 		string	items = 4;
 }

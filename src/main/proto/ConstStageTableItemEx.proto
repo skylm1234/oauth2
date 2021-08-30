@@ -1,8 +1,8 @@
 syntax = "proto3";
-import "ConstStageTableItemEx.constStageTableItemExGoblinFomula.proto";
-import "ConstStageTableItemEx.constStageTableItemExBasicAwardFomula.proto";
-import "ConstStageTableItemEx.constStageTableItemExMonstersKilledAwardFomula.proto";
-import "ConstStageTableItemEx.constStageTableItemExBossAwardFomula.proto";
+import "ConstStageTableItemExGoblinFomula.proto";
+import "ConstStageTableItemExBasicAwardFomula.proto";
+import "ConstStageTableItemExMonstersKilledAwardFomula.proto";
+import "ConstStageTableItemExBossAwardFomula.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
@@ -24,13 +24,13 @@ message	ConstStageTableItemEx  {
 		string	boss = 13;
 		string	boss_attributes = 14;
 		uint32	monsters_max = 15;
-		ConstStageTableItemEx.constStageTableItemExGoblinFomula	goblin_fomula = 16;
+		ConstStageTableItemExGoblinFomula	goblin_fomula = 16;
 		string	goblin = 17;
-		ConstStageTableItemEx.constStageTableItemExBasicAwardFomula	basic_award_fomula = 18;
+		ConstStageTableItemExBasicAwardFomula	basic_award_fomula = 18;
 		string	basic_award = 19;
-		ConstStageTableItemEx.constStageTableItemExMonstersKilledAwardFomula	monsters_killed_award_fomula = 20;
+		ConstStageTableItemExMonstersKilledAwardFomula	monsters_killed_award_fomula = 20;
 		string	monsters_killed_award = 21;
-		ConstStageTableItemEx.constStageTableItemExBossAwardFomula	boss_award_fomula = 22;
+		ConstStageTableItemExBossAwardFomula	boss_award_fomula = 22;
 		string	boss_award = 23;
 		uint32	wave = 24;
 		string	monster_skill_level = 25;
