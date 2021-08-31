@@ -2,27 +2,23 @@ package com.gejian.pixel.utils;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.text.StrFormatter;
-import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.HexUtil;
 import cn.hutool.core.util.RandomUtil;
+import cn.hutool.core.util.ReUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import com.gejian.pixel.constants.Generated;
-import com.gejian.pixel.proto.CommWorldEventUpdateProtobuf;
-import com.gejian.pixel.proto.MessageBaseProtobuf;
-import com.gejian.pixel.proto.PlayerItemProtobuf;
-import com.gejian.pixel.proto.PlayerStringProtobuf;
-import com.google.protobuf.Message;
-import io.netty.channel.Channel;
+import com.gejian.pixel.proto.*;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.Arrays;
+import javax.lang.model.util.AbstractAnnotationValueVisitor6;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author ljb
@@ -279,7 +275,10 @@ public class Helper {
 		return null;
 	}
 
-
+	/**
+	 * 世界广播时间
+	 * @param desc 内容
+	 */
 	public static void boardcaseWorldEvent(String desc){
 		log.info("{} boardcast_world_event => {}",DateUtil.now(),desc);
 		CommWorldEventUpdateProtobuf.CommWorldEventUpdate event = CommWorldEventUpdateProtobuf.CommWorldEventUpdate
@@ -296,6 +295,245 @@ public class Helper {
 				.setName("COMM_WORLD_EVENT_UPDATE")
 				.setData(event.toByteString())
 				.build();
+		BroadcastUtil.broadcast(base);
+	}
+
+	public static void awardHeroForMe(RedisTemplate redisTemplate, String identifier, String type, ChannelHandlerContext reply, Integer parameter){
+		boolean r = ReUtil.isMatch("^hero_(\\d+)$", type);
+		if (r) {
+			String id = type.split("_")[1];
+
+			// TODO: 2021/8/31 后面要替换
+			//String[][] record = RUBY_CONST_HERO_TABLE_HASH["X#{id}"]
+			Map<String, Map> record = null;
+
+			if (redisTemplate.opsForHash().putIfAbsent("u:" +identifier+ ":heros", type, 1)) {
+				onNotifyEventOfPromotions(redisTemplate, "mostheros", 1, identifier, reply);
+				HeroBasicInfoProtobuf.HeroBasicInfo.Builder heroBuilder = HeroBasicInfoProtobuf.HeroBasicInfo
+						.newBuilder()
+						.setId(Integer.parseInt(generateHeroIdentifier(redisTemplate)))
+						.setType(type)
+						.setLevel(1)    // 抽出来都是1级
+						.setExp(0)        // 无经验
+						.setStar(0);// 0星
+
+				Float rate = 1.0f;
+
+				if (parameter!=null) {
+					if (parameter == 3) {
+						// TODO: 2021/8/31 后面要替换
+						// rate = RUBY_CONST_QUALITY_UPGRADE_RATE_TABLE[1]['up'].to_f
+						rate = 1.0f;
+					}
+				}
+
+				heroBuilder.setQuality(parameter!=null && parameter==3 ? 2 : 1);
+				heroBuilder.setGrowHp(Integer.parseInt(((Float) record.get("basic_upgrade_expand").get("hp") * rate) + ""));
+				heroBuilder.setHp(Integer.parseInt(((Float) record.get("basic_expand").get("hp") * rate) + ""));
+				heroBuilder.setGrowDef(Integer.parseInt(((Float) record.get("basic_upgrade_expand").get("defense") * rate) + ""));
+				heroBuilder.setDef(Integer.parseInt(((Float) record.get("basic_expand").get("defense") * rate) + ""));
+				heroBuilder.setGrowAttack(Integer.parseInt(((Float) record.get("basic_upgrade_expand").get("attack") * rate) + ""));
+				heroBuilder.setAttack(Integer.parseInt(((Float) record.get("basic_expand").get("attack") * rate) + ""));
+				heroBuilder.setGrowSpeed(Integer.parseInt(((Float) record.get("basic_upgrade_expand").get("speed") * rate) + ""));
+				heroBuilder.setSpeed(Integer.parseInt(((Float) record.get("basic_expand").get("speed") * rate) + ""));
+				heroBuilder.setNumber(1);
+
+				Long teams = redisTemplate.opsForHash().size("u:" +identifier+ ":teams");
+				if (teams < 5) {
+
+					redisTemplate.opsForHash().put("u:" +identifier+ ":teams", type, teams+1);
+
+					if (reply != null) {
+						Map tb = redisTemplate.opsForHash().entries("u:" +identifier+ ":teams");
+						tb.forEach((k,v)->{
+							PlayerItemProtobuf.PlayerItem t = PlayerItemProtobuf.PlayerItem
+									.newBuilder()
+									.setKey(k+"")
+									.setValue(Long.parseLong(v+""))
+									.build();
+							reply.channel().write(t);
+						});
+					}
+				}
+				Long teams_pvp = redisTemplate.opsForHash().size("u:" +identifier+ ":teams_pvp");
+				if (teams_pvp < 5) {
+					redisTemplate.opsForHash().put("u:" +identifier+ ":teams_pvp", type, teams_pvp+1);
+
+					if (reply != null) {
+						Map tb = redisTemplate.opsForHash().entries("u:" +identifier+ ":teams_pvp");
+						tb.forEach((k,v)->{
+							PlayerItemProtobuf.PlayerItem t = PlayerItemProtobuf.PlayerItem
+									.newBuilder()
+									.setKey(k+"")
+									.setValue(Long.parseLong(v+""))
+									.build();
+							reply.channel().write(t);
+						});
+					}
+				}
+			}
+
+		}else {
+			log.info("invalid type");
+		}
+	}
+
+	public static void appedArchivesToReply(ChannelHandlerContext reply, String key, long value){
+		if (reply!=null){
+			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
+					.newBuilder()
+					.setKey(key)
+					.setValue(value)
+					.build();
+			reply.channel().write(item);
+		}
+	}
+
+	public static void promotionFoo(String key, Integer parameter, RedisTemplate redisTemplate, String identifier, ChannelHandlerContext reply){
+		Object now = null;
+		Map map = null;
+		switch (key){
+			case "type_1_monster_kill":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "type_1_monster_kill", parameter);
+				appedArchivesToReply(reply, "type_1_monster_kill", Long.parseLong(now+""));
+				break;
+			case "type_2_monster_kill":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "type_2_monster_kill", parameter);
+				appedArchivesToReply(reply, "type_2_monster_kill", Long.parseLong(now+""));
+				break;
+			case "type_3_monster_kill":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "type_3_monster_kill", parameter);
+				appedArchivesToReply(reply, "type_3monster_kill", Long.parseLong(now+""));
+				break;
+			case "type_1_boss_kill":
+				map = new HashMap();
+				map.put("type_1_boss_kill", parameter);
+				redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", map);
+				appedArchivesToReply(reply, "type_1_boss_kill", parameter);
+				break;
+			case "type_2_boss_kill":
+				map = new HashMap();
+				map.put("type_2_boss_kill", parameter % 1000);
+				redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", map);
+				appedArchivesToReply(reply, "type_2_boss_kill", parameter % 1000);
+				break;
+			case "type_3_boss_kill":
+				map = new HashMap();
+				map.put("type_3_boss_kill", parameter % 1000);
+				redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", map);
+				appedArchivesToReply(reply, "type_3_boss_kill", parameter % 1000);
+				break;
+			case "vip":
+				map = new HashMap();
+				map.put("vip", parameter);
+				redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", map);
+				appedArchivesToReply(reply, "vip", parameter);
+				break;
+			case "cuthand":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "cuthand", parameter);
+				appedArchivesToReply(reply, "cuthand", Long.parseLong(now+""));
+				break;
+			case "mostheros":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "mostheros", parameter);
+				appedArchivesToReply(reply, "mostheros", Long.parseLong(now+""));
+				break;
+			case "mosthire":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "mosthire", parameter);
+				appedArchivesToReply(reply, "mosthire", Long.parseLong(now+""));
+				break;
+			case "kingofpvp":
+				Map archives = (HashMap) redisTemplate.opsForHash().get("u:" + identifier + ":archives", "kingofpvp");
+				log.info("{}",archives);
+				log.info("{} => {}",identifier, parameter);
+				if (archives!=null){
+					if (archives.get("kingofpvp")==null){
+						archives.put("kingofpvp", parameter);
+						redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
+						appedArchivesToReply(reply, "kingofpvp", parameter);
+					}else {
+						if (archives.get("kingofpvp")!=null && parameter<=Integer.parseInt(archives.get("kingofpvp")+"")){
+							archives.put("kingofpvp",parameter);
+							redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
+							appedArchivesToReply(reply, "kingofpvp", parameter);
+						}
+					}
+				}
+				break;
+			case "tempbackpack":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "tempbackpack", parameter);
+				appedArchivesToReply(reply, "tempbackpack", Long.parseLong(now+""));
+				break;
+			case "expbooks":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "expbooks", parameter);
+				appedArchivesToReply(reply, "expbooks", Long.parseLong(now+""));
+				break;
+			case "consumeexpbooks":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "consumeexpbooks", parameter);
+				appedArchivesToReply(reply, "consumeexpbooks", Long.parseLong(now+""));
+				break;
+			case "maxgold":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "maxgold", parameter);
+				appedArchivesToReply(reply, "maxgold", Long.parseLong(now+""));
+				break;
+			case "maxhonor":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "maxhonor", parameter);
+				appedArchivesToReply(reply, "maxhonor", Long.parseLong(now+""));
+				break;
+			case "maxtopskills":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "maxtopskills", parameter);
+				appedArchivesToReply(reply, "maxtopskills", Long.parseLong(now+""));
+				break;
+			case "daily_skill_upgrade":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_skill_upgrade", parameter);
+				appedArchivesToReply(reply, "daily_skill_upgrade", Long.parseLong(now+""));
+				break;
+			case "daily_pvp_times":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_monster_kill", parameter);
+				appedArchivesToReply(reply, "daily_monster_kill", Long.parseLong(now+""));
+				break;
+			case "daily_monster_kill":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_pvp_times", parameter);
+				appedArchivesToReply(reply, "daily_pvp_times", Long.parseLong(now+""));
+				break;
+			case "daily_exp_book_consume":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_exp_book_consume", parameter);
+				appedArchivesToReply(reply, "daily_exp_book_consume", Long.parseLong(now+""));
+				break;
+			case "daily_buy_hero":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_buy_hero", parameter);
+				appedArchivesToReply(reply, "daily_buy_hero", Long.parseLong(now+""));
+				break;
+			case "daily_type_1_monster_kill":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_type_1_monster_kill", parameter);
+				appedArchivesToReply(reply, "daily_type_1_monster_kill", Long.parseLong(now+""));
+				break;
+			case "daily_type_2_monster_kill":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_type_2_monster_kill", parameter);
+				appedArchivesToReply(reply, "daily_type_2_monster_kill", Long.parseLong(now+""));
+				break;
+			case "daily_type_3_monster_kill":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_type_3_monster_kill", parameter);
+				appedArchivesToReply(reply, "daily_type_3_monster_kill", Long.parseLong(now+""));
+				break;
+			case "daily_store_buy_times":
+				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_store_buy_times", parameter);
+				appedArchivesToReply(reply, "daily_store_buy_times", Long.parseLong(now+""));
+				break;
+			default:
+				break;
+		}
+	}
+
+	public static void onNotifyEventOfPromotions(RedisTemplate redisTemplate, String key, Integer parameter, String identifier, ChannelHandlerContext reply){
+		promotionFoo(key, parameter, redisTemplate, identifier, reply);
+	}
+
+	public static long currentTimestamp(){
+		return System.currentTimeMillis()/1000 + 28800;
+	}
+
+	public static long currentDay(){
+		return (System.currentTimeMillis()/1000 + 28800) / 24 / 3600;
 	}
 
 }
