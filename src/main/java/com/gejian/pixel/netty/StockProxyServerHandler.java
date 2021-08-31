@@ -1,14 +1,21 @@
 package com.gejian.pixel.netty;
 
 import cn.hutool.core.util.ReflectUtil;
+import com.gejian.pixel.constants.AttributeKeyConstants;
+import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.enums.ErrorEnum;
+import com.gejian.pixel.model.UserInfo;
+import com.gejian.pixel.proto.CommLoginResponseProtobuf;
 import com.gejian.pixel.proto.MessageBaseProtobuf;
+import com.gejian.pixel.proto.PlayerInfoProtobuf;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.service.UserInterceptor;
+import com.gejian.pixel.service.UserManager;
+import com.gejian.pixel.utils.UserHolder;
 import com.google.protobuf.AbstractMessageLite;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.*;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
@@ -30,10 +37,8 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 	@Autowired
 	private Map<String, Process> processInstances;
 
-	/**
-	 * 负责客户端Channel管理(线程安全)
-	 */
-	public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+	@Autowired
+	private UserInterceptor userInterceptor;
 
 
 	/**
@@ -53,24 +58,59 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 			log.error("请求:{}没有对应的Process处理器。", name);
 			return;
 		}
-		Type[] messageType = getMessageType(process.getClass());
-		Class<AbstractMessageLite> paramClazz = (Class<AbstractMessageLite>) messageType[0];
-		byte[] dataBytes = messageBase.getData().toByteArray();
-		AbstractMessageLite abstractMessageLite = ReflectUtil.newInstance(paramClazz);
-		AbstractMessageLite messageLite = (AbstractMessageLite) abstractMessageLite
-				.getParserForType().parseFrom(dataBytes);
-		AbstractMessageLite resultObj = process.doProcess(messageLite);
-		MessageBaseProtobuf.MessageBase.Builder builder = MessageBaseProtobuf.MessageBase.newBuilder()
-				.setName(name);
-		if (Objects.nonNull(resultObj)) {
-			ByteString bytes = resultObj.toByteString();
-			builder.setData(bytes);
+		try {
+			Type[] messageType = getMessageType(process.getClass());
+			Class<AbstractMessageLite> paramClazz = (Class<AbstractMessageLite>) messageType[0];
+			Class<AbstractMessageLite> resultClazz = (Class<AbstractMessageLite>) messageType[1];
+			byte[] dataBytes = messageBase.getData().toByteArray();
+			AbstractMessageLite abstractMessageLite = ReflectUtil.newInstance(paramClazz);
+			AbstractMessageLite messageLite = (AbstractMessageLite) abstractMessageLite
+					.getParserForType().parseFrom(dataBytes);
+			// 用户统一拦截
+			boolean flag = userInterceptor.doFilter(channelHandlerContext.channel(), name);
+			AbstractMessageLite resultObj;
+			if (flag) {
+				// 设置 userHolder
+				UserHolder.put(channelHandlerContext.channel());
+				resultObj = process.doProcess(messageLite);
+				if (resultObj instanceof CommLoginResponseProtobuf.CommLoginResponse) {
+					CommLoginResponseProtobuf.CommLoginResponse loginRes = (CommLoginResponseProtobuf.CommLoginResponse)
+							resultObj;
+					createUserSession(channelHandlerContext.channel(), loginRes);
+				}
+			} else {
+				resultObj = ReflectUtil.newInstance(resultClazz);
+				MessageLite.Builder builder = resultObj.toBuilder();
+				ReflectUtil.invoke(builder, "setResult", ErrorEnum.ERROR_SESSION_EXPIRED);
+				ReflectUtil.invoke(builder, "setRequest", messageLite);
+				resultObj = (AbstractMessageLite) builder.build();
+			}
+			MessageBaseProtobuf.MessageBase.Builder builder = MessageBaseProtobuf.MessageBase.newBuilder()
+					.setName(name);
+			if (Objects.nonNull(resultObj)) {
+				ByteString bytes = resultObj.toByteString();
+				builder.setData(bytes);
+			}
+			MessageBaseProtobuf.MessageBase reply = builder.build();
+
+			channelHandlerContext.channel()
+					.writeAndFlush(reply);
+		} catch (Exception e) {
+			log.error("处理请求时发生错误！", e);
+		} finally {
+			UserHolder.clear();
 		}
-		MessageBaseProtobuf.MessageBase reply = builder.build();
 
-		channelHandlerContext.channel()
-				.writeAndFlush(reply);
 
+	}
+
+	private void createUserSession(Channel channel, CommLoginResponseProtobuf.CommLoginResponse loginRes) {
+		String identifier = loginRes.getPlayer().getIdentifier();
+		String session = loginRes.getPlayer().getSession();
+		UserInfo userInfo = new UserInfo();
+		userInfo.setIdentifier(Integer.valueOf(identifier));
+		userInfo.setSession(session);
+		channel.attr(AttributeKeyConstants.USER_INFO_ATTRIBUTE_KEY).set(userInfo);
 	}
 
 	private Type[] getMessageType(Class<?> targetClass) {

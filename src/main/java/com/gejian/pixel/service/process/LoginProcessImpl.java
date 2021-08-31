@@ -1,6 +1,8 @@
 package com.gejian.pixel.service.process;
 
+import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommLoginRequestProtobuf;
 import com.gejian.pixel.proto.CommLoginResponseProtobuf;
 import com.gejian.pixel.service.Process;
@@ -15,7 +17,8 @@ import org.springframework.stereotype.Service;
  * @author ZhouQiang
  * @date 2021/8/30$
  */
-@Service(CommandConstants.LOGIN)
+@Service(CommandConstants.LOGIN_REQUEST)
+@CommandResponse(CommandConstants.LOGIN_RESPONSE)
 @Slf4j
 public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLoginRequest
 		,CommLoginResponseProtobuf.CommLoginResponse> {
@@ -28,7 +31,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		log.info("登陆请求参数：{}",commLoginRequest);
 		return CommLoginResponseProtobuf.CommLoginResponse.newBuilder()
 				.setRequest(commLoginRequest)
-				.setResult(1)
+				.setResult(ErrorEnum.ERROR_SUCCESS)
 				.build();
 	}
 }

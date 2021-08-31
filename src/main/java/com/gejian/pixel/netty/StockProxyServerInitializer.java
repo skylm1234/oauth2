@@ -46,25 +46,6 @@ public class StockProxyServerInitializer extends ChannelInitializer<SocketChanne
 
 
 
-//	@Override
-//	protected void initChannel(SocketChannel ch) throws Exception {
-//		ChannelPipeline pipeline = ch.pipeline();
-//
-//		// 可以打印出报文的请求和响应细节
-//        if(debug) {
-//            pipeline.addLast(new LoggingHandler());
-//        }
-//        //解码器，通过Google Protocol Buffers序列化框架动态的切割接收到的ByteBuf
-//        pipeline.addLast(new ProtobufVarint32FrameDecoder());
-//        //服务器端接收的是约定的StockMessage对象，所以这边将接收对象进行解码
-//        pipeline.addLast(new ProtobufDecoder(MessageBaseProtobuf.MessageBase.getDefaultInstance()));
-//        //Google Protocol Buffers编码器
-//        pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
-//        //Google Protocol Buffers编码器
-//        pipeline.addLast(new ProtobufEncoder());
-//        // 自定义数据接收处理器
-//        pipeline.addLast(stockProxyServerHandler);
-//	}
 
 	@Override
 	protected void initChannel(SocketChannel ch) throws Exception {
@@ -140,7 +121,7 @@ public class StockProxyServerInitializer extends ChannelInitializer<SocketChanne
 		pipeline.addLast(new ProtobufDecoder(MessageBaseProtobuf.MessageBase.getDefaultInstance()));
 
 		// 自定义数据处理器
-		pipeline.addLast(stockProxyServerHandler);
+		pipeline.addLast(processExecutor,stockProxyServerHandler);
 
 	}
 

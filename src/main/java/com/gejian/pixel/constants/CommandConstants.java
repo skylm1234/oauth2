@@ -6,7 +6,9 @@ package com.gejian.pixel.constants;
  */
 public interface CommandConstants {
 
-	String LOGIN = "COMM_LOGIN_REQUEST";
+	String LOGIN_REQUEST = "COMM_LOGIN_REQUEST";
+
+	String LOGIN_RESPONSE = "COMM_LOGIN_RESPONSE";
 	String SET_NICKNAME = "COMM_SET_NICKNAME_REQUEST";
 	String PING = "COMM_PING_REQUEST";
 	String BUY_HERO = "COMM_BUY_HERO_REQUEST";
