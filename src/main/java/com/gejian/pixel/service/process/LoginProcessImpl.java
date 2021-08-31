@@ -8,8 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- *
- *
  * 登陆请求
  *
  * @author ZhouQiang
@@ -18,14 +16,14 @@ import org.springframework.stereotype.Service;
 @Service(CommandConstants.LOGIN)
 @Slf4j
 public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLoginRequest
-		,CommLoginResponseProtobuf.CommLoginResponse> {
+		, CommLoginResponseProtobuf.CommLoginResponse> {
 
 
 	@Override
 	public CommLoginResponseProtobuf.CommLoginResponse
-		doProcess(CommLoginRequestProtobuf.CommLoginRequest commLoginRequest) throws Exception {
+	doProcess(CommLoginRequestProtobuf.CommLoginRequest commLoginRequest) throws Exception {
 		// TODO 登陆逻辑
-		log.info("登陆请求参数：{}",commLoginRequest);
+		log.info("登陆请求参数：{}", commLoginRequest);
 		return CommLoginResponseProtobuf.CommLoginResponse.newBuilder()
 				.setRequest(commLoginRequest)
 				.setResult(1)
