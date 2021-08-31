@@ -16,8 +16,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.lang.model.util.AbstractAnnotationValueVisitor6;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -116,7 +116,7 @@ public class Helper {
 	 * @param name 名称
 	 * @return
 	 */
-	public static  String stringValue(RedisTemplate redisTemplate, String identifier, String name){
+	public static  String stringValue(RedisTemplate redisTemplate, Integer identifier, String name){
 		Object result = redisTemplate.opsForHash().get("u:" + identifier + ":strings", name);
 		if (result!=null){
 			return hexDecode(result.toString());
@@ -158,7 +158,7 @@ public class Helper {
 	 * @param name 名称
 	 * @return
 	 */
-	public static Integer itemCount(RedisTemplate redisTemplate, String identifier, String name){
+	public static Integer itemCount(RedisTemplate redisTemplate, Integer identifier, String name){
 		Object result = redisTemplate.opsForHash().get("u:" + identifier + ":items", name);
 		if (result!=null){
 			return Integer.valueOf(result+"");
@@ -199,7 +199,7 @@ public class Helper {
 	 * @param reply 回复的消息
 	 * @return
 	 */
-	public static Boolean increaseItemValue(RedisTemplate redisTemplate, String identifier, String name, Integer delta, ChannelHandlerContext reply){
+	public static Boolean increaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Integer delta, ChannelHandlerContext reply){
 		if (delta>0) {
 			Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
 			long current = Long.parseLong(result+"");
@@ -246,7 +246,7 @@ public class Helper {
 	 * @param reply 回复的消息
 	 * @return
 	 */
-	public static Boolean decrease_item_value(RedisTemplate redisTemplate, String identifier, String name, Integer delta, ChannelHandlerContext reply){
+	public static Boolean decrease_item_value(RedisTemplate redisTemplate, Integer identifier, String name, Integer delta, ChannelHandlerContext reply){
 		return increaseItemValue(redisTemplate, identifier, name, delta, reply);
 	}
 
@@ -276,6 +276,35 @@ public class Helper {
 	}
 
 	/**
+	 *
+	 * @param ar Object集合
+	 * @return
+	 */
+	public static Integer selectFromMultipleAward(List<Object> ar){
+
+		for (int i = 0; i < ar.size(); i++) {
+			if (i != 0) {
+				Integer[] temp = (Integer[]) ar.get(i);
+				temp[1] = temp[1] + temp[i-1];
+			}
+		}
+		Integer factor = 0;
+		Integer[] temp2 = (Integer[]) ar.get(ar.size() - 1);
+		if (temp2[1] < 100) {
+			factor = RandomUtil.randomInt(100);
+		}else {
+			factor = RandomUtil.randomInt(temp2[1]);
+		}
+		for (int i = 0; i < ar.size(); i++) {
+			Integer[] temp3 = (Integer[]) ar.get(i);
+			if (factor<=temp3[1]){
+				return i;
+			}
+		}
+		return null;
+	}
+
+	/**
 	 * 世界广播时间
 	 * @param desc 内容
 	 */
@@ -298,7 +327,7 @@ public class Helper {
 		BroadcastUtil.broadcast(base);
 	}
 
-	public static void awardHeroForMe(RedisTemplate redisTemplate, String identifier, String type, ChannelHandlerContext reply, Integer parameter){
+	public static void awardHeroForMe(RedisTemplate redisTemplate, Integer identifier, String type, ChannelHandlerContext reply, Integer parameter){
 		boolean r = ReUtil.isMatch("^hero_(\\d+)$", type);
 		if (r) {
 			String id = type.split("_")[1];
@@ -389,7 +418,7 @@ public class Helper {
 		}
 	}
 
-	public static void promotionFoo(String key, Integer parameter, RedisTemplate redisTemplate, String identifier, ChannelHandlerContext reply){
+	public static void promotionFoo(String key, Integer parameter, RedisTemplate redisTemplate, Integer identifier, ChannelHandlerContext reply){
 		Object now = null;
 		Map map = null;
 		switch (key){
@@ -524,7 +553,7 @@ public class Helper {
 		}
 	}
 
-	public static void onNotifyEventOfPromotions(RedisTemplate redisTemplate, String key, Integer parameter, String identifier, ChannelHandlerContext reply){
+	public static void onNotifyEventOfPromotions(RedisTemplate redisTemplate, String key, Integer parameter, Integer identifier, ChannelHandlerContext reply){
 		promotionFoo(key, parameter, redisTemplate, identifier, reply);
 	}
 
@@ -534,6 +563,192 @@ public class Helper {
 
 	public static long currentDay(){
 		return (System.currentTimeMillis()/1000 + 28800) / 24 / 3600;
+	}
+
+	public static void updateRanklistHonor(RedisTemplate redisTemplate, Integer identifier, ChannelHandlerContext reply) {
+		Long omyrank = redisTemplate.opsForZSet().reverseRank("ranklist:honor",hexEncode(stringValue(redisTemplate, identifier,"nickname")));
+		__update_ranklist(redisTemplate, identifier, "honor", itemCount(redisTemplate, identifier, "total_honor"));
+
+		Long myrank = redisTemplate.opsForZSet().reverseRank("ranklist:honor",hexEncode(stringValue(redisTemplate, identifier,"nickname")));
+		if (omyrank != myrank && myrank <= 100 && hexEncode(stringValue(redisTemplate, identifier, "nickname"))!=null) {
+			boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>"+stringValue(redisTemplate, identifier, "nickname")+"</color>荣誉榜提升至第"+(myrank+1)+"名！");
+		}
+		onNotifyEventOfPromotions(redisTemplate,"kingofpvp", Integer.valueOf((myrank+1)+""), identifier, reply);
+
+	}
+
+	public static void __update_ranklist(RedisTemplate redisTemplate, Integer identifier, String ranklist, Integer score) {
+		redisTemplate.opsForZSet().add("ranklist:"+ranklist, score, Integer.parseInt(hexEncode(stringValue(redisTemplate, identifier,"nickname"))));
+	}
+
+	//获取奖励
+	public static void getAward(RedisTemplate redisTemplate, Integer identifier, List<Object> ar, ChannelHandlerContext reply, Boolean store2backpack, String parameter) {
+		Generated generated = new Generated();
+
+		String type = (String) ar.get(0);
+
+		String[] arIndex3Arr = (String[]) ar.get(3);
+		if (arIndex3Arr.length > 1) {
+			type = arIndex3Arr[RandomUtil.randomInt(arIndex3Arr.length)];
+		}else {
+			type = arIndex3Arr[0];
+		}
+
+		int value = 0;
+		Object[] arIndex2Arr = (Object[]) ar.get(2);
+		if (arIndex2Arr.length <= 1) {
+			value = Integer.parseInt(arIndex2Arr[0]+"");
+		}else {
+			value = RandomUtil.randomInt(Integer.parseInt(arIndex2Arr[1]+"")) + Integer.parseInt(arIndex2Arr[0]+"");
+		}
+
+		if (store2backpack!=null) {
+			if (store2backpack) {
+				if (ReUtil.isMatch("^box_monry_.*$", type) ||
+						ReUtil.isMatch("^box_exp_book_.*$", type) ||
+						ReUtil.isMatch("^box_private_soulchip_.*$", type) ||
+						ReUtil.isMatch("^box_skillbook_.*$", type) ||
+						ReUtil.isMatch("^box_stone_.*$", type)) {
+					generated.dropItems(type, identifier, reply, store2backpack, parameter);
+				}
+			}else if ((type.equals("gold") ||
+					type.equals("exp") ||
+					type.equals("stone") ||
+					type.equals("honer") ||
+					ReUtil.isMatch("^exp_book_.*$", type)) ||
+					ReUtil.isMatch("^private_soulchip_.*$", type) ||
+					ReUtil.isMatch("^book_skill_.*$", type)) {
+				Map<String,Integer> pack = redisTemplate.opsForHash().entries("u:"+identifier+":temp_backpack");
+				if (pack!=null){
+					pack.forEach((k,v)->{
+						pack.put(k,v);
+					});
+				}
+				pack.put("level", pack.get("level")-1);
+
+				if (type.equals("gold")){
+					//金币增量
+					JSONArray rubyConstBackpackTable = generated.getRUBY_CONST_BACKPACK_TABLE();
+					JSONObject jsonObject = (JSONObject) rubyConstBackpackTable.get(pack.get("level"));
+					Integer goldMax = (Integer) jsonObject.get("gold_max");
+					if (redisTemplate.opsForHash().increment("u:"+identifier+":temp_backpack_items",type,value) > goldMax) {
+						redisTemplate.opsForHash().put("u:"+identifier+":temp_backpack_items", type, goldMax);
+					}
+				}else if (type.equals("exp")){
+					JSONArray rubyConstBackpackTable = generated.getRUBY_CONST_BACKPACK_TABLE();
+					JSONObject jsonObject = (JSONObject) rubyConstBackpackTable.get(pack.get("level"));
+					Integer expMax = (Integer) jsonObject.get("exp_max");
+					if (redisTemplate.opsForHash().increment("u:"+identifier+":temp_backpack_items",type,value) > expMax) {
+						redisTemplate.opsForHash().put("u:"+identifier+":temp_backpack_items", type, expMax);
+					}
+				}else {
+					JSONArray rubyConstBackpackTable = generated.getRUBY_CONST_BACKPACK_TABLE();
+					JSONObject jsonObject = (JSONObject) rubyConstBackpackTable.get(pack.get("level"));
+					Integer itemMax = (Integer) jsonObject.get("item_max");
+					if (redisTemplate.opsForHash().size("u:"+identifier+":temp_backpack_items") > itemMax+2) {
+						redisTemplate.opsForHash().increment("u:"+identifier+":temp_backpack_items", type, value);
+					}else {
+						log.info("exceed temp backpack max");
+					}
+				}
+			}else if(ReUtil.isMatch("^hero_.*$", type)) {
+				log.info("can not handle award hero");
+			}else if (type.equals("dummy")) {
+				log.info("do nothing");
+			}else {
+				log.info("unknow award type {}",type);
+			}
+		}else {
+			if (ReUtil.isMatch("^box_monry_.*$", type) ||
+					ReUtil.isMatch("^box_exp_book_.*$", type) ||
+					ReUtil.isMatch("^box_private_soulchip_.*$", type) ||
+					ReUtil.isMatch("^box_skillbook_.*$", type) ||
+					ReUtil.isMatch("^box_stone_.*$", type)) {
+				generated.dropItems(type, identifier, reply, store2backpack, parameter);
+			}else if ((type.equals("gold") ||
+					type.equals("stone") ||
+					type.equals("honor") ||
+					ReUtil.isMatch("^exp_book_.*$", type)) ||
+					ReUtil.isMatch("^private_soulchip_.*$", type) ||
+					ReUtil.isMatch("^book_skill_.*$", type)) {
+				increaseItemValue(redisTemplate, identifier, type, value, reply);
+				if (type.equals("honor")) {
+					if (parameter!=null && parameter.equals("archives")) {
+					}else {
+						increaseItemValue(redisTemplate, identifier, type, value, reply);
+						updateRanklistHonor(redisTemplate, identifier, reply);
+						onNotifyEventOfPromotions(redisTemplate, "maxhonor", value, identifier, reply);
+					}
+				}
+
+				if (ReUtil.isMatch("^exp_book_.*$", type)) {
+					onNotifyEventOfPromotions(redisTemplate, "expbooks", value, identifier, reply);
+				}else if (type.equals("gold")) {
+					onNotifyEventOfPromotions(redisTemplate, "maxgold", value, identifier, reply);
+				}else {}
+			}else if (type.equals("exp")) {
+				//上阵角色都加经验
+				Long nbHerosInTeam = redisTemplate.opsForHash().size("u:"+identifier+":teams");
+				Map<String,Object> teams = redisTemplate.opsForHash().entries("u:"+identifier+":heros");
+				teams.forEach((k,v)->{
+					/*
+					attributes = redis.hgetall("u:#{identifier}:#{k}:attributes")
+					skills = redis.hgetall("u:#{identifier}:#{k}:skills")
+
+					# hero = Hash.new
+
+					attributes.each do |k, v|
+						attributes[k] = k == 'type' ? v : v.to_i
+					end
+
+					# puts v.to_i, nb_heros_in_team
+					attributes['exp'] += v.to_i / nb_heros_in_team
+
+					while attributes['level'] < 99 do
+
+						item = RUBY_CONST_LEVEL_UPGRADE_TABLE[attributes['level']]
+						exp_need = item["start#{attributes['star']}"]
+						if attributes['exp'] >= exp_need then
+
+							attributes['exp'] -= exp_need #(hero:exp() - exp_need)
+							attributes['level'] += 1 #(hero:level() + 1)
+							attributes['hp'] += attributes['grow_hp'] # (hero:hp() + hero:grow_hp())
+							attributes['def'] += attributes['grow_def'] # (hero:def() + hero:grow_def())
+							attributes['attack'] += attributes['grow_attack'] # (hero:attack() + hero:grow_attack())
+							attributes['speed'] += attributes['grow_speed'] # (hero:speed() + hero:grow_speed())
+
+							attributes['exp'] = exp_need if attributes['level'] == 99
+						else
+							break
+						end
+					end
+					redis.mapped_hmset("u:#{identifier}:#{k}:attributes", attributes)
+
+
+					hero = HERO_BASIC_INFO.new(attributes)
+					 */
+					Map<String,Integer> attributes = redisTemplate.opsForHash().entries("u:"+identifier+":"+k+":attributes");
+					Map skills = redisTemplate.opsForHash().entries("u:"+identifier+":"+k+":skills");
+
+					attributes.forEach((k1,v1)->{
+						attributes.put(k1,k1.equals("type")?v1:Integer.parseInt(v1+""));
+					});
+
+					//attributes.put("exp", attributes.get("exp") +=  Integer.parseInt(v+"")/Integer.parseInt(nbHerosInTeam+""));
+
+					while (attributes.get("level") < 99) {
+						JSONArray rubyConstLevelUpgradeTable = generated.getRUBY_CONST_LEVEL_UPGRADE_TABLE();
+						Map<String,Integer> item = (Map) rubyConstLevelUpgradeTable.get(attributes.get("level"));
+						Integer expNeed = item.get("start" + attributes.get("start"));
+						if (attributes.get("exp") >= expNeed) {
+							//attributes.put("exp", attributes.get("exp")-=expNeed);
+							//attributes.put("level",)
+						}
+					}
+				});
+			}
+		}
+
 	}
 
 }
