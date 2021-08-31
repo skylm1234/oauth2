@@ -1,9 +1,11 @@
 package com.gejian.pixel.constants;
 
 import cn.hutool.json.JSONArray;
+import com.gejian.pixel.utils.Helper;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -93,13 +95,28 @@ public class Generated {
 		end
 	end
 	 */
-	public void dropItemNewbie(Integer identifier, ChannelHandlerContext reply, String store2backpack, String parameter) {
+
+	public void dropItems(String type, Integer identifier, ChannelHandlerContext reply, Boolean store2backpack, String parameter) {
+		switch (type){
+			case "newbie":
+				dropItemNewbie(identifier, reply, store2backpack, parameter);
+				break;
+			default:
+				break;
+		}
+	}
+
+	private void dropItemNewbie(Integer identifier, ChannelHandlerContext reply, Boolean store2backpack, String parameter) {
 		log.info("drop_item_newbie");
 		List<Object> ar = new ArrayList<>();
 		ar.add("gold");
 		ar.add(100);
 		ar.add(Arrays.asList(2000));
 		ar.add(Arrays.asList("gold"));
+		Integer result = Helper.selectFromMultipleAward(ar);
+		if (result!=null){
+
+		}
 
 	}
 
