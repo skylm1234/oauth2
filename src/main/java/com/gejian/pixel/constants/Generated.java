@@ -1,8 +1,15 @@
 package com.gejian.pixel.constants;
 
 import cn.hutool.json.JSONArray;
+import io.netty.channel.ChannelHandlerContext;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author ljb
@@ -11,6 +18,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Data
+@Slf4j
 public class Generated {
 	private JSONArray RUBY_CONST_SKILL_SCRIPTS_SKILL_TABLE;
 	private JSONArray RUBY_CONST_SKILL_SCRIPTS_ROLE_TABLE;
@@ -47,4 +55,52 @@ public class Generated {
 	private JSONArray RUBY_CONST_PVP_BASIC_TABLE;
 	private JSONArray RUBY_CONST_PVP_REFRESH_TABLE;
 	private JSONArray RUBY_CONST_PVP_AWARD_TABLE;
+	private HashMap RUBY_CONST_HERO_TABLE_HASH;
+
+
+	/*
+	def drop_item_newbie(identifier, reply, store2backpack, parameter)
+		puts('drop_item_newbie')
+		ar = []
+		ar[ar.length] = ['gold', 100, [20000, ], ['gold', ]]
+		result = select_from_multiple_award(ar)
+		if result != nil then
+			get_award(identifier, ar[result], reply, store2backpack, parameter)
+		end
+		ar = []
+		ar[ar.length] = ['hero_', 100, [1, ], ['hero_20001', ]]
+		result = select_from_multiple_award(ar)
+		if result != nil then
+			get_award(identifier, ar[result], reply, store2backpack, parameter)
+		end
+		ar = []
+		ar[ar.length] = ['exp_book_', 100, [1, ], ['exp_book_4', ]]
+		result = select_from_multiple_award(ar)
+		if result != nil then
+			get_award(identifier, ar[result], reply, store2backpack, parameter)
+		end
+		ar = []
+		ar[ar.length] = ['private_soulchip_20001', 100, [25, ], ['private_soulchip_20001', ]]
+		result = select_from_multiple_award(ar)
+		if result != nil then
+			get_award(identifier, ar[result], reply, store2backpack, parameter)
+		end
+		ar = []
+		ar[ar.length] = ['book_skill_2012', 100, [11, ], ['book_skill_2012', ]]
+		result = select_from_multiple_award(ar)
+		if result != nil then
+			get_award(identifier, ar[result], reply, store2backpack, parameter)
+		end
+	end
+	 */
+	public void dropItemNewbie(Integer identifier, ChannelHandlerContext reply, String store2backpack, String parameter) {
+		log.info("drop_item_newbie");
+		List<Object> ar = new ArrayList<>();
+		ar.add("gold");
+		ar.add(100);
+		ar.add(Arrays.asList(2000));
+		ar.add(Arrays.asList("gold"));
+
+	}
+
 }

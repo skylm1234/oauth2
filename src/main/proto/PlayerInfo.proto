@@ -23,4 +23,5 @@ message	PlayerInfo  {
 	repeated	Ranklist	ranks = 18;
 	repeated	PlayerItem	archives = 19;
 	repeated	PlayerItem	teams_pvp = 20;
+	string session = 21;
 }
