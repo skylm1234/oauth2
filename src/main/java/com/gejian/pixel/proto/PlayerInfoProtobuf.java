@@ -245,6 +245,16 @@ public final class PlayerInfoProtobuf {
      */
     com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItemOrBuilder getTeamsPvpOrBuilder(
         int index);
+
+    /**
+     * <code>string session = 21;</code>
+     */
+    java.lang.String getSession();
+    /**
+     * <code>string session = 21;</code>
+     */
+    com.google.protobuf.ByteString
+        getSessionBytes();
   }
   /**
    * Protobuf type {@code PlayerInfo}
@@ -268,6 +278,7 @@ public final class PlayerInfoProtobuf {
       ranks_ = java.util.Collections.emptyList();
       archives_ = java.util.Collections.emptyList();
       teamsPvp_ = java.util.Collections.emptyList();
+      session_ = "";
     }
 
     @java.lang.Override
@@ -396,6 +407,12 @@ public final class PlayerInfoProtobuf {
               }
               teamsPvp_.add(
                   input.readMessage(com.gejian.pixel.proto.PlayerItemProtobuf.PlayerItem.parser(), extensionRegistry));
+              break;
+            }
+            case 170: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              session_ = s;
               break;
             }
             default: {
@@ -811,6 +828,40 @@ public final class PlayerInfoProtobuf {
       return teamsPvp_.get(index);
     }
 
+    public static final int SESSION_FIELD_NUMBER = 21;
+    private volatile java.lang.Object session_;
+    /**
+     * <code>string session = 21;</code>
+     */
+    public java.lang.String getSession() {
+      java.lang.Object ref = session_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        session_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string session = 21;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSessionBytes() {
+      java.lang.Object ref = session_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        session_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -857,6 +908,9 @@ public final class PlayerInfoProtobuf {
       }
       for (int i = 0; i < teamsPvp_.size(); i++) {
         output.writeMessage(20, teamsPvp_.get(i));
+      }
+      if (!getSessionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 21, session_);
       }
       unknownFields.writeTo(output);
     }
@@ -910,6 +964,9 @@ public final class PlayerInfoProtobuf {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(20, teamsPvp_.get(i));
       }
+      if (!getSessionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(21, session_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -954,6 +1011,8 @@ public final class PlayerInfoProtobuf {
           .equals(other.getArchivesList());
       result = result && getTeamsPvpList()
           .equals(other.getTeamsPvpList());
+      result = result && getSession()
+          .equals(other.getSession());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -1007,6 +1066,8 @@ public final class PlayerInfoProtobuf {
         hash = (37 * hash) + TEAMS_PVP_FIELD_NUMBER;
         hash = (53 * hash) + getTeamsPvpList().hashCode();
       }
+      hash = (37 * hash) + SESSION_FIELD_NUMBER;
+      hash = (53 * hash) + getSession().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1210,6 +1271,8 @@ public final class PlayerInfoProtobuf {
         } else {
           teamsPvpBuilder_.clear();
         }
+        session_ = "";
+
         return this;
       }
 
@@ -1321,6 +1384,7 @@ public final class PlayerInfoProtobuf {
         } else {
           result.teamsPvp_ = teamsPvpBuilder_.build();
         }
+        result.session_ = session_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1587,6 +1651,10 @@ public final class PlayerInfoProtobuf {
               teamsPvpBuilder_.addAllMessages(other.teamsPvp_);
             }
           }
+        }
+        if (!other.getSession().isEmpty()) {
+          session_ = other.session_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3840,6 +3908,75 @@ public final class PlayerInfoProtobuf {
         }
         return teamsPvpBuilder_;
       }
+
+      private java.lang.Object session_ = "";
+      /**
+       * <code>string session = 21;</code>
+       */
+      public java.lang.String getSession() {
+        java.lang.Object ref = session_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          session_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string session = 21;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSessionBytes() {
+        java.lang.Object ref = session_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          session_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string session = 21;</code>
+       */
+      public Builder setSession(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        session_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string session = 21;</code>
+       */
+      public Builder clearSession() {
+        
+        session_ = getDefaultInstance().getSession();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string session = 21;</code>
+       */
+      public Builder setSessionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        session_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3910,7 +4047,7 @@ public final class PlayerInfoProtobuf {
       "\n\020PlayerInfo.proto\032\023HeroBasicInfo.proto\032" +
       "\020PlayerItem.proto\032\022PlayerString.proto\032\rG" +
       "iftbag.proto\032\035PlayerTemporaryBackpack.pr" +
-      "oto\032\021PlayerStore.proto\032\016Ranklist.proto\"\325" +
+      "oto\032\021PlayerStore.proto\032\016Ranklist.proto\"\346" +
       "\002\n\nPlayerInfo\022\022\n\nidentifier\030\n \001(\t\022\035\n\005her" +
       "os\030\013 \003(\0132\016.HeroBasicInfo\022\032\n\005teams\030\014 \003(\0132" +
       "\013.PlayerItem\022\032\n\005items\030\r \003(\0132\013.PlayerItem" +
@@ -3919,8 +4056,9 @@ public final class PlayerInfoProtobuf {
       ".PlayerTemporaryBackpack\022\033\n\005store\030\021 \001(\0132" +
       "\014.PlayerStore\022\030\n\005ranks\030\022 \003(\0132\t.Ranklist\022" +
       "\035\n\010archives\030\023 \003(\0132\013.PlayerItem\022\036\n\tteams_" +
-      "pvp\030\024 \003(\0132\013.PlayerItemB,\n\026com.gejian.pix" +
-      "el.protoB\022PlayerInfoProtobufb\006proto3"
+      "pvp\030\024 \003(\0132\013.PlayerItem\022\017\n\007session\030\025 \001(\tB" +
+      ",\n\026com.gejian.pixel.protoB\022PlayerInfoPro" +
+      "tobufb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3946,7 +4084,7 @@ public final class PlayerInfoProtobuf {
     internal_static_PlayerInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PlayerInfo_descriptor,
-        new java.lang.String[] { "Identifier", "Heros", "Teams", "Items", "Strings", "Giftbags", "Backpack", "Store", "Ranks", "Archives", "TeamsPvp", });
+        new java.lang.String[] { "Identifier", "Heros", "Teams", "Items", "Strings", "Giftbags", "Backpack", "Store", "Ranks", "Archives", "TeamsPvp", "Session", });
     com.gejian.pixel.proto.HeroBasicInfoProtobuf.getDescriptor();
     com.gejian.pixel.proto.PlayerItemProtobuf.getDescriptor();
     com.gejian.pixel.proto.PlayerStringProtobuf.getDescriptor();
