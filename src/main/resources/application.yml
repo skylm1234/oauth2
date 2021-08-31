@@ -20,6 +20,7 @@ spring:
     host: 110.40.133.131
     port: 16379
     password: 2JIY3SsfTNr8
+    database: 1
 
 # mybaits-plus配置
 mybatis-plus:
