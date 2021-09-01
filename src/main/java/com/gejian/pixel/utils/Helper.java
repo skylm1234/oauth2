@@ -145,7 +145,7 @@ public class Helper {
 					.newBuilder()
 					.setData(item.toByteString())
 					.build();
-			reply.channel().write(messageBase);
+			reply.channel().writeAndFlush(messageBase);
 		}
 
 		return item;
@@ -186,7 +186,7 @@ public class Helper {
 					.newBuilder()
 					.setData(item.toByteString())
 					.build();
-			reply.channel().write(messageBase);
+			reply.channel().writeAndFlush(messageBase);
 		}
 	}
 
@@ -213,7 +213,7 @@ public class Helper {
 						.newBuilder()
 						.setData(item.toByteString())
 						.build();
-				reply.channel().write(messageBase);
+				reply.channel().writeAndFlush(messageBase);
 			}
 		}else if (delta<0){
 			Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
@@ -231,7 +231,7 @@ public class Helper {
 						.newBuilder()
 						.setData(item.toByteString())
 						.build();
-				reply.channel().write(messageBase);
+				reply.channel().writeAndFlush(messageBase);
 			}
 		}
 		return Boolean.TRUE;
@@ -246,7 +246,7 @@ public class Helper {
 	 * @param reply 回复的消息
 	 * @return
 	 */
-	public static Boolean decrease_item_value(RedisTemplate redisTemplate, Integer identifier, String name, Integer delta, ChannelHandlerContext reply){
+	public static Boolean decreaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Integer delta, ChannelHandlerContext reply){
 		return increaseItemValue(redisTemplate, identifier, name, delta, reply);
 	}
 
@@ -380,7 +380,7 @@ public class Helper {
 									.setKey(k+"")
 									.setValue(Long.parseLong(v+""))
 									.build();
-							reply.channel().write(t);
+							reply.channel().writeAndFlush(t);
 						});
 					}
 				}
@@ -396,7 +396,7 @@ public class Helper {
 									.setKey(k+"")
 									.setValue(Long.parseLong(v+""))
 									.build();
-							reply.channel().write(t);
+							reply.channel().writeAndFlush(t);
 						});
 					}
 				}
@@ -414,7 +414,7 @@ public class Helper {
 					.setKey(key)
 					.setValue(value)
 					.build();
-			reply.channel().write(item);
+			reply.channel().writeAndFlush(item);
 		}
 	}
 
