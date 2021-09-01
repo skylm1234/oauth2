@@ -2,23 +2,22 @@ package com.gejian.pixel.netty;
 
 import cn.hutool.core.util.ReflectUtil;
 import com.gejian.pixel.constants.AttributeKeyConstants;
-import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.CommLoginResponseProtobuf;
 import com.gejian.pixel.proto.MessageBaseProtobuf;
-import com.gejian.pixel.proto.PlayerInfoProtobuf;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.service.UserInterceptor;
-import com.gejian.pixel.service.UserManager;
 import com.gejian.pixel.utils.ChannelHolder;
-import com.gejian.pixel.utils.UserHolder;
+import com.gejian.pixel.utils.ChannelManager;
 import com.google.protobuf.AbstractMessageLite;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
 import io.netty.channel.*;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
+import io.netty.handler.timeout.IdleState;
+import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +60,7 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 		}
 		try {
 			ChannelHolder.put(channelHandlerContext.channel());
+			ChannelManager.add(channelHandlerContext.channel());
 			Type[] messageType = getMessageType(process.getClass());
 			Class<AbstractMessageLite> paramClazz = (Class<AbstractMessageLite>) messageType[0];
 			Class<AbstractMessageLite> resultClazz = (Class<AbstractMessageLite>) messageType[1];
@@ -97,6 +97,7 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 					.writeAndFlush(reply);
 		} catch (Exception e) {
 			log.error("处理请求时发生错误！", e);
+			channelHandlerContext.channel().close();
 		} finally {
 			ChannelHolder.clear();
 		}
@@ -108,8 +109,8 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 		String identifier = loginRes.getPlayer().getIdentifier();
 		String session = loginRes.getPlayer().getSession();
 		UserInfo userInfo = new UserInfo();
-		userInfo.setIdentifier(Integer.valueOf(identifier));
-		userInfo.setSession(session);
+		userInfo.setIdentifier(1);
+		userInfo.setSession("1231");
 		channel.attr(AttributeKeyConstants.USER_INFO_ATTRIBUTE_KEY).set(userInfo);
 	}
 
