@@ -87,7 +87,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		String hexEncodedIdentifier = request.getIdentifier().length() != 0 ? Helper.hexEncode(request.getIdentifier()) : "";
 
-		if (request.getIdentifier().length() == 0 || redisTemplate.opsForHash().hasKey("user:set:identifier", hexEncodedIdentifier)){
+		if (request.getIdentifier().length() == 0 || redisTemplate.opsForHash().hasKey(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier)){
 			log.info("new player register");
 
 			String identifier = Helper.generateUserIdentifier(redisTemplate);
