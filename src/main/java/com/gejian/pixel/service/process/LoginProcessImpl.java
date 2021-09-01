@@ -2,12 +2,14 @@ package com.gejian.pixel.service.process;
 
 import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.NumberUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.Generated;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.Process;
@@ -15,6 +17,7 @@ import com.gejian.pixel.utils.Helper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -34,14 +37,15 @@ import java.util.Map;
 public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLoginRequest
 		,CommLoginResponseProtobuf.CommLoginResponse> {
 
-	private final RedisTemplate redisTemplate;
+	private final StringRedisTemplate redisTemplate;
+
+	private static final int MIN_VERSION = 10;
 
 	private Generated generated = new Generated();
 
 	@Override
 	public CommLoginResponseProtobuf.CommLoginResponse
 		doProcess(CommLoginRequestProtobuf.CommLoginRequest request) throws Exception {
-		// TODO 登陆逻辑
 		log.info("登陆请求参数：{}",request);
 		
 		CommLoginResponseProtobuf.CommLoginResponse.Builder replyBuilder = CommLoginResponseProtobuf.CommLoginResponse.newBuilder();
@@ -50,7 +54,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		long currentDays = Helper.currentDay();
 		replyBuilder.setTimestamp(NumberUtil.parseInt(Helper.currentTimestamp()+""));
 
-		if (request.getVersion() >= 11) {
+		if (request.getVersion() > MIN_VERSION) {
 			String s = StrFormatter.format("{} {}  {}   {}",
 					request.getData(),
 					request.getVersion(),
@@ -136,18 +140,15 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				items.put(jsonObject.get("id")+"",0);
 			}
 
-			if (redisTemplate.opsForHash().putIfAbsent("user:set:identifier", hexEncodedIdentifier, identifier)) {
-				redisTemplate.opsForHash().putAll("u:"+identifier+":items", items);
-				redisTemplate.opsForHash().putAll("u:"+identifier+":strings", strings);
-				redisTemplate.opsForHash().putIfAbsent("user:set:identifier_cleartext", identifier, identifier);
+			if (redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier, identifier)) {
+				redisTemplate.opsForHash().putAll(StrUtil.format(RedisKeyConstants.USER_ITEMS,identifier), items);
+				redisTemplate.opsForHash().putAll(StrUtil.format(RedisKeyConstants.USER_STRINGS,identifier), strings);
+				redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_CLEAR_TEXT, identifier, identifier);
 			}else {
 				throw new RuntimeException("failed");
 			}
 
 		}
-
-
-
 		return replyBuilder.build();
 	}
 
