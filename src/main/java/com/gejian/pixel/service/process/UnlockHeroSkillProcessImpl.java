@@ -4,12 +4,16 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.ext.SkillUpgradeDO;
 import com.gejian.pixel.proto.CommUnlockHeroSkillRequestProtobuf;
 import com.gejian.pixel.proto.CommUnlockHeroSkillResponseProtobuf;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
+import io.netty.channel.Channel;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 import org.bouncycastle.util.test.Test;
@@ -28,8 +32,9 @@ import java.util.Set;
  * @author tangtao
  * @since 2021/8/31
  */
-@Service
-public class HeroProcessImpl implements Process<CommUnlockHeroSkillRequestProtobuf.CommUnlockHeroSkillRequest
+@Service(CommandConstants.UNLOCK_HERO_SKILL)
+@Slf4j
+public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRequestProtobuf.CommUnlockHeroSkillRequest
 		, CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse> {
 
 	@Autowired
@@ -39,7 +44,8 @@ public class HeroProcessImpl implements Process<CommUnlockHeroSkillRequestProtob
 	public CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse doProcess(
 			CommUnlockHeroSkillRequestProtobuf.CommUnlockHeroSkillRequest request)
 			throws Exception {
-		CommUnlockHeroSkillRequestProtobuf.CommUnlockHeroSkillRequest unlock = CommUnlockHeroSkillRequestProtobuf.
+
+		CommUnlockHeroSkillRequestProtobuf.CommUnlockHeroSkillRequest skillRequest = CommUnlockHeroSkillRequestProtobuf.
 				CommUnlockHeroSkillRequest.newBuilder().build();
 
 		CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse.Builder result = CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse.newBuilder()
@@ -47,14 +53,13 @@ public class HeroProcessImpl implements Process<CommUnlockHeroSkillRequestProtob
 		//todo 获取 identifire
 		Integer identifier = 1;
 
-		String hero = unlock.getHero();
-		String skill = unlock.getSkill();
+		String hero = skillRequest.getHero();
+		String skill = skillRequest.getSkill();
 		String heroKey = String.format("u:%s:%s:attributes", identifier, hero);
 		if (!redisTemplate.hasKey(heroKey)) {
 			return result.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
 		}
 		String skillKey = String.format("u:%s:%s:skills", identifier, hero);
-		Map<String, Object> heroMap = redisTemplate.opsForHash().entries(heroKey);
 
 		Map<String, Object> skillsMap = redisTemplate.opsForHash().entries(skillKey);
 		if (!skillsMap.containsKey(skill)) {
@@ -64,12 +69,17 @@ public class HeroProcessImpl implements Process<CommUnlockHeroSkillRequestProtob
 			return result.setResult(ErrorEnum.ERROR_SKILL_ALREADY_UNLOCK).build();
 		}
 		//todo 获取升级技能所需要的技能书以及金币
-		SkillUpgradeDO upgradeDO = getSkillUpgradeDO(identifier, hero, skill);
-		if (Helper.itemCount(redisTemplate,identifier, String.format("book_%s", skill)) < upgradeDO.getBook()
+		SkillUpgradeDO upgradeDO = getSkillUpgradeDO(skillsMap);
+
+		if (Helper.itemCount(redisTemplate, identifier, String.format("book_%s", skill)) < upgradeDO.getBook()
 				|| Helper.itemCount(redisTemplate, identifier, "gold") < upgradeDO.getGold()) {
 			return result.setResult(ErrorEnum.ERROR_NOT_ENOUGH_RESOURCES).build();
 		}
 
+		//减少金币以及技能书数量
+		Helper.decreaseItemValue(redisTemplate, identifier, "gold", upgradeDO.getGold(), ChannelHolder.get());
+		Helper.decreaseItemValue(redisTemplate, identifier, String.format("book_%s", skill), upgradeDO.getBook(), ChannelHolder.get());
+		redisTemplate.opsForHash().increment(String.format("u:%s:%s:skills", identifier, hero), skill, 1);
 
 		return CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse.newBuilder()
 				.setRequest(request)
@@ -77,7 +87,7 @@ public class HeroProcessImpl implements Process<CommUnlockHeroSkillRequestProtob
 				.build();
 	}
 
-	private SkillUpgradeDO getSkillUpgradeDO(Integer identifier, String hero, String skill) {
+	private SkillUpgradeDO getSkillUpgradeDO(Map<String, Object> skillsMap) {
 		return new SkillUpgradeDO();
 	}
 
