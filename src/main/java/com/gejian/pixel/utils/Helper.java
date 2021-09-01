@@ -246,7 +246,7 @@ public class Helper {
 	 * @param reply 回复的消息
 	 * @return
 	 */
-	public static Boolean decrease_item_value(RedisTemplate redisTemplate, Integer identifier, String name, Integer delta, ChannelHandlerContext reply){
+	public static Boolean decreaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Integer delta, ChannelHandlerContext reply){
 		return increaseItemValue(redisTemplate, identifier, name, delta, reply);
 	}
 
