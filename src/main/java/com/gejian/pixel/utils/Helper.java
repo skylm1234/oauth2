@@ -9,6 +9,7 @@ import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import com.gejian.pixel.constants.Generated;
 import com.gejian.pixel.proto.*;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -133,7 +134,7 @@ public class Helper {
 	 * @param reply 回复的消息
 	 * @return
 	 */
-	public static PlayerStringProtobuf.PlayerString setStringValue(RedisTemplate redisTemplate, String identifier, String name, String value, ChannelHandlerContext reply){
+	public static PlayerStringProtobuf.PlayerString setStringValue(RedisTemplate redisTemplate, String identifier, String name, String value, Channel reply){
 		redisTemplate.opsForHash().put("u:" + identifier + ":strings", name, hexEncode(value));
 		PlayerStringProtobuf.PlayerString item = PlayerStringProtobuf.PlayerString
 				.newBuilder()
@@ -145,7 +146,7 @@ public class Helper {
 					.newBuilder()
 					.setData(item.toByteString())
 					.build();
-			reply.channel().writeAndFlush(messageBase);
+			reply.writeAndFlush(messageBase);
 		}
 
 		return item;
@@ -174,7 +175,7 @@ public class Helper {
 	 * @param delta 值
 	 * @param reply 回复的消息
 	 */
-	public static void setItemValue(RedisTemplate redisTemplate, String identifier, String name, Integer delta, ChannelHandlerContext reply){
+	public static void setItemValue(RedisTemplate redisTemplate, String identifier, String name, Integer delta, Channel reply){
 		redisTemplate.opsForHash().put("u:" + identifier + ":items", name, delta);
 		if (reply!=null){
 			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
@@ -186,7 +187,7 @@ public class Helper {
 					.newBuilder()
 					.setData(item.toByteString())
 					.build();
-			reply.channel().writeAndFlush(messageBase);
+			reply.writeAndFlush(messageBase);
 		}
 	}
 
@@ -199,7 +200,7 @@ public class Helper {
 	 * @param reply 回复的消息
 	 * @return
 	 */
-	public static Boolean increaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Integer delta, ChannelHandlerContext reply){
+	public static Boolean increaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Long delta, Channel reply){
 		if (delta>0) {
 			Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
 			long current = Long.parseLong(result+"");
@@ -213,7 +214,7 @@ public class Helper {
 						.newBuilder()
 						.setData(item.toByteString())
 						.build();
-				reply.channel().writeAndFlush(messageBase);
+				reply.writeAndFlush(messageBase);
 			}
 		}else if (delta<0){
 			Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
@@ -231,7 +232,7 @@ public class Helper {
 						.newBuilder()
 						.setData(item.toByteString())
 						.build();
-				reply.channel().writeAndFlush(messageBase);
+				reply.writeAndFlush(messageBase);
 			}
 		}
 		return Boolean.TRUE;
@@ -246,7 +247,7 @@ public class Helper {
 	 * @param reply 回复的消息
 	 * @return
 	 */
-	public static Boolean decreaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Integer delta, ChannelHandlerContext reply){
+	public static Boolean decreaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Long delta, Channel reply){
 		return increaseItemValue(redisTemplate, identifier, name, delta, reply);
 	}
 
@@ -327,7 +328,7 @@ public class Helper {
 		BroadcastUtil.broadcast(base);
 	}
 
-	public static void awardHeroForMe(RedisTemplate redisTemplate, Integer identifier, String type, ChannelHandlerContext reply, Integer parameter){
+	public static void awardHeroForMe(RedisTemplate redisTemplate, Integer identifier, String type, Channel reply, Integer parameter){
 		boolean r = ReUtil.isMatch("^hero_(\\d+)$", type);
 		if (r) {
 			String id = type.split("_")[1];
@@ -380,7 +381,7 @@ public class Helper {
 									.setKey(k+"")
 									.setValue(Long.parseLong(v+""))
 									.build();
-							reply.channel().writeAndFlush(t);
+							reply.writeAndFlush(t);
 						});
 					}
 				}
@@ -396,7 +397,7 @@ public class Helper {
 									.setKey(k+"")
 									.setValue(Long.parseLong(v+""))
 									.build();
-							reply.channel().writeAndFlush(t);
+							reply.writeAndFlush(t);
 						});
 					}
 				}
@@ -407,18 +408,18 @@ public class Helper {
 		}
 	}
 
-	public static void appedArchivesToReply(ChannelHandlerContext reply, String key, long value){
+	public static void appedArchivesToReply(Channel reply, String key, long value){
 		if (reply!=null){
 			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
 					.newBuilder()
 					.setKey(key)
 					.setValue(value)
 					.build();
-			reply.channel().writeAndFlush(item);
+			reply.writeAndFlush(item);
 		}
 	}
 
-	public static void promotionFoo(String key, Integer parameter, RedisTemplate redisTemplate, Integer identifier, ChannelHandlerContext reply){
+	public static void promotionFoo(String key, Integer parameter, RedisTemplate redisTemplate, Integer identifier, Channel reply){
 		Object now = null;
 		Map map = null;
 		switch (key){
@@ -553,7 +554,7 @@ public class Helper {
 		}
 	}
 
-	public static void onNotifyEventOfPromotions(RedisTemplate redisTemplate, String key, Integer parameter, Integer identifier, ChannelHandlerContext reply){
+	public static void onNotifyEventOfPromotions(RedisTemplate redisTemplate, String key, Integer parameter, Integer identifier, Channel reply){
 		promotionFoo(key, parameter, redisTemplate, identifier, reply);
 	}
 
@@ -565,7 +566,7 @@ public class Helper {
 		return (System.currentTimeMillis()/1000 + 28800) / 24 / 3600;
 	}
 
-	public static void updateRanklistHonor(RedisTemplate redisTemplate, Integer identifier, ChannelHandlerContext reply) {
+	public static void updateRanklistHonor(RedisTemplate redisTemplate, Integer identifier, Channel reply) {
 		Long omyrank = redisTemplate.opsForZSet().reverseRank("ranklist:honor",hexEncode(stringValue(redisTemplate, identifier,"nickname")));
 		__update_ranklist(redisTemplate, identifier, "honor", itemCount(redisTemplate, identifier, "total_honor"));
 
@@ -582,7 +583,7 @@ public class Helper {
 	}
 
 	//获取奖励
-	public static void getAward(RedisTemplate redisTemplate, Integer identifier, List<Object> ar, ChannelHandlerContext reply, Boolean store2backpack, String parameter) {
+	public static void getAward(RedisTemplate redisTemplate, Integer identifier, List<Object> ar, Channel reply, Boolean store2backpack, String parameter) {
 		Generated generated = new Generated();
 
 		String type = (String) ar.get(0);
@@ -671,11 +672,11 @@ public class Helper {
 					ReUtil.isMatch("^exp_book_.*$", type)) ||
 					ReUtil.isMatch("^private_soulchip_.*$", type) ||
 					ReUtil.isMatch("^book_skill_.*$", type)) {
-				increaseItemValue(redisTemplate, identifier, type, value, reply);
+				increaseItemValue(redisTemplate, identifier, type, (long) value, reply);
 				if (type.equals("honor")) {
 					if (parameter!=null && parameter.equals("archives")) {
 					}else {
-						increaseItemValue(redisTemplate, identifier, type, value, reply);
+						increaseItemValue(redisTemplate, identifier, type, (long)value, reply);
 						updateRanklistHonor(redisTemplate, identifier, reply);
 						onNotifyEventOfPromotions(redisTemplate, "maxhonor", value, identifier, reply);
 					}
