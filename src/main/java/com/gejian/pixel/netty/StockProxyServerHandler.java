@@ -11,6 +11,7 @@ import com.gejian.pixel.proto.PlayerInfoProtobuf;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.service.UserInterceptor;
 import com.gejian.pixel.service.UserManager;
+import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.UserHolder;
 import com.google.protobuf.AbstractMessageLite;
 import com.google.protobuf.ByteString;
@@ -59,6 +60,7 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 			return;
 		}
 		try {
+			ChannelHolder.put(channelHandlerContext.channel());
 			Type[] messageType = getMessageType(process.getClass());
 			Class<AbstractMessageLite> paramClazz = (Class<AbstractMessageLite>) messageType[0];
 			Class<AbstractMessageLite> resultClazz = (Class<AbstractMessageLite>) messageType[1];
@@ -70,8 +72,6 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 			boolean flag = userInterceptor.doFilter(channelHandlerContext.channel(), name);
 			AbstractMessageLite resultObj;
 			if (flag) {
-				// 设置 userHolder
-				UserHolder.put(channelHandlerContext.channel());
 				resultObj = process.doProcess(messageLite);
 				if (resultObj instanceof CommLoginResponseProtobuf.CommLoginResponse) {
 					CommLoginResponseProtobuf.CommLoginResponse loginRes = (CommLoginResponseProtobuf.CommLoginResponse)
@@ -98,7 +98,7 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 		} catch (Exception e) {
 			log.error("处理请求时发生错误！", e);
 		} finally {
-			UserHolder.clear();
+			ChannelHolder.clear();
 		}
 
 
