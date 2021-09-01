@@ -125,32 +125,6 @@ public class Helper {
 		return null;
 	}
 
-	/**
-	 * 得到字符串值
-	 * @param redisTemplate redis
-	 * @param identifier 标识符
-	 * @param name 名称
-	 * @param value 值
-	 * @param reply 回复的消息
-	 * @return
-	 */
-	public static PlayerStringProtobuf.PlayerString setStringValue(RedisTemplate redisTemplate, String identifier, String name, String value, Channel reply){
-		redisTemplate.opsForHash().put("u:" + identifier + ":strings", name, hexEncode(value));
-		PlayerStringProtobuf.PlayerString item = PlayerStringProtobuf.PlayerString
-				.newBuilder()
-				.setKey(name)
-				.setValue(value)
-				.build();
-		if (reply!=null){
-			MessageBaseProtobuf.MessageBase messageBase = MessageBaseProtobuf.MessageBase
-					.newBuilder()
-					.setData(item.toByteString())
-					.build();
-			reply.writeAndFlush(messageBase);
-		}
-
-		return item;
-	}
 
 	/**
 	 * 获得物品个数
@@ -167,29 +141,7 @@ public class Helper {
 		return 0;
 	}
 
-	/**
-	 * 设置物品个数
-	 * @param redisTemplate redis
-	 * @param identifier 标识符
-	 * @param name 名称
-	 * @param delta 值
-	 * @param reply 回复的消息
-	 */
-	public static void setItemValue(RedisTemplate redisTemplate, String identifier, String name, Integer delta, Channel reply){
-		redisTemplate.opsForHash().put("u:" + identifier + ":items", name, delta);
-		if (reply!=null){
-			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
-					.newBuilder()
-					.setKey(name)
-					.setValue(delta)
-					.build();
-			MessageBaseProtobuf.MessageBase messageBase = MessageBaseProtobuf.MessageBase
-					.newBuilder()
-					.setData(item.toByteString())
-					.build();
-			reply.writeAndFlush(messageBase);
-		}
-	}
+
 
 	/**
 	 * 增加物品个数
@@ -197,45 +149,30 @@ public class Helper {
 	 * @param identifier 标识符
 	 * @param name 名称
 	 * @param delta 值
-	 * @param reply 回复的消息
 	 * @return
 	 */
-	public static Boolean increaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Long delta, Channel reply){
+	public static PlayerItemProtobuf.PlayerItem increaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Long delta){
+		PlayerItemProtobuf.PlayerItem.Builder builder = PlayerItemProtobuf.PlayerItem
+				.newBuilder()
+				.setKey(name);
 		if (delta>0) {
 			Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
 			long current = Long.parseLong(result+"");
-			if (reply!=null){
-				PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
-						.newBuilder()
-						.setKey(name)
-						.setValue(current)
-						.build();
-				MessageBaseProtobuf.MessageBase messageBase = MessageBaseProtobuf.MessageBase
-						.newBuilder()
-						.setData(item.toByteString())
-						.build();
-				reply.writeAndFlush(messageBase);
-			}
+			builder.setValue(current);
+			return builder.build();
 		}else if (delta<0){
 			Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
 			long current = Long.parseLong(result+"");
 			if (current<0){
-				redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta * -1);
-				return Boolean.FALSE;
-			}else {
-				PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
-						.newBuilder()
-						.setKey(name)
-						.setValue(current)
-						.build();
-				MessageBaseProtobuf.MessageBase messageBase = MessageBaseProtobuf.MessageBase
-						.newBuilder()
-						.setData(item.toByteString())
-						.build();
-				reply.writeAndFlush(messageBase);
+				Long increment = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta * -1);
+				builder.setValue(increment);
+				return builder.build();
 			}
+			builder.setValue(current);
+			return builder.build();
 		}
-		return Boolean.TRUE;
+		builder.setValue(0);
+		return builder.build();
 	}
 
 	/**
@@ -244,11 +181,10 @@ public class Helper {
 	 * @param identifier 标识符
 	 * @param name 名称
 	 * @param delta 值
-	 * @param reply 回复的消息
 	 * @return
 	 */
-	public static Boolean decreaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Long delta, Channel reply){
-		return increaseItemValue(redisTemplate, identifier, name, delta, reply);
+	public static PlayerItemProtobuf.PlayerItem decreaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Long delta){
+		return increaseItemValue(redisTemplate, identifier, name, delta);
 	}
 
 	/**
@@ -672,11 +608,11 @@ public class Helper {
 					ReUtil.isMatch("^exp_book_.*$", type)) ||
 					ReUtil.isMatch("^private_soulchip_.*$", type) ||
 					ReUtil.isMatch("^book_skill_.*$", type)) {
-				increaseItemValue(redisTemplate, identifier, type, (long) value, reply);
+				increaseItemValue(redisTemplate, identifier, type, (long) value);
 				if (type.equals("honor")) {
 					if (parameter!=null && parameter.equals("archives")) {
 					}else {
-						increaseItemValue(redisTemplate, identifier, type, (long)value, reply);
+						increaseItemValue(redisTemplate, identifier, type, (long)value);
 						updateRanklistHonor(redisTemplate, identifier, reply);
 						onNotifyEventOfPromotions(redisTemplate, "maxhonor", value, identifier, reply);
 					}
