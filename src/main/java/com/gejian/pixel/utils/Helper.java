@@ -734,7 +734,7 @@ public class Helper {
 						attributes.put(k1,k1.equals("type")?v1:Integer.parseInt(v1+""));
 					});
 
-					//attributes.put("exp", attributes.get("exp") +=  Integer.parseInt(v+"")/Integer.parseInt(nbHerosInTeam+""));
+					attributes.put("exp", attributes.get("exp") + (Integer.parseInt(v + "") / Integer.parseInt(nbHerosInTeam + "")));
 
 					while (attributes.get("level") < 99) {
 						JSONArray rubyConstLevelUpgradeTable = generated.getRUBY_CONST_LEVEL_UPGRADE_TABLE();
