@@ -12,12 +12,7 @@ import com.gejian.pixel.proto.MessageBaseProtobuf;
 public class BroadcastUtil {
 
 	public static void broadcast(MessageBaseProtobuf.MessageBase data) {
-		String broadcastURL = "golang";
-		String uri = StrFormatter.format("http://{}:7070/broadcast", broadcastURL);
-		HttpRequest.post(uri)
-				.header("Content-Type", "application/text")
-				.body(data.getData().toByteArray())
-				.execute().body();
+		ChannelManager.broadcast(data);
 	}
 
 }
