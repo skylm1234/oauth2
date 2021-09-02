@@ -1,7 +1,9 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.NicknameRedisKeyConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.CommLoginRequestProtobuf;
@@ -17,6 +19,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author : Hyb
@@ -34,6 +39,8 @@ public class SetNickNameProcessImpl implements Process<CommSetNicknameRequestPro
 	@Autowired
 	private IllegalityVocabularyDataInit illegalityVocabularyDataInit;
 
+	private static final String NICK_NAME = "nickname";
+
 	@Override
 	public CommSetNicknameResponseProtobuf.CommSetNicknameResponse doProcess(CommSetNicknameRequestProtobuf.CommSetNicknameRequest commSetNicknameRequest) throws Exception {
 
@@ -42,8 +49,7 @@ public class SetNickNameProcessImpl implements Process<CommSetNicknameRequestPro
 		String nickname = commSetNicknameRequest.getNickname();
 
 		if (illegalityVocabularyDataInit.isLegal(nickname)) {
-			response.setResult(ErrorEnum.ERROR_INVALID_NICKNAME);
-			return response.build();
+			return response.setResult(ErrorEnum.ERROR_INVALID_NICKNAME).build();
 		}
 
 		// 用户身份ID
@@ -54,17 +60,43 @@ public class SetNickNameProcessImpl implements Process<CommSetNicknameRequestPro
 		redisTemplate.opsForHash().putIfAbsent(NicknameRedisKeyConstants.USER_SET_NICKNAME_CLEARTEXT, nickname, identifier);
 
 		if (!redisTemplate.opsForHash().putIfAbsent(NicknameRedisKeyConstants.USER_SET_NICKNAME, hexNickname, identifier)) {
-			response.setResult(ErrorEnum.ERROR_NICKNAME_ALREADY_EXISTS);
-			return response.build();
+			return response.setResult(ErrorEnum.ERROR_NICKNAME_ALREADY_EXISTS).build();
 		}
 
-		//redisTemplate.opsForHash().putAll();
+		redisTemplate.opsForHash().put(StrUtil.format(RedisKeyConstants.USER_STRINGS, identifier), NICK_NAME, hexNickname);
 
-		//int a = ("u:%d:strings") % 1;
 
-		response.setResult(ErrorEnum.ERROR_SUCCESS);
-		return response.build();
+		updateRanklistPower(identifier);
+		updateRanklistHonor(identifier);
+		updateRanklistRich(identifier);
+
+		return response.setResult(ErrorEnum.ERROR_SUCCESS).build();
 	}
 
+
+	private void updateRanklistPower(Integer identifier) {
+		String nickname;
+
+		Object result = redisTemplate.opsForHash().get(StrUtil.format(RedisKeyConstants.USER_STRINGS, identifier), NICK_NAME);
+		if (null != result) {
+			nickname = Helper.hexEncode((String) result);
+		}
+
+		Long myRank = redisTemplate.opsForZSet().reverseRank(NicknameRedisKeyConstants.RANKLIST_POWER, NICK_NAME);
+
+		List<Long> powers = (List<Long>) redisTemplate.opsForHash().entries(StrUtil.format(RedisKeyConstants.USER_HEARO, identifier))
+				.values();
+
+
+
+	}
+
+	private void updateRanklistHonor(Integer identifier) {
+
+	}
+
+	private void updateRanklistRich(Integer identifier) {
+
+	}
 
 }
