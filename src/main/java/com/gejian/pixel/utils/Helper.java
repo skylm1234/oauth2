@@ -972,6 +972,16 @@ public class Helper {
 
 	}
 
+	public static void updateRanklistRich(RedisTemplate redisTemplate, Integer identifier) {
+		Long omyrank = redisTemplate.opsForZSet().reverseRank("ranklist:honor", hexEncode(stringValue(redisTemplate, identifier, "nickname")));
+		__update_ranklist(redisTemplate, identifier, "rich", itemCount(redisTemplate, identifier, "total_stone_purchased"));
+
+		Long myrank = redisTemplate.opsForZSet().reverseRank("ranklist:rich", hexEncode(stringValue(redisTemplate, identifier, "nickname")));
+		if (!myrank.equals(omyrank) && myrank <= 100 && stringValue(redisTemplate, identifier, "nickname") != null) {
+			boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + stringValue(redisTemplate, identifier, "nickname") + "</color>战力榜提升至第" + (myrank + 1) + "名！");
+		}
+	}
+
 	public static void __update_ranklist(RedisTemplate redisTemplate, Integer identifier, String ranklist, Integer score) {
 		redisTemplate.opsForZSet().add("ranklist:" + ranklist, score, Integer.parseInt(hexEncode(stringValue(redisTemplate, identifier, "nickname"))));
 	}
