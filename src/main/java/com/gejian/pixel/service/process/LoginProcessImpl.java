@@ -1,29 +1,37 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.lang.func.LambdaUtil;
 import cn.hutool.core.text.StrFormatter;
+import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.NumberUtil;
+import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.Generated;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
+import com.gejian.pixel.utils.UserHolder;
+import io.netty.channel.Channel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
+ *
+ *
  * 登陆请求
  *
  * @author ZhouQiang
@@ -35,7 +43,7 @@ import java.util.Map;
 public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLoginRequest
 		, CommLoginResponseProtobuf.CommLoginResponse> {
 
-	private final StringRedisTemplate redisTemplate;
+	private final RedisTemplate redisTemplate;
 
 	private static final int MIN_VERSION = 10;
 
@@ -43,14 +51,15 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 	@Override
 	public CommLoginResponseProtobuf.CommLoginResponse
-	doProcess(CommLoginRequestProtobuf.CommLoginRequest request) throws Exception {
-		log.info("登陆请求参数：{}", request);
-
+		doProcess(CommLoginRequestProtobuf.CommLoginRequest request) throws Exception {
+		// TODO 登陆逻辑
+		log.info("登陆请求参数：{}",request);
+		
 		CommLoginResponseProtobuf.CommLoginResponse.Builder replyBuilder = CommLoginResponseProtobuf.CommLoginResponse.newBuilder();
 
 		long currentTimestamp = Helper.currentTimestamp();
 		long currentDays = Helper.currentDay();
-		replyBuilder.setTimestamp(NumberUtil.parseInt(Helper.currentTimestamp() + ""));
+		replyBuilder.setTimestamp(NumberUtil.parseInt(System.currentTimeMillis() + ""));
 
 		if (request.getVersion() < MIN_VERSION) {
 			replyBuilder.setResult(ErrorEnum.ERROR_CLIENT_VERSION_TOOOOO_OLD);
@@ -66,7 +75,8 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		log.info("request:{}", s);
 		log.info(s);
 		log.info(SecureUtil.sha1(s));
-		if (!SecureUtil.sha1(s).equals(request.getCipher().toUpperCase())) {
+		//if (!SecureUtil.sha1(s).equals(request.getCipher().toUpperCase())) {
+		if (!SecureUtil.sha1(s).equals(request.getCipher())) {
 			replyBuilder.setResult(ErrorEnum.ERROR_INVALID_PARAMETER);
 			return replyBuilder.build();
 		}
@@ -82,13 +92,17 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		String hexEncodedIdentifier = request.getIdentifier().length() != 0 ? Helper.hexEncode(request.getIdentifier()) : "";
 
-		if (request.getIdentifier().length() == 0 || redisTemplate.opsForHash().hasKey(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier)) {
+		Integer identifier = null;
+
+		// TODO: 2021/9/1
+		//if (request.getIdentifier().length() == 0 || redisTemplate.opsForHash().hasKey(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier)) {
+		if (true) {
 			log.info("new player register");
 
-			String identifier = Helper.generateUserIdentifier(redisTemplate);
+			identifier = Integer.valueOf(Helper.generateUserIdentifier(redisTemplate));
 
-			hexEncodedIdentifier = Helper.hexEncode(identifier);
-			replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setIdentifier(identifier).build());
+			hexEncodedIdentifier = Helper.hexEncode(identifier+"");
+			replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setIdentifier(identifier+"").build());
 
 			long timestamp = Helper.currentTimestamp();
 			long hours = timestamp - timestamp % 3600;
@@ -130,9 +144,11 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			strings.put("finished_daily_promotions", Helper.hexEncode("{}"));
 
 			JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = generated.getRUBY_CONST_IN_GAME_PURCHASE_TABLE();
-			for (Object o : RUBY_CONST_IN_GAME_PURCHASE_TABLE) {
-				JSONObject jsonObject = (JSONObject) o;
-				items.put(jsonObject.get("id") + "", 0);
+			if (RUBY_CONST_IN_GAME_PURCHASE_TABLE != null) {
+				for (Object o : RUBY_CONST_IN_GAME_PURCHASE_TABLE) {
+					JSONObject jsonObject = (JSONObject) o;
+					items.put(jsonObject.get("id") + "", 0);
+				}
 			}
 
 			if (redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier, identifier)) {
@@ -143,8 +159,276 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				throw new RuntimeException("failed");
 			}
 
+			// TODO: 2021/9/1 需要放开
+			//generated.dropItemNewbie(redisTemplate, identifier, null, false, null);
+
+			Map<String,Integer> tempbackpack = new HashMap<>();
+			tempbackpack.put("level", 1);
+			tempbackpack.put("type", 1);
+			tempbackpack.put("stage", 1);
+			tempbackpack.put("dungeon_enter_timestamp", Integer.parseInt(Helper.currentTimestamp()+""));
+
+			redisTemplate.opsForHash().putAll("u:"+identifier+":temp_backpack",tempbackpack);
+
+			// TODO: 2021/9/1 需要放开
+			//Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), null, 1);
+			//Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), null, 2);
+			//Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), null, 3);
+
+		}else {
+			if (redisTemplate.opsForHash().hasKey("user:set:ban", hexEncodedIdentifier)) {
+
+				identifier = UserHolder.get().getIdentifier();
+				log.error("FAILED: {}=>{}:{}",identifier,Thread.currentThread().getStackTrace()[1].getMethodName(),Thread.currentThread().getStackTrace()[1].getLineNumber());
+				Map reason = (Map) redisTemplate.opsForHash().get("user:set:ban", hexEncodedIdentifier);
+
+				replyBuilder.setResult(ErrorEnum.ERROR_BANNED);
+				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(reason.get(hexEncodedIdentifier)+"").build());
+
+				// TODO: 2021/9/1  这里还有个返回空指针，但是如果返回空指针就不能返回登录的响应对象了
+				//return 0, nil
+			}
+			Boolean boardcast = Boolean.FALSE;
+			if (request.getVersion() >= 11) {
+				boardcast = (Boolean) redisTemplate.opsForValue().get("system:boardcast11");
+			}else {
+				boardcast = (Boolean) redisTemplate.opsForValue().get("system:boardcast");
+			}
+			// TODO: 2021/9/1  
+			//if (boardcast && Helper.stringValue(redisTemplate, Integer.valueOf(request.getIdentifier()), "nickname") != null) {
+			if (Helper.stringValue(redisTemplate, Integer.valueOf(request.getIdentifier()), "nickname") != null) {
+				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(boardcast+"").build());
+			}
 		}
+
+		log.info("on_handle_COMM_LOGIN_REQUEST -> {}",request.getIdentifier());
+
+		Helper.setItemValue(redisTemplate, identifier+"", "giftbags", Integer.valueOf(redisTemplate.opsForHash().size("u:" + identifier + ":giftbags")+""), null);
+
+		PlayerInfoProtobuf.PlayerInfo.Builder playerBuilder = PlayerInfoProtobuf.PlayerInfo.newBuilder();
+		playerBuilder.setIdentifier(identifier+"");
+
+		identifier = (Integer) redisTemplate.opsForHash().get("user:set:identifier", hexEncodedIdentifier);
+
+		Map heros = redisTemplate.opsForHash().entries("u:" + identifier + ":heros");
+		Integer finalIdentifier = identifier;
+		heros.forEach((k, v)->{
+			Map hero = redisTemplate.opsForHash().entries("u:" + finalIdentifier + ":" + k + ":attributes");
+			HeroBasicInfoProtobuf.HeroBasicInfo.Builder hBuilder = HeroBasicInfoProtobuf.HeroBasicInfo.newBuilder();
+			hBuilder.setId(Integer.parseInt(hero.get("id") + ""));
+			hBuilder.setType(hero.get("type") + "");
+			hBuilder.setLevel(Integer.parseInt(hero.get("level") + ""));
+			hBuilder.setExp(Integer.parseInt(hero.get("exp") + ""));
+			hBuilder.setQuality(Integer.parseInt(hero.get("quality") + ""));
+			hBuilder.setStar(Integer.parseInt(hero.get("star") + ""));
+			hBuilder.setGrowHp(Integer.parseInt(hero.get("grow_hp") + ""));
+			hBuilder.setHp(Integer.parseInt(hero.get("hp") + ""));
+			hBuilder.setGrowDef(Integer.parseInt(hero.get("grow_def") + ""));
+			hBuilder.setDef(Integer.parseInt(hero.get("def") + ""));
+			hBuilder.setGrowAttack(Integer.parseInt(hero.get("grow_attack") + ""));
+			hBuilder.setAttack(Integer.parseInt(hero.get("attack") + ""));
+			hBuilder.setGrowSpeed(Integer.parseInt(hero.get("grow_speed") + ""));
+			hBuilder.setSpeed(Integer.parseInt(hero.get("speed") + ""));
+			hBuilder.setNumber(Integer.parseInt(hero.get("number") + ""));
+
+			Map skills = redisTemplate.opsForHash().entries("u:" + finalIdentifier + ":" + k + ":skills");
+			int[] currentSkillsIndex = {0};
+			skills.forEach((kk,vv)->{
+				HeroSkillProtobuf.HeroSkill heroSkill = HeroSkillProtobuf.HeroSkill
+						.newBuilder()
+						.setType(kk+"")
+						.setLevel(Integer.parseInt(vv+""))
+						.build();
+				hBuilder.setSkills(currentSkillsIndex[0], heroSkill);
+				currentSkillsIndex[0]++;
+			});
+
+			HeroBasicInfoProtobuf.HeroBasicInfo h = hBuilder.build();
+			playerBuilder.addHeros(h);
+		});
+
+		Map items = redisTemplate.opsForHash().entries("u:" + identifier + ":items");
+		items.forEach((k,v)->{
+			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
+					.newBuilder()
+					.setKey(k+"")
+					.setValue(Long.parseLong(v+""))
+					.build();
+			playerBuilder.addItems(item);
+		});
+
+		Map teams = redisTemplate.opsForHash().entries("u:" + identifier + ":teams");
+		teams.forEach((k,v)->{
+			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
+					.newBuilder()
+					.setKey(k+"")
+					.setValue(Long.parseLong(v+""))
+					.build();
+			playerBuilder.addTeams(item);
+		});
+
+		Map teamsPvp = redisTemplate.opsForHash().entries("u:" + identifier + ":teams_pvp");
+		teamsPvp.forEach((k,v)->{
+			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
+					.newBuilder()
+					.setKey(k+"")
+					.setValue(Long.parseLong(v+""))
+					.build();
+			playerBuilder.addTeamsPvp(item);
+		});
+
+		Map archives = redisTemplate.opsForHash().entries("u:" + identifier + ":archives");
+		archives.forEach((k,v)->{
+			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
+					.newBuilder()
+					.setKey(k+"")
+					.setValue(Long.parseLong(v+""))
+					.build();
+			playerBuilder.addArchives(item);
+		});
+
+		Map strings = redisTemplate.opsForHash().entries("u:" + identifier + ":strings");
+		strings.forEach((k,v)->{
+			PlayerStringProtobuf.PlayerString item = PlayerStringProtobuf.PlayerString
+					.newBuilder()
+					.setKey(k+"")
+					.setValue(Helper.hexDecode(v+""))
+					.build();
+			playerBuilder.addStrings(item);
+		});
+
+		Map tempbackpack = redisTemplate.opsForHash().entries("u:" + identifier + ":temp_backpack");
+		/*PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack tbp = PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack
+				.newBuilder()
+				.setLevel(Integer.parseInt(tempbackpack.get("level")+""))
+				.setType(Integer.parseInt(tempbackpack.get("type")+""))
+				.setStage(Integer.parseInt(tempbackpack.get("stage")+""))
+				.setDungeonEnterTimestamp(Integer.parseInt(tempbackpack.get("dungeon_enter_timestamp")+""))
+				.build();*/
+		PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack tbp = PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack
+				.newBuilder()
+				.setLevel(0)
+				.setType(0)
+				.setStage(0)
+				.setDungeonEnterTimestamp(0)
+				.build();
+
+		playerBuilder.setBackpack(tbp);
+
+		List<StoreItemProtobuf.StoreItem> goods0 = fooCall(identifier, 1);
+		List<StoreItemProtobuf.StoreItem> goods1 = fooCall(identifier, 2);
+		List<StoreItemProtobuf.StoreItem> goods2 = fooCall(identifier, 3);
+
+		PlayerStoreProtobuf.PlayerStore.Builder storeBuilder = PlayerStoreProtobuf.PlayerStore
+				.newBuilder();
+
+		for (StoreItemProtobuf.StoreItem storeItem : goods0) {
+			storeBuilder.addGoods0(storeItem);
+		}
+		for (StoreItemProtobuf.StoreItem storeItem : goods1) {
+			storeBuilder.addGoods1(storeItem);
+		}
+		for (StoreItemProtobuf.StoreItem storeItem : goods2) {
+			storeBuilder.addGoods2(storeItem);
+		}
+
+		PlayerStoreProtobuf.PlayerStore store = storeBuilder.build();
+		playerBuilder.setStore(store);
+
+		if (Helper.stringValue(redisTemplate, identifier, "nickname") != null) {
+			helperResreshPvp(identifier, request, playerBuilder, true);
+		}
+
+		//reply.ping_interval = settings.CLIENT_PING_INTERVAL
+		// TODO: 2021/9/1 需要修改成上面的
+		replyBuilder.setPingInterval(1);
+
+		log.info("on_handle_COMM_LOGIN_REQUEST -> "+request.getIdentifier()+" done");
+		/*
+		session = '%d%d' % [Time.now.to_i, rand(10000)]
+        redis.set('u:%d:session' % identifier, session)
+        redis.hmset('u:%d:items' % identifier, 'online', Time.now.to_i)
+        return identifier.to_i, session
+		 */
+		//这里session用uuid
+		String session = IdUtil.fastSimpleUUID();
+		redisTemplate.opsForValue().set("u:"+identifier+":session", session);
+		Map<String,Integer> itemsMap = new HashMap<>();
+		items.put("online",System.currentTimeMillis()/1000);
+		redisTemplate.opsForHash().putAll("u:"+identifier+":items",itemsMap);
+
+		playerBuilder.setSession(session);
+
+		PlayerInfoProtobuf.PlayerInfo player = playerBuilder.build();
+		replyBuilder.setPlayer(player);
+
+
 		return replyBuilder.build();
+	}
+
+	private Integer helperResreshPvp(Integer identifier, CommLoginRequestProtobuf.CommLoginRequest request, PlayerInfoProtobuf.PlayerInfo.Builder reply, Boolean refresh_challage_ranklist) {
+		List<String> searchList = Arrays.asList("pvp_vectory_times", "pvp_challage_times");
+		List<Integer> items = redisTemplate.opsForHash().multiGet("u:" + identifier + ":items", searchList);
+		for (int i = 0; i < searchList.size(); i++) {
+			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
+					.newBuilder()
+					.setKey(searchList.get(i))
+					.setValue(items.get(i))
+					.build();
+			reply.addItems(item);
+		}
+
+		redisTemplate.opsForHash().hasKey("u:"+identifier+":items","should_refresh_pvp_chanllege_ranklist");
+
+		log.info("helper_resresh_pvp => "+redisTemplate.opsForHash().hasKey("u:"+identifier+":items","should_refresh_pvp_chanllege_ranklist")+"refresh_challage_ranklist => "+refresh_challage_ranklist);
+
+		/*
+		if redis.hexists("u:#{identifier}:items", 'should_refresh_pvp_chanllege_ranklist') && refresh_challage_ranklist then
+            puts 'pvp fill data'
+            RANKLIST_HELPER(method(:top_range_power).to_proc,  identifier, reply, 10, true)
+            redis.hdel("u:#{identifier}:items", 'should_refresh_pvp_chanllege_ranklist')
+            return ERROR_SUCCESS
+        else
+            return ERROR_NOT_COOLDOWN
+        end
+		 */
+
+		if (redisTemplate.opsForHash().hasKey("u:"+identifier+":items", "should_refresh_pvp_chanllege_ranklist") && refresh_challage_ranklist) {
+			log.info("pvp fill data");
+			// TODO: 2021/9/1 需要修改上面代码 helper.rb 1066行
+			return ErrorEnum.ERROR_SUCCESS;
+		}else {
+			return ErrorEnum.ERROR_NOT_COOLDOWN;
+		}
+
+	}
+
+	private List<StoreItemProtobuf.StoreItem> fooCall(Integer identifier, Integer type) {
+		List<StoreItemProtobuf.StoreItem> storeItems = new ArrayList<>();
+		List items = new ArrayList<>();
+		Map storeByType = redisTemplate.opsForHash().entries("u:" + identifier + ":store:" + type);
+		storeByType.forEach((k,v)->{
+			JSONObject j = JSONUtil.parseObj(v + "");
+			List<String> ar = Arrays.asList("name", "number", "cost_type", "cost_number");
+			JSONArray h = new JSONArray();
+			for (String s : ar) {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.putOnce(s, j.get("s"));
+			}
+			items.add(h);
+		});
+		items.forEach(obj->{
+			JSONObject item = (JSONObject) obj;
+			StoreItemProtobuf.StoreItem storeItem = StoreItemProtobuf.StoreItem
+					.newBuilder()
+					.setName(item.get("name")+"")
+					.setNumber(Integer.parseInt(item.get("number")+""))
+					.setCostType(item.get("cost_type")+"")
+					.setCostNumber(Integer.parseInt(item.get("cost_number")+""))
+					.build();
+			storeItems.add(storeItem);
+		});
+		return storeItems;
 	}
 
 }

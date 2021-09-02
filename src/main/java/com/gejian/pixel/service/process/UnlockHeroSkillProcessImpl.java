@@ -9,6 +9,7 @@ import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.ext.SkillUpgradeDO;
 import com.gejian.pixel.proto.CommUnlockHeroSkillRequestProtobuf;
 import com.gejian.pixel.proto.CommUnlockHeroSkillResponseProtobuf;
+import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
@@ -77,13 +78,16 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 		}
 
 		//减少金币以及技能书数量
-		Helper.decreaseItemValue(redisTemplate, identifier, "gold", upgradeDO.getGold(), ChannelHolder.get());
-		Helper.decreaseItemValue(redisTemplate, identifier, String.format("book_%s", skill), upgradeDO.getBook(), ChannelHolder.get());
+		PlayerItemProtobuf.PlayerItem gold = Helper.decreaseItemValue(redisTemplate, identifier, "gold", upgradeDO.getGold());
+
+		PlayerItemProtobuf.PlayerItem playerItem = Helper.decreaseItemValue(redisTemplate, identifier, String.format("book_%s", skill), upgradeDO.getBook());
 		redisTemplate.opsForHash().increment(String.format("u:%s:%s:skills", identifier, hero), skill, 1);
 
 		return CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse.newBuilder()
 				.setRequest(request)
 				.setResult(1)
+				.addItems(gold)
+				.addItems(playerItem)
 				.build();
 	}
 
