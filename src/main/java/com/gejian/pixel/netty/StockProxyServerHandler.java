@@ -72,7 +72,9 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 			boolean flag = userInterceptor.doFilter(channelHandlerContext.channel(), name);
 			AbstractMessageLite resultObj;
 			if (flag) {
+				log.info("{}请求入参:{}",name,messageLite);
 				resultObj = process.doProcess(messageLite);
+				log.info("{}请求出参:{}",name,resultObj);
 				if (resultObj instanceof CommLoginResponseProtobuf.CommLoginResponse) {
 					CommLoginResponseProtobuf.CommLoginResponse loginRes = (CommLoginResponseProtobuf.CommLoginResponse)
 							resultObj;

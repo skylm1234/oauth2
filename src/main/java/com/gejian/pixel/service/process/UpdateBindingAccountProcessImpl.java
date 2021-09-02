@@ -41,6 +41,6 @@ public class UpdateBindingAccountProcessImpl implements
 		return  CommUpdateBindingAccountResponseProtobuf.CommUpdateBindingAccountResponse
 				.newBuilder()
 				.setRequest(request)
-				.setResult(ErrorEnum.ERROR_BANNED).build();
+				.setResult(ErrorEnum.ERROR_SUCCESS).build();
 	}
 }
