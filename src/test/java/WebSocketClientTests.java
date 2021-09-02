@@ -1,3 +1,4 @@
+import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.proto.CommLoginRequestProtobuf;
 import com.gejian.pixel.proto.CommLoginResponseProtobuf;
@@ -44,9 +45,10 @@ public class WebSocketClientTests {
 		Session session = container.connectToServer(WebSocketClientTests.class, URI.create(uri));
 
 		CommLoginRequestProtobuf.CommLoginRequest request = CommLoginRequestProtobuf.CommLoginRequest.newBuilder()
-				.setIdentifier("12312312")
+				.setIdentifier("104")
 				.setVersion(11)
-				.setData("12")
+				.setData("1630488085")
+				.setCipher("ff56ce1dd084f89ea67c4db077dc21fa0c7d4d2d")
 				.build();
 		byte[] bytes = MessageBaseProtobuf.MessageBase.newBuilder()
 				.setName(CommandConstants.LOGIN_REQUEST)

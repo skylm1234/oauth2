@@ -7,16 +7,18 @@ import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.ReUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.Generated;
 import com.gejian.pixel.proto.*;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -125,6 +127,32 @@ public class Helper {
 		return null;
 	}
 
+	/**
+	 * 得到字符串值
+	 * @param redisTemplate redis
+	 * @param identifier 标识符
+	 * @param name 名称
+	 * @param value 值
+	 * @param reply 回复的消息
+	 * @return
+	 */
+	public static PlayerStringProtobuf.PlayerString setStringValue(RedisTemplate redisTemplate, String identifier, String name, String value, Channel reply){
+		redisTemplate.opsForHash().put("u:" + identifier + ":strings", name, hexEncode(value));
+		PlayerStringProtobuf.PlayerString item = PlayerStringProtobuf.PlayerString
+				.newBuilder()
+				.setKey(name)
+				.setValue(value)
+				.build();
+		if (reply!=null){
+			MessageBaseProtobuf.MessageBase messageBase = MessageBaseProtobuf.MessageBase
+					.newBuilder()
+					.setData(item.toByteString())
+					.build();
+			reply.writeAndFlush(messageBase);
+		}
+
+		return item;
+	}
 
 	/**
 	 * 获得物品个数
@@ -141,7 +169,29 @@ public class Helper {
 		return 0;
 	}
 
-
+	/**
+	 * 设置物品个数
+	 * @param redisTemplate redis
+	 * @param identifier 标识符
+	 * @param name 名称
+	 * @param delta 值
+	 * @param reply 回复的消息
+	 */
+	public static void setItemValue(RedisTemplate redisTemplate, String identifier, String name, Integer delta, Channel reply){
+		redisTemplate.opsForHash().put("u:" + identifier + ":items", name, delta);
+		if (reply!=null){
+			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
+					.newBuilder()
+					.setKey(name)
+					.setValue(delta)
+					.build();
+			MessageBaseProtobuf.MessageBase messageBase = MessageBaseProtobuf.MessageBase
+					.newBuilder()
+					.setData(item.toByteString())
+					.build();
+			reply.writeAndFlush(messageBase);
+		}
+	}
 
 	/**
 	 * 增加物品个数
@@ -519,7 +569,7 @@ public class Helper {
 	}
 
 	//获取奖励
-	public static void getAward(RedisTemplate redisTemplate, Integer identifier, List<Object> ar, Channel reply, Boolean store2backpack, String parameter) {
+	public static void getAward(RedisTemplate redisTemplate, Integer identifier, List<Object> ar, Channel reply, Boolean store2backpack, Integer parameter) {
 		Generated generated = new Generated();
 
 		String type = (String) ar.get(0);
@@ -546,7 +596,7 @@ public class Helper {
 						ReUtil.isMatch("^box_private_soulchip_.*$", type) ||
 						ReUtil.isMatch("^box_skillbook_.*$", type) ||
 						ReUtil.isMatch("^box_stone_.*$", type)) {
-					generated.dropItems(type, identifier, reply, store2backpack, parameter);
+					generated.dropItems(redisTemplate, type, identifier, reply, store2backpack, parameter);
 				}
 			}else if ((type.equals("gold") ||
 					type.equals("exp") ||
@@ -601,18 +651,23 @@ public class Helper {
 					ReUtil.isMatch("^box_private_soulchip_.*$", type) ||
 					ReUtil.isMatch("^box_skillbook_.*$", type) ||
 					ReUtil.isMatch("^box_stone_.*$", type)) {
-				generated.dropItems(type, identifier, reply, store2backpack, parameter);
+				generated.dropItems(redisTemplate, type, identifier, reply, store2backpack, parameter);
 			}else if ((type.equals("gold") ||
 					type.equals("stone") ||
 					type.equals("honor") ||
 					ReUtil.isMatch("^exp_book_.*$", type)) ||
 					ReUtil.isMatch("^private_soulchip_.*$", type) ||
 					ReUtil.isMatch("^book_skill_.*$", type)) {
-				increaseItemValue(redisTemplate, identifier, type, (long) value);
+				// TODO: 2021/9/2 需要更改replay为消息对象，然后设值
+				//increaseItemValue(redisTemplate, identifier, type, value, reply);
+				PlayerItemProtobuf.PlayerItem playerItem = increaseItemValue(redisTemplate, identifier, type, Long.valueOf(value + ""));
+
 				if (type.equals("honor")) {
 					if (parameter!=null && parameter.equals("archives")) {
 					}else {
-						increaseItemValue(redisTemplate, identifier, type, (long)value);
+						// TODO: 2021/9/2 需要更改replay为消息对象，然后设值
+						//increaseItemValue(redisTemplate, identifier, type, value, reply);
+						playerItem = increaseItemValue(redisTemplate, identifier, type, Long.valueOf(value + ""));
 						updateRanklistHonor(redisTemplate, identifier, reply);
 						onNotifyEventOfPromotions(redisTemplate, "maxhonor", value, identifier, reply);
 					}
@@ -628,42 +683,6 @@ public class Helper {
 				Long nbHerosInTeam = redisTemplate.opsForHash().size("u:"+identifier+":teams");
 				Map<String,Object> teams = redisTemplate.opsForHash().entries("u:"+identifier+":heros");
 				teams.forEach((k,v)->{
-					/*
-					attributes = redis.hgetall("u:#{identifier}:#{k}:attributes")
-					skills = redis.hgetall("u:#{identifier}:#{k}:skills")
-
-					# hero = Hash.new
-
-					attributes.each do |k, v|
-						attributes[k] = k == 'type' ? v : v.to_i
-					end
-
-					# puts v.to_i, nb_heros_in_team
-					attributes['exp'] += v.to_i / nb_heros_in_team
-
-					while attributes['level'] < 99 do
-
-						item = RUBY_CONST_LEVEL_UPGRADE_TABLE[attributes['level']]
-						exp_need = item["start#{attributes['star']}"]
-						if attributes['exp'] >= exp_need then
-
-							attributes['exp'] -= exp_need #(hero:exp() - exp_need)
-							attributes['level'] += 1 #(hero:level() + 1)
-							attributes['hp'] += attributes['grow_hp'] # (hero:hp() + hero:grow_hp())
-							attributes['def'] += attributes['grow_def'] # (hero:def() + hero:grow_def())
-							attributes['attack'] += attributes['grow_attack'] # (hero:attack() + hero:grow_attack())
-							attributes['speed'] += attributes['grow_speed'] # (hero:speed() + hero:grow_speed())
-
-							attributes['exp'] = exp_need if attributes['level'] == 99
-						else
-							break
-						end
-					end
-					redis.mapped_hmset("u:#{identifier}:#{k}:attributes", attributes)
-
-
-					hero = HERO_BASIC_INFO.new(attributes)
-					 */
 					Map<String,Integer> attributes = redisTemplate.opsForHash().entries("u:"+identifier+":"+k+":attributes");
 					Map skills = redisTemplate.opsForHash().entries("u:"+identifier+":"+k+":skills");
 
@@ -678,14 +697,141 @@ public class Helper {
 						Map<String,Integer> item = (Map) rubyConstLevelUpgradeTable.get(attributes.get("level"));
 						Integer expNeed = item.get("start" + attributes.get("start"));
 						if (attributes.get("exp") >= expNeed) {
-							//attributes.put("exp", attributes.get("exp")-=expNeed);
-							//attributes.put("level",)
+							attributes.put("exp", attributes.get("exp")-expNeed);
+							attributes.put("level",attributes.get("level")+1);
+							attributes.put("hp",attributes.get("hp")+attributes.get("grow_hp"));
+							attributes.put("def",attributes.get("def")+attributes.get("grow_def"));
+							attributes.put("attack",attributes.get("attack")+attributes.get("grow_attack"));
+							attributes.put("speed",attributes.get("speed")+attributes.get("grow_speed"));
+							if (attributes.get("exp") == expNeed) {
+								attributes.put("level", 99);
+							}
+						}else {
+							break;
 						}
 					}
+
+					redisTemplate.opsForHash().putAll("u:"+identifier+":"+k+":attributes",attributes);
+
+					HeroBasicInfoProtobuf.HeroBasicInfo.Builder heroBuilder = HeroBasicInfoProtobuf.HeroBasicInfo.newBuilder();
+
+					heroBuilder.setExp(attributes.get("exp"));
+					heroBuilder.setLevel(attributes.get("level"));
+					heroBuilder.setHp(attributes.get("hp"));
+					heroBuilder.setHp(attributes.get("hp"));
+					heroBuilder.setGrowHp(attributes.get("grow_hp"));
+					heroBuilder.setDef(attributes.get("def"));
+					heroBuilder.setGrowDef(attributes.get("grow_def"));
+					heroBuilder.setAttack(attributes.get("attack"));
+					heroBuilder.setGrowAttack(attributes.get("grow_attack"));
+					heroBuilder.setSpeed(attributes.get("speed"));
+					heroBuilder.setGrowSpeed(attributes.get("grow_speed"));
+
+					final int[] indexCount = {0};
+					skills.forEach((kk,vv)->{
+						HeroSkillProtobuf.HeroSkill heroSkill = HeroSkillProtobuf.HeroSkill
+								.newBuilder()
+								.setType(kk+"")
+								.setLevel(Integer.parseInt(vv+""))
+								.build();
+						heroBuilder.setSkills(indexCount[0], heroSkill);
+						indexCount[0]++;
+					});
+
+					HeroBasicInfoProtobuf.HeroBasicInfo hero = heroBuilder.build();
+					reply.write(hero);
 				});
+			}else if (ReUtil.isMatch("^hero_.*$", type)) {
+				awardHeroForMe(redisTemplate, identifier, type, reply, parameter);
+			}else if (type.equals("dummy")) {
+				log.info("do nothing");
+			}else {
+				throw new RuntimeException("unknow award type "+type);
 			}
 		}
+		log.info("获得：{} 数量：{}",type,value);
 
+	}
+
+	public static List<JSONObject> refreshNewStoreNowEx(JSONArray table) {
+		log.info("refresh_new_store_now_ex");
+
+		long weekOfYear = currentDay();
+
+		List types = new ArrayList<>();
+
+		table.forEach(json ->{
+			JSONObject jsonObject = (JSONObject) json;
+			types.set(Integer.parseInt(jsonObject.get("type")+""), jsonObject.get("type"));
+		});
+
+		List<JSONObject> items = new ArrayList<>();
+
+		for (int i = 0; i < table.size(); i++) {
+			JSONObject currentIndexObj = (JSONObject) table.get(i);
+			JSONObject f = (JSONObject) currentIndexObj.get("good_fomula");
+
+			Integer currentType = (Integer) currentIndexObj.get("type");
+			if (currentType!=0) {
+				if ((weekOfYear % types.size() + 1 ) != currentType) {
+					continue;
+				}
+			}
+
+			JSONObject item = new JSONObject();
+			item.putOnce("name",StrFormatter.format("{}_{}",f.get("good_prefix"),
+					(RandomUtil.randomInt(Integer.parseInt(f.get("to")+"") -
+							Integer.parseInt(f.get("from")+"") + 1) +
+							Integer.parseInt(f.get("from")+""))));
+			item.putOnce("number", RandomUtil.randomInt(100) < Integer.parseInt(f.get("factor")+"") ? Integer.parseInt(f.get("factor")+"") : 0);
+			item.putOnce("cost_type", f.get("cost"));
+			item.putOnce("cost_number", f.get("cost_number"));
+
+			items.add(item);
+		}
+
+		return items;
+	}
+
+	public static void refreshStore(RedisTemplate redisTemplate, Integer identifier, Object store, Integer type) {
+		Generated generated = new Generated();
+		JSONArray rubyConstNewStoreHotTable = generated.getRUBY_CONST_NEW_STORE_HOT_TABLE();
+		JSONArray rubyConstNewStoreDiscountTable = generated.getRUBY_CONST_NEW_STORE_DISCOUNT_TABLE();
+		JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();
+		JSONArray tables = new JSONArray();
+		tables.add(rubyConstNewStoreHotTable);
+		tables.add(rubyConstNewStoreDiscountTable);
+		tables.add(rubyConstNewStoreTimeLimitTable);
+		if (type>=1 && type<=3) {
+			JSONArray table = (JSONArray) tables.get(type - 1);
+			List<JSONObject> items = refreshNewStoreNowEx(table);
+
+			Map h = new HashMap();
+
+			for (int i = 0; i < items.size(); i++) {
+				h.put((i+1)+"",items.get(i));
+			}
+
+			redisTemplate.opsForHash().putAll("u:"+identifier+":store:"+type, h);
+
+			if (store!=null) {
+				for (int i = 0; i < items.size(); i++) {
+					JSONObject item = items.get(i);
+					StoreItemProtobuf.StoreItem storeItem = StoreItemProtobuf.StoreItem
+							.newBuilder()
+							.setName(item.get("name")+"")
+							.setNumber(Integer.parseInt(item.get("number")+""))
+							.setCostType(item.get("cost_type")+"")
+							.setCostNumber(Integer.parseInt(item.get("cost_number")+""))
+							.build();
+					// TODO: 2021/9/1  源代码是添加商品
+					//store.goods.push(g)
+				}
+			}
+
+		}else {
+			log.info("unknow store type");
+		}
 	}
 
 }

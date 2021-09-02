@@ -12,6 +12,7 @@ import com.gejian.pixel.proto.MessageBaseProtobuf;
 public class BroadcastUtil {
 
 	public static void broadcast(MessageBaseProtobuf.MessageBase data) {
+		// TODO: 2021/9/1 直接通过 ChannelManager 发送
 		String broadcastURL = "golang";
 		String uri = StrFormatter.format("http://{}:7070/broadcast", broadcastURL);
 		HttpRequest.post(uri)

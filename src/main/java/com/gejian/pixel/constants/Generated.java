@@ -5,6 +5,7 @@ import com.gejian.pixel.utils.Helper;
 import io.netty.channel.Channel;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -95,17 +96,17 @@ public class Generated {
 	end
 	 */
 
-	public void dropItems(String type, Integer identifier, Channel reply, Boolean store2backpack, String parameter) {
+	public void dropItems(RedisTemplate redisTemplate, String type, Integer identifier, Channel reply, Boolean store2backpack, Integer parameter) {
 		switch (type){
 			case "newbie":
-				dropItemNewbie(identifier, reply, store2backpack, parameter);
+				dropItemNewbie(redisTemplate, identifier, reply, store2backpack, parameter);
 				break;
 			default:
 				break;
 		}
 	}
 
-	private void dropItemNewbie(Integer identifier, Channel reply, Boolean store2backpack, String parameter) {
+	public void dropItemNewbie(RedisTemplate redisTemplate, Integer identifier, Channel reply, Boolean store2backpack, Integer parameter) {
 		log.info("drop_item_newbie");
 		List<Object> ar = new ArrayList<>();
 		ar.add("gold");
@@ -114,7 +115,43 @@ public class Generated {
 		ar.add(Arrays.asList("gold"));
 		Integer result = Helper.selectFromMultipleAward(ar);
 		if (result!=null){
-
+			Helper.getAward(redisTemplate, identifier, (List<Object>) ar.get(result), reply, store2backpack, parameter);
+		}
+		ar = new ArrayList<>();
+		ar.add("hero_");
+		ar.add(100);
+		ar.add(Arrays.asList(1));
+		ar.add(Arrays.asList("hero_20001"));
+		result = Helper.selectFromMultipleAward(ar);
+		if (result!=null){
+			Helper.getAward(redisTemplate, identifier, (List<Object>) ar.get(result), reply, store2backpack, parameter);
+		}
+		ar = new ArrayList<>();
+		ar.add("exp_book_");
+		ar.add(100);
+		ar.add(Arrays.asList(1));
+		ar.add(Arrays.asList("exp_book_4"));
+		result = Helper.selectFromMultipleAward(ar);
+		if (result!=null){
+			Helper.getAward(redisTemplate, identifier, (List<Object>) ar.get(result), reply, store2backpack, parameter);
+		}
+		ar = new ArrayList<>();
+		ar.add("private_soulchip_20001");
+		ar.add(100);
+		ar.add(Arrays.asList(25));
+		ar.add(Arrays.asList("private_soulchip_20001"));
+		result = Helper.selectFromMultipleAward(ar);
+		if (result!=null){
+			Helper.getAward(redisTemplate, identifier, (List<Object>) ar.get(result), reply, store2backpack, parameter);
+		}
+		ar = new ArrayList<>();
+		ar.add("book_skill_2012");
+		ar.add(100);
+		ar.add(Arrays.asList(11));
+		ar.add(Arrays.asList("book_skill_2012"));
+		result = Helper.selectFromMultipleAward(ar);
+		if (result!=null){
+			Helper.getAward(redisTemplate, identifier, (List<Object>) ar.get(result), reply, store2backpack, parameter);
 		}
 
 	}
