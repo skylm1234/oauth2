@@ -30,9 +30,9 @@ public class L28RankListImpl implements Process<CommRanklistRequestProtobuf.Comm
 	public CommRanklistResponseProtobuf.CommRanklistResponse doProcess(CommRanklistRequestProtobuf.CommRanklistRequest request) throws Exception {
 		Integer identifier = UserHolder.get().getIdentifier();
 		CommRanklistResponseProtobuf.CommRanklistResponse response = CommRanklistResponseProtobuf.CommRanklistResponse.getDefaultInstance();
-		this.rankListHelper.rankListHelper(Objects.requireNonNull(this.rankListHelper.topRangeRich(identifier, 99L, false)), response);
-		this.rankListHelper.rankListHelper(Objects.requireNonNull(this.rankListHelper.topRangePower(identifier, 99L, false)), response);
-		this.rankListHelper.rankListHelper(Objects.requireNonNull(this.rankListHelper.topRangeHonor(identifier, 99L, false)), response);
+		this.rankListHelper.rankListHelper(this.rankListHelper.topRangeRich(identifier, 99L, false), response);
+		this.rankListHelper.rankListHelper(this.rankListHelper.topRangePower(identifier, 99L, false), response);
+		this.rankListHelper.rankListHelper(this.rankListHelper.topRangeHonor(identifier, 99L, false), response);
 		return response;
 	}
 

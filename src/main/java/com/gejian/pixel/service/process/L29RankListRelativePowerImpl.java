@@ -26,7 +26,7 @@ public class L29RankListRelativePowerImpl implements Process<CommRanklistRelativ
 
 
 	@Autowired
-	private RedisTemplate<String, Object> redisTemplate;
+	private RedisTemplate redisTemplate;
 	@Autowired
 	private RankListHelper rankListHelper;
 

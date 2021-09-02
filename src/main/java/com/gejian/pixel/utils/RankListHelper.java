@@ -26,7 +26,7 @@ import java.util.Set;
 public class RankListHelper {
 
 	@Autowired
-	private RedisTemplate<String, Object> redisTemplate;
+	private RedisTemplate redisTemplate;
 
 
 	public void rankListHelper(RanklistBean bean, CommRanklistResponseProtobuf.CommRanklistResponse response) {

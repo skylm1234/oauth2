@@ -25,7 +25,7 @@ public class L27UpgradeTemporaryBackpackImpl implements Process<CommUpgradeTempo
 		, CommUpgradeTemporaryBackpackResponseProtobuf.CommUpgradeTemporaryBackpackResponse> {
 
 	@Autowired
-	private RedisTemplate<String, Object> redisTemplate;
+	private RedisTemplate redisTemplate;
 
 
 	@Override

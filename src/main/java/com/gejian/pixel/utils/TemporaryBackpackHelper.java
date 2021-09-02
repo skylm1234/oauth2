@@ -18,7 +18,7 @@ import java.util.Map;
 public class TemporaryBackpackHelper {
 
 	@Autowired
-	private RedisTemplate<String, Object> redisTemplate;
+	private RedisTemplate redisTemplate;
 
 	/**
 	 * 修改临时背包

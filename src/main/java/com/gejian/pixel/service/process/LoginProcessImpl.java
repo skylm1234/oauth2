@@ -1,30 +1,25 @@
 package com.gejian.pixel.service.process;
 
-import cn.hutool.core.lang.func.LambdaUtil;
 import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.NumberUtil;
-import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
-import cn.hutool.json.JSON;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.Generated;
 import com.gejian.pixel.constants.RedisKeyConstants;
+import com.gejian.pixel.customType.TopRangePower;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.Process;
-import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
-import io.netty.channel.Channel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -203,7 +198,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		log.info("on_handle_COMM_LOGIN_REQUEST -> {}",request.getIdentifier());
 
-		Helper.setItemValue(redisTemplate, identifier+"", "giftbags", Integer.valueOf(redisTemplate.opsForHash().size("u:" + identifier + ":giftbags")+""), null);
+		Helper.setItemValue(redisTemplate, identifier+"", "giftbags", Integer.valueOf(redisTemplate.opsForHash().size("u:" + identifier + ":giftbags")+""));
 
 		PlayerInfoProtobuf.PlayerInfo.Builder playerBuilder = PlayerInfoProtobuf.PlayerInfo.newBuilder();
 		playerBuilder.setIdentifier(identifier+"");
@@ -336,6 +331,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		playerBuilder.setStore(store);
 
 		if (Helper.stringValue(redisTemplate, identifier, "nickname") != null) {
+			// r = COMM_RANKLIST_RELATIVE_POWER_RESPONSE.new
 			helperResreshPvp(identifier, request, playerBuilder, true);
 		}
 
@@ -343,13 +339,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		// TODO: 2021/9/1 需要修改成上面的
 		replyBuilder.setPingInterval(1);
 
+		Helper.increaseItemValue(redisTemplate, identifier, "total_login_times", 1L);
+
 		log.info("on_handle_COMM_LOGIN_REQUEST -> "+request.getIdentifier()+" done");
-		/*
-		session = '%d%d' % [Time.now.to_i, rand(10000)]
-        redis.set('u:%d:session' % identifier, session)
-        redis.hmset('u:%d:items' % identifier, 'online', Time.now.to_i)
-        return identifier.to_i, session
-		 */
 		//这里session用uuid
 		String session = IdUtil.fastSimpleUUID();
 		redisTemplate.opsForValue().set("u:"+identifier+":session", session);
@@ -382,25 +374,78 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		log.info("helper_resresh_pvp => "+redisTemplate.opsForHash().hasKey("u:"+identifier+":items","should_refresh_pvp_chanllege_ranklist")+"refresh_challage_ranklist => "+refresh_challage_ranklist);
 
-		/*
-		if redis.hexists("u:#{identifier}:items", 'should_refresh_pvp_chanllege_ranklist') && refresh_challage_ranklist then
-            puts 'pvp fill data'
-            RANKLIST_HELPER(method(:top_range_power).to_proc,  identifier, reply, 10, true)
-            redis.hdel("u:#{identifier}:items", 'should_refresh_pvp_chanllege_ranklist')
-            return ERROR_SUCCESS
-        else
-            return ERROR_NOT_COOLDOWN
-        end
-		 */
-
 		if (redisTemplate.opsForHash().hasKey("u:"+identifier+":items", "should_refresh_pvp_chanllege_ranklist") && refresh_challage_ranklist) {
 			log.info("pvp fill data");
 			// TODO: 2021/9/1 需要修改上面代码 helper.rb 1066行
+			ranklistHelper(redisTemplate, identifier, reply, 10, true);
+			redisTemplate.opsForHash().delete("u:"+identifier+":items","should_refresh_pvp_chanllege_ranklist");
 			return ErrorEnum.ERROR_SUCCESS;
 		}else {
 			return ErrorEnum.ERROR_NOT_COOLDOWN;
 		}
 
+	}
+
+	private void ranklistHelper(RedisTemplate redisTemplate, Integer identifier, PlayerInfoProtobuf.PlayerInfo.Builder reply, Integer n, Boolean centerN) {
+		// TODO: 2021/9/2 这里ranklist是power
+		TopRangePower topRangePower = topRangePower(redisTemplate, identifier, "power", n, centerN);
+		Integer myrank = topRangePower.getMyrank();
+		List<Map<String, Object>> topX = topRangePower.getRanks();
+		RanklistProtobuf.Ranklist.Builder ranklistBuilder = RanklistProtobuf.Ranklist.newBuilder();
+		ranklistBuilder.setMyrank(myrank);
+		ranklistBuilder.setTimestamp(Integer.parseInt(Helper.currentTimestamp()+""));
+		for (Map<String, Object> x : topX) {
+			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
+					.newBuilder()
+					.setKey(x.get("key")+"")
+					.setValue(Long.parseLong(x.get("value")+""))
+					.build();
+			ranklistBuilder.addRanks(item);
+		}
+		RanklistProtobuf.Ranklist ranklist = ranklistBuilder.build();
+		reply.addRanks(ranklist);
+	}
+
+	private TopRangePower topRangePower(RedisTemplate redisTemplate, Integer identifier, String ranklist, Integer n, Boolean centerN) {
+		List<Map<String,Object>> ranks = new ArrayList();
+		Integer from = 0;
+		Integer to = n;
+		Integer myrank = 0;
+
+		if (centerN!=null) {
+			if (centerN) {
+				Long ranklistByNickname = redisTemplate.opsForZSet().reverseRank("ranklist:" + ranklist, Helper.hexEncode(Helper.stringValue(redisTemplate, identifier, "nickname")));
+				if (ranklistByNickname==null) {
+					myrank = -1;
+				}else {
+					myrank = Integer.valueOf(ranklistByNickname+"");
+				}
+				from = (myrank<=n) ? -1:myrank-n;
+				from = from<0 ? 0:from;
+				to = myrank+n;
+			}
+		}
+
+		log.info("__top_n_of_ranklist from {} to {}",from,to);
+		Set ar = redisTemplate.opsForZSet().reverseRangeByScore("ranklist:" + ranklist, from, to);
+		for (Object o : ar) {
+			List<String> x = (List<String>) o;
+			log.info("__top_n_of_ranklist {} {}",x.get(0),x.get(1));
+			Map<String,Object> rankData = new HashMap<>();
+			rankData.put("key", Helper.hexDecode(x.get(0)));
+			rankData.put("value", Long.parseLong(x.get(1)));
+			ranks.add(rankData);
+		}
+
+		TopRangePower topRangePower = new TopRangePower();
+		topRangePower.setMyrank(myrank);
+		topRangePower.setRanks(ranks);
+
+		return topRangePower;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(Integer.valueOf(""));
 	}
 
 	private List<StoreItemProtobuf.StoreItem> fooCall(Integer identifier, Integer type) {
