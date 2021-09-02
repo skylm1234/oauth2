@@ -133,24 +133,18 @@ public class Helper {
 	 * @param identifier 标识符
 	 * @param name 名称
 	 * @param value 值
-	 * @param reply 回复的消息
 	 * @return
 	 */
-	public static PlayerStringProtobuf.PlayerString setStringValue(RedisTemplate redisTemplate, String identifier, String name, String value, Channel reply){
+	public static PlayerStringProtobuf.PlayerString setStringValue(RedisTemplate redisTemplate
+			, Integer identifier
+			, String name
+			, String value){
 		redisTemplate.opsForHash().put("u:" + identifier + ":strings", name, hexEncode(value));
 		PlayerStringProtobuf.PlayerString item = PlayerStringProtobuf.PlayerString
 				.newBuilder()
 				.setKey(name)
 				.setValue(value)
 				.build();
-		if (reply!=null){
-			MessageBaseProtobuf.MessageBase messageBase = MessageBaseProtobuf.MessageBase
-					.newBuilder()
-					.setData(item.toByteString())
-					.build();
-			reply.writeAndFlush(messageBase);
-		}
-
 		return item;
 	}
 
