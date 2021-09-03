@@ -23,7 +23,7 @@ import java.util.Map;
  * @date 2021/9/3
  */
 @Slf4j
-@Service(CommandConstants.GET_GIFTBAG_LIST)
+@Service(CommandConstants.OPEN_GIFTBAG)
 public class L36OpenGiftBagImpl implements Process<CommOpenGiftbagRequestProtobuf.CommOpenGiftbagRequest
 		, CommOpenGiftbagResponseProtobuf.CommOpenGiftbagResponse> {
 
