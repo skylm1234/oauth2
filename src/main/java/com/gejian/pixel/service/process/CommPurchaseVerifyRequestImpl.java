@@ -10,17 +10,15 @@ import com.gejian.pixel.proto.CommPurchaseVerifyRequestProtobuf;
 import com.gejian.pixel.proto.CommPurchaseVerifyResponseProtobuf;
 import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.Process;
-import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
-import io.netty.channel.Channel;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -36,8 +34,10 @@ import java.util.regex.Pattern;
 public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerifyRequestProtobuf.CommPurchaseVerifyRequest,
 		CommPurchaseVerifyResponseProtobuf.CommPurchaseVerifyResponse> {
 
-	//TODO settings.IAP_VERIFY_URL
-	private final String url = "";
+	@Value("${config-url.MACOSX-IAP-VERIFY-URL}")
+	private String macosx;
+	@Value("${config-url.CENTOS-IAP-VERIFY-URL}")
+	private String centos;
 
 	@Autowired
 	private RedisTemplate redisTemplate;
@@ -51,7 +51,7 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 
 		String pattern = "^https://sandbox\u002E*$";
 		Pattern compile = Pattern.compile(pattern);
-		Matcher m = compile.matcher(url);
+		Matcher m = compile.matcher(centos);
 
 		UserInfo userInfo = UserHolder.get();
 		Integer identifier = userInfo.getIdentifier();
@@ -162,6 +162,11 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 
 	private RubyConstVipTable getRubyConstVipTable(Integer id) {
 		return null;
+	}
+
+	public static void main(String[] args) {
+		String osName = System.getProperty("os.name");
+		System.out.println(osName);
 	}
 
 }

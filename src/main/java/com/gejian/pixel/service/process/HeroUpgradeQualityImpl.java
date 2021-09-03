@@ -49,7 +49,6 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 		CommHeroUpgradeQualityResponseProtobuf.CommHeroUpgradeQualityResponse.Builder reply = CommHeroUpgradeQualityResponseProtobuf.CommHeroUpgradeQualityResponse.newBuilder();
 		reply.setRequest(commHeroUpgradeQualityRequest);
 
-		//TODO 不晓得是啥
 		UserInfo userInfo = UserHolder.get();
 		Integer identifier = userInfo.getIdentifier();
 
