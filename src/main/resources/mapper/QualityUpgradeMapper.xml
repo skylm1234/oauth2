@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.QualityUpgradeMapper">
+
+    <resultMap id="QualityUpgradeRM" type="com.gejian.pixel.entity.QualityUpgrade">
+		<result property="id" column="id"/>
+		<result property="quality" column="quality"/>
+		<result property="desc" column="desc"/>
+		<result property="consumeExpand" column="consume_expand"/>
+		<result property="consume" column="consume"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`quality`,`desc`,`consume_expand`,`consume`
+	</sql>
+
+</mapper>

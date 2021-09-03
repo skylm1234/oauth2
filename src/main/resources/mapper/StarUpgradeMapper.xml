@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.StarUpgradeMapper">
+
+    <resultMap id="StarUpgradeRM" type="com.gejian.pixel.entity.StarUpgrade">
+		<result property="id" column="id"/>
+		<result property="star" column="star"/>
+		<result property="consumeExpand" column="consume_expand"/>
+		<result property="consume" column="consume"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`star`,`consume_expand`,`consume`
+	</sql>
+
+</mapper>

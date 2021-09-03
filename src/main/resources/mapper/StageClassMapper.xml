@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.StageClassMapper">
+
+    <resultMap id="StageClassRM" type="com.gejian.pixel.entity.StageClass">
+		<result property="id" column="id"/>
+		<result property="classType" column="class_type"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`class_type`
+	</sql>
+
+</mapper>
