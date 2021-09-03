@@ -1,5 +1,7 @@
 package com.gejian.pixel.service.impl;
 
+import cn.hutool.core.math.Calculator;
+import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
@@ -37,7 +39,7 @@ import java.util.stream.Collectors;
 @Service
 public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements DropService {
 
-	private Map<String, DropExt> hash;
+	private Map<String, DropExt> hash = new HashMap<>();
 
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
@@ -318,17 +320,19 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 							List<String> split = StrUtil.split(replace, "(");
 							String s1 = split.get(0);
 							dropItem.setType(s1);
-							String s2 = split.get(1);
-							List<String> lastList = StrUtil.split(s2, "#");
-							if (CollectionUtils.isEmpty(lastList)) {
-								lastItem.add(s1);
+							if (lastItem.size()>1) {
+								String s2 = split.get(1);
+								List<String> lastList = StrUtil.split(s2, "#");
+								if (CollectionUtils.isEmpty(lastList)) {
+									lastItem.add(s1);
+								}
+								lastList.forEach(num -> {
+									lastItem.add(s1 + num);
+								});
 							}
-							lastList.forEach(num -> {
-								lastItem.add(s1 + num);
-							});
 							break;
 						case 1:
-							dropItem.setProbability(Integer.parseInt(item));
+							dropItem.setProbability(Integer.parseInt(item.replace(" ","")));
 							break;
 						case 2:
 							String tt = StrUtil.replace(item, ")", "")
@@ -336,7 +340,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 							List<String> nums = StrUtil.split(tt, "#");
 							List<Integer> numList = new ArrayList<>();
 							nums.forEach(num -> {
-								numList.add(Integer.parseInt(num));
+								numList.add(NumberUtil.parseInt(Calculator.conversion(num)+""));
 							});
 							dropItem.setNumbers(numList);
 							break;

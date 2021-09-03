@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @author zhouqiang
  */
 @Data
-@TableName("drop")
+@TableName("`drop`")
 public class Drop implements Serializable {
 /**
 	 * 主键
