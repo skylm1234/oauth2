@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLOutput;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -64,12 +65,13 @@ public class Helper {
 	 * @param s 需要转换的字符串
 	 * @return 十六进制字符串
 	 */
-	public static String hexEncode(String s){
+	public static String hexEncode(String s) {
 		return HexUtil.encodeHexStr(s.getBytes());
 	}
 
 	/**
 	 * 将十六进制字符数组转换为字符串，默认编码UTF-8
+	 *
 	 * @param hexStr 十六进制字符串
 	 * @return 字符串
 	 */
@@ -135,16 +137,17 @@ public class Helper {
 
 	/**
 	 * 得到字符串值
+	 *
 	 * @param redisTemplate redis
-	 * @param identifier 标识符
-	 * @param name 名称
-	 * @param value 值
+	 * @param identifier    标识符
+	 * @param name          名称
+	 * @param value         值
 	 * @return
 	 */
 	public static PlayerStringProtobuf.PlayerString setStringValue(RedisTemplate redisTemplate
 			, Integer identifier
 			, String name
-			, String value){
+			, String value) {
 		redisTemplate.opsForHash().put("u:" + identifier + ":strings", name, hexEncode(value));
 		PlayerStringProtobuf.PlayerString item = PlayerStringProtobuf.PlayerString
 				.newBuilder()
@@ -197,13 +200,14 @@ public class Helper {
 
 	/**
 	 * 设置物品个数
+	 *
 	 * @param redisTemplate redis
-	 * @param identifier 标识符
-	 * @param name 名称
-	 * @param delta 值
+	 * @param identifier    标识符
+	 * @param name          名称
+	 * @param delta         值
 	 * @return 物品信息
 	 */
-	public static PlayerItemProtobuf.PlayerItem setItemValue(RedisTemplate redisTemplate, String identifier, String name, Integer delta){
+	public static PlayerItemProtobuf.PlayerItem setItemValue(RedisTemplate redisTemplate, String identifier, String name, Integer delta) {
 		redisTemplate.opsForHash().put("u:" + identifier + ":items", name, delta);
 		PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
 				.newBuilder()
@@ -417,14 +421,14 @@ public class Helper {
 
 	public static void updateRanklistPower(RedisTemplate redisTemplate, Integer identifier, PlayerInfoProtobuf.PlayerInfo.Builder reply) {
 		String nickname = stringValue(redisTemplate, identifier, "nickname");
-		if (nickname!=null) {
+		if (nickname != null) {
 			Long omyrank = redisTemplate.opsForZSet().reverseRank("ranklist:power", hexEncode(nickname));
 			List<Integer> powers = new ArrayList<>();
 
-			Map heros = redisTemplate.opsForHash().entries("u:"+identifier+":heros");
-			if (heros!=null) {
-				heros.forEach((k,v)->{
-					powers.add(Integer.parseInt(v+""));
+			Map heros = redisTemplate.opsForHash().entries("u:" + identifier + ":heros");
+			if (heros != null) {
+				heros.forEach((k, v) -> {
+					powers.add(Integer.parseInt(v + ""));
 				});
 			}
 			Collections.sort(powers);
@@ -432,21 +436,21 @@ public class Helper {
 
 			Integer totalPower = 0;
 			for (int i = 0; i < (Math.min(powers.size(), 5)); i++) {
-				totalPower+=powers.get(i);
+				totalPower += powers.get(i);
 			}
-			totalPower = (totalPower/100);
+			totalPower = (totalPower / 100);
 			PlayerItemProtobuf.PlayerItem item = setItemValue(redisTemplate, identifier + "", "power", totalPower);
 			reply.addItems(item);
 			__update_ranklist(redisTemplate, identifier, "power", totalPower);
 
 			Long myrank = redisTemplate.opsForZSet().reverseRank("ranklist:power", hexEncode(nickname));
 			if (!myrank.equals(omyrank) && myrank <= 100) {
-				boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>"+nickname+"</color>战力榜提升至第"+(myrank+1)+"名！");
+				boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + nickname + "</color>战力榜提升至第" + (myrank + 1) + "名！");
 			}
 		}
 	}
 
-	public static void awardHeroForMe(RedisTemplate redisTemplate, Integer identifier, String type, PlayerInfoProtobuf.PlayerInfo.Builder reply, Integer parameter){
+	public static void awardHeroForMe(RedisTemplate redisTemplate, Integer identifier, String type, PlayerInfoProtobuf.PlayerInfo.Builder reply, Integer parameter) {
 		PlayerItemProtobuf.PlayerItem archivesItem;
 		HeroSkillProtobuf.HeroSkill.Builder skillBuilder;
 
@@ -458,7 +462,7 @@ public class Helper {
 			//String[][] record = RUBY_CONST_HERO_TABLE_HASH["X#{id}"]
 			Map<String, Object> record = null;
 
-			if (redisTemplate.opsForHash().putIfAbsent("u:" +identifier+ ":heros", type, 1)) {
+			if (redisTemplate.opsForHash().putIfAbsent("u:" + identifier + ":heros", type, 1)) {
 				//onNotifyEventOfPromotions(redisTemplate, "mostheros", 1, identifier, reply);
 				archivesItem = onNotifyEventOfPromotions(redisTemplate, "mostheros", 1, identifier);
 				reply.addArchives(archivesItem);
@@ -474,7 +478,7 @@ public class Helper {
 
 				Float rate = 1.0f;
 
-				if (parameter!=null) {
+				if (parameter != null) {
 					if (parameter == 3) {
 						// TODO: 2021/8/31 后面要替换
 						// rate = RUBY_CONST_QUALITY_UPGRADE_RATE_TABLE[1]["up"].to_f
@@ -482,7 +486,7 @@ public class Helper {
 					}
 				}
 
-				heroBuilder.setQuality(parameter!=null && parameter==3 ? 2 : 1);
+				heroBuilder.setQuality(parameter != null && parameter == 3 ? 2 : 1);
 				JSONObject basicUpgradeExpand = (JSONObject) record.get("basic_upgrade_expand");
 				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpand.get("hp") * rate) + ""));
 				JSONObject basicExpand = (JSONObject) record.get("basic_expand");
@@ -495,69 +499,69 @@ public class Helper {
 				heroBuilder.setSpeed(Integer.parseInt(((Float) basicExpand.get("speed") * rate) + ""));
 				heroBuilder.setNumber(1);
 
-				Long teams = redisTemplate.opsForHash().size("u:" +identifier+ ":teams");
+				Long teams = redisTemplate.opsForHash().size("u:" + identifier + ":teams");
 				if (teams < 5) {
 
-					redisTemplate.opsForHash().put("u:" +identifier+ ":teams", type, teams+1);
+					redisTemplate.opsForHash().put("u:" + identifier + ":teams", type, teams + 1);
 
-					Map tb = redisTemplate.opsForHash().entries("u:" +identifier+ ":teams");
-					tb.forEach((k,v)->{
+					Map tb = redisTemplate.opsForHash().entries("u:" + identifier + ":teams");
+					tb.forEach((k, v) -> {
 						PlayerItemProtobuf.PlayerItem t = PlayerItemProtobuf.PlayerItem
 								.newBuilder()
-								.setKey(k+"")
-								.setValue(Long.parseLong(v+""))
+								.setKey(k + "")
+								.setValue(Long.parseLong(v + ""))
 								.build();
 						reply.addTeams(t);
 					});
 				}
-				Long teams_pvp = redisTemplate.opsForHash().size("u:" +identifier+ ":teams_pvp");
+				Long teams_pvp = redisTemplate.opsForHash().size("u:" + identifier + ":teams_pvp");
 				if (teams_pvp < 5) {
-					redisTemplate.opsForHash().put("u:" +identifier+ ":teams_pvp", type, teams_pvp+1);
+					redisTemplate.opsForHash().put("u:" + identifier + ":teams_pvp", type, teams_pvp + 1);
 
-					Map tb = redisTemplate.opsForHash().entries("u:" +identifier+ ":teams_pvp");
-					tb.forEach((k,v)->{
+					Map tb = redisTemplate.opsForHash().entries("u:" + identifier + ":teams_pvp");
+					tb.forEach((k, v) -> {
 						PlayerItemProtobuf.PlayerItem t = PlayerItemProtobuf.PlayerItem
 								.newBuilder()
-								.setKey(k+"")
-								.setValue(Long.parseLong(v+""))
+								.setKey(k + "")
+								.setValue(Long.parseLong(v + ""))
 								.build();
 						reply.addTeamsPvp(t);
 					});
 				}
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
-				skillBuilder.setType(record.get("skill_a")+"");
+				skillBuilder.setType(record.get("skill_a") + "");
 				skillBuilder.setLevel(1);
 				heroBuilder.addSkills(skillBuilder);
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
-				skillBuilder.setType(record.get("skill1")+"");
+				skillBuilder.setType(record.get("skill1") + "");
 				skillBuilder.setLevel(1);
 				heroBuilder.addSkills(skillBuilder);
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
-				skillBuilder.setType(record.get("skill2")+"");
+				skillBuilder.setType(record.get("skill2") + "");
 				skillBuilder.setLevel(0);
 				heroBuilder.addSkills(skillBuilder);
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
-				skillBuilder.setType(record.get("skill3")+"");
+				skillBuilder.setType(record.get("skill3") + "");
 				skillBuilder.setLevel(0);
 				heroBuilder.addSkills(skillBuilder);
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
-				skillBuilder.setType(record.get("skill4")+"");
+				skillBuilder.setType(record.get("skill4") + "");
 				skillBuilder.setLevel(0);
 				heroBuilder.addSkills(skillBuilder);
 
 				HeroBasicInfoProtobuf.HeroBasicInfo hero = heroBuilder.build();
 
 				int power = heroBuilder.getHp() + heroBuilder.getDef() + heroBuilder.getAttack() + heroBuilder.getSpeed();
-				Map<String,Object> heroPowerMap = new HashMap<>();
-				heroPowerMap.put(heroBuilder.getType(),power);
-				redisTemplate.opsForHash().putAll("u:"+identifier+":heros",heroPowerMap);
+				Map<String, Object> heroPowerMap = new HashMap<>();
+				heroPowerMap.put(heroBuilder.getType(), power);
+				redisTemplate.opsForHash().putAll("u:" + identifier + ":heros", heroPowerMap);
 
-				Map<String,Object> hh = new HashMap<>();
+				Map<String, Object> hh = new HashMap<>();
 				hh.put("id", heroBuilder.getId());
 				hh.put("type", heroBuilder.getType());
 				hh.put("level", heroBuilder.getLevel());
@@ -573,15 +577,15 @@ public class Helper {
 				hh.put("grow_speed", heroBuilder.getGrowSpeed());
 				hh.put("speed", heroBuilder.getSpeed());
 				hh.put("number", heroBuilder.getNumber());
-				redisTemplate.opsForHash().putAll("u:"+identifier+":"+heroBuilder.getType()+":attributes", hh);
+				redisTemplate.opsForHash().putAll("u:" + identifier + ":" + heroBuilder.getType() + ":attributes", hh);
 
-				Map<String,Object> hhs = new HashMap<>();
-				hhs.put(record.get("skill_a")+"",1);
-				hhs.put(record.get("skill1")+"",1);
-				hhs.put(record.get("skill2")+"",0);
-				hhs.put(record.get("skill3")+"",0);
-				hhs.put(record.get("skill4")+"",0);
-				redisTemplate.opsForHash().putAll("u:"+identifier+":"+heroBuilder.getType()+":skills", hhs);
+				Map<String, Object> hhs = new HashMap<>();
+				hhs.put(record.get("skill_a") + "", 1);
+				hhs.put(record.get("skill1") + "", 1);
+				hhs.put(record.get("skill2") + "", 0);
+				hhs.put(record.get("skill3") + "", 0);
+				hhs.put(record.get("skill4") + "", 0);
+				redisTemplate.opsForHash().putAll("u:" + identifier + ":" + heroBuilder.getType() + ":skills", hhs);
 
 				/*
 				update_ranklist_power(identifier, reply)
@@ -595,21 +599,21 @@ public class Helper {
                 end
 				 */
 				updateRanklistPower(redisTemplate, identifier, reply);
-				if (reply!=null) {
+				if (reply != null) {
 					reply.addHeros(hero);
 				}
 
-				if (stringValue(redisTemplate, identifier, "nickname")!=null) {
-					String bcmsg = StrUtil.format("PWBC快讯：祝贺玩家<color=red>{}</color>获得英雄<color=red>{}</color>！",stringValue(redisTemplate, identifier, "nickname"),record.get("name"));
+				if (stringValue(redisTemplate, identifier, "nickname") != null) {
+					String bcmsg = StrUtil.format("PWBC快讯：祝贺玩家<color=red>{}</color>获得英雄<color=red>{}</color>！", stringValue(redisTemplate, identifier, "nickname"), record.get("name"));
 					boardcaseWorldEvent(bcmsg);
 				}
-			}else {
+			} else {
 				//hero already exists
 				PlayerItemProtobuf.PlayerItem item = increaseItemValue(redisTemplate, identifier, "private_soulchip_" + id, Long.valueOf(record.get("chips") + ""));
 				reply.addItems(item);
 			}
 
-		}else {
+		} else {
 			log.info("invalid type");
 		}
 	}
@@ -625,7 +629,7 @@ public class Helper {
 		}
 	}
 
-	public static PlayerItemProtobuf.PlayerItem appedArchivesToReply(String key, long value){
+	public static PlayerItemProtobuf.PlayerItem appedArchivesToReply(String key, long value) {
 		PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
 				.newBuilder()
 				.setKey(key)
@@ -769,22 +773,22 @@ public class Helper {
 		}
 	}
 
-	public static PlayerItemProtobuf.PlayerItem promotionFoo(String key, Integer parameter, RedisTemplate redisTemplate, Integer identifier){
+	public static PlayerItemProtobuf.PlayerItem promotionFoo(String key, Integer parameter, RedisTemplate redisTemplate, Integer identifier) {
 		PlayerItemProtobuf.PlayerItem item = null;
 		Object now = null;
 		Map map = null;
-		switch (key){
+		switch (key) {
 			case "type_1_monster_kill":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "type_1_monster_kill", parameter);
 				item = appedArchivesToReply("type_1_monster_kill", Long.parseLong(now + ""));
 				break;
 			case "type_2_monster_kill":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "type_2_monster_kill", parameter);
-				item = appedArchivesToReply("type_2_monster_kill", Long.parseLong(now+""));
+				item = appedArchivesToReply("type_2_monster_kill", Long.parseLong(now + ""));
 				break;
 			case "type_3_monster_kill":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "type_3_monster_kill", parameter);
-				item = appedArchivesToReply("type_3monster_kill", Long.parseLong(now+""));
+				item = appedArchivesToReply("type_3monster_kill", Long.parseLong(now + ""));
 				break;
 			case "type_1_boss_kill":
 				map = new HashMap();
@@ -812,28 +816,28 @@ public class Helper {
 				break;
 			case "cuthand":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "cuthand", parameter);
-				item = appedArchivesToReply("cuthand", Long.parseLong(now+""));
+				item = appedArchivesToReply("cuthand", Long.parseLong(now + ""));
 				break;
 			case "mostheros":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "mostheros", parameter);
-				item = appedArchivesToReply("mostheros", Long.parseLong(now+""));
+				item = appedArchivesToReply("mostheros", Long.parseLong(now + ""));
 				break;
 			case "mosthire":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "mosthire", parameter);
-				item = appedArchivesToReply("mosthire", Long.parseLong(now+""));
+				item = appedArchivesToReply("mosthire", Long.parseLong(now + ""));
 				break;
 			case "kingofpvp":
 				Map archives = (HashMap) redisTemplate.opsForHash().get("u:" + identifier + ":archives", "kingofpvp");
-				log.info("{}",archives);
-				log.info("{}, {}",identifier, parameter);
-				if (archives!=null){
-					if (archives.get("kingofpvp")==null){
+				log.info("{}", archives);
+				log.info("{}, {}", identifier, parameter);
+				if (archives != null) {
+					if (archives.get("kingofpvp") == null) {
 						archives.put("kingofpvp", parameter);
 						redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
 						item = appedArchivesToReply("kingofpvp", parameter);
-					}else {
-						if (archives.get("kingofpvp")!=null && parameter<=Integer.parseInt(archives.get("kingofpvp")+"")){
-							archives.put("kingofpvp",parameter);
+					} else {
+						if (archives.get("kingofpvp") != null && parameter <= Integer.parseInt(archives.get("kingofpvp") + "")) {
+							archives.put("kingofpvp", parameter);
 							redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
 							item = appedArchivesToReply("kingofpvp", parameter);
 						}
@@ -842,63 +846,63 @@ public class Helper {
 				break;
 			case "tempbackpack":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "tempbackpack", parameter);
-				item = appedArchivesToReply("tempbackpack", Long.parseLong(now+""));
+				item = appedArchivesToReply("tempbackpack", Long.parseLong(now + ""));
 				break;
 			case "expbooks":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "expbooks", parameter);
-				item = appedArchivesToReply("expbooks", Long.parseLong(now+""));
+				item = appedArchivesToReply("expbooks", Long.parseLong(now + ""));
 				break;
 			case "consumeexpbooks":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "consumeexpbooks", parameter);
-				item = appedArchivesToReply("consumeexpbooks", Long.parseLong(now+""));
+				item = appedArchivesToReply("consumeexpbooks", Long.parseLong(now + ""));
 				break;
 			case "maxgold":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "maxgold", parameter);
-				item = appedArchivesToReply("maxgold", Long.parseLong(now+""));
+				item = appedArchivesToReply("maxgold", Long.parseLong(now + ""));
 				break;
 			case "maxhonor":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "maxhonor", parameter);
-				item = appedArchivesToReply("maxhonor", Long.parseLong(now+""));
+				item = appedArchivesToReply("maxhonor", Long.parseLong(now + ""));
 				break;
 			case "maxtopskills":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "maxtopskills", parameter);
-				item = appedArchivesToReply("maxtopskills", Long.parseLong(now+""));
+				item = appedArchivesToReply("maxtopskills", Long.parseLong(now + ""));
 				break;
 			case "daily_skill_upgrade":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_skill_upgrade", parameter);
-				item = appedArchivesToReply("daily_skill_upgrade", Long.parseLong(now+""));
+				item = appedArchivesToReply("daily_skill_upgrade", Long.parseLong(now + ""));
 				break;
 			case "daily_pvp_times":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_monster_kill", parameter);
-				item = appedArchivesToReply("daily_monster_kill", Long.parseLong(now+""));
+				item = appedArchivesToReply("daily_monster_kill", Long.parseLong(now + ""));
 				break;
 			case "daily_monster_kill":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_pvp_times", parameter);
-				item = appedArchivesToReply("daily_pvp_times", Long.parseLong(now+""));
+				item = appedArchivesToReply("daily_pvp_times", Long.parseLong(now + ""));
 				break;
 			case "daily_exp_book_consume":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_exp_book_consume", parameter);
-				item = appedArchivesToReply("daily_exp_book_consume", Long.parseLong(now+""));
+				item = appedArchivesToReply("daily_exp_book_consume", Long.parseLong(now + ""));
 				break;
 			case "daily_buy_hero":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_buy_hero", parameter);
-				item = appedArchivesToReply("daily_buy_hero", Long.parseLong(now+""));
+				item = appedArchivesToReply("daily_buy_hero", Long.parseLong(now + ""));
 				break;
 			case "daily_type_1_monster_kill":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_type_1_monster_kill", parameter);
-				item = appedArchivesToReply("daily_type_1_monster_kill", Long.parseLong(now+""));
+				item = appedArchivesToReply("daily_type_1_monster_kill", Long.parseLong(now + ""));
 				break;
 			case "daily_type_2_monster_kill":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_type_2_monster_kill", parameter);
-				item = appedArchivesToReply("daily_type_2_monster_kill", Long.parseLong(now+""));
+				item = appedArchivesToReply("daily_type_2_monster_kill", Long.parseLong(now + ""));
 				break;
 			case "daily_type_3_monster_kill":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_type_3_monster_kill", parameter);
-				item = appedArchivesToReply("daily_type_3_monster_kill", Long.parseLong(now+""));
+				item = appedArchivesToReply("daily_type_3_monster_kill", Long.parseLong(now + ""));
 				break;
 			case "daily_store_buy_times":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_store_buy_times", parameter);
-				item = appedArchivesToReply("daily_store_buy_times", Long.parseLong(now+""));
+				item = appedArchivesToReply("daily_store_buy_times", Long.parseLong(now + ""));
 				break;
 			default:
 				break;
@@ -910,7 +914,7 @@ public class Helper {
 		promotionFoo(key, parameter, redisTemplate, identifier, reply);
 	}
 
-	public static PlayerItemProtobuf.PlayerItem onNotifyEventOfPromotions(RedisTemplate redisTemplate, String key, Integer parameter, Integer identifier){
+	public static PlayerItemProtobuf.PlayerItem onNotifyEventOfPromotions(RedisTemplate redisTemplate, String key, Integer parameter, Integer identifier) {
 		return promotionFoo(key, parameter, redisTemplate, identifier);
 	}
 
@@ -1251,6 +1255,114 @@ public class Helper {
 		} else {
 			log.info("unknow store type");
 		}
+	}
+
+
+	/**
+	 * 更新临时背包
+	 *
+	 * @param redisTemplate
+	 * @param identifier
+	 * @param request
+	 * @param reply
+	 * @param monsters
+	 * @param goblins
+	 */
+	public static void updateTemporaryBackpack(RedisTemplate redisTemplate, Integer identifier, CommEnterDungeonRequestProtobuf.CommEnterDungeonRequest request,
+											   Channel reply, Integer monsters,
+											   Integer goblins) {
+		Formatter m = new Formatter();
+		Map<Object, Object> pack = redisTemplate.opsForHash().entries(m.format("u:%d:temp_backpack", identifier).toString());
+		onNotifyEventOfPromotions(redisTemplate, m.format("type_%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
+		onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier);
+		onNotifyEventOfPromotions(redisTemplate, m.format("daily_type__%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
+
+		Integer vip = itemCount(redisTemplate, identifier, "vip");
+
+		Long duration = current_timestamp() - (long) pack.get("dungeon_enter_timestamp");
+
+		RubyConst.RubyConstStageTableHash constStr = RubyConst.getRubyConstStageTableHash((int) pack.get("stage"));
+
+		int level = ToUtil.to_i(pack.get("level")) - 1;
+
+		long exp_delta = duration * constStr.getBasicAwardFomula().getExp();
+
+
+		if (redisTemplate.opsForHash().hasKey(m.format("u:#{identifier}:items", identifier).toString(), "double_exp_card_2")) {
+			double ratio = 1.0;
+			if (vip != 0) {
+				ratio = 2 + vip / 10.0;
+			}
+			exp_delta *= ratio;
+		}
+
+		Integer exp_max = RubyConst.getRubyConstBackpackTable(level).getExp_max();
+		if (redisTemplate.opsForHash().increment(m.format("u:%d:temp_backpack_items", identifier).toString(), "exp", exp_delta) >
+				exp_max) {
+			redisTemplate.opsForHash().put(m.format("u:%d:temp_backpack_items", identifier), "exp", exp_max);
+		}
+
+		long gold_delta = duration * constStr.getBasicAwardFomula().getGold();
+
+		Integer gold_max = RubyConst.getRubyConstBackpackTable(level).getGold_max();
+		if (redisTemplate.opsForHash().increment(String.format("u:%d:temp_backpack_items", identifier), "gold", gold_delta) >
+				gold_max) {
+			redisTemplate.opsForHash().put(String.format("u:%d:temp_backpack_items", identifier), "gold", gold_max);
+		}
+
+		//计算小怪收益
+		if (monsters != null && monsters > 0) {
+			Integer itemCount = itemCount(redisTemplate, identifier, String.format("dungeon_%s_not_passed_stage", pack.get("type")));
+			String drop_action = itemCount.equals(ToUtil.to_i(pack.get("stage"))) ? constStr.getMonstersKilledAwardFomula().getDropid() : constStr.getMonstersKilledAwardFomula().getDropid_bosskilled();
+			for (int i = 0; i <= monsters; i++) {
+				if (drop_action.contains("pvemon")) {
+					dropItemPvemon(redisTemplate, identifier, reply, true, null);
+				} else if (drop_action.contains("pvebk")) {
+					dropItemPvebk(redisTemplate, identifier, reply, true, null);
+				}
+			}
+		}
+
+		//计算哥布林收益
+		if (goblins != null && goblins > 0) {
+			for (int i = 0; i <= goblins; i++) {
+				/**
+				 * drop_goblin = DROP_ITEMS[const['goblin_fomula']['dropid']]
+				 * drop_goblin.call(identifier,  reply, true, nil)
+				 */
+				//String drop_goblin = constStr.getGoblinFomula().getDropid();
+				drop_item_goblins(redisTemplate, identifier, reply, true, null);
+			}
+		}
+
+		Map<String, Object> items = redisTemplate.opsForHash().entries(String.format("u:%d:temp_backpack_items", identifier));
+		Set<String> itemsKey = items.keySet();
+		for (String s : itemsKey) {
+			PlayerItemProtobuf.PlayerItem.Builder builder = PlayerItemProtobuf.PlayerItem.newBuilder();
+			builder.setKey(s);
+			builder.setValue(ToUtil.to_i(items.get(s)));
+			//TODO reply.items.push(item)
+		}
+
+		redisTemplate.opsForHash().put(String.format("u:%d:temp_backpack", identifier), "dungeon_enter_timestamp", current_timestamp());
+
+
+	}
+
+	private static long current_timestamp() {
+		return System.currentTimeMillis() / 1000 + 28800;
+	}
+
+	private static void dropItemPvemon(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
+
+	}
+
+	private static void dropItemPvebk(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
+
+	}
+
+	private static void drop_item_goblins(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
+
 	}
 
 }
