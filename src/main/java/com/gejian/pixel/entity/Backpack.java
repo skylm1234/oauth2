@@ -13,7 +13,7 @@ public class Backpack {
 	 * 
 	 */
 	@TableField("level")
-	private String level;
+	private Integer level;
 
 	/**
 	 * 

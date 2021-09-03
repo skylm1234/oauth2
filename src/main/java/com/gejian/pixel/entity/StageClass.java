@@ -16,13 +16,16 @@ public class StageClass {
 	 * 主键
 	 */
 	@TableId(value = "id", type = IdType.AUTO)
-	private Long id;
+	private Integer id;
 
 	/**
 	 * 
 	 */
 	@TableField("class_type")
-	private String classType;
+	private Integer classType;
+
+	@TableField("name")
+	private String name;
 
 
 }

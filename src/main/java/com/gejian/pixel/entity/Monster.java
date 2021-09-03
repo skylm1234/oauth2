@@ -6,9 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import lombok.Data;
 
-import java.util.Date;
-import java.math.BigDecimal;
-
 @Data
 @TableName("monster")
 public class Monster {
@@ -16,7 +13,7 @@ public class Monster {
 	 * 主键
 	 */
 	@TableId(value = "id", type = IdType.AUTO)
-	private Long id;
+	private Integer id;
 
 	/**
 	 * 

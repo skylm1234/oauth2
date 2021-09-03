@@ -19,7 +19,7 @@ public class LevelUpgrade {
 	 * 
 	 */
 	@TableField("lv")
-	private String lv;
+	private Integer lv;
 
 	/**
 	 * 

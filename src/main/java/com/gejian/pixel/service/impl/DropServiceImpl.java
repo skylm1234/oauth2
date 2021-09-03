@@ -239,7 +239,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 				int level = Integer.parseInt(String.valueOf(entries.get("level")));
 				level -= 1;
 				int max = 0;
-				Backpack backpack = backpackService.getByLevel(String.valueOf(level));
+				Backpack backpack = backpackService.getByLevel(level);
 				if ("gold".equals(type)) {
 					max = backpack.getGoldMax();
 				} else if ("exp".equals(type)) {
