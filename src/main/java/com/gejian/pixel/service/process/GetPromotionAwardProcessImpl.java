@@ -10,6 +10,7 @@ import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.Promotion;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
+import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.service.init.PromotionInit;
 import com.gejian.pixel.utils.Helper;
@@ -38,6 +39,9 @@ public class GetPromotionAwardProcessImpl implements
 
 	@Autowired
 	private PromotionInit promotionInit;
+
+	@Autowired
+	private DropService dropService;
 
 	@Override
 	public CommGetPromotionAwardResponseProtobuf.CommGetPromotionAwardResponse
@@ -102,10 +106,12 @@ public class GetPromotionAwardProcessImpl implements
 					.build();
 		}
 		jsonObject.putOnce("#{p}",1);
-		// TODO DROP ITEMS
 		String award = promotion.getAward();
 		// 获取DROP ITEMS对应的数据
-
+		PlayerInfoProtobuf.PlayerInfo playerInfo = dropService
+				.dropItem(award, identifier, false, "archives");
+		response.addAllHeros(playerInfo.getHerosList());
+		response.addAllItems(playerInfo.getItemsList());
 		String s = jsonObject.toString();
 		PlayerStringProtobuf.PlayerString playerString = Helper.setStringValue(redisTemplate, identifier, skName, s);
 		return response.addStrings(playerString)
