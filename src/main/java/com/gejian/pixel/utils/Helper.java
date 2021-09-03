@@ -21,6 +21,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLOutput;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -582,15 +583,15 @@ public class Helper {
                 end
 				 */
 				updateRanklistPower(redisTemplate, identifier, reply);
-				if (reply!=null) {
+				if (reply != null) {
 					reply.addHeros(hero);
 				}
 
-				if (stringValue(redisTemplate, identifier, "nickname")!=null) {
-					String bcmsg = StrUtil.format("PWBC快讯：祝贺玩家<color=red>{}</color>获得英雄<color=red>{}</color>！",stringValue(redisTemplate, identifier, "nickname"),record.get("name"));
+				if (stringValue(redisTemplate, identifier, "nickname") != null) {
+					String bcmsg = StrUtil.format("PWBC快讯：祝贺玩家<color=red>{}</color>获得英雄<color=red>{}</color>！", stringValue(redisTemplate, identifier, "nickname"), record.get("name"));
 					boardcaseWorldEvent(bcmsg);
 				}
-			}else {
+			} else {
 				//hero already exists
 				PlayerItemProtobuf.PlayerItem item = increaseItemValue(redisTemplate, identifier, "private_soulchip_" + id, Long.valueOf(record.get("chips") + ""));
 				reply.addItems(item);
@@ -648,7 +649,7 @@ public class Helper {
 				break;
 			case "cuthand":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "cuthand", parameter);
-				item = appedArchivesToReply("cuthand", Long.parseLong(now+""));
+				item = appedArchivesToReply("cuthand", Long.parseLong(now + ""));
 				break;
 			case "mostheros":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "mostheros", parameter);
@@ -1083,6 +1084,114 @@ public class Helper {
 		} else {
 			log.info("unknow store type");
 		}
+	}
+
+
+	/**
+	 * 更新临时背包
+	 *
+	 * @param redisTemplate
+	 * @param identifier
+	 * @param request
+	 * @param reply
+	 * @param monsters
+	 * @param goblins
+	 */
+	public static void updateTemporaryBackpack(RedisTemplate redisTemplate, Integer identifier, CommEnterDungeonRequestProtobuf.CommEnterDungeonRequest request,
+											   Channel reply, Integer monsters,
+											   Integer goblins) {
+		Formatter m = new Formatter();
+		Map<Object, Object> pack = redisTemplate.opsForHash().entries(m.format("u:%d:temp_backpack", identifier).toString());
+		onNotifyEventOfPromotions(redisTemplate, m.format("type_%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
+		onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier);
+		onNotifyEventOfPromotions(redisTemplate, m.format("daily_type__%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
+
+		Integer vip = itemCount(redisTemplate, identifier, "vip");
+
+		Long duration = current_timestamp() - (long) pack.get("dungeon_enter_timestamp");
+
+		RubyConst.RubyConstStageTableHash constStr = RubyConst.getRubyConstStageTableHash((int) pack.get("stage"));
+
+		int level = ToUtil.to_i(pack.get("level")) - 1;
+
+		long exp_delta = duration * constStr.getBasicAwardFomula().getExp();
+
+
+		if (redisTemplate.opsForHash().hasKey(m.format("u:#{identifier}:items", identifier).toString(), "double_exp_card_2")) {
+			double ratio = 1.0;
+			if (vip != 0) {
+				ratio = 2 + vip / 10.0;
+			}
+			exp_delta *= ratio;
+		}
+
+		Integer exp_max = RubyConst.getRubyConstBackpackTable(level).getExp_max();
+		if (redisTemplate.opsForHash().increment(m.format("u:%d:temp_backpack_items", identifier).toString(), "exp", exp_delta) >
+				exp_max) {
+			redisTemplate.opsForHash().put(m.format("u:%d:temp_backpack_items", identifier), "exp", exp_max);
+		}
+
+		long gold_delta = duration * constStr.getBasicAwardFomula().getGold();
+
+		Integer gold_max = RubyConst.getRubyConstBackpackTable(level).getGold_max();
+		if (redisTemplate.opsForHash().increment(String.format("u:%d:temp_backpack_items", identifier), "gold", gold_delta) >
+				gold_max) {
+			redisTemplate.opsForHash().put(String.format("u:%d:temp_backpack_items", identifier), "gold", gold_max);
+		}
+
+		//计算小怪收益
+		if (monsters != null && monsters > 0) {
+			Integer itemCount = itemCount(redisTemplate, identifier, String.format("dungeon_%s_not_passed_stage", pack.get("type")));
+			String drop_action = itemCount.equals(ToUtil.to_i(pack.get("stage"))) ? constStr.getMonstersKilledAwardFomula().getDropid() : constStr.getMonstersKilledAwardFomula().getDropid_bosskilled();
+			for (int i = 0; i <= monsters; i++) {
+				if (drop_action.contains("pvemon")) {
+					dropItemPvemon(redisTemplate, identifier, reply, true, null);
+				} else if (drop_action.contains("pvebk")) {
+					dropItemPvebk(redisTemplate, identifier, reply, true, null);
+				}
+			}
+		}
+
+		//计算哥布林收益
+		if (goblins != null && goblins > 0) {
+			for (int i = 0; i <= goblins; i++) {
+				/**
+				 * drop_goblin = DROP_ITEMS[const['goblin_fomula']['dropid']]
+				 * drop_goblin.call(identifier,  reply, true, nil)
+				 */
+				//String drop_goblin = constStr.getGoblinFomula().getDropid();
+				drop_item_goblins(redisTemplate, identifier, reply, true, null);
+			}
+		}
+
+		Map<String, Object> items = redisTemplate.opsForHash().entries(String.format("u:%d:temp_backpack_items", identifier));
+		Set<String> itemsKey = items.keySet();
+		for (String s : itemsKey) {
+			PlayerItemProtobuf.PlayerItem.Builder builder = PlayerItemProtobuf.PlayerItem.newBuilder();
+			builder.setKey(s);
+			builder.setValue(ToUtil.to_i(items.get(s)));
+			//TODO reply.items.push(item)
+		}
+
+		redisTemplate.opsForHash().put(String.format("u:%d:temp_backpack", identifier), "dungeon_enter_timestamp", current_timestamp());
+
+
+	}
+
+	private static long current_timestamp() {
+		return System.currentTimeMillis() / 1000 + 28800;
+	}
+
+	private static void dropItemPvemon(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
+
+	}
+
+	private static void dropItemPvebk(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
+
+	}
+
+	private static void drop_item_goblins(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
+
 	}
 
 }
