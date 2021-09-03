@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.LevelUpgradeMapper">
+
+    <resultMap id="LevelUpgradeRM" type="com.gejian.pixel.entity.LevelUpgrade">
+		<result property="id" column="id"/>
+		<result property="lv" column="lv"/>
+		<result property="start0" column="start0"/>
+		<result property="start1" column="start1"/>
+		<result property="start2" column="start2"/>
+		<result property="start3" column="start3"/>
+		<result property="start4" column="start4"/>
+		<result property="start5" column="start5"/>
+		<result property="start6" column="start6"/>
+		<result property="start7" column="start7"/>
+		<result property="start8" column="start8"/>
+		<result property="start9" column="start9"/>
+		<result property="start10" column="start10"/>
+		<result property="start11" column="start11"/>
+		<result property="start12" column="start12"/>
+		<result property="start13" column="start13"/>
+		<result property="start14" column="start14"/>
+		<result property="start15" column="start15"/>
+		<result property="start16" column="start16"/>
+		<result property="start17" column="start17"/>
+		<result property="start18" column="start18"/>
+		<result property="start19" column="start19"/>
+		<result property="start20" column="start20"/>
+		<result property="start21" column="start21"/>
+		<result property="start22" column="start22"/>
+		<result property="start23" column="start23"/>
+		<result property="start24" column="start24"/>
+		<result property="start25" column="start25"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`lv`,`start0`,`start1`,`start2`,`start3`,`start4`,`start5`,`start6`,`start7`,`start8`,`start9`,`start10`,`start11`,`start12`,
+		`start13`,`start14`,`start15`,`start16`,`start17`,`start18`,`start19`,`start20`,`start21`,`start22`,`start23`,`start24`,`start25`
+	</sql>
+
+</mapper>
