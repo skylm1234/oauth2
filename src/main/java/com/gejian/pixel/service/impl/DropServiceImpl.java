@@ -5,7 +5,6 @@ import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONArray;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.Backpack;
@@ -26,12 +25,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.xnio.channels.SuspendableAcceptChannel;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * Auto created by codeAppend plugin
@@ -284,10 +280,22 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 		 *         if factor <= ar[i][1] then return i end
 		 *     end
 		 */
-		Integer probability = list.get(list.size() - 1).getProbability();
 		// 掉落几率
-		int randomNum = probability < 100 ? 100 : probability;
-		return RandomUtil.randomInt(randomNum);
+		Integer randomNum = 0;
+		Integer probability = list.get(list.size() - 1).getProbability();
+		if (probability<100) {
+			randomNum = RandomUtil.randomInt(100);
+		}else {
+			randomNum = RandomUtil.randomInt(probability);
+		}
+
+		for (int i = 0; i < list.size(); i++) {
+			if (randomNum <= list.get(i).getProbability()){
+				return i;
+			}
+		}
+
+		return randomNum;
 	}
 
 	/**
