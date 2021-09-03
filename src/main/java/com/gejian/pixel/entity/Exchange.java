@@ -15,8 +15,8 @@ public class Exchange {
 /**
 	 * 主键
 	 */
-	@TableId(value = "id", type = IdType.AUTO)
-	private Long id;
+	@TableId(value = "type")
+	private Integer type;
 
 	/**
 	 * 
@@ -27,20 +27,15 @@ public class Exchange {
 	/**
 	 * 
 	 */
-	@TableField("desc")
+	@TableField("`desc`")
 	private String desc;
 
-	/**
-	 * 
-	 */
-	@TableField("icon")
-	private String icon;
 
 	/**
 	 * 
 	 */
-	@TableField("cost")
-	private Integer cost;
+	@TableField("amount")
+	private Integer amount;
 
 
 }

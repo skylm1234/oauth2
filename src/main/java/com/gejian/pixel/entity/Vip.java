@@ -16,7 +16,7 @@ public class Vip {
 	 * 主键
 	 */
 	@TableId(value = "id", type = IdType.AUTO)
-	private Long id;
+	private Integer id;
 
 	/**
 	 * 
@@ -46,7 +46,7 @@ public class Vip {
 	 * 
 	 */
 	@TableField("chanllege")
-	private String chanllege;
+	private Integer chanllege;
 
 	/**
 	 * 
@@ -87,7 +87,7 @@ public class Vip {
 	/**
 	 * 
 	 */
-	@TableField("des")
+	@TableField("`des`")
 	private String des;
 
 	/**

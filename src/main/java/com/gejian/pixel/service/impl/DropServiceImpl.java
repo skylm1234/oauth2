@@ -13,11 +13,9 @@ import com.gejian.pixel.entity.LevelUpgrade;
 import com.gejian.pixel.ext.DropExt;
 import com.gejian.pixel.mapper.DropMapper;
 import com.gejian.pixel.model.DropItem;
-import com.gejian.pixel.proto.HeroBasicInfoProtobuf;
-import com.gejian.pixel.proto.HeroSkillProtobuf;
-import com.gejian.pixel.proto.PlayerInfoProtobuf;
-import com.gejian.pixel.proto.PlayerItemProtobuf;
+import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.BackpackService;
+import com.gejian.pixel.service.ConstantsProto;
 import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.LevelUpgradeService;
 import com.gejian.pixel.utils.Helper;
@@ -33,9 +31,11 @@ import java.util.*;
  * Auto created by codeAppend plugin
  */
 @Service
-public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements DropService {
+public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements DropService, ConstantsProto {
 
 	private Map<String, DropExt> hash = new HashMap<>();
+
+	private List<ConstDropTableItemExProtobuf.ConstDropTableItemEx> table = new ArrayList();
 
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
@@ -57,8 +57,17 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 				dropExt.setDesc(drop.getDesc());
 				dropExt.setContents(convertContentStr(drop.getContent()));
 				hash.put(drop.getId(), dropExt);
+				table.add(convert(drop));
 			});
 		}
+	}
+
+	private ConstDropTableItemExProtobuf.ConstDropTableItemEx convert(Drop drop) {
+		return ConstDropTableItemExProtobuf.ConstDropTableItemEx.newBuilder()
+				.setContent(drop.getContent())
+				.setDesc(drop.getDesc())
+				.setId(drop.getId())
+				.build();
 	}
 
 	/**
@@ -370,4 +379,12 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 	}
 
 
+	@Override
+	public void build(ConstTablesProtobuf.ConstTables.Builder builder) {
+		ConstDropTableProtobuf.ConstDropTable build = ConstDropTableProtobuf.ConstDropTable
+				.newBuilder()
+				.addAllItems(table)
+				.build();
+		builder.setDrops(build);
+	}
 }

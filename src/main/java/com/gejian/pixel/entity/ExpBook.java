@@ -6,41 +6,44 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import lombok.Data;
 
-import java.util.Date;
-import java.math.BigDecimal;
-
 @Data
-@TableName("quality_upgrade")
-public class QualityUpgrade {
+@TableName("exp_book")
+public class ExpBook {
 /**
 	 * 主键
 	 */
 	@TableId(value = "id", type = IdType.AUTO)
-	private Integer id;
+	private String id;
 
 	/**
-	 * 
+	 * 名称
 	 */
-	@TableField("quality")
-	private Integer quality;
+	@TableField("name")
+	private String name;
 
 	/**
-	 * 
+	 * 简介
 	 */
-	@TableField("`desc`")
+	@TableField("desc")
 	private String desc;
 
 	/**
-	 * 
+	 * 经验值
 	 */
-	@TableField("consume_expand")
-	private String consumeExpand;
+	@TableField("value")
+	private Integer value;
 
 	/**
-	 * 
+	 * 颜色
 	 */
-	@TableField("consume")
-	private String consume;
+	@TableField("quality")
+	private String quality;
+
+	/**
+	 * 图标
+	 */
+	@TableField("icon")
+	private String icon;
 
 
 }
