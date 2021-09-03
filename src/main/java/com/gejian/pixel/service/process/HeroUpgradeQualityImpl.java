@@ -5,11 +5,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
+import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.ToUtil;
+import com.gejian.pixel.utils.UserHolder;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.Data;
@@ -47,18 +49,16 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 		CommHeroUpgradeQualityResponseProtobuf.CommHeroUpgradeQualityResponse.Builder reply = CommHeroUpgradeQualityResponseProtobuf.CommHeroUpgradeQualityResponse.newBuilder();
 		reply.setRequest(commHeroUpgradeQualityRequest);
 
-		//获取当前channel
-		Channel channel = ChannelHolder.get();
 		//TODO 不晓得是啥
-		Integer identifier = 123;
+		UserInfo userInfo = UserHolder.get();
+		Integer identifier = userInfo.getIdentifier();
 
 		String hero = commHeroUpgradeQualityRequest.getHero();
 
 		//当前方法名
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
 
-		Formatter formatter = new Formatter();
-		String redisKey = formatter.format("u:%d:%s:attributes", identifier, hero).toString();
+		String redisKey = String.format("u:%d:%s:attributes", identifier, hero);
 		if (!redisTemplate.hasKey(redisKey)) {
 			log.error("FAILED: {}=>{}:{}", identifier, methodName, Thread.currentThread().getStackTrace()[1].getLineNumber());
 			return reply.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
@@ -120,12 +120,12 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 
 				String power = heroMap.get("hp").toString() + heroMap.get("def").toString() + heroMap.get("attack").toString() + heroMap.get("speed").toString();
 				//设置power
-				redisTemplate.opsForHash().put(formatter.format("u:%d:heros", identifier).toString(), heroMap.get("type"), power);
+				redisTemplate.opsForHash().put(String.format("u:%d:heros", identifier), heroMap.get("type"), power);
 				//存个map
-				redisTemplate.opsForHash().putAll(formatter.format("u:%d:%s:attributes", identifier, heroMap.get("type")).toString(), heroMap);
+				redisTemplate.opsForHash().putAll(String.format("u:%d:%s:attributes", identifier, heroMap.get("type")), heroMap);
 
 				PlayerItemProtobuf.PlayerItem playerItem = Helper.updateRanklistPower(redisTemplate, identifier);
-				if (Objects.nonNull(playerItem)){
+				if (Objects.nonNull(playerItem)) {
 					reply.addItems(playerItem);
 				}
 
@@ -134,7 +134,7 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 
 				heroBasicInfo.setNumber(1);
 
-				Map<Object, Object> skillsMap = redisTemplate.opsForHash().entries(formatter.format("u:%d:%s:skills", identifier, hero));
+				Map<Object, Object> skillsMap = redisTemplate.opsForHash().entries(String.format("u:%d:%s:skills", identifier, hero));
 				Set<Object> skillKey = skillsMap.keySet();
 				for (Object o : skillKey) {
 					HeroSkillProtobuf.HeroSkill.Builder skill = HeroSkillProtobuf.HeroSkill.newBuilder();
