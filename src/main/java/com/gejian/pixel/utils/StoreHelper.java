@@ -49,10 +49,10 @@ public class StoreHelper {
 			String storeKey = getStoreKey(identifier, type);
 			Map items = this.redisTemplate.opsForHash().entries(storeKey);
 			this.buyStoreItemHelper(identifier, request, builder, items);
-			// TODO reply
-			Helper.onNotifyEventOfPromotions(redisTemplate, "cuthand", 1, identifier, null);
-			// TODO reply
-			Helper.onNotifyEventOfPromotions(redisTemplate, "daily_store_buy_times", 1, identifier, null);
+			PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "cuthand", 1, identifier);
+			builder.addItems(playerItem);
+			PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "daily_store_buy_times", 1, identifier);
+			builder.addItems(playerItem1);
 		} else {
 			builder.setResult(ErrorEnum.ERROR_INVALID_PARAMETER_STORE_ITEM);
 		}

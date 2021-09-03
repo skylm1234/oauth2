@@ -4,6 +4,7 @@ import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.proto.CommGetPvpVictoryAwardRequestProtobuf;
 import com.gejian.pixel.proto.CommGetPvpVictoryAwardResponseProtobuf;
+import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
@@ -29,23 +30,27 @@ public class CommGetPvpVictoryAwardRequestImpl implements Process<CommGetPvpVict
 	private RedisTemplate redisTemplate;
 
 	@Override
-	public CommGetPvpVictoryAwardResponseProtobuf.CommGetPvpVictoryAwardResponse doProcess(CommGetPvpVictoryAwardRequestProtobuf.CommGetPvpVictoryAwardRequest request) throws Exception {
+	public CommGetPvpVictoryAwardResponseProtobuf.CommGetPvpVictoryAwardResponse
+	doProcess(CommGetPvpVictoryAwardRequestProtobuf.CommGetPvpVictoryAwardRequest request) throws Exception {
 
-		//获取当前channel
-		Channel channel = ChannelHolder.get();
-
+		CommGetPvpVictoryAwardResponseProtobuf.CommGetPvpVictoryAwardResponse.Builder builder
+				= CommGetPvpVictoryAwardResponseProtobuf
+				.CommGetPvpVictoryAwardResponse.newBuilder();
 		int type = request.getType();
 		if (type == 1) {
 			Helper.increaseItemValue(redisTemplate, identifier, "pvp_vectory_times", 1L);
 			Helper.increaseItemValue(redisTemplate, identifier, "honor", 1L);
 			Helper.increaseItemValue(redisTemplate, identifier, "total_honor", 1L);
 
-			Helper.updateRanklistHonor(redisTemplate, identifier, channel);
-			Helper.onNotifyEventOfPromotions(redisTemplate, "maxhonor", 1, identifier, channel);
+			PlayerItemProtobuf.PlayerItem playerItem = Helper.updateRanklistHonor(redisTemplate, identifier);
+			PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "maxhonor", 1, identifier);
+
+			builder.addItems(playerItem)
+					.addItems(playerItem1);
 
 		} else if (type == 3) {
 			//TODO
 		}
-		return null;
+		return builder.build();
 	}
 }
