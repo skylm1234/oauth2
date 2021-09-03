@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.BackpackMapper">
+
+    <resultMap id="BackpackRM" type="com.gejian.pixel.entity.Backpack">
+		<result property="level" column="level"/>
+		<result property="goldMax" column="gold_max"/>
+		<result property="expMax" column="exp_max"/>
+		<result property="itemMax" column="item_max"/>
+		<result property="fomula" column="fomula"/>
+		<result property="prerequests" column="prerequests"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `level`,`gold_max`,`exp_max`,`item_max`,`fomula`,`prerequests`
+	</sql>
+
+</mapper>

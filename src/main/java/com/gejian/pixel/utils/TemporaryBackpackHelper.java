@@ -27,16 +27,14 @@ public class TemporaryBackpackHelper {
 										CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse response, int monsters, int goblins) {
 		String tempBackpackKey = this.getTempBackpackKey(identifier);
 		Map<Object, Object> pack = this.redisTemplate.opsForHash().entries(tempBackpackKey);
+		CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.Builder builder = response.toBuilder();
 
-		// TODO	reply
-		Helper.onNotifyEventOfPromotions(redisTemplate, "type_" + pack.get("type").toString() + "_monster_kill", monsters, identifier, null);
-
-		// TODO	reply
-		Helper.onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier, null);
-
-		// TODO	reply
-		Helper.onNotifyEventOfPromotions(redisTemplate, "daily_type_" + pack.get("type").toString() + "_monster_kill", monsters, identifier, null);
-
+		PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "type_" + pack.get("type").toString() + "_monster_kill", monsters, identifier);
+		builder.addItems(playerItem);
+		PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier);
+		builder.addItems(playerItem1);
+		PlayerItemProtobuf.PlayerItem playerItem2 = Helper.onNotifyEventOfPromotions(redisTemplate, "daily_type_" + pack.get("type").toString() + "_monster_kill", monsters, identifier);
+		builder.addItems(playerItem2);
 
 		int vip = Helper.itemCount(redisTemplate, identifier, "vip");
 
@@ -208,7 +206,8 @@ public class TemporaryBackpackHelper {
 					this.redisTemplate.opsForHash().put(herosKey, attributes.get("type"), power);
 
 					// TODO reply
-					Helper.updateRanklistHonor(redisTemplate, identifier, null);
+					PlayerItemProtobuf.PlayerItem playerItem = Helper.updateRanklistHonor(redisTemplate, identifier);
+
 
 					// TODO 设置属性
 					HeroBasicInfoProtobuf.HeroBasicInfo.Builder heroBasicInfoBuilder = this.heroBasicInfoBuilder(attributes);
@@ -225,10 +224,10 @@ public class TemporaryBackpackHelper {
 				Helper.increaseItemValue(redisTemplate, identifier, item.toString(), this.parseLong(number));
 				if (item.toString().startsWith("exp_book_")) {
 					// TODO  reply
-					Helper.onNotifyEventOfPromotions(redisTemplate, "expbooks", this.parseInt(number), identifier, null);
+					PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "expbooks", this.parseInt(number), identifier);
 				} else if ("gold".equals(item.toString())) {
 					// TODO reply
-					Helper.onNotifyEventOfPromotions(redisTemplate, "maxgold", this.parseInt(number), identifier, null);
+					PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "maxgold", this.parseInt(number), identifier);
 				}
 			}
 		});

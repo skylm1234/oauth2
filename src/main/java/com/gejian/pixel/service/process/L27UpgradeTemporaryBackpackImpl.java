@@ -58,8 +58,9 @@ public class L27UpgradeTemporaryBackpackImpl implements Process<CommUpgradeTempo
 
 			this.redisTemplate.opsForHash().increment(tempBackpackKey, "level", 1);
 
-			// TODO reply
-			Helper.onNotifyEventOfPromotions(redisTemplate, "tempbackpack", identifier, 1, null);
+			PlayerItemProtobuf.PlayerItem playerItem1 = Helper
+					.onNotifyEventOfPromotions(redisTemplate, "tempbackpack", identifier, 1);
+			builder.addItems(playerItem1);
 		} else {
 			return builder.setResult(ErrorEnum.ERROR_NOT_ENOUGH_STONE).build();
 		}

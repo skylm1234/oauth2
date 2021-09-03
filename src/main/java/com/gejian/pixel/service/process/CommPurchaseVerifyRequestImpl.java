@@ -7,6 +7,7 @@ import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommPurchaseVerifyRequestProtobuf;
 import com.gejian.pixel.proto.CommPurchaseVerifyResponseProtobuf;
+import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
@@ -43,8 +44,6 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 	@Override
 	public CommPurchaseVerifyResponseProtobuf.CommPurchaseVerifyResponse doProcess(CommPurchaseVerifyRequestProtobuf.CommPurchaseVerifyRequest request) throws Exception {
 
-		//获取当前channel
-		Channel channel = ChannelHolder.get();
 
 		CommPurchaseVerifyResponseProtobuf.CommPurchaseVerifyResponse.Builder builder = CommPurchaseVerifyResponseProtobuf.CommPurchaseVerifyResponse.newBuilder();
 		builder.setRequest(request);
@@ -113,8 +112,10 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 				}
 
 				if (dirty) {
-					Helper.setItemValue(redisTemplate, String.valueOf(identifier), "vip", origin_vip, channel);
-					Helper.onNotifyEventOfPromotions(redisTemplate, "vip", origin_vip, identifier, channel);
+					PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), "vip", origin_vip);
+					PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "vip", origin_vip, identifier);
+					builder.addItems(playerItem)
+							.addItems(playerItem1);
 				}
 			}
 

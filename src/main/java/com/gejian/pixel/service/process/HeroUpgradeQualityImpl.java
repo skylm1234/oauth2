@@ -5,10 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
-import com.gejian.pixel.proto.CommHeroUpgradeQualityRequestProtobuf;
-import com.gejian.pixel.proto.CommHeroUpgradeQualityResponseProtobuf;
-import com.gejian.pixel.proto.HeroBasicInfoProtobuf;
-import com.gejian.pixel.proto.HeroSkillProtobuf;
+import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
@@ -127,7 +124,10 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 				//存个map
 				redisTemplate.opsForHash().putAll(formatter.format("u:%d:%s:attributes", identifier, heroMap.get("type")).toString(), heroMap);
 
-				Helper.updateRanklistPower(redisTemplate, identifier, channel);
+				PlayerItemProtobuf.PlayerItem playerItem = Helper.updateRanklistPower(redisTemplate, identifier);
+				if (Objects.nonNull(playerItem)){
+					reply.addItems(playerItem);
+				}
 
 				Map<Object, Object> newHeroMap = redisTemplate.opsForHash().entries(redisKey);
 				HeroBasicInfoProtobuf.HeroBasicInfo.Builder heroBasicInfo = JSON.parseObject(JSONObject.toJSONString(newHeroMap), HeroBasicInfoProtobuf.HeroBasicInfo.Builder.class);

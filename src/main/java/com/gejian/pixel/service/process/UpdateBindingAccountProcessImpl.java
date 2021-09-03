@@ -31,7 +31,6 @@ public class UpdateBindingAccountProcessImpl implements
 	@Override
 	public CommUpdateBindingAccountResponseProtobuf.CommUpdateBindingAccountResponse
 		doProcess(CommUpdateBindingAccountRequestProtobuf.CommUpdateBindingAccountRequest request) throws Exception {
-		log.info(CommandConstants.UPDATE_BINDING_ACCOUNT + "请求参数:{}",request);
 		UserInfo userInfo = UserHolder.get();
 		// 修改用户名密码
 		Helper

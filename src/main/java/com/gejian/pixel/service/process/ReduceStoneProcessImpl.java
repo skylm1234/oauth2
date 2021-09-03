@@ -28,7 +28,6 @@ public class ReduceStoneProcessImpl implements
 	@Override
 	public CommReduceStoneResponseProtobuf.CommReduceStoneResponse
 	doProcess(CommReduceStoneRequestProtobuf.CommReduceStoneRequest request) throws Exception {
-		log.info(CommandConstants.REDUCE_STONE + "请求参数:{}", request);
 		UserInfo userInfo = UserHolder.get();
 		PlayerItemProtobuf.PlayerItem stone = Helper.increaseItemValue(redisTemplate,
 				userInfo.getIdentifier(), "stone", -1L * request.getAmount());
