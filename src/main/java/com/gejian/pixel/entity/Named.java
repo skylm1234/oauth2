@@ -33,7 +33,7 @@ public class Named {
 	/**
 	 * 
 	 */
-	@TableField("desc")
+	@TableField("`desc`")
 	private String desc;
 
 
