@@ -3,17 +3,19 @@ package com.gejian.pixel.service.process;
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
-import com.gejian.pixel.proto.CommEnterDungeonRequestProtobuf;
-import com.gejian.pixel.proto.CommEnterDungeonResponseProtobuf;
-import com.gejian.pixel.proto.CommUpdateTemporaryBackpackResponseProtobuf;
+import com.gejian.pixel.model.UserInfo;
+import com.gejian.pixel.proto.*;
+import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.Helper;
+import com.gejian.pixel.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,7 +31,8 @@ public class CommEnterDungeonRequestImpl implements Process<CommEnterDungeonRequ
 	@Autowired
 	private RedisTemplate redisTemplate;
 
-	private final static Integer identifier = 0;
+	@Autowired
+	private DropService dropService;
 
 	@Override
 	public CommEnterDungeonResponseProtobuf.CommEnterDungeonResponse doProcess(CommEnterDungeonRequestProtobuf.CommEnterDungeonRequest request) throws Exception {
@@ -55,10 +58,11 @@ public class CommEnterDungeonRequestImpl implements Process<CommEnterDungeonRequ
 			return builder.setResult(ErrorEnum.ERROR_INVALID_STAGE).build();
 		}
 
-		CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.Builder commUpdateTemporaryBackpackResponse =
-				CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.newBuilder();
-
-		Helper.updateTemporaryBackpack(redisTemplate, identifier, request, null, 0, 0);
+		UserInfo userInfo = UserHolder.get();
+		Integer identifier = userInfo.getIdentifier();
+		PlayerInfoProtobuf.PlayerInfo playerInfo = Helper
+				.updateTemporaryBackpack(dropService, redisTemplate, identifier, 0, 0);
+		builder.addAllItems(playerInfo.getItemsList());
 
 		Map<String, Object> backpack = new HashMap<>(3);
 		backpack.put("type", request.getType());
@@ -66,7 +70,7 @@ public class CommEnterDungeonRequestImpl implements Process<CommEnterDungeonRequ
 		backpack.put("dungeon_enter_timestamp", Helper.currentTimestamp());
 
 		redisTemplate.opsForHash().putAll(String.format("u:%d:temp_backpack", identifier), backpack);
-
-		return null;
+		builder.setResult(ErrorEnum.ERROR_SUCCESS);
+		return builder.build();
 	}
 }

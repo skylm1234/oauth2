@@ -12,6 +12,7 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.Generated;
 import com.gejian.pixel.proto.*;
+import com.gejian.pixel.service.DropService;
 import io.netty.channel.Channel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -903,24 +904,26 @@ public class Helper {
 
 
 	/**
-	 * 更新临时背包
+	 *  更新临时背包
 	 *
+	 * @param dropService
 	 * @param redisTemplate
 	 * @param identifier
-	 * @param request
-	 * @param reply
 	 * @param monsters
 	 * @param goblins
+	 * @return
 	 */
-	public static void updateTemporaryBackpack(RedisTemplate redisTemplate, Integer identifier, CommEnterDungeonRequestProtobuf.CommEnterDungeonRequest request,
-											   Channel reply, Integer monsters,
-											   Integer goblins) {
+	public static PlayerInfoProtobuf.PlayerInfo updateTemporaryBackpack(DropService dropService, RedisTemplate redisTemplate, Integer identifier, Integer monsters,
+																		Integer goblins) {
+		PlayerInfoProtobuf.PlayerInfo.Builder resultBuilder = PlayerInfoProtobuf.PlayerInfo.newBuilder();
 		Formatter m = new Formatter();
 		Map<Object, Object> pack = redisTemplate.opsForHash().entries(m.format("u:%d:temp_backpack", identifier).toString());
-		onNotifyEventOfPromotions(redisTemplate, m.format("type_%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
-		onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier);
-		onNotifyEventOfPromotions(redisTemplate, m.format("daily_type__%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
-
+		PlayerItemProtobuf.PlayerItem playerItem = onNotifyEventOfPromotions(redisTemplate, m.format("type_%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
+		PlayerItemProtobuf.PlayerItem playerItem1 = onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier);
+		PlayerItemProtobuf.PlayerItem playerItem2 = onNotifyEventOfPromotions(redisTemplate, m.format("daily_type__%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
+		resultBuilder.addItems(playerItem);
+		resultBuilder.addItems(playerItem1);
+		resultBuilder.addItems(playerItem2);
 		Integer vip = itemCount(redisTemplate, identifier, "vip");
 
 		Long duration = current_timestamp() - (long) pack.get("dungeon_enter_timestamp");
@@ -959,11 +962,10 @@ public class Helper {
 			Integer itemCount = itemCount(redisTemplate, identifier, String.format("dungeon_%s_not_passed_stage", pack.get("type")));
 			String drop_action = itemCount.equals(ToUtil.to_i(pack.get("stage"))) ? constStr.getMonstersKilledAwardFomula().getDropid() : constStr.getMonstersKilledAwardFomula().getDropid_bosskilled();
 			for (int i = 0; i <= monsters; i++) {
-				if (drop_action.contains("pvemon")) {
-					dropItemPvemon(redisTemplate, identifier, reply, true, null);
-				} else if (drop_action.contains("pvebk")) {
-					dropItemPvebk(redisTemplate, identifier, reply, true, null);
-				}
+				PlayerInfoProtobuf.PlayerInfo playerInfo = dropService
+						.dropItem(drop_action, identifier, true, null);
+				resultBuilder.addAllHeros(playerInfo.getHerosList());
+				resultBuilder.addAllItems(playerInfo.getItemsList());
 			}
 		}
 
@@ -974,8 +976,10 @@ public class Helper {
 				 * drop_goblin = DROP_ITEMS[const['goblin_fomula']['dropid']]
 				 * drop_goblin.call(identifier,  reply, true, nil)
 				 */
-				//String drop_goblin = constStr.getGoblinFomula().getDropid();
-				drop_item_goblins(redisTemplate, identifier, reply, true, null);
+				String drop_goblin = constStr.getGoblinFomula().getDropid();
+				PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(drop_goblin, identifier, true, null);
+				resultBuilder.addAllItems(playerInfo.getItemsList());
+				resultBuilder.addAllHeros(playerInfo.getHerosList());
 			}
 		}
 
@@ -985,28 +989,18 @@ public class Helper {
 			PlayerItemProtobuf.PlayerItem.Builder builder = PlayerItemProtobuf.PlayerItem.newBuilder();
 			builder.setKey(s);
 			builder.setValue(ToUtil.to_i(items.get(s)));
-			//TODO reply.items.push(item)
+			resultBuilder.addItems(builder.build());
 		}
 
 		redisTemplate.opsForHash().put(String.format("u:%d:temp_backpack", identifier), "dungeon_enter_timestamp", current_timestamp());
 
-
+		return resultBuilder.build();
 	}
 
 	private static long current_timestamp() {
 		return System.currentTimeMillis() / 1000 + 28800;
 	}
 
-	private static void dropItemPvemon(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
 
-	}
-
-	private static void dropItemPvebk(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
-
-	}
-
-	private static void drop_item_goblins(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
-
-	}
 
 }
