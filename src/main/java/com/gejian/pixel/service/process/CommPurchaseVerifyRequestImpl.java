@@ -5,20 +5,20 @@ import cn.hutool.core.util.HexUtil;
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
+import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.CommPurchaseVerifyRequestProtobuf;
 import com.gejian.pixel.proto.CommPurchaseVerifyResponseProtobuf;
 import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.Process;
-import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
-import io.netty.channel.Channel;
+import com.gejian.pixel.utils.UserHolder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -34,9 +34,10 @@ import java.util.regex.Pattern;
 public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerifyRequestProtobuf.CommPurchaseVerifyRequest,
 		CommPurchaseVerifyResponseProtobuf.CommPurchaseVerifyResponse> {
 
-	//TODO settings.IAP_VERIFY_URL
-	private final String url = "";
-	private final Integer identifier = 0;
+	@Value("${config-url.MACOSX-IAP-VERIFY-URL}")
+	private String macosx;
+	@Value("${config-url.CENTOS-IAP-VERIFY-URL}")
+	private String centos;
 
 	@Autowired
 	private RedisTemplate redisTemplate;
@@ -50,9 +51,10 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 
 		String pattern = "^https://sandbox\u002E*$";
 		Pattern compile = Pattern.compile(pattern);
-		Matcher m = compile.matcher(url);
+		Matcher m = compile.matcher(centos);
 
-		Formatter formatter = new Formatter();
+		UserInfo userInfo = UserHolder.get();
+		Integer identifier = userInfo.getIdentifier();
 
 		if (m.find() && request.getType() != 0) {
 			int type = request.getType();
@@ -68,7 +70,7 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 					gb.put("desc", HexUtil.encodeHexStr("初次购买" + cell.desc + "，赠送" + cell.desc + "。", CharsetUtil.CHARSET_UTF_8));
 					gb.put("action", productId);
 
-					redisTemplate.opsForHash().putAll(formatter.format("u:%d:giftbag:%s", identifier, gb.get("identifier")).toString(), gb);
+					redisTemplate.opsForHash().putAll(String.format("u:%d:giftbag:%s", identifier, gb.get("identifier")), gb);
 				}
 
 				Helper.increaseItemValue(redisTemplate, identifier, "stone", (long) cell.stone);
@@ -99,12 +101,12 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 						gb.put("desc", HexUtil.encodeHexStr("达到vip等级" + row2.getLevel() + "，好礼相送。"));
 						gb.put("action", row2.getItemid());
 
-						redisTemplate.opsForHash().putAll(formatter.format("u:%d:giftbag:%s", identifier, gb.get("identifier")).toString(), gb);
+						redisTemplate.opsForHash().putAll(String.format("u:%d:giftbag:%s", identifier, gb.get("identifier")), gb);
 
 						Helper.increaseItemValue(redisTemplate, identifier, "giftbags", 1L);
-						redisTemplate.opsForHash().put(formatter.format("u:%d:giftbags", identifier).toString(),
+						redisTemplate.opsForHash().put(String.format("u:%d:giftbags", identifier),
 								gb.get("identifier"),
-								formatter.format("达到vip等级%d，好礼相送。", row2.getLevel()).toString());
+								String.format("达到vip等级%d，好礼相送。", row2.getLevel()));
 						dirty = true;
 					} else {
 						break;
@@ -163,7 +165,8 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 	}
 
 	public static void main(String[] args) {
-
+		String osName = System.getProperty("os.name");
+		System.out.println(osName);
 	}
 
 }

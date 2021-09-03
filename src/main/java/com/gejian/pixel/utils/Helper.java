@@ -966,10 +966,6 @@ public class Helper {
 		//计算哥布林收益
 		if (goblins != null && goblins > 0) {
 			for (int i = 0; i <= goblins; i++) {
-				/**
-				 * drop_goblin = DROP_ITEMS[const['goblin_fomula']['dropid']]
-				 * drop_goblin.call(identifier,  reply, true, nil)
-				 */
 				String drop_goblin = constStr.getGoblinFomula().getDropid();
 				PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(drop_goblin, identifier, true, null);
 				resultBuilder.addAllItems(playerInfo.getItemsList());
@@ -994,7 +990,4 @@ public class Helper {
 	private static long current_timestamp() {
 		return System.currentTimeMillis() / 1000 + 28800;
 	}
-
-
-
 }

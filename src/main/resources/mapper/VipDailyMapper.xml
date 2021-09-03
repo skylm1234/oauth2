@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.VipDailyMapper">
+
+    <resultMap id="VipDailyRM" type="com.gejian.pixel.entity.VipDaily">
+		<result property="id" column="id"/>
+		<result property="daily1" column="daily1"/>
+		<result property="daily2" column="daily2"/>
+		<result property="daily3" column="daily3"/>
+		<result property="daily4" column="daily4"/>
+		<result property="daily5" column="daily5"/>
+		<result property="daily6" column="daily6"/>
+		<result property="daily7" column="daily7"/>
+		<result property="daily8" column="daily8"/>
+		<result property="daily9" column="daily9"/>
+		<result property="daily10" column="daily10"/>
+		<result property="daily11" column="daily11"/>
+		<result property="daily12" column="daily12"/>
+		<result property="daily13" column="daily13"/>
+		<result property="daily14" column="daily14"/>
+		<result property="daily15" column="daily15"/>
+		<result property="daily16" column="daily16"/>
+		<result property="daily17" column="daily17"/>
+		<result property="daily18" column="daily18"/>
+		<result property="daily19" column="daily19"/>
+		<result property="daily20" column="daily20"/>
+		<result property="daily21" column="daily21"/>
+		<result property="daily22" column="daily22"/>
+		<result property="daily23" column="daily23"/>
+		<result property="daily24" column="daily24"/>
+		<result property="daily25" column="daily25"/>
+		<result property="daily26" column="daily26"/>
+		<result property="daily27" column="daily27"/>
+		<result property="daily28" column="daily28"/>
+		<result property="daily29" column="daily29"/>
+		<result property="daily30" column="daily30"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`daily1`,`daily2`,`daily3`,`daily4`,`daily5`,`daily6`,`daily7`,`daily8`,`daily9`,`daily10`,`daily11`,`daily12`,`daily13`,`daily14`,
+		`daily15`,`daily16`,`daily17`,`daily18`,`daily19`,`daily20`,`daily21`,`daily22`,`daily23`,`daily24`,`daily25`,`daily26`,
+		`daily27`,`daily28`,`daily29`,`daily30`
+	</sql>
+
+</mapper>

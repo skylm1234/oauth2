@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.RanklistRichMapper">
+
+    <resultMap id="RanklistRichRM" type="com.gejian.pixel.entity.RanklistRich">
+		<result property="id" column="id"/>
+		<result property="sectionFomula" column="section_fomula"/>
+		<result property="section" column="section"/>
+		<result property="awardFomula" column="award_fomula"/>
+		<result property="award" column="award"/>
+		<result property="time" column="time"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`section_fomula`,`section`,`award_fomula`,`award`,`time`
+	</sql>
+
+</mapper>

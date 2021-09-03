@@ -2,13 +2,13 @@ package com.gejian.pixel.service.process;
 
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.CommGetPvpVictoryAwardRequestProtobuf;
 import com.gejian.pixel.proto.CommGetPvpVictoryAwardResponseProtobuf;
 import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.Process;
-import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
-import io.netty.channel.Channel;
+import com.gejian.pixel.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -24,8 +24,6 @@ import org.springframework.stereotype.Service;
 public class CommGetPvpVictoryAwardRequestImpl implements Process<CommGetPvpVictoryAwardRequestProtobuf.CommGetPvpVictoryAwardRequest,
 		CommGetPvpVictoryAwardResponseProtobuf.CommGetPvpVictoryAwardResponse> {
 
-	private final static Integer identifier = 0;
-
 	@Autowired
 	private RedisTemplate redisTemplate;
 
@@ -37,6 +35,10 @@ public class CommGetPvpVictoryAwardRequestImpl implements Process<CommGetPvpVict
 				= CommGetPvpVictoryAwardResponseProtobuf
 				.CommGetPvpVictoryAwardResponse.newBuilder();
 		int type = request.getType();
+
+		UserInfo userInfo = UserHolder.get();
+		Integer identifier = userInfo.getIdentifier();
+
 		if (type == 1) {
 			Helper.increaseItemValue(redisTemplate, identifier, "pvp_vectory_times", 1L);
 			Helper.increaseItemValue(redisTemplate, identifier, "honor", 1L);

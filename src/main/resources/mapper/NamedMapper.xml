@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.NamedMapper">
+
+    <resultMap id="NamedRM" type="com.gejian.pixel.entity.Named">
+		<result property="name" column="name"/>
+		<result property="dot" column="dot"/>
+		<result property="title" column="title"/>
+		<result property="desc" column="desc"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `name`,`dot`,`title`,`desc`
+	</sql>
+
+</mapper>

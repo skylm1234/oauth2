@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.SkillUpgradeMapper">
+
+    <resultMap id="SkillUpgradeRM" type="com.gejian.pixel.entity.SkillUpgrade">
+		<result property="id" column="id"/>
+		<result property="skillId" column="skill_id"/>
+		<result property="level" column="level"/>
+		<result property="gold" column="gold"/>
+		<result property="book" column="book"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`skill_id`,`level`,`gold`,`book`
+	</sql>
+
+</mapper>

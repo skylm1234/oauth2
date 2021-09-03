@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.VipMapper">
+
+    <resultMap id="VipRM" type="com.gejian.pixel.entity.Vip">
+		<result property="id" column="id"/>
+		<result property="level" column="level"/>
+		<result property="charge" column="charge"/>
+		<result property="itemid" column="itemid"/>
+		<result property="award" column="award"/>
+		<result property="chanllege" column="chanllege"/>
+		<result property="backpackMax" column="backpack_max"/>
+		<result property="freerefreshTimesStone" column="freerefresh_times_stone"/>
+		<result property="freerefreshTimesHonor" column="freerefresh_times_honor"/>
+		<result property="freerefreshTimesGold" column="freerefresh_times_gold"/>
+		<result property="timevalOfflineKillMonsterRate" column="timeval_offline_kill_monster_rate"/>
+		<result property="skipTimeval" column="skip_timeval"/>
+		<result property="des" column="des"/>
+		<result property="tianti" column="tianti"/>
+		<result property="tiantiReset" column="tianti_reset"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`level`,`charge`,`itemid`,`award`,`chanllege`,`backpack_max`,`freerefresh_times_stone`,`freerefresh_times_honor`,`freerefresh_times_gold`,
+		`timeval_offline_kill_monster_rate`,`skip_timeval`,`des`,`tianti`,`tianti_reset`
+	</sql>
+
+</mapper>
