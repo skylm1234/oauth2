@@ -17,4 +17,5 @@ public interface RedisKeyConstants {
 	String USER_CLEAR_TEXT = "user:set:identifier_cleartext";
 
 	String USER_HEARO = "u:{}:heros";
+
 }
