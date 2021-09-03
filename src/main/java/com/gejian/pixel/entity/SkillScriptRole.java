@@ -22,7 +22,7 @@ public class SkillScriptRole {
 	 * 
 	 */
 	@TableField("attack")
-	private String attack;
+	private Integer attack;
 
 	/**
 	 * 
@@ -46,7 +46,7 @@ public class SkillScriptRole {
 	 * 
 	 */
 	@TableField("crit")
-	private String crit;
+	private Integer crit;
 
 	/**
 	 * 
@@ -58,13 +58,13 @@ public class SkillScriptRole {
 	 * 
 	 */
 	@TableField("defense")
-	private String defense;
+	private Integer defense;
 
 	/**
 	 * 
 	 */
 	@TableField("dodge")
-	private String dodge;
+	private Integer dodge;
 
 	/**
 	 * 
@@ -76,7 +76,7 @@ public class SkillScriptRole {
 	 * 
 	 */
 	@TableField("hp")
-	private String hp;
+	private Integer hp;
 
 	/**
 	 * 
@@ -94,7 +94,9 @@ public class SkillScriptRole {
 	 * 
 	 */
 	@TableField("speed")
-	private String speed;
+	private Integer speed;
+
+	private String type;
 
 
 }

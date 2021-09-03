@@ -16,7 +16,7 @@ public class PvpAward {
 	 * 主键
 	 */
 	@TableId(value = "id", type = IdType.AUTO)
-	private Long id;
+	private Integer id;
 
 	/**
 	 * 

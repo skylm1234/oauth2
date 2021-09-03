@@ -15,8 +15,8 @@ public class InGamePurchase {
 /**
 	 * 主键
 	 */
-	@TableId(value = "id", type = IdType.AUTO)
-	private Long id;
+	@TableId(value = "id")
+	private String id;
 
 	/**
 	 * 
@@ -27,7 +27,7 @@ public class InGamePurchase {
 	/**
 	 * 
 	 */
-	@TableField("desc")
+	@TableField("`desc`")
 	private String desc;
 
 	/**
