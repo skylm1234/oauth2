@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.PvpAwardMapper">
+
+    <resultMap id="PvpAwardRM" type="com.gejian.pixel.entity.PvpAward">
+		<result property="id" column="id"/>
+		<result property="vectoryTimes" column="vectory_times"/>
+		<result property="awardFomula" column="award_fomula"/>
+		<result property="award" column="award"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`vectory_times`,`award_fomula`,`award`
+	</sql>
+
+</mapper>

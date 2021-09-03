@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.PvpRefreshMapper">
+
+    <resultMap id="PvpRefreshRM" type="com.gejian.pixel.entity.PvpRefresh">
+		<result property="id" column="id"/>
+		<result property="battleTimesEachRefresh" column="battle_times_each_refresh"/>
+		<result property="refreshTime" column="refresh_time"/>
+		<result property="consumeFomula" column="consume_fomula"/>
+		<result property="consume" column="consume"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`battle_times_each_refresh`,`refresh_time`,`consume_fomula`,`consume`
+	</sql>
+
+</mapper>
