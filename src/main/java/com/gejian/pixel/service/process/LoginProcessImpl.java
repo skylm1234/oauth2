@@ -44,8 +44,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 	private final DropService dropService;
 
-	private Generated generated = new Generated();
-
 	@Override
 	public CommLoginResponseProtobuf.CommLoginResponse
 		doProcess(CommLoginRequestProtobuf.CommLoginRequest request) throws Exception {
@@ -141,7 +139,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			strings.put("finished_promotions", Helper.hexEncode("{}"));
 			strings.put("finished_daily_promotions", Helper.hexEncode("{}"));
 
-			JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = generated.getRUBY_CONST_IN_GAME_PURCHASE_TABLE();
+			// TODO: 2021/9/3 需要修改常量数据获取
+			//JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = generated.getRUBY_CONST_IN_GAME_PURCHASE_TABLE();
+			JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = new JSONArray();
 			if (RUBY_CONST_IN_GAME_PURCHASE_TABLE != null) {
 				for (Object o : RUBY_CONST_IN_GAME_PURCHASE_TABLE) {
 					JSONObject jsonObject = (JSONObject) o;
