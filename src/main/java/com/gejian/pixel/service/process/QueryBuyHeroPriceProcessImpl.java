@@ -3,7 +3,6 @@ package com.gejian.pixel.service.process;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import com.gejian.pixel.constants.CommandConstants;
-import com.gejian.pixel.constants.Generated;
 import com.gejian.pixel.proto.CommQueryBuyHeroPriceRequestProtobuf;
 import com.gejian.pixel.proto.CommQueryBuyHeroPriceResponseProtobuf;
 import com.gejian.pixel.service.Process;

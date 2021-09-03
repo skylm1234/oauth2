@@ -1,6 +1,5 @@
 package com.gejian.pixel.utils;
 
-import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.HexUtil;
@@ -9,11 +8,8 @@ import cn.hutool.core.util.ReUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
-import com.gejian.pixel.constants.Generated;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.DropService;
-import io.netty.channel.Channel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -21,8 +17,6 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.UnsupportedEncodingException;
-import java.sql.SQLOutput;
-import java.time.LocalDateTime;
 import java.util.*;
 
 /**
