@@ -29,12 +29,12 @@ import java.util.*;
 @RequiredArgsConstructor
 public class Helper {
 
-	private final Generated generated;
-
 	private JSONArray skillToHero = new JSONArray();
 
 	private void heroNameToSkillBookHash() {
-		JSONArray rubyConstHeroTable = generated.getRUBY_CONST_HERO_TABLE();
+		// TODO: 2021/9/3 需要修改常量数据获取
+		//JSONArray rubyConstHeroTable = generated.getRUBY_CONST_HERO_TABLE();
+		JSONArray rubyConstHeroTable = new JSONArray();
 		if (rubyConstHeroTable != null) {
 			for (Object o : rubyConstHeroTable) {
 				JSONObject constHero = (JSONObject) o;
@@ -856,10 +856,13 @@ public class Helper {
 	}
 
 	public static void refreshStore(RedisTemplate redisTemplate, Integer identifier, Object store, Integer type) {
-		Generated generated = new Generated();
-		JSONArray rubyConstNewStoreHotTable = generated.getRUBY_CONST_NEW_STORE_HOT_TABLE();
+		// TODO: 2021/9/3 需要修改常量数据获取
+		/*JSONArray rubyConstNewStoreHotTable = generated.getRUBY_CONST_NEW_STORE_HOT_TABLE();
 		JSONArray rubyConstNewStoreDiscountTable = generated.getRUBY_CONST_NEW_STORE_DISCOUNT_TABLE();
-		JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();
+		JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();*/
+		JSONArray rubyConstNewStoreHotTable = new JSONArray();
+		JSONArray rubyConstNewStoreDiscountTable = new JSONArray();
+		JSONArray rubyConstNewStoreTimeLimitTable = new JSONArray();
 		JSONArray tables = new JSONArray();
 		tables.add(rubyConstNewStoreHotTable);
 		tables.add(rubyConstNewStoreDiscountTable);
