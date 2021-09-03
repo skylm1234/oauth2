@@ -14,6 +14,7 @@ import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.customType.TopRangePower;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
+import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
@@ -42,6 +43,8 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 	private static final int MIN_VERSION = 10;
 
+	private final DropService dropService;
+
 	private Generated generated = new Generated();
 
 	@Override
@@ -51,6 +54,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		log.info("登陆请求参数：{}",request);
 		
 		CommLoginResponseProtobuf.CommLoginResponse.Builder replyBuilder = CommLoginResponseProtobuf.CommLoginResponse.newBuilder();
+		PlayerInfoProtobuf.PlayerInfo.Builder playerBuilder = PlayerInfoProtobuf.PlayerInfo.newBuilder();
 
 		long currentTimestamp = Helper.currentTimestamp();
 		long currentDays = Helper.currentDay();
@@ -154,8 +158,8 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				throw new RuntimeException("failed");
 			}
 
-			// TODO: 2021/9/1 需要放开
 			//generated.dropItemNewbie(redisTemplate, identifier, null, false, null);
+			dropService.dropItem("newbie", identifier, false, null);
 
 			Map<String,Integer> tempbackpack = new HashMap<>();
 			tempbackpack.put("level", 1);
@@ -200,7 +204,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		Helper.setItemValue(redisTemplate, identifier+"", "giftbags", Integer.valueOf(redisTemplate.opsForHash().size("u:" + identifier + ":giftbags")+""));
 
-		PlayerInfoProtobuf.PlayerInfo.Builder playerBuilder = PlayerInfoProtobuf.PlayerInfo.newBuilder();
 		playerBuilder.setIdentifier(identifier+"");
 
 		identifier = (Integer) redisTemplate.opsForHash().get("user:set:identifier", hexEncodedIdentifier);
