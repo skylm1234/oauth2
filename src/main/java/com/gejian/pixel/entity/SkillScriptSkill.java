@@ -12,11 +12,11 @@ import java.math.BigDecimal;
 @Data
 @TableName("skill_script_skill")
 public class SkillScriptSkill {
-/**
+	/**
 	 * 主键
 	 */
-	@TableId(value = "id", type = IdType.AUTO)
-	private Long id;
+	@TableField(value = "id")
+	private String id;
 
 	/**
 	 * 

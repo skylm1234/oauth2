@@ -20,7 +20,7 @@ import static org.springframework.core.io.ResourceLoader.CLASSPATH_URL_PREFIX;
 public class ConstantController {
 
 
-	private final static String CONSTANT_PARENT_PATH=CLASSPATH_URL_PREFIX+"templates/consts/";
+	private final static String CONSTANT_PARENT_PATH =  System.getProperty("user.dir") + "/" + "consts";
 
 	@GetMapping("/{fileName}")
 	public void downLoadFile(@PathVariable("fileName")String fileName, HttpServletResponse response)  {

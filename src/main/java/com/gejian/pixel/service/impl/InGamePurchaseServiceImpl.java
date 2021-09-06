@@ -29,7 +29,7 @@ public class InGamePurchaseServiceImpl extends ServiceImpl<InGamePurchaseMapper,
 	private List<ConstInGamePurchaseTableItemExProtobuf.ConstInGamePurchaseTableItemEx>
 			table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<InGamePurchase> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

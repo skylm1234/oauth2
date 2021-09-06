@@ -24,7 +24,7 @@ public class ExpBook {
 	/**
 	 * 简介
 	 */
-	@TableField("desc")
+	@TableField("`desc`")
 	private String desc;
 
 	/**

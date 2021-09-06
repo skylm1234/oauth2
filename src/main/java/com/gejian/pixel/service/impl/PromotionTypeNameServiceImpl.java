@@ -27,7 +27,7 @@ public class PromotionTypeNameServiceImpl extends ServiceImpl<PromotionTypeNameM
 
 	private List<ConstPromotionTypeNameTableItemExProtobuf.ConstPromotionTypeNameTableItemEx> table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<PromotionTypeName> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

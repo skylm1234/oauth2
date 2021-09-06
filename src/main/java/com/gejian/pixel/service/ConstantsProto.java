@@ -9,6 +9,7 @@ import com.google.protobuf.MessageLite;
  */
 public interface ConstantsProto {
 
+	void init();
 	/**
 	 * 获得常量proto
 	 *

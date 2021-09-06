@@ -21,7 +21,7 @@ public class BuyHero {
 	/**
 	 * 
 	 */
-	@TableField("desc")
+	@TableField("`desc`")
 	private String desc;
 
 	/**

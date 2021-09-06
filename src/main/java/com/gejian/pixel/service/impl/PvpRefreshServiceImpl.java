@@ -30,7 +30,7 @@ public class PvpRefreshServiceImpl extends ServiceImpl<PvpRefreshMapper, PvpRefr
 	private List<ConstPvpRefreshTableItemExProtobuf.ConstPvpRefreshTableItemEx>
 			table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<PvpRefresh> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

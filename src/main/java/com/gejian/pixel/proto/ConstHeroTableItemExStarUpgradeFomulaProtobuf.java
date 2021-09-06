@@ -19,329 +19,329 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
      */
     boolean hasStar1();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1 getStar1();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar1();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1OrBuilder getStar1OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar1OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
      */
     boolean hasStar2();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2 getStar2();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar2();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2OrBuilder getStar2OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar2OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
      */
     boolean hasStar3();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3 getStar3();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar3();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3OrBuilder getStar3OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar3OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
      */
     boolean hasStar4();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4 getStar4();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar4();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4OrBuilder getStar4OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar4OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
      */
     boolean hasStar5();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5 getStar5();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar5();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5OrBuilder getStar5OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar5OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
      */
     boolean hasStar6();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6 getStar6();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar6();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6OrBuilder getStar6OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar6OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
      */
     boolean hasStar7();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7 getStar7();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar7();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7OrBuilder getStar7OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar7OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
      */
     boolean hasStar8();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8 getStar8();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar8();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8OrBuilder getStar8OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar8OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
      */
     boolean hasStar9();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9 getStar9();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar9();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9OrBuilder getStar9OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar9OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
      */
     boolean hasStar10();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10 getStar10();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar10();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10OrBuilder getStar10OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar10OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
      */
     boolean hasStar11();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11 getStar11();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar11();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11OrBuilder getStar11OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar11OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
      */
     boolean hasStar12();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12 getStar12();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar12();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12OrBuilder getStar12OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar12OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
      */
     boolean hasStar13();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13 getStar13();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar13();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13OrBuilder getStar13OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar13OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
      */
     boolean hasStar14();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14 getStar14();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar14();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14OrBuilder getStar14OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar14OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
      */
     boolean hasStar15();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15 getStar15();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar15();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15OrBuilder getStar15OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar15OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
      */
     boolean hasStar16();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16 getStar16();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar16();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16OrBuilder getStar16OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar16OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
      */
     boolean hasStar17();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17 getStar17();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar17();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17OrBuilder getStar17OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar17OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
      */
     boolean hasStar18();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18 getStar18();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar18();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18OrBuilder getStar18OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar18OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
      */
     boolean hasStar19();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19 getStar19();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar19();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19OrBuilder getStar19OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar19OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
      */
     boolean hasStar20();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20 getStar20();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar20();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20OrBuilder getStar20OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar20OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
      */
     boolean hasStar21();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21 getStar21();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar21();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21OrBuilder getStar21OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar21OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
      */
     boolean hasStar22();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22 getStar22();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar22();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22OrBuilder getStar22OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar22OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
      */
     boolean hasStar23();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23 getStar23();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar23();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23OrBuilder getStar23OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar23OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
      */
     boolean hasStar24();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24 getStar24();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar24();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24OrBuilder getStar24OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar24OrBuilder();
 
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
      */
     boolean hasStar25();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25 getStar25();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar25();
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
      */
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25OrBuilder getStar25OrBuilder();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar25OrBuilder();
   }
   /**
    * Protobuf type {@code ConstHeroTableItemExStarUpgradeFomula}
@@ -383,11 +383,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               done = true;
               break;
             case 10: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star1_ != null) {
                 subBuilder = star1_.toBuilder();
               }
-              star1_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1.parser(), extensionRegistry);
+              star1_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star1_);
                 star1_ = subBuilder.buildPartial();
@@ -396,11 +396,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 18: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star2_ != null) {
                 subBuilder = star2_.toBuilder();
               }
-              star2_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2.parser(), extensionRegistry);
+              star2_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star2_);
                 star2_ = subBuilder.buildPartial();
@@ -409,11 +409,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 26: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star3_ != null) {
                 subBuilder = star3_.toBuilder();
               }
-              star3_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3.parser(), extensionRegistry);
+              star3_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star3_);
                 star3_ = subBuilder.buildPartial();
@@ -422,11 +422,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 34: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star4_ != null) {
                 subBuilder = star4_.toBuilder();
               }
-              star4_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4.parser(), extensionRegistry);
+              star4_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star4_);
                 star4_ = subBuilder.buildPartial();
@@ -435,11 +435,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 42: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star5_ != null) {
                 subBuilder = star5_.toBuilder();
               }
-              star5_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5.parser(), extensionRegistry);
+              star5_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star5_);
                 star5_ = subBuilder.buildPartial();
@@ -448,11 +448,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 50: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star6_ != null) {
                 subBuilder = star6_.toBuilder();
               }
-              star6_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6.parser(), extensionRegistry);
+              star6_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star6_);
                 star6_ = subBuilder.buildPartial();
@@ -461,11 +461,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 58: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star7_ != null) {
                 subBuilder = star7_.toBuilder();
               }
-              star7_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7.parser(), extensionRegistry);
+              star7_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star7_);
                 star7_ = subBuilder.buildPartial();
@@ -474,11 +474,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 66: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star8_ != null) {
                 subBuilder = star8_.toBuilder();
               }
-              star8_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8.parser(), extensionRegistry);
+              star8_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star8_);
                 star8_ = subBuilder.buildPartial();
@@ -487,11 +487,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 74: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star9_ != null) {
                 subBuilder = star9_.toBuilder();
               }
-              star9_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9.parser(), extensionRegistry);
+              star9_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star9_);
                 star9_ = subBuilder.buildPartial();
@@ -500,11 +500,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 82: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star10_ != null) {
                 subBuilder = star10_.toBuilder();
               }
-              star10_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10.parser(), extensionRegistry);
+              star10_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star10_);
                 star10_ = subBuilder.buildPartial();
@@ -513,11 +513,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 90: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star11_ != null) {
                 subBuilder = star11_.toBuilder();
               }
-              star11_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11.parser(), extensionRegistry);
+              star11_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star11_);
                 star11_ = subBuilder.buildPartial();
@@ -526,11 +526,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 98: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star12_ != null) {
                 subBuilder = star12_.toBuilder();
               }
-              star12_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12.parser(), extensionRegistry);
+              star12_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star12_);
                 star12_ = subBuilder.buildPartial();
@@ -539,11 +539,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 106: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star13_ != null) {
                 subBuilder = star13_.toBuilder();
               }
-              star13_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13.parser(), extensionRegistry);
+              star13_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star13_);
                 star13_ = subBuilder.buildPartial();
@@ -552,11 +552,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 114: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star14_ != null) {
                 subBuilder = star14_.toBuilder();
               }
-              star14_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14.parser(), extensionRegistry);
+              star14_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star14_);
                 star14_ = subBuilder.buildPartial();
@@ -565,11 +565,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 122: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star15_ != null) {
                 subBuilder = star15_.toBuilder();
               }
-              star15_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15.parser(), extensionRegistry);
+              star15_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star15_);
                 star15_ = subBuilder.buildPartial();
@@ -578,11 +578,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 130: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star16_ != null) {
                 subBuilder = star16_.toBuilder();
               }
-              star16_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16.parser(), extensionRegistry);
+              star16_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star16_);
                 star16_ = subBuilder.buildPartial();
@@ -591,11 +591,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 138: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star17_ != null) {
                 subBuilder = star17_.toBuilder();
               }
-              star17_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17.parser(), extensionRegistry);
+              star17_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star17_);
                 star17_ = subBuilder.buildPartial();
@@ -604,11 +604,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 146: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star18_ != null) {
                 subBuilder = star18_.toBuilder();
               }
-              star18_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18.parser(), extensionRegistry);
+              star18_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star18_);
                 star18_ = subBuilder.buildPartial();
@@ -617,11 +617,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 154: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star19_ != null) {
                 subBuilder = star19_.toBuilder();
               }
-              star19_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19.parser(), extensionRegistry);
+              star19_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star19_);
                 star19_ = subBuilder.buildPartial();
@@ -630,11 +630,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 162: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star20_ != null) {
                 subBuilder = star20_.toBuilder();
               }
-              star20_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20.parser(), extensionRegistry);
+              star20_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star20_);
                 star20_ = subBuilder.buildPartial();
@@ -643,11 +643,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 170: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star21_ != null) {
                 subBuilder = star21_.toBuilder();
               }
-              star21_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21.parser(), extensionRegistry);
+              star21_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star21_);
                 star21_ = subBuilder.buildPartial();
@@ -656,11 +656,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 178: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star22_ != null) {
                 subBuilder = star22_.toBuilder();
               }
-              star22_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22.parser(), extensionRegistry);
+              star22_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star22_);
                 star22_ = subBuilder.buildPartial();
@@ -669,11 +669,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 186: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star23_ != null) {
                 subBuilder = star23_.toBuilder();
               }
-              star23_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23.parser(), extensionRegistry);
+              star23_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star23_);
                 star23_ = subBuilder.buildPartial();
@@ -682,11 +682,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 194: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star24_ != null) {
                 subBuilder = star24_.toBuilder();
               }
-              star24_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24.parser(), extensionRegistry);
+              star24_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star24_);
                 star24_ = subBuilder.buildPartial();
@@ -695,11 +695,11 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
               break;
             }
             case 202: {
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder subBuilder = null;
               if (star25_ != null) {
                 subBuilder = star25_.toBuilder();
               }
-              star25_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25.parser(), extensionRegistry);
+              star25_ = input.readMessage(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(star25_);
                 star25_ = subBuilder.buildPartial();
@@ -740,527 +740,527 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
     }
 
     public static final int STAR_1_FIELD_NUMBER = 1;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1 star1_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star1_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
      */
     public boolean hasStar1() {
       return star1_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1 getStar1() {
-      return star1_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1.getDefaultInstance() : star1_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar1() {
+      return star1_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star1_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1OrBuilder getStar1OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar1OrBuilder() {
       return getStar1();
     }
 
     public static final int STAR_2_FIELD_NUMBER = 2;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2 star2_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star2_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
      */
     public boolean hasStar2() {
       return star2_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2 getStar2() {
-      return star2_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2.getDefaultInstance() : star2_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar2() {
+      return star2_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star2_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2OrBuilder getStar2OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar2OrBuilder() {
       return getStar2();
     }
 
     public static final int STAR_3_FIELD_NUMBER = 3;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3 star3_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star3_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
      */
     public boolean hasStar3() {
       return star3_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3 getStar3() {
-      return star3_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3.getDefaultInstance() : star3_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar3() {
+      return star3_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star3_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3OrBuilder getStar3OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar3OrBuilder() {
       return getStar3();
     }
 
     public static final int STAR_4_FIELD_NUMBER = 4;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4 star4_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star4_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
      */
     public boolean hasStar4() {
       return star4_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4 getStar4() {
-      return star4_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4.getDefaultInstance() : star4_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar4() {
+      return star4_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star4_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4OrBuilder getStar4OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar4OrBuilder() {
       return getStar4();
     }
 
     public static final int STAR_5_FIELD_NUMBER = 5;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5 star5_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star5_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
      */
     public boolean hasStar5() {
       return star5_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5 getStar5() {
-      return star5_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5.getDefaultInstance() : star5_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar5() {
+      return star5_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star5_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5OrBuilder getStar5OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar5OrBuilder() {
       return getStar5();
     }
 
     public static final int STAR_6_FIELD_NUMBER = 6;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6 star6_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star6_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
      */
     public boolean hasStar6() {
       return star6_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6 getStar6() {
-      return star6_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6.getDefaultInstance() : star6_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar6() {
+      return star6_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star6_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6OrBuilder getStar6OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar6OrBuilder() {
       return getStar6();
     }
 
     public static final int STAR_7_FIELD_NUMBER = 7;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7 star7_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star7_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
      */
     public boolean hasStar7() {
       return star7_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7 getStar7() {
-      return star7_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7.getDefaultInstance() : star7_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar7() {
+      return star7_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star7_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7OrBuilder getStar7OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar7OrBuilder() {
       return getStar7();
     }
 
     public static final int STAR_8_FIELD_NUMBER = 8;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8 star8_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star8_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
      */
     public boolean hasStar8() {
       return star8_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8 getStar8() {
-      return star8_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8.getDefaultInstance() : star8_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar8() {
+      return star8_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star8_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8OrBuilder getStar8OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar8OrBuilder() {
       return getStar8();
     }
 
     public static final int STAR_9_FIELD_NUMBER = 9;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9 star9_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star9_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
      */
     public boolean hasStar9() {
       return star9_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9 getStar9() {
-      return star9_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9.getDefaultInstance() : star9_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar9() {
+      return star9_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star9_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9OrBuilder getStar9OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar9OrBuilder() {
       return getStar9();
     }
 
     public static final int STAR_10_FIELD_NUMBER = 10;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10 star10_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star10_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
      */
     public boolean hasStar10() {
       return star10_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10 getStar10() {
-      return star10_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10.getDefaultInstance() : star10_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar10() {
+      return star10_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star10_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10OrBuilder getStar10OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar10OrBuilder() {
       return getStar10();
     }
 
     public static final int STAR_11_FIELD_NUMBER = 11;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11 star11_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star11_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
      */
     public boolean hasStar11() {
       return star11_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11 getStar11() {
-      return star11_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11.getDefaultInstance() : star11_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar11() {
+      return star11_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star11_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11OrBuilder getStar11OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar11OrBuilder() {
       return getStar11();
     }
 
     public static final int STAR_12_FIELD_NUMBER = 12;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12 star12_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star12_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
      */
     public boolean hasStar12() {
       return star12_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12 getStar12() {
-      return star12_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12.getDefaultInstance() : star12_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar12() {
+      return star12_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star12_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12OrBuilder getStar12OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar12OrBuilder() {
       return getStar12();
     }
 
     public static final int STAR_13_FIELD_NUMBER = 13;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13 star13_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star13_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
      */
     public boolean hasStar13() {
       return star13_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13 getStar13() {
-      return star13_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13.getDefaultInstance() : star13_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar13() {
+      return star13_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star13_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13OrBuilder getStar13OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar13OrBuilder() {
       return getStar13();
     }
 
     public static final int STAR_14_FIELD_NUMBER = 14;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14 star14_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star14_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
      */
     public boolean hasStar14() {
       return star14_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14 getStar14() {
-      return star14_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14.getDefaultInstance() : star14_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar14() {
+      return star14_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star14_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14OrBuilder getStar14OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar14OrBuilder() {
       return getStar14();
     }
 
     public static final int STAR_15_FIELD_NUMBER = 15;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15 star15_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star15_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
      */
     public boolean hasStar15() {
       return star15_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15 getStar15() {
-      return star15_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15.getDefaultInstance() : star15_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar15() {
+      return star15_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star15_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15OrBuilder getStar15OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar15OrBuilder() {
       return getStar15();
     }
 
     public static final int STAR_16_FIELD_NUMBER = 16;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16 star16_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star16_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
      */
     public boolean hasStar16() {
       return star16_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16 getStar16() {
-      return star16_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16.getDefaultInstance() : star16_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar16() {
+      return star16_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star16_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16OrBuilder getStar16OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar16OrBuilder() {
       return getStar16();
     }
 
     public static final int STAR_17_FIELD_NUMBER = 17;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17 star17_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star17_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
      */
     public boolean hasStar17() {
       return star17_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17 getStar17() {
-      return star17_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17.getDefaultInstance() : star17_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar17() {
+      return star17_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star17_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17OrBuilder getStar17OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar17OrBuilder() {
       return getStar17();
     }
 
     public static final int STAR_18_FIELD_NUMBER = 18;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18 star18_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star18_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
      */
     public boolean hasStar18() {
       return star18_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18 getStar18() {
-      return star18_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18.getDefaultInstance() : star18_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar18() {
+      return star18_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star18_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18OrBuilder getStar18OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar18OrBuilder() {
       return getStar18();
     }
 
     public static final int STAR_19_FIELD_NUMBER = 19;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19 star19_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star19_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
      */
     public boolean hasStar19() {
       return star19_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19 getStar19() {
-      return star19_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19.getDefaultInstance() : star19_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar19() {
+      return star19_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star19_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19OrBuilder getStar19OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar19OrBuilder() {
       return getStar19();
     }
 
     public static final int STAR_20_FIELD_NUMBER = 20;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20 star20_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star20_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
      */
     public boolean hasStar20() {
       return star20_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20 getStar20() {
-      return star20_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20.getDefaultInstance() : star20_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar20() {
+      return star20_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star20_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20OrBuilder getStar20OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar20OrBuilder() {
       return getStar20();
     }
 
     public static final int STAR_21_FIELD_NUMBER = 21;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21 star21_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star21_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
      */
     public boolean hasStar21() {
       return star21_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21 getStar21() {
-      return star21_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21.getDefaultInstance() : star21_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar21() {
+      return star21_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star21_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21OrBuilder getStar21OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar21OrBuilder() {
       return getStar21();
     }
 
     public static final int STAR_22_FIELD_NUMBER = 22;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22 star22_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star22_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
      */
     public boolean hasStar22() {
       return star22_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22 getStar22() {
-      return star22_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22.getDefaultInstance() : star22_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar22() {
+      return star22_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star22_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22OrBuilder getStar22OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar22OrBuilder() {
       return getStar22();
     }
 
     public static final int STAR_23_FIELD_NUMBER = 23;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23 star23_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star23_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
      */
     public boolean hasStar23() {
       return star23_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23 getStar23() {
-      return star23_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23.getDefaultInstance() : star23_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar23() {
+      return star23_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star23_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23OrBuilder getStar23OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar23OrBuilder() {
       return getStar23();
     }
 
     public static final int STAR_24_FIELD_NUMBER = 24;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24 star24_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star24_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
      */
     public boolean hasStar24() {
       return star24_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24 getStar24() {
-      return star24_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24.getDefaultInstance() : star24_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar24() {
+      return star24_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star24_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24OrBuilder getStar24OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar24OrBuilder() {
       return getStar24();
     }
 
     public static final int STAR_25_FIELD_NUMBER = 25;
-    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25 star25_;
+    private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star25_;
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
      */
     public boolean hasStar25() {
       return star25_ != null;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25 getStar25() {
-      return star25_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25.getDefaultInstance() : star25_;
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar25() {
+      return star25_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star25_;
     }
     /**
-     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+     * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
      */
-    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25OrBuilder getStar25OrBuilder() {
+    public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar25OrBuilder() {
       return getStar25();
     }
 
@@ -2300,29 +2300,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1 star1_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star1_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1OrBuilder> star1Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star1Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
        */
       public boolean hasStar1() {
         return star1Builder_ != null || star1_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1 getStar1() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar1() {
         if (star1Builder_ == null) {
-          return star1_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1.getDefaultInstance() : star1_;
+          return star1_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star1_;
         } else {
           return star1Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
        */
-      public Builder setStar1(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1 value) {
+      public Builder setStar1(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star1Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2336,10 +2336,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
        */
       public Builder setStar1(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star1Builder_ == null) {
           star1_ = builderForValue.build();
           onChanged();
@@ -2350,13 +2350,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
        */
-      public Builder mergeStar1(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1 value) {
+      public Builder mergeStar1(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star1Builder_ == null) {
           if (star1_ != null) {
             star1_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1.newBuilder(star1_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star1_).mergeFrom(value).buildPartial();
           } else {
             star1_ = value;
           }
@@ -2368,7 +2368,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
        */
       public Builder clearStar1() {
         if (star1Builder_ == null) {
@@ -2382,33 +2382,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1.Builder getStar1Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar1Builder() {
         
         onChanged();
         return getStar1FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1OrBuilder getStar1OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar1OrBuilder() {
         if (star1Builder_ != null) {
           return star1Builder_.getMessageOrBuilder();
         } else {
           return star1_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1.getDefaultInstance() : star1_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star1_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar1 star_1 = 1;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_1 = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar1FieldBuilder() {
         if (star1Builder_ == null) {
           star1Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar1OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar1(),
                   getParentForChildren(),
                   isClean());
@@ -2417,29 +2417,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star1Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2 star2_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star2_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2OrBuilder> star2Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star2Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
        */
       public boolean hasStar2() {
         return star2Builder_ != null || star2_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2 getStar2() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar2() {
         if (star2Builder_ == null) {
-          return star2_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2.getDefaultInstance() : star2_;
+          return star2_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star2_;
         } else {
           return star2Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
        */
-      public Builder setStar2(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2 value) {
+      public Builder setStar2(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star2Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2453,10 +2453,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
        */
       public Builder setStar2(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star2Builder_ == null) {
           star2_ = builderForValue.build();
           onChanged();
@@ -2467,13 +2467,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
        */
-      public Builder mergeStar2(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2 value) {
+      public Builder mergeStar2(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star2Builder_ == null) {
           if (star2_ != null) {
             star2_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2.newBuilder(star2_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star2_).mergeFrom(value).buildPartial();
           } else {
             star2_ = value;
           }
@@ -2485,7 +2485,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
        */
       public Builder clearStar2() {
         if (star2Builder_ == null) {
@@ -2499,33 +2499,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2.Builder getStar2Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar2Builder() {
         
         onChanged();
         return getStar2FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2OrBuilder getStar2OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar2OrBuilder() {
         if (star2Builder_ != null) {
           return star2Builder_.getMessageOrBuilder();
         } else {
           return star2_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2.getDefaultInstance() : star2_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star2_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar2 star_2 = 2;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_2 = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar2FieldBuilder() {
         if (star2Builder_ == null) {
           star2Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar2OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar2(),
                   getParentForChildren(),
                   isClean());
@@ -2534,29 +2534,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star2Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3 star3_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star3_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3OrBuilder> star3Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star3Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
        */
       public boolean hasStar3() {
         return star3Builder_ != null || star3_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3 getStar3() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar3() {
         if (star3Builder_ == null) {
-          return star3_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3.getDefaultInstance() : star3_;
+          return star3_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star3_;
         } else {
           return star3Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
        */
-      public Builder setStar3(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3 value) {
+      public Builder setStar3(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star3Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2570,10 +2570,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
        */
       public Builder setStar3(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star3Builder_ == null) {
           star3_ = builderForValue.build();
           onChanged();
@@ -2584,13 +2584,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
        */
-      public Builder mergeStar3(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3 value) {
+      public Builder mergeStar3(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star3Builder_ == null) {
           if (star3_ != null) {
             star3_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3.newBuilder(star3_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star3_).mergeFrom(value).buildPartial();
           } else {
             star3_ = value;
           }
@@ -2602,7 +2602,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
        */
       public Builder clearStar3() {
         if (star3Builder_ == null) {
@@ -2616,33 +2616,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3.Builder getStar3Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar3Builder() {
         
         onChanged();
         return getStar3FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3OrBuilder getStar3OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar3OrBuilder() {
         if (star3Builder_ != null) {
           return star3Builder_.getMessageOrBuilder();
         } else {
           return star3_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3.getDefaultInstance() : star3_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star3_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar3 star_3 = 3;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_3 = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar3FieldBuilder() {
         if (star3Builder_ == null) {
           star3Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar3OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar3(),
                   getParentForChildren(),
                   isClean());
@@ -2651,29 +2651,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star3Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4 star4_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star4_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4OrBuilder> star4Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star4Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
        */
       public boolean hasStar4() {
         return star4Builder_ != null || star4_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4 getStar4() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar4() {
         if (star4Builder_ == null) {
-          return star4_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4.getDefaultInstance() : star4_;
+          return star4_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star4_;
         } else {
           return star4Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
        */
-      public Builder setStar4(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4 value) {
+      public Builder setStar4(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star4Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2687,10 +2687,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
        */
       public Builder setStar4(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star4Builder_ == null) {
           star4_ = builderForValue.build();
           onChanged();
@@ -2701,13 +2701,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
        */
-      public Builder mergeStar4(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4 value) {
+      public Builder mergeStar4(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star4Builder_ == null) {
           if (star4_ != null) {
             star4_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4.newBuilder(star4_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star4_).mergeFrom(value).buildPartial();
           } else {
             star4_ = value;
           }
@@ -2719,7 +2719,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
        */
       public Builder clearStar4() {
         if (star4Builder_ == null) {
@@ -2733,33 +2733,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4.Builder getStar4Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar4Builder() {
         
         onChanged();
         return getStar4FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4OrBuilder getStar4OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar4OrBuilder() {
         if (star4Builder_ != null) {
           return star4Builder_.getMessageOrBuilder();
         } else {
           return star4_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4.getDefaultInstance() : star4_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star4_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar4 star_4 = 4;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_4 = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar4FieldBuilder() {
         if (star4Builder_ == null) {
           star4Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar4OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar4(),
                   getParentForChildren(),
                   isClean());
@@ -2768,29 +2768,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star4Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5 star5_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star5_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5OrBuilder> star5Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star5Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
        */
       public boolean hasStar5() {
         return star5Builder_ != null || star5_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5 getStar5() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar5() {
         if (star5Builder_ == null) {
-          return star5_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5.getDefaultInstance() : star5_;
+          return star5_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star5_;
         } else {
           return star5Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
        */
-      public Builder setStar5(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5 value) {
+      public Builder setStar5(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star5Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2804,10 +2804,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
        */
       public Builder setStar5(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star5Builder_ == null) {
           star5_ = builderForValue.build();
           onChanged();
@@ -2818,13 +2818,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
        */
-      public Builder mergeStar5(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5 value) {
+      public Builder mergeStar5(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star5Builder_ == null) {
           if (star5_ != null) {
             star5_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5.newBuilder(star5_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star5_).mergeFrom(value).buildPartial();
           } else {
             star5_ = value;
           }
@@ -2836,7 +2836,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
        */
       public Builder clearStar5() {
         if (star5Builder_ == null) {
@@ -2850,33 +2850,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5.Builder getStar5Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar5Builder() {
         
         onChanged();
         return getStar5FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5OrBuilder getStar5OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar5OrBuilder() {
         if (star5Builder_ != null) {
           return star5Builder_.getMessageOrBuilder();
         } else {
           return star5_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5.getDefaultInstance() : star5_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star5_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar5 star_5 = 5;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_5 = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar5FieldBuilder() {
         if (star5Builder_ == null) {
           star5Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar5OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar5(),
                   getParentForChildren(),
                   isClean());
@@ -2885,29 +2885,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star5Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6 star6_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star6_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6OrBuilder> star6Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star6Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
        */
       public boolean hasStar6() {
         return star6Builder_ != null || star6_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6 getStar6() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar6() {
         if (star6Builder_ == null) {
-          return star6_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6.getDefaultInstance() : star6_;
+          return star6_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star6_;
         } else {
           return star6Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
        */
-      public Builder setStar6(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6 value) {
+      public Builder setStar6(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star6Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2921,10 +2921,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
        */
       public Builder setStar6(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star6Builder_ == null) {
           star6_ = builderForValue.build();
           onChanged();
@@ -2935,13 +2935,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
        */
-      public Builder mergeStar6(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6 value) {
+      public Builder mergeStar6(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star6Builder_ == null) {
           if (star6_ != null) {
             star6_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6.newBuilder(star6_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star6_).mergeFrom(value).buildPartial();
           } else {
             star6_ = value;
           }
@@ -2953,7 +2953,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
        */
       public Builder clearStar6() {
         if (star6Builder_ == null) {
@@ -2967,33 +2967,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6.Builder getStar6Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar6Builder() {
         
         onChanged();
         return getStar6FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6OrBuilder getStar6OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar6OrBuilder() {
         if (star6Builder_ != null) {
           return star6Builder_.getMessageOrBuilder();
         } else {
           return star6_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6.getDefaultInstance() : star6_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star6_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar6 star_6 = 6;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_6 = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar6FieldBuilder() {
         if (star6Builder_ == null) {
           star6Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar6OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar6(),
                   getParentForChildren(),
                   isClean());
@@ -3002,29 +3002,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star6Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7 star7_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star7_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7OrBuilder> star7Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star7Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
        */
       public boolean hasStar7() {
         return star7Builder_ != null || star7_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7 getStar7() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar7() {
         if (star7Builder_ == null) {
-          return star7_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7.getDefaultInstance() : star7_;
+          return star7_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star7_;
         } else {
           return star7Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
        */
-      public Builder setStar7(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7 value) {
+      public Builder setStar7(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star7Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3038,10 +3038,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
        */
       public Builder setStar7(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star7Builder_ == null) {
           star7_ = builderForValue.build();
           onChanged();
@@ -3052,13 +3052,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
        */
-      public Builder mergeStar7(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7 value) {
+      public Builder mergeStar7(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star7Builder_ == null) {
           if (star7_ != null) {
             star7_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7.newBuilder(star7_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star7_).mergeFrom(value).buildPartial();
           } else {
             star7_ = value;
           }
@@ -3070,7 +3070,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
        */
       public Builder clearStar7() {
         if (star7Builder_ == null) {
@@ -3084,33 +3084,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7.Builder getStar7Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar7Builder() {
         
         onChanged();
         return getStar7FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7OrBuilder getStar7OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar7OrBuilder() {
         if (star7Builder_ != null) {
           return star7Builder_.getMessageOrBuilder();
         } else {
           return star7_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7.getDefaultInstance() : star7_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star7_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar7 star_7 = 7;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_7 = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar7FieldBuilder() {
         if (star7Builder_ == null) {
           star7Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar7OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar7(),
                   getParentForChildren(),
                   isClean());
@@ -3119,29 +3119,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star7Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8 star8_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star8_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8OrBuilder> star8Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star8Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
        */
       public boolean hasStar8() {
         return star8Builder_ != null || star8_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8 getStar8() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar8() {
         if (star8Builder_ == null) {
-          return star8_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8.getDefaultInstance() : star8_;
+          return star8_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star8_;
         } else {
           return star8Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
        */
-      public Builder setStar8(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8 value) {
+      public Builder setStar8(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star8Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3155,10 +3155,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
        */
       public Builder setStar8(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star8Builder_ == null) {
           star8_ = builderForValue.build();
           onChanged();
@@ -3169,13 +3169,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
        */
-      public Builder mergeStar8(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8 value) {
+      public Builder mergeStar8(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star8Builder_ == null) {
           if (star8_ != null) {
             star8_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8.newBuilder(star8_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star8_).mergeFrom(value).buildPartial();
           } else {
             star8_ = value;
           }
@@ -3187,7 +3187,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
        */
       public Builder clearStar8() {
         if (star8Builder_ == null) {
@@ -3201,33 +3201,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8.Builder getStar8Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar8Builder() {
         
         onChanged();
         return getStar8FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8OrBuilder getStar8OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar8OrBuilder() {
         if (star8Builder_ != null) {
           return star8Builder_.getMessageOrBuilder();
         } else {
           return star8_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8.getDefaultInstance() : star8_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star8_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar8 star_8 = 8;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_8 = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar8FieldBuilder() {
         if (star8Builder_ == null) {
           star8Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar8OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar8(),
                   getParentForChildren(),
                   isClean());
@@ -3236,29 +3236,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star8Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9 star9_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star9_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9OrBuilder> star9Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star9Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
        */
       public boolean hasStar9() {
         return star9Builder_ != null || star9_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9 getStar9() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar9() {
         if (star9Builder_ == null) {
-          return star9_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9.getDefaultInstance() : star9_;
+          return star9_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star9_;
         } else {
           return star9Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
        */
-      public Builder setStar9(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9 value) {
+      public Builder setStar9(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star9Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3272,10 +3272,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
        */
       public Builder setStar9(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star9Builder_ == null) {
           star9_ = builderForValue.build();
           onChanged();
@@ -3286,13 +3286,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
        */
-      public Builder mergeStar9(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9 value) {
+      public Builder mergeStar9(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star9Builder_ == null) {
           if (star9_ != null) {
             star9_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9.newBuilder(star9_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star9_).mergeFrom(value).buildPartial();
           } else {
             star9_ = value;
           }
@@ -3304,7 +3304,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
        */
       public Builder clearStar9() {
         if (star9Builder_ == null) {
@@ -3318,33 +3318,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9.Builder getStar9Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar9Builder() {
         
         onChanged();
         return getStar9FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9OrBuilder getStar9OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar9OrBuilder() {
         if (star9Builder_ != null) {
           return star9Builder_.getMessageOrBuilder();
         } else {
           return star9_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9.getDefaultInstance() : star9_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star9_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar9 star_9 = 9;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_9 = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar9FieldBuilder() {
         if (star9Builder_ == null) {
           star9Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar9OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar9(),
                   getParentForChildren(),
                   isClean());
@@ -3353,29 +3353,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star9Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10 star10_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star10_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10OrBuilder> star10Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star10Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
        */
       public boolean hasStar10() {
         return star10Builder_ != null || star10_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10 getStar10() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar10() {
         if (star10Builder_ == null) {
-          return star10_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10.getDefaultInstance() : star10_;
+          return star10_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star10_;
         } else {
           return star10Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
        */
-      public Builder setStar10(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10 value) {
+      public Builder setStar10(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star10Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3389,10 +3389,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
        */
       public Builder setStar10(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star10Builder_ == null) {
           star10_ = builderForValue.build();
           onChanged();
@@ -3403,13 +3403,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
        */
-      public Builder mergeStar10(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10 value) {
+      public Builder mergeStar10(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star10Builder_ == null) {
           if (star10_ != null) {
             star10_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10.newBuilder(star10_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star10_).mergeFrom(value).buildPartial();
           } else {
             star10_ = value;
           }
@@ -3421,7 +3421,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
        */
       public Builder clearStar10() {
         if (star10Builder_ == null) {
@@ -3435,33 +3435,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10.Builder getStar10Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar10Builder() {
         
         onChanged();
         return getStar10FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10OrBuilder getStar10OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar10OrBuilder() {
         if (star10Builder_ != null) {
           return star10Builder_.getMessageOrBuilder();
         } else {
           return star10_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10.getDefaultInstance() : star10_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star10_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar10 star_10 = 10;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_10 = 10;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar10FieldBuilder() {
         if (star10Builder_ == null) {
           star10Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar10OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar10(),
                   getParentForChildren(),
                   isClean());
@@ -3470,29 +3470,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star10Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11 star11_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star11_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11OrBuilder> star11Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star11Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
        */
       public boolean hasStar11() {
         return star11Builder_ != null || star11_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11 getStar11() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar11() {
         if (star11Builder_ == null) {
-          return star11_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11.getDefaultInstance() : star11_;
+          return star11_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star11_;
         } else {
           return star11Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
        */
-      public Builder setStar11(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11 value) {
+      public Builder setStar11(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star11Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3506,10 +3506,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
        */
       public Builder setStar11(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star11Builder_ == null) {
           star11_ = builderForValue.build();
           onChanged();
@@ -3520,13 +3520,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
        */
-      public Builder mergeStar11(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11 value) {
+      public Builder mergeStar11(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star11Builder_ == null) {
           if (star11_ != null) {
             star11_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11.newBuilder(star11_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star11_).mergeFrom(value).buildPartial();
           } else {
             star11_ = value;
           }
@@ -3538,7 +3538,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
        */
       public Builder clearStar11() {
         if (star11Builder_ == null) {
@@ -3552,33 +3552,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11.Builder getStar11Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar11Builder() {
         
         onChanged();
         return getStar11FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11OrBuilder getStar11OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar11OrBuilder() {
         if (star11Builder_ != null) {
           return star11Builder_.getMessageOrBuilder();
         } else {
           return star11_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11.getDefaultInstance() : star11_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star11_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar11 star_11 = 11;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_11 = 11;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar11FieldBuilder() {
         if (star11Builder_ == null) {
           star11Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar11OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar11(),
                   getParentForChildren(),
                   isClean());
@@ -3587,29 +3587,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star11Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12 star12_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star12_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12OrBuilder> star12Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star12Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
        */
       public boolean hasStar12() {
         return star12Builder_ != null || star12_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12 getStar12() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar12() {
         if (star12Builder_ == null) {
-          return star12_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12.getDefaultInstance() : star12_;
+          return star12_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star12_;
         } else {
           return star12Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
        */
-      public Builder setStar12(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12 value) {
+      public Builder setStar12(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star12Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3623,10 +3623,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
        */
       public Builder setStar12(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star12Builder_ == null) {
           star12_ = builderForValue.build();
           onChanged();
@@ -3637,13 +3637,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
        */
-      public Builder mergeStar12(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12 value) {
+      public Builder mergeStar12(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star12Builder_ == null) {
           if (star12_ != null) {
             star12_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12.newBuilder(star12_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star12_).mergeFrom(value).buildPartial();
           } else {
             star12_ = value;
           }
@@ -3655,7 +3655,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
        */
       public Builder clearStar12() {
         if (star12Builder_ == null) {
@@ -3669,33 +3669,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12.Builder getStar12Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar12Builder() {
         
         onChanged();
         return getStar12FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12OrBuilder getStar12OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar12OrBuilder() {
         if (star12Builder_ != null) {
           return star12Builder_.getMessageOrBuilder();
         } else {
           return star12_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12.getDefaultInstance() : star12_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star12_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar12 star_12 = 12;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_12 = 12;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar12FieldBuilder() {
         if (star12Builder_ == null) {
           star12Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar12OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar12(),
                   getParentForChildren(),
                   isClean());
@@ -3704,29 +3704,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star12Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13 star13_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star13_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13OrBuilder> star13Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star13Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
        */
       public boolean hasStar13() {
         return star13Builder_ != null || star13_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13 getStar13() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar13() {
         if (star13Builder_ == null) {
-          return star13_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13.getDefaultInstance() : star13_;
+          return star13_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star13_;
         } else {
           return star13Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
        */
-      public Builder setStar13(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13 value) {
+      public Builder setStar13(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star13Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3740,10 +3740,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
        */
       public Builder setStar13(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star13Builder_ == null) {
           star13_ = builderForValue.build();
           onChanged();
@@ -3754,13 +3754,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
        */
-      public Builder mergeStar13(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13 value) {
+      public Builder mergeStar13(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star13Builder_ == null) {
           if (star13_ != null) {
             star13_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13.newBuilder(star13_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star13_).mergeFrom(value).buildPartial();
           } else {
             star13_ = value;
           }
@@ -3772,7 +3772,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
        */
       public Builder clearStar13() {
         if (star13Builder_ == null) {
@@ -3786,33 +3786,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13.Builder getStar13Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar13Builder() {
         
         onChanged();
         return getStar13FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13OrBuilder getStar13OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar13OrBuilder() {
         if (star13Builder_ != null) {
           return star13Builder_.getMessageOrBuilder();
         } else {
           return star13_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13.getDefaultInstance() : star13_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star13_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar13 star_13 = 13;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_13 = 13;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar13FieldBuilder() {
         if (star13Builder_ == null) {
           star13Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar13OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar13(),
                   getParentForChildren(),
                   isClean());
@@ -3821,29 +3821,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star13Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14 star14_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star14_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14OrBuilder> star14Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star14Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
        */
       public boolean hasStar14() {
         return star14Builder_ != null || star14_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14 getStar14() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar14() {
         if (star14Builder_ == null) {
-          return star14_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14.getDefaultInstance() : star14_;
+          return star14_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star14_;
         } else {
           return star14Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
        */
-      public Builder setStar14(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14 value) {
+      public Builder setStar14(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star14Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3857,10 +3857,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
        */
       public Builder setStar14(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star14Builder_ == null) {
           star14_ = builderForValue.build();
           onChanged();
@@ -3871,13 +3871,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
        */
-      public Builder mergeStar14(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14 value) {
+      public Builder mergeStar14(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star14Builder_ == null) {
           if (star14_ != null) {
             star14_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14.newBuilder(star14_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star14_).mergeFrom(value).buildPartial();
           } else {
             star14_ = value;
           }
@@ -3889,7 +3889,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
        */
       public Builder clearStar14() {
         if (star14Builder_ == null) {
@@ -3903,33 +3903,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14.Builder getStar14Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar14Builder() {
         
         onChanged();
         return getStar14FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14OrBuilder getStar14OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar14OrBuilder() {
         if (star14Builder_ != null) {
           return star14Builder_.getMessageOrBuilder();
         } else {
           return star14_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14.getDefaultInstance() : star14_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star14_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar14 star_14 = 14;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_14 = 14;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar14FieldBuilder() {
         if (star14Builder_ == null) {
           star14Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar14OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar14(),
                   getParentForChildren(),
                   isClean());
@@ -3938,29 +3938,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star14Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15 star15_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star15_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15OrBuilder> star15Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star15Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
        */
       public boolean hasStar15() {
         return star15Builder_ != null || star15_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15 getStar15() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar15() {
         if (star15Builder_ == null) {
-          return star15_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15.getDefaultInstance() : star15_;
+          return star15_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star15_;
         } else {
           return star15Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
        */
-      public Builder setStar15(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15 value) {
+      public Builder setStar15(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star15Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3974,10 +3974,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
        */
       public Builder setStar15(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star15Builder_ == null) {
           star15_ = builderForValue.build();
           onChanged();
@@ -3988,13 +3988,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
        */
-      public Builder mergeStar15(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15 value) {
+      public Builder mergeStar15(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star15Builder_ == null) {
           if (star15_ != null) {
             star15_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15.newBuilder(star15_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star15_).mergeFrom(value).buildPartial();
           } else {
             star15_ = value;
           }
@@ -4006,7 +4006,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
        */
       public Builder clearStar15() {
         if (star15Builder_ == null) {
@@ -4020,33 +4020,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15.Builder getStar15Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar15Builder() {
         
         onChanged();
         return getStar15FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15OrBuilder getStar15OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar15OrBuilder() {
         if (star15Builder_ != null) {
           return star15Builder_.getMessageOrBuilder();
         } else {
           return star15_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15.getDefaultInstance() : star15_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star15_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar15 star_15 = 15;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_15 = 15;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar15FieldBuilder() {
         if (star15Builder_ == null) {
           star15Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar15OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar15(),
                   getParentForChildren(),
                   isClean());
@@ -4055,29 +4055,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star15Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16 star16_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star16_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16OrBuilder> star16Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star16Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
        */
       public boolean hasStar16() {
         return star16Builder_ != null || star16_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16 getStar16() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar16() {
         if (star16Builder_ == null) {
-          return star16_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16.getDefaultInstance() : star16_;
+          return star16_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star16_;
         } else {
           return star16Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
        */
-      public Builder setStar16(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16 value) {
+      public Builder setStar16(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star16Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4091,10 +4091,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
        */
       public Builder setStar16(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star16Builder_ == null) {
           star16_ = builderForValue.build();
           onChanged();
@@ -4105,13 +4105,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
        */
-      public Builder mergeStar16(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16 value) {
+      public Builder mergeStar16(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star16Builder_ == null) {
           if (star16_ != null) {
             star16_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16.newBuilder(star16_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star16_).mergeFrom(value).buildPartial();
           } else {
             star16_ = value;
           }
@@ -4123,7 +4123,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
        */
       public Builder clearStar16() {
         if (star16Builder_ == null) {
@@ -4137,33 +4137,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16.Builder getStar16Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar16Builder() {
         
         onChanged();
         return getStar16FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16OrBuilder getStar16OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar16OrBuilder() {
         if (star16Builder_ != null) {
           return star16Builder_.getMessageOrBuilder();
         } else {
           return star16_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16.getDefaultInstance() : star16_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star16_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar16 star_16 = 16;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_16 = 16;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar16FieldBuilder() {
         if (star16Builder_ == null) {
           star16Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar16OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar16(),
                   getParentForChildren(),
                   isClean());
@@ -4172,29 +4172,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star16Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17 star17_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star17_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17OrBuilder> star17Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star17Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
        */
       public boolean hasStar17() {
         return star17Builder_ != null || star17_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17 getStar17() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar17() {
         if (star17Builder_ == null) {
-          return star17_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17.getDefaultInstance() : star17_;
+          return star17_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star17_;
         } else {
           return star17Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
        */
-      public Builder setStar17(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17 value) {
+      public Builder setStar17(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star17Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4208,10 +4208,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
        */
       public Builder setStar17(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star17Builder_ == null) {
           star17_ = builderForValue.build();
           onChanged();
@@ -4222,13 +4222,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
        */
-      public Builder mergeStar17(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17 value) {
+      public Builder mergeStar17(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star17Builder_ == null) {
           if (star17_ != null) {
             star17_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17.newBuilder(star17_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star17_).mergeFrom(value).buildPartial();
           } else {
             star17_ = value;
           }
@@ -4240,7 +4240,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
        */
       public Builder clearStar17() {
         if (star17Builder_ == null) {
@@ -4254,33 +4254,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17.Builder getStar17Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar17Builder() {
         
         onChanged();
         return getStar17FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17OrBuilder getStar17OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar17OrBuilder() {
         if (star17Builder_ != null) {
           return star17Builder_.getMessageOrBuilder();
         } else {
           return star17_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17.getDefaultInstance() : star17_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star17_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar17 star_17 = 17;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_17 = 17;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar17FieldBuilder() {
         if (star17Builder_ == null) {
           star17Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar17OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar17(),
                   getParentForChildren(),
                   isClean());
@@ -4289,29 +4289,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star17Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18 star18_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star18_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18OrBuilder> star18Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star18Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
        */
       public boolean hasStar18() {
         return star18Builder_ != null || star18_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18 getStar18() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar18() {
         if (star18Builder_ == null) {
-          return star18_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18.getDefaultInstance() : star18_;
+          return star18_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star18_;
         } else {
           return star18Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
        */
-      public Builder setStar18(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18 value) {
+      public Builder setStar18(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star18Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4325,10 +4325,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
        */
       public Builder setStar18(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star18Builder_ == null) {
           star18_ = builderForValue.build();
           onChanged();
@@ -4339,13 +4339,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
        */
-      public Builder mergeStar18(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18 value) {
+      public Builder mergeStar18(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star18Builder_ == null) {
           if (star18_ != null) {
             star18_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18.newBuilder(star18_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star18_).mergeFrom(value).buildPartial();
           } else {
             star18_ = value;
           }
@@ -4357,7 +4357,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
        */
       public Builder clearStar18() {
         if (star18Builder_ == null) {
@@ -4371,33 +4371,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18.Builder getStar18Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar18Builder() {
         
         onChanged();
         return getStar18FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18OrBuilder getStar18OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar18OrBuilder() {
         if (star18Builder_ != null) {
           return star18Builder_.getMessageOrBuilder();
         } else {
           return star18_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18.getDefaultInstance() : star18_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star18_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar18 star_18 = 18;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_18 = 18;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar18FieldBuilder() {
         if (star18Builder_ == null) {
           star18Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar18OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar18(),
                   getParentForChildren(),
                   isClean());
@@ -4406,29 +4406,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star18Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19 star19_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star19_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19OrBuilder> star19Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star19Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
        */
       public boolean hasStar19() {
         return star19Builder_ != null || star19_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19 getStar19() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar19() {
         if (star19Builder_ == null) {
-          return star19_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19.getDefaultInstance() : star19_;
+          return star19_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star19_;
         } else {
           return star19Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
        */
-      public Builder setStar19(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19 value) {
+      public Builder setStar19(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star19Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4442,10 +4442,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
        */
       public Builder setStar19(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star19Builder_ == null) {
           star19_ = builderForValue.build();
           onChanged();
@@ -4456,13 +4456,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
        */
-      public Builder mergeStar19(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19 value) {
+      public Builder mergeStar19(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star19Builder_ == null) {
           if (star19_ != null) {
             star19_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19.newBuilder(star19_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star19_).mergeFrom(value).buildPartial();
           } else {
             star19_ = value;
           }
@@ -4474,7 +4474,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
        */
       public Builder clearStar19() {
         if (star19Builder_ == null) {
@@ -4488,33 +4488,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19.Builder getStar19Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar19Builder() {
         
         onChanged();
         return getStar19FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19OrBuilder getStar19OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar19OrBuilder() {
         if (star19Builder_ != null) {
           return star19Builder_.getMessageOrBuilder();
         } else {
           return star19_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19.getDefaultInstance() : star19_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star19_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar19 star_19 = 19;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_19 = 19;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar19FieldBuilder() {
         if (star19Builder_ == null) {
           star19Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar19OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar19(),
                   getParentForChildren(),
                   isClean());
@@ -4523,29 +4523,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star19Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20 star20_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star20_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20OrBuilder> star20Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star20Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
        */
       public boolean hasStar20() {
         return star20Builder_ != null || star20_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20 getStar20() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar20() {
         if (star20Builder_ == null) {
-          return star20_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20.getDefaultInstance() : star20_;
+          return star20_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star20_;
         } else {
           return star20Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
        */
-      public Builder setStar20(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20 value) {
+      public Builder setStar20(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star20Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4559,10 +4559,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
        */
       public Builder setStar20(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star20Builder_ == null) {
           star20_ = builderForValue.build();
           onChanged();
@@ -4573,13 +4573,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
        */
-      public Builder mergeStar20(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20 value) {
+      public Builder mergeStar20(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star20Builder_ == null) {
           if (star20_ != null) {
             star20_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20.newBuilder(star20_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star20_).mergeFrom(value).buildPartial();
           } else {
             star20_ = value;
           }
@@ -4591,7 +4591,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
        */
       public Builder clearStar20() {
         if (star20Builder_ == null) {
@@ -4605,33 +4605,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20.Builder getStar20Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar20Builder() {
         
         onChanged();
         return getStar20FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20OrBuilder getStar20OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar20OrBuilder() {
         if (star20Builder_ != null) {
           return star20Builder_.getMessageOrBuilder();
         } else {
           return star20_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20.getDefaultInstance() : star20_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star20_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar20 star_20 = 20;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_20 = 20;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar20FieldBuilder() {
         if (star20Builder_ == null) {
           star20Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar20OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar20(),
                   getParentForChildren(),
                   isClean());
@@ -4640,29 +4640,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star20Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21 star21_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star21_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21OrBuilder> star21Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star21Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
        */
       public boolean hasStar21() {
         return star21Builder_ != null || star21_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21 getStar21() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar21() {
         if (star21Builder_ == null) {
-          return star21_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21.getDefaultInstance() : star21_;
+          return star21_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star21_;
         } else {
           return star21Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
        */
-      public Builder setStar21(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21 value) {
+      public Builder setStar21(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star21Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4676,10 +4676,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
        */
       public Builder setStar21(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star21Builder_ == null) {
           star21_ = builderForValue.build();
           onChanged();
@@ -4690,13 +4690,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
        */
-      public Builder mergeStar21(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21 value) {
+      public Builder mergeStar21(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star21Builder_ == null) {
           if (star21_ != null) {
             star21_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21.newBuilder(star21_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star21_).mergeFrom(value).buildPartial();
           } else {
             star21_ = value;
           }
@@ -4708,7 +4708,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
        */
       public Builder clearStar21() {
         if (star21Builder_ == null) {
@@ -4722,33 +4722,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21.Builder getStar21Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar21Builder() {
         
         onChanged();
         return getStar21FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21OrBuilder getStar21OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar21OrBuilder() {
         if (star21Builder_ != null) {
           return star21Builder_.getMessageOrBuilder();
         } else {
           return star21_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21.getDefaultInstance() : star21_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star21_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar21 star_21 = 21;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_21 = 21;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar21FieldBuilder() {
         if (star21Builder_ == null) {
           star21Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar21OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar21(),
                   getParentForChildren(),
                   isClean());
@@ -4757,29 +4757,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star21Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22 star22_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star22_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22OrBuilder> star22Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star22Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
        */
       public boolean hasStar22() {
         return star22Builder_ != null || star22_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22 getStar22() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar22() {
         if (star22Builder_ == null) {
-          return star22_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22.getDefaultInstance() : star22_;
+          return star22_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star22_;
         } else {
           return star22Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
        */
-      public Builder setStar22(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22 value) {
+      public Builder setStar22(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star22Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4793,10 +4793,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
        */
       public Builder setStar22(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star22Builder_ == null) {
           star22_ = builderForValue.build();
           onChanged();
@@ -4807,13 +4807,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
        */
-      public Builder mergeStar22(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22 value) {
+      public Builder mergeStar22(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star22Builder_ == null) {
           if (star22_ != null) {
             star22_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22.newBuilder(star22_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star22_).mergeFrom(value).buildPartial();
           } else {
             star22_ = value;
           }
@@ -4825,7 +4825,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
        */
       public Builder clearStar22() {
         if (star22Builder_ == null) {
@@ -4839,33 +4839,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22.Builder getStar22Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar22Builder() {
         
         onChanged();
         return getStar22FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22OrBuilder getStar22OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar22OrBuilder() {
         if (star22Builder_ != null) {
           return star22Builder_.getMessageOrBuilder();
         } else {
           return star22_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22.getDefaultInstance() : star22_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star22_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar22 star_22 = 22;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_22 = 22;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar22FieldBuilder() {
         if (star22Builder_ == null) {
           star22Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar22OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar22(),
                   getParentForChildren(),
                   isClean());
@@ -4874,29 +4874,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star22Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23 star23_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star23_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23OrBuilder> star23Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star23Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
        */
       public boolean hasStar23() {
         return star23Builder_ != null || star23_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23 getStar23() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar23() {
         if (star23Builder_ == null) {
-          return star23_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23.getDefaultInstance() : star23_;
+          return star23_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star23_;
         } else {
           return star23Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
        */
-      public Builder setStar23(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23 value) {
+      public Builder setStar23(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star23Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4910,10 +4910,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
        */
       public Builder setStar23(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star23Builder_ == null) {
           star23_ = builderForValue.build();
           onChanged();
@@ -4924,13 +4924,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
        */
-      public Builder mergeStar23(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23 value) {
+      public Builder mergeStar23(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star23Builder_ == null) {
           if (star23_ != null) {
             star23_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23.newBuilder(star23_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star23_).mergeFrom(value).buildPartial();
           } else {
             star23_ = value;
           }
@@ -4942,7 +4942,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
        */
       public Builder clearStar23() {
         if (star23Builder_ == null) {
@@ -4956,33 +4956,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23.Builder getStar23Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar23Builder() {
         
         onChanged();
         return getStar23FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23OrBuilder getStar23OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar23OrBuilder() {
         if (star23Builder_ != null) {
           return star23Builder_.getMessageOrBuilder();
         } else {
           return star23_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23.getDefaultInstance() : star23_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star23_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar23 star_23 = 23;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_23 = 23;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar23FieldBuilder() {
         if (star23Builder_ == null) {
           star23Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar23OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar23(),
                   getParentForChildren(),
                   isClean());
@@ -4991,29 +4991,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star23Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24 star24_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star24_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24OrBuilder> star24Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star24Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
        */
       public boolean hasStar24() {
         return star24Builder_ != null || star24_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24 getStar24() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar24() {
         if (star24Builder_ == null) {
-          return star24_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24.getDefaultInstance() : star24_;
+          return star24_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star24_;
         } else {
           return star24Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
        */
-      public Builder setStar24(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24 value) {
+      public Builder setStar24(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star24Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5027,10 +5027,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
        */
       public Builder setStar24(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star24Builder_ == null) {
           star24_ = builderForValue.build();
           onChanged();
@@ -5041,13 +5041,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
        */
-      public Builder mergeStar24(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24 value) {
+      public Builder mergeStar24(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star24Builder_ == null) {
           if (star24_ != null) {
             star24_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24.newBuilder(star24_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star24_).mergeFrom(value).buildPartial();
           } else {
             star24_ = value;
           }
@@ -5059,7 +5059,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
        */
       public Builder clearStar24() {
         if (star24Builder_ == null) {
@@ -5073,33 +5073,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24.Builder getStar24Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar24Builder() {
         
         onChanged();
         return getStar24FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24OrBuilder getStar24OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar24OrBuilder() {
         if (star24Builder_ != null) {
           return star24Builder_.getMessageOrBuilder();
         } else {
           return star24_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24.getDefaultInstance() : star24_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star24_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar24 star_24 = 24;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_24 = 24;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar24FieldBuilder() {
         if (star24Builder_ == null) {
           star24Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar24OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar24(),
                   getParentForChildren(),
                   isClean());
@@ -5108,29 +5108,29 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return star24Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25 star25_ = null;
+      private com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar star25_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25OrBuilder> star25Builder_;
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> star25Builder_;
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
        */
       public boolean hasStar25() {
         return star25Builder_ != null || star25_ != null;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25 getStar25() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar getStar25() {
         if (star25Builder_ == null) {
-          return star25_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25.getDefaultInstance() : star25_;
+          return star25_ == null ? com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star25_;
         } else {
           return star25Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
        */
-      public Builder setStar25(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25 value) {
+      public Builder setStar25(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star25Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5144,10 +5144,10 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
        */
       public Builder setStar25(
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder builderForValue) {
         if (star25Builder_ == null) {
           star25_ = builderForValue.build();
           onChanged();
@@ -5158,13 +5158,13 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
        */
-      public Builder mergeStar25(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25 value) {
+      public Builder mergeStar25(com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar value) {
         if (star25Builder_ == null) {
           if (star25_ != null) {
             star25_ =
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25.newBuilder(star25_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.newBuilder(star25_).mergeFrom(value).buildPartial();
           } else {
             star25_ = value;
           }
@@ -5176,7 +5176,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
        */
       public Builder clearStar25() {
         if (star25Builder_ == null) {
@@ -5190,33 +5190,33 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25.Builder getStar25Builder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder getStar25Builder() {
         
         onChanged();
         return getStar25FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
        */
-      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25OrBuilder getStar25OrBuilder() {
+      public com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder getStar25OrBuilder() {
         if (star25Builder_ != null) {
           return star25Builder_.getMessageOrBuilder();
         } else {
           return star25_ == null ?
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25.getDefaultInstance() : star25_;
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.getDefaultInstance() : star25_;
         }
       }
       /**
-       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar25 star_25 = 25;</code>
+       * <code>.ConstHeroTableItemExStarUpgradeFomulaStar star_25 = 25;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25OrBuilder> 
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder> 
           getStar25FieldBuilder() {
         if (star25Builder_ == null) {
           star25Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.ConstHeroTableItemExStarUpgradeFomulaStar25OrBuilder>(
+              com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStar.Builder, com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.ConstHeroTableItemExStarUpgradeFomulaStarOrBuilder>(
                   getStar25(),
                   getParentForChildren(),
                   isClean());
@@ -5292,80 +5292,49 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
   static {
     java.lang.String[] descriptorData = {
       "\n+ConstHeroTableItemExStarUpgradeFomula." +
-      "proto\0320ConstHeroTableItemExStarUpgradeFo" +
-      "mulaStar1.proto\0320ConstHeroTableItemExSta" +
-      "rUpgradeFomulaStar2.proto\0320ConstHeroTabl" +
-      "eItemExStarUpgradeFomulaStar3.proto\0320Con" +
-      "stHeroTableItemExStarUpgradeFomulaStar4." +
-      "proto\0320ConstHeroTableItemExStarUpgradeFo" +
-      "mulaStar5.proto\0320ConstHeroTableItemExSta" +
-      "rUpgradeFomulaStar6.proto\0320ConstHeroTabl" +
-      "eItemExStarUpgradeFomulaStar7.proto\0320Con" +
-      "stHeroTableItemExStarUpgradeFomulaStar8." +
-      "proto\0320ConstHeroTableItemExStarUpgradeFo" +
-      "mulaStar9.proto\0321ConstHeroTableItemExSta" +
-      "rUpgradeFomulaStar10.proto\0321ConstHeroTab" +
-      "leItemExStarUpgradeFomulaStar11.proto\0321C" +
+      "proto\032/ConstHeroTableItemExStarUpgradeFo" +
+      "mulaStar.proto\"\223\014\n%ConstHeroTableItemExS" +
+      "tarUpgradeFomula\022:\n\006star_1\030\001 \001(\0132*.Const" +
+      "HeroTableItemExStarUpgradeFomulaStar\022:\n\006" +
+      "star_2\030\002 \001(\0132*.ConstHeroTableItemExStarU" +
+      "pgradeFomulaStar\022:\n\006star_3\030\003 \001(\0132*.Const" +
+      "HeroTableItemExStarUpgradeFomulaStar\022:\n\006" +
+      "star_4\030\004 \001(\0132*.ConstHeroTableItemExStarU" +
+      "pgradeFomulaStar\022:\n\006star_5\030\005 \001(\0132*.Const" +
+      "HeroTableItemExStarUpgradeFomulaStar\022:\n\006" +
+      "star_6\030\006 \001(\0132*.ConstHeroTableItemExStarU" +
+      "pgradeFomulaStar\022:\n\006star_7\030\007 \001(\0132*.Const" +
+      "HeroTableItemExStarUpgradeFomulaStar\022:\n\006" +
+      "star_8\030\010 \001(\0132*.ConstHeroTableItemExStarU" +
+      "pgradeFomulaStar\022:\n\006star_9\030\t \001(\0132*.Const" +
+      "HeroTableItemExStarUpgradeFomulaStar\022;\n\007" +
+      "star_10\030\n \001(\0132*.ConstHeroTableItemExStar" +
+      "UpgradeFomulaStar\022;\n\007star_11\030\013 \001(\0132*.Con" +
+      "stHeroTableItemExStarUpgradeFomulaStar\022;" +
+      "\n\007star_12\030\014 \001(\0132*.ConstHeroTableItemExSt" +
+      "arUpgradeFomulaStar\022;\n\007star_13\030\r \001(\0132*.C" +
       "onstHeroTableItemExStarUpgradeFomulaStar" +
-      "12.proto\0321ConstHeroTableItemExStarUpgrad" +
-      "eFomulaStar13.proto\0321ConstHeroTableItemE" +
-      "xStarUpgradeFomulaStar14.proto\0321ConstHer" +
-      "oTableItemExStarUpgradeFomulaStar15.prot" +
-      "o\0321ConstHeroTableItemExStarUpgradeFomula" +
-      "Star16.proto\0321ConstHeroTableItemExStarUp" +
-      "gradeFomulaStar17.proto\0321ConstHeroTableI" +
-      "temExStarUpgradeFomulaStar18.proto\0321Cons" +
-      "tHeroTableItemExStarUpgradeFomulaStar19." +
-      "proto\0321ConstHeroTableItemExStarUpgradeFo" +
-      "mulaStar20.proto\0321ConstHeroTableItemExSt" +
-      "arUpgradeFomulaStar21.proto\0321ConstHeroTa" +
-      "bleItemExStarUpgradeFomulaStar22.proto\0321" +
-      "ConstHeroTableItemExStarUpgradeFomulaSta" +
-      "r23.proto\0321ConstHeroTableItemExStarUpgra" +
-      "deFomulaStar24.proto\0321ConstHeroTableItem" +
-      "ExStarUpgradeFomulaStar25.proto\"\274\014\n%Cons" +
-      "tHeroTableItemExStarUpgradeFomula\022;\n\006sta" +
-      "r_1\030\001 \001(\0132+.ConstHeroTableItemExStarUpgr" +
-      "adeFomulaStar1\022;\n\006star_2\030\002 \001(\0132+.ConstHe" +
-      "roTableItemExStarUpgradeFomulaStar2\022;\n\006s" +
-      "tar_3\030\003 \001(\0132+.ConstHeroTableItemExStarUp" +
-      "gradeFomulaStar3\022;\n\006star_4\030\004 \001(\0132+.Const" +
-      "HeroTableItemExStarUpgradeFomulaStar4\022;\n" +
-      "\006star_5\030\005 \001(\0132+.ConstHeroTableItemExStar" +
-      "UpgradeFomulaStar5\022;\n\006star_6\030\006 \001(\0132+.Con" +
-      "stHeroTableItemExStarUpgradeFomulaStar6\022" +
-      ";\n\006star_7\030\007 \001(\0132+.ConstHeroTableItemExSt" +
-      "arUpgradeFomulaStar7\022;\n\006star_8\030\010 \001(\0132+.C" +
-      "onstHeroTableItemExStarUpgradeFomulaStar" +
-      "8\022;\n\006star_9\030\t \001(\0132+.ConstHeroTableItemEx" +
-      "StarUpgradeFomulaStar9\022=\n\007star_10\030\n \001(\0132" +
-      ",.ConstHeroTableItemExStarUpgradeFomulaS" +
-      "tar10\022=\n\007star_11\030\013 \001(\0132,.ConstHeroTableI" +
-      "temExStarUpgradeFomulaStar11\022=\n\007star_12\030" +
-      "\014 \001(\0132,.ConstHeroTableItemExStarUpgradeF" +
-      "omulaStar12\022=\n\007star_13\030\r \001(\0132,.ConstHero" +
-      "TableItemExStarUpgradeFomulaStar13\022=\n\007st" +
-      "ar_14\030\016 \001(\0132,.ConstHeroTableItemExStarUp" +
-      "gradeFomulaStar14\022=\n\007star_15\030\017 \001(\0132,.Con" +
-      "stHeroTableItemExStarUpgradeFomulaStar15" +
-      "\022=\n\007star_16\030\020 \001(\0132,.ConstHeroTableItemEx" +
-      "StarUpgradeFomulaStar16\022=\n\007star_17\030\021 \001(\013" +
-      "2,.ConstHeroTableItemExStarUpgradeFomula" +
-      "Star17\022=\n\007star_18\030\022 \001(\0132,.ConstHeroTable" +
-      "ItemExStarUpgradeFomulaStar18\022=\n\007star_19" +
-      "\030\023 \001(\0132,.ConstHeroTableItemExStarUpgrade" +
-      "FomulaStar19\022=\n\007star_20\030\024 \001(\0132,.ConstHer" +
-      "oTableItemExStarUpgradeFomulaStar20\022=\n\007s" +
-      "tar_21\030\025 \001(\0132,.ConstHeroTableItemExStarU" +
-      "pgradeFomulaStar21\022=\n\007star_22\030\026 \001(\0132,.Co" +
-      "nstHeroTableItemExStarUpgradeFomulaStar2" +
-      "2\022=\n\007star_23\030\027 \001(\0132,.ConstHeroTableItemE" +
-      "xStarUpgradeFomulaStar23\022=\n\007star_24\030\030 \001(" +
-      "\0132,.ConstHeroTableItemExStarUpgradeFomul" +
-      "aStar24\022=\n\007star_25\030\031 \001(\0132,.ConstHeroTabl" +
-      "eItemExStarUpgradeFomulaStar25BG\n\026com.ge" +
-      "jian.pixel.protoB-ConstHeroTableItemExSt" +
-      "arUpgradeFomulaProtobufb\006proto3"
+      "\022;\n\007star_14\030\016 \001(\0132*.ConstHeroTableItemEx" +
+      "StarUpgradeFomulaStar\022;\n\007star_15\030\017 \001(\0132*" +
+      ".ConstHeroTableItemExStarUpgradeFomulaSt" +
+      "ar\022;\n\007star_16\030\020 \001(\0132*.ConstHeroTableItem" +
+      "ExStarUpgradeFomulaStar\022;\n\007star_17\030\021 \001(\013" +
+      "2*.ConstHeroTableItemExStarUpgradeFomula" +
+      "Star\022;\n\007star_18\030\022 \001(\0132*.ConstHeroTableIt" +
+      "emExStarUpgradeFomulaStar\022;\n\007star_19\030\023 \001" +
+      "(\0132*.ConstHeroTableItemExStarUpgradeFomu" +
+      "laStar\022;\n\007star_20\030\024 \001(\0132*.ConstHeroTable" +
+      "ItemExStarUpgradeFomulaStar\022;\n\007star_21\030\025" +
+      " \001(\0132*.ConstHeroTableItemExStarUpgradeFo" +
+      "mulaStar\022;\n\007star_22\030\026 \001(\0132*.ConstHeroTab" +
+      "leItemExStarUpgradeFomulaStar\022;\n\007star_23" +
+      "\030\027 \001(\0132*.ConstHeroTableItemExStarUpgrade" +
+      "FomulaStar\022;\n\007star_24\030\030 \001(\0132*.ConstHeroT" +
+      "ableItemExStarUpgradeFomulaStar\022;\n\007star_" +
+      "25\030\031 \001(\0132*.ConstHeroTableItemExStarUpgra" +
+      "deFomulaStarBG\n\026com.gejian.pixel.protoB-" +
+      "ConstHeroTableItemExStarUpgradeFomulaPro" +
+      "tobufb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5378,31 +5347,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.getDescriptor(),
+          com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.getDescriptor(),
         }, assigner);
     internal_static_ConstHeroTableItemExStarUpgradeFomula_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -5410,31 +5355,7 @@ public final class ConstHeroTableItemExStarUpgradeFomulaProtobuf {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ConstHeroTableItemExStarUpgradeFomula_descriptor,
         new java.lang.String[] { "Star1", "Star2", "Star3", "Star4", "Star5", "Star6", "Star7", "Star8", "Star9", "Star10", "Star11", "Star12", "Star13", "Star14", "Star15", "Star16", "Star17", "Star18", "Star19", "Star20", "Star21", "Star22", "Star23", "Star24", "Star25", });
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar1Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar2Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar3Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar4Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar5Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar6Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar7Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar8Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar9Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar10Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar11Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar12Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar13Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar14Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar15Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar16Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar17Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar18Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar19Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar20Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar21Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar22Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar23Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar24Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStar25Protobuf.getDescriptor();
+    com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaStarProtobuf.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

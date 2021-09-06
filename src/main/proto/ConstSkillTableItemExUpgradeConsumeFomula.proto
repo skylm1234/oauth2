@@ -1,26 +1,18 @@
 syntax = "proto3";
-import "ConstSkillTableItemExUpgradeConsumeFomulaX1.proto";
-import "ConstSkillTableItemExUpgradeConsumeFomulaX2.proto";
-import "ConstSkillTableItemExUpgradeConsumeFomulaX3.proto";
-import "ConstSkillTableItemExUpgradeConsumeFomulaX4.proto";
-import "ConstSkillTableItemExUpgradeConsumeFomulaX5.proto";
-import "ConstSkillTableItemExUpgradeConsumeFomulaX6.proto";
-import "ConstSkillTableItemExUpgradeConsumeFomulaX7.proto";
-import "ConstSkillTableItemExUpgradeConsumeFomulaX8.proto";
-import "ConstSkillTableItemExUpgradeConsumeFomulaX9.proto";
+import "ConstSkillTableItemExUpgradeConsumeFomulaX.proto";
 //生成文件所在包名
 option java_package = "com.gejian.pixel.proto";
 //生成的java文件名
 option java_outer_classname = "ConstSkillTableItemExUpgradeConsumeFomulaProtobuf";
 
-message	ConstSkillTableItemExUpgradeConsumeFomula  {
-		ConstSkillTableItemExUpgradeConsumeFomulaX1	X1 = 1;
-		ConstSkillTableItemExUpgradeConsumeFomulaX2	X2 = 2;
-		ConstSkillTableItemExUpgradeConsumeFomulaX3	X3 = 3;
-		ConstSkillTableItemExUpgradeConsumeFomulaX4	X4 = 4;
-		ConstSkillTableItemExUpgradeConsumeFomulaX5	X5 = 5;
-		ConstSkillTableItemExUpgradeConsumeFomulaX6	X6 = 6;
-		ConstSkillTableItemExUpgradeConsumeFomulaX7	X7 = 7;
-		ConstSkillTableItemExUpgradeConsumeFomulaX8	X8 = 8;
-		ConstSkillTableItemExUpgradeConsumeFomulaX9	X9 = 9;
+message    ConstSkillTableItemExUpgradeConsumeFomula  {
+	ConstSkillTableItemExUpgradeConsumeFomulaX    X1 = 1;
+	ConstSkillTableItemExUpgradeConsumeFomulaX    X2 = 2;
+	ConstSkillTableItemExUpgradeConsumeFomulaX    X3 = 3;
+	ConstSkillTableItemExUpgradeConsumeFomulaX    X4 = 4;
+	ConstSkillTableItemExUpgradeConsumeFomulaX    X5 = 5;
+	ConstSkillTableItemExUpgradeConsumeFomulaX    X6 = 6;
+	ConstSkillTableItemExUpgradeConsumeFomulaX    X7 = 7;
+	ConstSkillTableItemExUpgradeConsumeFomulaX    X8 = 8;
+	ConstSkillTableItemExUpgradeConsumeFomulaX    X9 = 9;
 }

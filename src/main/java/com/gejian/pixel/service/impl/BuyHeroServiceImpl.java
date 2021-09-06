@@ -12,10 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.script.*;
+import java.util.*;
 import java.util.logging.Handler;
 
 /**
@@ -29,7 +27,9 @@ public class BuyHeroServiceImpl extends ServiceImpl<BuyHeroMapper, BuyHero>
 
 	private List<ConstBuyHeroTableItemExProtobuf.ConstBuyHeroTableItemEx> table = new ArrayList<>();
 
-	@PostConstruct
+	private ScriptEngine scriptEngine = new ScriptEngineManager().getEngineByName("javascript");
+
+	@Override
 	public void init() {
 		List<BuyHero> list = this.list();
 		if (!CollectionUtils.isEmpty(list)) {
@@ -40,15 +40,17 @@ public class BuyHeroServiceImpl extends ServiceImpl<BuyHeroMapper, BuyHero>
 		}
 	}
 
-	/**
-	 * 根据类型获取英雄
-	 *
-	 * @param type
-	 * @return
-	 */
-	public BuyHero getHero(int type) {
-		return hash.get(type);
+	public double calculation(Integer id, Integer count) throws ScriptException {
+		BuyHero buyHero = hash.get(id);
+		if (Objects.isNull(buyHero)) {
+			return 0;
+		}
+		SimpleBindings simpleBindings = new SimpleBindings();
+		simpleBindings.put("count", count);
+		return (Double)scriptEngine.eval(buyHero.getAmount(), simpleBindings);
 	}
+
+
 
 	/**
 	 * @param item

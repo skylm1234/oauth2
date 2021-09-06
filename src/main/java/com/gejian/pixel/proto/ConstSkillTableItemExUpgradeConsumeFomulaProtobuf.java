@@ -19,121 +19,121 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
      */
     boolean hasX1();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1 getX1();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX1();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1OrBuilder getX1OrBuilder();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX1OrBuilder();
 
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
      */
     boolean hasX2();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2 getX2();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX2();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2OrBuilder getX2OrBuilder();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX2OrBuilder();
 
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
      */
     boolean hasX3();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3 getX3();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX3();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3OrBuilder getX3OrBuilder();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX3OrBuilder();
 
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
      */
     boolean hasX4();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4 getX4();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX4();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4OrBuilder getX4OrBuilder();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX4OrBuilder();
 
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
      */
     boolean hasX5();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5 getX5();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX5();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5OrBuilder getX5OrBuilder();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX5OrBuilder();
 
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
      */
     boolean hasX6();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6 getX6();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX6();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6OrBuilder getX6OrBuilder();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX6OrBuilder();
 
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
      */
     boolean hasX7();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7 getX7();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX7();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7OrBuilder getX7OrBuilder();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX7OrBuilder();
 
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
      */
     boolean hasX8();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8 getX8();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX8();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8OrBuilder getX8OrBuilder();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX8OrBuilder();
 
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
      */
     boolean hasX9();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9 getX9();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX9();
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
      */
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9OrBuilder getX9OrBuilder();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX9OrBuilder();
   }
   /**
    * Protobuf type {@code ConstSkillTableItemExUpgradeConsumeFomula}
@@ -175,11 +175,11 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
               done = true;
               break;
             case 10: {
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder subBuilder = null;
               if (x1_ != null) {
                 subBuilder = x1_.toBuilder();
               }
-              x1_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1.parser(), extensionRegistry);
+              x1_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(x1_);
                 x1_ = subBuilder.buildPartial();
@@ -188,11 +188,11 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
               break;
             }
             case 18: {
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder subBuilder = null;
               if (x2_ != null) {
                 subBuilder = x2_.toBuilder();
               }
-              x2_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2.parser(), extensionRegistry);
+              x2_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(x2_);
                 x2_ = subBuilder.buildPartial();
@@ -201,11 +201,11 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
               break;
             }
             case 26: {
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder subBuilder = null;
               if (x3_ != null) {
                 subBuilder = x3_.toBuilder();
               }
-              x3_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3.parser(), extensionRegistry);
+              x3_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(x3_);
                 x3_ = subBuilder.buildPartial();
@@ -214,11 +214,11 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
               break;
             }
             case 34: {
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder subBuilder = null;
               if (x4_ != null) {
                 subBuilder = x4_.toBuilder();
               }
-              x4_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4.parser(), extensionRegistry);
+              x4_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(x4_);
                 x4_ = subBuilder.buildPartial();
@@ -227,11 +227,11 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
               break;
             }
             case 42: {
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder subBuilder = null;
               if (x5_ != null) {
                 subBuilder = x5_.toBuilder();
               }
-              x5_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5.parser(), extensionRegistry);
+              x5_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(x5_);
                 x5_ = subBuilder.buildPartial();
@@ -240,11 +240,11 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
               break;
             }
             case 50: {
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder subBuilder = null;
               if (x6_ != null) {
                 subBuilder = x6_.toBuilder();
               }
-              x6_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6.parser(), extensionRegistry);
+              x6_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(x6_);
                 x6_ = subBuilder.buildPartial();
@@ -253,11 +253,11 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
               break;
             }
             case 58: {
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder subBuilder = null;
               if (x7_ != null) {
                 subBuilder = x7_.toBuilder();
               }
-              x7_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7.parser(), extensionRegistry);
+              x7_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(x7_);
                 x7_ = subBuilder.buildPartial();
@@ -266,11 +266,11 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
               break;
             }
             case 66: {
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder subBuilder = null;
               if (x8_ != null) {
                 subBuilder = x8_.toBuilder();
               }
-              x8_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8.parser(), extensionRegistry);
+              x8_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(x8_);
                 x8_ = subBuilder.buildPartial();
@@ -279,11 +279,11 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
               break;
             }
             case 74: {
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9.Builder subBuilder = null;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder subBuilder = null;
               if (x9_ != null) {
                 subBuilder = x9_.toBuilder();
               }
-              x9_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9.parser(), extensionRegistry);
+              x9_ = input.readMessage(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(x9_);
                 x9_ = subBuilder.buildPartial();
@@ -324,191 +324,191 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
     }
 
     public static final int X1_FIELD_NUMBER = 1;
-    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1 x1_;
+    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x1_;
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
      */
     public boolean hasX1() {
       return x1_ != null;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1 getX1() {
-      return x1_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1.getDefaultInstance() : x1_;
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX1() {
+      return x1_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x1_;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1OrBuilder getX1OrBuilder() {
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX1OrBuilder() {
       return getX1();
     }
 
     public static final int X2_FIELD_NUMBER = 2;
-    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2 x2_;
+    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x2_;
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
      */
     public boolean hasX2() {
       return x2_ != null;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2 getX2() {
-      return x2_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2.getDefaultInstance() : x2_;
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX2() {
+      return x2_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x2_;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2OrBuilder getX2OrBuilder() {
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX2OrBuilder() {
       return getX2();
     }
 
     public static final int X3_FIELD_NUMBER = 3;
-    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3 x3_;
+    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x3_;
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
      */
     public boolean hasX3() {
       return x3_ != null;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3 getX3() {
-      return x3_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3.getDefaultInstance() : x3_;
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX3() {
+      return x3_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x3_;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3OrBuilder getX3OrBuilder() {
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX3OrBuilder() {
       return getX3();
     }
 
     public static final int X4_FIELD_NUMBER = 4;
-    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4 x4_;
+    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x4_;
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
      */
     public boolean hasX4() {
       return x4_ != null;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4 getX4() {
-      return x4_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4.getDefaultInstance() : x4_;
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX4() {
+      return x4_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x4_;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4OrBuilder getX4OrBuilder() {
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX4OrBuilder() {
       return getX4();
     }
 
     public static final int X5_FIELD_NUMBER = 5;
-    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5 x5_;
+    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x5_;
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
      */
     public boolean hasX5() {
       return x5_ != null;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5 getX5() {
-      return x5_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5.getDefaultInstance() : x5_;
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX5() {
+      return x5_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x5_;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5OrBuilder getX5OrBuilder() {
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX5OrBuilder() {
       return getX5();
     }
 
     public static final int X6_FIELD_NUMBER = 6;
-    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6 x6_;
+    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x6_;
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
      */
     public boolean hasX6() {
       return x6_ != null;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6 getX6() {
-      return x6_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6.getDefaultInstance() : x6_;
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX6() {
+      return x6_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x6_;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6OrBuilder getX6OrBuilder() {
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX6OrBuilder() {
       return getX6();
     }
 
     public static final int X7_FIELD_NUMBER = 7;
-    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7 x7_;
+    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x7_;
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
      */
     public boolean hasX7() {
       return x7_ != null;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7 getX7() {
-      return x7_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7.getDefaultInstance() : x7_;
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX7() {
+      return x7_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x7_;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7OrBuilder getX7OrBuilder() {
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX7OrBuilder() {
       return getX7();
     }
 
     public static final int X8_FIELD_NUMBER = 8;
-    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8 x8_;
+    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x8_;
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
      */
     public boolean hasX8() {
       return x8_ != null;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8 getX8() {
-      return x8_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8.getDefaultInstance() : x8_;
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX8() {
+      return x8_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x8_;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8OrBuilder getX8OrBuilder() {
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX8OrBuilder() {
       return getX8();
     }
 
     public static final int X9_FIELD_NUMBER = 9;
-    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9 x9_;
+    private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x9_;
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
      */
     public boolean hasX9() {
       return x9_ != null;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9 getX9() {
-      return x9_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9.getDefaultInstance() : x9_;
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX9() {
+      return x9_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x9_;
     }
     /**
-     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+     * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
      */
-    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9OrBuilder getX9OrBuilder() {
+    public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX9OrBuilder() {
       return getX9();
     }
 
@@ -1068,29 +1068,29 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
 
-      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1 x1_ = null;
+      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x1_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1OrBuilder> x1Builder_;
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> x1Builder_;
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
        */
       public boolean hasX1() {
         return x1Builder_ != null || x1_ != null;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1 getX1() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX1() {
         if (x1Builder_ == null) {
-          return x1_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1.getDefaultInstance() : x1_;
+          return x1_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x1_;
         } else {
           return x1Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
        */
-      public Builder setX1(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1 value) {
+      public Builder setX1(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x1Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1104,10 +1104,10 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
        */
       public Builder setX1(
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder builderForValue) {
         if (x1Builder_ == null) {
           x1_ = builderForValue.build();
           onChanged();
@@ -1118,13 +1118,13 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
        */
-      public Builder mergeX1(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1 value) {
+      public Builder mergeX1(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x1Builder_ == null) {
           if (x1_ != null) {
             x1_ =
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1.newBuilder(x1_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.newBuilder(x1_).mergeFrom(value).buildPartial();
           } else {
             x1_ = value;
           }
@@ -1136,7 +1136,7 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
        */
       public Builder clearX1() {
         if (x1Builder_ == null) {
@@ -1150,33 +1150,33 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1.Builder getX1Builder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder getX1Builder() {
         
         onChanged();
         return getX1FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1OrBuilder getX1OrBuilder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX1OrBuilder() {
         if (x1Builder_ != null) {
           return x1Builder_.getMessageOrBuilder();
         } else {
           return x1_ == null ?
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1.getDefaultInstance() : x1_;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x1_;
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX1 X1 = 1;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X1 = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1OrBuilder> 
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> 
           getX1FieldBuilder() {
         if (x1Builder_ == null) {
           x1Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX1OrBuilder>(
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder>(
                   getX1(),
                   getParentForChildren(),
                   isClean());
@@ -1185,29 +1185,29 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return x1Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2 x2_ = null;
+      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x2_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2OrBuilder> x2Builder_;
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> x2Builder_;
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
        */
       public boolean hasX2() {
         return x2Builder_ != null || x2_ != null;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2 getX2() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX2() {
         if (x2Builder_ == null) {
-          return x2_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2.getDefaultInstance() : x2_;
+          return x2_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x2_;
         } else {
           return x2Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
        */
-      public Builder setX2(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2 value) {
+      public Builder setX2(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x2Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1221,10 +1221,10 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
        */
       public Builder setX2(
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder builderForValue) {
         if (x2Builder_ == null) {
           x2_ = builderForValue.build();
           onChanged();
@@ -1235,13 +1235,13 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
        */
-      public Builder mergeX2(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2 value) {
+      public Builder mergeX2(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x2Builder_ == null) {
           if (x2_ != null) {
             x2_ =
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2.newBuilder(x2_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.newBuilder(x2_).mergeFrom(value).buildPartial();
           } else {
             x2_ = value;
           }
@@ -1253,7 +1253,7 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
        */
       public Builder clearX2() {
         if (x2Builder_ == null) {
@@ -1267,33 +1267,33 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2.Builder getX2Builder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder getX2Builder() {
         
         onChanged();
         return getX2FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2OrBuilder getX2OrBuilder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX2OrBuilder() {
         if (x2Builder_ != null) {
           return x2Builder_.getMessageOrBuilder();
         } else {
           return x2_ == null ?
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2.getDefaultInstance() : x2_;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x2_;
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX2 X2 = 2;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X2 = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2OrBuilder> 
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> 
           getX2FieldBuilder() {
         if (x2Builder_ == null) {
           x2Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX2OrBuilder>(
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder>(
                   getX2(),
                   getParentForChildren(),
                   isClean());
@@ -1302,29 +1302,29 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return x2Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3 x3_ = null;
+      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x3_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3OrBuilder> x3Builder_;
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> x3Builder_;
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
        */
       public boolean hasX3() {
         return x3Builder_ != null || x3_ != null;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3 getX3() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX3() {
         if (x3Builder_ == null) {
-          return x3_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3.getDefaultInstance() : x3_;
+          return x3_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x3_;
         } else {
           return x3Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
        */
-      public Builder setX3(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3 value) {
+      public Builder setX3(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x3Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1338,10 +1338,10 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
        */
       public Builder setX3(
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder builderForValue) {
         if (x3Builder_ == null) {
           x3_ = builderForValue.build();
           onChanged();
@@ -1352,13 +1352,13 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
        */
-      public Builder mergeX3(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3 value) {
+      public Builder mergeX3(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x3Builder_ == null) {
           if (x3_ != null) {
             x3_ =
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3.newBuilder(x3_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.newBuilder(x3_).mergeFrom(value).buildPartial();
           } else {
             x3_ = value;
           }
@@ -1370,7 +1370,7 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
        */
       public Builder clearX3() {
         if (x3Builder_ == null) {
@@ -1384,33 +1384,33 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3.Builder getX3Builder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder getX3Builder() {
         
         onChanged();
         return getX3FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3OrBuilder getX3OrBuilder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX3OrBuilder() {
         if (x3Builder_ != null) {
           return x3Builder_.getMessageOrBuilder();
         } else {
           return x3_ == null ?
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3.getDefaultInstance() : x3_;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x3_;
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX3 X3 = 3;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X3 = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3OrBuilder> 
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> 
           getX3FieldBuilder() {
         if (x3Builder_ == null) {
           x3Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX3OrBuilder>(
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder>(
                   getX3(),
                   getParentForChildren(),
                   isClean());
@@ -1419,29 +1419,29 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return x3Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4 x4_ = null;
+      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x4_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4OrBuilder> x4Builder_;
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> x4Builder_;
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
        */
       public boolean hasX4() {
         return x4Builder_ != null || x4_ != null;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4 getX4() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX4() {
         if (x4Builder_ == null) {
-          return x4_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4.getDefaultInstance() : x4_;
+          return x4_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x4_;
         } else {
           return x4Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
        */
-      public Builder setX4(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4 value) {
+      public Builder setX4(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x4Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1455,10 +1455,10 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
        */
       public Builder setX4(
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder builderForValue) {
         if (x4Builder_ == null) {
           x4_ = builderForValue.build();
           onChanged();
@@ -1469,13 +1469,13 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
        */
-      public Builder mergeX4(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4 value) {
+      public Builder mergeX4(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x4Builder_ == null) {
           if (x4_ != null) {
             x4_ =
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4.newBuilder(x4_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.newBuilder(x4_).mergeFrom(value).buildPartial();
           } else {
             x4_ = value;
           }
@@ -1487,7 +1487,7 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
        */
       public Builder clearX4() {
         if (x4Builder_ == null) {
@@ -1501,33 +1501,33 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4.Builder getX4Builder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder getX4Builder() {
         
         onChanged();
         return getX4FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4OrBuilder getX4OrBuilder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX4OrBuilder() {
         if (x4Builder_ != null) {
           return x4Builder_.getMessageOrBuilder();
         } else {
           return x4_ == null ?
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4.getDefaultInstance() : x4_;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x4_;
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX4 X4 = 4;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X4 = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4OrBuilder> 
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> 
           getX4FieldBuilder() {
         if (x4Builder_ == null) {
           x4Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX4OrBuilder>(
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder>(
                   getX4(),
                   getParentForChildren(),
                   isClean());
@@ -1536,29 +1536,29 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return x4Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5 x5_ = null;
+      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x5_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5OrBuilder> x5Builder_;
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> x5Builder_;
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
        */
       public boolean hasX5() {
         return x5Builder_ != null || x5_ != null;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5 getX5() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX5() {
         if (x5Builder_ == null) {
-          return x5_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5.getDefaultInstance() : x5_;
+          return x5_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x5_;
         } else {
           return x5Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
        */
-      public Builder setX5(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5 value) {
+      public Builder setX5(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x5Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1572,10 +1572,10 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
        */
       public Builder setX5(
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder builderForValue) {
         if (x5Builder_ == null) {
           x5_ = builderForValue.build();
           onChanged();
@@ -1586,13 +1586,13 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
        */
-      public Builder mergeX5(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5 value) {
+      public Builder mergeX5(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x5Builder_ == null) {
           if (x5_ != null) {
             x5_ =
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5.newBuilder(x5_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.newBuilder(x5_).mergeFrom(value).buildPartial();
           } else {
             x5_ = value;
           }
@@ -1604,7 +1604,7 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
        */
       public Builder clearX5() {
         if (x5Builder_ == null) {
@@ -1618,33 +1618,33 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5.Builder getX5Builder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder getX5Builder() {
         
         onChanged();
         return getX5FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5OrBuilder getX5OrBuilder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX5OrBuilder() {
         if (x5Builder_ != null) {
           return x5Builder_.getMessageOrBuilder();
         } else {
           return x5_ == null ?
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5.getDefaultInstance() : x5_;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x5_;
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX5 X5 = 5;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X5 = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5OrBuilder> 
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> 
           getX5FieldBuilder() {
         if (x5Builder_ == null) {
           x5Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX5OrBuilder>(
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder>(
                   getX5(),
                   getParentForChildren(),
                   isClean());
@@ -1653,29 +1653,29 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return x5Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6 x6_ = null;
+      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x6_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6OrBuilder> x6Builder_;
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> x6Builder_;
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
        */
       public boolean hasX6() {
         return x6Builder_ != null || x6_ != null;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6 getX6() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX6() {
         if (x6Builder_ == null) {
-          return x6_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6.getDefaultInstance() : x6_;
+          return x6_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x6_;
         } else {
           return x6Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
        */
-      public Builder setX6(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6 value) {
+      public Builder setX6(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x6Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1689,10 +1689,10 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
        */
       public Builder setX6(
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder builderForValue) {
         if (x6Builder_ == null) {
           x6_ = builderForValue.build();
           onChanged();
@@ -1703,13 +1703,13 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
        */
-      public Builder mergeX6(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6 value) {
+      public Builder mergeX6(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x6Builder_ == null) {
           if (x6_ != null) {
             x6_ =
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6.newBuilder(x6_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.newBuilder(x6_).mergeFrom(value).buildPartial();
           } else {
             x6_ = value;
           }
@@ -1721,7 +1721,7 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
        */
       public Builder clearX6() {
         if (x6Builder_ == null) {
@@ -1735,33 +1735,33 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6.Builder getX6Builder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder getX6Builder() {
         
         onChanged();
         return getX6FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6OrBuilder getX6OrBuilder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX6OrBuilder() {
         if (x6Builder_ != null) {
           return x6Builder_.getMessageOrBuilder();
         } else {
           return x6_ == null ?
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6.getDefaultInstance() : x6_;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x6_;
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX6 X6 = 6;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X6 = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6OrBuilder> 
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> 
           getX6FieldBuilder() {
         if (x6Builder_ == null) {
           x6Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX6OrBuilder>(
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder>(
                   getX6(),
                   getParentForChildren(),
                   isClean());
@@ -1770,29 +1770,29 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return x6Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7 x7_ = null;
+      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x7_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7OrBuilder> x7Builder_;
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> x7Builder_;
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
        */
       public boolean hasX7() {
         return x7Builder_ != null || x7_ != null;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7 getX7() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX7() {
         if (x7Builder_ == null) {
-          return x7_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7.getDefaultInstance() : x7_;
+          return x7_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x7_;
         } else {
           return x7Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
        */
-      public Builder setX7(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7 value) {
+      public Builder setX7(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x7Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1806,10 +1806,10 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
        */
       public Builder setX7(
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder builderForValue) {
         if (x7Builder_ == null) {
           x7_ = builderForValue.build();
           onChanged();
@@ -1820,13 +1820,13 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
        */
-      public Builder mergeX7(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7 value) {
+      public Builder mergeX7(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x7Builder_ == null) {
           if (x7_ != null) {
             x7_ =
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7.newBuilder(x7_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.newBuilder(x7_).mergeFrom(value).buildPartial();
           } else {
             x7_ = value;
           }
@@ -1838,7 +1838,7 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
        */
       public Builder clearX7() {
         if (x7Builder_ == null) {
@@ -1852,33 +1852,33 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7.Builder getX7Builder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder getX7Builder() {
         
         onChanged();
         return getX7FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7OrBuilder getX7OrBuilder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX7OrBuilder() {
         if (x7Builder_ != null) {
           return x7Builder_.getMessageOrBuilder();
         } else {
           return x7_ == null ?
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7.getDefaultInstance() : x7_;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x7_;
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX7 X7 = 7;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X7 = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7OrBuilder> 
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> 
           getX7FieldBuilder() {
         if (x7Builder_ == null) {
           x7Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX7OrBuilder>(
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder>(
                   getX7(),
                   getParentForChildren(),
                   isClean());
@@ -1887,29 +1887,29 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return x7Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8 x8_ = null;
+      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x8_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8OrBuilder> x8Builder_;
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> x8Builder_;
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
        */
       public boolean hasX8() {
         return x8Builder_ != null || x8_ != null;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8 getX8() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX8() {
         if (x8Builder_ == null) {
-          return x8_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8.getDefaultInstance() : x8_;
+          return x8_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x8_;
         } else {
           return x8Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
        */
-      public Builder setX8(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8 value) {
+      public Builder setX8(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x8Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1923,10 +1923,10 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
        */
       public Builder setX8(
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder builderForValue) {
         if (x8Builder_ == null) {
           x8_ = builderForValue.build();
           onChanged();
@@ -1937,13 +1937,13 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
        */
-      public Builder mergeX8(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8 value) {
+      public Builder mergeX8(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x8Builder_ == null) {
           if (x8_ != null) {
             x8_ =
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8.newBuilder(x8_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.newBuilder(x8_).mergeFrom(value).buildPartial();
           } else {
             x8_ = value;
           }
@@ -1955,7 +1955,7 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
        */
       public Builder clearX8() {
         if (x8Builder_ == null) {
@@ -1969,33 +1969,33 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8.Builder getX8Builder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder getX8Builder() {
         
         onChanged();
         return getX8FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8OrBuilder getX8OrBuilder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX8OrBuilder() {
         if (x8Builder_ != null) {
           return x8Builder_.getMessageOrBuilder();
         } else {
           return x8_ == null ?
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8.getDefaultInstance() : x8_;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x8_;
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX8 X8 = 8;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X8 = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8OrBuilder> 
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> 
           getX8FieldBuilder() {
         if (x8Builder_ == null) {
           x8Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX8OrBuilder>(
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder>(
                   getX8(),
                   getParentForChildren(),
                   isClean());
@@ -2004,29 +2004,29 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return x8Builder_;
       }
 
-      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9 x9_ = null;
+      private com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX x9_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9OrBuilder> x9Builder_;
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> x9Builder_;
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
        */
       public boolean hasX9() {
         return x9Builder_ != null || x9_ != null;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9 getX9() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX getX9() {
         if (x9Builder_ == null) {
-          return x9_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9.getDefaultInstance() : x9_;
+          return x9_ == null ? com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x9_;
         } else {
           return x9Builder_.getMessage();
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
        */
-      public Builder setX9(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9 value) {
+      public Builder setX9(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x9Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2040,10 +2040,10 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
        */
       public Builder setX9(
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9.Builder builderForValue) {
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder builderForValue) {
         if (x9Builder_ == null) {
           x9_ = builderForValue.build();
           onChanged();
@@ -2054,13 +2054,13 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
        */
-      public Builder mergeX9(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9 value) {
+      public Builder mergeX9(com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX value) {
         if (x9Builder_ == null) {
           if (x9_ != null) {
             x9_ =
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9.newBuilder(x9_).mergeFrom(value).buildPartial();
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.newBuilder(x9_).mergeFrom(value).buildPartial();
           } else {
             x9_ = value;
           }
@@ -2072,7 +2072,7 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
        */
       public Builder clearX9() {
         if (x9Builder_ == null) {
@@ -2086,33 +2086,33 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
         return this;
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9.Builder getX9Builder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder getX9Builder() {
         
         onChanged();
         return getX9FieldBuilder().getBuilder();
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
        */
-      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9OrBuilder getX9OrBuilder() {
+      public com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder getX9OrBuilder() {
         if (x9Builder_ != null) {
           return x9Builder_.getMessageOrBuilder();
         } else {
           return x9_ == null ?
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9.getDefaultInstance() : x9_;
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.getDefaultInstance() : x9_;
         }
       }
       /**
-       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX9 X9 = 9;</code>
+       * <code>.ConstSkillTableItemExUpgradeConsumeFomulaX X9 = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9OrBuilder> 
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder> 
           getX9FieldBuilder() {
         if (x9Builder_ == null) {
           x9Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.ConstSkillTableItemExUpgradeConsumeFomulaX9OrBuilder>(
+              com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaX.Builder, com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.ConstSkillTableItemExUpgradeConsumeFomulaXOrBuilder>(
                   getX9(),
                   getParentForChildren(),
                   isClean());
@@ -2188,35 +2188,24 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
   static {
     java.lang.String[] descriptorData = {
       "\n/ConstSkillTableItemExUpgradeConsumeFom" +
-      "ula.proto\0321ConstSkillTableItemExUpgradeC" +
-      "onsumeFomulaX1.proto\0321ConstSkillTableIte" +
-      "mExUpgradeConsumeFomulaX2.proto\0321ConstSk" +
-      "illTableItemExUpgradeConsumeFomulaX3.pro" +
-      "to\0321ConstSkillTableItemExUpgradeConsumeF" +
-      "omulaX4.proto\0321ConstSkillTableItemExUpgr" +
-      "adeConsumeFomulaX5.proto\0321ConstSkillTabl" +
-      "eItemExUpgradeConsumeFomulaX6.proto\0321Con" +
-      "stSkillTableItemExUpgradeConsumeFomulaX7" +
-      ".proto\0321ConstSkillTableItemExUpgradeCons" +
-      "umeFomulaX8.proto\0321ConstSkillTableItemEx" +
-      "UpgradeConsumeFomulaX9.proto\"\265\004\n)ConstSk" +
-      "illTableItemExUpgradeConsumeFomula\0228\n\002X1" +
-      "\030\001 \001(\0132,.ConstSkillTableItemExUpgradeCon" +
-      "sumeFomulaX1\0228\n\002X2\030\002 \001(\0132,.ConstSkillTab" +
-      "leItemExUpgradeConsumeFomulaX2\0228\n\002X3\030\003 \001" +
-      "(\0132,.ConstSkillTableItemExUpgradeConsume" +
-      "FomulaX3\0228\n\002X4\030\004 \001(\0132,.ConstSkillTableIt" +
-      "emExUpgradeConsumeFomulaX4\0228\n\002X5\030\005 \001(\0132," +
-      ".ConstSkillTableItemExUpgradeConsumeFomu" +
-      "laX5\0228\n\002X6\030\006 \001(\0132,.ConstSkillTableItemEx" +
-      "UpgradeConsumeFomulaX6\0228\n\002X7\030\007 \001(\0132,.Con" +
-      "stSkillTableItemExUpgradeConsumeFomulaX7" +
-      "\0228\n\002X8\030\010 \001(\0132,.ConstSkillTableItemExUpgr" +
-      "adeConsumeFomulaX8\0228\n\002X9\030\t \001(\0132,.ConstSk" +
-      "illTableItemExUpgradeConsumeFomulaX9BK\n\026" +
-      "com.gejian.pixel.protoB1ConstSkillTableI" +
-      "temExUpgradeConsumeFomulaProtobufb\006proto" +
-      "3"
+      "ula.proto\0320ConstSkillTableItemExUpgradeC" +
+      "onsumeFomulaX.proto\"\254\004\n)ConstSkillTableI" +
+      "temExUpgradeConsumeFomula\0227\n\002X1\030\001 \001(\0132+." +
+      "ConstSkillTableItemExUpgradeConsumeFomul" +
+      "aX\0227\n\002X2\030\002 \001(\0132+.ConstSkillTableItemExUp" +
+      "gradeConsumeFomulaX\0227\n\002X3\030\003 \001(\0132+.ConstS" +
+      "killTableItemExUpgradeConsumeFomulaX\0227\n\002" +
+      "X4\030\004 \001(\0132+.ConstSkillTableItemExUpgradeC" +
+      "onsumeFomulaX\0227\n\002X5\030\005 \001(\0132+.ConstSkillTa" +
+      "bleItemExUpgradeConsumeFomulaX\0227\n\002X6\030\006 \001" +
+      "(\0132+.ConstSkillTableItemExUpgradeConsume" +
+      "FomulaX\0227\n\002X7\030\007 \001(\0132+.ConstSkillTableIte" +
+      "mExUpgradeConsumeFomulaX\0227\n\002X8\030\010 \001(\0132+.C" +
+      "onstSkillTableItemExUpgradeConsumeFomula" +
+      "X\0227\n\002X9\030\t \001(\0132+.ConstSkillTableItemExUpg" +
+      "radeConsumeFomulaXBK\n\026com.gejian.pixel.p" +
+      "rotoB1ConstSkillTableItemExUpgradeConsum" +
+      "eFomulaProtobufb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2229,15 +2218,7 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.getDescriptor(),
-          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.getDescriptor(),
+          com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.getDescriptor(),
         }, assigner);
     internal_static_ConstSkillTableItemExUpgradeConsumeFomula_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -2245,15 +2226,7 @@ public final class ConstSkillTableItemExUpgradeConsumeFomulaProtobuf {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ConstSkillTableItemExUpgradeConsumeFomula_descriptor,
         new java.lang.String[] { "X1", "X2", "X3", "X4", "X5", "X6", "X7", "X8", "X9", });
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX1Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX2Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX3Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX4Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX5Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX6Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX7Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX8Protobuf.getDescriptor();
-    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaX9Protobuf.getDescriptor();
+    com.gejian.pixel.proto.ConstSkillTableItemExUpgradeConsumeFomulaXProtobuf.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

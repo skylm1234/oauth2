@@ -30,7 +30,7 @@ public class PromotionServiceImpl extends ServiceImpl<PromotionMapper, Promotion
 	private List<ConstPromotionTableItemExProtobuf.ConstPromotionTableItemEx>
 			table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<Promotion> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){
