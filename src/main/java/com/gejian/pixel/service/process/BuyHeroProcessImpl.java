@@ -6,6 +6,7 @@ import com.gejian.pixel.proto.CommBuyHeroRequestProtobuf;
 import com.gejian.pixel.proto.CommBuyHeroResponseProtobuf;
 import com.gejian.pixel.proto.CommSetNicknameRequestProtobuf;
 import com.gejian.pixel.proto.CommSetNicknameResponseProtobuf;
+import com.gejian.pixel.service.BuyHeroService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.Helper;
 import lombok.extern.slf4j.Slf4j;
@@ -22,12 +23,16 @@ import org.springframework.stereotype.Service;
 public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.CommBuyHeroRequest
 		, CommBuyHeroResponseProtobuf.CommBuyHeroResponse> {
 
+	@Autowired
+	private BuyHeroService buyHeroService;
+
 	@Override
 	public CommBuyHeroResponseProtobuf.CommBuyHeroResponse doProcess(CommBuyHeroRequestProtobuf.CommBuyHeroRequest commBuyHeroRequest) throws Exception {
 
 		CommBuyHeroResponseProtobuf.CommBuyHeroResponse.Builder response = CommBuyHeroResponseProtobuf.CommBuyHeroResponse.newBuilder();
 
 		int type = commBuyHeroRequest.getType();
+
 
 		// TODO  type_info = RUBY_CONST_BUY_HERO_TABLE[type - 1]
 
@@ -36,6 +41,8 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 		if (!(type >= 1 && type <= 3) || null == typeInfo) {
 			return response.setResult(ErrorEnum.ERROR_INVALID_BUY_HERO_TYPE).build();
 		}
+
+
 
 		// TODO  buy_hero_ff = type_info['dropid']
 		// TODO  buy_hero_f = DROP_ITEMS[buy_hero_ff]

@@ -25,28 +25,37 @@ import java.util.logging.Handler;
 public class BuyHeroServiceImpl extends ServiceImpl<BuyHeroMapper, BuyHero>
 		implements BuyHeroService, ConstantsProto {
 
-	private Map<Integer,BuyHero> hash = new HashMap<>();
+	private Map<Integer, BuyHero> hash = new HashMap<>();
 
 	private List<ConstBuyHeroTableItemExProtobuf.ConstBuyHeroTableItemEx> table = new ArrayList<>();
 
 	@PostConstruct
-	public void init(){
+	public void init() {
 		List<BuyHero> list = this.list();
-		if (!CollectionUtils.isEmpty(list)){
-			list.forEach(item->{
-				hash.put(item.getType(),item);
+		if (!CollectionUtils.isEmpty(list)) {
+			list.forEach(item -> {
+				hash.put(item.getType(), item);
 				table.add(convert(item));
 			});
 		}
 	}
 
 	/**
+	 * 根据类型获取英雄
 	 *
+	 * @param type
+	 * @return
+	 */
+	public BuyHero getHero(int type) {
+		return hash.get(type);
+	}
+
+	/**
 	 * @param item
 	 * @return
 	 */
 	private ConstBuyHeroTableItemExProtobuf.ConstBuyHeroTableItemEx
-		convert(BuyHero item) {
+	convert(BuyHero item) {
 		return ConstBuyHeroTableItemExProtobuf.ConstBuyHeroTableItemEx.newBuilder()
 				.setType(item.getType())
 				.setChips(item.getChips())
@@ -65,13 +74,13 @@ public class BuyHeroServiceImpl extends ServiceImpl<BuyHeroMapper, BuyHero>
 	public void build(ConstTablesProtobuf.ConstTables.Builder builder) {
 		ConstBuyHeroTableProtobuf.ConstBuyHeroTable build =
 				ConstBuyHeroTableProtobuf.ConstBuyHeroTable.newBuilder()
-				.addAllItems(table)
-				.build();
+						.addAllItems(table)
+						.build();
 		builder.setBuyHeros(build);
 	}
 
 	// use "baseMapper" to call jdbc
-    // example: baseMapper.insert(entity);
-    // example: baseMapper.selectByPage(params);
-   
+	// example: baseMapper.insert(entity);
+	// example: baseMapper.selectByPage(params);
+
 }
