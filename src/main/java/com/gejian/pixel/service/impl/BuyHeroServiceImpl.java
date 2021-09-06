@@ -82,6 +82,11 @@ public class BuyHeroServiceImpl extends ServiceImpl<BuyHeroMapper, BuyHero>
 		builder.setBuyHeros(build);
 	}
 
+	@Override
+	public BuyHero getHero(int type) {
+		return hash.get(type);
+	}
+
 	// use "baseMapper" to call jdbc
 	// example: baseMapper.insert(entity);
 	// example: baseMapper.selectByPage(params);
