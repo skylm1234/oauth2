@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.SkillDao">
+
+    <resultMap id="SkillRM" type="com.gejian.pixel.entity.Skill">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="skillIcon" column="skill_icon"/>
+		<result property="desc" column="desc"/>
+		<result property="activeConsumeFomula" column="active_consume_fomula"/>
+		<result property="activeConsume" column="active_consume"/>
+		<result property="upgradeConsume" column="upgrade_consume"/>
+		<result property="levelvalue" column="levelvalue"/>
+		<result property="logic" column="logic"/>
+		<result property="selecter" column="selecter"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`name`,`skill_icon`,`desc`,`active_consume_fomula`,`active_consume`,`upgrade_consume`,`levelvalue`,`logic`,`selecter`
+	</sql>
+
+</mapper>
