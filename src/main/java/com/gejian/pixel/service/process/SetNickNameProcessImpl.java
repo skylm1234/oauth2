@@ -76,7 +76,6 @@ public class SetNickNameProcessImpl implements Process<CommSetNicknameRequestPro
 
 		redisTemplate.opsForHash().put(StrUtil.format(RedisKeyConstants.USER_STRINGS, identifier), NICK_NAME, hexNickname);
 
-
 		updateRanklistPower(identifier);
 		updateRanklistHonor(identifier);
 		updateRanklistRich(identifier);

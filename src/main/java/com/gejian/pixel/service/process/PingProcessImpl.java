@@ -19,7 +19,7 @@ import java.time.ZoneOffset;
  */
 @Service(CommandConstants.PING)
 @Slf4j
-public class CommPingProcessImpl implements Process<CommPingRequestProtobuf.CommPingRequest
+public class PingProcessImpl implements Process<CommPingRequestProtobuf.CommPingRequest
 		, CommPingResponseProtobuf.CommPingResponse> {
 
 
