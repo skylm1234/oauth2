@@ -5,7 +5,6 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
-import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
@@ -70,12 +69,11 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				request.getData(),
 				request.getVersion(),
 				request.getIdentifier(),
-				Integer.parseInt(request.getData()) * request.getVersion());
+				NumberUtil.parseLong(request.getData()) * request.getVersion());
 		log.info("request:{}", s);
 		log.info(s);
-		log.info(SecureUtil.sha1(s));
-		//if (!SecureUtil.sha1(s).equals(request.getCipher().toUpperCase())) {
-		if (!SecureUtil.sha1(s).equals(request.getCipher())) {
+		log.info(SecureUtil.sha1(s).toUpperCase());
+		if (!SecureUtil.sha1(s).toUpperCase().equals(request.getCipher().toUpperCase())) {
 			replyBuilder.setResult(ErrorEnum.ERROR_INVALID_PARAMETER);
 			return replyBuilder.build();
 		}
@@ -299,20 +297,20 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		});
 
 		Map tempbackpack = redisTemplate.opsForHash().entries("u:" + identifier + ":temp_backpack");
-		/*PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack tbp = PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack
-				.newBuilder()
-				.setLevel(Integer.parseInt(tempbackpack.get("level")+""))
-				.setType(Integer.parseInt(tempbackpack.get("type")+""))
-				.setStage(Integer.parseInt(tempbackpack.get("stage")+""))
-				.setDungeonEnterTimestamp(Integer.parseInt(tempbackpack.get("dungeon_enter_timestamp")+""))
-				.build();*/
 		PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack tbp = PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack
+				.newBuilder()
+				.setLevel(NumberUtil.parseInt(tempbackpack.get("level")+""))
+				.setType(NumberUtil.parseInt(tempbackpack.get("type")+""))
+				.setStage(NumberUtil.parseInt(tempbackpack.get("stage")+""))
+				.setDungeonEnterTimestamp(NumberUtil.parseInt(tempbackpack.get("dungeon_enter_timestamp")+""))
+				.build();
+		/*PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack tbp = PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack
 				.newBuilder()
 				.setLevel(0)
 				.setType(0)
 				.setStage(0)
 				.setDungeonEnterTimestamp(0)
-				.build();
+				.build();*/
 
 		playerBuilder.setBackpack(tbp);
 
