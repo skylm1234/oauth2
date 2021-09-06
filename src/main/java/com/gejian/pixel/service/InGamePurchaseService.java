@@ -8,4 +8,5 @@ import com.gejian.pixel.entity.InGamePurchase;
  */
 public interface InGamePurchaseService extends IService<InGamePurchase> {
 
+	InGamePurchase getById(String id);
 }

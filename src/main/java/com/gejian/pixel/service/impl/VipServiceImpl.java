@@ -31,6 +31,11 @@ public class VipServiceImpl extends ServiceImpl<VipMapper, Vip> implements VipSe
 			table = new ArrayList<>();
 
 	@Override
+	public Vip getById(Integer id) {
+		return hash.get(id);
+	}
+
+	@Override
 	public void init(){
 		List<Vip> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){
