@@ -784,7 +784,7 @@ public class Helper {
 
 			int totalPower = 0;
 
-			for (int i = 0; i <= (Math.min(powers.size(), 5)); i++) {
+			for (int i = 0; i < (Math.min(powers.size(), 5)); i++) {
 				totalPower = totalPower + ToUtil.to_i(powers.get(i));
 			}
 			totalPower = ToUtil.to_i(totalPower / 100.0);
@@ -794,12 +794,14 @@ public class Helper {
 			__update_ranklist(redisTemplate, identifier, "power", totalPower);
 
 			Long myrank = redisTemplate.opsForZSet().reverseRank("ranklist:power", hexEncode(stringValue(redisTemplate, identifier, "nickname")));
-			if (!myrank.equals(omyrank) && myrank <= 100 && stringValue(redisTemplate, identifier, "nickname") != null) {
-				try {
-					String nickName = new String(stringValue(redisTemplate, identifier, "nickname").getBytes("UTF-8"), "UTF-8");
-					boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + nickName + "</color>战力榜提升至第" + myrank + "名！");
-				} catch (UnsupportedEncodingException e) {
-					e.printStackTrace();
+			if (myrank != null) {
+				if (!myrank.equals(omyrank) && myrank <= 100 && stringValue(redisTemplate, identifier, "nickname") != null) {
+					try {
+						String nickName = new String(stringValue(redisTemplate, identifier, "nickname").getBytes("UTF-8"), "UTF-8");
+						boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + nickName + "</color>战力榜提升至第" + myrank + "名！");
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}
@@ -808,28 +810,39 @@ public class Helper {
 
 	public static PlayerItemProtobuf.PlayerItem updateRanklistHonor(RedisTemplate redisTemplate, Integer identifier) {
 		Long omyrank = redisTemplate.opsForZSet().reverseRank("ranklist:honor", hexEncode(stringValue(redisTemplate, identifier, "nickname")));
-		__update_ranklist(redisTemplate, identifier, "honor", itemCount(redisTemplate, identifier, "total_honor"));
+		if (omyrank!=null) {
+			__update_ranklist(redisTemplate, identifier, "honor", itemCount(redisTemplate, identifier, "total_honor"));
+		}
 
 		Long myrank = redisTemplate.opsForZSet().reverseRank("ranklist:honor", hexEncode(stringValue(redisTemplate, identifier, "nickname")));
-		if (omyrank != myrank && myrank <= 100 && hexEncode(stringValue(redisTemplate, identifier, "nickname")) != null) {
-			boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + stringValue(redisTemplate, identifier, "nickname") + "</color>荣誉榜提升至第" + (myrank + 1) + "名！");
+		if (myrank!=null){
+			if (omyrank != myrank && myrank <= 100 && hexEncode(stringValue(redisTemplate, identifier, "nickname")) != null) {
+				boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + stringValue(redisTemplate, identifier, "nickname") + "</color>荣誉榜提升至第" + (myrank + 1) + "名！");
+			}
 		}
-		return onNotifyEventOfPromotions(redisTemplate, "kingofpvp", Integer.valueOf((myrank + 1) + ""), identifier);
+		if (omyrank!=null && myrank!=null) {
+			return onNotifyEventOfPromotions(redisTemplate, "kingofpvp", Integer.valueOf((myrank + 1) + ""), identifier);
+		}
+		return null;
 
 	}
 
 	public static void updateRanklistRich(RedisTemplate redisTemplate, Integer identifier) {
 		Long omyrank = redisTemplate.opsForZSet().reverseRank("ranklist:honor", hexEncode(stringValue(redisTemplate, identifier, "nickname")));
-		__update_ranklist(redisTemplate, identifier, "rich", itemCount(redisTemplate, identifier, "total_stone_purchased"));
+		if (omyrank!=null) {
+			__update_ranklist(redisTemplate, identifier, "rich", itemCount(redisTemplate, identifier, "total_stone_purchased"));
+		}
 
 		Long myrank = redisTemplate.opsForZSet().reverseRank("ranklist:rich", hexEncode(stringValue(redisTemplate, identifier, "nickname")));
-		if (!myrank.equals(omyrank) && myrank <= 100 && stringValue(redisTemplate, identifier, "nickname") != null) {
-			boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + stringValue(redisTemplate, identifier, "nickname") + "</color>战力榜提升至第" + (myrank + 1) + "名！");
+		if (omyrank!=null && myrank!=null) {
+			if (!myrank.equals(omyrank) && myrank <= 100 && stringValue(redisTemplate, identifier, "nickname") != null) {
+				boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + stringValue(redisTemplate, identifier, "nickname") + "</color>战力榜提升至第" + (myrank + 1) + "名！");
+			}
 		}
 	}
 
 	public static void __update_ranklist(RedisTemplate redisTemplate, Integer identifier, String ranklist, Integer score) {
-		redisTemplate.opsForZSet().add("ranklist:" + ranklist, score, Integer.parseInt(hexEncode(stringValue(redisTemplate, identifier, "nickname"))));
+		redisTemplate.opsForZSet().add("ranklist:" + ranklist, score, NumberUtil.parseLong(hexEncode(stringValue(redisTemplate, identifier, "nickname"))));
 	}
 
 
