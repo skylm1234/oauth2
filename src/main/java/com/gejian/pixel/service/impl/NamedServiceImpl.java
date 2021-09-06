@@ -28,7 +28,7 @@ public class NamedServiceImpl extends ServiceImpl<NamedMapper, Named> implements
 
 	private List<ConstNamedTableItemExProtobuf.ConstNamedTableItemEx> table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<Named> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

@@ -30,7 +30,7 @@ public class VipServiceImpl extends ServiceImpl<VipMapper, Vip> implements VipSe
 	private List<ConstVipTableItemExProtobuf.ConstVipTableItemEx>
 			table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<Vip> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

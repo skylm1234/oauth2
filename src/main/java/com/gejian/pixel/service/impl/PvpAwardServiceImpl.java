@@ -29,7 +29,7 @@ public class PvpAwardServiceImpl extends ServiceImpl<PvpAwardMapper, PvpAward> i
 	private List<ConstPvpAwardTableItemExProtobuf.ConstPvpAwardTableItemEx>
 			table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<PvpAward> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

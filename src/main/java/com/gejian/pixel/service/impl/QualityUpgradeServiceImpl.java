@@ -31,7 +31,7 @@ public class QualityUpgradeServiceImpl extends ServiceImpl<QualityUpgradeMapper,
 	private List<ConstQualityUpgradeTableItemExProtobuf.ConstQualityUpgradeTableItemEx>
 			table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<QualityUpgrade> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

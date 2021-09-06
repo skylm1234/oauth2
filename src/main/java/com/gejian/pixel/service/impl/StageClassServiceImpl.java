@@ -30,7 +30,7 @@ public class StageClassServiceImpl extends ServiceImpl<StageClassMapper, StageCl
 
 	private List<ConstStageClassTableItemExProtobuf.ConstStageClassTableItemEx> table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init() {
 		List<StageClass> list = this.list();
 		if (!CollectionUtils.isEmpty(list)) {

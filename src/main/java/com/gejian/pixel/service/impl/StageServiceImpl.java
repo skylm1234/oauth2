@@ -26,7 +26,7 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 
 	private List<ConstStageTableItemExProtobuf.ConstStageTableItemEx> table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init() {
 		List<Stage> list = this.list();
 		if (!CollectionUtils.isEmpty(list)) {

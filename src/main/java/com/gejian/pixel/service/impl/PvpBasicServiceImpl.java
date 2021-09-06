@@ -30,7 +30,7 @@ public class PvpBasicServiceImpl extends ServiceImpl<PvpBasicMapper, PvpBasic> i
 	private List<ConstPvpBasicTableItemExProtobuf.ConstPvpBasicTableItemEx>
 			table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<PvpBasic> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

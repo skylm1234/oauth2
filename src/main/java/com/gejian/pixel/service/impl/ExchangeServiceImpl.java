@@ -31,7 +31,7 @@ public class ExchangeServiceImpl extends ServiceImpl<ExchangeMapper, Exchange> i
 	private List<ConstExchangeTableItemExProtobuf.ConstExchangeTableItemEx>
 			table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<Exchange> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

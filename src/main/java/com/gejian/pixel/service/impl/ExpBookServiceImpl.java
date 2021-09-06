@@ -29,7 +29,7 @@ public class ExpBookServiceImpl extends ServiceImpl<ExpBookMapper, ExpBook>
 	private List<ConstExpbookTableItemExProtobuf.ConstExpbookTableItemEx>
 			table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<ExpBook> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

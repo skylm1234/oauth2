@@ -30,7 +30,7 @@ public class MonsterServiceImpl extends ServiceImpl<MonsterMapper, Monster>
 
 	private List<ConstMonsterTableItemExProtobuf.ConstMonsterTableItemEx> table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init() {
 		List<Monster> list = this.list();
 		if (!CollectionUtils.isEmpty(list)) {

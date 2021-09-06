@@ -31,7 +31,7 @@ public class LevelUpgradeServiceImpl extends ServiceImpl<LevelUpgradeMapper, Lev
 	private List<ConstLevelUpgradeTableItemExProtobuf.ConstLevelUpgradeTableItemEx>
 		table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
     public void init(){
 		List<LevelUpgrade> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

@@ -28,7 +28,7 @@ public class QualityUpgradeRateServiceImpl extends ServiceImpl<QualityUpgradeRat
 
 	private List<ConstQualityUpgradeRateTableItemExProtobuf.ConstQualityUpgradeRateTableItemEx> table=new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<QualityUpgradeRate> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.HeroMapper">
+
+    <resultMap id="HeroRM" type="com.gejian.pixel.entity.Hero">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="type" column="type"/>
+		<result property="desc" column="desc"/>
+		<result property="color" column="color"/>
+		<result property="chips" column="chips"/>
+		<result property="alive" column="alive"/>
+		<result property="hp" column="hp"/>
+		<result property="attack" column="attack"/>
+		<result property="defense" column="defense"/>
+		<result property="speed" column="speed"/>
+		<result property="hpUpgrade" column="hp_upgrade"/>
+		<result property="attackUpgrade" column="attack_upgrade"/>
+		<result property="defenseUpgrade" column="defense_upgrade"/>
+		<result property="speedUpgrade" column="speed_upgrade"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="skill" column="skill"/>
+		<result property="starUpgrade" column="star_upgrade"/>
+		<result property="group1" column="group1"/>
+		<result property="group1Skill" column="group1_skill"/>
+		<result property="group2" column="group2"/>
+		<result property="group2Skill" column="group2_skill"/>
+		<result property="skillA" column="skill_a"/>
+		<result property="skill1" column="skill1"/>
+		<result property="skill1Name" column="skill1_name"/>
+		<result property="skill2" column="skill2"/>
+		<result property="skill2Name" column="skill2_name"/>
+		<result property="skill3" column="skill3"/>
+		<result property="skill3Name" column="skill3_name"/>
+		<result property="skill4" column="skill4"/>
+		<result property="skill4Name" column="skill4_name"/>
+		<result property="squad1" column="squad1"/>
+		<result property="squad2" column="squad2"/>
+		<result property="basic" column="basic"/>
+		<result property="basicUpgrade" column="basic_upgrade"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`name`,`type`,`desc`,`color`,`chips`,`alive`,`hp`,`attack`,`defense`,`speed`,`hp_upgrade`,`attack_upgrade`,`defense_upgrade`,
+		`speed_upgrade`,`create_time`,`update_time`,`skill`,`star_upgrade`,`group1`,`group1_skill`,`group2`,`group2_skill`,`skill_a`,
+		`skill1`,`skill1_name`,`skill2`,`skill2_name`,`skill3`,`skill3_name`,`skill4`,`skill4_name`,`squad1`,`squad2`,`basic`,`basic_upgrade`
+	</sql>
+
+</mapper>

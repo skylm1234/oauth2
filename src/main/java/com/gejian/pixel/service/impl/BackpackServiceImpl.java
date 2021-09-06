@@ -31,7 +31,7 @@ public class BackpackServiceImpl extends ServiceImpl<BackpackMapper, Backpack>
 
 	private List<ConstBackpackTableItemExProtobuf.ConstBackpackTableItemEx> backpacks = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init() {
 		List<Backpack> list = this.list();
 		if (!CollectionUtils.isEmpty(list)) {
