@@ -30,11 +30,11 @@ public class ExpBookServiceImpl extends ServiceImpl<ExpBookMapper, ExpBook>
 			table = new ArrayList<>();
 
 	@Override
-	public void init(){
+	public void init() {
 		List<ExpBook> list = this.list();
-		if (!CollectionUtils.isEmpty(list)){
-			list.forEach(item->{
-				hash.put(item.getId(),item);
+		if (!CollectionUtils.isEmpty(list)) {
+			list.forEach(item -> {
+				hash.put(item.getId(), item);
 				table.add(convert(item));
 			});
 		}
@@ -58,5 +58,10 @@ public class ExpBookServiceImpl extends ServiceImpl<ExpBookMapper, ExpBook>
 				.addAllItems(table)
 				.build();
 		builder.setExpbooks(build);
+	}
+
+	@Override
+	public ExpBook getExpBook(String type) {
+		return hash.get(type);
 	}
 }

@@ -1,15 +1,17 @@
 package com.gejian.pixel.service.process;
 
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.ConsumeExpBookRedisKeyConstants;
+import com.gejian.pixel.entity.LevelUpgrade;
 import com.gejian.pixel.enums.ErrorEnum;
-import com.gejian.pixel.proto.CommLetHeroConsumeExpBookRequestProtobuf;
-import com.gejian.pixel.proto.CommLetHeroConsumeExpBookResponseProtobuf;
-import com.gejian.pixel.proto.CommSetNicknameRequestProtobuf;
-import com.gejian.pixel.proto.CommSetNicknameResponseProtobuf;
+import com.gejian.pixel.proto.*;
+import com.gejian.pixel.service.ExpBookService;
+import com.gejian.pixel.service.LevelUpgradeService;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,17 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 	@Autowired
 	private RedisTemplate redisTemplate;
 
+	@Autowired
+	private ExpBookService expBookService;
+
+	@Autowired
+	private LevelUpgradeService levelUpgradeService;
+
 	private static final String TYPE = "type";
+
+	private static final String CONSUMEEXPBOOKS = "consumeexpbooks";
+
+	private static final String DAILY_EXP_BOOK_CONSUME = "daily_exp_book_consume";
 
 	@Override
 	public CommLetHeroConsumeExpBookResponseProtobuf.CommLetHeroConsumeExpBookResponse doProcess(CommLetHeroConsumeExpBookRequestProtobuf.CommLetHeroConsumeExpBookRequest request) throws Exception {
@@ -68,8 +80,37 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 					Integer.valueOf((String) entry.getValue()));
 		});
 
+		response.addItems(Helper.onNotifyEventOfPromotions(redisTemplate, CONSUMEEXPBOOKS, request.getBooksCount()
+				, identifier));
 
-		/// "consumeexpbooks" request.getBooksCount() identifier response
+		response.addItems(Helper.onNotifyEventOfPromotions(redisTemplate, DAILY_EXP_BOOK_CONSUME, request.getBooksCount()
+				, identifier));
+
+		for (int i = 0; i < request.getBooksCount(); i++) {
+
+			if (null == Helper.decreaseItemValue(redisTemplate,
+					identifier, request.getBooks(i), 1L)) {
+				Integer delta = expBookService.getExpBook(request.getBooks(i)).getValue();
+				if (null == delta) {
+					return response.setResult(ErrorEnum.ERROR_EXP_BOOK_NOT_EXIST).build();
+				}
+
+				dirty = true;
+
+				int exp = (int) heroMap.get("exp");
+
+				exp += delta;
+
+				while ((int) heroMap.get("level") < 99) {
+					LevelUpgrade item = levelUpgradeService.get((int) heroMap.get("level"));
+					Integer expNeed = ReflectUtil.invoke(item, "getStar" + (int) heroMap.get("star"));
+					if ((int) heroMap.get("exp") >= expNeed) {
+						//heroMap.get("exp")
+					}
+				}
+			}
+
+		}
 
 		return null;
 	}

@@ -84,6 +84,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 		}
 		List<List<DropItem>> contents = dropExt.getContents();
 		for (List<DropItem> first : contents) {
+
 			// 物品掉落几率
 			Integer factor = selectFromMultipleAward(first);
 			DropItem dropItem = first.get(factor);

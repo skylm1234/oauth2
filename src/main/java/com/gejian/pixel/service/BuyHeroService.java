@@ -11,4 +11,13 @@ import javax.script.ScriptException;
 public interface BuyHeroService extends IService<BuyHero> {
 
 	double calculation(Integer id, Integer count) throws ScriptException;
+
+	/**
+	 * 根据类型获取英雄
+	 *
+	 * @param type
+	 * @return
+	 */
+	public BuyHero getHero(int type);
+
 }
