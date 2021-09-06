@@ -5,7 +5,6 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
-import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
@@ -70,12 +69,11 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				request.getData(),
 				request.getVersion(),
 				request.getIdentifier(),
-				Integer.parseInt(request.getData()) * request.getVersion());
+				NumberUtil.parseLong(request.getData()) * request.getVersion());
 		log.info("request:{}", s);
 		log.info(s);
-		log.info(SecureUtil.sha1(s));
-		//if (!SecureUtil.sha1(s).equals(request.getCipher().toUpperCase())) {
-		if (!SecureUtil.sha1(s).equals(request.getCipher())) {
+		log.info(SecureUtil.sha1(s).toUpperCase());
+		if (!SecureUtil.sha1(s).toUpperCase().equals(request.getCipher().toUpperCase())) {
 			replyBuilder.setResult(ErrorEnum.ERROR_INVALID_PARAMETER);
 			return replyBuilder.build();
 		}
@@ -93,9 +91,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		Integer identifier = null;
 
-		// TODO: 2021/9/1
-		//if (request.getIdentifier().length() == 0 || redisTemplate.opsForHash().hasKey(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier)) {
-		if (true) {
+		if (StrUtil.hasBlank(request.getIdentifier()) || redisTemplate.opsForHash().hasKey(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier)) {
 			log.info("new player register");
 
 			identifier = Integer.valueOf(Helper.generateUserIdentifier(redisTemplate));
@@ -142,15 +138,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			strings.put("finished_promotions", Helper.hexEncode("{}"));
 			strings.put("finished_daily_promotions", Helper.hexEncode("{}"));
 
-			//修改为常量数据获取
-			//JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = generated.getRUBY_CONST_IN_GAME_PURCHASE_TABLE();
-			/*JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = new JSONArray();
-			if (RUBY_CONST_IN_GAME_PURCHASE_TABLE != null) {
-				for (Object o : RUBY_CONST_IN_GAME_PURCHASE_TABLE) {
-					JSONObject jsonObject = (JSONObject) o;
-					items.put(jsonObject.get("id") + "", 0);
-				}
-			}*/
 			List<InGamePurchase> inGamePurchases = inGamePurchaseService.list();
 			if (inGamePurchases!=null) {
 				inGamePurchases.stream().forEach(x-> items.put(x.getId(), 0));
@@ -176,10 +163,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 			redisTemplate.opsForHash().putAll("u:"+identifier+":temp_backpack",tempbackpack);
 
-			// TODO: 2021/9/1 需要放开
-			//Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), null, 1);
-			//Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), null, 2);
-			//Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), null, 3);
+			Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), 1);
+			Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), 2);
+			Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), 3);
 
 		}else {
 			if (redisTemplate.opsForHash().hasKey("user:set:ban", hexEncodedIdentifier)) {
@@ -201,7 +187,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			}else {
 				boardcast = (Boolean) redisTemplate.opsForValue().get("system:boardcast");
 			}
-			if (Helper.stringValue(redisTemplate, Integer.valueOf(request.getIdentifier()), "nickname") != null) {
+			if (Helper.stringValue(redisTemplate, NumberUtil.parseInt(request.getIdentifier()), "nickname") != null) {
 				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(boardcast+"").build());
 			}
 		}
@@ -302,22 +288,25 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		});
 
 		Map tempbackpack = redisTemplate.opsForHash().entries("u:" + identifier + ":temp_backpack");
-		/*PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack tbp = PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack
-				.newBuilder()
-				.setLevel(Integer.parseInt(tempbackpack.get("level")+""))
-				.setType(Integer.parseInt(tempbackpack.get("type")+""))
-				.setStage(Integer.parseInt(tempbackpack.get("stage")+""))
-				.setDungeonEnterTimestamp(Integer.parseInt(tempbackpack.get("dungeon_enter_timestamp")+""))
-				.build();*/
-		PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack tbp = PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack
+		if (tempbackpack.size()!=0) {
+			PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack tbp = PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack
+					.newBuilder()
+					.setLevel(NumberUtil.parseInt(tempbackpack.get("level")+""))
+					.setType(NumberUtil.parseInt(tempbackpack.get("type")+""))
+					.setStage(NumberUtil.parseInt(tempbackpack.get("stage")+""))
+					.setDungeonEnterTimestamp(NumberUtil.parseInt(tempbackpack.get("dungeon_enter_timestamp")+""))
+					.build();
+		}
+		/*
+			PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack tbp = PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack
 				.newBuilder()
 				.setLevel(0)
 				.setType(0)
 				.setStage(0)
 				.setDungeonEnterTimestamp(0)
 				.build();
-
-		playerBuilder.setBackpack(tbp);
+			playerBuilder.setBackpack(tbp);
+		 */
 
 		List<StoreItemProtobuf.StoreItem> goods0 = fooCall(identifier, 1);
 		List<StoreItemProtobuf.StoreItem> goods1 = fooCall(identifier, 2);
@@ -364,6 +353,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		replyBuilder.setPlayer(player);
 
 
+		replyBuilder.setTimestamp(NumberUtil.parseInt(Helper.currentTimestamp()+""));
 		return replyBuilder.build();
 	}
 
@@ -451,10 +441,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		return topRangePower;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(Integer.valueOf(""));
-	}
-
 	private List<StoreItemProtobuf.StoreItem> fooCall(Integer identifier, Integer type) {
 		List<StoreItemProtobuf.StoreItem> storeItems = new ArrayList<>();
 		List items = new ArrayList<>();
@@ -462,10 +448,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		storeByType.forEach((k,v)->{
 			JSONObject j = JSONUtil.parseObj(v + "");
 			List<String> ar = Arrays.asList("name", "number", "cost_type", "cost_number");
-			JSONArray h = new JSONArray();
-			for (String s : ar) {
-				JSONObject jsonObject = new JSONObject();
-				jsonObject.putOnce(s, j.get("s"));
+			JSONObject h = new JSONObject();
+			for (String x : ar) {
+				h.putOnce(x, j.get(x));
 			}
 			items.add(h);
 		});
@@ -474,9 +459,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			StoreItemProtobuf.StoreItem storeItem = StoreItemProtobuf.StoreItem
 					.newBuilder()
 					.setName(item.get("name")+"")
-					.setNumber(Integer.parseInt(item.get("number")+""))
+					.setNumber(NumberUtil.parseInt(item.get("number")+""))
 					.setCostType(item.get("cost_type")+"")
-					.setCostNumber(Integer.parseInt(item.get("cost_number")+""))
+					.setCostNumber(NumberUtil.parseInt(item.get("cost_number")+""))
 					.build();
 			storeItems.add(storeItem);
 		});

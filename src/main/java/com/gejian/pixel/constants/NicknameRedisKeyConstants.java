@@ -11,4 +11,12 @@ public interface NicknameRedisKeyConstants {
 
 	public static final String USER_SET_NICKNAME = "user:set:nickname";
 
+	public static final String RANKLIST_POWER = "ranklist:power";
+
+	public static final String RANKLIST_HONOR = "ranklist:honor";
+
+	public static final String USER_ARCHIVES = "u:{}:archives";
+
+	public static final String RANKLIST_RICH = "ranklist:rich";
+
 }

@@ -1,7 +1,9 @@
 package com.gejian.pixel.netty;
 
 import cn.hutool.core.util.ReflectUtil;
+import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.AttributeKeyConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.CommLoginResponseProtobuf;
@@ -21,12 +23,15 @@ import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 @Component
 @ChannelHandler.Sharable
@@ -39,6 +44,9 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 
 	@Autowired
 	private UserInterceptor userInterceptor;
+
+	@Autowired
+	private StringRedisTemplate redisTemplate;
 
 
 	/**
@@ -88,7 +96,7 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 				resultObj = (AbstractMessageLite) builder.build();
 			}
 			MessageBaseProtobuf.MessageBase.Builder builder = MessageBaseProtobuf.MessageBase.newBuilder()
-					.setName(name);
+					.setName(name.replace("_REQUEST","_RESPONSE"));
 			if (Objects.nonNull(resultObj)) {
 				ByteString bytes = resultObj.toByteString();
 				builder.setData(bytes);
@@ -111,9 +119,11 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 		String identifier = loginRes.getPlayer().getIdentifier();
 		String session = loginRes.getPlayer().getSession();
 		UserInfo userInfo = new UserInfo();
-		userInfo.setIdentifier(1);
-		userInfo.setSession("1231");
+		userInfo.setIdentifier(Integer.valueOf(identifier));
+		userInfo.setSession(session);
 		channel.attr(AttributeKeyConstants.USER_INFO_ATTRIBUTE_KEY).set(userInfo);
+		String key = StrUtil.format(RedisKeyConstants.USER,userInfo.getIdentifier());
+		redisTemplate.opsForValue().set(key,session, 1, TimeUnit.DAYS);
 	}
 
 	private Type[] getMessageType(Class<?> targetClass) {
