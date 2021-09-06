@@ -28,7 +28,7 @@ public class SkillScriptSkillServiceImpl extends ServiceImpl<SkillScriptSkillMap
 
 	private List<ConstSkillScriptsSkillTableItemExProtobuf.ConstSkillScriptsSkillTableItemEx> table=new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<SkillScriptSkill> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

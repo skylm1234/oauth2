@@ -46,7 +46,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 	@Autowired
 	private BackpackService backpackService;
 
-	@PostConstruct
+	@Override
 	public void init() {
 		List<Drop> list = this.list();
 		if (!CollectionUtils.isEmpty(list)) {

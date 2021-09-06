@@ -32,7 +32,7 @@ public class SkillScriptRoleServiceImpl extends ServiceImpl<SkillScriptRoleMappe
 	private List<ConstSkillScriptsRoleTableItemExProtobuf.ConstSkillScriptsRoleTableItemEx>
 			table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<SkillScriptRole> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

@@ -4,25 +4,22 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.entity.BasicExpand;
+import com.gejian.pixel.entity.BasicUpgradeExpand;
+import com.gejian.pixel.entity.StarUpgradeFomula;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.Process;
-import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.ToUtil;
 import com.gejian.pixel.utils.UserHolder;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -227,37 +224,12 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 		private BasicUpgradeExpand basicUpgradeExpand;
 		private String basicUpgrade;
 		private String skill;
-		private Map<String, Start> starUpgradeFomula;
+		private Map<String, StarUpgradeFomula> starUpgradeFomula;
 		private String starUpgrade;
 	}
 
-	@Data
-	class BasicExpand {
-		private Integer hp;
-		private Integer attack;
-		private Integer defense;
-		private Integer speed;
-	}
 
-	@Data
-	class BasicUpgradeExpand {
-		Integer hp;
-		Integer attack;
-		Integer defense;
-		Integer speed;
-	}
 
-	@Data
-	class Start {
-		Integer hp;
-		Integer attack;
-		Integer defense;
-		Integer speed;
-		Integer hpUpgrade;
-		Integer attackUpgrade;
-		Integer defenseUpgrade;
-		Integer speedUpgrade;
-	}
 
 	/**
 	 * 获取RubyConstSkillTableHash

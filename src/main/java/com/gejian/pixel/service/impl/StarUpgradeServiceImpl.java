@@ -29,7 +29,7 @@ public class StarUpgradeServiceImpl extends ServiceImpl<StarUpgradeMapper, StarU
 	private List<ConstStarUpgradeTableItemExProtobuf.ConstStarUpgradeTableItemEx>
 			table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<StarUpgrade> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

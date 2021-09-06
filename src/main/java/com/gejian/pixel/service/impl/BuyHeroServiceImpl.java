@@ -29,7 +29,7 @@ public class BuyHeroServiceImpl extends ServiceImpl<BuyHeroMapper, BuyHero>
 
 	private List<ConstBuyHeroTableItemExProtobuf.ConstBuyHeroTableItemEx> table = new ArrayList<>();
 
-	@PostConstruct
+	@Override
 	public void init(){
 		List<BuyHero> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){
