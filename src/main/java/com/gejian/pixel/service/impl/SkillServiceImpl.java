@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gejian.pixel.entity.ActiveConsume;
 import com.gejian.pixel.entity.Skill;
 import com.gejian.pixel.entity.UpgradeConsume;
-import com.gejian.pixel.mapper.SkillDao;
+import com.gejian.pixel.mapper.SkillMapper;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.ConstantsProto;
 import com.gejian.pixel.service.SkillService;
@@ -21,7 +21,7 @@ import java.util.Map;
  * Auto created by codeAppend plugin
  */
 @Service
-public class SkillServiceImpl extends ServiceImpl<SkillDao, Skill> implements SkillService
+public class SkillServiceImpl extends ServiceImpl<SkillMapper, Skill> implements SkillService
 	, ConstantsProto {
 
 	private Map<String, Skill> hash = new HashMap<>();
