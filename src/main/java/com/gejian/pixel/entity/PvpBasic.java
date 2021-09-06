@@ -33,7 +33,7 @@ public class PvpBasic {
 	/**
 	 * 
 	 */
-	@TableField("range")
+	@TableField("`range`")
 	private String range;
 
 

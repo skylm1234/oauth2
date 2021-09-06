@@ -27,7 +27,7 @@ public class QualityUpgradeRate {
 	/**
 	 * 
 	 */
-	@TableField("desc")
+	@TableField("`desc`")
 	private String desc;
 
 	/**

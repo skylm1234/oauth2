@@ -33,7 +33,7 @@ public class PromotionTypeName {
 	/**
 	 * 
 	 */
-	@TableField("group")
+	@TableField("`group`")
 	private Integer group;
 
 	/**
