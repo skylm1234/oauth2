@@ -1,10 +1,12 @@
 package com.gejian.pixel.service.process;
 
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommPingRequestProtobuf;
 import com.gejian.pixel.proto.CommPingResponseProtobuf;
 import com.gejian.pixel.proto.CommSetNicknameResponseProtobuf;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.utils.Helper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,7 @@ public class PingProcessImpl implements Process<CommPingRequestProtobuf.CommPing
 
 		CommPingResponseProtobuf.CommPingResponse.Builder response = CommPingResponseProtobuf.CommPingResponse.newBuilder();
 
-		return response.setTimestamp((int) LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli()).build();
+		response.setTimestamp((int) Helper.currentTimestamp());
+		return response.build();
 	}
 }

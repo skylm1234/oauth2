@@ -8,4 +8,5 @@ import com.gejian.pixel.entity.Vip;
  */
 public interface VipService extends IService<Vip> {
 
+	Vip getById(Integer id);
 }

@@ -1,5 +1,5 @@
 server:
-  port: 4567
+  port: 8080
 
 # Netty 服务配置 (自定义端口)
 socket:

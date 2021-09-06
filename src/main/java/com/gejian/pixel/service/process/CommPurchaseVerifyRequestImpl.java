@@ -4,12 +4,17 @@ import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.HexUtil;
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.entity.InGamePurchase;
+import com.gejian.pixel.entity.Vip;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.CommPurchaseVerifyRequestProtobuf;
 import com.gejian.pixel.proto.CommPurchaseVerifyResponseProtobuf;
+import com.gejian.pixel.proto.InGamePurchaseProtobuf;
 import com.gejian.pixel.proto.PlayerItemProtobuf;
+import com.gejian.pixel.service.InGamePurchaseService;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.service.VipService;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
 import lombok.Data;
@@ -42,6 +47,12 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 	@Autowired
 	private RedisTemplate redisTemplate;
 
+	@Autowired
+	private InGamePurchaseService inGamePurchaseService;
+
+	@Autowired
+	private VipService vipService;
+
 	@Override
 	public CommPurchaseVerifyResponseProtobuf.CommPurchaseVerifyResponse doProcess(CommPurchaseVerifyRequestProtobuf.CommPurchaseVerifyRequest request) throws Exception {
 
@@ -60,24 +71,24 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 			int type = request.getType();
 			if (type >= 1 && type <= 7) {
 				String productId = "item_" + type;
-				RubyConstInGamePurchaseTableHash cell = getRubyConstInGamePurchaseTableHash(productId);
+				InGamePurchase inGamePurchase = inGamePurchaseService.getById(productId);
 				if (Helper.itemCount(redisTemplate, identifier, productId) == 0) {
 					Helper.increaseItemValue(redisTemplate, identifier, productId, 1L);
 					Map<String, Object> gb = new HashMap<>(4);
 					gb.put("identifier", "giftbag_identifier_" + redisTemplate.opsForValue().increment("user:max:giftbag_identifier"));
 					//转16进制
 					gb.put("icon", HexUtil.encodeHexStr("gift_package.png", CharsetUtil.CHARSET_UTF_8));
-					gb.put("desc", HexUtil.encodeHexStr("初次购买" + cell.desc + "，赠送" + cell.desc + "。", CharsetUtil.CHARSET_UTF_8));
+					gb.put("desc", HexUtil.encodeHexStr("初次购买" + inGamePurchase.getDesc() + "，赠送" + inGamePurchase.getDesc() + "。", CharsetUtil.CHARSET_UTF_8));
 					gb.put("action", productId);
 
 					redisTemplate.opsForHash().putAll(String.format("u:%d:giftbag:%s", identifier, gb.get("identifier")), gb);
 				}
 
-				Helper.increaseItemValue(redisTemplate, identifier, "stone", (long) cell.stone);
-				Helper.increaseItemValue(redisTemplate, identifier, "total_stone_purchased", (long) cell.stone);
+				Helper.increaseItemValue(redisTemplate, identifier, "stone", (long) inGamePurchase.getStone());
+				Helper.increaseItemValue(redisTemplate, identifier, "total_stone_purchased", (long) inGamePurchase.getStone());
 				Helper.updateRanklistRich(redisTemplate, identifier);
 
-				Helper.increaseItemValue(redisTemplate, identifier, "total_charged_money", (long) cell.cost);
+				Helper.increaseItemValue(redisTemplate, identifier, "total_charged_money", (long) inGamePurchase.getCost());
 
 				Integer origin_vip = Helper.itemCount(redisTemplate, identifier, "vip");
 				Integer total_charged_money = Helper.itemCount(redisTemplate, identifier, "total_charged_money");
@@ -85,28 +96,28 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 				Boolean dirty = false;
 
 				while (true) {
-					RubyConstVipTable row = getRubyConstVipTable(origin_vip);
-					if (row == null) {
+					Vip vip = vipService.getById(origin_vip);
+					if (vip == null) {
 						log.error("unknow vip level");
 						throw new RuntimeException("unknow vip level");
 					}
-					if (total_charged_money >= row.charge) {
+					if (total_charged_money >= vip.getCharge()) {
 						origin_vip = origin_vip + 1;
 
-						RubyConstVipTable row2 = getRubyConstVipTable(origin_vip);
+						Vip vip2 = vipService.getById(origin_vip);
 
 						Map<String, Object> gb = new HashMap<>();
 						gb.put("identifier", "giftbag_identifier_" + redisTemplate.opsForValue().increment("user:max:giftbag_identifier"));
 						gb.put("icon", HexUtil.encodeHexStr("gift_package.png", CharsetUtil.CHARSET_UTF_8));
-						gb.put("desc", HexUtil.encodeHexStr("达到vip等级" + row2.getLevel() + "，好礼相送。"));
-						gb.put("action", row2.getItemid());
+						gb.put("desc", HexUtil.encodeHexStr("达到vip等级" + vip2.getLevel() + "，好礼相送。"));
+						gb.put("action", vip2.getItemid());
 
 						redisTemplate.opsForHash().putAll(String.format("u:%d:giftbag:%s", identifier, gb.get("identifier")), gb);
 
 						Helper.increaseItemValue(redisTemplate, identifier, "giftbags", 1L);
 						redisTemplate.opsForHash().put(String.format("u:%d:giftbags", identifier),
 								gb.get("identifier"),
-								String.format("达到vip等级%d，好礼相送。", row2.getLevel()));
+								String.format("达到vip等级%d，好礼相送。", vip2.getLevel()));
 						dirty = true;
 					} else {
 						break;
@@ -128,45 +139,5 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 		return builder.build();
 	}
 
-	@Data
-	class RubyConstInGamePurchaseTableHash {
-		private String id;
-		private Integer stone;
-		private String desc;
-		private String icon;
-		private Integer cost;
-	}
-
-	@Data
-	class RubyConstVipTable {
-		private Integer id;
-		private Integer level;
-		private Integer charge;
-		private String itemid;
-		private String award;
-		private Integer chanllege;
-		private Integer backpack_max;
-		private Integer freerefresh_times_stone;
-		private Integer freerefresh_times_honor;
-		private Integer freerefresh_times_gold;
-		private Integer timeval_offline_kill_monster_rate;
-		private Integer skip_timeval;
-		private String des;
-		private Integer tianti;
-		private Integer tianti_reset;
-	}
-
-	private RubyConstInGamePurchaseTableHash getRubyConstInGamePurchaseTableHash(String id) {
-		return null;
-	}
-
-	private RubyConstVipTable getRubyConstVipTable(Integer id) {
-		return null;
-	}
-
-	public static void main(String[] args) {
-		String osName = System.getProperty("os.name");
-		System.out.println(osName);
-	}
 
 }
