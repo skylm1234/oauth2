@@ -11,9 +11,11 @@ import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.customType.TopRangePower;
+import com.gejian.pixel.entity.InGamePurchase;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.DropService;
+import com.gejian.pixel.service.InGamePurchaseService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
@@ -29,7 +31,7 @@ import java.util.*;
  *
  * 登陆请求
  *
- * @author ZhouQiang
+ * @author ljb
  * @date 2021/8/30$
  */
 @Service(CommandConstants.LOGIN_REQUEST)
@@ -44,10 +46,11 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 	private final DropService dropService;
 
+	private final InGamePurchaseService inGamePurchaseService;
+
 	@Override
 	public CommLoginResponseProtobuf.CommLoginResponse
 		doProcess(CommLoginRequestProtobuf.CommLoginRequest request) throws Exception {
-		// TODO 登陆逻辑
 		log.info("登陆请求参数：{}",request);
 		
 		CommLoginResponseProtobuf.CommLoginResponse.Builder replyBuilder = CommLoginResponseProtobuf.CommLoginResponse.newBuilder();
@@ -139,15 +142,20 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			strings.put("finished_promotions", Helper.hexEncode("{}"));
 			strings.put("finished_daily_promotions", Helper.hexEncode("{}"));
 
-			// TODO: 2021/9/3 需要修改常量数据获取
+			//修改为常量数据获取
 			//JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = generated.getRUBY_CONST_IN_GAME_PURCHASE_TABLE();
-			JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = new JSONArray();
+			/*JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = new JSONArray();
 			if (RUBY_CONST_IN_GAME_PURCHASE_TABLE != null) {
 				for (Object o : RUBY_CONST_IN_GAME_PURCHASE_TABLE) {
 					JSONObject jsonObject = (JSONObject) o;
 					items.put(jsonObject.get("id") + "", 0);
 				}
+			}*/
+			List<InGamePurchase> inGamePurchases = inGamePurchaseService.list();
+			if (inGamePurchases!=null) {
+				inGamePurchases.stream().forEach(x-> items.put(x.getId(), 0));
 			}
+
 
 			if (redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier, identifier)) {
 				redisTemplate.opsForHash().putAll(StrUtil.format(RedisKeyConstants.USER_ITEMS, identifier), items);
@@ -183,8 +191,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				replyBuilder.setResult(ErrorEnum.ERROR_BANNED);
 				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(reason.get(hexEncodedIdentifier)+"").build());
 
-				// TODO: 2021/9/1  这里还有个返回空指针，但是如果返回空指针就不能返回登录的响应对象了
+				//这里还有个返回空指针，但是如果返回空指针就不能返回登录的响应对象了
 				//return 0, nil
+				return replyBuilder.build();
 			}
 			Boolean boardcast = Boolean.FALSE;
 			if (request.getVersion() >= 11) {
@@ -192,8 +201,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			}else {
 				boardcast = (Boolean) redisTemplate.opsForValue().get("system:boardcast");
 			}
-			// TODO: 2021/9/1  
-			//if (boardcast && Helper.stringValue(redisTemplate, Integer.valueOf(request.getIdentifier()), "nickname") != null) {
 			if (Helper.stringValue(redisTemplate, Integer.valueOf(request.getIdentifier()), "nickname") != null) {
 				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(boardcast+"").build());
 			}
@@ -378,7 +385,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		if (redisTemplate.opsForHash().hasKey("u:"+identifier+":items", "should_refresh_pvp_chanllege_ranklist") && refresh_challage_ranklist) {
 			log.info("pvp fill data");
-			// TODO: 2021/9/1 需要修改上面代码 helper.rb 1066行
 			ranklistHelper(redisTemplate, identifier, reply, 10, true);
 			redisTemplate.opsForHash().delete("u:"+identifier+":items","should_refresh_pvp_chanllege_ranklist");
 			return ErrorEnum.ERROR_SUCCESS;
@@ -389,7 +395,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 	}
 
 	private void ranklistHelper(RedisTemplate redisTemplate, Integer identifier, PlayerInfoProtobuf.PlayerInfo.Builder reply, Integer n, Boolean centerN) {
-		// TODO: 2021/9/2 这里ranklist是power
 		TopRangePower topRangePower = topRangePower(redisTemplate, identifier, "power", n, centerN);
 		Integer myrank = topRangePower.getMyrank();
 		List<Map<String, Object>> topX = topRangePower.getRanks();

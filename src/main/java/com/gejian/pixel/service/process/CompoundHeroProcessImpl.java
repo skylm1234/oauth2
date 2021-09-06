@@ -5,8 +5,10 @@ import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommCompoundHeroRequestProtobuf;
 import com.gejian.pixel.proto.CommCompoundHeroResponseProtobuf;
+import com.gejian.pixel.proto.PlayerInfoProtobuf;
 import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -50,7 +52,10 @@ public class CompoundHeroProcessImpl implements Process<CommCompoundHeroRequestP
 					replyBuilder.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND);
 				}else {
 					if (decreaseItemValue(redisTemplate, identifier, "private_soulchip_"+id, Long.valueOf(cell.get("chips")+""), replyBuilder)) {
-						// TODO: 2021/9/3 award_hero_for_me(identifier, request.hero, reply, nil)
+						// 2021/9/3 award_hero_for_me(identifier, request.hero, reply, nil)
+						PlayerInfoProtobuf.PlayerInfo playerInfo = Helper.awardHeroForMe(redisTemplate, identifier, request.getHero(), null);
+						replyBuilder.addAllHeros(playerInfo.getHerosList());
+						replyBuilder.addAllItems(playerInfo.getItemsList());
 					}else {
 						log.error("FAILED: {}=>{}:{}", identifier, Thread.currentThread().getStackTrace()[1].getMethodName(), Thread.currentThread().getStackTrace()[1].getLineNumber());
 						replyBuilder.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND);
