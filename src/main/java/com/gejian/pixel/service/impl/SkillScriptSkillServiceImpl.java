@@ -24,7 +24,7 @@ import java.util.Map;
 public class SkillScriptSkillServiceImpl extends ServiceImpl<SkillScriptSkillMapper, SkillScriptSkill> implements SkillScriptSkillService , ConstantsProto {
 
 
-	private Map<Long, SkillScriptSkill> hash=new HashMap<>();
+	private Map<String, SkillScriptSkill> hash=new HashMap<>();
 
 	private List<ConstSkillScriptsSkillTableItemExProtobuf.ConstSkillScriptsSkillTableItemEx> table=new ArrayList<>();
 
