@@ -93,9 +93,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		Integer identifier = null;
 
-		// TODO: 2021/9/1
-		//if (request.getIdentifier().length() == 0 || redisTemplate.opsForHash().hasKey(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier)) {
-		if (true) {
+		if (request.getIdentifier().length() == 0 || redisTemplate.opsForHash().hasKey(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier)) {
 			log.info("new player register");
 
 			identifier = Integer.valueOf(Helper.generateUserIdentifier(redisTemplate));
@@ -176,10 +174,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 			redisTemplate.opsForHash().putAll("u:"+identifier+":temp_backpack",tempbackpack);
 
-			// TODO: 2021/9/1 需要放开
-			//Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), null, 1);
-			//Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), null, 2);
-			//Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), null, 3);
+			Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), 1);
+			Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), 2);
+			Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), 3);
 
 		}else {
 			if (redisTemplate.opsForHash().hasKey("user:set:ban", hexEncodedIdentifier)) {
@@ -451,10 +448,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		return topRangePower;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(Integer.valueOf(""));
-	}
-
 	private List<StoreItemProtobuf.StoreItem> fooCall(Integer identifier, Integer type) {
 		List<StoreItemProtobuf.StoreItem> storeItems = new ArrayList<>();
 		List items = new ArrayList<>();
@@ -462,10 +455,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		storeByType.forEach((k,v)->{
 			JSONObject j = JSONUtil.parseObj(v + "");
 			List<String> ar = Arrays.asList("name", "number", "cost_type", "cost_number");
-			JSONArray h = new JSONArray();
-			for (String s : ar) {
-				JSONObject jsonObject = new JSONObject();
-				jsonObject.putOnce(s, j.get("s"));
+			JSONObject h = new JSONObject();
+			for (String x : ar) {
+				h.putOnce(x, j.get(x));
 			}
 			items.add(h);
 		});
@@ -474,9 +466,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			StoreItemProtobuf.StoreItem storeItem = StoreItemProtobuf.StoreItem
 					.newBuilder()
 					.setName(item.get("name")+"")
-					.setNumber(Integer.parseInt(item.get("number")+""))
+					.setNumber(NumberUtil.parseInt(item.get("number")+""))
 					.setCostType(item.get("cost_type")+"")
-					.setCostNumber(Integer.parseInt(item.get("cost_number")+""))
+					.setCostNumber(NumberUtil.parseInt(item.get("cost_number")+""))
 					.build();
 			storeItems.add(storeItem);
 		});
