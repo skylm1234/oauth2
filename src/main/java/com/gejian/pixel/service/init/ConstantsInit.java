@@ -27,7 +27,7 @@ public class ConstantsInit {
 	/**
 	 * 常量文件
 	 */
-	private static final String CONSTANTS_DIR_PATH = System.getProperty("user.dir");
+	private static final String CONSTANTS_DIR_PATH = System.getProperty("user.dir") + "/" + "consts";
 
 	private static final String BIN_FILE = CONSTANTS_DIR_PATH + "/" + "consts.bin";
 

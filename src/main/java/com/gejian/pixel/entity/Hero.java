@@ -52,65 +52,7 @@ public class Hero {
 	@TableField("alive")
 	private Integer alive;
 
-	/**
-	 * 血量
-	 */
-	@TableField("hp")
-	private Long hp;
 
-	/**
-	 * 攻击力
-	 */
-	@TableField("attack")
-	private Long attack;
-
-	/**
-	 * 防御
-	 */
-	@TableField("defense")
-	private Long defense;
-
-	/**
-	 * 速度
-	 */
-	@TableField("speed")
-	private Long speed;
-
-	/**
-	 * 升级增加血量
-	 */
-	@TableField("hp_upgrade")
-	private Long hpUpgrade;
-
-	/**
-	 * 升级增加攻击力
-	 */
-	@TableField("attack_upgrade")
-	private Long attackUpgrade;
-
-	/**
-	 * 升级增加防御
-	 */
-	@TableField("defense_upgrade")
-	private Long defenseUpgrade;
-
-	/**
-	 * 升级增加速度
-	 */
-	@TableField("speed_upgrade")
-	private Long speedUpgrade;
-
-	/**
-	 * 创建时间
-	 */
-	@TableField("create_time")
-	private LocalDateTime createTime;
-
-	/**
-	 * 更新时间
-	 */
-	@TableField("update_time")
-	private LocalDateTime updateTime;
 
 	/**
 	 * 技能
