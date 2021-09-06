@@ -12,10 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.script.*;
+import java.util.*;
 import java.util.logging.Handler;
 
 /**
@@ -25,28 +23,41 @@ import java.util.logging.Handler;
 public class BuyHeroServiceImpl extends ServiceImpl<BuyHeroMapper, BuyHero>
 		implements BuyHeroService, ConstantsProto {
 
-	private Map<Integer,BuyHero> hash = new HashMap<>();
+	private Map<Integer, BuyHero> hash = new HashMap<>();
 
 	private List<ConstBuyHeroTableItemExProtobuf.ConstBuyHeroTableItemEx> table = new ArrayList<>();
 
+	private ScriptEngine scriptEngine = new ScriptEngineManager().getEngineByName("javascript");
+
 	@Override
-	public void init(){
+	public void init() {
 		List<BuyHero> list = this.list();
-		if (!CollectionUtils.isEmpty(list)){
-			list.forEach(item->{
-				hash.put(item.getType(),item);
+		if (!CollectionUtils.isEmpty(list)) {
+			list.forEach(item -> {
+				hash.put(item.getType(), item);
 				table.add(convert(item));
 			});
 		}
 	}
 
+	public double calculation(Integer id, Integer count) throws ScriptException {
+		BuyHero buyHero = hash.get(id);
+		if (Objects.isNull(buyHero)) {
+			return 0;
+		}
+		SimpleBindings simpleBindings = new SimpleBindings();
+		simpleBindings.put("count", count);
+		return (Double)scriptEngine.eval(buyHero.getAmount(), simpleBindings);
+	}
+
+
+
 	/**
-	 *
 	 * @param item
 	 * @return
 	 */
 	private ConstBuyHeroTableItemExProtobuf.ConstBuyHeroTableItemEx
-		convert(BuyHero item) {
+	convert(BuyHero item) {
 		return ConstBuyHeroTableItemExProtobuf.ConstBuyHeroTableItemEx.newBuilder()
 				.setType(item.getType())
 				.setChips(item.getChips())
@@ -65,13 +76,13 @@ public class BuyHeroServiceImpl extends ServiceImpl<BuyHeroMapper, BuyHero>
 	public void build(ConstTablesProtobuf.ConstTables.Builder builder) {
 		ConstBuyHeroTableProtobuf.ConstBuyHeroTable build =
 				ConstBuyHeroTableProtobuf.ConstBuyHeroTable.newBuilder()
-				.addAllItems(table)
-				.build();
+						.addAllItems(table)
+						.build();
 		builder.setBuyHeros(build);
 	}
 
 	// use "baseMapper" to call jdbc
-    // example: baseMapper.insert(entity);
-    // example: baseMapper.selectByPage(params);
-   
+	// example: baseMapper.insert(entity);
+	// example: baseMapper.selectByPage(params);
+
 }
