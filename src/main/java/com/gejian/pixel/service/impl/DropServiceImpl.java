@@ -1,9 +1,10 @@
 package com.gejian.pixel.service.impl;
 
+import cn.hutool.core.math.Calculator;
+import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONArray;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.Backpack;
@@ -12,11 +13,9 @@ import com.gejian.pixel.entity.LevelUpgrade;
 import com.gejian.pixel.ext.DropExt;
 import com.gejian.pixel.mapper.DropMapper;
 import com.gejian.pixel.model.DropItem;
-import com.gejian.pixel.proto.HeroBasicInfoProtobuf;
-import com.gejian.pixel.proto.HeroSkillProtobuf;
-import com.gejian.pixel.proto.PlayerInfoProtobuf;
-import com.gejian.pixel.proto.PlayerItemProtobuf;
+import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.BackpackService;
+import com.gejian.pixel.service.ConstantsProto;
 import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.LevelUpgradeService;
 import com.gejian.pixel.utils.Helper;
@@ -24,20 +23,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.xnio.channels.SuspendableAcceptChannel;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * Auto created by codeAppend plugin
  */
 @Service
-public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements DropService {
+public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements DropService, ConstantsProto {
 
-	private Map<String, DropExt> hash;
+	private Map<String, DropExt> hash = new HashMap<>();
+
+	private List<ConstDropTableItemExProtobuf.ConstDropTableItemEx> table = new ArrayList();
 
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;
@@ -59,8 +57,17 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 				dropExt.setDesc(drop.getDesc());
 				dropExt.setContents(convertContentStr(drop.getContent()));
 				hash.put(drop.getId(), dropExt);
+				table.add(convert(drop));
 			});
 		}
+	}
+
+	private ConstDropTableItemExProtobuf.ConstDropTableItemEx convert(Drop drop) {
+		return ConstDropTableItemExProtobuf.ConstDropTableItemEx.newBuilder()
+				.setContent(drop.getContent())
+				.setDesc(drop.getDesc())
+				.setId(drop.getId())
+				.build();
 	}
 
 	/**
@@ -237,7 +244,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 				int level = Integer.parseInt(String.valueOf(entries.get("level")));
 				level -= 1;
 				int max = 0;
-				Backpack backpack = backpackService.getByLevel(String.valueOf(level));
+				Backpack backpack = backpackService.getByLevel(level);
 				if ("gold".equals(type)) {
 					max = backpack.getGoldMax();
 				} else if ("exp".equals(type)) {
@@ -282,10 +289,22 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 		 *         if factor <= ar[i][1] then return i end
 		 *     end
 		 */
-		Integer probability = list.get(list.size() - 1).getProbability();
 		// 掉落几率
-		int randomNum = probability < 100 ? 100 : probability;
-		return RandomUtil.randomInt(randomNum);
+		Integer randomNum = 0;
+		Integer probability = list.get(list.size() - 1).getProbability();
+		if (probability<100) {
+			randomNum = RandomUtil.randomInt(100);
+		}else {
+			randomNum = RandomUtil.randomInt(probability);
+		}
+
+		for (int i = 0; i < list.size(); i++) {
+			if (randomNum <= list.get(i).getProbability()){
+				return i;
+			}
+		}
+
+		return randomNum;
 	}
 
 	/**
@@ -318,17 +337,19 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 							List<String> split = StrUtil.split(replace, "(");
 							String s1 = split.get(0);
 							dropItem.setType(s1);
-							String s2 = split.get(1);
-							List<String> lastList = StrUtil.split(s2, "#");
-							if (CollectionUtils.isEmpty(lastList)) {
-								lastItem.add(s1);
+							if (lastItem.size()>1) {
+								String s2 = split.get(1);
+								List<String> lastList = StrUtil.split(s2, "#");
+								if (CollectionUtils.isEmpty(lastList)) {
+									lastItem.add(s1);
+								}
+								lastList.forEach(num -> {
+									lastItem.add(s1 + num);
+								});
 							}
-							lastList.forEach(num -> {
-								lastItem.add(s1 + num);
-							});
 							break;
 						case 1:
-							dropItem.setProbability(Integer.parseInt(item));
+							dropItem.setProbability(Integer.parseInt(item.replace(" ","")));
 							break;
 						case 2:
 							String tt = StrUtil.replace(item, ")", "")
@@ -336,7 +357,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 							List<String> nums = StrUtil.split(tt, "#");
 							List<Integer> numList = new ArrayList<>();
 							nums.forEach(num -> {
-								numList.add(Integer.parseInt(num));
+								numList.add(NumberUtil.parseInt(Calculator.conversion(num)+""));
 							});
 							dropItem.setNumbers(numList);
 							break;
@@ -358,4 +379,12 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 	}
 
 
+	@Override
+	public void build(ConstTablesProtobuf.ConstTables.Builder builder) {
+		ConstDropTableProtobuf.ConstDropTable build = ConstDropTableProtobuf.ConstDropTable
+				.newBuilder()
+				.addAllItems(table)
+				.build();
+		builder.setDrops(build);
+	}
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.NewStoreMapper">
+
+    <resultMap id="NewStoreRM" type="com.gejian.pixel.entity.NewStore">
+		<result property="id" column="id"/>
+		<result property="places" column="places"/>
+		<result property="goodFomula" column="good_fomula"/>
+		<result property="items" column="items"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`places`,`good_fomula`,`items`
+	</sql>
+
+</mapper>

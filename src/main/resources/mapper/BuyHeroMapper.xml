@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.BuyHeroMapper">
+
+    <resultMap id="BuyHeroRM" type="com.gejian.pixel.entity.BuyHero">
+		<result property="type" column="type"/>
+		<result property="desc" column="desc"/>
+		<result property="dropid" column="dropid"/>
+		<result property="award" column="award"/>
+		<result property="consume" column="consume"/>
+		<result property="fomula" column="fomula"/>
+		<result property="amount" column="amount"/>
+		<result property="cooldown" column="cooldown"/>
+		<result property="dayLimit" column="day_limit"/>
+		<result property="chips" column="chips"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `type`,`desc`,`dropid`,`award`,`consume`,`fomula`,`amount`,`cooldown`,`day_limit`,`chips`
+	</sql>
+
+</mapper>

@@ -5,7 +5,6 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
-import com.gejian.pixel.constants.Generated;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.Promotion;
 import com.gejian.pixel.enums.ErrorEnum;

@@ -9,11 +9,11 @@ import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
-import com.gejian.pixel.constants.Generated;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.customType.TopRangePower;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
+import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
@@ -42,7 +42,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 	private static final int MIN_VERSION = 10;
 
-	private Generated generated = new Generated();
+	private final DropService dropService;
 
 	@Override
 	public CommLoginResponseProtobuf.CommLoginResponse
@@ -51,6 +51,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		log.info("登陆请求参数：{}",request);
 		
 		CommLoginResponseProtobuf.CommLoginResponse.Builder replyBuilder = CommLoginResponseProtobuf.CommLoginResponse.newBuilder();
+		PlayerInfoProtobuf.PlayerInfo.Builder playerBuilder = PlayerInfoProtobuf.PlayerInfo.newBuilder();
 
 		long currentTimestamp = Helper.currentTimestamp();
 		long currentDays = Helper.currentDay();
@@ -138,7 +139,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			strings.put("finished_promotions", Helper.hexEncode("{}"));
 			strings.put("finished_daily_promotions", Helper.hexEncode("{}"));
 
-			JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = generated.getRUBY_CONST_IN_GAME_PURCHASE_TABLE();
+			// TODO: 2021/9/3 需要修改常量数据获取
+			//JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = generated.getRUBY_CONST_IN_GAME_PURCHASE_TABLE();
+			JSONArray RUBY_CONST_IN_GAME_PURCHASE_TABLE = new JSONArray();
 			if (RUBY_CONST_IN_GAME_PURCHASE_TABLE != null) {
 				for (Object o : RUBY_CONST_IN_GAME_PURCHASE_TABLE) {
 					JSONObject jsonObject = (JSONObject) o;
@@ -154,8 +157,8 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				throw new RuntimeException("failed");
 			}
 
-			// TODO: 2021/9/1 需要放开
 			//generated.dropItemNewbie(redisTemplate, identifier, null, false, null);
+			dropService.dropItem("newbie", identifier, false, null);
 
 			Map<String,Integer> tempbackpack = new HashMap<>();
 			tempbackpack.put("level", 1);
@@ -200,7 +203,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		Helper.setItemValue(redisTemplate, identifier+"", "giftbags", Integer.valueOf(redisTemplate.opsForHash().size("u:" + identifier + ":giftbags")+""));
 
-		PlayerInfoProtobuf.PlayerInfo.Builder playerBuilder = PlayerInfoProtobuf.PlayerInfo.newBuilder();
 		playerBuilder.setIdentifier(identifier+"");
 
 		identifier = (Integer) redisTemplate.opsForHash().get("user:set:identifier", hexEncodedIdentifier);

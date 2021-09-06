@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.SkillScriptRoleMapper">
+
+    <resultMap id="SkillScriptRoleRM" type="com.gejian.pixel.entity.SkillScriptRole">
+		<result property="name" column="name"/>
+		<result property="attack" column="attack"/>
+		<result property="attack01Audio" column="attack01_audio"/>
+		<result property="attack02Audio" column="attack02_audio"/>
+		<result property="attack03Audio" column="attack03_audio"/>
+		<result property="crit" column="crit"/>
+		<result property="deathAudio" column="death_audio"/>
+		<result property="defense" column="defense"/>
+		<result property="dodge" column="dodge"/>
+		<result property="hitAudio" column="hit_audio"/>
+		<result property="hp" column="hp"/>
+		<result property="normalSkill" column="normalSkill"/>
+		<result property="skills" column="skills"/>
+		<result property="speed" column="speed"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `name`,`attack`,`attack01_audio`,`attack02_audio`,`attack03_audio`,`crit`,`death_audio`,`defense`,`dodge`,`hit_audio`,`hp`,`normalSkill`,
+		`skills`,`speed`
+	</sql>
+
+</mapper>

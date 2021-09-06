@@ -3,7 +3,6 @@ package com.gejian.pixel.service.process;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import com.gejian.pixel.constants.CommandConstants;
-import com.gejian.pixel.constants.Generated;
 import com.gejian.pixel.proto.CommQueryBuyHeroPriceRequestProtobuf;
 import com.gejian.pixel.proto.CommQueryBuyHeroPriceResponseProtobuf;
 import com.gejian.pixel.service.Process;
@@ -32,8 +31,6 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 
 	private final RedisTemplate redisTemplate;
 
-	private Generated generated = new Generated();
-
 	@Override
 	public CommQueryBuyHeroPriceResponseProtobuf.CommQueryBuyHeroPriceResponse doProcess(CommQueryBuyHeroPriceRequestProtobuf.CommQueryBuyHeroPriceRequest commQueryBuyHeroPriceRequest) throws Exception {
 		CommQueryBuyHeroPriceResponseProtobuf.CommQueryBuyHeroPriceResponse.Builder responseBuilder = CommQueryBuyHeroPriceResponseProtobuf
@@ -57,7 +54,9 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 		Map<String,Integer> prices = new HashMap<>();
 
 		for (int x = 1; x <= 3; x++) {
-			JSONArray rubyConstBuyHeroTable = generated.getRUBY_CONST_BUY_HERO_TABLE();
+			// TODO: 2021/9/3 需要修改常量数据获取
+			//JSONArray rubyConstBuyHeroTable = generated.getRUBY_CONST_BUY_HERO_TABLE();
+			JSONArray rubyConstBuyHeroTable = new JSONArray();
 			if (rubyConstBuyHeroTable!=null) {
 				JSONObject heroObj = (JSONObject) rubyConstBuyHeroTable.get(x - 1);
 				Integer cooldown = (Integer) heroObj.get("cooldown");

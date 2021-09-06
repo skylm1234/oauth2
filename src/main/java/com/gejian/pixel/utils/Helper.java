@@ -1,6 +1,5 @@
 package com.gejian.pixel.utils;
 
-import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.HexUtil;
@@ -9,10 +8,8 @@ import cn.hutool.core.util.ReUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
-import com.gejian.pixel.constants.Generated;
 import com.gejian.pixel.proto.*;
-import io.netty.channel.Channel;
+import com.gejian.pixel.service.DropService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -20,8 +17,6 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.UnsupportedEncodingException;
-import java.sql.SQLOutput;
-import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -34,12 +29,12 @@ import java.util.*;
 @RequiredArgsConstructor
 public class Helper {
 
-	private final Generated generated;
-
 	private JSONArray skillToHero = new JSONArray();
 
 	private void heroNameToSkillBookHash() {
-		JSONArray rubyConstHeroTable = generated.getRUBY_CONST_HERO_TABLE();
+		// TODO: 2021/9/3 需要修改常量数据获取
+		//JSONArray rubyConstHeroTable = generated.getRUBY_CONST_HERO_TABLE();
+		JSONArray rubyConstHeroTable = new JSONArray();
 		if (rubyConstHeroTable != null) {
 			for (Object o : rubyConstHeroTable) {
 				JSONObject constHero = (JSONObject) o;
@@ -861,10 +856,13 @@ public class Helper {
 	}
 
 	public static void refreshStore(RedisTemplate redisTemplate, Integer identifier, Object store, Integer type) {
-		Generated generated = new Generated();
-		JSONArray rubyConstNewStoreHotTable = generated.getRUBY_CONST_NEW_STORE_HOT_TABLE();
+		// TODO: 2021/9/3 需要修改常量数据获取
+		/*JSONArray rubyConstNewStoreHotTable = generated.getRUBY_CONST_NEW_STORE_HOT_TABLE();
 		JSONArray rubyConstNewStoreDiscountTable = generated.getRUBY_CONST_NEW_STORE_DISCOUNT_TABLE();
-		JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();
+		JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();*/
+		JSONArray rubyConstNewStoreHotTable = new JSONArray();
+		JSONArray rubyConstNewStoreDiscountTable = new JSONArray();
+		JSONArray rubyConstNewStoreTimeLimitTable = new JSONArray();
 		JSONArray tables = new JSONArray();
 		tables.add(rubyConstNewStoreHotTable);
 		tables.add(rubyConstNewStoreDiscountTable);
@@ -903,24 +901,26 @@ public class Helper {
 
 
 	/**
-	 * 更新临时背包
+	 *  更新临时背包
 	 *
+	 * @param dropService
 	 * @param redisTemplate
 	 * @param identifier
-	 * @param request
-	 * @param reply
 	 * @param monsters
 	 * @param goblins
+	 * @return
 	 */
-	public static void updateTemporaryBackpack(RedisTemplate redisTemplate, Integer identifier, CommEnterDungeonRequestProtobuf.CommEnterDungeonRequest request,
-											   Channel reply, Integer monsters,
-											   Integer goblins) {
+	public static PlayerInfoProtobuf.PlayerInfo updateTemporaryBackpack(DropService dropService, RedisTemplate redisTemplate, Integer identifier, Integer monsters,
+																		Integer goblins) {
+		PlayerInfoProtobuf.PlayerInfo.Builder resultBuilder = PlayerInfoProtobuf.PlayerInfo.newBuilder();
 		Formatter m = new Formatter();
 		Map<Object, Object> pack = redisTemplate.opsForHash().entries(m.format("u:%d:temp_backpack", identifier).toString());
-		onNotifyEventOfPromotions(redisTemplate, m.format("type_%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
-		onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier);
-		onNotifyEventOfPromotions(redisTemplate, m.format("daily_type__%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
-
+		PlayerItemProtobuf.PlayerItem playerItem = onNotifyEventOfPromotions(redisTemplate, m.format("type_%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
+		PlayerItemProtobuf.PlayerItem playerItem1 = onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier);
+		PlayerItemProtobuf.PlayerItem playerItem2 = onNotifyEventOfPromotions(redisTemplate, m.format("daily_type__%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
+		resultBuilder.addItems(playerItem);
+		resultBuilder.addItems(playerItem1);
+		resultBuilder.addItems(playerItem2);
 		Integer vip = itemCount(redisTemplate, identifier, "vip");
 
 		Long duration = current_timestamp() - (long) pack.get("dungeon_enter_timestamp");
@@ -959,23 +959,20 @@ public class Helper {
 			Integer itemCount = itemCount(redisTemplate, identifier, String.format("dungeon_%s_not_passed_stage", pack.get("type")));
 			String drop_action = itemCount.equals(ToUtil.to_i(pack.get("stage"))) ? constStr.getMonstersKilledAwardFomula().getDropid() : constStr.getMonstersKilledAwardFomula().getDropid_bosskilled();
 			for (int i = 0; i <= monsters; i++) {
-				if (drop_action.contains("pvemon")) {
-					dropItemPvemon(redisTemplate, identifier, reply, true, null);
-				} else if (drop_action.contains("pvebk")) {
-					dropItemPvebk(redisTemplate, identifier, reply, true, null);
-				}
+				PlayerInfoProtobuf.PlayerInfo playerInfo = dropService
+						.dropItem(drop_action, identifier, true, null);
+				resultBuilder.addAllHeros(playerInfo.getHerosList());
+				resultBuilder.addAllItems(playerInfo.getItemsList());
 			}
 		}
 
 		//计算哥布林收益
 		if (goblins != null && goblins > 0) {
 			for (int i = 0; i <= goblins; i++) {
-				/**
-				 * drop_goblin = DROP_ITEMS[const['goblin_fomula']['dropid']]
-				 * drop_goblin.call(identifier,  reply, true, nil)
-				 */
-				//String drop_goblin = constStr.getGoblinFomula().getDropid();
-				drop_item_goblins(redisTemplate, identifier, reply, true, null);
+				String drop_goblin = constStr.getGoblinFomula().getDropid();
+				PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(drop_goblin, identifier, true, null);
+				resultBuilder.addAllItems(playerInfo.getItemsList());
+				resultBuilder.addAllHeros(playerInfo.getHerosList());
 			}
 		}
 
@@ -985,28 +982,15 @@ public class Helper {
 			PlayerItemProtobuf.PlayerItem.Builder builder = PlayerItemProtobuf.PlayerItem.newBuilder();
 			builder.setKey(s);
 			builder.setValue(ToUtil.to_i(items.get(s)));
-			//TODO reply.items.push(item)
+			resultBuilder.addItems(builder.build());
 		}
 
 		redisTemplate.opsForHash().put(String.format("u:%d:temp_backpack", identifier), "dungeon_enter_timestamp", current_timestamp());
 
-
+		return resultBuilder.build();
 	}
 
 	private static long current_timestamp() {
 		return System.currentTimeMillis() / 1000 + 28800;
 	}
-
-	private static void dropItemPvemon(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
-
-	}
-
-	private static void dropItemPvebk(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
-
-	}
-
-	private static void drop_item_goblins(RedisTemplate redisTemplate, Integer identifier, Channel channel, Boolean store2backpack, Object parameter) {
-
-	}
-
 }

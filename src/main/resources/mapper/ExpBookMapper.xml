@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.ExpBookMapper">
+
+    <resultMap id="ExpBookRM" type="com.gejian.pixel.entity.ExpBook">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="desc" column="desc"/>
+		<result property="value" column="value"/>
+		<result property="quality" column="quality"/>
+		<result property="icon" column="icon"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`name`,`desc`,`value`,`quality`,`icon`
+	</sql>
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.StageMapper">
+
+    <resultMap id="StageRM" type="com.gejian.pixel.entity.Stage">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="classType" column="class_type"/>
+		<result property="prerequest" column="prerequest"/>
+		<result property="mode" column="mode"/>
+		<result property="icon" column="icon"/>
+		<result property="iconColor" column="icon_color"/>
+		<result property="bg" column="bg"/>
+		<result property="bgColor" column="bg_color"/>
+		<result property="recommandPower" column="recommand_power"/>
+		<result property="monsters" column="monsters"/>
+		<result property="monstersAttributes" column="monsters_attributes"/>
+		<result property="boss" column="boss"/>
+		<result property="bossAttributes" column="boss_attributes"/>
+		<result property="monstersMax" column="monsters_max"/>
+		<result property="goblinFomula" column="goblin_fomula"/>
+		<result property="goblin" column="goblin"/>
+		<result property="basicAwardFomula" column="basic_award_fomula"/>
+		<result property="basicAward" column="basic_award"/>
+		<result property="monstersKilledAwardFomula" column="monsters_killed_award_fomula"/>
+		<result property="monstersKilledAward" column="monsters_killed_award"/>
+		<result property="bossAwardFomula" column="boss_award_fomula"/>
+		<result property="bossAward" column="boss_award"/>
+		<result property="wave" column="wave"/>
+		<result property="monsterSkillLevel" column="monster_skill_level"/>
+		<result property="bossSkillLevel" column="boss_skill_level"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`name`,`class_type`,`prerequest`,`mode`,`icon`,`icon_color`,`bg`,`bg_color`,`recommand_power`,`monsters`,`monsters_attributes`,
+		`boss`,`boss_attributes`,`monsters_max`,`goblin_fomula`,`goblin`,`basic_award_fomula`,`basic_award`,`monsters_killed_award_fomula`,
+		`monsters_killed_award`,`boss_award_fomula`,`boss_award`,`wave`,`monster_skill_level`,`boss_skill_level`
+	</sql>
+
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.ExchangeMapper">
+
+    <resultMap id="ExchangeRM" type="com.gejian.pixel.entity.Exchange">
+		<result property="id" column="id"/>
+		<result property="stone" column="stone"/>
+		<result property="desc" column="desc"/>
+		<result property="icon" column="icon"/>
+		<result property="cost" column="cost"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`stone`,`desc`,`icon`,`cost`
+	</sql>
+
+</mapper>

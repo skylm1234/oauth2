@@ -34,3 +34,7 @@ mybatis-plus:
       logic-not-delete-value: 0
   configuration:
     map-underscore-to-camel-case: true
+
+config-url:
+  MACOSX-IAP-VERIFY-URL: https://sandbox.itunes.apple.com/verifyReceipt
+  CENTOS-IAP-VERIFY-URL: https://buy.itunes.apple.com/verifyReceipt
