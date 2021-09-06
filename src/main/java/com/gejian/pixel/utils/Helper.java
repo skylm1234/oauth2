@@ -2,14 +2,17 @@ package com.gejian.pixel.utils;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.text.StrFormatter;
-import cn.hutool.core.util.HexUtil;
-import cn.hutool.core.util.RandomUtil;
-import cn.hutool.core.util.ReUtil;
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.util.*;
+import cn.hutool.json.JSON;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
+import com.gejian.pixel.entity.Hero;
+import com.gejian.pixel.entity.NewStoreDiscount;
+import com.gejian.pixel.entity.NewStoreHot;
+import com.gejian.pixel.entity.NewStoreTimeLimit;
 import com.gejian.pixel.proto.*;
-import com.gejian.pixel.service.DropService;
+import com.gejian.pixel.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -29,21 +32,33 @@ import java.util.*;
 @RequiredArgsConstructor
 public class Helper {
 
+	/*JSONArray rubyConstNewStoreHotTable = generated.getRUBY_CONST_NEW_STORE_HOT_TABLE();
+	JSONArray rubyConstNewStoreDiscountTable = generated.getRUBY_CONST_NEW_STORE_DISCOUNT_TABLE();
+	JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();*/
+
+	private final HeroService heroService;
+	private final NewStoreHotService newStoreHotService;
+	private final NewStoreDiscountService newStoreDiscountService;
+	private final NewStoreTimeLimitService newStoreTimeLimitService;
+
+	static List<NewStoreHot> newStoreHots = null;
+	static List<NewStoreDiscount> newStoreDiscounts = null;
+	static List<NewStoreTimeLimit> newStoreTimeLimits = null;
+
 	private JSONArray skillToHero = new JSONArray();
 
 	private void heroNameToSkillBookHash() {
-		// TODO: 2021/9/3 需要修改常量数据获取
+		//需要修改常量数据获取
 		//JSONArray rubyConstHeroTable = generated.getRUBY_CONST_HERO_TABLE();
-		JSONArray rubyConstHeroTable = new JSONArray();
-		if (rubyConstHeroTable != null) {
-			for (Object o : rubyConstHeroTable) {
-				JSONObject constHero = (JSONObject) o;
+		List<Hero> heroList = heroService.list();
+		if (heroList!=null) {
+			for (Hero constHero : heroList) {
 				JSONObject hero = new JSONObject();
-				hero.putOnce("skilla", constHero.get("name"));
-				hero.putOnce("skill1", constHero.get("name"));
-				hero.putOnce("skill2", constHero.get("name"));
-				hero.putOnce("skill3", constHero.get("name"));
-				hero.putOnce("skill4", constHero.get("name"));
+				hero.putOnce(constHero.getSkillA(), constHero.getName());
+				hero.putOnce(constHero.getSkill1(), constHero.getName());
+				hero.putOnce(constHero.getSkill2(), constHero.getName());
+				hero.putOnce(constHero.getSkill3(), constHero.getName());
+				hero.putOnce(constHero.getSkill4(), constHero.getName());
 				skillToHero.add(hero);
 			}
 		}
@@ -52,6 +67,9 @@ public class Helper {
 	@PostConstruct
 	public void init() {
 		heroNameToSkillBookHash();
+		newStoreHots = newStoreHotService.list();
+		newStoreDiscounts = newStoreDiscountService.list();
+		newStoreTimeLimits = newStoreTimeLimitService.list();
 	}
 
 	/**
@@ -820,18 +838,18 @@ public class Helper {
 
 		long weekOfYear = currentDay();
 
-		List types = new ArrayList<>();
+		Map types = new HashMap();
 
 		table.forEach(json -> {
 			JSONObject jsonObject = (JSONObject) json;
-			types.set(Integer.parseInt(jsonObject.get("type") + ""), jsonObject.get("type"));
+			types.put(NumberUtil.parseInt(jsonObject.get("type") + ""), jsonObject.get("type"));
 		});
 
 		List<JSONObject> items = new ArrayList<>();
 
 		for (int i = 0; i < table.size(); i++) {
 			JSONObject currentIndexObj = (JSONObject) table.get(i);
-			JSONObject f = (JSONObject) currentIndexObj.get("good_fomula");
+			JSONObject f = JSONUtil.parseObj(currentIndexObj.get("goodFomula"));
 
 			Integer currentType = (Integer) currentIndexObj.get("type");
 			if (currentType != 0) {
@@ -855,18 +873,43 @@ public class Helper {
 		return items;
 	}
 
-	public static void refreshStore(RedisTemplate redisTemplate, Integer identifier, Object store, Integer type) {
+	public static List<StoreItemProtobuf.StoreItem> refreshStore(RedisTemplate redisTemplate, Integer identifier, Integer type) {
+		List<StoreItemProtobuf.StoreItem> storeItemList = new ArrayList<>();
 		// TODO: 2021/9/3 需要修改常量数据获取
 		/*JSONArray rubyConstNewStoreHotTable = generated.getRUBY_CONST_NEW_STORE_HOT_TABLE();
 		JSONArray rubyConstNewStoreDiscountTable = generated.getRUBY_CONST_NEW_STORE_DISCOUNT_TABLE();
 		JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();*/
+
+		/*
+		static List<NewStoreHot> newStoreHots = null;
+		static List<NewStoreDiscount> newStoreDiscounts = null;
+		static List<NewStoreTimeLimit> newStoreTimeLimits = null;
+		 */
 		JSONArray rubyConstNewStoreHotTable = new JSONArray();
+		JSONArray rubyConstNewStoreDiscountTable = new JSONArray();
+		JSONArray rubyConstNewStoreTimeLimitTable = new JSONArray();
+		for (NewStoreHot newStoreHot : newStoreHots) {
+			rubyConstNewStoreHotTable.add(JSONUtil.parse(newStoreHot));
+		}
+		for (NewStoreDiscount newStoreDiscount : newStoreDiscounts) {
+			rubyConstNewStoreDiscountTable.add(JSONUtil.parse(newStoreDiscount));
+		}
+		for (NewStoreTimeLimit newStoreTimeLimit : newStoreTimeLimits) {
+			rubyConstNewStoreTimeLimitTable.add(JSONUtil.parse(newStoreTimeLimit));
+		}
+		JSONArray tables = new JSONArray();
+		tables.add(rubyConstNewStoreHotTable);
+		tables.add(rubyConstNewStoreDiscountTable);
+		tables.add(rubyConstNewStoreTimeLimitTable);
+
+
+		/*JSONArray rubyConstNewStoreHotTable = new JSONArray();
 		JSONArray rubyConstNewStoreDiscountTable = new JSONArray();
 		JSONArray rubyConstNewStoreTimeLimitTable = new JSONArray();
 		JSONArray tables = new JSONArray();
 		tables.add(rubyConstNewStoreHotTable);
 		tables.add(rubyConstNewStoreDiscountTable);
-		tables.add(rubyConstNewStoreTimeLimitTable);
+		tables.add(rubyConstNewStoreTimeLimitTable);*/
 		if (type >= 1 && type <= 3) {
 			JSONArray table = (JSONArray) tables.get(type - 1);
 			List<JSONObject> items = refreshNewStoreNowEx(table);
@@ -879,24 +922,24 @@ public class Helper {
 
 			redisTemplate.opsForHash().putAll("u:" + identifier + ":store:" + type, h);
 
-			if (store != null) {
-				for (int i = 0; i < items.size(); i++) {
-					JSONObject item = items.get(i);
-					StoreItemProtobuf.StoreItem storeItem = StoreItemProtobuf.StoreItem
-							.newBuilder()
-							.setName(item.get("name") + "")
-							.setNumber(Integer.parseInt(item.get("number") + ""))
-							.setCostType(item.get("cost_type") + "")
-							.setCostNumber(Integer.parseInt(item.get("cost_number") + ""))
-							.build();
-					// TODO: 2021/9/1  源代码是添加商品
-					//store.goods.push(g)
-				}
+			for (int i = 0; i < items.size(); i++) {
+				JSONObject item = items.get(i);
+				StoreItemProtobuf.StoreItem storeItem = StoreItemProtobuf.StoreItem
+						.newBuilder()
+						.setName(item.get("name") + "")
+						.setNumber(Integer.parseInt(item.get("number") + ""))
+						.setCostType(item.get("cost_type") + "")
+						.setCostNumber(Integer.parseInt(item.get("cost_number") + ""))
+						.build();
+				//源代码是添加商品
+				//store.goods.push(g)
+				storeItemList.add(storeItem);
 			}
 
 		} else {
 			log.info("unknow store type");
 		}
+		return storeItemList;
 	}
 
 

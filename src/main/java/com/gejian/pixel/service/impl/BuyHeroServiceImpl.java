@@ -40,6 +40,7 @@ public class BuyHeroServiceImpl extends ServiceImpl<BuyHeroMapper, BuyHero>
 		}
 	}
 
+	@Override
 	public double calculation(Integer id, Integer count) throws ScriptException {
 		BuyHero buyHero = hash.get(id);
 		if (Objects.isNull(buyHero)) {
