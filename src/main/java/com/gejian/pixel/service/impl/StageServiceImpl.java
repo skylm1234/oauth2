@@ -42,6 +42,12 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 		}
 	}
 
+	@Override
+	public ConstStageTableItemExProtobuf.ConstStageTableItemEx getById(Integer id){
+		Stage stage = hash.get(id);
+		return convert(stage);
+	}
+
 	private ConstStageTableItemExProtobuf.ConstStageTableItemEx convert(Stage item) {
 		StageBasicAwardFomula stageBasicAwardFomula = JSONUtil
 				.toBean(item.getBasicAwardFomula(), StageBasicAwardFomula.class);

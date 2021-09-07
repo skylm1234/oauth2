@@ -45,6 +45,11 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 		return hash;
 	}
 
+	@Override
+	public Hero getById(Integer id) {
+		return hash.get(id);
+	}
+
 	private ConstHeroTableItemExProtobuf.ConstHeroTableItemEx convert(Hero item) {
 		BasicExpand basicExpand = JSONUtil.toBean(item.getBasicExpand(), BasicExpand.class);
 		ConstHeroTableItemExBasicExpandProtobuf.ConstHeroTableItemExBasicExpand basicExpandProto
