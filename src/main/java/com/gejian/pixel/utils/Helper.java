@@ -7,12 +7,10 @@ import cn.hutool.json.JSON;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.gejian.pixel.entity.Hero;
-import com.gejian.pixel.entity.NewStoreDiscount;
-import com.gejian.pixel.entity.NewStoreHot;
-import com.gejian.pixel.entity.NewStoreTimeLimit;
+import com.gejian.pixel.entity.*;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.*;
+import com.gejian.pixel.service.impl.HeroServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -36,11 +34,17 @@ public class Helper {
 	JSONArray rubyConstNewStoreDiscountTable = generated.getRUBY_CONST_NEW_STORE_DISCOUNT_TABLE();
 	JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();*/
 
+	// rate = RUBY_CONST_QUALITY_UPGRADE_RATE_TABLE[1]['up'].to_f
+
 	private final HeroService heroService;
+	private final QualityUpgradeRateService qualityUpgradeRateService;
 	private final NewStoreHotService newStoreHotService;
 	private final NewStoreDiscountService newStoreDiscountService;
 	private final NewStoreTimeLimitService newStoreTimeLimitService;
 
+	static List<Hero> heroList = null;
+	static List<QualityUpgradeRate> qualityUpgradeRates = null;
+	static Map<Integer, Hero> heroHashList = null;
 	static List<NewStoreHot> newStoreHots = null;
 	static List<NewStoreDiscount> newStoreDiscounts = null;
 	static List<NewStoreTimeLimit> newStoreTimeLimits = null;
@@ -67,6 +71,9 @@ public class Helper {
 	@PostConstruct
 	public void init() {
 		heroNameToSkillBookHash();
+		heroList = heroService.list();
+		qualityUpgradeRates = qualityUpgradeRateService.list();
+		heroHashList = heroService.getHash();
 		newStoreHots = newStoreHotService.list();
 		newStoreDiscounts = newStoreDiscountService.list();
 		newStoreTimeLimits = newStoreTimeLimitService.list();
@@ -334,9 +341,9 @@ public class Helper {
 		if (r) {
 			String id = type.split("_")[1];
 
-			// TODO: 2021/8/31 后面要替换
 			//String[][] record = RUBY_CONST_HERO_TABLE_HASH["X#{id}"]
-			Map<String, Map> record = null;
+			//Map<String, Map> record = null;
+			Hero record = heroHashList.get(id);
 
 			if (redisTemplate.opsForHash().putIfAbsent("u:" + identifier + ":heros", type, 1)) {
 				onNotifyEventOfPromotions(redisTemplate, "mostheros", 1, identifier);
@@ -352,12 +359,25 @@ public class Helper {
 
 				if (parameter != null) {
 					if ("3".equals(parameter)) {
-						// TODO: 2021/8/31 后面要替换
+						// 后面要替换
 						// rate = RUBY_CONST_QUALITY_UPGRADE_RATE_TABLE[1]['up'].to_f
-						rate = 1.0f;
+						//rate = 1.0f;
+						rate = NumberUtil.parseFloat(qualityUpgradeRates.get(1).getUp());
 					}
 				}
+				JSONObject basicUpgradeExpandJsonObj = JSONUtil.parseObj(record.getBasicUpgradeExpand());
+				JSONObject basicExpandJsonObj = JSONUtil.parseObj(record.getBasicExpand());
 				heroBuilder.setQuality(parameter != null && "3".equals(parameter) ? 2 : 1);
+				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpandJsonObj.get("hp") * rate) + ""));
+				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicExpandJsonObj.get("hp") * rate) + ""));
+				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpandJsonObj.get("defense") * rate) + ""));
+				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicExpandJsonObj.get("defense") * rate) + ""));
+				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpandJsonObj.get("attack") * rate) + ""));
+				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicExpandJsonObj.get("attack") * rate) + ""));
+				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpandJsonObj.get("speed") * rate) + ""));
+				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicExpandJsonObj.get("speed") * rate) + ""));
+				heroBuilder.setNumber(1);
+				/*heroBuilder.setQuality(parameter != null && "3".equals(parameter) ? 2 : 1);
 				heroBuilder.setGrowHp(Integer.parseInt(((Float) record.get("basic_upgrade_expand").get("hp") * rate) + ""));
 				heroBuilder.setHp(Integer.parseInt(((Float) record.get("basic_expand").get("hp") * rate) + ""));
 				heroBuilder.setGrowDef(Integer.parseInt(((Float) record.get("basic_upgrade_expand").get("defense") * rate) + ""));
@@ -366,7 +386,7 @@ public class Helper {
 				heroBuilder.setAttack(Integer.parseInt(((Float) record.get("basic_expand").get("attack") * rate) + ""));
 				heroBuilder.setGrowSpeed(Integer.parseInt(((Float) record.get("basic_upgrade_expand").get("speed") * rate) + ""));
 				heroBuilder.setSpeed(Integer.parseInt(((Float) record.get("basic_expand").get("speed") * rate) + ""));
-				heroBuilder.setNumber(1);
+				heroBuilder.setNumber(1);*/
 				playerInfo.addHeros(heroBuilder.build());
 				Long teams = redisTemplate.opsForHash().size("u:" + identifier + ":teams");
 				if (teams < 5) {
@@ -455,9 +475,10 @@ public class Helper {
 		if (r) {
 			String id = type.split("_")[1];
 
-			// TODO: 2021/8/31 后面要替换
+			//2021/8/31 后面要替换
 			//String[][] record = RUBY_CONST_HERO_TABLE_HASH["X#{id}"]
-			Map<String, Object> record = null;
+			//Map<String, Object> record = null;
+			Hero record = heroHashList.get(id);
 
 			if (redisTemplate.opsForHash().putIfAbsent("u:" + identifier + ":heros", type, 1)) {
 				//onNotifyEventOfPromotions(redisTemplate, "mostheros", 1, identifier, reply);
@@ -477,13 +498,26 @@ public class Helper {
 
 				if (parameter != null) {
 					if (parameter == 3) {
-						// TODO: 2021/8/31 后面要替换
+						//2021/8/31 后面要替换
 						// rate = RUBY_CONST_QUALITY_UPGRADE_RATE_TABLE[1]["up"].to_f
-						rate = 1.0f;
+						//rate = 1.0f;
+						rate = NumberUtil.parseFloat(qualityUpgradeRates.get(1).getUp());
 					}
 				}
 
 				heroBuilder.setQuality(parameter != null && parameter == 3 ? 2 : 1);
+				JSONObject basicUpgradeExpand = JSONUtil.parseObj(record.getBasicUpgradeExpand());
+				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpand.get("hp") * rate) + ""));
+				JSONObject basicExpand = JSONUtil.parseObj(record.getBasicExpand());
+				heroBuilder.setHp(Integer.parseInt(((Float) basicExpand.get("hp") * rate) + ""));
+				heroBuilder.setGrowDef(Integer.parseInt(((Float) basicUpgradeExpand.get("defense") * rate) + ""));
+				heroBuilder.setDef(Integer.parseInt(((Float) basicExpand.get("defense") * rate) + ""));
+				heroBuilder.setGrowAttack(Integer.parseInt(((Float) basicUpgradeExpand.get("attack") * rate) + ""));
+				heroBuilder.setAttack(Integer.parseInt(((Float) basicExpand.get("attack") * rate) + ""));
+				heroBuilder.setGrowSpeed(Integer.parseInt(((Float) basicUpgradeExpand.get("speed") * rate) + ""));
+				heroBuilder.setSpeed(Integer.parseInt(((Float) basicExpand.get("speed") * rate) + ""));
+				heroBuilder.setNumber(1);
+				/*heroBuilder.setQuality(parameter != null && parameter == 3 ? 2 : 1);
 				JSONObject basicUpgradeExpand = (JSONObject) record.get("basic_upgrade_expand");
 				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpand.get("hp") * rate) + ""));
 				JSONObject basicExpand = (JSONObject) record.get("basic_expand");
@@ -494,7 +528,7 @@ public class Helper {
 				heroBuilder.setAttack(Integer.parseInt(((Float) basicExpand.get("attack") * rate) + ""));
 				heroBuilder.setGrowSpeed(Integer.parseInt(((Float) basicUpgradeExpand.get("speed") * rate) + ""));
 				heroBuilder.setSpeed(Integer.parseInt(((Float) basicExpand.get("speed") * rate) + ""));
-				heroBuilder.setNumber(1);
+				heroBuilder.setNumber(1);*/
 
 				Long teams = redisTemplate.opsForHash().size("u:" + identifier + ":teams");
 				if (teams < 5) {
@@ -527,27 +561,27 @@ public class Helper {
 				}
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
-				skillBuilder.setType(record.get("skill_a") + "");
+				skillBuilder.setType(record.getSkillA());
 				skillBuilder.setLevel(1);
 				heroBuilder.addSkills(skillBuilder);
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
-				skillBuilder.setType(record.get("skill1") + "");
+				skillBuilder.setType(record.getSkill1());
 				skillBuilder.setLevel(1);
 				heroBuilder.addSkills(skillBuilder);
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
-				skillBuilder.setType(record.get("skill2") + "");
+				skillBuilder.setType(record.getSkill2());
 				skillBuilder.setLevel(0);
 				heroBuilder.addSkills(skillBuilder);
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
-				skillBuilder.setType(record.get("skill3") + "");
+				skillBuilder.setType(record.getSkill3());
 				skillBuilder.setLevel(0);
 				heroBuilder.addSkills(skillBuilder);
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
-				skillBuilder.setType(record.get("skill4") + "");
+				skillBuilder.setType(record.getSkill4());
 				skillBuilder.setLevel(0);
 				heroBuilder.addSkills(skillBuilder);
 
@@ -577,11 +611,11 @@ public class Helper {
 				redisTemplate.opsForHash().putAll("u:" + identifier + ":" + heroBuilder.getType() + ":attributes", hh);
 
 				Map<String, Object> hhs = new HashMap<>();
-				hhs.put(record.get("skill_a") + "", 1);
-				hhs.put(record.get("skill1") + "", 1);
-				hhs.put(record.get("skill2") + "", 0);
-				hhs.put(record.get("skill3") + "", 0);
-				hhs.put(record.get("skill4") + "", 0);
+				hhs.put(record.getSkillA(), 1);
+				hhs.put(record.getSkill1(), 1);
+				hhs.put(record.getSkill2(), 0);
+				hhs.put(record.getSkill3(), 0);
+				hhs.put(record.getSkill4(), 0);
 				redisTemplate.opsForHash().putAll("u:" + identifier + ":" + heroBuilder.getType() + ":skills", hhs);
 
 				/*
@@ -601,12 +635,12 @@ public class Helper {
 				}
 
 				if (stringValue(redisTemplate, identifier, "nickname") != null) {
-					String bcmsg = StrUtil.format("PWBC快讯：祝贺玩家<color=red>{}</color>获得英雄<color=red>{}</color>！", stringValue(redisTemplate, identifier, "nickname"), record.get("name"));
+					String bcmsg = StrUtil.format("PWBC快讯：祝贺玩家<color=red>{}</color>获得英雄<color=red>{}</color>！", stringValue(redisTemplate, identifier, "nickname"), record.getName());
 					boardcaseWorldEvent(bcmsg);
 				}
 			} else {
 				//hero already exists
-				PlayerItemProtobuf.PlayerItem item = increaseItemValue(redisTemplate, identifier, "private_soulchip_" + id, Long.valueOf(record.get("chips") + ""));
+				PlayerItemProtobuf.PlayerItem item = increaseItemValue(redisTemplate, identifier, "private_soulchip_" + id, NumberUtil.parseLong(record.getChips() + ""));
 				reply.addItems(item);
 			}
 
@@ -888,16 +922,10 @@ public class Helper {
 
 	public static List<StoreItemProtobuf.StoreItem> refreshStore(RedisTemplate redisTemplate, Integer identifier, Integer type) {
 		List<StoreItemProtobuf.StoreItem> storeItemList = new ArrayList<>();
-		// TODO: 2021/9/3 需要修改常量数据获取
+		//2021/9/3 需要修改常量数据获取
 		/*JSONArray rubyConstNewStoreHotTable = generated.getRUBY_CONST_NEW_STORE_HOT_TABLE();
 		JSONArray rubyConstNewStoreDiscountTable = generated.getRUBY_CONST_NEW_STORE_DISCOUNT_TABLE();
 		JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();*/
-
-		/*
-		static List<NewStoreHot> newStoreHots = null;
-		static List<NewStoreDiscount> newStoreDiscounts = null;
-		static List<NewStoreTimeLimit> newStoreTimeLimits = null;
-		 */
 		JSONArray rubyConstNewStoreHotTable = new JSONArray();
 		JSONArray rubyConstNewStoreDiscountTable = new JSONArray();
 		JSONArray rubyConstNewStoreTimeLimitTable = new JSONArray();
