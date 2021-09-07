@@ -100,14 +100,14 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 			if (Objects.nonNull(store2backpack) && store2backpack) {
 				store2BackPack(type, num, identifier, parameter);
 			} else {
-				notStore2BackPack(builder,type,num,identifier,parameter);
+				notStore2BackPack(builder, type, num, identifier, parameter);
 			}
 		}
 		return builder.build();
 	}
 
 
-	private void notStore2BackPack(PlayerInfoProtobuf.PlayerInfo.Builder playerInfo,String type, int num, Integer identifier, String parameter) {
+	private void notStore2BackPack(PlayerInfoProtobuf.PlayerInfo.Builder playerInfo, String type, int num, Integer identifier, String parameter) {
 		if (type.matches("/^box_monry_.*$/") ||
 				type.matches("/^box_exp_book_.*$/") ||
 				type.matches("/^box_private_soulchip_.*$/") ||
@@ -123,8 +123,8 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 				PlayerItemProtobuf.PlayerItem playerItem = Helper
 						.increaseItemValue(stringRedisTemplate, identifier, type, (long) num);
 				playerInfo.addItems(playerItem);
-				if ("honor".equals(type)){
-					if (StrUtil.isNotBlank(parameter) && "archives".equals(parameter)){
+				if ("honor".equals(type)) {
+					if (StrUtil.isNotBlank(parameter) && "archives".equals(parameter)) {
 
 					} else {
 						PlayerItemProtobuf.PlayerItem totalHonorItem = Helper
@@ -139,14 +139,14 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 
 					}
 				}
-				if (type.startsWith("exp_book_")){
+				if (type.startsWith("exp_book_")) {
 					PlayerItemProtobuf.PlayerItem expbooks = Helper.onNotifyEventOfPromotions(stringRedisTemplate, "expbooks", num, identifier);
 					playerInfo.addItems(expbooks);
-				} else if ("gold".equals(type)){
+				} else if ("gold".equals(type)) {
 					PlayerItemProtobuf.PlayerItem maxgold = Helper.onNotifyEventOfPromotions(stringRedisTemplate, "maxgold", num, identifier);
 					playerInfo.addItems(maxgold);
 				}
-			} else if ("exp".equals(type)){
+			} else if ("exp".equals(type)) {
 				//上阵角色都加经验
 				Long nbHerosInTeam = stringRedisTemplate
 						.opsForHash().size("u:" + identifier + ":teams");
@@ -213,7 +213,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 					HeroBasicInfoProtobuf.HeroBasicInfo hero = heroBuilder.build();
 					playerInfo.addHeros(hero);
 				});
-			} else if (type.startsWith("hero_")){
+			} else if (type.startsWith("hero_")) {
 				PlayerInfoProtobuf.PlayerInfo pi = Helper
 						.awardHeroForMe(stringRedisTemplate, identifier, type, parameter);
 				playerInfo
@@ -222,7 +222,6 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 			}
 		}
 	}
-
 
 
 	private void store2BackPack(String type, int num, Integer identifier, String parameter) {
@@ -293,14 +292,14 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 		// 掉落几率
 		Integer randomNum = 0;
 		Integer probability = list.get(list.size() - 1).getProbability();
-		if (probability<100) {
+		if (probability < 100) {
 			randomNum = RandomUtil.randomInt(100);
-		}else {
+		} else {
 			randomNum = RandomUtil.randomInt(probability);
 		}
 
 		for (int i = 0; i < list.size(); i++) {
-			if (randomNum <= list.get(i).getProbability()){
+			if (randomNum <= list.get(i).getProbability()) {
 				return i;
 			}
 		}
@@ -338,7 +337,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 							List<String> split = StrUtil.split(replace, "(");
 							String s1 = split.get(0);
 							dropItem.setType(s1);
-							if (lastItem.size()>1) {
+							if (split.size() > 1) {
 								String s2 = split.get(1);
 								List<String> lastList = StrUtil.split(s2, "#");
 								if (CollectionUtils.isEmpty(lastList)) {
@@ -350,7 +349,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 							}
 							break;
 						case 1:
-							dropItem.setProbability(Integer.parseInt(item.replace(" ","")));
+							dropItem.setProbability(Integer.parseInt(item.replace(" ", "")));
 							break;
 						case 2:
 							String tt = StrUtil.replace(item, ")", "")
@@ -358,7 +357,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 							List<String> nums = StrUtil.split(tt, "#");
 							List<Integer> numList = new ArrayList<>();
 							nums.forEach(num -> {
-								numList.add(NumberUtil.parseInt(Calculator.conversion(num)+""));
+								numList.add(NumberUtil.parseInt(Calculator.conversion(num) + ""));
 							});
 							dropItem.setNumbers(numList);
 							break;
@@ -378,6 +377,8 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 		});
 		return one;
 	}
+
+
 
 
 	@Override
