@@ -89,8 +89,7 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 		PlayerItemProtobuf.PlayerItem playerItem = Helper.decreaseItemValue(redisTemplate, identifier, String.format("book_%s", skill), jsonObject.getLong("book"));
 		redisTemplate.opsForHash().increment(String.format("u:%s:%s:skills", identifier, hero), skill, 1);
 
-		return CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse.newBuilder()
-				.setRequest(request)
+		return result.setRequest(request)
 				.setResult(1)
 				.addItems(gold)
 				.addItems(playerItem)
