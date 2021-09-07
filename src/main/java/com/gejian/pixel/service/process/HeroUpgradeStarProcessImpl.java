@@ -115,10 +115,10 @@ public class HeroUpgradeStarProcessImpl implements Process<CommHeroUpgradeStarRe
 			heroMap.put("attack", (int) heroMap.get("attack") + starAttribute.getAttack());
 			heroMap.put("def", (int) heroMap.get("def") + starAttribute.getDefense());
 			heroMap.put("speed", (int) heroMap.get("speed") + starAttribute.getSpeed());
-			heroMap.put("grow_hp", (int) heroMap.get("grow_hp") + starAttribute.getHpUpgrade());
-			heroMap.put("grow_attack", (int) heroMap.get("grow_attack") + starAttribute.getAttackUpgrade());
-			heroMap.put("grow_def", (int) heroMap.get("grow_def") + starAttribute.getDefenseUpgrade());
-			heroMap.put("grow_speed", (int) heroMap.get("grow_speed") + starAttribute.getSpeedUpgrade());
+			heroMap.put("grow_hp",  starAttribute.getHpUpgrade());
+			heroMap.put("grow_attack",  starAttribute.getAttackUpgrade());
+			heroMap.put("grow_def",   starAttribute.getDefenseUpgrade());
+			heroMap.put("grow_speed",  starAttribute.getSpeedUpgrade());
 			int power = ((int) heroMap.get("hp") + (int) heroMap.get("attack") + (int) heroMap.get("def") + (int) heroMap.get("speed"));
 			redisTemplate.opsForHash().put(String.format("u:%s:heros", identifier), type, power);
 			redisTemplate.opsForHash().putAll(String.format("u:%s:%s:attributes", identifier, type), heroMap);
