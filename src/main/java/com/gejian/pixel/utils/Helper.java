@@ -958,7 +958,7 @@ public class Helper {
 			Map h = new HashMap();
 
 			for (int i = 0; i < items.size(); i++) {
-				h.put((i + 1) + "", items.get(i));
+				h.put((i + 1) + "", JSONUtil.toJsonStr(items.get(i)));
 			}
 
 			redisTemplate.opsForHash().putAll("u:" + identifier + ":store:" + type, h);
