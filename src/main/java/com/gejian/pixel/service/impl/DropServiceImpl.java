@@ -344,6 +344,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 									lastItem.add(s1);
 								}
 								lastList.forEach(num -> {
+									num = StrUtil.trim(num);
 									lastItem.add(StrUtil.trim(s1 + num));
 								});
 							}
