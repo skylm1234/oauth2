@@ -30,6 +30,11 @@ public class ExpBookServiceImpl extends ServiceImpl<ExpBookMapper, ExpBook>
 			table = new ArrayList<>();
 
 	@Override
+	public ExpBook getById(String id){
+		return hash.get(id);
+	}
+
+	@Override
 	public void init() {
 		List<ExpBook> list = this.list();
 		if (!CollectionUtils.isEmpty(list)) {

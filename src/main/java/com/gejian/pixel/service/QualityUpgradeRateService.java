@@ -8,4 +8,6 @@ import com.gejian.pixel.entity.QualityUpgradeRate;
  */
 public interface QualityUpgradeRateService extends IService<QualityUpgradeRate> {
 
+	QualityUpgradeRate getById(Integer id);
+
 }

@@ -10,7 +10,6 @@ import com.gejian.pixel.service.StageService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +26,16 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 	private List<ConstStageTableItemExProtobuf.ConstStageTableItemEx> table = new ArrayList<>();
 
 	@Override
+	public Stage getById(Integer id){
+		return hash.get(id);
+	}
+
+	@Override
+	public ConstStageTableItemExProtobuf.ConstStageTableItemEx getItem(Integer id){
+		return this.convert(hash.get(id));
+	}
+
+	@Override
 	public void init() {
 		List<Stage> list = this.list();
 		if (!CollectionUtils.isEmpty(list)) {
@@ -35,6 +44,12 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 				table.add(convert(item));
 			});
 		}
+	}
+
+	@Override
+	public ConstStageTableItemExProtobuf.ConstStageTableItemEx getExById(Integer id){
+		Stage stage = hash.get(id);
+		return convert(stage);
 	}
 
 	private ConstStageTableItemExProtobuf.ConstStageTableItemEx convert(Stage item) {

@@ -91,7 +91,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		Integer identifier = null;
 
-		if (StrUtil.hasBlank(request.getIdentifier()) || redisTemplate.opsForHash().hasKey(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier)) {
+		if (StrUtil.hasBlank(request.getIdentifier()) || !redisTemplate.opsForHash().hasKey(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier)) {
 			log.info("new player register");
 
 			identifier = Integer.valueOf(Helper.generateUserIdentifier(redisTemplate));
@@ -143,11 +143,10 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				inGamePurchases.stream().forEach(x-> items.put(x.getId(), 0));
 			}
 
-
-			if (redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier, identifier)) {
-				redisTemplate.opsForHash().putAll(StrUtil.format(RedisKeyConstants.USER_ITEMS, identifier), items);
-				redisTemplate.opsForHash().putAll(StrUtil.format(RedisKeyConstants.USER_STRINGS, identifier), strings);
-				redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_CLEAR_TEXT, identifier, identifier);
+			if (redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier, identifier+"")) {
+				redisTemplate.opsForHash().putAll("u:"+identifier+":items", items);
+				redisTemplate.opsForHash().putAll("u:"+identifier+":strings", strings);
+				redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_CLEAR_TEXT, identifier+"", identifier);
 			} else {
 				throw new RuntimeException("failed");
 			}
@@ -168,6 +167,8 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), 3);
 
 		}else {
+			identifier = NumberUtil.parseInt(request.getIdentifier());
+			System.out.println("identifier = " + identifier);
 			if (redisTemplate.opsForHash().hasKey("user:set:ban", hexEncodedIdentifier)) {
 
 				identifier = UserHolder.get().getIdentifier();
@@ -198,7 +199,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		playerBuilder.setIdentifier(identifier+"");
 
-		identifier = (Integer) redisTemplate.opsForHash().get("user:set:identifier", hexEncodedIdentifier);
+		identifier = NumberUtil.parseInt(redisTemplate.opsForHash().get("user:set:identifier", hexEncodedIdentifier)+"");
 
 		Map heros = redisTemplate.opsForHash().entries("u:" + identifier + ":heros");
 		Integer finalIdentifier = identifier;
@@ -354,19 +355,22 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 
 		replyBuilder.setTimestamp(NumberUtil.parseInt(Helper.currentTimestamp()+""));
+		replyBuilder.setRequest(request);
 		return replyBuilder.build();
 	}
 
 	private Integer helperResreshPvp(Integer identifier, CommLoginRequestProtobuf.CommLoginRequest request, PlayerInfoProtobuf.PlayerInfo.Builder reply, Boolean refresh_challage_ranklist) {
 		List<String> searchList = Arrays.asList("pvp_vectory_times", "pvp_challage_times");
-		List<Integer> items = redisTemplate.opsForHash().multiGet("u:" + identifier + ":items", searchList);
-		for (int i = 0; i < searchList.size(); i++) {
-			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
-					.newBuilder()
-					.setKey(searchList.get(i))
-					.setValue(items.get(i))
-					.build();
-			reply.addItems(item);
+		List<Object> items = redisTemplate.opsForHash().multiGet("u:" + identifier + ":items", searchList);
+		if (items != null || items.size()>0) {
+			for (int i = 0; i < searchList.size(); i++) {
+				PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
+						.newBuilder()
+						.setKey(searchList.get(i))
+						.setValue(NumberUtil.parseLong(items.get(i)+""))
+						.build();
+				reply.addItems(item);
+			}
 		}
 
 		redisTemplate.opsForHash().hasKey("u:"+identifier+":items","should_refresh_pvp_chanllege_ranklist");

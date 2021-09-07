@@ -1,15 +1,19 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.util.NumberUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.entity.BuyHero;
 import com.gejian.pixel.proto.CommQueryBuyHeroPriceRequestProtobuf;
 import com.gejian.pixel.proto.CommQueryBuyHeroPriceResponseProtobuf;
+import com.gejian.pixel.service.BuyHeroService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +34,9 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 		CommQueryBuyHeroPriceResponseProtobuf.CommQueryBuyHeroPriceResponse> {
 
 	private final RedisTemplate redisTemplate;
+
+	@Autowired
+	private BuyHeroService buyHeroService;
 
 	@Override
 	public CommQueryBuyHeroPriceResponseProtobuf.CommQueryBuyHeroPriceResponse doProcess(CommQueryBuyHeroPriceRequestProtobuf.CommQueryBuyHeroPriceRequest commQueryBuyHeroPriceRequest) throws Exception {
@@ -54,20 +61,17 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 		Map<String,Integer> prices = new HashMap<>();
 
 		for (int x = 1; x <= 3; x++) {
-			// TODO: 2021/9/3 需要修改常量数据获取
-			//JSONArray rubyConstBuyHeroTable = generated.getRUBY_CONST_BUY_HERO_TABLE();
-			JSONArray rubyConstBuyHeroTable = new JSONArray();
-			if (rubyConstBuyHeroTable!=null) {
-				JSONObject heroObj = (JSONObject) rubyConstBuyHeroTable.get(x - 1);
-				Integer cooldown = (Integer) heroObj.get("cooldown");
+			List<BuyHero> buyHeroes = buyHeroService.list();
+			if (buyHeroes!=null) {
+				BuyHero buyHero = buyHeroes.get(x - 1);
+				Integer cooldown = buyHero.getCooldown();
 
 				if (cooldown!=0 && Helper.currentTimestamp()-items.get("buy_hero_"+x+"_timestamp") >= cooldown) {
 					prices.put("buy_hero_"+identifier+"_price", 0);
 				}else {
-					// TODO: 2021/9/2 不清楚call用法
-					//prices['buy_hero_%d_price' % x] = RUBY_CONST_BUY_HERO_TABLE[x-1]['fomula'].call(items['buy_hero_%d_times' % x])
-					Integer fomula = (Integer) heroObj.get("fomula");
-					prices.put("buy_hero_"+x+"_price",fomula);
+					double fomula = buyHeroService.calculation(x - 1, 0);
+					prices.put("buy_hero_"+x+"_price", NumberUtil.parseInt(fomula+""));
+
 				}
 			}
 		}

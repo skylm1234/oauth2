@@ -8,4 +8,5 @@ import com.gejian.pixel.entity.StarUpgrade;
  */
 public interface StarUpgradeService extends IService<StarUpgrade> {
 
+	StarUpgrade get(Integer id);
 }

@@ -4,13 +4,14 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
-import com.gejian.pixel.entity.BasicExpand;
-import com.gejian.pixel.entity.BasicUpgradeExpand;
-import com.gejian.pixel.entity.StarUpgradeFomula;
+import com.gejian.pixel.entity.*;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.*;
+import com.gejian.pixel.service.HeroService;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.service.QualityUpgradeRateService;
+import com.gejian.pixel.service.QualityUpgradeService;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.ToUtil;
 import com.gejian.pixel.utils.UserHolder;
@@ -20,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,12 +34,20 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 
 	@Autowired
 	private RedisTemplate redisTemplate;
+	@Autowired
+	private QualityUpgradeService qualityUpgradeService;
+	@Autowired
+	private QualityUpgradeRateService qualityUpgradeRateService;
+	@Autowired
+	private HeroService heroService;
+
 
 	private final static String qualityStr = "quality";
 
 	private final static Integer number = 4;
 
 	private final static Integer qualityNoMoreThanNumber = 5;
+
 
 	@Override
 	public CommHeroUpgradeQualityResponseProtobuf.CommHeroUpgradeQualityResponse
@@ -82,10 +92,11 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 			Integer qualityValue = ToUtil.to_i(heroMap.get(qualityStr)) - 1;
 
 			//获取RubyConstQualityUpgradeTable
-			RubyConstQualityUpgradeTable item = getRubyConstQualityUpgradeTable(qualityValue);
+			ConstQualityUpgradeTableItemExProtobuf.ConstQualityUpgradeTableItemEx item = qualityUpgradeService.getQualityUpgradeById(qualityValue);
+
 			if (Helper.itemCount(redisTemplate, identifier, "private_soulchip_" + id) >= item.getConsumeExpand().getPrivateSoulchip()) {
 				//减少物品个数
-				Helper.decreaseItemValue(redisTemplate, identifier, "private_soulchip_" + id, item.getConsumeExpand().getPrivateSoulchip());
+				Helper.decreaseItemValue(redisTemplate, identifier, "private_soulchip_" + id, (long) item.getConsumeExpand().getPrivateSoulchip());
 				//自增加一
 				Long quality = redisTemplate.opsForHash().increment(redisKey, "quality", 1);
 				if (quality >= qualityNoMoreThanNumber) {
@@ -99,9 +110,11 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 				heroMap.put(qualityStr, quality);
 
 				//获取rate0
-				float rate0 = quality > 2 ? Float.parseFloat(getRubyConstQualityUpgradeRateTable(quality.intValue() - 2).getUp()) : 0f;
+				QualityUpgradeRate qualityUpgradeRate0 = qualityUpgradeRateService.getById(quality.intValue() - 2);
+				float rate0 = quality > 2 ? Float.parseFloat(qualityUpgradeRate0.getUp()) : 0f;
 				//获取rate
-				float rate = Float.parseFloat(getRubyConstQualityUpgradeRateTable(quality.intValue() - 1).getUp());
+				QualityUpgradeRate qualityUpgradeRate = qualityUpgradeRateService.getById(quality.intValue() - 1);
+				float rate = Float.parseFloat(qualityUpgradeRate.getUp());
 				log.info(heroMap.toString());
 
 				//map赋值
@@ -142,7 +155,7 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 
 				if (Helper.stringValue(redisTemplate, identifier, "nickname") != null) {
 
-					RubyConstHeroTableHash rubyConstHeroTableHash = getRubyConstHeroTableHash();
+					Hero heroTable = heroService.getById(id);
 
 					List<String> qarray = new ArrayList<>();
 					qarray.add("<color=blue>蓝色品质</color>");
@@ -151,7 +164,7 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 
 					String nickName = new String(Helper.stringValue(redisTemplate, identifier, "nickname").getBytes("UTF-8"), "UTF-8");
 					Helper.boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" +
-							nickName + "</color>升级英雄<color=red>" + rubyConstHeroTableHash.getName() +
+							nickName + "</color>升级英雄<color=red>" + heroTable.getName() +
 							"</color>到" + qarray.get(qualityValue - 2) + "!");
 				}
 			} else {
@@ -168,76 +181,4 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 
 		return reply.build();
 	}
-
-
-	@Data
-	class RubyConstQualityUpgradeTable {
-		private Integer id;
-		private Integer quality;
-		private String desc;
-		private ConsumeExpand consumeExpand;
-	}
-
-	@Data
-	class ConsumeExpand {
-		private Long privateSoulchip;
-		private String consume;
-	}
-
-	/**
-	 * 获取RubyConstQualityUpgradeTable对象
-	 *
-	 * @return RubyConstQualityUpgradeRateTable
-	 */
-	private RubyConstQualityUpgradeTable getRubyConstQualityUpgradeTable(Integer id) {
-		//TODO 返回一个JSON数组
-		return new RubyConstQualityUpgradeTable();
-	}
-
-	@Data
-	class RubyConstQualityUpgradeRateTable {
-		private Integer id;
-		private Integer quality;
-		private String desc;
-		private String up;
-	}
-
-	/**
-	 * 获取RubyConstQualityUpgradeRateTable对象
-	 *
-	 * @return RubyConstQualityUpgradeRateTable
-	 */
-	private RubyConstQualityUpgradeRateTable getRubyConstQualityUpgradeRateTable(Integer id) {
-		//TODO 返回一个JSON数组
-		return new RubyConstQualityUpgradeRateTable();
-	}
-
-	@Data
-	class RubyConstHeroTableHash {
-		private Integer id;
-		private String name;
-		private Integer type;
-		private String desc;
-		private Integer color;
-		private BasicExpand basicExpand;
-		private String basic;
-		private BasicUpgradeExpand basicUpgradeExpand;
-		private String basicUpgrade;
-		private String skill;
-		private Map<String, StarUpgradeFomula> starUpgradeFomula;
-		private String starUpgrade;
-	}
-
-
-
-
-	/**
-	 * 获取RubyConstSkillTableHash
-	 *
-	 * @return
-	 */
-	private RubyConstHeroTableHash getRubyConstHeroTableHash() {
-		return new RubyConstHeroTableHash();
-	}
-
 }

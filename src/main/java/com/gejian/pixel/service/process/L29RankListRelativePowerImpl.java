@@ -40,10 +40,14 @@ public class L29RankListRelativePowerImpl implements Process<CommRanklistRelativ
 
 		int dummy = request.getDummy();
 		if (dummy == 2) {
-			CommRanklistResponseProtobuf.CommRanklistResponse commRanklistResponse =
-					CommRanklistResponseProtobuf.CommRanklistResponse.getDefaultInstance();
-			this.rankListHelper.rankListHelper(this.rankListHelper.topRangeTianti(identifier, 10L, true), commRanklistResponse);
-			BeanUtil.copyProperties(commRanklistResponse, builder);
+
+			CommRanklistResponseProtobuf.CommRanklistResponse.Builder commRanklistResponseBuilder =
+					CommRanklistResponseProtobuf.CommRanklistResponse.newBuilder();
+
+			this.rankListHelper.rankListHelper(this.rankListHelper.topRangeTianti(identifier, 10L, true), commRanklistResponseBuilder);
+
+			builder.addAllRanks(commRanklistResponseBuilder.getRanksList());
+
 		} else {
 			if (dummy == 1) {
 				String itemsKey = getItemsKey(identifier);
@@ -54,9 +58,9 @@ public class L29RankListRelativePowerImpl implements Process<CommRanklistRelativ
 		return builder.build();
 	}
 
-	private String getItemsKey(Integer identifier) {
-		return "u:#{identifier}:items".replace("#{identifier}", identifier.toString());
 
+	private String getItemsKey(Integer identifier) {
+		return "u:" + identifier.toString() + ":items";
 	}
 
 

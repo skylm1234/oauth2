@@ -29,11 +29,11 @@ public class L28RankListImpl implements Process<CommRanklistRequestProtobuf.Comm
 	@Override
 	public CommRanklistResponseProtobuf.CommRanklistResponse doProcess(CommRanklistRequestProtobuf.CommRanklistRequest request) throws Exception {
 		Integer identifier = UserHolder.get().getIdentifier();
-		CommRanklistResponseProtobuf.CommRanklistResponse response = CommRanklistResponseProtobuf.CommRanklistResponse.getDefaultInstance();
-		this.rankListHelper.rankListHelper(this.rankListHelper.topRangeRich(identifier, 99L, false), response);
-		this.rankListHelper.rankListHelper(this.rankListHelper.topRangePower(identifier, 99L, false), response);
-		this.rankListHelper.rankListHelper(this.rankListHelper.topRangeHonor(identifier, 99L, false), response);
-		return response;
+		CommRanklistResponseProtobuf.CommRanklistResponse.Builder builder = CommRanklistResponseProtobuf.CommRanklistResponse.newBuilder();
+		this.rankListHelper.rankListHelper(this.rankListHelper.topRangeRich(identifier, 99L, false), builder);
+		this.rankListHelper.rankListHelper(this.rankListHelper.topRangePower(identifier, 99L, false), builder);
+		this.rankListHelper.rankListHelper(this.rankListHelper.topRangeHonor(identifier, 99L, false), builder);
+		return builder.build();
 	}
 
 

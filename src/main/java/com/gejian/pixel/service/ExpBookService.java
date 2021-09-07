@@ -10,4 +10,5 @@ public interface ExpBookService extends IService<ExpBook> {
 
 	ExpBook getExpBook(String type);
 
+	ExpBook getById(String id);
 }

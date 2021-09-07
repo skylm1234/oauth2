@@ -1,9 +1,10 @@
 package com.gejian.pixel.service.impl;
 
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gejian.pixel.entity.Backpack;
 import com.gejian.pixel.mapper.BackpackMapper;
-import com.gejian.pixel.proto.BackpackProtobuf;
+import com.gejian.pixel.proto.ConstBackpackTableItemExFomulaProtobuf;
 import com.gejian.pixel.proto.ConstBackpackTableItemExProtobuf;
 import com.gejian.pixel.proto.ConstBackpackTableProtobuf;
 import com.gejian.pixel.proto.ConstTablesProtobuf;
@@ -12,13 +13,10 @@ import com.gejian.pixel.service.ConstantsProto;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * Auto created by codeAppend plugin
@@ -50,7 +48,10 @@ public class BackpackServiceImpl extends ServiceImpl<BackpackMapper, Backpack>
 				.setExpMax(backpack.getExpMax())
 				.setLevel(backpack.getLevel())
 				.setGoldMax(backpack.getGoldMax())
-				.setPrerequests(backpack.getPrerequests()).build();
+				.setPrerequests(backpack.getPrerequests())
+				.setFomula(ConstBackpackTableItemExFomulaProtobuf.ConstBackpackTableItemExFomula.newBuilder()
+						.setStone(JSONUtil.parseObj(backpack.getFomula()).getInt("stone")))
+				.build();
 	}
 
 	@Override
@@ -65,5 +66,10 @@ public class BackpackServiceImpl extends ServiceImpl<BackpackMapper, Backpack>
 	@Override
 	public Backpack getByLevel(Integer level) {
 		return hash.get(level);
+	}
+
+	@Override
+	public ConstBackpackTableItemExProtobuf.ConstBackpackTableItemEx getItem(Integer level){
+		return this.convert(hash.get(level));
 	}
 }
