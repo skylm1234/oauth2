@@ -43,7 +43,7 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 	}
 
 	@Override
-	public ConstStageTableItemExProtobuf.ConstStageTableItemEx getById(Integer id){
+	public ConstStageTableItemExProtobuf.ConstStageTableItemEx getExById(Integer id){
 		Stage stage = hash.get(id);
 		return convert(stage);
 	}

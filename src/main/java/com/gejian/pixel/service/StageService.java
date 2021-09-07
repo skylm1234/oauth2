@@ -8,6 +8,6 @@ import com.gejian.pixel.proto.ConstStageTableItemExProtobuf;
  * Auto created by codeAppend plugin
  */
 public interface StageService extends IService<Stage> {
-	ConstStageTableItemExProtobuf.ConstStageTableItemEx getById(Integer id);
+	ConstStageTableItemExProtobuf.ConstStageTableItemEx getExById(Integer id);
 	Stage getById(Integer id);
 }

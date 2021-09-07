@@ -1010,7 +1010,7 @@ public class Helper {
 
 		Long duration = current_timestamp() - (long) pack.get("dungeon_enter_timestamp");
 
-		ConstStageTableItemExProtobuf.ConstStageTableItemEx constStr = stageService.getById((int) pack.get("stage"));
+		ConstStageTableItemExProtobuf.ConstStageTableItemEx constStr = stageService.getExById((int) pack.get("stage"));
 
 		int level = ToUtil.to_i(pack.get("level")) - 1;
 
