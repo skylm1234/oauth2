@@ -86,6 +86,10 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 			if (typeInfo.getCooldown() != 0 && Helper.currentTimestamp() -
 					Helper.itemCount(redisTemplate, identifier,
 							StrUtil.format(BUY_HERO_TYPE_TIMESTAMP, type)) >= typeInfo.getCooldown()
+					|| buyHeroService.calculation(
+					type - 1,
+					Helper.itemCount(redisTemplate, identifier,
+							StrUtil.format(BUY_HERO_TYPE_TIMES, type))) == 0
 			) {
 				PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(BUY_HERO_TYPE_TIMESTAMP, type), (int) Helper
 						.currentTimestamp());
@@ -95,25 +99,24 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 						.addAllHeros(playerInfo.getHerosList());
 			} else {
 
-				Helper.decreaseItemValue(redisTemplate, identifier, typeInfo.getConsume()
+				if (null == Helper.decreaseItemValue(redisTemplate, identifier, typeInfo.getConsume()
 						, (long) buyHeroService.calculation(
 								type - 1,
 								Helper.itemCount(redisTemplate, identifier,
-										StrUtil.format(BUY_HERO_TYPE_TIMES, type))));
+										StrUtil.format(BUY_HERO_TYPE_TIMES, type))))) {
+
+					PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(BUY_HERO_TYPE_TIMES
+							, type), Helper.itemCount(redisTemplate, identifier, StrUtil.format(BUY_HERO_TYPE_TIMES,
+							type) + 1));
+					response.addItems(playerItem);
 
 
-				PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(BUY_HERO_TYPE_TIMES
-						, type), Helper.itemCount(redisTemplate, identifier, StrUtil.format(BUY_HERO_TYPE_TIMES,
-						type) + 1));
-				response.addItems(playerItem);
-
-
-				PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(buyHeroFf, identifier, false, String.valueOf(type));
-				response.addAllItems(playerInfo.getItemsList())
-						.addAllHeros(playerInfo.getHerosList());
-
-
-				response.setResult(resar.get(type - 1));
+					PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(buyHeroFf, identifier, false, String.valueOf(type));
+					response.addAllItems(playerInfo.getItemsList())
+							.addAllHeros(playerInfo.getHerosList());
+				} else {
+					return response.setResult(resar.get(type - 1)).build();
+				}
 			}
 		}
 

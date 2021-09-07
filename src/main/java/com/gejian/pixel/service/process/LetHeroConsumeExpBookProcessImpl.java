@@ -3,8 +3,10 @@ package com.gejian.pixel.service.process;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.ConsumeExpBookRedisKeyConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.LevelUpgrade;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
@@ -13,6 +15,8 @@ import com.gejian.pixel.service.LevelUpgradeService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
+import com.google.protobuf.Message;
+import com.google.protobuf.util.JsonFormat;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -20,6 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -105,13 +110,53 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 					LevelUpgrade item = levelUpgradeService.get((int) heroMap.get("level"));
 					Integer expNeed = ReflectUtil.invoke(item, "getStar" + (int) heroMap.get("star"));
 					if ((int) heroMap.get("exp") >= expNeed) {
-						//heroMap.get("exp")
+						heroMap.put("exp", (int) heroMap.get("exp") - expNeed);
+						heroMap.put("level", (int) heroMap.get("level") + 1);
+						heroMap.put("hp", (int) heroMap.get("hp") + (int) heroMap.get("grow_hp"));
+						heroMap.put("def", (int) heroMap.get("def") + (int) heroMap.get("grow_def"));
+						heroMap.put("attack", (int) heroMap.get("attack") + (int) heroMap.get("grow_attack"));
+						heroMap.put("speed", (int) heroMap.get("speed") + (int) heroMap.get("grow_speed"));
+						// TODO
+					} else {
+						break;
 					}
 				}
+			} else {
+				return response.setResult(ErrorEnum.ERROR_EXP_BOOK_NOT_EXIST).build();
 			}
-
 		}
 
-		return null;
+		if (dirty) {
+			int power = (int) heroMap.get("hp") + (int) heroMap.get("def") + (int) heroMap.get("attack")
+					+ (int) heroMap.get("speed");
+			redisTemplate.opsForHash().put(StrUtil.format(RedisKeyConstants.USER_HEARO, identifier)
+					, hero, power);
+			PlayerItemProtobuf.PlayerItem playerItem = Helper.updateRanklistPower(redisTemplate, identifier);
+			response.addItems(playerItem);
+
+			redisTemplate.opsForHash().putAll(StrUtil.format(ConsumeExpBookRedisKeyConstants.USER_ATTRIBUTES, map), heroMap);
+
+			HeroBasicInfoProtobuf.HeroBasicInfo h = (HeroBasicInfoProtobuf.HeroBasicInfo) toProtoBean(HeroBasicInfoProtobuf.HeroBasicInfo.newBuilder(), JSONUtil.toJsonStr(heroMap));
+
+			Map<String, Integer> skills = redisTemplate.opsForHash().entries(StrUtil.format(ConsumeExpBookRedisKeyConstants.USER_SKILLS, map));
+
+			skills.entrySet().forEach(objectObjectEntry -> {
+
+				HeroSkillProtobuf.HeroSkill s = HeroSkillProtobuf.HeroSkill.newBuilder()
+						.setType(objectObjectEntry.getKey())
+						.setLevel(objectObjectEntry.getValue())
+						.build();
+				h.getSkillsList().add(s);
+			});
+
+			response.getHerosList().add(h);
+		}
+
+		return response.build();
+	}
+
+	private static Message toProtoBean(Message.Builder targetBuilder, String json) throws IOException {
+		JsonFormat.parser().merge(json, targetBuilder);
+		return targetBuilder.build();
 	}
 }
