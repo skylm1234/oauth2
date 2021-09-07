@@ -11,8 +11,10 @@ import com.gejian.pixel.proto.CommUnlockHeroSkillRequestProtobuf;
 import com.gejian.pixel.proto.CommUnlockHeroSkillResponseProtobuf;
 import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.service.SkillService;
 import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
+import com.gejian.pixel.utils.UserHolder;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
@@ -41,6 +43,9 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 	@Autowired
 	private RedisTemplate redisTemplate;
 
+	@Autowired
+	private SkillService skillService;
+
 	@Override
 	public CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse doProcess(
 			CommUnlockHeroSkillRequestProtobuf.CommUnlockHeroSkillRequest request)
@@ -51,8 +56,7 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 
 		CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse.Builder result = CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse.newBuilder()
 				.setRequest(request).setResult(1);
-		//todo 获取 identifire
-		Integer identifier = 1;
+		Integer identifier = UserHolder.get().getIdentifier();
 
 		String hero = skillRequest.getHero();
 		String skill = skillRequest.getSkill();
@@ -70,17 +74,19 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 			return result.setResult(ErrorEnum.ERROR_SKILL_ALREADY_UNLOCK).build();
 		}
 		//todo 获取升级技能所需要的技能书以及金币
-		SkillUpgradeDO upgradeDO = getSkillUpgradeDO(skillsMap);
+		String activeConsumeFomula = skillService.getById(skill).getActiveConsumeFomula();
+		//SkillUpgradeDO upgradeDO = getSkillUpgradeDO(skillsMap);
+		JSONObject jsonObject = JSONUtil.parseObj(activeConsumeFomula);
 
-		if (Helper.itemCount(redisTemplate, identifier, String.format("book_%s", skill)) < upgradeDO.getBook()
-				|| Helper.itemCount(redisTemplate, identifier, "gold") < upgradeDO.getGold()) {
+		if (Helper.itemCount(redisTemplate, identifier, String.format("book_%s", skill)) < jsonObject.getLong("book")
+				|| Helper.itemCount(redisTemplate, identifier, "gold") < jsonObject.getLong("gold")) {
 			return result.setResult(ErrorEnum.ERROR_NOT_ENOUGH_RESOURCES).build();
 		}
 
 		//减少金币以及技能书数量
-		PlayerItemProtobuf.PlayerItem gold = Helper.decreaseItemValue(redisTemplate, identifier, "gold", upgradeDO.getGold());
+		PlayerItemProtobuf.PlayerItem gold = Helper.decreaseItemValue(redisTemplate, identifier, "gold", jsonObject.getLong("gold"));
 
-		PlayerItemProtobuf.PlayerItem playerItem = Helper.decreaseItemValue(redisTemplate, identifier, String.format("book_%s", skill), upgradeDO.getBook());
+		PlayerItemProtobuf.PlayerItem playerItem = Helper.decreaseItemValue(redisTemplate, identifier, String.format("book_%s", skill), jsonObject.getLong("book"));
 		redisTemplate.opsForHash().increment(String.format("u:%s:%s:skills", identifier, hero), skill, 1);
 
 		return CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse.newBuilder()
