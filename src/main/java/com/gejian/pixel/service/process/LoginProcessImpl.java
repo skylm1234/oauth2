@@ -355,19 +355,22 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 
 		replyBuilder.setTimestamp(NumberUtil.parseInt(Helper.currentTimestamp()+""));
+		replyBuilder.setRequest(request);
 		return replyBuilder.build();
 	}
 
 	private Integer helperResreshPvp(Integer identifier, CommLoginRequestProtobuf.CommLoginRequest request, PlayerInfoProtobuf.PlayerInfo.Builder reply, Boolean refresh_challage_ranklist) {
 		List<String> searchList = Arrays.asList("pvp_vectory_times", "pvp_challage_times");
-		List<Integer> items = redisTemplate.opsForHash().multiGet("u:" + identifier + ":items", searchList);
-		for (int i = 0; i < searchList.size(); i++) {
-			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
-					.newBuilder()
-					.setKey(searchList.get(i))
-					.setValue(items.get(i))
-					.build();
-			reply.addItems(item);
+		List<Object> items = redisTemplate.opsForHash().multiGet("u:" + identifier + ":items", searchList);
+		if (items != null || items.size()>0) {
+			for (int i = 0; i < searchList.size(); i++) {
+				PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
+						.newBuilder()
+						.setKey(searchList.get(i))
+						.setValue(NumberUtil.parseLong(items.get(i)+""))
+						.build();
+				reply.addItems(item);
+			}
 		}
 
 		redisTemplate.opsForHash().hasKey("u:"+identifier+":items","should_refresh_pvp_chanllege_ranklist");
