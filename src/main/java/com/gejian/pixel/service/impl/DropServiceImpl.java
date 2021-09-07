@@ -335,7 +335,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 						case 0:
 							String replace = StrUtil.replace(item, ")", "");
 							List<String> split = StrUtil.split(replace, "(");
-							String s1 = split.get(0);
+							String s1 = StrUtil.trim(split.get(0));
 							dropItem.setType(s1);
 							if (split.size() > 1) {
 								String s2 = split.get(1);
