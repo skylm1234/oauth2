@@ -23,7 +23,7 @@ import java.util.Map;
  */
 @Service
 public class QualityUpgradeServiceImpl extends ServiceImpl<QualityUpgradeMapper, QualityUpgrade>
-		implements QualityUpgradeService , ConstantsProto {
+		implements QualityUpgradeService, ConstantsProto {
 
 
 	private Map<Integer, QualityUpgrade> hash = new HashMap<>();
@@ -32,14 +32,20 @@ public class QualityUpgradeServiceImpl extends ServiceImpl<QualityUpgradeMapper,
 			table = new ArrayList<>();
 
 	@Override
-	public void init(){
+	public void init() {
 		List<QualityUpgrade> list = this.list();
-		if (!CollectionUtils.isEmpty(list)){
-			list.forEach(item->{
-				hash.put(item.getId(),item);
+		if (!CollectionUtils.isEmpty(list)) {
+			list.forEach(item -> {
+				hash.put(item.getId(), item);
 				table.add(convert(item));
 			});
 		}
+	}
+
+	@Override
+	public ConstQualityUpgradeTableItemExProtobuf.ConstQualityUpgradeTableItemEx getQualityUpgradeById(Integer qualityValue) {
+		QualityUpgrade qualityUpgrade = hash.get(qualityValue);
+		return convert(qualityUpgrade);
 	}
 
 	private ConstQualityUpgradeTableItemExProtobuf.ConstQualityUpgradeTableItemEx convert(QualityUpgrade item) {

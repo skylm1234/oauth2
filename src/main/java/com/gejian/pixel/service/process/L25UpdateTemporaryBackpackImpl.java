@@ -26,9 +26,10 @@ public class L25UpdateTemporaryBackpackImpl implements Process<CommUpdateTempora
 
 	@Override
 	public CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse doProcess(CommUpdateTemporaryBackpackRequestProtobuf.CommUpdateTemporaryBackpackRequest request) throws Exception {
-		CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse response = CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.newBuilder().build();
-		this.temporaryBackpackHelper.updateTemporaryBackpack(UserHolder.get().getIdentifier(), request, response, request.getMonsters(), request.getGoblins());
-		return response;
+		CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.Builder builder =
+				CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.newBuilder();
+		this.temporaryBackpackHelper.updateTemporaryBackpack(UserHolder.get().getIdentifier(), request, builder, request.getMonsters(), request.getGoblins());
+		return builder.build();
 	}
 
 }
