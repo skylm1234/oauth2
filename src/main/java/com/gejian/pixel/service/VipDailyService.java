@@ -8,4 +8,5 @@ import com.gejian.pixel.entity.VipDaily;
  */
 public interface VipDailyService extends IService<VipDaily> {
 
+	VipDaily getById(Integer id);
 }
