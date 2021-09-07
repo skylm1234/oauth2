@@ -4,6 +4,8 @@ import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.service.PvpRefreshService;
+import com.gejian.pixel.service.VipService;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,12 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 	@Autowired
 	private RedisTemplate redisTemplate;
 
+	@Autowired
+	private VipService vipService;
+
+	@Autowired
+	private PvpRefreshService pvpRefreshService;
+
 	@Override
 	public CommGetPvpDataResponseProtobuf.CommGetPvpDataResponse doProcess(CommGetPvpDataRequestProtobuf.CommGetPvpDataRequest request) throws Exception {
 		Integer identifier = UserHolder.get().getIdentifier();
@@ -37,10 +45,9 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 		int agreeBuyPvpTimes = request.getAgreeBuyPvpTimes();
 		Integer vip = Helper.itemCount(redisTemplate, identifier, "vip");
 
-		// TODO 获取VIP数据
+		// 获取VIP数据
 		ConstVipTableItemExProtobuf.ConstVipTableItemEx vipTableItemEx =
-				ConstVipTableProtobuf.ConstVipTable.getDefaultInstance().getItems(vip);
-
+				vipService.getItem(vip);
 
 		if (tiantiDataExpected == 1) {
 			Integer tiantiChallageTimes = Helper.itemCount(redisTemplate, identifier, "tianti_challage_times");
@@ -51,12 +58,11 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 
 					PlayerItemProtobuf.PlayerItem playerItem =
 							Helper.decreaseItemValue(redisTemplate, identifier, "stone", (long) vipTableItemEx.getTiantiReset());
+					builder.addItems(playerItem);
 
-					if (playerItem == null) {
-						return builder.setResult(ErrorEnum.ERROR_NOT_ENOUGH_STONE).build();
-					}
-
-					Helper.setItemValue(redisTemplate, identifier.toString(), "tianti_challage_times", 1);
+					PlayerItemProtobuf.PlayerItem playerItem1 =
+							Helper.setItemValue(redisTemplate, this.parseString(identifier), "tianti_challage_times", 1);
+					builder.addItems(playerItem1);
 
 				} else {
 					return builder.setResult(ErrorEnum.ERROR_NOT_ENOUGH_PVP_TIMES).build();
@@ -70,16 +76,13 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 
 				if (agreeBuyPvpTimes == 1) {
 
-					// TODO 获取VIP刷新数据
+					// 获取VIP刷新数据
 					ConstPvpRefreshTableItemExProtobuf.ConstPvpRefreshTableItemEx pvpRefreshTableItemEx =
-							ConstPvpRefreshTableProtobuf.ConstPvpRefreshTable.getDefaultInstance().getItems(0);
+							pvpRefreshService.getItem(0);
 
 					PlayerItemProtobuf.PlayerItem playerItem =
 							Helper.decreaseItemValue(redisTemplate, identifier, "stone", (long) pvpRefreshTableItemEx.getConsumeFomula().getStone());
-
-					if (playerItem == null) {
-						return builder.setResult(ErrorEnum.ERROR_NOT_ENOUGH_STONE).build();
-					}
+					builder.addItems(playerItem);
 
 				} else {
 					return builder.setResult(ErrorEnum.ERROR_NOT_ENOUGH_PVP_TIMES).build();
@@ -128,7 +131,7 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 
 			Map skills = this.redisTemplate.opsForHash().entries(skillsKey);
 
-			skills.forEach((sk, sv) -> heroBasicInfo.addSkills(HeroSkillProtobuf.HeroSkill.newBuilder().setType(sk.toString()).setLevel(this.parseInt(sv))));
+			skills.forEach((sk, sv) -> heroBasicInfo.addSkills(HeroSkillProtobuf.HeroSkill.newBuilder().setType(this.parseString(sk)).setLevel(this.parseInt(sv))));
 
 			builder.addHeros(heroBasicInfo);
 		});

@@ -2,10 +2,8 @@ package com.gejian.pixel.service.process;
 
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
-import com.gejian.pixel.proto.CommOpenGiftbagRequestProtobuf;
-import com.gejian.pixel.proto.CommOpenGiftbagResponseProtobuf;
-import com.gejian.pixel.proto.ConstDropTableItemExProtobuf;
-import com.gejian.pixel.proto.PlayerItemProtobuf;
+import com.gejian.pixel.proto.*;
+import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
@@ -29,6 +27,8 @@ public class L36OpenGiftBagImpl implements Process<CommOpenGiftbagRequestProtobu
 
 	@Autowired
 	private RedisTemplate redisTemplate;
+	@Autowired
+	private DropService dropService;
 
 	@Override
 	public CommOpenGiftbagResponseProtobuf.CommOpenGiftbagResponse doProcess(CommOpenGiftbagRequestProtobuf.CommOpenGiftbagRequest request) throws Exception {
@@ -49,17 +49,12 @@ public class L36OpenGiftBagImpl implements Process<CommOpenGiftbagRequestProtobu
 
 		Map giftBag = this.redisTemplate.opsForHash().entries(giftBagKey);
 
-		// TODO 獲取數據
-		String action = this.parseString(giftBag.get("action"));
-
-		ConstDropTableItemExProtobuf.ConstDropTableItemEx dropTableItemEx =
-				ConstDropTableItemExProtobuf.ConstDropTableItemEx.newBuilder().build();
-
-		if (dropTableItemEx == null) {
-			return builder.setResult(ErrorEnum.ERROR_INVALID_PARAMETER_GIFTBAG_ACTION).build();
-		}
-
-		// TODO f.call(identifier, reply, false, g['content'])
+		PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(this.parseString(giftBag.get("action")), identifier, false, this.parseString(giftBag.get("action")));
+		builder.addAllHeros(playerInfo.getHerosList());
+		builder.addAllItems(playerInfo.getItemsList());
+		builder.addAllTeams(playerInfo.getTeamsList());
+		builder.addAllArchives(playerInfo.getArchivesList());
+		builder.addAllTeamsPvp(playerInfo.getTeamsPvpList());
 
 		this.redisTemplate.delete(giftBagKey);
 
@@ -67,7 +62,8 @@ public class L36OpenGiftBagImpl implements Process<CommOpenGiftbagRequestProtobu
 
 		Long size = this.redisTemplate.opsForHash().size(giftBagsKey);
 
-		Helper.setItemValue(redisTemplate, this.parseString(identifier), "giftbags", size.intValue());
+		PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, this.parseString(identifier), "giftbags", size.intValue());
+		builder.addItems(playerItem);
 
 		builder.clearTeams();
 

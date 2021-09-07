@@ -9,5 +9,8 @@ import com.gejian.pixel.proto.ConstStageTableItemExProtobuf;
  */
 public interface StageService extends IService<Stage> {
 	ConstStageTableItemExProtobuf.ConstStageTableItemEx getExById(Integer id);
+
 	Stage getById(Integer id);
+
+	ConstStageTableItemExProtobuf.ConstStageTableItemEx getItem(Integer id);
 }

@@ -12,4 +12,6 @@ import java.util.Map;
 public interface HeroService extends IService<Hero> {
 	Hero getById(Integer id);
 	Map<Integer, Hero> getHash();
+
+    ConstHeroTableItemExProtobuf.ConstHeroTableItemEx getItem(Integer id);
 }

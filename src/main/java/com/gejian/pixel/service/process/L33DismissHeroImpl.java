@@ -5,6 +5,7 @@ import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommDismissHeroRequestProtobuf;
 import com.gejian.pixel.proto.CommDismissHeroResponseProtobuf;
 import com.gejian.pixel.proto.ConstHeroTableItemExProtobuf;
+import com.gejian.pixel.service.HeroService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
@@ -30,14 +31,22 @@ public class L33DismissHeroImpl implements Process<CommDismissHeroRequestProtobu
 	@Autowired
 	private RedisTemplate redisTemplate;
 
+	@Autowired
+	private HeroService heroService;
+
 	@Override
 	public CommDismissHeroResponseProtobuf.CommDismissHeroResponse doProcess(CommDismissHeroRequestProtobuf.CommDismissHeroRequest request) throws Exception {
 		Integer identifier = UserHolder.get().getIdentifier();
+
 		ProtocolStringList herosList = request.getHerosList();
+
 		CommDismissHeroResponseProtobuf.CommDismissHeroResponse.Builder builder =
 				CommDismissHeroResponseProtobuf.CommDismissHeroResponse.newBuilder();
+
 		for (String s : herosList) {
+
 			String attributesKey = this.getAttributesKey(identifier, s);
+
 			Boolean existsAttributes = this.redisTemplate.hasKey(attributesKey);
 			if (existsAttributes == null || !existsAttributes) {
 				return builder.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
@@ -57,14 +66,14 @@ public class L33DismissHeroImpl implements Process<CommDismissHeroRequestProtobu
 
 				Integer id = this.parseInt(s.substring("hero_".length()));
 
-				// TODO 获取英雄数据
+				// 获取英雄数据
 				ConstHeroTableItemExProtobuf.ConstHeroTableItemEx heroTableItemEx =
-						ConstHeroTableItemExProtobuf.ConstHeroTableItemEx.getDefaultInstance();
+						this.heroService.getItem(id);
 				if (heroTableItemEx == null) {
 					return builder.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
 				}
 
-				String type = hero.get("type").toString();
+				String type = this.parseString(hero.get("type"));
 
 				this.redisTemplate.delete(this.getAttributesKey(identifier, type));
 				this.redisTemplate.delete(this.getSkillsKey(identifier, type));
@@ -103,6 +112,11 @@ public class L33DismissHeroImpl implements Process<CommDismissHeroRequestProtobu
 	public Integer parseInt(Object o) {
 		return this.parseLong(o).intValue();
 	}
+
+	public String parseString(Object o) {
+		return o == null ? "" : o.toString();
+	}
+
 
 
 }

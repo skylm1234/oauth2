@@ -46,6 +46,11 @@ public class VipServiceImpl extends ServiceImpl<VipMapper, Vip> implements VipSe
 		}
 	}
 
+	@Override
+	public ConstVipTableItemExProtobuf.ConstVipTableItemEx getItem(Integer id){
+		return this.convert(hash.get(id));
+	}
+
 	private ConstVipTableItemExProtobuf.ConstVipTableItemEx convert(Vip item) {
 		return ConstVipTableItemExProtobuf.ConstVipTableItemEx.newBuilder()
 				.setBackpackMax(item.getBackpackMax())

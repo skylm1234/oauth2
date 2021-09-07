@@ -1,7 +1,13 @@
 package com.gejian.pixel.utils;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.gejian.pixel.entity.Backpack;
+import com.gejian.pixel.entity.LevelUpgrade;
 import com.gejian.pixel.proto.*;
+import com.gejian.pixel.service.BackpackService;
+import com.gejian.pixel.service.DropService;
+import com.gejian.pixel.service.LevelUpgradeService;
+import com.gejian.pixel.service.StageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -20,41 +26,55 @@ public class TemporaryBackpackHelper {
 	@Autowired
 	private RedisTemplate redisTemplate;
 
+	@Autowired
+	private StageService stageService;
+
+	@Autowired
+	private BackpackService backpackService;
+
+	@Autowired
+	private DropService dropService;
+
+	@Autowired
+	private LevelUpgradeService levelUpgradeService;
+
 	/**
 	 * 修改临时背包
 	 */
 	public void updateTemporaryBackpack(Integer identifier, CommUpdateTemporaryBackpackRequestProtobuf.CommUpdateTemporaryBackpackRequest request,
-										CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse response, int monsters, int goblins) {
-		String tempBackpackKey = this.getTempBackpackKey(identifier);
-		Map<Object, Object> pack = this.redisTemplate.opsForHash().entries(tempBackpackKey);
-		CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.Builder builder = response.toBuilder();
+										CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.Builder builder, int monsters, int goblins) {
 
-		PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "type_" + pack.get("type").toString() + "_monster_kill", monsters, identifier);
+		String tempBackpackKey = this.getTempBackpackKey(identifier);
+
+		Map<Object, Object> pack = this.redisTemplate.opsForHash().entries(tempBackpackKey);
+
+		String type = this.parseString(pack.get("type"));
+		PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "type_" + type + "_monster_kill", monsters, identifier);
 		builder.addItems(playerItem);
+
 		PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier);
 		builder.addItems(playerItem1);
-		PlayerItemProtobuf.PlayerItem playerItem2 = Helper.onNotifyEventOfPromotions(redisTemplate, "daily_type_" + pack.get("type").toString() + "_monster_kill", monsters, identifier);
+
+		PlayerItemProtobuf.PlayerItem playerItem2 = Helper.onNotifyEventOfPromotions(redisTemplate, "daily_type_" + type + "_monster_kill", monsters, identifier);
 		builder.addItems(playerItem2);
 
 		int vip = Helper.itemCount(redisTemplate, identifier, "vip");
 
-		long duration = Helper.currentTimestamp() - Long.parseLong(pack.get("dungeon_enter_timestamp").toString());
+		long duration = Helper.currentTimestamp() - this.parseLong(pack.get("dungeon_enter_timestamp"));
 
-		// TODO RUBY_CONST_STAGE_TABLE_HASH["X#{pack['stage']}"]
-		ConstStageClassTableProtobuf.ConstStageClassTable constStageClassTable =
-				ConstStageClassTableProtobuf.ConstStageClassTable.getDefaultInstance();
-		ConstStageClassTableItemExProtobuf.ConstStageClassTableItemEx stageClassTableItemEx =
-				constStageClassTable.getItems(this.parseInt(pack.get("stage")));
+		Integer stage = this.parseInt(pack.get("stage"));
 
-		Map<String, Map<String, Long>> constStageTable = new HashMap<>(16);
+		//  RUBY_CONST_STAGE_TABLE_HASH["X#{pack['stage']}"]
+		ConstStageTableItemExProtobuf.ConstStageTableItemEx constStageTableItemEx =
+				this.stageService.getItem(stage);
 
-		long level = Long.parseLong(pack.get("level").toString()) - 1;
+		Integer level = this.parseInt(pack.get("level")) - 1;
 
 		String itemKey = this.getItemKey(identifier);
 		String tempBackpackItemsKey = getTempBackpackItemsKey(identifier);
 
 		// 设置背包中的经验值
-		long expDelta = duration * constStageTable.get("basic_award_fomula").get("exp");
+		long expDelta = duration * constStageTableItemEx.getBasicAwardFomula().getExp();
 		if (this.redisTemplate.opsForHash().hasKey(itemKey, "double_exp_card_2")) {
 			int ratio = 1;
 
@@ -64,15 +84,17 @@ public class TemporaryBackpackHelper {
 			expDelta *= ratio;
 		}
 
+		// 获取背包数据
+		Backpack backpack = backpackService.getByLevel(level);
 
 		Long currentDeltaExp = this.redisTemplate.opsForHash().increment(tempBackpackItemsKey, "exp", expDelta);
-		Long expMax = constStageTable.get(level).get("exp_max");
+		Integer expMax = backpack.getExpMax();
 		if (currentDeltaExp > expMax) {
 			this.redisTemplate.opsForHash().put(tempBackpackItemsKey, "exp", expMax);
 		}
 
 		// 设置背包中的金币值
-		long goldDelta = duration * constStageTable.get("basic_award_fomula").get("gold");
+		long goldDelta = duration * constStageTableItemEx.getBasicAwardFomula().getGold();
 		if (this.redisTemplate.opsForHash().hasKey(itemKey, "double_gold_card_2")) {
 			int ratio = 1;
 
@@ -83,50 +105,48 @@ public class TemporaryBackpackHelper {
 		}
 
 		Long currentDeltaGold = this.redisTemplate.opsForHash().increment(tempBackpackItemsKey, "gold", goldDelta);
-		Long goldMax = constStageTable.get(level).get("gold_max");
+		Integer goldMax = backpack.getGoldMax();
 		if (currentDeltaGold > goldMax) {
 			this.redisTemplate.opsForHash().put(tempBackpackItemsKey, "gold", goldMax);
 		}
 
 		// 计算小怪收益
 		if (monsters > 0) {
-			/**
-			 drop_action = (item_count(identifier,  "dungeon_#{pack['type']}_not_passed_stage") == pack['stage'].to_i) ? const['monsters_killed_award_fomula']['dropid'] : const['monsters_killed_award_fomula']['dropid_bosskilled']
 
-			 for i in 0...monsters do
-			 DROP_ITEMS[drop_action].call(identifier,  reply, true, nil)
-			 end
-			 */
+			Integer itemCount = Helper.itemCount(redisTemplate, identifier, String.format("dungeon_%s_not_passed_stage", type));
 
+			String dropAction = itemCount.equals(stage) ? constStageTableItemEx.getMonstersKilledAwardFomula().getDropid() :
+					constStageTableItemEx.getMonstersKilledAwardFomula().getDropidBosskilled();
+
+			PlayerInfoProtobuf.PlayerInfo playerInfo;
 			for (int i = 0; i < monsters; i++) {
-				// TODO something
+				playerInfo = this.dropService.dropItem(dropAction, identifier, true, null);
+				builder.addAllItems(playerInfo.getItemsList());
+				builder.addAllArchives(playerInfo.getArchivesList());
 			}
 
 		}
 
 		// 计算哥布林收益
 		if (goblins > 0) {
-			/**
-			 for i in 0...goblins do
-			 drop_goblin = DROP_ITEMS[const['goblin_fomula']['dropid']]
-			 drop_goblin.call(identifier,  reply, true, nil)
-			 end
-			 */
 
+			String dropAction = constStageTableItemEx.getGoblinFomula().getDropid();
+
+			PlayerInfoProtobuf.PlayerInfo playerInfo;
 			for (int i = 0; i < goblins; i++) {
-				// TODO something
+				playerInfo = this.dropService.dropItem(dropAction, identifier, true, null);
+				builder.addAllItems(playerInfo.getItemsList());
+				builder.addAllArchives(playerInfo.getArchivesList());
 			}
 
 		}
 
 		Map<Object, Object> items = this.redisTemplate.opsForHash().entries(tempBackpackItemsKey);
-		items.forEach((k, v) -> {
-			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem.newBuilder()
-					.setKey(k.toString())
-					.setValue(Long.parseLong(v.toString()))
-					.build();
-			response.getItemsList().add(item);
-		});
+		items.forEach((k, v) -> builder.addItems(PlayerItemProtobuf.PlayerItem.newBuilder()
+				.setKey(k.toString())
+				.setValue(Long.parseLong(v.toString()))
+				.build()));
+
 		this.redisTemplate.opsForHash().put(tempBackpackKey, "dungeon_enter_timestamp", Helper.currentTimestamp());
 	}
 
@@ -135,15 +155,17 @@ public class TemporaryBackpackHelper {
 	 * 临时背包物品收割
 	 */
 	public void grabTemporaryBackpack(Integer identifier, CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest request,
-									   CommHarvestTemporaryBackpackResponseProtobuf.CommHarvestTemporaryBackpackResponse response, int monsters, int goblins) throws Exception {
+									  CommHarvestTemporaryBackpackResponseProtobuf.CommHarvestTemporaryBackpackResponse.Builder builder, int monsters, int goblins) throws Exception {
 
 		// # 更新临时背包
 		CommUpdateTemporaryBackpackRequestProtobuf.CommUpdateTemporaryBackpackRequest updateTemporaryBackpackRequest =
 				CommUpdateTemporaryBackpackRequestProtobuf.CommUpdateTemporaryBackpackRequest.newBuilder().setMonsters(monsters).setGoblins(goblins).build();
-		CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse updateTemporaryBackpackResponse =
-				CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.getDefaultInstance();
-		this.updateTemporaryBackpack(identifier, updateTemporaryBackpackRequest, updateTemporaryBackpackResponse, monsters, goblins);
-		BeanUtil.copyProperties(updateTemporaryBackpackResponse, response);
+
+		CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.Builder updateTemporaryBackpackResponseBuilder =
+				CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.newBuilder();
+
+		this.updateTemporaryBackpack(identifier, updateTemporaryBackpackRequest, updateTemporaryBackpackResponseBuilder, monsters, goblins);
+		BeanUtil.copyProperties(updateTemporaryBackpackResponseBuilder, builder);
 
 		String tempBackpackItemsKey = this.getTempBackpackItemsKey(identifier);
 
@@ -165,16 +187,16 @@ public class TemporaryBackpackHelper {
 
 					attributes.put("exp", this.parseLong(attributes.get("exp")) + this.parseLong(number) / teams.size());
 
-					// TODO 获取ConstLevelUpgradeTable值
-					ConstLevelUpgradeTableProtobuf.ConstLevelUpgradeTable constLevelUpgradeTable =
-							ConstLevelUpgradeTableProtobuf.ConstLevelUpgradeTable.getDefaultInstance();
-					ConstLevelUpgradeTableItemExProtobuf.ConstLevelUpgradeTableItemEx levelUpgradeTableItemEx;
+					LevelUpgrade levelUpgrade;
 					while (this.parseLong(attributes.get("level")) < 99L) {
-						levelUpgradeTableItemEx = constLevelUpgradeTable.getItems(this.parseInt(attributes.get("level")) - 1);
+
+						levelUpgrade = levelUpgradeService.get(this.parseInt(attributes.get("level")) - 1);
 
 						try {
-							Method method = levelUpgradeTableItemEx.getClass().getMethod("start" + attributes.get("star").toString());
-							Long expNeed = this.parseLong(method.invoke(levelUpgradeTableItemEx));
+
+							Method method = levelUpgrade.getClass().getMethod("start" + this.parseString(attributes.get("star")));
+							Long expNeed = this.parseLong(method.invoke(levelUpgrade));
+
 							if (this.parseLong(attributes.get("exp")) >= expNeed) {
 
 								attributes.put("exp", this.parseLong(attributes.get("exp")) - expNeed);
@@ -185,9 +207,9 @@ public class TemporaryBackpackHelper {
 								attributes.put("speed", this.parseLong(attributes.get("speed")) + this.parseLong(attributes.get("grow_speed")));
 
 								if (this.parseLong(attributes.get("level")) == 99L) {
-									levelUpgradeTableItemEx = constLevelUpgradeTable.getItems(this.parseInt(attributes.get("level")) - 1);
-									method = levelUpgradeTableItemEx.getClass().getMethod("start" + attributes.get("star").toString());
-									expNeed = this.parseLong(method.invoke(levelUpgradeTableItemEx));
+									levelUpgrade = levelUpgradeService.get(this.parseInt(attributes.get("level")) - 1);
+									method = levelUpgrade.getClass().getMethod("start" + attributes.get("star").toString());
+									expNeed = this.parseLong(method.invoke(levelUpgrade));
 									attributes.put("exp", expNeed);
 								}
 							} else {
@@ -202,32 +224,41 @@ public class TemporaryBackpackHelper {
 
 					Long power = this.parseLong(attributes.get("hp")) + this.parseLong(attributes.get("def"))
 							+ this.parseLong(attributes.get("attack")) + this.parseLong(attributes.get("speed"));
+
 					String herosKey = this.getHerosKey(identifier);
+
 					this.redisTemplate.opsForHash().put(herosKey, attributes.get("type"), power);
 
-					// TODO reply
 					PlayerItemProtobuf.PlayerItem playerItem = Helper.updateRanklistHonor(redisTemplate, identifier);
 
 
-					// TODO 设置属性
+					// 设置属性
 					HeroBasicInfoProtobuf.HeroBasicInfo.Builder heroBasicInfoBuilder = this.heroBasicInfoBuilder(attributes);
 
 					String skillsKey = this.getSkillsKey(identifier, hero.toString());
 					Map<Object, Object> skills = this.redisTemplate.opsForHash().entries(skillsKey);
+
 					skills.forEach((sk, sv) -> heroBasicInfoBuilder.addSkills(HeroSkillProtobuf.HeroSkill.newBuilder()
 							.setType(sk.toString()).setLevel(this.parseInt(sv)).build()));
 
-					response.getHerosList().add(heroBasicInfoBuilder.build());
+					builder.addHeros(heroBasicInfoBuilder.build());
 				});
 
 			} else {
-				Helper.increaseItemValue(redisTemplate, identifier, item.toString(), this.parseLong(number));
+
+				PlayerItemProtobuf.PlayerItem playerItem1 = Helper.increaseItemValue(redisTemplate, identifier, item.toString(), this.parseLong(number));
+				builder.addItems(playerItem1);
+
 				if (item.toString().startsWith("exp_book_")) {
-					// TODO  reply
+
 					PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "expbooks", this.parseInt(number), identifier);
+					builder.addItems(playerItem);
+
 				} else if ("gold".equals(item.toString())) {
-					// TODO reply
+
 					PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "maxgold", this.parseInt(number), identifier);
+					builder.addItems(playerItem);
+
 				}
 			}
 		});
@@ -297,6 +328,10 @@ public class TemporaryBackpackHelper {
 
 	public Integer parseInt(Object o) {
 		return this.parseLong(o).intValue();
+	}
+
+	public String parseString(Object o) {
+		return o == null ? "" : o.toString();
 	}
 
 

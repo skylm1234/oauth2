@@ -26,9 +26,10 @@ public class L26HarvestTemporaryBackpackImpl implements Process<CommHarvestTempo
 
 	@Override
 	public CommHarvestTemporaryBackpackResponseProtobuf.CommHarvestTemporaryBackpackResponse doProcess(CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest request) throws Exception {
-		CommHarvestTemporaryBackpackResponseProtobuf.CommHarvestTemporaryBackpackResponse response = CommHarvestTemporaryBackpackResponseProtobuf.CommHarvestTemporaryBackpackResponse.newBuilder().build();
-		this.temporaryBackpackHelper.grabTemporaryBackpack(UserHolder.get().getIdentifier(), request, response, request.getMonsters(), request.getGoblins());
-		return response;
+		CommHarvestTemporaryBackpackResponseProtobuf.CommHarvestTemporaryBackpackResponse.Builder builder =
+				CommHarvestTemporaryBackpackResponseProtobuf.CommHarvestTemporaryBackpackResponse.newBuilder();
+		this.temporaryBackpackHelper.grabTemporaryBackpack(UserHolder.get().getIdentifier(), request, builder, request.getMonsters(), request.getGoblins());
+		return builder.build();
 	}
 
 

@@ -1,10 +1,11 @@
 package com.gejian.pixel.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.map.MapUtil;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gejian.pixel.entity.*;
+import com.gejian.pixel.entity.BasicExpand;
+import com.gejian.pixel.entity.BasicUpgradeExpand;
+import com.gejian.pixel.entity.Hero;
+import com.gejian.pixel.entity.StarUpgradeFomula;
 import com.gejian.pixel.mapper.HeroMapper;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.ConstantsProto;
@@ -12,7 +13,6 @@ import com.gejian.pixel.service.HeroService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -136,5 +136,10 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 				.addAllItems(table)
 				.build();
 		builder.setHeros(build);
+	}
+
+	@Override
+	public ConstHeroTableItemExProtobuf.ConstHeroTableItemEx getItem(Integer id) {
+		return this.convert(hash.get(id));
 	}
 }

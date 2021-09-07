@@ -10,7 +10,6 @@ import com.gejian.pixel.service.StageService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +28,11 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 	@Override
 	public Stage getById(Integer id){
 		return hash.get(id);
+	}
+
+	@Override
+	public ConstStageTableItemExProtobuf.ConstStageTableItemEx getItem(Integer id){
+		return this.convert(hash.get(id));
 	}
 
 	@Override
