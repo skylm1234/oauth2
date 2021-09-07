@@ -64,4 +64,9 @@ public class PvpRefreshServiceImpl extends ServiceImpl<PvpRefreshMapper, PvpRefr
 				.build();
 		builder.setPvpRefreshs(build);
 	}
+
+	@Override
+	public ConstPvpRefreshTableItemExProtobuf.ConstPvpRefreshTableItemEx getItem(Integer id) {
+		return this.convert(hash.get(id));
+	}
 }

@@ -958,7 +958,7 @@ public class Helper {
 			Map h = new HashMap();
 
 			for (int i = 0; i < items.size(); i++) {
-				h.put((i + 1) + "", items.get(i));
+				h.put((i + 1) + "", JSONUtil.toJsonStr(items.get(i)));
 			}
 
 			redisTemplate.opsForHash().putAll("u:" + identifier + ":store:" + type, h);
@@ -994,7 +994,8 @@ public class Helper {
 	 * @param goblins
 	 * @return
 	 */
-	public static PlayerInfoProtobuf.PlayerInfo updateTemporaryBackpack(DropService dropService, RedisTemplate redisTemplate, Integer identifier, Integer monsters,
+	public static PlayerInfoProtobuf.PlayerInfo updateTemporaryBackpack(DropService dropService, StageService stageService, BackpackService backpackService
+			, RedisTemplate redisTemplate, Integer identifier, Integer monsters,
 																		Integer goblins) {
 		PlayerInfoProtobuf.PlayerInfo.Builder resultBuilder = PlayerInfoProtobuf.PlayerInfo.newBuilder();
 		Formatter m = new Formatter();
@@ -1009,7 +1010,7 @@ public class Helper {
 
 		Long duration = current_timestamp() - (long) pack.get("dungeon_enter_timestamp");
 
-		RubyConst.RubyConstStageTableHash constStr = RubyConst.getRubyConstStageTableHash((int) pack.get("stage"));
+		ConstStageTableItemExProtobuf.ConstStageTableItemEx constStr = stageService.getExById((int) pack.get("stage"));
 
 		int level = ToUtil.to_i(pack.get("level")) - 1;
 
@@ -1024,7 +1025,7 @@ public class Helper {
 			exp_delta *= ratio;
 		}
 
-		Integer exp_max = RubyConst.getRubyConstBackpackTable(level).getExp_max();
+		Integer exp_max = backpackService.getByLevel(level).getExpMax();
 		if (redisTemplate.opsForHash().increment(m.format("u:%d:temp_backpack_items", identifier).toString(), "exp", exp_delta) >
 				exp_max) {
 			redisTemplate.opsForHash().put(m.format("u:%d:temp_backpack_items", identifier), "exp", exp_max);
@@ -1032,7 +1033,7 @@ public class Helper {
 
 		long gold_delta = duration * constStr.getBasicAwardFomula().getGold();
 
-		Integer gold_max = RubyConst.getRubyConstBackpackTable(level).getGold_max();
+		Integer gold_max = backpackService.getByLevel(level).getGoldMax();
 		if (redisTemplate.opsForHash().increment(String.format("u:%d:temp_backpack_items", identifier), "gold", gold_delta) >
 				gold_max) {
 			redisTemplate.opsForHash().put(String.format("u:%d:temp_backpack_items", identifier), "gold", gold_max);
@@ -1041,7 +1042,7 @@ public class Helper {
 		//计算小怪收益
 		if (monsters != null && monsters > 0) {
 			Integer itemCount = itemCount(redisTemplate, identifier, String.format("dungeon_%s_not_passed_stage", pack.get("type")));
-			String drop_action = itemCount.equals(ToUtil.to_i(pack.get("stage"))) ? constStr.getMonstersKilledAwardFomula().getDropid() : constStr.getMonstersKilledAwardFomula().getDropid_bosskilled();
+			String drop_action = itemCount.equals(ToUtil.to_i(pack.get("stage"))) ? constStr.getMonstersKilledAwardFomula().getDropid() : constStr.getMonstersKilledAwardFomula().getDropidBosskilled();
 			for (int i = 0; i <= monsters; i++) {
 				PlayerInfoProtobuf.PlayerInfo playerInfo = dropService
 						.dropItem(drop_action, identifier, true, null);

@@ -10,4 +10,7 @@ public class ConsumeExpBookRedisKeyConstants {
 
 	public static final String USER_ATTRIBUTES = "u:{d}:{s}:attributes";
 
+	public static final String USER_SKILLS = "u:{d}:{s}:skills";
+
+
 }

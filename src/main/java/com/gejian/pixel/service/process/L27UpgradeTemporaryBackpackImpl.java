@@ -3,7 +3,9 @@ package com.gejian.pixel.service.process;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
+import com.gejian.pixel.service.BackpackService;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.service.VipService;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,12 @@ public class L27UpgradeTemporaryBackpackImpl implements Process<CommUpgradeTempo
 	@Autowired
 	private RedisTemplate redisTemplate;
 
+	@Autowired
+	private VipService vipService;
+
+	@Autowired
+	private BackpackService backpackService;
+
 
 	@Override
 	public CommUpgradeTemporaryBackpackResponseProtobuf.CommUpgradeTemporaryBackpackResponse doProcess(CommUpgradeTemporaryBackpackRequestProtobuf.CommUpgradeTemporaryBackpackRequest request) throws Exception {
@@ -38,22 +46,23 @@ public class L27UpgradeTemporaryBackpackImpl implements Process<CommUpgradeTempo
 
 		String tempBackpackKey = this.getTempBackpackKey(identifier);
 
-		Map<Object, Object> backpack = this.redisTemplate.opsForHash().entries(tempBackpackKey);
+		Map<Object, Object> backpackMap = this.redisTemplate.opsForHash().entries(tempBackpackKey);
 
-		// TODO ConstVipTable
+		// ConstVipTable
 		Integer vip = Helper.itemCount(redisTemplate, identifier, "vip");
 		ConstVipTableItemExProtobuf.ConstVipTableItemEx vipTableItemEx =
-				ConstVipTableProtobuf.ConstVipTable.getDefaultInstance().getItems(vip);
+				vipService.getItem(vip);
 
-		if (this.parseLong(backpack.get("level")) >= vipTableItemEx.getLevel()) {
+		if (this.parseLong(backpackMap.get("level")) >= vipTableItemEx.getLevel()) {
 			return builder.setResult(ErrorEnum.ERROR_REACH_LIMIT).build();
 		}
 
-		// TODO ConstBackpackTable
+		// ConstBackpackTable
 		ConstBackpackTableItemExProtobuf.ConstBackpackTableItemEx backpackTableItemEx =
-				ConstBackpackTableProtobuf.ConstBackpackTable.getDefaultInstance().getItems(this.parseInt(backpack.get("level")) - 1);
+				backpackService.getItem(this.parseInt(backpackMap.get("level")) - 1);
 
 		PlayerItemProtobuf.PlayerItem playerItem = Helper.decreaseItemValue(redisTemplate, identifier, "stone", (long) backpackTableItemEx.getFomula().getStone());
+		builder.addItems(playerItem);
 		if (playerItem != null) {
 
 			this.redisTemplate.opsForHash().increment(tempBackpackKey, "level", 1);

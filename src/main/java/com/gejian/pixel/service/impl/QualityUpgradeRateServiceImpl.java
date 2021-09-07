@@ -39,6 +39,11 @@ public class QualityUpgradeRateServiceImpl extends ServiceImpl<QualityUpgradeRat
 		}
 	}
 
+	@Override
+	public QualityUpgradeRate getById(Integer id) {
+		return hash.get(id);
+	}
+
 	private ConstQualityUpgradeRateTableItemExProtobuf.ConstQualityUpgradeRateTableItemEx convert(QualityUpgradeRate item){
 
 		return ConstQualityUpgradeRateTableItemExProtobuf.ConstQualityUpgradeRateTableItemEx

@@ -65,4 +65,9 @@ public class StarUpgradeServiceImpl extends ServiceImpl<StarUpgradeMapper, StarU
 				.build();
 		builder.setStarUpgrades(build);
 	}
+
+	@Override
+	public StarUpgrade get(Integer id) {
+		return hash.get(id);
+	}
 }

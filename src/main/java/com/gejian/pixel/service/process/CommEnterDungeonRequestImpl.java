@@ -5,8 +5,10 @@ import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.*;
+import com.gejian.pixel.service.BackpackService;
 import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.service.StageService;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +32,12 @@ public class CommEnterDungeonRequestImpl implements Process<CommEnterDungeonRequ
 
 	@Autowired
 	private RedisTemplate redisTemplate;
-
 	@Autowired
 	private DropService dropService;
+	@Autowired
+	private BackpackService backpackService;
+	@Autowired
+	private StageService stageService;
 
 	@Override
 	public CommEnterDungeonResponseProtobuf.CommEnterDungeonResponse doProcess(CommEnterDungeonRequestProtobuf.CommEnterDungeonRequest request) throws Exception {
@@ -61,7 +66,7 @@ public class CommEnterDungeonRequestImpl implements Process<CommEnterDungeonRequ
 		UserInfo userInfo = UserHolder.get();
 		Integer identifier = userInfo.getIdentifier();
 		PlayerInfoProtobuf.PlayerInfo playerInfo = Helper
-				.updateTemporaryBackpack(dropService, redisTemplate, identifier, 0, 0);
+				.updateTemporaryBackpack(dropService, stageService, backpackService, redisTemplate, identifier, 0, 0);
 		builder.addAllItems(playerInfo.getItemsList());
 
 		Map<String, Object> backpack = new HashMap<>(3);
