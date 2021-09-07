@@ -79,7 +79,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		}
 		Object systemBanAnyone = redisTemplate.opsForValue().get("system:ban_anyone");
 		if (systemBanAnyone != null) {
-			if (Integer.parseInt(systemBanAnyone + "") == 1) {
+			if (NumberUtil.parseInt(systemBanAnyone + "") == 1) {
 				log.error("FAILED: {}=>{}:{}", request.getIdentifier(), CommandConstants.LOGIN_REQUEST, Thread.currentThread().getStackTrace()[1].getLineNumber());
 				replyBuilder.setResult(ErrorEnum.ERROR_BANNED);
 				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(systemBanAnyone + "").build());
@@ -158,7 +158,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			tempbackpack.put("level", 1);
 			tempbackpack.put("type", 1);
 			tempbackpack.put("stage", 1);
-			tempbackpack.put("dungeon_enter_timestamp", Integer.parseInt(Helper.currentTimestamp()+""));
+			tempbackpack.put("dungeon_enter_timestamp", NumberUtil.parseInt(Helper.currentTimestamp()+""));
 
 			redisTemplate.opsForHash().putAll("u:"+identifier+":temp_backpack",tempbackpack);
 
@@ -168,7 +168,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		}else {
 			identifier = NumberUtil.parseInt(request.getIdentifier());
-			System.out.println("identifier = " + identifier);
 			if (redisTemplate.opsForHash().hasKey("user:set:ban", hexEncodedIdentifier)) {
 
 				identifier = UserHolder.get().getIdentifier();
@@ -206,21 +205,21 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		heros.forEach((k, v)->{
 			Map hero = redisTemplate.opsForHash().entries("u:" + finalIdentifier + ":" + k + ":attributes");
 			HeroBasicInfoProtobuf.HeroBasicInfo.Builder hBuilder = HeroBasicInfoProtobuf.HeroBasicInfo.newBuilder();
-			hBuilder.setId(Integer.parseInt(hero.get("id") + ""));
+			hBuilder.setId(NumberUtil.parseInt(hero.get("id") + ""));
 			hBuilder.setType(hero.get("type") + "");
-			hBuilder.setLevel(Integer.parseInt(hero.get("level") + ""));
-			hBuilder.setExp(Integer.parseInt(hero.get("exp") + ""));
-			hBuilder.setQuality(Integer.parseInt(hero.get("quality") + ""));
-			hBuilder.setStar(Integer.parseInt(hero.get("star") + ""));
-			hBuilder.setGrowHp(Integer.parseInt(hero.get("grow_hp") + ""));
-			hBuilder.setHp(Integer.parseInt(hero.get("hp") + ""));
-			hBuilder.setGrowDef(Integer.parseInt(hero.get("grow_def") + ""));
-			hBuilder.setDef(Integer.parseInt(hero.get("def") + ""));
-			hBuilder.setGrowAttack(Integer.parseInt(hero.get("grow_attack") + ""));
-			hBuilder.setAttack(Integer.parseInt(hero.get("attack") + ""));
-			hBuilder.setGrowSpeed(Integer.parseInt(hero.get("grow_speed") + ""));
-			hBuilder.setSpeed(Integer.parseInt(hero.get("speed") + ""));
-			hBuilder.setNumber(Integer.parseInt(hero.get("number") + ""));
+			hBuilder.setLevel(NumberUtil.parseInt(hero.get("level") + ""));
+			hBuilder.setExp(NumberUtil.parseInt(hero.get("exp") + ""));
+			hBuilder.setQuality(NumberUtil.parseInt(hero.get("quality") + ""));
+			hBuilder.setStar(NumberUtil.parseInt(hero.get("star") + ""));
+			hBuilder.setGrowHp(NumberUtil.parseInt(hero.get("grow_hp") + ""));
+			hBuilder.setHp(NumberUtil.parseInt(hero.get("hp") + ""));
+			hBuilder.setGrowDef(NumberUtil.parseInt(hero.get("grow_def") + ""));
+			hBuilder.setDef(NumberUtil.parseInt(hero.get("def") + ""));
+			hBuilder.setGrowAttack(NumberUtil.parseInt(hero.get("grow_attack") + ""));
+			hBuilder.setAttack(NumberUtil.parseInt(hero.get("attack") + ""));
+			hBuilder.setGrowSpeed(NumberUtil.parseInt(hero.get("grow_speed") + ""));
+			hBuilder.setSpeed(NumberUtil.parseInt(hero.get("speed") + ""));
+			hBuilder.setNumber(NumberUtil.parseInt(hero.get("number") + ""));
 
 			Map skills = redisTemplate.opsForHash().entries("u:" + finalIdentifier + ":" + k + ":skills");
 			int[] currentSkillsIndex = {0};
@@ -228,10 +227,11 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				HeroSkillProtobuf.HeroSkill heroSkill = HeroSkillProtobuf.HeroSkill
 						.newBuilder()
 						.setType(kk+"")
-						.setLevel(Integer.parseInt(vv+""))
+						.setLevel(NumberUtil.parseInt(vv+""))
 						.build();
-				hBuilder.setSkills(currentSkillsIndex[0], heroSkill);
-				currentSkillsIndex[0]++;
+				//hBuilder.addSkills(currentSkillsIndex[0], heroSkill);
+				//currentSkillsIndex[0]++;
+				hBuilder.addSkills(heroSkill);
 			});
 
 			HeroBasicInfoProtobuf.HeroBasicInfo h = hBuilder.build();
@@ -394,7 +394,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		List<Map<String, Object>> topX = topRangePower.getRanks();
 		RanklistProtobuf.Ranklist.Builder ranklistBuilder = RanklistProtobuf.Ranklist.newBuilder();
 		ranklistBuilder.setMyrank(myrank);
-		ranklistBuilder.setTimestamp(Integer.parseInt(Helper.currentTimestamp()+""));
+		ranklistBuilder.setTimestamp(NumberUtil.parseInt(Helper.currentTimestamp()+""));
 		for (Map<String, Object> x : topX) {
 			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
 					.newBuilder()

@@ -34,7 +34,7 @@ public class Helper {
 	JSONArray rubyConstNewStoreDiscountTable = generated.getRUBY_CONST_NEW_STORE_DISCOUNT_TABLE();
 	JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();*/
 
-	// rate = RUBY_CONST_QUALITY_UPGRADE_RATE_TABLE[1]['up'].to_f
+	// rate = RUBY_CONST_QUALITY_UPGRADE_RATE_TABLE[1]["up"].to_f
 
 	private final HeroService heroService;
 	private final QualityUpgradeRateService qualityUpgradeRateService;
@@ -317,7 +317,7 @@ public class Helper {
 	 * @param desc 内容
 	 */
 	public static void boardcaseWorldEvent(String desc) {
-		log.info("{} boardcast_world_event => {}", DateUtil.now(), desc);
+		log.info("{} boardcast_world_event, {}", DateUtil.now(), desc);
 		CommWorldEventUpdateProtobuf.CommWorldEventUpdate event = CommWorldEventUpdateProtobuf.CommWorldEventUpdate
 				.newBuilder()
 				.setType(4)
@@ -343,10 +343,11 @@ public class Helper {
 
 			//String[][] record = RUBY_CONST_HERO_TABLE_HASH["X#{id}"]
 			//Map<String, Map> record = null;
-			Hero record = heroHashList.get(id);
+			Hero record = heroHashList.get(NumberUtil.parseInt(id));
 
-			if (redisTemplate.opsForHash().putIfAbsent("u:" + identifier + ":heros", type, 1)) {
-				onNotifyEventOfPromotions(redisTemplate, "mostheros", 1, identifier);
+			if (redisTemplate.opsForHash().putIfAbsent("u:" + identifier + ":heros", type, "1")) {
+				PlayerItemProtobuf.PlayerItem item = onNotifyEventOfPromotions(redisTemplate, "mostheros", 1, identifier);
+				playerInfo.addItems(item);
 				HeroBasicInfoProtobuf.HeroBasicInfo.Builder heroBuilder = HeroBasicInfoProtobuf.HeroBasicInfo
 						.newBuilder()
 						.setId(Integer.parseInt(generateHeroIdentifier(redisTemplate)))
@@ -360,7 +361,7 @@ public class Helper {
 				if (parameter != null) {
 					if ("3".equals(parameter)) {
 						// 后面要替换
-						// rate = RUBY_CONST_QUALITY_UPGRADE_RATE_TABLE[1]['up'].to_f
+						// rate = RUBY_CONST_QUALITY_UPGRADE_RATE_TABLE[1]["up"].to_f
 						//rate = 1.0f;
 						rate = NumberUtil.parseFloat(qualityUpgradeRates.get(1).getUp());
 					}
@@ -368,30 +369,20 @@ public class Helper {
 				JSONObject basicUpgradeExpandJsonObj = JSONUtil.parseObj(record.getBasicUpgradeExpand());
 				JSONObject basicExpandJsonObj = JSONUtil.parseObj(record.getBasicExpand());
 				heroBuilder.setQuality(parameter != null && "3".equals(parameter) ? 2 : 1);
-				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpandJsonObj.get("hp") * rate) + ""));
-				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicExpandJsonObj.get("hp") * rate) + ""));
-				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpandJsonObj.get("defense") * rate) + ""));
-				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicExpandJsonObj.get("defense") * rate) + ""));
-				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpandJsonObj.get("attack") * rate) + ""));
-				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicExpandJsonObj.get("attack") * rate) + ""));
-				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpandJsonObj.get("speed") * rate) + ""));
-				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicExpandJsonObj.get("speed") * rate) + ""));
+				heroBuilder.setGrowHp(NumberUtil.parseInt((NumberUtil.parseInt(basicUpgradeExpandJsonObj.get("hp")+"") * rate ) + ""));
+				heroBuilder.setHp(NumberUtil.parseInt((NumberUtil.parseInt(basicExpandJsonObj.get("hp")+"") * rate ) + ""));
+				heroBuilder.setGrowDef(NumberUtil.parseInt((NumberUtil.parseInt(basicUpgradeExpandJsonObj.get("defense")+"") * rate ) + ""));
+				heroBuilder.setDef(NumberUtil.parseInt((NumberUtil.parseInt(basicExpandJsonObj.get("defense")+"") * rate ) + ""));
+				heroBuilder.setGrowAttack(NumberUtil.parseInt((NumberUtil.parseInt(basicUpgradeExpandJsonObj.get("attack")+"") * rate ) + ""));
+				heroBuilder.setAttack(NumberUtil.parseInt((NumberUtil.parseInt(basicExpandJsonObj.get("attack")+"") * rate ) + ""));
+				heroBuilder.setGrowSpeed(NumberUtil.parseInt((NumberUtil.parseInt(basicUpgradeExpandJsonObj.get("speed")+"") * rate ) + ""));
+				heroBuilder.setSpeed(NumberUtil.parseInt((NumberUtil.parseInt(basicExpandJsonObj.get("speed")+"") * rate ) + ""));
 				heroBuilder.setNumber(1);
-				/*heroBuilder.setQuality(parameter != null && "3".equals(parameter) ? 2 : 1);
-				heroBuilder.setGrowHp(Integer.parseInt(((Float) record.get("basic_upgrade_expand").get("hp") * rate) + ""));
-				heroBuilder.setHp(Integer.parseInt(((Float) record.get("basic_expand").get("hp") * rate) + ""));
-				heroBuilder.setGrowDef(Integer.parseInt(((Float) record.get("basic_upgrade_expand").get("defense") * rate) + ""));
-				heroBuilder.setDef(Integer.parseInt(((Float) record.get("basic_expand").get("defense") * rate) + ""));
-				heroBuilder.setGrowAttack(Integer.parseInt(((Float) record.get("basic_upgrade_expand").get("attack") * rate) + ""));
-				heroBuilder.setAttack(Integer.parseInt(((Float) record.get("basic_expand").get("attack") * rate) + ""));
-				heroBuilder.setGrowSpeed(Integer.parseInt(((Float) record.get("basic_upgrade_expand").get("speed") * rate) + ""));
-				heroBuilder.setSpeed(Integer.parseInt(((Float) record.get("basic_expand").get("speed") * rate) + ""));
-				heroBuilder.setNumber(1);*/
 				playerInfo.addHeros(heroBuilder.build());
 				Long teams = redisTemplate.opsForHash().size("u:" + identifier + ":teams");
 				if (teams < 5) {
 
-					redisTemplate.opsForHash().put("u:" + identifier + ":teams", type, teams + 1);
+					redisTemplate.opsForHash().put("u:" + identifier + ":teams", type, String.valueOf(teams + 1));
 					List<PlayerItemProtobuf.PlayerItem> playerItems = new ArrayList<>();
 					Map tb = redisTemplate.opsForHash().entries("u:" + identifier + ":teams");
 					tb.forEach((k, v) -> {
@@ -406,7 +397,7 @@ public class Helper {
 				}
 				Long teams_pvp = redisTemplate.opsForHash().size("u:" + identifier + ":teams_pvp");
 				if (teams_pvp < 5) {
-					redisTemplate.opsForHash().put("u:" + identifier + ":teams_pvp", type, teams_pvp + 1);
+					redisTemplate.opsForHash().put("u:" + identifier + ":teams_pvp", type, String.valueOf(teams_pvp + 1));
 
 					Map tb = redisTemplate.opsForHash().entries("u:" + identifier + ":teams_pvp");
 					List<PlayerItemProtobuf.PlayerItem> playerItems = new ArrayList<>();
@@ -420,6 +411,77 @@ public class Helper {
 					});
 					playerInfo.addAllItems(playerItems);
 				}
+
+				HeroSkillProtobuf.HeroSkill.Builder skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
+				skillBuilder.setType(record.getSkillA());
+				skillBuilder.setLevel(1);
+				heroBuilder.addSkills(skillBuilder.build());
+
+				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
+				skillBuilder.setType(record.getSkill1());
+				skillBuilder.setLevel(1);
+				heroBuilder.addSkills(skillBuilder.build());
+
+				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
+				skillBuilder.setType(record.getSkill2());
+				skillBuilder.setLevel(1);
+				heroBuilder.addSkills(skillBuilder.build());
+
+				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
+				skillBuilder.setType(record.getSkill3());
+				skillBuilder.setLevel(1);
+				heroBuilder.addSkills(skillBuilder.build());
+
+				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
+				skillBuilder.setType(record.getSkill4());
+				skillBuilder.setLevel(1);
+				heroBuilder.addSkills(skillBuilder.build());
+
+				Integer power = heroBuilder.getHp() + heroBuilder.getDef() + heroBuilder.getAttack() + heroBuilder.getSpeed();
+				Map<String,String> heroData = new HashMap();
+				heroData.put(heroBuilder.getType(), String.valueOf(power));
+				redisTemplate.opsForHash().putAll("u:"+identifier+":heros", heroData);
+
+				Map<String,String> hh = new HashMap();
+				hh.put("id", String.valueOf(heroBuilder.getId()));
+				hh.put("type", String.valueOf(heroBuilder.getType()));
+				hh.put("level", String.valueOf(heroBuilder.getLevel()));
+				hh.put("exp", String.valueOf(heroBuilder.getExp()));
+				hh.put("star", String.valueOf(heroBuilder.getStar()));
+				hh.put("quality", String.valueOf(heroBuilder.getQuality()));
+				hh.put("grow_hp", String.valueOf(heroBuilder.getGrowHp()));
+				hh.put("hp", String.valueOf(heroBuilder.getHp()));
+				hh.put("grow_def", String.valueOf(heroBuilder.getGrowDef()));
+				hh.put("def", String.valueOf(heroBuilder.getDef()));
+				hh.put("grow_attack", String.valueOf(heroBuilder.getGrowAttack()));
+				hh.put("attack", String.valueOf(heroBuilder.getAttack()));
+				hh.put("grow_speed", String.valueOf(heroBuilder.getGrowSpeed()));
+				hh.put("speed", String.valueOf(heroBuilder.getSpeed()));
+				hh.put("number", String.valueOf(heroBuilder.getNumber()));
+				redisTemplate.opsForHash().putAll("u:"+identifier+":"+heroBuilder.getType()+":attributes",hh);
+
+				Map hhs = new HashMap();
+				hhs.put(record.getSkillA(),"1");
+				hhs.put(record.getSkill1(),"1");
+				hhs.put(record.getSkill2(),"0");
+				hhs.put(record.getSkill3(),"0");
+				hhs.put(record.getSkill4(),"0");
+				redisTemplate.opsForHash().putAll("u:"+identifier+":"+heroBuilder.getType()+":skills",hhs);
+
+				PlayerItemProtobuf.PlayerItem updateRanklistPower = updateRanklistPower(redisTemplate, identifier);
+				if (updateRanklistPower!=null) {
+					playerInfo.addItems(updateRanklistPower);
+				}
+				playerInfo.addHeros(heroBuilder.build());
+
+				String stringValueNickname = stringValue(redisTemplate, identifier, "nickname");
+				if (stringValueNickname!=null) {
+					String bcmsg = "PWBC快讯：祝贺玩家<color=red>"+stringValueNickname+"</color>获得英雄<color=red>#{record['name']}</color>！";
+					boardcaseWorldEvent(bcmsg);
+				}
+			}else {
+				PlayerItemProtobuf.PlayerItem increaseItemValue = increaseItemValue(redisTemplate, identifier, "private_soulchip_" + id, NumberUtil.parseLong(record.getChips() + ""));
+				playerInfo.addItems(increaseItemValue);
 			}
 
 		} else {
@@ -624,8 +686,8 @@ public class Helper {
 	                reply.heros.push(hero)
 	            end
 
-                if string_value(identifier, 'nickname') != nil then
-                    bcmsg = "PWBC快讯：祝贺玩家<color=red>#{string_value(identifier, 'nickname').force_encoding("UTF-8")}</color>获得英雄<color=red>#{record['name']}</color>！"
+                if string_value(identifier, "nickname") != nil then
+                    bcmsg = "PWBC快讯：祝贺玩家<color=red>#{string_value(identifier, "nickname").force_encoding("UTF-8")}</color>获得英雄<color=red>#{record["name"]}</color>！"
                     boardcase_world_event(bcmsg)
                 end
 				 */
