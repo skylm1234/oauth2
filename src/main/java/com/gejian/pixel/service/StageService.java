@@ -8,4 +8,5 @@ import com.gejian.pixel.entity.Stage;
  */
 public interface StageService extends IService<Stage> {
 
+	Stage getById(Integer id);
 }

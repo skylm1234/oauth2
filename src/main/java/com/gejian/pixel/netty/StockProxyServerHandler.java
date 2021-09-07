@@ -92,12 +92,12 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 				resultObj = ReflectUtil.newInstance(resultClazz);
 				MessageLite.Builder builder = resultObj.toBuilder();
 				ReflectUtil.invoke(builder, "setResult", ErrorEnum.ERROR_SESSION_EXPIRED);
-				ReflectUtil.invoke(builder, "setRequest", messageLite);
 				resultObj = (AbstractMessageLite) builder.build();
 			}
 			MessageBaseProtobuf.MessageBase.Builder builder = MessageBaseProtobuf.MessageBase.newBuilder()
 					.setName(name.replace("_REQUEST","_RESPONSE"));
 			if (Objects.nonNull(resultObj)) {
+				ReflectUtil.invoke(resultObj.toBuilder(), "setRequest", messageLite);
 				ByteString bytes = resultObj.toByteString();
 				builder.setData(bytes);
 			}

@@ -27,6 +27,11 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 	private List<ConstStageTableItemExProtobuf.ConstStageTableItemEx> table = new ArrayList<>();
 
 	@Override
+	public Stage getById(Integer id){
+		return hash.get(id);
+	}
+
+	@Override
 	public void init() {
 		List<Stage> list = this.list();
 		if (!CollectionUtils.isEmpty(list)) {
