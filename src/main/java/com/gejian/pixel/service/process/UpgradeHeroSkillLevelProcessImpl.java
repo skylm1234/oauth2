@@ -8,6 +8,7 @@ import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommUnlockHeroSkillResponseProtobuf;
 import com.gejian.pixel.proto.CommUpgradeHeroSkillLevelRequestProtobuf;
 import com.gejian.pixel.proto.CommUpgradeHeroSkillLevelResponseProtobuf;
+import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.service.SkillService;
 import com.gejian.pixel.utils.Helper;
@@ -85,9 +86,11 @@ public class UpgradeHeroSkillLevelProcessImpl implements Process<CommUpgradeHero
 			}
 			Long level = redisTemplate.opsForHash().increment(String.format("u:%s:%s:skills", identifier, hero), skill, 1);
 			if (level > 10) {
-				Helper.onNotifyEventOfPromotions(redisTemplate, "maxtopskills", 1, identifier);
+				PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "maxtopskills", 1, identifier);
+				result.addArchives(playerItem);
 			}
-			Helper.onNotifyEventOfPromotions(redisTemplate, "daily_skill_upgrade", 1, identifier);
+			PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "daily_skill_upgrade", 1, identifier);
+			result.addArchives(playerItem);
 		}else{
 			return result.setResult(ErrorEnum.ERROR_NOT_ENOUGH_RESOURCES).build();
 		}

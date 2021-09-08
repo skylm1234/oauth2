@@ -128,8 +128,8 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 			response.addItems(playerItem);
 		}
 
-		response.addItems(Helper.onNotifyEventOfPromotions(redisTemplate, MOSTHIRE, 1, identifier));
-		response.addItems(Helper.onNotifyEventOfPromotions(redisTemplate, DAILY_BUY_HERO, 1, identifier));
+		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, MOSTHIRE, 1, identifier));
+		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, DAILY_BUY_HERO, 1, identifier));
 		return response.build();
 	}
 }

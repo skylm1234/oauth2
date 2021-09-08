@@ -231,6 +231,7 @@ public class TemporaryBackpackHelper {
 					this.redisTemplate.opsForHash().put(herosKey, attributes.get("type"), power);
 
 					PlayerItemProtobuf.PlayerItem playerItem = Helper.updateRanklistHonor(redisTemplate, identifier);
+					builder.addArchives(playerItem);
 
 
 					// 设置属性
@@ -253,12 +254,12 @@ public class TemporaryBackpackHelper {
 				if (item.toString().startsWith("exp_book_")) {
 
 					PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "expbooks", this.parseInt(number), identifier);
-					builder.addItems(playerItem);
+					builder.addArchives(playerItem);
 
 				} else if ("gold".equals(item.toString())) {
 
 					PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "maxgold", this.parseInt(number), identifier);
-					builder.addItems(playerItem);
+					builder.addArchives(playerItem);
 
 				}
 			}

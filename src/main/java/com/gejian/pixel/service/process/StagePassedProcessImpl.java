@@ -73,7 +73,7 @@ public class StagePassedProcessImpl implements Process<CommStagePassedRequestPro
 		String key = StrUtil.format("type_{}_boss_kill",request.getType());
 		PlayerItemProtobuf.PlayerItem item = Helper
 				.onNotifyEventOfPromotions(redisTemplate, key, request.getStage(), identifier);
-		response.addItems(item);
+		response.addArchives(item);
 		String[] types = {"普通", "噩梦", "折磨"};
 		String nickname = Helper.stringValue(redisTemplate, identifier, "nickname");
 		if (StrUtil.isNotBlank(nickname) && request.getStage() % 1000 >= 50){

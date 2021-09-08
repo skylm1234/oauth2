@@ -85,10 +85,10 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 					Integer.valueOf((String) entry.getValue()));
 		});
 
-		response.addItems(Helper.onNotifyEventOfPromotions(redisTemplate, CONSUMEEXPBOOKS, request.getBooksCount()
+		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, CONSUMEEXPBOOKS, request.getBooksCount()
 				, identifier));
 
-		response.addItems(Helper.onNotifyEventOfPromotions(redisTemplate, DAILY_EXP_BOOK_CONSUME, request.getBooksCount()
+		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, DAILY_EXP_BOOK_CONSUME, request.getBooksCount()
 				, identifier));
 
 		for (int i = 0; i < request.getBooksCount(); i++) {

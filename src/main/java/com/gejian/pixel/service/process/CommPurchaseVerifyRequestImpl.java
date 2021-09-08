@@ -128,7 +128,7 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 					PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), "vip", origin_vip);
 					PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "vip", origin_vip, identifier);
 					builder.addItems(playerItem)
-							.addItems(playerItem1);
+							.addArchives(playerItem1);
 				}
 			}
 

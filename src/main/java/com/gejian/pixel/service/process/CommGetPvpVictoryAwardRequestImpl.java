@@ -47,8 +47,8 @@ public class CommGetPvpVictoryAwardRequestImpl implements Process<CommGetPvpVict
 			PlayerItemProtobuf.PlayerItem playerItem = Helper.updateRanklistHonor(redisTemplate, identifier);
 			PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "maxhonor", 1, identifier);
 
-			builder.addItems(playerItem)
-					.addItems(playerItem1);
+			builder.addArchives(playerItem)
+					.addArchives(playerItem1);
 
 		} else if (type == 3) {
 			//TODO
