@@ -30,6 +30,6 @@ public class L30RefreshStoreImpl implements Process<CommRefreshStoreRequestProto
 		CommRefreshStoreResponseProtobuf.CommRefreshStoreResponse.Builder builder
 				= CommRefreshStoreResponseProtobuf.CommRefreshStoreResponse.newBuilder();
 		this.storeHelper.refreshStore(identifier, request, builder);
-		return builder.build();
+		return builder.setRequest(request).build();
 	}
 }

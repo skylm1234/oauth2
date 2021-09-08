@@ -55,7 +55,7 @@ public class L29RankListRelativePowerImpl implements Process<CommRanklistRelativ
 			}
 			builder.setResult(this.rankListHelper.refreshPvp(identifier, true, builder));
 		}
-		return builder.build();
+		return builder.setRequest(request).build();
 	}
 
 

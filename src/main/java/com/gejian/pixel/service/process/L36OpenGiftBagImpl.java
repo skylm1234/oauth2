@@ -75,7 +75,7 @@ public class L36OpenGiftBagImpl implements Process<CommOpenGiftbagRequestProtobu
 				PlayerItemProtobuf.PlayerItem.newBuilder().setKey(this.parseString(k))
 						.setValue(this.parseInt(v))));
 
-		return builder.build();
+		return builder.setRequest(request).build();
 	}
 
 	private String getGiftBagsKey(Integer identifier) {

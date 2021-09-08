@@ -55,7 +55,7 @@ public class L35GetGiftBagListImpl implements Process<CommGetGiftbagListRequestP
 			builder.addGiftbags(giftBagBuilder);
 		});
 
-		return builder.build();
+		return builder.setRequest(request).build();
 	}
 
 

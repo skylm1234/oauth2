@@ -30,6 +30,6 @@ public class L32BuyStoreItemImpl implements Process<CommBuyStoreItemRequestProto
 		CommBuyStoreItemResponseProtobuf.CommBuyStoreItemResponse.Builder builder =
 				CommBuyStoreItemResponseProtobuf.CommBuyStoreItemResponse.newBuilder();
 		this.storeHelper.buyStoreItem(identifier, request, builder);
-		return builder.build();
+		return builder.setRequest(request).build();
 	}
 }

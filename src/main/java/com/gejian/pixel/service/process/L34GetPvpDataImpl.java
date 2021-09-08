@@ -136,7 +136,7 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 			builder.addHeros(heroBasicInfo);
 		});
 
-		return builder.build();
+		return builder.setRequest(request).build();
 	}
 
 	private String getNicknameKey() {

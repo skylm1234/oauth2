@@ -82,7 +82,7 @@ public class L33DismissHeroImpl implements Process<CommDismissHeroRequestProtobu
 				Helper.increaseItemValue(redisTemplate, identifier, "private_soulchip_" + id, (long) heroTableItemEx.getChips());
 			}
 		}
-		return builder.build();
+		return builder.setRequest(request).build();
 	}
 
 	private String getAttributesKey(Integer identifier, String s) {

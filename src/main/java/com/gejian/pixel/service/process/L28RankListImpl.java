@@ -33,7 +33,7 @@ public class L28RankListImpl implements Process<CommRanklistRequestProtobuf.Comm
 		this.rankListHelper.rankListHelper(this.rankListHelper.topRangeRich(identifier, 99L, false), builder);
 		this.rankListHelper.rankListHelper(this.rankListHelper.topRangePower(identifier, 99L, false), builder);
 		this.rankListHelper.rankListHelper(this.rankListHelper.topRangeHonor(identifier, 99L, false), builder);
-		return builder.build();
+		return builder.setRequest(request).build();
 	}
 
 

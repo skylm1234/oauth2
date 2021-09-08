@@ -75,7 +75,7 @@ public class L27UpgradeTemporaryBackpackImpl implements Process<CommUpgradeTempo
 			return builder.setResult(ErrorEnum.ERROR_NOT_ENOUGH_STONE).build();
 		}
 
-		return builder.build();
+		return builder.setRequest(request).build();
 	}
 
 	public Long parseLong(Object o) {

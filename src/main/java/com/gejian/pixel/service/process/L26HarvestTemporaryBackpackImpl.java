@@ -29,7 +29,7 @@ public class L26HarvestTemporaryBackpackImpl implements Process<CommHarvestTempo
 		CommHarvestTemporaryBackpackResponseProtobuf.CommHarvestTemporaryBackpackResponse.Builder builder =
 				CommHarvestTemporaryBackpackResponseProtobuf.CommHarvestTemporaryBackpackResponse.newBuilder();
 		this.temporaryBackpackHelper.grabTemporaryBackpack(UserHolder.get().getIdentifier(), request, builder, request.getMonsters(), request.getGoblins());
-		return builder.build();
+		return builder.setRequest(request).build();
 	}
 
 

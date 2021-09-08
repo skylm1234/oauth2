@@ -29,7 +29,7 @@ public class L25UpdateTemporaryBackpackImpl implements Process<CommUpdateTempora
 		CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.Builder builder =
 				CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse.newBuilder();
 		this.temporaryBackpackHelper.updateTemporaryBackpack(UserHolder.get().getIdentifier(), request, builder, request.getMonsters(), request.getGoblins());
-		return builder.build();
+		return builder.setRequest(request).build();
 	}
 
 }
