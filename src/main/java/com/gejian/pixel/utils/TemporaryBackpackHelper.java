@@ -50,13 +50,13 @@ public class TemporaryBackpackHelper {
 
 		String type = this.parseString(pack.get("type"));
 		PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "type_" + type + "_monster_kill", monsters, identifier);
-		builder.addItems(playerItem);
+		builder.addArchives(playerItem);
 
 		PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier);
-		builder.addItems(playerItem1);
+		builder.addArchives(playerItem1);
 
 		PlayerItemProtobuf.PlayerItem playerItem2 = Helper.onNotifyEventOfPromotions(redisTemplate, "daily_type_" + type + "_monster_kill", monsters, identifier);
-		builder.addItems(playerItem2);
+		builder.addArchives(playerItem2);
 
 		int vip = Helper.itemCount(redisTemplate, identifier, "vip");
 
