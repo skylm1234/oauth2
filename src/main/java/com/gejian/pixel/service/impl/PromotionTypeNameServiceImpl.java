@@ -57,6 +57,7 @@ public class PromotionTypeNameServiceImpl extends ServiceImpl<PromotionTypeNameM
 				.newBuilder()
 				.addAllItems(table)
 				.build();
+		builder.setPromotionsNames(build);
 	}
 
 

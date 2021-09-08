@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.impl;
 
+import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.math.Calculator;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
@@ -19,6 +20,7 @@ import com.gejian.pixel.service.ConstantsProto;
 import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.LevelUpgradeService;
 import com.gejian.pixel.utils.Helper;
+import com.google.protobuf.InvalidProtocolBufferException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -69,6 +71,8 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 				.setId(drop.getId())
 				.build();
 	}
+
+
 
 	/**
 	 * 物品掉落
