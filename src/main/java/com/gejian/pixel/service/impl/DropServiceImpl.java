@@ -21,6 +21,7 @@ import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.LevelUpgradeService;
 import com.gejian.pixel.utils.Helper;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.util.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -69,9 +70,9 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 				.setContent(drop.getContent())
 				.setDesc(drop.getDesc())
 				.setId(drop.getId())
+				.setDesc2(drop.getDesc2())
 				.build();
 	}
-
 
 
 	/**
@@ -138,17 +139,17 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 						PlayerItemProtobuf.PlayerItem maxhonor = Helper
 								.onNotifyEventOfPromotions(stringRedisTemplate, "maxhonor", num, identifier);
 						playerInfo.addItems(totalHonorItem);
-						playerInfo.addArchives(updateRanklistHonor);
-						playerInfo.addArchives(maxhonor);
+						playerInfo.addItems(updateRanklistHonor);
+						playerInfo.addItems(maxhonor);
 
 					}
 				}
 				if (type.startsWith("exp_book_")) {
 					PlayerItemProtobuf.PlayerItem expbooks = Helper.onNotifyEventOfPromotions(stringRedisTemplate, "expbooks", num, identifier);
-					playerInfo.addArchives(expbooks);
+					playerInfo.addItems(expbooks);
 				} else if ("gold".equals(type)) {
 					PlayerItemProtobuf.PlayerItem maxgold = Helper.onNotifyEventOfPromotions(stringRedisTemplate, "maxgold", num, identifier);
-					playerInfo.addArchives(maxgold);
+					playerInfo.addItems(maxgold);
 				}
 			} else if ("exp".equals(type)) {
 				//上阵角色都加经验

@@ -27,5 +27,8 @@ public class Drop implements Serializable {
 	@TableField("`desc`")
 	private String desc;
 
+	@TableField("desc2")
+	private String desc2;
+
 
 }
