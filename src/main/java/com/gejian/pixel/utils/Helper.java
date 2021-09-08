@@ -347,7 +347,7 @@ public class Helper {
 
 			if (redisTemplate.opsForHash().putIfAbsent("u:" + identifier + ":heros", type, "1")) {
 				PlayerItemProtobuf.PlayerItem item = onNotifyEventOfPromotions(redisTemplate, "mostheros", 1, identifier);
-				playerInfo.addItems(item);
+				playerInfo.addArchives(item);
 				HeroBasicInfoProtobuf.HeroBasicInfo.Builder heroBuilder = HeroBasicInfoProtobuf.HeroBasicInfo
 						.newBuilder()
 						.setId(Integer.parseInt(generateHeroIdentifier(redisTemplate)))
