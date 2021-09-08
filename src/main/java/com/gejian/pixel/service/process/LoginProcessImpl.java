@@ -268,7 +268,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			playerBuilder.addTeamsPvp(item);
 		});
 
-		Map archives = redisTemplate.opsForHash().entries("u:" + identifier + ":archives");
+		/*Map archives = redisTemplate.opsForHash().entries("u:" + identifier + ":archives");
 		archives.forEach((k,v)->{
 			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
 					.newBuilder()
@@ -276,7 +276,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 					.setValue(Long.parseLong(v+""))
 					.build();
 			playerBuilder.addArchives(item);
-		});
+		});*/
 
 		Map strings = redisTemplate.opsForHash().entries("u:" + identifier + ":strings");
 		strings.forEach((k,v)->{

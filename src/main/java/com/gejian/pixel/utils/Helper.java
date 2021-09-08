@@ -1065,9 +1065,9 @@ public class Helper {
 		PlayerItemProtobuf.PlayerItem playerItem = onNotifyEventOfPromotions(redisTemplate, m.format("type_%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
 		PlayerItemProtobuf.PlayerItem playerItem1 = onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier);
 		PlayerItemProtobuf.PlayerItem playerItem2 = onNotifyEventOfPromotions(redisTemplate, m.format("daily_type__%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
-		resultBuilder.addItems(playerItem);
-		resultBuilder.addItems(playerItem1);
-		resultBuilder.addItems(playerItem2);
+		resultBuilder.addArchives(playerItem);
+		resultBuilder.addArchives(playerItem1);
+		resultBuilder.addArchives(playerItem2);
 		Integer vip = itemCount(redisTemplate, identifier, "vip");
 
 		Long duration = current_timestamp() - (long) pack.get("dungeon_enter_timestamp");

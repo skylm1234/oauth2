@@ -258,7 +258,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 				if (result > max) {
 					stringRedisTemplate.opsForHash()
 							.put(StrUtil.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS, String.valueOf(identifier))
-									, type, max);
+									, type, String.valueOf(max));
 				}
 			}
 		}
