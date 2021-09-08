@@ -108,18 +108,18 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 
 
 	private void notStore2BackPack(PlayerInfoProtobuf.PlayerInfo.Builder playerInfo, String type, int num, Integer identifier, String parameter) {
-		if (type.matches("/^box_monry_.*$/") ||
-				type.matches("/^box_exp_book_.*$/") ||
-				type.matches("/^box_private_soulchip_.*$/") ||
-				type.matches(" /^box_skillbook_.*$/") ||
-				type.matches("/^box_stone_.*$/")) {
+		if (type.matches("^box_monry_.*$") ||
+				type.matches("^box_exp_book_.*$") ||
+				type.matches("^box_private_soulchip_.*$") ||
+				type.matches(" ^box_skillbook_.*$") ||
+				type.matches("^box_stone_.*$")) {
 			PlayerInfoProtobuf.PlayerInfo rpInfo = dropItem(type, identifier, false, parameter);
 			playerInfo.addAllHeros(rpInfo.getHerosList());
 			playerInfo.addAllItems(rpInfo.getItemsList());
 		} else {
 			if ("gold".equals(type) || "stone".equals(type) || "honor".equals(type) ||
-					type.matches("/^exp_book_.*$/") || type.matches("/^private_soulchip_.*$/")
-					|| type.matches("/^book_skill_.*$/")) {
+					type.matches("^exp_book_.*$") || type.matches("^private_soulchip_.*$")
+					|| type.matches("^book_skill_.*$")) {
 				PlayerItemProtobuf.PlayerItem playerItem = Helper
 						.increaseItemValue(stringRedisTemplate, identifier, type, (long) num);
 				playerInfo.addItems(playerItem);
@@ -225,19 +225,19 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 
 
 	private void store2BackPack(String type, int num, Integer identifier, String parameter) {
-		if (type.matches("/^hero_.*$/")) {
+		if (type.matches("^hero_.*$")) {
 			throw new RuntimeException("can not handle award hero");
 		}
-		if (type.matches("/^box_monry_.*$/") ||
-				type.matches("/^box_exp_book_.*$/") ||
-				type.matches("/^box_private_soulchip_.*$/") ||
-				type.matches(" /^box_skillbook_.*$/") ||
-				type.matches("/^box_stone_.*$/")) {
+		if (type.matches("^box_monry_.*$") ||
+				type.matches("^box_exp_book_.*$") ||
+				type.matches("^box_private_soulchip_.*$") ||
+				type.matches(" ^box_skillbook_.*$") ||
+				type.matches("^box_stone_.*$")) {
 			dropItem(type, identifier, true, parameter);
 		} else {
 			if ("gold".equals(type) || "exp".equals(type) || "stone".equals(type) || "honor".equals(type) ||
-					type.matches("/^exp_book_.*$/") || type.matches("/^private_soulchip_.*$/")
-					|| type.matches("/^book_skill_.*$/")) {
+					type.matches("^exp_book_.*$") || type.matches("^private_soulchip_.*$")
+					|| type.matches("^book_skill_.*$")) {
 				Map<Object, Object> entries = stringRedisTemplate
 						.opsForHash()
 						.entries(StrUtil.format(RedisKeyConstants.USER_TEMP_PACK, identifier));

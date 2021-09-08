@@ -297,17 +297,8 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 					.setStage(NumberUtil.parseInt(tempbackpack.get("stage")+""))
 					.setDungeonEnterTimestamp(NumberUtil.parseInt(tempbackpack.get("dungeon_enter_timestamp")+""))
 					.build();
-		}
-		/*
-			PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack tbp = PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack
-				.newBuilder()
-				.setLevel(0)
-				.setType(0)
-				.setStage(0)
-				.setDungeonEnterTimestamp(0)
-				.build();
 			playerBuilder.setBackpack(tbp);
-		 */
+		}
 
 		List<StoreItemProtobuf.StoreItem> goods0 = fooCall(identifier, 1);
 		List<StoreItemProtobuf.StoreItem> goods1 = fooCall(identifier, 2);
@@ -339,6 +330,12 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		replyBuilder.setPingInterval(1);
 
 		Helper.increaseItemValue(redisTemplate, identifier, "total_login_times", 1L);
+
+		CommLoginRequestProtobuf.CommLoginRequest.Builder requestBuilder = CommLoginRequestProtobuf.CommLoginRequest.newBuilder();
+		//类似构造方法
+		requestBuilder.mergeFrom(request);
+		requestBuilder.setIdentifier(identifier.toString());
+		request = requestBuilder.build();
 
 		log.info("on_handle_COMM_LOGIN_REQUEST -> "+request.getIdentifier()+" done");
 		//这里session用uuid
