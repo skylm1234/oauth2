@@ -242,7 +242,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 						.opsForHash()
 						.entries(StrUtil.format(RedisKeyConstants.USER_TEMP_PACK, identifier));
 				int level = Integer.parseInt(String.valueOf(entries.get("level")));
-				level -= 1;
+				//level -= 1;
 				int max = 0;
 				Backpack backpack = backpackService.getByLevel(level);
 				if ("gold".equals(type)) {

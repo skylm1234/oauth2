@@ -59,7 +59,8 @@ public class L27UpgradeTemporaryBackpackImpl implements Process<CommUpgradeTempo
 
 		// ConstBackpackTable
 		ConstBackpackTableItemExProtobuf.ConstBackpackTableItemEx backpackTableItemEx =
-				backpackService.getItem(this.parseInt(backpackMap.get("level")) - 1);
+//				backpackService.getItem(this.parseInt(backpackMap.get("level")) - 1);
+				backpackService.getItem(this.parseInt(backpackMap.get("level")));
 
 		PlayerItemProtobuf.PlayerItem playerItem = Helper.decreaseItemValue(redisTemplate, identifier, "stone", (long) backpackTableItemEx.getFomula().getStone());
 		builder.addItems(playerItem);

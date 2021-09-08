@@ -1074,7 +1074,8 @@ public class Helper {
 
 		ConstStageTableItemExProtobuf.ConstStageTableItemEx constStr = stageService.getExById((int) pack.get("stage"));
 
-		int level = ToUtil.to_i(pack.get("level")) - 1;
+//		int level = ToUtil.to_i(pack.get("level")) - 1;
+		int level = ToUtil.to_i(pack.get("level")) ;
 
 		long exp_delta = duration * constStr.getBasicAwardFomula().getExp();
 

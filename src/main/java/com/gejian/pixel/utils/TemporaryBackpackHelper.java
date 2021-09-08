@@ -68,7 +68,8 @@ public class TemporaryBackpackHelper {
 		ConstStageTableItemExProtobuf.ConstStageTableItemEx constStageTableItemEx =
 				this.stageService.getItem(stage);
 
-		Integer level = this.parseInt(pack.get("level")) - 1;
+		//Integer level = this.parseInt(pack.get("level")) - 1;
+		Integer level = this.parseInt(pack.get("level"));
 
 		String itemKey = this.getItemKey(identifier);
 		String tempBackpackItemsKey = getTempBackpackItemsKey(identifier);
