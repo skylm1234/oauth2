@@ -139,7 +139,9 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 						PlayerItemProtobuf.PlayerItem maxhonor = Helper
 								.onNotifyEventOfPromotions(stringRedisTemplate, "maxhonor", num, identifier);
 						playerInfo.addItems(totalHonorItem);
-						playerInfo.addItems(updateRanklistHonor);
+						if (updateRanklistHonor!=null) {
+							playerInfo.addItems(updateRanklistHonor);
+						}
 						playerInfo.addItems(maxhonor);
 
 					}
