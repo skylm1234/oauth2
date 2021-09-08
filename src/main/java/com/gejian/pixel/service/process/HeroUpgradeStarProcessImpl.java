@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
@@ -55,17 +56,17 @@ public class HeroUpgradeStarProcessImpl implements Process<CommHeroUpgradeStarRe
 			return result.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
 		}
 		Map<String, Object> heroMap = redisTemplate.opsForHash().entries(String.format("u:%d:%s:attributes", identifier, hero));
-		if ((int) heroMap.get("level") != 99) {
+		if (NumberUtil.parseInt(heroMap.get("level") + "") != 99) {
 			return result.setResult(ErrorEnum.ERROR_HERO_LEVEL_NOT_EQUAL_99).build();
 		}
 
-		LevelUpgrade level = levelUpgradeService.get((int) heroMap.get("level"));
+		LevelUpgrade level = levelUpgradeService.get(NumberUtil.parseInt(heroMap.get("level") + ""));
 		JSONObject levelJson = JSONUtil.parseObj(level);
 		Long expNeed = levelJson.getLong(String.format("start%s", heroMap.get("star")));
-		if ((long) heroMap.get("exp") < expNeed) {
+		if (NumberUtil.parseLong(heroMap.get("exp") + "") < expNeed) {
 			return result.setResult(ErrorEnum.ERROR_HERO_LEVEL_NOT_EQUAL_99).build();
 		}
-		int star = (int) heroMap.get("star");
+		int star = NumberUtil.parseInt(heroMap.get("star") + "");
 		if (star == 25) {
 			return result.setResult(ErrorEnum.ERROR_REACH_LIMIT).build();
 		}
@@ -74,7 +75,7 @@ public class HeroUpgradeStarProcessImpl implements Process<CommHeroUpgradeStarRe
 		}
 		Integer id = Integer.valueOf(hero.replace("hero_", ""));
 
-		StarUpgrade starUpgrade = starUpgradeService.get((int) heroMap.get("star"));
+		StarUpgrade starUpgrade = starUpgradeService.get(star + 1);
 		ConsumeExpand consumeExpand = JSONUtil.toBean(starUpgrade.getConsumeExpand(), ConsumeExpand.class);
 		if (Helper.itemCount(redisTemplate, identifier, "gold") >= consumeExpand.getGold()) {
 			Integer privateSoulChip = Helper.itemCount(redisTemplate, identifier, String.format("private_soulchip_%s", id));
@@ -111,15 +112,15 @@ public class HeroUpgradeStarProcessImpl implements Process<CommHeroUpgradeStarRe
 			}
 			JSONObject starUpgradeJson = JSONUtil.parseObj(heroHash.getStarUpgradeFomula());
 			Star starAttribute = starUpgradeJson.getBean(String.format("star_%s", star), Star.class);
-			heroMap.put("hp", (int) heroMap.get("hp") + starAttribute.getHp());
-			heroMap.put("attack", (int) heroMap.get("attack") + starAttribute.getAttack());
-			heroMap.put("def", (int) heroMap.get("def") + starAttribute.getDefense());
-			heroMap.put("speed", (int) heroMap.get("speed") + starAttribute.getSpeed());
-			heroMap.put("grow_hp",  starAttribute.getHpUpgrade());
-			heroMap.put("grow_attack",  starAttribute.getAttackUpgrade());
-			heroMap.put("grow_def",   starAttribute.getDefenseUpgrade());
-			heroMap.put("grow_speed",  starAttribute.getSpeedUpgrade());
-			int power = ((int) heroMap.get("hp") + (int) heroMap.get("attack") + (int) heroMap.get("def") + (int) heroMap.get("speed"));
+			heroMap.put("hp", NumberUtil.parseInt(heroMap.get("hp") + "") + starAttribute.getHp());
+			heroMap.put("attack", NumberUtil.parseInt(heroMap.get("attack") + "") + starAttribute.getAttack());
+			heroMap.put("def", NumberUtil.parseInt(heroMap.get("def") + "") + starAttribute.getDefense());
+			heroMap.put("speed", NumberUtil.parseInt(heroMap.get("speed") + "") + starAttribute.getSpeed());
+			heroMap.put("grow_hp", starAttribute.getHpUpgrade());
+			heroMap.put("grow_attack", starAttribute.getAttackUpgrade());
+			heroMap.put("grow_def", starAttribute.getDefenseUpgrade());
+			heroMap.put("grow_speed", starAttribute.getSpeedUpgrade());
+			int power = (NumberUtil.parseInt(heroMap.get("hp") + "") + NumberUtil.parseInt(heroMap.get("attack") + "") + NumberUtil.parseInt(heroMap.get("def") + "") + NumberUtil.parseInt(heroMap.get("speed") + ""));
 			redisTemplate.opsForHash().put(String.format("u:%s:heros", identifier), type, power);
 			redisTemplate.opsForHash().putAll(String.format("u:%s:%s:attributes", identifier, type), heroMap);
 			Helper.updateRanklistPower(redisTemplate, identifier);

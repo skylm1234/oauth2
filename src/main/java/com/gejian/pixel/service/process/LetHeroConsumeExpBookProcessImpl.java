@@ -109,7 +109,7 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 				heroMap.put("exp", exp);
 
 				while ((int) heroMap.get("level") < 99) {
-					LevelUpgrade item = levelUpgradeService.get((int) heroMap.get("level"));
+					LevelUpgrade item = levelUpgradeService.get((int) heroMap.get("level") + 1);
 					Integer expNeed = ReflectUtil.invoke(item, "getStart" + (int) heroMap.get("star"));
 					if ((int) heroMap.get("exp") >= expNeed) {
 						heroMap.put("exp", (int) heroMap.get("exp") - expNeed);
@@ -118,7 +118,7 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 						heroMap.put("def", (int) heroMap.get("def") + (int) heroMap.get("grow_def"));
 						heroMap.put("attack", (int) heroMap.get("attack") + (int) heroMap.get("grow_attack"));
 						heroMap.put("speed", (int) heroMap.get("speed") + (int) heroMap.get("grow_speed"));
-						if (NumberUtil.parseInt(heroMap.get("level")+"") == 99){
+						if (NumberUtil.parseInt(heroMap.get("level") + "") == 99) {
 							heroMap.put("exp", expNeed);
 						}
 					} else {
