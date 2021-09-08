@@ -110,6 +110,7 @@ public class GetPromotionAwardProcessImpl implements
 		PlayerInfoProtobuf.PlayerInfo playerInfo = dropService
 				.dropItem(award, identifier, false, "archives");
 		response.addAllHeros(playerInfo.getHerosList());
+		response.addAllArchives(playerInfo.getArchivesList());
 		response.addAllItems(playerInfo.getItemsList());
 		String s = jsonObject.toString();
 		PlayerStringProtobuf.PlayerString playerString = Helper.setStringValue(redisTemplate, identifier, skName, s);

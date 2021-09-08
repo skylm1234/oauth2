@@ -1110,6 +1110,7 @@ public class Helper {
 				PlayerInfoProtobuf.PlayerInfo playerInfo = dropService
 						.dropItem(drop_action, identifier, true, null);
 				resultBuilder.addAllHeros(playerInfo.getHerosList());
+				resultBuilder.addAllArchives(playerInfo.getArchivesList());
 				resultBuilder.addAllItems(playerInfo.getItemsList());
 			}
 		}
@@ -1120,6 +1121,7 @@ public class Helper {
 				String drop_goblin = constStr.getGoblinFomula().getDropid();
 				PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(drop_goblin, identifier, true, null);
 				resultBuilder.addAllItems(playerInfo.getItemsList());
+				resultBuilder.addAllArchives(playerInfo.getArchivesList());
 				resultBuilder.addAllHeros(playerInfo.getHerosList());
 			}
 		}

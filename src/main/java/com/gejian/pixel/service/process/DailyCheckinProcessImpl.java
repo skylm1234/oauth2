@@ -85,6 +85,7 @@ public class DailyCheckinProcessImpl implements Process<CommDailyCheckinRequestP
 			playerInfo = dropService.dropItem(daily1, identifier, false, null);
 		}
 		builder.addAllHeros(playerInfo.getHerosList())
+				.addAllArchives(playerInfo.getArchivesList())
 				.addAllItems(playerInfo.getItemsList());
 		PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier)
 				, "daily_check_in_timestamp", (int) day);

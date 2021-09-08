@@ -96,6 +96,7 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 				response.addItems(playerItem);
 				PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(buyHeroFf, identifier, false, String.valueOf(type));
 				response.addAllItems(playerInfo.getItemsList())
+						.addAllArchives(playerInfo.getArchivesList())
 						.addAllHeros(playerInfo.getHerosList());
 			} else {
 
@@ -113,6 +114,7 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 
 					PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(buyHeroFf, identifier, false, String.valueOf(type));
 					response.addAllItems(playerInfo.getItemsList())
+							.addAllArchives(playerInfo.getArchivesList())
 							.addAllHeros(playerInfo.getHerosList());
 				} else {
 					return response.setResult(resar.get(type - 1)).build();

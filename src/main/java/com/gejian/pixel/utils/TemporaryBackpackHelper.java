@@ -124,6 +124,7 @@ public class TemporaryBackpackHelper {
 				playerInfo = this.dropService.dropItem(dropAction, identifier, true, null);
 				builder.addAllItems(playerInfo.getItemsList());
 				builder.addAllArchives(playerInfo.getArchivesList());
+				builder.addAllArchives(playerInfo.getArchivesList());
 			}
 
 		}
@@ -137,6 +138,7 @@ public class TemporaryBackpackHelper {
 			for (int i = 0; i < goblins; i++) {
 				playerInfo = this.dropService.dropItem(dropAction, identifier, true, null);
 				builder.addAllItems(playerInfo.getItemsList());
+				builder.addAllArchives(playerInfo.getArchivesList());
 				builder.addAllArchives(playerInfo.getArchivesList());
 			}
 
