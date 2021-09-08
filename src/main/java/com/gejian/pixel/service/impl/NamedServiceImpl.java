@@ -45,6 +45,7 @@ public class NamedServiceImpl extends ServiceImpl<NamedMapper, Named> implements
 					.setName(item.getName())
 					.setTitle(item.getTitle())
 					.setDesc(item.getDesc())
+					.setIcon(item.getIcon())
 					.build();
 
 	}

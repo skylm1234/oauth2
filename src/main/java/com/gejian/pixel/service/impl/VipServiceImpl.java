@@ -53,6 +53,7 @@ public class VipServiceImpl extends ServiceImpl<VipMapper, Vip> implements VipSe
 
 	private ConstVipTableItemExProtobuf.ConstVipTableItemEx convert(Vip item) {
 		return ConstVipTableItemExProtobuf.ConstVipTableItemEx.newBuilder()
+				.setId(item.getId())
 				.setBackpackMax(item.getBackpackMax())
 				.setChanllege(item.getChanllege())
 				.setCharge(item.getCharge())

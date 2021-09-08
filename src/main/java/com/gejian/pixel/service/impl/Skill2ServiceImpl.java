@@ -44,6 +44,8 @@ public class Skill2ServiceImpl extends ServiceImpl<Skill2Mapper, Skill2>
 	private ConstSkill2TableItemExProtobuf.ConstSkill2TableItemEx convert(Skill2 item) {
 		return ConstSkill2TableItemExProtobuf.ConstSkill2TableItemEx.newBuilder()
 				.setAction(item.getAction())
+				.setName(item.getName())
+				.setPriority(item.getPriority())
 				.setDescription(item.getDescription())
 				.setEffect(item.getEffect())
 				.setIcon(item.getIcon())
