@@ -151,8 +151,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				throw new RuntimeException("failed");
 			}
 
-			//generated.dropItemNewbie(redisTemplate, identifier, null, false, null);
 			dropService.dropItem("newbie", identifier, false, null);
+
+
 
 			Map<String,Integer> tempbackpack = new HashMap<>();
 			tempbackpack.put("level", 1);
