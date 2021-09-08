@@ -273,22 +273,22 @@ public class TemporaryBackpackHelper {
 	}
 
 	private HeroBasicInfoProtobuf.HeroBasicInfo.Builder heroBasicInfoBuilder(Map<Object, Object> attributes) {
-		HeroBasicInfoProtobuf.HeroBasicInfo.Builder builder = HeroBasicInfoProtobuf.HeroBasicInfo.newBuilder();
-		Method[] declaredMethods = builder.getClass().getDeclaredMethods();
-		for (Method method : declaredMethods) {
-			String name = method.getName();
-			if (!name.startsWith("set")) {
-				continue;
-			}
-			String ak = name.substring(3).toLowerCase();
-			Object av = attributes.get(ak);
-			try {
-				method.invoke(builder, av);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return builder;
+		return HeroBasicInfoProtobuf.HeroBasicInfo.newBuilder()
+				.setId(this.parseInt(attributes.get("id")))
+				.setType(this.parseString(attributes.get("type")))
+				.setLevel(this.parseInt(attributes.get("level")))
+				.setExp(this.parseInt(attributes.get("exp")))
+				.setQuality(this.parseInt(attributes.get("quality")))
+				.setStar(this.parseInt(attributes.get("star")))
+				.setGrowHp(this.parseInt(attributes.get("grow_hp")))
+				.setHp(this.parseInt(attributes.get("hp")))
+				.setGrowDef(this.parseInt(attributes.get("grow_def")))
+				.setDef(this.parseInt(attributes.get("def")))
+				.setGrowAttack(this.parseInt(attributes.get("grow_attack")))
+				.setAttack(this.parseInt(attributes.get("attack")))
+				.setGrowSpeed(this.parseInt(attributes.get("grow_speed")))
+				.setSpeed(this.parseInt(attributes.get("speed")))
+				.setNumber(this.parseInt(attributes.get("number")));
 	}
 
 
