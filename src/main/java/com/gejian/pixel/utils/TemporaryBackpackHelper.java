@@ -209,7 +209,7 @@ public class TemporaryBackpackHelper {
 
 								if (this.parseLong(attributes.get("level")) == 99L) {
 									levelUpgrade = levelUpgradeService.get(this.parseInt(attributes.get("level")) - 1);
-									method = levelUpgrade.getClass().getMethod("start" + attributes.get("star").toString());
+									method = levelUpgrade.getClass().getMethod("getStart" + attributes.get("star").toString());
 									expNeed = this.parseLong(method.invoke(levelUpgrade));
 									attributes.put("exp", expNeed);
 								}
