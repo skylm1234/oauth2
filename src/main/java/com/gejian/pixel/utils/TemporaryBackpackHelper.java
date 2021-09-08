@@ -64,11 +64,9 @@ public class TemporaryBackpackHelper {
 
 		Integer stage = this.parseInt(pack.get("stage"));
 
-		//  RUBY_CONST_STAGE_TABLE_HASH["X#{pack['stage']}"]
 		ConstStageTableItemExProtobuf.ConstStageTableItemEx constStageTableItemEx =
 				this.stageService.getItem(stage);
 
-		//Integer level = this.parseInt(pack.get("level")) - 1;
 		Integer level = this.parseInt(pack.get("level"));
 
 		String itemKey = this.getItemKey(identifier);
@@ -193,7 +191,7 @@ public class TemporaryBackpackHelper {
 					LevelUpgrade levelUpgrade;
 					while (this.parseLong(attributes.get("level")) < 99L) {
 
-						levelUpgrade = levelUpgradeService.get(this.parseInt(attributes.get("level")) - 1);
+						levelUpgrade = levelUpgradeService.get(this.parseInt(attributes.get("level")));
 
 						try {
 
@@ -210,7 +208,7 @@ public class TemporaryBackpackHelper {
 								attributes.put("speed", this.parseLong(attributes.get("speed")) + this.parseLong(attributes.get("grow_speed")));
 
 								if (this.parseLong(attributes.get("level")) == 99L) {
-									levelUpgrade = levelUpgradeService.get(this.parseInt(attributes.get("level")) - 1);
+									levelUpgrade = levelUpgradeService.get(this.parseInt(attributes.get("level")));
 									method = levelUpgrade.getClass().getMethod("getStart" + attributes.get("star").toString());
 									expNeed = this.parseLong(method.invoke(levelUpgrade));
 									attributes.put("exp", expNeed);
@@ -233,7 +231,9 @@ public class TemporaryBackpackHelper {
 					this.redisTemplate.opsForHash().put(herosKey, attributes.get("type"), power);
 
 					PlayerItemProtobuf.PlayerItem playerItem = Helper.updateRanklistHonor(redisTemplate, identifier);
-					builder.addArchives(playerItem);
+					if (playerItem!=null) {
+						builder.addArchives(playerItem);
+					}
 
 
 					// 设置属性

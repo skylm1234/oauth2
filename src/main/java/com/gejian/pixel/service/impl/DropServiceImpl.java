@@ -139,17 +139,19 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 						PlayerItemProtobuf.PlayerItem maxhonor = Helper
 								.onNotifyEventOfPromotions(stringRedisTemplate, "maxhonor", num, identifier);
 						playerInfo.addItems(totalHonorItem);
-						playerInfo.addItems(updateRanklistHonor);
-						playerInfo.addItems(maxhonor);
+						if (updateRanklistHonor!=null) {
+							playerInfo.addItems(updateRanklistHonor);
+						}
+						playerInfo.addArchives(maxhonor);
 
 					}
 				}
 				if (type.startsWith("exp_book_")) {
 					PlayerItemProtobuf.PlayerItem expbooks = Helper.onNotifyEventOfPromotions(stringRedisTemplate, "expbooks", num, identifier);
-					playerInfo.addItems(expbooks);
+					playerInfo.addArchives(expbooks);
 				} else if ("gold".equals(type)) {
 					PlayerItemProtobuf.PlayerItem maxgold = Helper.onNotifyEventOfPromotions(stringRedisTemplate, "maxgold", num, identifier);
-					playerInfo.addItems(maxgold);
+					playerInfo.addArchives(maxgold);
 				}
 			} else if ("exp".equals(type)) {
 				//上阵角色都加经验
