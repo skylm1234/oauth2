@@ -195,7 +195,7 @@ public class TemporaryBackpackHelper {
 
 						try {
 
-							Method method = levelUpgrade.getClass().getMethod("start" + this.parseString(attributes.get("star")));
+							Method method = levelUpgrade.getClass().getMethod("getStart" + this.parseString(attributes.get("star")));
 							Long expNeed = this.parseLong(method.invoke(levelUpgrade));
 
 							if (this.parseLong(attributes.get("exp")) >= expNeed) {
