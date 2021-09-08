@@ -253,11 +253,11 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 					max = backpack.getItemMax();
 				}
 				long result = stringRedisTemplate.opsForHash()
-						.increment(StrUtil.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS, identifier)
+						.increment(StrUtil.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS, String.valueOf(identifier))
 								, type, num);
 				if (result > max) {
 					stringRedisTemplate.opsForHash()
-							.put(StrUtil.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS, identifier)
+							.put(StrUtil.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS, String.valueOf(identifier))
 									, type, max);
 				}
 			}
