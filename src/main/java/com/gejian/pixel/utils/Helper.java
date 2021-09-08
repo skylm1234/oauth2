@@ -731,7 +731,7 @@ public class Helper {
 				break;
 			case "type_3_monster_kill":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "type_3_monster_kill", parameter);
-				item = appedArchivesToReply("type_3monster_kill", Long.parseLong(now + ""));
+				item = appedArchivesToReply("type_3_monster_kill", Long.parseLong(now + ""));
 				break;
 			case "type_1_boss_kill":
 				map = new HashMap();
@@ -815,11 +815,11 @@ public class Helper {
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_skill_upgrade", parameter);
 				item = appedArchivesToReply("daily_skill_upgrade", Long.parseLong(now + ""));
 				break;
-			case "daily_pvp_times":
+			case "daily_monster_kill":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_monster_kill", parameter);
 				item = appedArchivesToReply("daily_monster_kill", Long.parseLong(now + ""));
 				break;
-			case "daily_monster_kill":
+			case "daily_pvp_times":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "daily_pvp_times", parameter);
 				item = appedArchivesToReply("daily_pvp_times", Long.parseLong(now + ""));
 				break;
