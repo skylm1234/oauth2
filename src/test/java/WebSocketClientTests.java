@@ -7,7 +7,9 @@ import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommLoginRequestProtobuf;
 import com.gejian.pixel.proto.CommLoginResponseProtobuf;
 import com.gejian.pixel.proto.MessageBaseProtobuf;
+import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.MessageLite;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -34,9 +36,26 @@ public class WebSocketClientTests {
 	public void onMessage(byte[] messages, Session session) throws InvalidProtocolBufferException {
 		log.info("reply:{}",messages);
 		MessageBaseProtobuf.MessageBase messageBase = MessageBaseProtobuf.MessageBase.parseFrom(messages);
-		CommLoginResponseProtobuf.CommLoginResponse commLoginResponse = CommLoginResponseProtobuf.CommLoginResponse.parseFrom(messageBase.getData());
+		String name = messageBase.getName();
+		if (name.contains("LOGIN")){
+			CommLoginResponseProtobuf.CommLoginResponse commLoginResponse = CommLoginResponseProtobuf.CommLoginResponse.parseFrom(messageBase.getData());
+			log.info("回复登陆消息:{}{}",messageBase,commLoginResponse);
+		} else {
+			ByteString data = messageBase.getData();
+			MessageLite messageLite = reply2Proto(data);
+			log.info("回复业务消息:{}\n{}",name,messageLite);
+		}
 
-		log.info("回复消息:{}{}",messageBase,commLoginResponse);
+	}
+
+	/**
+	 * 回复转proto实体
+	 * @param byteString
+	 * @return
+	 * @throws InvalidProtocolBufferException
+	 */
+	private  static  MessageLite reply2Proto(ByteString byteString) throws InvalidProtocolBufferException {
+		return null;
 	}
 
 	@OnError
@@ -57,12 +76,7 @@ public class WebSocketClientTests {
 				.setData("1630986780")
 				.setCipher("DBDE9269F4E47C0FC8B111854B43C551C8A58974")
 				.build();
-		/*CommLoginRequestProtobuf.CommLoginRequest request = CommLoginRequestProtobuf.CommLoginRequest.newBuilder()
-				.setIdentifier("28")
-				.setVersion(11)
-				.setData("1630997451")
-				.setCipher("D14B356084853978DB05326E6AFFFDA1EFD76EBB")
-				.build();*/
+
 		byte[] bytes = MessageBaseProtobuf.MessageBase.newBuilder()
 				.setName(CommandConstants.LOGIN_REQUEST)
 				.setData(request.toByteString())
@@ -70,24 +84,20 @@ public class WebSocketClientTests {
 				.toByteArray();
 		session.getBasicRemote()
 				.sendBinary(ByteBuffer.wrap(bytes),true);
+		byte[] businessMsg = sendBusinessMsg();
 		session.getBasicRemote()
-						.sendBinary(ByteBuffer.wrap(bytes),true);
+						.sendBinary(ByteBuffer.wrap(businessMsg),true);
 		Thread.sleep(500000);
 
 	}
 
-	public static void main1(String[] args) {
-		/*String s = StrFormatter.format("{} {}  {}   {}",
-				"1630986780",
-				11,
-				"",
-				NumberUtil.parseLong("1630986780") * 11);*/
-		String s = StrFormatter.format("{} {}  {}   {}",
-				"1630986780",
-				11,
-				"25",
-				NumberUtil.parseLong("1630986780") * 11);
-		System.out.println("SecureUtil.sha1(s) = " + SecureUtil.sha1(s).toUpperCase());
+	/**
+	 * 	发送业务消息
+	 * @return
+	 */
+	public static byte[] sendBusinessMsg(){
+		// TODO 业务process 请求体
+		return new byte[1024];
 	}
 
 }
