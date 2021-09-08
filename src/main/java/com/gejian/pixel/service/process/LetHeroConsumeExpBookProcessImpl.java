@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
@@ -93,7 +94,7 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 
 		for (int i = 0; i < request.getBooksCount(); i++) {
 
-			if (null == Helper.decreaseItemValue(redisTemplate,
+			if (null != Helper.decreaseItemValue(redisTemplate,
 					identifier, request.getBooks(i), 1L)) {
 				Integer delta = expBookService.getExpBook(request.getBooks(i)).getValue();
 				if (null == delta) {
@@ -105,10 +106,11 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 				int exp = (int) heroMap.get("exp");
 
 				exp += delta;
+				heroMap.put("exp", exp);
 
 				while ((int) heroMap.get("level") < 99) {
 					LevelUpgrade item = levelUpgradeService.get((int) heroMap.get("level"));
-					Integer expNeed = ReflectUtil.invoke(item, "getStar" + (int) heroMap.get("star"));
+					Integer expNeed = ReflectUtil.invoke(item, "getStart" + (int) heroMap.get("star"));
 					if ((int) heroMap.get("exp") >= expNeed) {
 						heroMap.put("exp", (int) heroMap.get("exp") - expNeed);
 						heroMap.put("level", (int) heroMap.get("level") + 1);
@@ -116,7 +118,9 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 						heroMap.put("def", (int) heroMap.get("def") + (int) heroMap.get("grow_def"));
 						heroMap.put("attack", (int) heroMap.get("attack") + (int) heroMap.get("grow_attack"));
 						heroMap.put("speed", (int) heroMap.get("speed") + (int) heroMap.get("grow_speed"));
-						// TODO
+						if (NumberUtil.parseInt(heroMap.get("level")+"") == 99){
+							heroMap.put("exp", expNeed);
+						}
 					} else {
 						break;
 					}
@@ -136,20 +140,20 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 
 			redisTemplate.opsForHash().putAll(StrUtil.format(ConsumeExpBookRedisKeyConstants.USER_ATTRIBUTES, map), heroMap);
 
-			HeroBasicInfoProtobuf.HeroBasicInfo h = (HeroBasicInfoProtobuf.HeroBasicInfo) toProtoBean(HeroBasicInfoProtobuf.HeroBasicInfo.newBuilder(), JSONUtil.toJsonStr(heroMap));
+			HeroBasicInfoProtobuf.HeroBasicInfo.Builder h = ((HeroBasicInfoProtobuf.HeroBasicInfo) toProtoBean(HeroBasicInfoProtobuf.HeroBasicInfo.newBuilder(), JSONUtil.toJsonStr(heroMap))).toBuilder();
 
-			Map<String, Integer> skills = redisTemplate.opsForHash().entries(StrUtil.format(ConsumeExpBookRedisKeyConstants.USER_SKILLS, map));
+			Map<String, Object> skills = redisTemplate.opsForHash().entries(StrUtil.format(ConsumeExpBookRedisKeyConstants.USER_SKILLS, map));
 
 			skills.entrySet().forEach(objectObjectEntry -> {
 
 				HeroSkillProtobuf.HeroSkill s = HeroSkillProtobuf.HeroSkill.newBuilder()
 						.setType(objectObjectEntry.getKey())
-						.setLevel(objectObjectEntry.getValue())
+						.setLevel(NumberUtil.parseInt(objectObjectEntry.getValue().toString()))
 						.build();
-				h.getSkillsList().add(s);
+				h.addSkills(s);
 			});
 
-			response.getHerosList().add(h);
+			response.addHeros(h);
 		}
 
 		return response.build();
