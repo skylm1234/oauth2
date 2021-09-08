@@ -36,5 +36,11 @@ public class Named {
 	@TableField("`desc`")
 	private String desc;
 
+	/**
+	 *
+	 */
+	@TableField("`icon`")
+	private String icon;
+
 
 }

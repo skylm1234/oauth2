@@ -44,6 +44,7 @@ public class PromotionServiceImpl extends ServiceImpl<PromotionMapper, Promotion
 	private ConstPromotionTableItemExProtobuf.ConstPromotionTableItemEx convert(Promotion item) {
 		return ConstPromotionTableItemExProtobuf.ConstPromotionTableItemEx
 				.newBuilder()
+				.setTitle(item.getTitle())
 				.setType(item.getType())
 				.setId(item.getId())
 				.setCompareType(item.getCompareType())

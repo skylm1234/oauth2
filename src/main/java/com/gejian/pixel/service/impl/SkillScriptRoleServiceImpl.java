@@ -46,6 +46,7 @@ public class SkillScriptRoleServiceImpl extends ServiceImpl<SkillScriptRoleMappe
 	private ConstSkillScriptsRoleTableItemExProtobuf.ConstSkillScriptsRoleTableItemEx convert(SkillScriptRole item) {
 		return ConstSkillScriptsRoleTableItemExProtobuf.ConstSkillScriptsRoleTableItemEx.newBuilder()
 				.setAttack(item.getAttack())
+				.setName(item.getName())
 				.setCrit(item.getCrit())
 				.setDefense(item.getDefense())
 				.setAttack01Audio(item.getAttack01Audio())

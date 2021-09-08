@@ -48,6 +48,7 @@ public class BackpackServiceImpl extends ServiceImpl<BackpackMapper, Backpack>
 				.setExpMax(backpack.getExpMax())
 				.setLevel(backpack.getLevel())
 				.setGoldMax(backpack.getGoldMax())
+				.setItemMax(backpack.getItemMax())
 				.setPrerequests(backpack.getPrerequests())
 				.setFomula(ConstBackpackTableItemExFomulaProtobuf.ConstBackpackTableItemExFomula.newBuilder()
 						.setStone(JSONUtil.parseObj(backpack.getFomula()).getInt("stone")))

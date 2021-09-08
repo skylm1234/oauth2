@@ -42,6 +42,8 @@ public class ConstantsInit {
 		byte[] bytes = constTables.toByteArray();
 		FileUtil.writeBytes(bytes,BIN_FILE);
 
+		FileUtil.writeUtf8String(constTables.toString(),CONSTANTS_DIR_PATH +"/" + "consts.txt");
+
 		String md5 = SecureUtil.md5(new File(BIN_FILE));
 		String sha1 = SecureUtil.sha1(new File(BIN_FILE));
 		FileUtil.writeUtf8String(md5,CONSTANTS_DIR_PATH +"/" + "consts.md5");

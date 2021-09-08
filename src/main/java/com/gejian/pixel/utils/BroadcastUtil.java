@@ -12,7 +12,7 @@ import com.gejian.pixel.proto.MessageBaseProtobuf;
 public class BroadcastUtil {
 
 	public static void broadcast(MessageBaseProtobuf.MessageBase data) {
-		ChannelManager.broadcast(data);
+		//ChannelManager.broadcast(data);
 	}
 
 }
