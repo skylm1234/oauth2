@@ -1,16 +1,22 @@
+import cn.hutool.core.text.StrFormatter;
+import cn.hutool.core.util.NumberUtil;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.SecureUtil;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommLoginRequestProtobuf;
 import com.gejian.pixel.proto.CommLoginResponseProtobuf;
-import com.gejian.pixel.proto.CommUpdateTemporaryBackpackRequestProtobuf;
 import com.gejian.pixel.proto.MessageBaseProtobuf;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.websocket.*;
 import java.net.URI;
 import java.nio.ByteBuffer;
+import java.security.MessageDigest;
 
 /**
  * @author ZhouQiang
@@ -65,10 +71,10 @@ public class WebSocketClientTests {
 		Session session = container.connectToServer(WebSocketClientTests.class, URI.create(uri));
 
 		CommLoginRequestProtobuf.CommLoginRequest request = CommLoginRequestProtobuf.CommLoginRequest.newBuilder()
-				.setIdentifier("155")
+				.setIdentifier("")
 				.setVersion(11)
-				.setData("1631069209")
-				.setCipher("CE09BA8B1F1C4C57CAB355C2B379E037145F8650")
+				.setData("1630986780")
+				.setCipher("DBDE9269F4E47C0FC8B111854B43C551C8A58974")
 				.build();
 
 		byte[] bytes = MessageBaseProtobuf.MessageBase.newBuilder()
@@ -86,21 +92,12 @@ public class WebSocketClientTests {
 	}
 
 	/**
-	 * 发送业务消息
-	 *
+	 * 	发送业务消息
 	 * @return
 	 */
-	public static byte[] sendBusinessMsg() {
-		CommUpdateTemporaryBackpackRequestProtobuf.CommUpdateTemporaryBackpackRequest request = CommUpdateTemporaryBackpackRequestProtobuf.CommUpdateTemporaryBackpackRequest.newBuilder()
-				.setGoblins(0)
-				.setMonsters(0)
-				.build();
-
-		return MessageBaseProtobuf.MessageBase.newBuilder()
-				.setName(CommandConstants.UPDATE_TEMPORARY_BACKPACK)
-				.setData(request.toByteString())
-				.build()
-				.toByteArray();
+	public static byte[] sendBusinessMsg(){
+		// TODO 业务process 请求体
+		return new byte[1024];
 	}
 
 }
