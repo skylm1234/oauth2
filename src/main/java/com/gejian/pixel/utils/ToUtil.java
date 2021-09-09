@@ -1,5 +1,7 @@
 package com.gejian.pixel.utils;
 
+import cn.hutool.core.util.NumberUtil;
+
 /**
  * @Author:chen
  * @Date: 2021/9/1 18:02
@@ -25,7 +27,7 @@ public class ToUtil {
 				result.append(trim.charAt(i));
 			}
 		}
-		return Integer.parseInt(result.toString());
+		return NumberUtil.parseInt(result.toString());
 	}
 
 }
