@@ -97,7 +97,9 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 			MessageBaseProtobuf.MessageBase.Builder builder = MessageBaseProtobuf.MessageBase.newBuilder()
 					.setName(name.replace("_REQUEST","_RESPONSE"));
 			if (Objects.nonNull(resultObj)) {
-				ReflectUtil.invoke(resultObj.toBuilder(), "setRequest", messageLite);
+				MessageLite.Builder resultBuilder = resultObj.toBuilder();
+				ReflectUtil.invoke(resultBuilder, "setRequest", messageLite);
+				resultObj = (AbstractMessageLite) resultBuilder.build();
 				ByteString bytes = resultObj.toByteString();
 				builder.setData(bytes);
 			}
