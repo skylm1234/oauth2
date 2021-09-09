@@ -378,7 +378,6 @@ public class Helper {
 				heroBuilder.setGrowSpeed(NumberUtil.parseInt((NumberUtil.parseInt(basicUpgradeExpandJsonObj.get("speed")+"") * rate ) + ""));
 				heroBuilder.setSpeed(NumberUtil.parseInt((NumberUtil.parseInt(basicExpandJsonObj.get("speed")+"") * rate ) + ""));
 				heroBuilder.setNumber(1);
-				playerInfo.addHeros(heroBuilder.build());
 				Long teams = redisTemplate.opsForHash().size("u:" + identifier + ":teams");
 				if (teams < 5) {
 
