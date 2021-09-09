@@ -62,8 +62,6 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 
 		CommBuyHeroResponseProtobuf.CommBuyHeroResponse.Builder response = CommBuyHeroResponseProtobuf.CommBuyHeroResponse.newBuilder();
 
-		//return (CommBuyHeroResponseProtobuf.CommBuyHeroResponse) toProtoBean(response, "{\"request\":{\"type\":1},\"heros\":[{\"id\":98,\"type\":\"hero_10006\",\"level\":1,\"quality\":1,\"growHp\":31,\"hp\":178,\"growDef\":1,\"def\":3,\"growAttack\":3,\"attack\":17,\"speed\":215,\"skills\":[{\"type\":\"skill_0001\",\"level\":1},{\"type\":\"skill_1006\",\"level\":1},{\"type\":\"skill_2006\"},{\"type\":\"skill_3006\"},{\"type\":\"skill_3053\"}],\"number\":1}],\"items\":[{\"key\":\"buy_hero_1_timestamp\",\"value\":\"1631201235\"},{\"key\":\"exp_book_3\",\"value\":\"1\"},{\"key\":\"buy_hero_1_price\",\"value\":\"50\"},{\"key\":\"buy_hero_2_price\",\"value\":\"10000\"},{\"key\":\"buy_hero_3_price\",\"value\":\"100\"}],\"teams\":[{\"key\":\"hero_20001\",\"value\":\"1\"},{\"key\":\"hero_10006\",\"value\":\"2\"}],\"archives\":[{\"key\":\"mostheros\",\"value\":\"2\"},{\"key\":\"expbooks\",\"value\":\"2\"},{\"key\":\"mosthire\",\"value\":\"1\"},{\"key\":\"daily_buy_hero\",\"value\":\"1\"}],\"teamsPvp\":[{\"key\":\"hero_20001\",\"value\":\"1\"},{\"key\":\"hero_10006\",\"value\":\"2\"}]}");
-
 		int type = commBuyHeroRequest.getType();
 
 		BuyHero typeInfo = buyHeroService.getHero(type);
