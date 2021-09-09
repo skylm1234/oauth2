@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.impl;
 
+import cn.hutool.core.util.NumberUtil;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gejian.pixel.entity.QualityUpgradeRate;
@@ -41,7 +42,7 @@ public class QualityUpgradeRateServiceImpl extends ServiceImpl<QualityUpgradeRat
 
 	@Override
 	public QualityUpgradeRate getById(Integer id) {
-		return hash.get(id);
+		return hash.get(NumberUtil.parseLong(id+""));
 	}
 
 	private ConstQualityUpgradeRateTableItemExProtobuf.ConstQualityUpgradeRateTableItemEx convert(QualityUpgradeRate item){

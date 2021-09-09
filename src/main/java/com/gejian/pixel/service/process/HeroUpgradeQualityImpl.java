@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.util.NumberUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.gejian.pixel.annotation.CommandResponse;
@@ -89,7 +90,8 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 		Matcher m = compile.matcher(hero);
 		if (m.find()) {
 			Integer id = ToUtil.to_i(m.group(1));
-			Integer qualityValue = ToUtil.to_i(heroMap.get(qualityStr)) - 1;
+			//Integer qualityValue = ToUtil.to_i(heroMap.get(qualityStr)) - 1;
+			Integer qualityValue = ToUtil.to_i(heroMap.get(qualityStr));
 
 			//获取RubyConstQualityUpgradeTable
 			ConstQualityUpgradeTableItemExProtobuf.ConstQualityUpgradeTableItemEx item = qualityUpgradeService.getQualityUpgradeById(qualityValue);
@@ -110,22 +112,25 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 				heroMap.put(qualityStr, quality);
 
 				//获取rate0
-				QualityUpgradeRate qualityUpgradeRate0 = qualityUpgradeRateService.getById(quality.intValue() - 2);
+				//QualityUpgradeRate qualityUpgradeRate0 = qualityUpgradeRateService.getById(quality.intValue() - 2);
+				QualityUpgradeRate qualityUpgradeRate0 = qualityUpgradeRateService.getById(quality.intValue() - 1);
 				float rate0 = quality > 2 ? Float.parseFloat(qualityUpgradeRate0.getUp()) : 0f;
 				//获取rate
-				QualityUpgradeRate qualityUpgradeRate = qualityUpgradeRateService.getById(quality.intValue() - 1);
+				//QualityUpgradeRate qualityUpgradeRate = qualityUpgradeRateService.getById(quality.intValue() - 1);
+				QualityUpgradeRate qualityUpgradeRate = qualityUpgradeRateService.getById(quality.intValue());
 				float rate = Float.parseFloat(qualityUpgradeRate.getUp());
 				log.info(heroMap.toString());
 
 				//map赋值
-				heroMap.put("hp", (quality == 2) ? (ToUtil.to_i((float) heroMap.get("hp") * rate)) : ToUtil.to_i((float) heroMap.get("hp") / rate0 * rate));
-				heroMap.put("attack", (quality == 2) ? (ToUtil.to_i((float) heroMap.get("attack") * rate)) : ToUtil.to_i((float) heroMap.get("attack") / rate0 * rate));
-				heroMap.put("def", (quality == 2) ? (ToUtil.to_i((float) heroMap.get("def") * rate)) : ToUtil.to_i((float) heroMap.get("def") / rate0 * rate));
-				heroMap.put("speed", (quality == 2) ? (ToUtil.to_i((float) heroMap.get("speed") * rate)) : ToUtil.to_i((float) heroMap.get("speed") / rate0 * rate));
-				heroMap.put("grow_hp", (quality == 2) ? (ToUtil.to_i((float) heroMap.get("grow_hp") * rate)) : ToUtil.to_i((float) heroMap.get("grow_hp") / rate0 * rate));
-				heroMap.put("grow_attack", (quality == 2) ? (ToUtil.to_i((float) heroMap.get("grow_attack") * rate)) : ToUtil.to_i((float) heroMap.get("grow_attack") / rate0 * rate));
-				heroMap.put("grow_def", (quality == 2) ? (ToUtil.to_i((float) heroMap.get("grow_def") * rate)) : ToUtil.to_i((float) heroMap.get("grow_def") / rate0 * rate));
-				heroMap.put("grow_speed", (quality == 2) ? (ToUtil.to_i((float) heroMap.get("grow_speed") * rate)) : ToUtil.to_i((float) heroMap.get("grow_speed") / rate0 * rate));
+				heroMap.put("hp", (quality == 2) ? (ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("hp")+"") * rate)) : ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("hp")+"") / rate0 * rate));
+				heroMap.put("hp", (quality == 2) ? (ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("hp")+"") * rate)) : ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("hp")+"") / rate0 * rate));
+				heroMap.put("attack", (quality == 2) ? (ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("attack")+"") * rate)) : ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("attack")+"") / rate0 * rate));
+				heroMap.put("def", (quality == 2) ? (ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("def")+"") * rate)) : ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("def")+"") / rate0 * rate));
+				heroMap.put("speed", (quality == 2) ? (ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("speed")+"") * rate)) : ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("speed")+"") / rate0 * rate));
+				heroMap.put("grow_hp", (quality == 2) ? (ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_hp")+"") * rate)) : ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_hp")+"") / rate0 * rate));
+				heroMap.put("grow_attack", (quality == 2) ? (ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_attack")+"") * rate)) : ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_attack")+"") / rate0 * rate));
+				heroMap.put("grow_def", (quality == 2) ? (ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_def")+"") * rate)) : ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_def")+"") / rate0 * rate));
+				heroMap.put("grow_speed", (quality == 2) ? (ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_speed")+"") * rate)) : ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_speed")+"") / rate0 * rate));
 
 				String power = heroMap.get("hp").toString() + heroMap.get("def").toString() + heroMap.get("attack").toString() + heroMap.get("speed").toString();
 				//设置power
@@ -148,7 +153,7 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 				for (Object o : skillKey) {
 					HeroSkillProtobuf.HeroSkill.Builder skill = HeroSkillProtobuf.HeroSkill.newBuilder();
 					skill.setType(String.valueOf(o));
-					skill.setLevel((Integer) skillsMap.get(o));
+					skill.setLevel(NumberUtil.parseInt(skillsMap.get(o)+""));
 					heroBasicInfo.addSkills(skill);
 				}
 				reply.addHeros(heroBasicInfo);
@@ -165,7 +170,7 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 					String nickName = new String(Helper.stringValue(redisTemplate, identifier, "nickname").getBytes("UTF-8"), "UTF-8");
 					Helper.boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" +
 							nickName + "</color>升级英雄<color=red>" + heroTable.getName() +
-							"</color>到" + qarray.get(qualityValue - 2) + "!");
+							"</color>到" + qarray.get(qualityValue - 1) + "!");
 				}
 			} else {
 				log.error("{}:{}", Helper.itemCount(redisTemplate, identifier, "private_soulchip_" + id), item.getConsumeExpand().getPrivateSoulchip());
