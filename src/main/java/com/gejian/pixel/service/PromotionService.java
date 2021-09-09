@@ -8,4 +8,5 @@ import com.gejian.pixel.entity.Promotion;
  */
 public interface PromotionService extends IService<Promotion> {
 
+	Promotion getById(Integer id);
 }

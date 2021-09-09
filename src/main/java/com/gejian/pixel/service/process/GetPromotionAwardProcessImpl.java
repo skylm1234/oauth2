@@ -11,6 +11,7 @@ import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.Process;
+import com.gejian.pixel.service.PromotionService;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +37,7 @@ public class GetPromotionAwardProcessImpl implements
 	private StringRedisTemplate redisTemplate;
 
 	@Autowired
-	private PromotionInit promotionInit;
+	private PromotionService promotionService;
 
 	@Autowired
 	private DropService dropService;
@@ -46,7 +47,7 @@ public class GetPromotionAwardProcessImpl implements
 	doProcess(CommGetPromotionAwardRequestProtobuf.CommGetPromotionAwardRequest request) throws Exception {
 		CommGetPromotionAwardResponseProtobuf.CommGetPromotionAwardResponse.Builder response =
 				CommGetPromotionAwardResponseProtobuf.CommGetPromotionAwardResponse.newBuilder();
-		Promotion promotion = promotionInit.getById(request.getPromotionId());
+		Promotion promotion = promotionService.getById(request.getPromotionId());
 		if (Objects.isNull(promotion)) {
 			response.setResult(ErrorEnum.ERROR_PROMOTION_NOT_EXIST);
 			response.setRequest(request);
