@@ -15,12 +15,15 @@ import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
+import com.google.protobuf.Message;
+import com.google.protobuf.util.JsonFormat;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.support.SimpleTriggerContext;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,6 +62,8 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 
 		CommBuyHeroResponseProtobuf.CommBuyHeroResponse.Builder response = CommBuyHeroResponseProtobuf.CommBuyHeroResponse.newBuilder();
 
+		//return (CommBuyHeroResponseProtobuf.CommBuyHeroResponse) toProtoBean(response, "{\"request\":{\"type\":1},\"heros\":[{\"id\":98,\"type\":\"hero_10006\",\"level\":1,\"quality\":1,\"growHp\":31,\"hp\":178,\"growDef\":1,\"def\":3,\"growAttack\":3,\"attack\":17,\"speed\":215,\"skills\":[{\"type\":\"skill_0001\",\"level\":1},{\"type\":\"skill_1006\",\"level\":1},{\"type\":\"skill_2006\"},{\"type\":\"skill_3006\"},{\"type\":\"skill_3053\"}],\"number\":1}],\"items\":[{\"key\":\"buy_hero_1_timestamp\",\"value\":\"1631201235\"},{\"key\":\"exp_book_3\",\"value\":\"1\"},{\"key\":\"buy_hero_1_price\",\"value\":\"50\"},{\"key\":\"buy_hero_2_price\",\"value\":\"10000\"},{\"key\":\"buy_hero_3_price\",\"value\":\"100\"}],\"teams\":[{\"key\":\"hero_20001\",\"value\":\"1\"},{\"key\":\"hero_10006\",\"value\":\"2\"}],\"archives\":[{\"key\":\"mostheros\",\"value\":\"2\"},{\"key\":\"expbooks\",\"value\":\"2\"},{\"key\":\"mosthire\",\"value\":\"1\"},{\"key\":\"daily_buy_hero\",\"value\":\"1\"}],\"teamsPvp\":[{\"key\":\"hero_20001\",\"value\":\"1\"},{\"key\":\"hero_10006\",\"value\":\"2\"}]}");
+
 		int type = commBuyHeroRequest.getType();
 
 		BuyHero typeInfo = buyHeroService.getHero(type);
@@ -93,6 +98,8 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 			response.addItems(playerItem);
 			PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(buyHeroFf, identifier, false, String.valueOf(type));
 			response.addAllItems(playerInfo.getItemsList())
+					.addAllTeams(playerInfo.getTeamsList())
+					.addAllTeamsPvp(playerInfo.getTeamsPvpList())
 					.addAllArchives(playerInfo.getArchivesList())
 					.addAllHeros(playerInfo.getHerosList());
 		} else {
@@ -111,6 +118,8 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 
 				PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(buyHeroFf, identifier, false, String.valueOf(type));
 				response.addAllItems(playerInfo.getItemsList())
+						.addAllTeams(playerInfo.getTeamsList())
+						.addAllTeamsPvp(playerInfo.getTeamsPvpList())
 						.addAllArchives(playerInfo.getArchivesList())
 						.addAllHeros(playerInfo.getHerosList());
 			} else {
@@ -128,6 +137,12 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 
 		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, MOSTHIRE, 1, identifier));
 		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, DAILY_BUY_HERO, 1, identifier));
+
 		return response.build();
+	}
+
+	private static Message toProtoBean(Message.Builder targetBuilder, String json) throws IOException {
+		JsonFormat.parser().merge(json, targetBuilder);
+		return targetBuilder.build();
 	}
 }

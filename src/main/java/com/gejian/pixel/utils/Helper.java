@@ -392,7 +392,7 @@ public class Helper {
 								.build();
 						playerItems.add(t);
 					});
-					playerInfo.addAllItems(playerItems);
+					playerInfo.addAllTeams(playerItems);
 				}
 				Long teams_pvp = redisTemplate.opsForHash().size("u:" + identifier + ":teams_pvp");
 				if (teams_pvp < 5) {
@@ -408,7 +408,7 @@ public class Helper {
 								.build();
 						playerItems.add(t);
 					});
-					playerInfo.addAllItems(playerItems);
+					playerInfo.addAllTeamsPvp(playerItems);
 				}
 
 				HeroSkillProtobuf.HeroSkill.Builder skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();

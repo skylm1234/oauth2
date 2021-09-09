@@ -55,7 +55,8 @@ public class CompoundHeroProcessImpl implements Process<CommCompoundHeroRequestP
 						// 2021/9/3 award_hero_for_me(identifier, request.hero, reply, nil)
 						PlayerInfoProtobuf.PlayerInfo playerInfo = Helper.awardHeroForMe(redisTemplate, identifier, request.getHero(), null);
 						replyBuilder.addAllHeros(playerInfo.getHerosList());
-						replyBuilder.addAllItems(playerInfo.getItemsList());
+						replyBuilder.addAllTeams(playerInfo.getItemsList());
+						replyBuilder.addAllTeamsPvp(playerInfo.getTeamsPvpList());
 					}else {
 						log.error("FAILED: {}=>{}:{}", identifier, Thread.currentThread().getStackTrace()[1].getMethodName(), Thread.currentThread().getStackTrace()[1].getLineNumber());
 						replyBuilder.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND);

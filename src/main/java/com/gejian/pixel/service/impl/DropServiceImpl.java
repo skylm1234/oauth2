@@ -228,8 +228,10 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 				PlayerInfoProtobuf.PlayerInfo pi = Helper
 						.awardHeroForMe(stringRedisTemplate, identifier, type, parameter);
 				playerInfo
+						.addAllItems(pi.getItemsList())
 						.addAllHeros(pi.getHerosList())
-						.addAllItems(pi.getItemsList());
+						.addAllTeams(pi.getItemsList())
+						.addAllTeamsPvp(pi.getTeamsPvpList());
 			}
 		}
 	}
