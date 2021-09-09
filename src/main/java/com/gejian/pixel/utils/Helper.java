@@ -476,7 +476,7 @@ public class Helper {
 
 				String stringValueNickname = stringValue(redisTemplate, identifier, "nickname");
 				if (stringValueNickname!=null) {
-					String bcmsg = "PWBC快讯：祝贺玩家<color=red>"+stringValueNickname+"</color>获得英雄<color=red>#{record['name']}</color>！";
+					String bcmsg = StrFormatter.format("PWBC快讯：祝贺玩家<color=red>{}</color>获得英雄<color=red>{}</color>！",stringValueNickname,record.getName());
 					boardcaseWorldEvent(bcmsg);
 				}
 			}else {
