@@ -42,7 +42,7 @@ public class UpgradeHeroSkillLevelProcessImpl implements Process<CommUpgradeHero
 		Integer identifier = UserHolder.get().getIdentifier();
 		CommUpgradeHeroSkillLevelResponseProtobuf.CommUpgradeHeroSkillLevelResponse.Builder result
 				= CommUpgradeHeroSkillLevelResponseProtobuf.CommUpgradeHeroSkillLevelResponse.newBuilder()
-				.setRequest(request).setResult(1);
+				.setRequest(request).setResult(ErrorEnum.ERROR_SUCCESS);
 		String hero = request.getHero();
 		if (!redisTemplate.hasKey(String.format("u:%s:%s:attributes", identifier, hero))) {
 			result.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND);
