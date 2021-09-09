@@ -18,10 +18,12 @@
 package com.gejian.pixel.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.DefaultBaseTypeLimitingValidator;
 import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
@@ -52,7 +54,10 @@ public class RedisTemplateConfig {
 				new Jackson2JsonRedisSerializer<>(Object.class);
 		ObjectMapper om = new ObjectMapper();
 		om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-		om.activateDefaultTyping(new DefaultBaseTypeLimitingValidator(),ObjectMapper.DefaultTyping.NON_FINAL);
+		om.activateDefaultTyping( LaissezFaireSubTypeValidator.instance ,
+				ObjectMapper.DefaultTyping.NON_FINAL,
+
+				JsonTypeInfo.As.WRAPPER_ARRAY);
 		jackson2JsonRedisSerializer.setObjectMapper(om);
 		redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
 		redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
