@@ -11,7 +11,6 @@ import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.Process;
-import com.gejian.pixel.service.init.PromotionInit;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
