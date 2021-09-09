@@ -204,7 +204,7 @@ public class Helper {
 	 * @return 物品信息
 	 */
 	public static PlayerItemProtobuf.PlayerItem setItemValue(RedisTemplate redisTemplate, String identifier, String name, Integer delta) {
-		redisTemplate.opsForHash().put("u:" + identifier + ":items", name, delta);
+		redisTemplate.opsForHash().put("u:" + identifier + ":items", name, String.valueOf(delta));
 		PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
 				.newBuilder()
 				.setKey(name)
@@ -938,7 +938,7 @@ public class Helper {
 	}
 
 	public static void __update_ranklist(RedisTemplate redisTemplate, Integer identifier, String ranklist, Integer score) {
-		redisTemplate.opsForZSet().add("ranklist:" + ranklist, score, NumberUtil.parseLong(hexEncode(stringValue(redisTemplate, identifier, "nickname"))));
+		redisTemplate.opsForZSet().add("ranklist:" + ranklist, String.valueOf(score), NumberUtil.parseLong(hexEncode(stringValue(redisTemplate, identifier, "nickname"))));
 	}
 
 

@@ -92,6 +92,10 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 
 			// 物品掉落几率
 			Integer factor = selectFromMultipleAward(first);
+			if (factor > first.size()-1) {
+				//如果几率超出范围，那么就重新计算几率
+				factor = RandomUtil.randomInt(first.size());
+			}
 			DropItem dropItem = first.get(factor);
 			//获得奖励
 			int size = dropItem.getElements().size();
