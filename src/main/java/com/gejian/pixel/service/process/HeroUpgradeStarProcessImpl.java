@@ -50,7 +50,7 @@ public class HeroUpgradeStarProcessImpl implements Process<CommHeroUpgradeStarRe
 		Integer identifier = UserHolder.get().getIdentifier();
 		CommHeroUpgradeStarResponseProtobuf.CommHeroUpgradeStarResponse.Builder result
 				= CommHeroUpgradeStarResponseProtobuf.CommHeroUpgradeStarResponse.newBuilder()
-				.setRequest(request).setResult(1);
+				.setRequest(request).setResult(ErrorEnum.ERROR_SUCCESS);
 		String hero = request.getHero();
 		if (!redisTemplate.hasKey(String.format("u:%s:%s:attributes", identifier, hero))) {
 			return result.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
