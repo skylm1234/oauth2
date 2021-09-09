@@ -55,7 +55,7 @@ public class HeroUpgradeStarProcessImpl implements Process<CommHeroUpgradeStarRe
 		if (!redisTemplate.hasKey(String.format("u:%s:%s:attributes", identifier, hero))) {
 			return result.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
 		}
-		Map<String, Object> heroMap = redisTemplate.opsForHash().entries(String.format("u:%d:%s:attributes", identifier, hero));
+		Map<String, Object> heroMap = redisTemplate.opsForHash().entries(String.format("u:%s:%s:attributes", identifier, hero));
 		if (NumberUtil.parseInt(heroMap.get("level") + "") != 99) {
 			return result.setResult(ErrorEnum.ERROR_HERO_LEVEL_NOT_EQUAL_99).build();
 		}
