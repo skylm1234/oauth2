@@ -69,7 +69,7 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 				if (cooldown!=0 && Helper.currentTimestamp()-items.get("buy_hero_"+x+"_timestamp") >= cooldown) {
 					prices.put("buy_hero_"+x+"_price", 0);
 				}else {
-					double fomula = buyHeroService.calculation(x - 1, 0);
+					double fomula = buyHeroService.calculation(x, 0);
 					prices.put("buy_hero_"+x+"_price", NumberUtil.parseInt(fomula+""));
 				}
 			}
