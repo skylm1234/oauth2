@@ -1106,6 +1106,8 @@ public class Helper {
 				resultBuilder.addAllHeros(playerInfo.getHerosList());
 				resultBuilder.addAllArchives(playerInfo.getArchivesList());
 				resultBuilder.addAllItems(playerInfo.getItemsList());
+				resultBuilder.addAllTeams(playerInfo.getTeamsList());
+				resultBuilder.addAllTeamsPvp(playerInfo.getTeamsPvpList());
 			}
 		}
 
@@ -1117,6 +1119,8 @@ public class Helper {
 				resultBuilder.addAllItems(playerInfo.getItemsList());
 				resultBuilder.addAllArchives(playerInfo.getArchivesList());
 				resultBuilder.addAllHeros(playerInfo.getHerosList());
+				resultBuilder.addAllTeams(playerInfo.getTeamsList());
+				resultBuilder.addAllTeamsPvp(playerInfo.getTeamsPvpList());
 			}
 		}
 
