@@ -230,7 +230,7 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 				playerInfo
 						.addAllItems(pi.getItemsList())
 						.addAllHeros(pi.getHerosList())
-						.addAllTeams(pi.getItemsList())
+						.addAllTeams(pi.getTeamsList())
 						.addAllTeamsPvp(pi.getTeamsPvpList());
 			}
 		}

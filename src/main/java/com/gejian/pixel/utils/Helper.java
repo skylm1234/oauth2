@@ -341,8 +341,6 @@ public class Helper {
 		if (r) {
 			String id = type.split("_")[1];
 
-			//String[][] record = RUBY_CONST_HERO_TABLE_HASH["X#{id}"]
-			//Map<String, Map> record = null;
 			Hero record = heroHashList.get(NumberUtil.parseInt(id));
 
 			if (redisTemplate.opsForHash().putIfAbsent("u:" + identifier + ":heros", type, "1")) {
@@ -360,9 +358,6 @@ public class Helper {
 
 				if (parameter != null) {
 					if ("3".equals(parameter)) {
-						// 后面要替换
-						// rate = RUBY_CONST_QUALITY_UPGRADE_RATE_TABLE[1]["up"].to_f
-						//rate = 1.0f;
 						rate = NumberUtil.parseFloat(qualityUpgradeRates.get(1).getUp());
 					}
 				}
