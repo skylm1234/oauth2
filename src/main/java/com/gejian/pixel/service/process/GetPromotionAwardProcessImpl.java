@@ -112,6 +112,8 @@ public class GetPromotionAwardProcessImpl implements
 		response.addAllHeros(playerInfo.getHerosList());
 		response.addAllArchives(playerInfo.getArchivesList());
 		response.addAllItems(playerInfo.getItemsList());
+		response.addAllTeams(playerInfo.getTeamsList())
+				.addAllTeamsPvp(playerInfo.getTeamsPvpList());
 		String s = jsonObject.toString();
 		PlayerStringProtobuf.PlayerString playerString = Helper.setStringValue(redisTemplate, identifier, skName, s);
 		return response.addStrings(playerString)

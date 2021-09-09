@@ -125,6 +125,9 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 			PlayerInfoProtobuf.PlayerInfo rpInfo = dropItem(type, identifier, false, parameter);
 			playerInfo.addAllHeros(rpInfo.getHerosList());
 			playerInfo.addAllItems(rpInfo.getItemsList());
+			playerInfo.addAllTeamsPvp(rpInfo.getTeamsPvpList());
+			playerInfo.addAllTeams(rpInfo.getTeamsList());
+			playerInfo.addAllArchives(rpInfo.getArchivesList());
 		} else {
 			if ("gold".equals(type) || "stone".equals(type) || "honor".equals(type) ||
 					type.matches("^exp_book_.*$") || type.matches("^private_soulchip_.*$")

@@ -69,7 +69,10 @@ public class StagePassedProcessImpl implements Process<CommStagePassedRequestPro
 		StageBossAwardFomula stageBossAwardFomula = JSONUtil.toBean(bossAwardFomula,
 				StageBossAwardFomula.class);
 		String dropid = stageBossAwardFomula.getDropid();
-		dropService.dropItem(dropid,identifier,false,null);
+		PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(dropid, identifier, false, null);
+		response.addAllArchives(playerInfo.getArchivesList())
+				.addAllItems(playerInfo.getItemsList())
+				.addAllHeros(playerInfo.getHerosList());
 		String key = StrUtil.format("type_{}_boss_kill",request.getType());
 		PlayerItemProtobuf.PlayerItem item = Helper
 				.onNotifyEventOfPromotions(redisTemplate, key, request.getStage(), identifier);
