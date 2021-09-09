@@ -39,7 +39,7 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 	private BuyHeroService buyHeroService;
 
 	@Override
-	public CommQueryBuyHeroPriceResponseProtobuf.CommQueryBuyHeroPriceResponse doProcess(CommQueryBuyHeroPriceRequestProtobuf.CommQueryBuyHeroPriceRequest commQueryBuyHeroPriceRequest) throws Exception {
+	public CommQueryBuyHeroPriceResponseProtobuf.CommQueryBuyHeroPriceResponse doProcess(CommQueryBuyHeroPriceRequestProtobuf.CommQueryBuyHeroPriceRequest request) throws Exception {
 		CommQueryBuyHeroPriceResponseProtobuf.CommQueryBuyHeroPriceResponse.Builder responseBuilder = CommQueryBuyHeroPriceResponseProtobuf
 				.CommQueryBuyHeroPriceResponse.newBuilder();
 
@@ -67,11 +67,10 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 				Integer cooldown = buyHero.getCooldown();
 
 				if (cooldown!=0 && Helper.currentTimestamp()-items.get("buy_hero_"+x+"_timestamp") >= cooldown) {
-					prices.put("buy_hero_"+identifier+"_price", 0);
+					prices.put("buy_hero_"+x+"_price", 0);
 				}else {
 					double fomula = buyHeroService.calculation(x - 1, 0);
 					prices.put("buy_hero_"+x+"_price", NumberUtil.parseInt(fomula+""));
-
 				}
 			}
 		}
@@ -82,6 +81,8 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 		log.info("{}",responseBuilder.getPricesList());
 
 		redisTemplate.opsForHash().putAll("u:"+identifier+":items", items);
+
+		responseBuilder.setRequest(request);
 
 		return responseBuilder.build();
 	}
