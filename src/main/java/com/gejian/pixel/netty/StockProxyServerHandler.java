@@ -118,14 +118,16 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 	}
 
 	private void createUserSession(Channel channel, CommLoginResponseProtobuf.CommLoginResponse loginRes) {
-		String identifier = loginRes.getPlayer().getIdentifier();
-		String session = loginRes.getPlayer().getSession();
-		UserInfo userInfo = new UserInfo();
-		userInfo.setIdentifier(Integer.valueOf(identifier));
-		userInfo.setSession(session);
-		channel.attr(AttributeKeyConstants.USER_INFO_ATTRIBUTE_KEY).set(userInfo);
-		String key = StrUtil.format(RedisKeyConstants.USER,userInfo.getIdentifier());
-		redisTemplate.opsForValue().set(key,session, 1, TimeUnit.DAYS);
+		if (loginRes.getResult()==0) {
+			String identifier = loginRes.getPlayer().getIdentifier();
+			String session = loginRes.getPlayer().getSession();
+			UserInfo userInfo = new UserInfo();
+			userInfo.setIdentifier(Integer.valueOf(identifier));
+			userInfo.setSession(session);
+			channel.attr(AttributeKeyConstants.USER_INFO_ATTRIBUTE_KEY).set(userInfo);
+			String key = StrUtil.format(RedisKeyConstants.USER,userInfo.getIdentifier());
+			redisTemplate.opsForValue().set(key,session, 1, TimeUnit.DAYS);
+		}
 	}
 
 	private Type[] getMessageType(Class<?> targetClass) {
