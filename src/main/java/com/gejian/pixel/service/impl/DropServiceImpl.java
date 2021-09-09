@@ -352,7 +352,17 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 								}
 								lastList.forEach(num -> {
 									num = StrUtil.trim(num);
-									lastItem.add(StrUtil.trim(s1 + num));
+									if (num.contains("-")){
+										List<String> numStartEnd = StrUtil.split(num, "-");
+										int start = Integer.parseInt(numStartEnd.get(0).trim());
+										int end = Integer.parseInt(numStartEnd.get(1).trim());
+										while (start <= end){
+											lastItem.add(StrUtil.trim(s1 + start));
+											start ++;
+										}
+									} else {
+										lastItem.add(StrUtil.trim(s1 + num));
+									}
 								});
 							}
 							break;
@@ -385,6 +395,9 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 		});
 		return one;
 	}
+
+
+
 
 
 
