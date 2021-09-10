@@ -1048,7 +1048,7 @@ public class Helper {
 
 		long exp_delta = duration * constStr.getBasicAwardFomula().getExp();
 
-
+		m = new Formatter();
 		if (redisTemplate.opsForHash().hasKey(m.format("u:#{identifier}:items", identifier).toString(), "double_exp_card_2")) {
 			double ratio = 1.0;
 			if (vip != 0) {
@@ -1057,9 +1057,11 @@ public class Helper {
 			exp_delta *= ratio;
 		}
 
+		m = new Formatter();
 		Integer exp_max = backpackService.getByLevel(level).getExpMax();
 		if (redisTemplate.opsForHash().increment(m.format("u:%d:temp_backpack_items", identifier).toString(), "exp", exp_delta) >
 				exp_max) {
+			m = new Formatter();
 			redisTemplate.opsForHash().put(m.format("u:%d:temp_backpack_items", identifier), "exp", exp_max);
 		}
 
