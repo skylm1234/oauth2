@@ -426,14 +426,28 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		}
 
 		log.info("__top_n_of_ranklist from {} to {}",from,to);
-		Set ar = redisTemplate.opsForZSet().reverseRangeByScore("ranklist:" + ranklist, from, to);
+		Set ar = redisTemplate.opsForZSet().reverseRangeByScoreWithScores("ranklist:" + ranklist, from, to);
 		for (Object o : ar) {
-			List<String> x = (List<String>) o;
+			// TODO: 2021/9/10 排名列表可能有问题
+			/*
+			ar.each do |x|
+				puts "__top_n_of_ranklist #{x[0]} #{x[1]}"
+				ranks[ranks.length] = {'key' => hex_decode(x[0]), 'value' => x[1]}
+			end
+			 */
+			JSONObject x = JSONUtil.parseObj(o);
+			log.info("__top_n_of_ranklist {} {}",x.get("value"),x.get("score"));
+			Map<String,Object> rankData = new HashMap<>();
+			rankData.put("key", Helper.hexDecode(x.get("value")+""));
+			rankData.put("value", NumberUtil.parseLong(x.get("score")+""));
+			ranks.add(rankData);
+
+			/*List<String> x = (List<String>) o;
 			log.info("__top_n_of_ranklist {} {}",x.get(0),x.get(1));
 			Map<String,Object> rankData = new HashMap<>();
 			rankData.put("key", Helper.hexDecode(x.get(0)));
 			rankData.put("value", Long.parseLong(x.get(1)));
-			ranks.add(rankData);
+			ranks.add(rankData);*/
 		}
 
 		TopRangePower topRangePower = new TopRangePower();
