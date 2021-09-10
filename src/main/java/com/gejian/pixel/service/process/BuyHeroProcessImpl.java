@@ -125,7 +125,7 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 			}
 		}
 
-		for (int i = 0; i <= 2; i++) {
+		for (int i = 1; i <= 3; i++) {
 			PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(BUY_HERO_NUM_PRICE, i),
 					(int) buyHeroService.calculation(i,
 							Helper.itemCount(redisTemplate, identifier, StrUtil.format(BUY_HERO_TYPE_TIMES
