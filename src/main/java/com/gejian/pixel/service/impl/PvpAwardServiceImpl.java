@@ -64,4 +64,9 @@ public class PvpAwardServiceImpl extends ServiceImpl<PvpAwardMapper, PvpAward> i
 				.build();
 		builder.setPvpAwards(build);
 	}
+
+	@Override
+	public Map<Integer, PvpAward> getHash() {
+		return hash;
+	}
 }
