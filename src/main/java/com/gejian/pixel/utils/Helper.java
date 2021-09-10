@@ -531,9 +531,6 @@ public class Helper {
 		if (r) {
 			String id = type.split("_")[1];
 
-			//2021/8/31 后面要替换
-			//String[][] record = RUBY_CONST_HERO_TABLE_HASH["X#{id}"]
-			//Map<String, Object> record = null;
 			Hero record = heroHashList.get(id);
 
 			if (redisTemplate.opsForHash().putIfAbsent("u:" + identifier + ":heros", type, 1)) {
@@ -573,18 +570,6 @@ public class Helper {
 				heroBuilder.setGrowSpeed(Integer.parseInt(((Float) basicUpgradeExpand.get("speed") * rate) + ""));
 				heroBuilder.setSpeed(Integer.parseInt(((Float) basicExpand.get("speed") * rate) + ""));
 				heroBuilder.setNumber(1);
-				/*heroBuilder.setQuality(parameter != null && parameter == 3 ? 2 : 1);
-				JSONObject basicUpgradeExpand = (JSONObject) record.get("basic_upgrade_expand");
-				heroBuilder.setGrowHp(Integer.parseInt(((Float) basicUpgradeExpand.get("hp") * rate) + ""));
-				JSONObject basicExpand = (JSONObject) record.get("basic_expand");
-				heroBuilder.setHp(Integer.parseInt(((Float) basicExpand.get("hp") * rate) + ""));
-				heroBuilder.setGrowDef(Integer.parseInt(((Float) basicUpgradeExpand.get("defense") * rate) + ""));
-				heroBuilder.setDef(Integer.parseInt(((Float) basicExpand.get("defense") * rate) + ""));
-				heroBuilder.setGrowAttack(Integer.parseInt(((Float) basicUpgradeExpand.get("attack") * rate) + ""));
-				heroBuilder.setAttack(Integer.parseInt(((Float) basicExpand.get("attack") * rate) + ""));
-				heroBuilder.setGrowSpeed(Integer.parseInt(((Float) basicUpgradeExpand.get("speed") * rate) + ""));
-				heroBuilder.setSpeed(Integer.parseInt(((Float) basicExpand.get("speed") * rate) + ""));
-				heroBuilder.setNumber(1);*/
 
 				Long teams = redisTemplate.opsForHash().size("u:" + identifier + ":teams");
 				if (teams < 5) {
@@ -674,17 +659,6 @@ public class Helper {
 				hhs.put(record.getSkill4(), 0);
 				redisTemplate.opsForHash().putAll("u:" + identifier + ":" + heroBuilder.getType() + ":skills", hhs);
 
-				/*
-				update_ranklist_power(identifier, reply)
-	            if reply != nil then
-	                reply.heros.push(hero)
-	            end
-
-                if string_value(identifier, "nickname") != nil then
-                    bcmsg = "PWBC快讯：祝贺玩家<color=red>#{string_value(identifier, "nickname").force_encoding("UTF-8")}</color>获得英雄<color=red>#{record["name"]}</color>！"
-                    boardcase_world_event(bcmsg)
-                end
-				 */
 				updateRanklistPower(redisTemplate, identifier, reply);
 				if (reply != null) {
 					reply.addHeros(hero);
@@ -1056,19 +1030,20 @@ public class Helper {
 		PlayerInfoProtobuf.PlayerInfo.Builder resultBuilder = PlayerInfoProtobuf.PlayerInfo.newBuilder();
 		Formatter m = new Formatter();
 		Map<Object, Object> pack = redisTemplate.opsForHash().entries(m.format("u:%d:temp_backpack", identifier).toString());
+		m = new Formatter();
 		PlayerItemProtobuf.PlayerItem playerItem = onNotifyEventOfPromotions(redisTemplate, m.format("type_%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
 		PlayerItemProtobuf.PlayerItem playerItem1 = onNotifyEventOfPromotions(redisTemplate, "daily_monster_kill", monsters, identifier);
-		PlayerItemProtobuf.PlayerItem playerItem2 = onNotifyEventOfPromotions(redisTemplate, m.format("daily_type__%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
+		m = new Formatter();
+		PlayerItemProtobuf.PlayerItem playerItem2 = onNotifyEventOfPromotions(redisTemplate, m.format("daily_type_%s_monster_kill", pack.get("type").toString()).toString(), monsters, identifier);
 		resultBuilder.addArchives(playerItem);
 		resultBuilder.addArchives(playerItem1);
 		resultBuilder.addArchives(playerItem2);
 		Integer vip = itemCount(redisTemplate, identifier, "vip");
 
-		Long duration = current_timestamp() - (long) pack.get("dungeon_enter_timestamp");
+		Long duration = current_timestamp() - NumberUtil.parseLong(pack.get("dungeon_enter_timestamp").toString());
 
-		ConstStageTableItemExProtobuf.ConstStageTableItemEx constStr = stageService.getExById((int) pack.get("stage"));
+		ConstStageTableItemExProtobuf.ConstStageTableItemEx constStr = stageService.getExById(NumberUtil.parseInt(pack.get("stage").toString()));
 
-//		int level = ToUtil.to_i(pack.get("level")) - 1;
 		int level = ToUtil.to_i(pack.get("level")) ;
 
 		long exp_delta = duration * constStr.getBasicAwardFomula().getExp();
