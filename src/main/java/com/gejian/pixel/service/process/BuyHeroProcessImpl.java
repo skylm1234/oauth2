@@ -83,11 +83,11 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 
 		List<Integer> resar = Arrays.asList(ErrorEnum.ERROR_NOT_ENOUGH_HONOR, ErrorEnum.ERROR_NOT_ENOUGH_GOLD, ErrorEnum.ERROR_NOT_ENOUGH_STONE);
 
-		if (typeInfo.getCooldown() != 0 && Helper.currentTimestamp() -
+		if ((typeInfo.getCooldown() != 0 && Helper.currentTimestamp() -
 				Helper.itemCount(redisTemplate, identifier,
-						StrUtil.format(BUY_HERO_TYPE_TIMESTAMP, type)) >= typeInfo.getCooldown()
+						StrUtil.format(BUY_HERO_TYPE_TIMESTAMP, type)) >= typeInfo.getCooldown())
 				|| buyHeroService.calculation(
-				type - 1,
+				type,
 				Helper.itemCount(redisTemplate, identifier,
 						StrUtil.format(BUY_HERO_TYPE_TIMES, type))) == 0
 		) {
@@ -102,15 +102,15 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 					.addAllHeros(playerInfo.getHerosList());
 		} else {
 
-			if (null == Helper.decreaseItemValue(redisTemplate, identifier, typeInfo.getConsume()
+			if (null != Helper.decreaseItemValue(redisTemplate, identifier, typeInfo.getConsume()
 					, (long) buyHeroService.calculation(
-							type - 1,
+							type,
 							Helper.itemCount(redisTemplate, identifier,
 									StrUtil.format(BUY_HERO_TYPE_TIMES, type))))) {
 
 				PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(BUY_HERO_TYPE_TIMES
 						, type), Helper.itemCount(redisTemplate, identifier, StrUtil.format(BUY_HERO_TYPE_TIMES,
-						type) + 1));
+						type)) + 1);
 				response.addItems(playerItem);
 
 
@@ -121,7 +121,7 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 						.addAllArchives(playerInfo.getArchivesList())
 						.addAllHeros(playerInfo.getHerosList());
 			} else {
-				return response.setResult(resar.get(type - 1)).build();
+				return response.setResult(resar.get(type-1)).build();
 			}
 		}
 

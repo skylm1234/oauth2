@@ -4,16 +4,18 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
-import com.gejian.pixel.proto.CommLoginRequestProtobuf;
-import com.gejian.pixel.proto.CommLoginResponseProtobuf;
-import com.gejian.pixel.proto.MessageBaseProtobuf;
+import com.gejian.pixel.proto.*;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Message;
 import com.google.protobuf.MessageLite;
+import com.google.protobuf.util.JsonFormat;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.regexp.RE;
 
 import javax.websocket.*;
+import java.io.IOException;
 import java.net.URI;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
@@ -55,7 +57,18 @@ public class WebSocketClientTests {
 	 * @throws InvalidProtocolBufferException
 	 */
 	private  static  MessageLite reply2Proto(ByteString byteString) throws InvalidProtocolBufferException {
-		return null;
+		/*try {
+			System.out.println(toJson(CommBuyHeroResponseProtobuf.CommBuyHeroResponse.parseFrom(byteString)));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}*/
+		return CommEnterDungeonResponseProtobuf.CommEnterDungeonResponse.parseFrom(byteString);
+	}
+
+	public static String toJson(Message sourceMessage)
+			throws IOException {
+		String json = JsonFormat.printer().print(sourceMessage);
+		return json;
 	}
 
 	@OnError
@@ -70,12 +83,24 @@ public class WebSocketClientTests {
 		//String uri = "ws://110.40.133.173:32011/ws";
 		Session session = container.connectToServer(WebSocketClientTests.class, URI.create(uri));
 
-		CommLoginRequestProtobuf.CommLoginRequest request = CommLoginRequestProtobuf.CommLoginRequest.newBuilder()
+		/*CommLoginRequestProtobuf.CommLoginRequest request = CommLoginRequestProtobuf.CommLoginRequest.newBuilder()
 				.setIdentifier("")
 				.setVersion(11)
 				.setData("1630986780")
 				.setCipher("DBDE9269F4E47C0FC8B111854B43C551C8A58974")
+				.build();*/
+		CommLoginRequestProtobuf.CommLoginRequest request = CommLoginRequestProtobuf.CommLoginRequest.newBuilder()
+				.setIdentifier("11")
+				.setVersion(11)
+				.setData("1631257889")
+				.setCipher("4B56BE6156815AA6EF7BEBA5CAF5671BAF4463A9")
 				.build();
+		/*CommLoginRequestProtobuf.CommLoginRequest request = CommLoginRequestProtobuf.CommLoginRequest.newBuilder()
+				.setIdentifier("159")
+				.setVersion(11)
+				.setData("1631207340")
+				.setCipher("4712B9A202EA8604B10B5C6510FFC45ED4E178C1")
+				.build();*/
 
 		byte[] bytes = MessageBaseProtobuf.MessageBase.newBuilder()
 				.setName(CommandConstants.LOGIN_REQUEST)
@@ -85,10 +110,18 @@ public class WebSocketClientTests {
 		session.getBasicRemote()
 				.sendBinary(ByteBuffer.wrap(bytes),true);
 		byte[] businessMsg = sendBusinessMsg();
-		session.getBasicRemote()
-						.sendBinary(ByteBuffer.wrap(businessMsg),true);
+		session.getBasicRemote().sendBinary(ByteBuffer.wrap(businessMsg),true);
 		Thread.sleep(500000);
 
+	}
+
+	public static void main1(String[] args) {
+		String s = StrFormatter.format("{} {}  {}   {}",
+				"1631239629",
+				11,
+				96,
+				NumberUtil.parseLong("1631239629") * 11);
+		System.out.println(SecureUtil.sha1(s).toUpperCase());
 	}
 
 	/**
@@ -97,7 +130,19 @@ public class WebSocketClientTests {
 	 */
 	public static byte[] sendBusinessMsg(){
 		// TODO 业务process 请求体
-		return new byte[1024];
+
+		CommEnterDungeonRequestProtobuf.CommEnterDungeonRequest request = CommEnterDungeonRequestProtobuf.CommEnterDungeonRequest
+				.newBuilder()
+				.setType(1)
+				.setStage(2)
+				.build();
+		byte[] bytes = MessageBaseProtobuf.MessageBase.newBuilder()
+				.setName(CommandConstants.ENTER_DUNGEON)
+				.setData(request.toByteString())
+				.build()
+				.toByteArray();
+
+		return bytes;
 	}
 
 }
