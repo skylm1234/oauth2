@@ -932,7 +932,7 @@ public class Helper {
 	}
 
 	public static void __update_ranklist(RedisTemplate redisTemplate, Integer identifier, String ranklist, Integer score) {
-		redisTemplate.opsForZSet().add("ranklist:" + ranklist, String.valueOf(score), NumberUtil.parseLong(hexEncode(stringValue(redisTemplate, identifier, "nickname"))));
+		redisTemplate.opsForZSet().add("ranklist:" + ranklist, hexEncode(stringValue(redisTemplate, identifier, "nickname")), Double.valueOf(score));
 	}
 
 

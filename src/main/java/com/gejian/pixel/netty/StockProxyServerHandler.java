@@ -3,6 +3,7 @@ package com.gejian.pixel.netty;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.AttributeKeyConstants;
+import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
@@ -98,8 +99,10 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 					.setName(name.replace("_REQUEST","_RESPONSE"));
 			if (Objects.nonNull(resultObj)) {
 				MessageLite.Builder resultBuilder = resultObj.toBuilder();
-				ReflectUtil.invoke(resultBuilder, "setRequest", messageLite);
-				resultObj = (AbstractMessageLite) resultBuilder.build();
+				if (!CommandConstants.LOGIN_REQUEST.equals(name)){
+					ReflectUtil.invoke(resultBuilder, "setRequest", messageLite);
+					resultObj = (AbstractMessageLite) resultBuilder.build();
+				}
 				ByteString bytes = resultObj.toByteString();
 				builder.setData(bytes);
 			}

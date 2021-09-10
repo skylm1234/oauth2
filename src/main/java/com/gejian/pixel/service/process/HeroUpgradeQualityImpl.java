@@ -132,7 +132,7 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 				heroMap.put("grow_def", (quality == 2) ? (ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_def")+"") * rate)) : ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_def")+"") / rate0 * rate));
 				heroMap.put("grow_speed", (quality == 2) ? (ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_speed")+"") * rate)) : ToUtil.to_i(NumberUtil.parseFloat(heroMap.get("grow_speed")+"") / rate0 * rate));
 
-				String power = heroMap.get("hp").toString() + heroMap.get("def").toString() + heroMap.get("attack").toString() + heroMap.get("speed").toString();
+				String power = (NumberUtil.parseInt(heroMap.get("hp").toString()) + NumberUtil.parseInt(heroMap.get("def").toString()) + NumberUtil.parseInt(heroMap.get("attack").toString()) + NumberUtil.parseInt(heroMap.get("speed").toString()))+"";
 				//设置power
 				redisTemplate.opsForHash().put(String.format("u:%d:heros", identifier), heroMap.get("type"), power);
 				//存个map
