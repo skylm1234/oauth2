@@ -251,7 +251,7 @@ public class Helper {
 	 * @return
 	 */
 	public static PlayerItemProtobuf.PlayerItem decreaseItemValue(RedisTemplate redisTemplate, Integer identifier, String name, Long delta) {
-		return increaseItemValue(redisTemplate, identifier, name, delta);
+		return increaseItemValue(redisTemplate, identifier, name, -1*delta);
 	}
 
 	/**
