@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.util.NumberUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
@@ -54,16 +55,21 @@ public class UpgradeHeroSkillLevelProcessImpl implements Process<CommUpgradeHero
 			return result.setResult(ErrorEnum.ERROR_SKILL_NOT_FOUND).build();
 		}
 
-		if ((int) skillMap.get(skill) == 0) {
+		if (NumberUtil.parseInt(skillMap.get(skill)+"") == 0) {
 			return result.setResult(ErrorEnum.ERROR_SKILL_NOT_UNLOCK_YET).build();
 		}
 
-		if ((int) skillMap.get(skill) >= 10) {
+		if (NumberUtil.parseInt(skillMap.get(skill)+"") >= 10) {
 			return result.setResult(ErrorEnum.ERROR_REACH_LIMIT).build();
 		}
 
-		UpgradeConsumeFomula upgradeConsumeFomula = JSONUtil.toBean(skillService.getById(skill).getUpgradeConsumeFomula()
-				, UpgradeConsumeFomula.class);
+		/*UpgradeConsumeFomula upgradeConsumeFomula = JSONUtil.toBean(skillService.getById(skill).getUpgradeConsumeFomula()
+				, UpgradeConsumeFomula.class);*/
+		String consumeFomulaStr = skillService.getById(skill).getUpgradeConsumeFomula();
+		JSONObject consumeFomulaStrJSONObj = JSONUtil.parseObj(consumeFomulaStr);
+		UpgradeConsumeFomula upgradeConsumeFomula = JSONUtil.toBean(String.valueOf(consumeFomulaStrJSONObj.get("X"+skillMap.get(request.getSkill()))),UpgradeConsumeFomula.class);
+
+
 		if (Objects.isNull(upgradeConsumeFomula)) {
 			return result.setResult(ErrorEnum.ERROR_UNKNOW_SKILL).build();
 		}
@@ -77,13 +83,19 @@ public class UpgradeHeroSkillLevelProcessImpl implements Process<CommUpgradeHero
 				&& (skillBookCount >= skillNeedBook
 				|| (skillBookCount + commonCount) >= skillNeedBook)) {
 
-			Helper.decreaseItemValue(redisTemplate, identifier, "gold", Long.valueOf(skillNeedGold));
-			if (skillBookCount >= skillNeedBook) {
-				Helper.decreaseItemValue(redisTemplate, identifier, "book", Long.valueOf(skillNeedBook));
-			} else {
-				Helper.decreaseItemValue(redisTemplate, identifier, "book", Long.valueOf(skillBookCount));
-				Helper.decreaseItemValue(redisTemplate, identifier, "book_skill_0000", (long)(skillNeedBook - skillBookCount));
+			PlayerItemProtobuf.PlayerItem goldItem = Helper.decreaseItemValue(redisTemplate, identifier, "gold", Long.parseLong(skillNeedGold + ""));
+			result.addItems(goldItem);
+			PlayerItemProtobuf.PlayerItem bookItem = Helper.decreaseItemValue(redisTemplate, identifier, "book_" + request.getSkill(), Long.parseLong(skillNeedBook + ""));
+			if (bookItem!=null) {
+				result.addItems(bookItem);
+			}else {
+				Integer count = Helper.itemCount(redisTemplate, identifier, "book_" + request.getSkill());
+				PlayerItemProtobuf.PlayerItem newBookItem = Helper.decreaseItemValue(redisTemplate, identifier, "book_" + request.getSkill(), Long.parseLong(count+""));
+				result.addItems(newBookItem);
+				PlayerItemProtobuf.PlayerItem bookSkill0000Item = Helper.decreaseItemValue(redisTemplate, identifier, "book_skill_0000", Long.parseLong((skillNeedBook - count) + ""));
+				result.addItems(bookSkill0000Item);
 			}
+
 			Long level = redisTemplate.opsForHash().increment(String.format("u:%s:%s:skills", identifier, hero), skill, 1);
 			if (level > 10) {
 				PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "maxtopskills", 1, identifier);
