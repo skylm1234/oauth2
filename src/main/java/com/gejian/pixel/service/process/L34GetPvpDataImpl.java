@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.util.NumberUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
@@ -47,7 +48,7 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 
 		// 获取VIP数据
 		ConstVipTableItemExProtobuf.ConstVipTableItemEx vipTableItemEx =
-				vipService.getItem(vip);
+				vipService.getItem(vip+1);
 
 		if (tiantiDataExpected == 1) {
 			Integer tiantiChallageTimes = Helper.itemCount(redisTemplate, identifier, "tianti_challage_times");
@@ -78,7 +79,7 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 
 					// 获取VIP刷新数据
 					ConstPvpRefreshTableItemExProtobuf.ConstPvpRefreshTableItemEx pvpRefreshTableItemEx =
-							pvpRefreshService.getItem(0);
+							pvpRefreshService.getItem(1);
 
 					PlayerItemProtobuf.PlayerItem playerItem =
 							Helper.decreaseItemValue(redisTemplate, identifier, "stone", (long) pvpRefreshTableItemEx.getConsumeFomula().getStone());
@@ -136,6 +137,11 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 			builder.addHeros(heroBasicInfo);
 		});
 
+		PlayerItemProtobuf.PlayerItem dailyPvpTimes = Helper.onNotifyEventOfPromotions(redisTemplate, "daily_pvp_times", 1, identifier);
+		builder.addArchives(dailyPvpTimes);
+		PlayerItemProtobuf.PlayerItem pvpChallageTimes = Helper.increaseItemValue(redisTemplate, identifier, "pvp_challage_times", 1L);
+		builder.addItems(pvpChallageTimes);
+
 		return builder.setRequest(request).build();
 	}
 
@@ -164,7 +170,7 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 	}
 
 	public Long parseLong(Object o) {
-		return o == null ? 0L : Long.parseLong(o.toString());
+		return o == null ? 0L : NumberUtil.parseLong(o.toString());
 	}
 
 	public Integer parseInt(Object o) {
