@@ -40,9 +40,12 @@ public class CommGetPvpVictoryAwardRequestImpl implements Process<CommGetPvpVict
 		Integer identifier = userInfo.getIdentifier();
 
 		if (type == 1) {
-			Helper.increaseItemValue(redisTemplate, identifier, "pvp_vectory_times", 1L);
-			Helper.increaseItemValue(redisTemplate, identifier, "honor", 1L);
-			Helper.increaseItemValue(redisTemplate, identifier, "total_honor", 1L);
+			PlayerItemProtobuf.PlayerItem pvpVectoryTimes = Helper.increaseItemValue(redisTemplate, identifier, "pvp_vectory_times", 1L);
+			PlayerItemProtobuf.PlayerItem honor = Helper.increaseItemValue(redisTemplate, identifier, "honor", 1L);
+			PlayerItemProtobuf.PlayerItem totalHonor = Helper.increaseItemValue(redisTemplate, identifier, "total_honor", 1L);
+			builder.addItems(pvpVectoryTimes);
+			builder.addItems(honor);
+			builder.addItems(totalHonor);
 
 			PlayerItemProtobuf.PlayerItem playerItem = Helper.updateRanklistHonor(redisTemplate, identifier);
 			PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "maxhonor", 1, identifier);

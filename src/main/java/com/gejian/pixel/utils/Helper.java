@@ -1,6 +1,7 @@
 package com.gejian.pixel.utils;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.*;
 import cn.hutool.json.JSON;
@@ -29,12 +30,6 @@ import java.util.*;
 @Component
 @RequiredArgsConstructor
 public class Helper {
-
-	/*JSONArray rubyConstNewStoreHotTable = generated.getRUBY_CONST_NEW_STORE_HOT_TABLE();
-	JSONArray rubyConstNewStoreDiscountTable = generated.getRUBY_CONST_NEW_STORE_DISCOUNT_TABLE();
-	JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();*/
-
-	// rate = RUBY_CONST_QUALITY_UPGRADE_RATE_TABLE[1]["up"].to_f
 
 	private final HeroService heroService;
 	private final QualityUpgradeRateService qualityUpgradeRateService;
@@ -738,22 +733,35 @@ public class Helper {
 				item = appedArchivesToReply("mosthire", Long.parseLong(now + ""));
 				break;
 			case "kingofpvp":
-				Map archives = (HashMap) redisTemplate.opsForHash().get("u:" + identifier + ":archives", "kingofpvp");
+				Object kingofpvpValue = redisTemplate.opsForHash().get("u:" + identifier + ":archives", "kingofpvp");
+
+				Map archives = new HashMap();
+
+				//Map archives = (Map) redisTemplate.opsForHash().get("u:" + identifier + ":archives", "kingofpvp");
 				log.info("{}", archives);
 				log.info("{}, {}", identifier, parameter);
-				if (archives != null) {
-					if (archives.get("kingofpvp") == null) {
+				if (kingofpvpValue == null) {
+					archives.put("kingofpvp", parameter);
+					redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
+					item = appedArchivesToReply("kingofpvp", parameter);
+				} else {
+					if (kingofpvpValue != null && parameter <= Integer.parseInt(kingofpvpValue + "")) {
 						archives.put("kingofpvp", parameter);
 						redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
 						item = appedArchivesToReply("kingofpvp", parameter);
-					} else {
-						if (archives.get("kingofpvp") != null && parameter <= Integer.parseInt(archives.get("kingofpvp") + "")) {
-							archives.put("kingofpvp", parameter);
-							redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
-							item = appedArchivesToReply("kingofpvp", parameter);
-						}
 					}
 				}
+				/*if (archives.get("kingofpvp") == null) {
+					archives.put("kingofpvp", parameter);
+					redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
+					item = appedArchivesToReply("kingofpvp", parameter);
+				} else {
+					if (archives.get("kingofpvp") != null && parameter <= Integer.parseInt(archives.get("kingofpvp") + "")) {
+						archives.put("kingofpvp", parameter);
+						redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
+						item = appedArchivesToReply("kingofpvp", parameter);
+					}
+				}*/
 				break;
 			case "tempbackpack":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "tempbackpack", parameter);
@@ -874,34 +882,23 @@ public class Helper {
 
 	public static PlayerItemProtobuf.PlayerItem updateRanklistHonor(RedisTemplate redisTemplate, Integer identifier) {
 		Long omyrank = redisTemplate.opsForZSet().reverseRank("ranklist:honor", hexEncode(stringValue(redisTemplate, identifier, "nickname")));
-		if (omyrank!=null) {
-			__update_ranklist(redisTemplate, identifier, "honor", itemCount(redisTemplate, identifier, "total_honor"));
-		}
+		__update_ranklist(redisTemplate, identifier, "honor", itemCount(redisTemplate, identifier, "total_honor"));
 
 		Long myrank = redisTemplate.opsForZSet().reverseRank("ranklist:honor", hexEncode(stringValue(redisTemplate, identifier, "nickname")));
-		if (myrank!=null){
-			if (omyrank != myrank && myrank <= 100 && hexEncode(stringValue(redisTemplate, identifier, "nickname")) != null) {
-				boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + stringValue(redisTemplate, identifier, "nickname") + "</color>荣誉榜提升至第" + (myrank + 1) + "名！");
-			}
+		if (omyrank != myrank && myrank <= 100 && hexEncode(stringValue(redisTemplate, identifier, "nickname")) != null) {
+			boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + stringValue(redisTemplate, identifier, "nickname") + "</color>荣誉榜提升至第" + (myrank + 1) + "名！");
 		}
-		if (omyrank!=null && myrank!=null) {
-			return onNotifyEventOfPromotions(redisTemplate, "kingofpvp", Integer.valueOf((myrank + 1) + ""), identifier);
-		}
-		return null;
+		return onNotifyEventOfPromotions(redisTemplate, "kingofpvp", Integer.valueOf((myrank + 1) + ""), identifier);
 
 	}
 
 	public static void updateRanklistRich(RedisTemplate redisTemplate, Integer identifier) {
 		Long omyrank = redisTemplate.opsForZSet().reverseRank("ranklist:honor", hexEncode(stringValue(redisTemplate, identifier, "nickname")));
-		if (omyrank!=null) {
-			__update_ranklist(redisTemplate, identifier, "rich", itemCount(redisTemplate, identifier, "total_stone_purchased"));
-		}
+		__update_ranklist(redisTemplate, identifier, "rich", itemCount(redisTemplate, identifier, "total_stone_purchased"));
 
 		Long myrank = redisTemplate.opsForZSet().reverseRank("ranklist:rich", hexEncode(stringValue(redisTemplate, identifier, "nickname")));
-		if (omyrank!=null && myrank!=null) {
-			if (!myrank.equals(omyrank) && myrank <= 100 && stringValue(redisTemplate, identifier, "nickname") != null) {
-				boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + stringValue(redisTemplate, identifier, "nickname") + "</color>战力榜提升至第" + (myrank + 1) + "名！");
-			}
+		if (!myrank.equals(omyrank) && myrank <= 100 && stringValue(redisTemplate, identifier, "nickname") != null) {
+			boardcaseWorldEvent("PWBC快讯：祝贺玩家<color=red>" + stringValue(redisTemplate, identifier, "nickname") + "</color>战力榜提升至第" + (myrank + 1) + "名！");
 		}
 	}
 
@@ -952,10 +949,6 @@ public class Helper {
 
 	public static List<StoreItemProtobuf.StoreItem> refreshStore(RedisTemplate redisTemplate, Integer identifier, Integer type) {
 		List<StoreItemProtobuf.StoreItem> storeItemList = new ArrayList<>();
-		//2021/9/3 需要修改常量数据获取
-		/*JSONArray rubyConstNewStoreHotTable = generated.getRUBY_CONST_NEW_STORE_HOT_TABLE();
-		JSONArray rubyConstNewStoreDiscountTable = generated.getRUBY_CONST_NEW_STORE_DISCOUNT_TABLE();
-		JSONArray rubyConstNewStoreTimeLimitTable = generated.getRUBY_CONST_NEW_STORE_TIME_LIMIT_TABLE();*/
 		JSONArray rubyConstNewStoreHotTable = new JSONArray();
 		JSONArray rubyConstNewStoreDiscountTable = new JSONArray();
 		JSONArray rubyConstNewStoreTimeLimitTable = new JSONArray();
@@ -973,14 +966,6 @@ public class Helper {
 		tables.add(rubyConstNewStoreDiscountTable);
 		tables.add(rubyConstNewStoreTimeLimitTable);
 
-
-		/*JSONArray rubyConstNewStoreHotTable = new JSONArray();
-		JSONArray rubyConstNewStoreDiscountTable = new JSONArray();
-		JSONArray rubyConstNewStoreTimeLimitTable = new JSONArray();
-		JSONArray tables = new JSONArray();
-		tables.add(rubyConstNewStoreHotTable);
-		tables.add(rubyConstNewStoreDiscountTable);
-		tables.add(rubyConstNewStoreTimeLimitTable);*/
 		if (type >= 1 && type <= 3) {
 			JSONArray table = (JSONArray) tables.get(type - 1);
 			List<JSONObject> items = refreshNewStoreNowEx(table);
