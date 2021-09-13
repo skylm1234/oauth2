@@ -1062,7 +1062,7 @@ public class Helper {
 		if (redisTemplate.opsForHash().increment(m.format("u:%d:temp_backpack_items", identifier).toString(), "exp", exp_delta) >
 				exp_max) {
 			m = new Formatter();
-			redisTemplate.opsForHash().put(m.format("u:%d:temp_backpack_items", identifier), "exp", exp_max);
+			redisTemplate.opsForHash().put(m.format("u:%d:temp_backpack_items", identifier).toString(), "exp", exp_max);
 		}
 
 		long gold_delta = duration * constStr.getBasicAwardFomula().getGold();
