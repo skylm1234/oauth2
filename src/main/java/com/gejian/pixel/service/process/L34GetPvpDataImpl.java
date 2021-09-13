@@ -71,9 +71,9 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 			}
 		} else {
 
-			Integer tiantiChallageTimes = Helper.itemCount(redisTemplate, identifier, "tianti_challage_times");
+			Integer pvpChallageTimes = Helper.itemCount(redisTemplate, identifier, "pvp_challage_times");
 
-			if (tiantiChallageTimes >= vipTableItemEx.getChanllege()) {
+			if (pvpChallageTimes >= vipTableItemEx.getChanllege()) {
 
 				if (agreeBuyPvpTimes == 1) {
 
