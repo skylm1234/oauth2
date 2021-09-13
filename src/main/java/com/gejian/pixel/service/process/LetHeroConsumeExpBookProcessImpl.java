@@ -94,8 +94,10 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 
 		for (int i = 0; i < request.getBooksCount(); i++) {
 
-			if (null != Helper.decreaseItemValue(redisTemplate,
-					identifier, request.getBooks(i), 1L)) {
+			PlayerItemProtobuf.PlayerItem bookItem = Helper.decreaseItemValue(redisTemplate,
+					identifier, request.getBooks(i), 1L);
+			if (null != bookItem) {
+				response.addItems(bookItem);
 				Integer delta = expBookService.getExpBook(request.getBooks(i)).getValue();
 				if (null == delta) {
 					return response.setResult(ErrorEnum.ERROR_EXP_BOOK_NOT_EXIST).build();
