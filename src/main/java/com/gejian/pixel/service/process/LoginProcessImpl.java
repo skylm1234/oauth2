@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.NumberUtil;
@@ -24,6 +25,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -461,6 +463,11 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		List<StoreItemProtobuf.StoreItem> storeItems = new ArrayList<>();
 		List items = new ArrayList<>();
 		Map storeByType = redisTemplate.opsForHash().entries("u:" + identifier + ":store:" + type);
+		Map storeByTypeSort = new LinkedHashMap();
+		storeByType.forEach((k,v)->{
+			storeByTypeSort.put(Integer.parseInt(k+""), v);
+		});
+		storeByType =  MapUtil.sort(storeByTypeSort);
 		storeByType.forEach((k,v)->{
 			JSONObject j = JSONUtil.parseObj(v + "");
 			List<String> ar = Arrays.asList("name", "number", "cost_type", "cost_number");
