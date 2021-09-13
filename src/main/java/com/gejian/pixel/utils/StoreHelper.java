@@ -167,7 +167,7 @@ public class StoreHelper {
 		}
 
 		item.put("number", this.parseInt(item.get("number")) - request.getNumber());
-		this.redisTemplate.opsForHash().put(this.getStoreKey(identifier, request.getType()), request.getIndex(), JSONUtil.toJsonStr(item));
+		this.redisTemplate.opsForHash().put(this.getStoreKey(identifier, request.getType()), String.valueOf(request.getIndex()), JSONUtil.toJsonStr(item));
 	}
 
 	private List<Integer> getTB() {

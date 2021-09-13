@@ -59,6 +59,9 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 
 					PlayerItemProtobuf.PlayerItem playerItem =
 							Helper.decreaseItemValue(redisTemplate, identifier, "stone", (long) vipTableItemEx.getTiantiReset());
+					if (playerItem==null) {
+						return builder.setResult(ErrorEnum.ERROR_NOT_ENOUGH_STONE).build();
+					}
 					builder.addItems(playerItem);
 
 					PlayerItemProtobuf.PlayerItem playerItem1 =
@@ -83,6 +86,9 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 
 					PlayerItemProtobuf.PlayerItem playerItem =
 							Helper.decreaseItemValue(redisTemplate, identifier, "stone", (long) pvpRefreshTableItemEx.getConsumeFomula().getStone());
+					if (playerItem==null) {
+						return builder.setResult(ErrorEnum.ERROR_NOT_ENOUGH_STONE).build();
+					}
 					builder.addItems(playerItem);
 
 				} else {
