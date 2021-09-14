@@ -26,7 +26,7 @@ import java.util.Optional;
 /**
  * @author : Hyb
  * @date : 2021/9/3 14:02
- * @description: 购买英雄请求
+ * @description: 每日签到
  */
 @Service(CommandConstants.DAILY_CHECKIN)
 @Slf4j
