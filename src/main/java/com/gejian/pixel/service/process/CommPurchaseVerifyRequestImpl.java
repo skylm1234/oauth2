@@ -60,9 +60,9 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 		CommPurchaseVerifyResponseProtobuf.CommPurchaseVerifyResponse.Builder builder = CommPurchaseVerifyResponseProtobuf.CommPurchaseVerifyResponse.newBuilder();
 		builder.setRequest(request);
 
-		String pattern = "^https://sandbox\u002E*$";
+		String pattern = "^https://sandbox.*$";
 		Pattern compile = Pattern.compile(pattern);
-		Matcher m = compile.matcher(centos);
+		Matcher m = compile.matcher(macosx);
 
 		UserInfo userInfo = UserHolder.get();
 		Integer identifier = userInfo.getIdentifier();
@@ -73,7 +73,8 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 				String productId = "item_" + type;
 				InGamePurchase inGamePurchase = inGamePurchaseService.getById(productId);
 				if (Helper.itemCount(redisTemplate, identifier, productId) == 0) {
-					Helper.increaseItemValue(redisTemplate, identifier, productId, 1L);
+					PlayerItemProtobuf.PlayerItem increaseItemValue = Helper.increaseItemValue(redisTemplate, identifier, productId, 1L);
+					builder.addItems(increaseItemValue);
 					Map<String, Object> gb = new HashMap<>(4);
 					gb.put("identifier", "giftbag_identifier_" + redisTemplate.opsForValue().increment("user:max:giftbag_identifier"));
 					//转16进制
@@ -82,13 +83,23 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 					gb.put("action", productId);
 
 					redisTemplate.opsForHash().putAll(String.format("u:%d:giftbag:%s", identifier, gb.get("identifier")), gb);
+
+					PlayerItemProtobuf.PlayerItem giftbagsItem = Helper.increaseItemValue(redisTemplate, identifier, "giftbags", 1L);
+					builder.addItems(giftbagsItem);
+
+					Map<String,String> giftbagsData = new HashMap<>();
+					giftbagsData.put(String.valueOf(gb.get("identifier")),"初次购买"+inGamePurchase.getDesc()+"，赠送"+inGamePurchase.getDesc());
+					redisTemplate.opsForHash().putAll("u:"+identifier+":giftbags",giftbagsData);
 				}
 
-				Helper.increaseItemValue(redisTemplate, identifier, "stone", (long) inGamePurchase.getStone());
-				Helper.increaseItemValue(redisTemplate, identifier, "total_stone_purchased", (long) inGamePurchase.getStone());
+				PlayerItemProtobuf.PlayerItem stoneItem = Helper.increaseItemValue(redisTemplate, identifier, "stone", (long) inGamePurchase.getStone());
+				builder.addItems(stoneItem);
+				PlayerItemProtobuf.PlayerItem totalStonePurchasedItem = Helper.increaseItemValue(redisTemplate, identifier, "total_stone_purchased", (long) inGamePurchase.getStone());
+				builder.addItems(totalStonePurchasedItem);
 				Helper.updateRanklistRich(redisTemplate, identifier);
 
-				Helper.increaseItemValue(redisTemplate, identifier, "total_charged_money", (long) inGamePurchase.getCost());
+				PlayerItemProtobuf.PlayerItem totalChargedMoneyItem = Helper.increaseItemValue(redisTemplate, identifier, "total_charged_money", (long) inGamePurchase.getCost());
+				builder.addItems(totalChargedMoneyItem);
 
 				Integer origin_vip = Helper.itemCount(redisTemplate, identifier, "vip");
 				Integer total_charged_money = Helper.itemCount(redisTemplate, identifier, "total_charged_money");
@@ -96,7 +107,7 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 				Boolean dirty = false;
 
 				while (true) {
-					Vip vip = vipService.getById(origin_vip);
+					Vip vip = vipService.getById(origin_vip+1);
 					if (vip == null) {
 						log.error("unknow vip level");
 						throw new RuntimeException("unknow vip level");
@@ -114,7 +125,8 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 
 						redisTemplate.opsForHash().putAll(String.format("u:%d:giftbag:%s", identifier, gb.get("identifier")), gb);
 
-						Helper.increaseItemValue(redisTemplate, identifier, "giftbags", 1L);
+						PlayerItemProtobuf.PlayerItem giftbagsItem = Helper.increaseItemValue(redisTemplate, identifier, "giftbags", 1L);
+						builder.addItems(giftbagsItem);
 						redisTemplate.opsForHash().put(String.format("u:%d:giftbags", identifier),
 								gb.get("identifier"),
 								String.format("达到vip等级%d，好礼相送。", vip2.getLevel()));
