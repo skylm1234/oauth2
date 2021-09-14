@@ -20,6 +20,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -104,7 +105,7 @@ public class GetPromotionAwardProcessImpl implements
 					.setRequest(request)
 					.build();
 		}
-		jsonObject.putOnce("#{p}",1);
+		jsonObject.putOnce(String.valueOf(request.getPromotionId()),1);
 		String award = promotion.getAward();
 		// 获取DROP ITEMS对应的数据
 		PlayerInfoProtobuf.PlayerInfo playerInfo = dropService
