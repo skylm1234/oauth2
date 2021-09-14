@@ -6,25 +6,25 @@ import com.gejian.pixel.constants.AttributeKeyConstants;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
+import com.gejian.pixel.exception.RedisLockException;
 import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.CommLoginResponseProtobuf;
 import com.gejian.pixel.proto.MessageBaseProtobuf;
 import com.gejian.pixel.service.Process;
-import com.gejian.pixel.service.UserInterceptor;
+import com.gejian.pixel.service.interceptor.RedisLockInterceptor;
+import com.gejian.pixel.service.interceptor.UserInterceptor;
 import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.ChannelManager;
 import com.google.protobuf.AbstractMessageLite;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
-import io.netty.channel.*;
-import io.netty.channel.group.ChannelGroup;
-import io.netty.channel.group.DefaultChannelGroup;
-import io.netty.handler.timeout.IdleState;
-import io.netty.handler.timeout.IdleStateEvent;
-import io.netty.util.concurrent.GlobalEventExecutor;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.log4j.Log4j2;
+import org.jboss.logging.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -47,6 +47,9 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 	private UserInterceptor userInterceptor;
 
 	@Autowired
+	private RedisLockInterceptor redisLockInterceptor;
+
+	@Autowired
 	private StringRedisTemplate redisTemplate;
 
 
@@ -63,13 +66,15 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 			, MessageBaseProtobuf.MessageBase messageBase) throws Exception {
 		String name = messageBase.getName();
 		Process<AbstractMessageLite, AbstractMessageLite> process = processInstances.get(name);
+		MDC.put("processName", name);
 		if (Objects.isNull(process)) {
-			log.error("请求:{}没有对应的Process处理器。", name);
+			log.error("没有对应的Process处理器。");
 			return;
 		}
 		try {
 			ChannelHolder.put(channelHandlerContext.channel());
 			ChannelManager.add(channelHandlerContext.channel());
+
 			Type[] messageType = getMessageType(process.getClass());
 			Class<AbstractMessageLite> paramClazz = (Class<AbstractMessageLite>) messageType[0];
 			Class<AbstractMessageLite> resultClazz = (Class<AbstractMessageLite>) messageType[1];
@@ -78,12 +83,17 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 			AbstractMessageLite messageLite = (AbstractMessageLite) abstractMessageLite
 					.getParserForType().parseFrom(dataBytes);
 			// 用户统一拦截
+			boolean isLock = redisLockInterceptor.doFilter();
+			if (isLock) {
+				log.error("不允许重复请求！request:{}", abstractMessageLite);
+				return;
+			}
 			boolean flag = userInterceptor.doFilter(channelHandlerContext.channel(), name);
 			AbstractMessageLite resultObj;
 			if (flag) {
-				log.info("{}请求入参:{}",name,messageLite);
+				log.info("请求入参:{}", messageLite);
 				resultObj = process.doProcess(messageLite);
-				log.info("{}请求出参:{}",name,resultObj);
+				log.info("请求出参:{}", resultObj);
 				if (resultObj instanceof CommLoginResponseProtobuf.CommLoginResponse) {
 					CommLoginResponseProtobuf.CommLoginResponse loginRes = (CommLoginResponseProtobuf.CommLoginResponse)
 							resultObj;
@@ -96,10 +106,10 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 				resultObj = (AbstractMessageLite) builder.build();
 			}
 			MessageBaseProtobuf.MessageBase.Builder builder = MessageBaseProtobuf.MessageBase.newBuilder()
-					.setName(name.replace("_REQUEST","_RESPONSE"));
+					.setName(name.replace("_REQUEST", "_RESPONSE"));
 			if (Objects.nonNull(resultObj)) {
 				MessageLite.Builder resultBuilder = resultObj.toBuilder();
-				if (!CommandConstants.LOGIN_REQUEST.equals(name)){
+				if (!CommandConstants.LOGIN_REQUEST.equals(name)) {
 					ReflectUtil.invoke(resultBuilder, "setRequest", messageLite);
 					resultObj = (AbstractMessageLite) resultBuilder.build();
 				}
@@ -114,6 +124,7 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 			log.error("处理请求时发生错误！", e);
 			channelHandlerContext.channel().close();
 		} finally {
+			MDC.remove("processName");
 			ChannelHolder.clear();
 		}
 
@@ -121,15 +132,15 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 	}
 
 	private void createUserSession(Channel channel, CommLoginResponseProtobuf.CommLoginResponse loginRes) {
-		if (loginRes.getResult()==0) {
+		if (loginRes.getResult() == 0) {
 			String identifier = loginRes.getPlayer().getIdentifier();
 			String session = loginRes.getPlayer().getSession();
 			UserInfo userInfo = new UserInfo();
 			userInfo.setIdentifier(Integer.valueOf(identifier));
 			userInfo.setSession(session);
 			channel.attr(AttributeKeyConstants.USER_INFO_ATTRIBUTE_KEY).set(userInfo);
-			String key = StrUtil.format(RedisKeyConstants.USER,userInfo.getIdentifier());
-			redisTemplate.opsForValue().set(key,session, 1, TimeUnit.DAYS);
+			String key = StrUtil.format(RedisKeyConstants.USER, userInfo.getIdentifier());
+			redisTemplate.opsForValue().set(key, session, 1, TimeUnit.DAYS);
 		}
 	}
 

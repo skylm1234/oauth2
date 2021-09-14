@@ -1,4 +1,4 @@
-package com.gejian.pixel.service;
+package com.gejian.pixel.service.interceptor;
 
 import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.AttributeKeyConstants;
