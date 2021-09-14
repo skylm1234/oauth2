@@ -1,6 +1,7 @@
 package com.gejian.pixel.service.process;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.NumberUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
@@ -51,15 +52,15 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 			CommUnlockHeroSkillRequestProtobuf.CommUnlockHeroSkillRequest request)
 			throws Exception {
 
-		CommUnlockHeroSkillRequestProtobuf.CommUnlockHeroSkillRequest skillRequest = CommUnlockHeroSkillRequestProtobuf.
-				CommUnlockHeroSkillRequest.newBuilder().build();
+		/*CommUnlockHeroSkillRequestProtobuf.CommUnlockHeroSkillRequest skillRequest = CommUnlockHeroSkillRequestProtobuf.
+				CommUnlockHeroSkillRequest.newBuilder().build();*/
 
 		CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse.Builder result = CommUnlockHeroSkillResponseProtobuf.CommUnlockHeroSkillResponse.newBuilder()
-				.setRequest(request).setResult(1);
+				.setRequest(request);
 		Integer identifier = UserHolder.get().getIdentifier();
 
-		String hero = skillRequest.getHero();
-		String skill = skillRequest.getSkill();
+		String hero = request.getHero();
+		String skill = request.getSkill();
 		String heroKey = String.format("u:%s:%s:attributes", identifier, hero);
 		if (!redisTemplate.hasKey(heroKey)) {
 			return result.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
@@ -70,7 +71,7 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 		if (!skillsMap.containsKey(skill)) {
 			return result.setResult(ErrorEnum.ERROR_SKILL_NOT_FOUND).build();
 		}
-		if ((int) skillsMap.get(skill) > 0) {
+		if (NumberUtil.parseInt(skillsMap.get(skill)+"") > 0) {
 			return result.setResult(ErrorEnum.ERROR_SKILL_ALREADY_UNLOCK).build();
 		}
 		//todo 获取升级技能所需要的技能书以及金币
@@ -90,7 +91,7 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 		redisTemplate.opsForHash().increment(String.format("u:%s:%s:skills", identifier, hero), skill, 1);
 
 		return result.setRequest(request)
-				.setResult(1)
+				.setResult(ErrorEnum.ERROR_SUCCESS)
 				.addItems(gold)
 				.addItems(playerItem)
 				.build();
