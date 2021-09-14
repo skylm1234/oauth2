@@ -9,6 +9,7 @@ import com.gejian.pixel.entity.*;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommHeroUpgradeStarRequestProtobuf;
 import com.gejian.pixel.proto.CommHeroUpgradeStarResponseProtobuf;
+import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.HeroService;
 import com.gejian.pixel.service.LevelUpgradeService;
 import com.gejian.pixel.service.Process;
@@ -80,11 +81,13 @@ public class HeroUpgradeStarProcessImpl implements Process<CommHeroUpgradeStarRe
 		if (Helper.itemCount(redisTemplate, identifier, "gold") >= consumeExpand.getGold()) {
 			Integer privateSoulChip = Helper.itemCount(redisTemplate, identifier, String.format("private_soulchip_%s", id));
 			if (consumeExpand.getPrivateSoulchip() == 0 || privateSoulChip >= consumeExpand.getPrivateSoulchip()) {
-				Helper.decreaseItemValue(redisTemplate, identifier, String.format("private_soulchip_%s", id), Long.valueOf(consumeExpand.getPrivateSoulchip()));
+				PlayerItemProtobuf.PlayerItem soulchipItem = Helper.decreaseItemValue(redisTemplate, identifier, String.format("private_soulchip_%s", id), Long.valueOf(consumeExpand.getPrivateSoulchip()));
+				result.addItems(soulchipItem);
 			} else {
 				return result.setResult(ErrorEnum.ERROR_NOT_ENOUGH_RESOURCES).build();
 			}
-			Helper.decreaseItemValue(redisTemplate, identifier, "gold", Long.valueOf(consumeExpand.getGold()));
+			PlayerItemProtobuf.PlayerItem goldItem = Helper.decreaseItemValue(redisTemplate, identifier, "gold", Long.valueOf(consumeExpand.getGold()));
+			result.addItems(goldItem);
 			heroMap.put("level", 1);
 			star += 1;
 			heroMap.put("star", star);
