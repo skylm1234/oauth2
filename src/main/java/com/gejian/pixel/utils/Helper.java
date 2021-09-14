@@ -508,7 +508,9 @@ public class Helper {
 			}
 			totalPower = (totalPower / 100);
 			PlayerItemProtobuf.PlayerItem item = setItemValue(redisTemplate, identifier + "", "power", totalPower);
-			reply.addItems(item);
+			if (reply!=null) {
+				reply.addItems(item);
+			}
 			__update_ranklist(redisTemplate, identifier, "power", totalPower);
 
 			Long myrank = redisTemplate.opsForZSet().reverseRank("ranklist:power", hexEncode(nickname));
