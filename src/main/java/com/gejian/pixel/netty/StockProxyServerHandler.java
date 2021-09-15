@@ -13,6 +13,7 @@ import com.gejian.pixel.proto.MessageBaseProtobuf;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.service.interceptor.RedisLockInterceptor;
 import com.gejian.pixel.service.interceptor.UserInterceptor;
+import com.gejian.pixel.service.process.LoginProcessImpl;
 import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.ChannelManager;
 import com.google.protobuf.AbstractMessageLite;
@@ -47,10 +48,8 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 	private UserInterceptor userInterceptor;
 
 	@Autowired
-	private RedisLockInterceptor redisLockInterceptor;
-
-	@Autowired
 	private StringRedisTemplate redisTemplate;
+
 
 
 	/**
@@ -82,12 +81,6 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 			AbstractMessageLite abstractMessageLite = ReflectUtil.newInstance(paramClazz);
 			AbstractMessageLite messageLite = (AbstractMessageLite) abstractMessageLite
 					.getParserForType().parseFrom(dataBytes);
-			// 用户统一拦截
-			boolean isLock = redisLockInterceptor.doFilter();
-			if (isLock) {
-				log.error("不允许重复请求！request:{}", abstractMessageLite);
-				return;
-			}
 			boolean flag = userInterceptor.doFilter(channelHandlerContext.channel(), name);
 			AbstractMessageLite resultObj;
 			if (flag) {
