@@ -61,6 +61,9 @@ public class TemporaryBackpackHelper {
 		int vip = Helper.itemCount(redisTemplate, identifier, "vip");
 
 		long duration = Helper.currentTimestamp() - this.parseLong(pack.get("dungeon_enter_timestamp"));
+		if (duration<0) {
+			duration = 1L;
+		}
 
 		Integer stage = this.parseInt(pack.get("stage"));
 
