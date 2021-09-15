@@ -106,12 +106,15 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 
 				Boolean dirty = false;
 
+				Vip currentVip = new Vip();
+
 				while (true) {
 					Vip vip = vipService.getById(origin_vip+1);
 					if (vip == null) {
 						log.error("unknow vip level");
-						throw new RuntimeException("unknow vip level");
+						break;
 					}
+					currentVip = vip;
 					if (total_charged_money >= vip.getCharge()) {
 						origin_vip = origin_vip + 1;
 
@@ -135,10 +138,11 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 						break;
 					}
 				}
-
 				if (dirty) {
-					PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), "vip", origin_vip);
-					PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "vip", origin_vip, identifier);
+					PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), "vip", currentVip.getLevel());
+					PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "vip", currentVip.getLevel(), identifier);
+					/*PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), "vip",  origin_vip);
+					PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "vip", origin_vip, identifier);*/
 					builder.addItems(playerItem)
 							.addArchives(playerItem1);
 				}
