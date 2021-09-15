@@ -508,7 +508,9 @@ public class Helper {
 			}
 			totalPower = (totalPower / 100);
 			PlayerItemProtobuf.PlayerItem item = setItemValue(redisTemplate, identifier + "", "power", totalPower);
-			reply.addItems(item);
+			if (reply!=null) {
+				reply.addItems(item);
+			}
 			__update_ranklist(redisTemplate, identifier, "power", totalPower);
 
 			Long myrank = redisTemplate.opsForZSet().reverseRank("ranklist:power", hexEncode(nickname));
@@ -741,27 +743,16 @@ public class Helper {
 				log.info("{}", archives);
 				log.info("{}, {}", identifier, parameter);
 				if (kingofpvpValue == null) {
-					archives.put("kingofpvp", parameter);
+					archives.put("kingofpvp", String.valueOf(parameter));
 					redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
 					item = appedArchivesToReply("kingofpvp", parameter);
 				} else {
 					if (kingofpvpValue != null && parameter <= Integer.parseInt(kingofpvpValue + "")) {
-						archives.put("kingofpvp", parameter);
+						archives.put("kingofpvp", String.valueOf(parameter));
 						redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
 						item = appedArchivesToReply("kingofpvp", parameter);
 					}
 				}
-				/*if (archives.get("kingofpvp") == null) {
-					archives.put("kingofpvp", parameter);
-					redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
-					item = appedArchivesToReply("kingofpvp", parameter);
-				} else {
-					if (archives.get("kingofpvp") != null && parameter <= Integer.parseInt(archives.get("kingofpvp") + "")) {
-						archives.put("kingofpvp", parameter);
-						redisTemplate.opsForHash().putAll("u:" + identifier + ":archives", archives);
-						item = appedArchivesToReply("kingofpvp", parameter);
-					}
-				}*/
 				break;
 			case "tempbackpack":
 				now = redisTemplate.opsForHash().increment("u:" + identifier + ":archives", "tempbackpack", parameter);

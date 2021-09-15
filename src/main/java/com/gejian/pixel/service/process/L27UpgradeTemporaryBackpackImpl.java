@@ -51,9 +51,9 @@ public class L27UpgradeTemporaryBackpackImpl implements Process<CommUpgradeTempo
 		// ConstVipTable
 		Integer vip = Helper.itemCount(redisTemplate, identifier, "vip");
 		ConstVipTableItemExProtobuf.ConstVipTableItemEx vipTableItemEx =
-				vipService.getItem(vip);
+				vipService.getItem(vip+1);
 
-		if (this.parseLong(backpackMap.get("level")) >= vipTableItemEx.getLevel()) {
+		if (this.parseLong(backpackMap.get("level")) >= vipTableItemEx.getBackpackMax()) {
 			return builder.setResult(ErrorEnum.ERROR_REACH_LIMIT).build();
 		}
 
@@ -63,8 +63,8 @@ public class L27UpgradeTemporaryBackpackImpl implements Process<CommUpgradeTempo
 				backpackService.getItem(this.parseInt(backpackMap.get("level")));
 
 		PlayerItemProtobuf.PlayerItem playerItem = Helper.decreaseItemValue(redisTemplate, identifier, "stone", (long) backpackTableItemEx.getFomula().getStone());
-		builder.addItems(playerItem);
 		if (playerItem != null) {
+			builder.addItems(playerItem);
 
 			this.redisTemplate.opsForHash().increment(tempBackpackKey, "level", 1);
 

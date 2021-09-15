@@ -43,8 +43,10 @@ public class UpdateHeroFormationProcessImpl implements Process<CommUpdateHeroFor
 		if (formationsList.size() >= 1 &&
 				formationsList.size() <= 5) {
 			for (PlayerItemProtobuf.PlayerItem playerItem : formationsList) {
-				if (!redisTemplate.opsForHash().hasKey(StrUtil.format(RedisKeyConstants.USER_HEARO, identifier), playerItem.getKey())) {
-					return response.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
+				if (!playerItem.getKey().equals("power")){
+					if (!redisTemplate.opsForHash().hasKey(StrUtil.format(RedisKeyConstants.USER_HEARO, identifier), playerItem.getKey())) {
+						return response.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
+					}
 				}
 			}
 			int type = request.getType();

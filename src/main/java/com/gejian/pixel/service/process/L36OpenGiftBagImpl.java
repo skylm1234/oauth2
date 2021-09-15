@@ -58,7 +58,7 @@ public class L36OpenGiftBagImpl implements Process<CommOpenGiftbagRequestProtobu
 
 		this.redisTemplate.delete(giftBagKey);
 
-		this.redisTemplate.opsForHash().delete(giftBagsKey);
+		this.redisTemplate.opsForHash().delete(giftBagsKey,request.getIdentifier());
 
 		Long size = this.redisTemplate.opsForHash().size(giftBagsKey);
 
