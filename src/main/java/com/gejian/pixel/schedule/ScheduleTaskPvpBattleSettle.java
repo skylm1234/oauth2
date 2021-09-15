@@ -37,7 +37,6 @@ public class ScheduleTaskPvpBattleSettle {
 	@Scheduled(cron = "0 0 */2 * * ?")
 	public void refreshPvpBattleSettle(){
 		scheduleTaskPvpBattleSettle();
-
 		CommWorldEventUpdateProtobuf.CommWorldEventUpdate event = CommWorldEventUpdateProtobuf.CommWorldEventUpdate
 				.newBuilder()
 				.setType(1)
@@ -64,21 +63,21 @@ public class ScheduleTaskPvpBattleSettle {
 
 				Map<String, Integer> items = new HashMap<>();
 				for (int i = 0; i < itemsKeys.size(); i++) {
-					items.put(itemsKeys.get(i), NumberUtil.parseInt(itemsValue.get(i)+""));
+					items.put(itemsKeys.get(i), NumberUtil.parseInt(itemsValue.get(i)==null?"0":String.valueOf(itemsValue.get(i))));
 				}
 
 				if (items.get("pvp_vectory_times")>0) {
 					if (items.get("pvp_vectory_times")>=9) {
-						PvpAward x3 = awardHash.get("X3");
+						PvpAward x3 = awardHash.get(3);
 						JSONObject awardFomulaObj = JSONUtil.parseObj(x3.getAwardFomula());
 						awardCall(identifier, "PVP战场礼包（高级）", items.get("pvp_9_vectory")>0?String.valueOf(awardFomulaObj.get("other")):String.valueOf(awardFomulaObj.get("firstofday")), "gift_package.png");
 						items.put("pvp_9_vectory", items.get("pvp_9_vectory")+1);
 					}else if (items.get("pvp_vectory_times")>=3) {
-						PvpAward x2 = awardHash.get("X2");
+						PvpAward x2 = awardHash.get(2);
 						JSONObject awardFomulaObj = JSONUtil.parseObj(x2.getAwardFomula());
 						awardCall(identifier, "PVP战场礼包（中级）", items.get("pvp_3_vectory")>0?String.valueOf(awardFomulaObj.get("other")):String.valueOf(awardFomulaObj.get("firstofday")), "gift_package.png");
 					}else if (items.get("pvp_vectory_times")>=1) {
-						PvpAward x1 = awardHash.get("X1");
+						PvpAward x1 = awardHash.get(1);
 						JSONObject awardFomulaObj = JSONUtil.parseObj(x1.getAwardFomula());
 						awardCall(identifier, "PVP战场礼包（初级）", items.get("pvp_1_vectory")>0?String.valueOf(awardFomulaObj.get("other")):String.valueOf(awardFomulaObj.get("firstofday")), "gift_package.png");
 					}
@@ -103,7 +102,8 @@ public class ScheduleTaskPvpBattleSettle {
 
 		Map<String, String> giftbagsDesc = new HashMap<>();
 		giftbagsDesc.put(g.get("identifier"),desc);
-		redisTemplate.opsForHash().putAll("u:"+identifier+":giftbags:"+g.get("identifier"),giftbagsDesc);
+
+		redisTemplate.opsForHash().putAll("u:"+identifier+":giftbags",giftbagsDesc);
 	}
 
 }
