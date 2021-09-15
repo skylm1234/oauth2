@@ -149,7 +149,7 @@ public class TemporaryBackpackHelper {
 		Map<Object, Object> items = this.redisTemplate.opsForHash().entries(tempBackpackItemsKey);
 		items.forEach((k, v) -> builder.addItems(PlayerItemProtobuf.PlayerItem.newBuilder()
 				.setKey(k.toString())
-				.setValue(Long.parseLong(v.toString()))
+				.setValue((k.toString().equals("gold"))&&Long.parseLong(v.toString())<0?0:Long.parseLong(v.toString()))
 				.build()));
 
 		this.redisTemplate.opsForHash().put(tempBackpackKey, "dungeon_enter_timestamp", Helper.currentTimestamp());
