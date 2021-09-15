@@ -75,10 +75,10 @@ public class TemporaryBackpackHelper {
 		// 设置背包中的经验值
 		long expDelta = duration * constStageTableItemEx.getBasicAwardFomula().getExp();
 		if (this.redisTemplate.opsForHash().hasKey(itemKey, "double_exp_card_2")) {
-			int ratio = 1;
+			double ratio = 1.0;
 
 			if (vip != 0) {
-				ratio = 2 + vip / 10;
+				ratio = 2 + vip / 10.0;
 			}
 			expDelta *= ratio;
 		}
@@ -95,18 +95,21 @@ public class TemporaryBackpackHelper {
 		// 设置背包中的金币值
 		long goldDelta = duration * constStageTableItemEx.getBasicAwardFomula().getGold();
 		if (this.redisTemplate.opsForHash().hasKey(itemKey, "double_gold_card_2")) {
-			int ratio = 1;
+			double ratio = 1.0;
 
 			if (vip != 0) {
-				ratio = 2 + vip / 10;
+				ratio = 2 + vip / 10.0;
 			}
 			goldDelta *= ratio;
 		}
 
 		Long currentDeltaGold = this.redisTemplate.opsForHash().increment(tempBackpackItemsKey, "gold", goldDelta);
+		if (currentDeltaGold<0) {
+			this.redisTemplate.opsForHash().put(tempBackpackItemsKey, "gold", "0");
+		}
 		Integer goldMax = backpack.getGoldMax();
 		if (currentDeltaGold > goldMax) {
-			this.redisTemplate.opsForHash().put(tempBackpackItemsKey, "gold", goldMax);
+			this.redisTemplate.opsForHash().put(tempBackpackItemsKey, "gold", String.valueOf(goldMax));
 		}
 
 		// 计算小怪收益
@@ -335,6 +338,5 @@ public class TemporaryBackpackHelper {
 	public String parseString(Object o) {
 		return o == null ? "" : o.toString();
 	}
-
 
 }
