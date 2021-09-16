@@ -1,8 +1,10 @@
 package com.gejian.pixel.schedule;
 
+import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONArray;
+import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.entity.NewStoreDiscount;
 import com.gejian.pixel.entity.NewStoreHot;
@@ -16,7 +18,12 @@ import com.gejian.pixel.utils.BroadcastUtil;
 import com.gejian.pixel.utils.Helper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.connection.RedisKeyCommands;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author ljb
@@ -87,22 +95,46 @@ public class ScheduleTaskStore {
 		}
 
 		Integer maxPlayerId = NumberUtil.parseInt(redisTemplate.opsForValue().get("user:max:player_identifier")+"");
-		for (int identifier = 1; identifier < maxPlayerId; identifier++) {
-			if (redisTemplate.hasKey("u:"+identifier+":items")) {
-				log.info("refreshing "+identifier+"'s store  ... ");
-				for (int i = 0; i < tables.size(); i++) {
-					redisTemplate.delete("u:"+identifier+":store:"+(i+1));
-					Map<String, String> items = new HashMap();
 
-					JSONArray storesJSONArray = JSONUtil.parseArray(stores.get(i));
-					JSONArray storeJSONArray = JSONUtil.parseArray(storesJSONArray.get(0).toString());
-					for (int j = 0; j < storeJSONArray.size(); j++) {
-						JSONArray storeRandomJSONArray = JSONUtil.parseArray(storesJSONArray.get(RandomUtil.randomInt(storesJSONArray.size())));
-						items.put(String.valueOf(j+1), JSONUtil.toJsonStr(storeRandomJSONArray.get(j)));
+		RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
+		//用户是否存在集合
+		List existsList = redisTemplate.executePipelined((RedisCallback<Object>) connection -> {
+			for (int identifier = 1; identifier <= maxPlayerId; identifier++) {
+				connection.keyCommands().exists(serializer.serialize("u:" + identifier + ":items"));
+			}
+			return null;
+		});
+
+		redisTemplate.executePipelined((RedisCallback<Object>) connection -> {
+			//所有用户刷新后的商店数据
+			Map<String,String> allUserStoreData = new HashMap<>();
+			for (int i = 0; i < existsList.size(); i++) {
+				if (BooleanUtil.toBoolean(existsList.get(i).toString())) {
+					Integer identifier = i+1;
+					log.info("refreshing "+identifier+"'s store  ... ");
+					for (int j = 0; j < tables.size(); j++) {
+						connection.del(serializer.serialize("u:"+identifier+":store:"+(i+1)));
+						Map<String, String> items = new HashMap();
+
+						JSONArray storesJSONArray = JSONUtil.parseArray(stores.get(j));
+						JSONArray storeJSONArray = JSONUtil.parseArray(storesJSONArray.get(0).toString());
+						for (int k = 0; k < storeJSONArray.size(); k++) {
+							JSONArray storeRandomJSONArray = JSONUtil.parseArray(storesJSONArray.get(RandomUtil.randomInt(storesJSONArray.size())));
+							items.put(String.valueOf(k+1), JSONUtil.toJsonStr(storeRandomJSONArray.get(k)));
+						}
+						allUserStoreData.put("u:"+identifier+":store:"+(j+1), JSONUtil.toJsonStr(items));
 					}
-					redisTemplate.opsForHash().putAll("u:"+identifier+":store:"+(i+1), items);
 				}
 			}
-		}
+			allUserStoreData.forEach((k,v)->{
+				Map<byte[], byte[]> valueMap = new HashMap<>();
+				JSONObject valueJSONObj = JSONUtil.parseObj(v);
+				valueJSONObj.forEach((key,value)->{
+					valueMap.put(serializer.serialize(key),serializer.serialize(value.toString()));
+				});
+				connection.hashCommands().hMSet(serializer.serialize(k),valueMap);
+			});
+			return null;
+		});
 	}
 }
