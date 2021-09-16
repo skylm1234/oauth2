@@ -54,6 +54,9 @@ public class BuyHero {
 	@TableField("amount")
 	private String amount;
 
+	@TableField("amount_script")
+	private String amountScript;
+
 	/**
 	 * 
 	 */

@@ -48,7 +48,7 @@ public class BuyHeroServiceImpl extends ServiceImpl<BuyHeroMapper, BuyHero>
 		}
 		SimpleBindings simpleBindings = new SimpleBindings();
 		simpleBindings.put("count", count);
-		return (Double)scriptEngine.eval(buyHero.getAmount(), simpleBindings);
+		return (Double)scriptEngine.eval(buyHero.getAmountScript(), simpleBindings);
 	}
 
 
