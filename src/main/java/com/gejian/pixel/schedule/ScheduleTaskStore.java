@@ -3,15 +3,14 @@ package com.gejian.pixel.schedule;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONArray;
-import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.gejian.pixel.entity.NewStore;
 import com.gejian.pixel.entity.NewStoreDiscount;
+import com.gejian.pixel.entity.NewStoreHot;
 import com.gejian.pixel.entity.NewStoreTimeLimit;
 import com.gejian.pixel.proto.CommWorldEventUpdateProtobuf;
 import com.gejian.pixel.proto.MessageBaseProtobuf;
 import com.gejian.pixel.service.NewStoreDiscountService;
-import com.gejian.pixel.service.NewStoreService;
+import com.gejian.pixel.service.NewStoreHotService;
 import com.gejian.pixel.service.NewStoreTimeLimitService;
 import com.gejian.pixel.utils.BroadcastUtil;
 import com.gejian.pixel.utils.Helper;
@@ -38,7 +37,7 @@ public class ScheduleTaskStore {
 
 	private final RedisTemplate redisTemplate;
 
-	private final NewStoreService newStoreService;
+	private final NewStoreHotService newStoreHotService;
 
 	private final NewStoreDiscountService newStoreDiscountService;
 
@@ -47,7 +46,6 @@ public class ScheduleTaskStore {
 	@Scheduled(cron = "0 0 9,12,18,22 * * ?")
 	public void refreshStore(){
 		scheduleTaskStore();
-
 		CommWorldEventUpdateProtobuf.CommWorldEventUpdate event = CommWorldEventUpdateProtobuf.CommWorldEventUpdate
 				.newBuilder()
 				.setType(3)
@@ -64,18 +62,18 @@ public class ScheduleTaskStore {
 	}
 
 	public void scheduleTaskStore(){
-		List<NewStore> newStoreList = newStoreService.list();
+		List<NewStoreHot> newStoreHotList = newStoreHotService.list();
 		List<NewStoreDiscount> newStoreDiscountList = newStoreDiscountService.list();
 		List<NewStoreTimeLimit> newStoreTimeLimitList = newStoreTimeLimitService.list();
 
-		JSONArray newStoreJSONArray = JSONUtil.parseArray(newStoreList);
+		JSONArray newStoreHotJSONArray = JSONUtil.parseArray(newStoreHotList);
 		JSONArray newStoreDiscountJSONArray = JSONUtil.parseArray(newStoreDiscountList);
 		JSONArray newStoreTimeLimitJSONArray = JSONUtil.parseArray(newStoreTimeLimitList);
 
 		List stores = new ArrayList();
 
 		JSONArray tables = new JSONArray();
-		tables.add(newStoreJSONArray);
+		tables.add(newStoreHotJSONArray);
 		tables.add(newStoreDiscountJSONArray);
 		tables.add(newStoreTimeLimitJSONArray);
 
@@ -92,13 +90,15 @@ public class ScheduleTaskStore {
 		for (int identifier = 1; identifier < maxPlayerId; identifier++) {
 			if (redisTemplate.hasKey("u:"+identifier+":items")) {
 				log.info("refreshing "+identifier+"'s store  ... ");
-				for (int i = 0; i < 10; i++) {
+				for (int i = 0; i < tables.size(); i++) {
 					redisTemplate.delete("u:"+identifier+":store:"+(i+1));
 					Map<String, String> items = new HashMap();
-					List store = (List) stores.get(i);
-					for (int j = 0; j < NumberUtil.parseInt(store.get(0)+""); j++) {
-						JSONObject randomJSONObj = (JSONObject) store.get(RandomUtil.randomInt(store.size()));
-						items.put(String.valueOf((j+1)), String.valueOf(randomJSONObj));
+
+					JSONArray storesJSONArray = JSONUtil.parseArray(stores.get(i));
+					JSONArray storeJSONArray = JSONUtil.parseArray(storesJSONArray.get(0).toString());
+					for (int j = 0; j < storeJSONArray.size(); j++) {
+						JSONArray storeRandomJSONArray = JSONUtil.parseArray(storesJSONArray.get(RandomUtil.randomInt(storesJSONArray.size())));
+						items.put(String.valueOf(j+1), JSONUtil.toJsonStr(storeRandomJSONArray.get(j)));
 					}
 					redisTemplate.opsForHash().putAll("u:"+identifier+":store:"+(i+1), items);
 				}
