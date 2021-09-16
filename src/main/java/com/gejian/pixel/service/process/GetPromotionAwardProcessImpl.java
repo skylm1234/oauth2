@@ -99,7 +99,7 @@ public class GetPromotionAwardProcessImpl implements
 		}
 		String jsonStr = getStringValue(identifier, skName);
 		JSONObject jsonObject = JSONUtil.parseObj(jsonStr);
-		Object obj = jsonObject.getObj("#{p}");
+		Object obj = jsonObject.getObj(String.valueOf(request.getPromotionId()));
 		if (Objects.nonNull(obj)){
 			return response.setResult(ErrorEnum.ERROR_PROMOTION_ALREADY_FINISHED)
 					.setRequest(request)
