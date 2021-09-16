@@ -39,11 +39,11 @@ public class StoreHelper {
 	 */
 	public void refreshStore(Integer identifier, CommRefreshStoreRequestProtobuf.CommRefreshStoreRequest request,
 							 CommRefreshStoreResponseProtobuf.CommRefreshStoreResponse.Builder builder) {
-		PlayerStoreProtobuf.PlayerStore playerStore = PlayerStoreProtobuf.PlayerStore.newBuilder().build();
-		this.refresh(identifier, playerStore.getGoods0List(), 1);
-		this.refresh(identifier, playerStore.getGoods1List(), 2);
-		this.refresh(identifier, playerStore.getGoods2List(), 3);
-		builder.setStore(playerStore);
+		PlayerStoreProtobuf.PlayerStore.Builder playerStoreBuilder = PlayerStoreProtobuf.PlayerStore.newBuilder();
+		playerStoreBuilder.addAllGoods0(this.refresh(identifier, 1));
+		playerStoreBuilder.addAllGoods1(this.refresh(identifier, 2));
+		playerStoreBuilder.addAllGoods2(this.refresh(identifier, 3));
+		builder.setStore(playerStoreBuilder.build());
 	}
 
 	/**
@@ -179,7 +179,8 @@ public class StoreHelper {
 		return list;
 	}
 
-	private void refresh(Integer identifier, List<StoreItemProtobuf.StoreItem> list, int type) {
+	private List<StoreItemProtobuf.StoreItem> refresh(Integer identifier, int type) {
+		List<StoreItemProtobuf.StoreItem> storeList = new ArrayList<>();
 		String storeKey = getStoreKey(identifier, type);
 
 		Map entries = this.redisTemplate.opsForHash().entries(storeKey);
@@ -188,13 +189,14 @@ public class StoreHelper {
 
 			JSONObject json = JSONUtil.parseObj(v);
 
-			list.add(StoreItemProtobuf.StoreItem.newBuilder()
+			storeList.add(StoreItemProtobuf.StoreItem.newBuilder()
 					.setName(this.parseString(json.getStr("name")))
 					.setNumber(this.parseInt(json.getInt("number")))
 					.setCostType(this.parseString(json.getStr("cost_type")))
 					.setCostNumber(this.parseInt(json.getInt("cost_number")))
 					.build());
 		});
+		return storeList;
 	}
 
 	private String getStoreKey(Integer identifier, int type) {
