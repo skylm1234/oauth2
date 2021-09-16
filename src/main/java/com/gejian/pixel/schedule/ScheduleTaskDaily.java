@@ -1,13 +1,20 @@
 package com.gejian.pixel.schedule;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.NumberUtil;
+import cn.hutool.core.util.RandomUtil;
+import cn.hutool.json.JSONArray;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.entity.RanklistHonor;
 import com.gejian.pixel.service.RanklistHonorService;
 import com.gejian.pixel.utils.Helper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -32,37 +39,50 @@ public class ScheduleTaskDaily {
 
 	@Scheduled(cron = "0 0 0 * * ?")
 	public void scheduleTaskDaily(){
-		Map<String,Integer> items = new HashMap<>();
-		items.put("buy_hero_1_times", 0);
-		items.put("buy_hero_2_times", 0);
-		items.put("buy_hero_3_times", 0);
-		items.put("pvp_1_vectory", 0);
-		items.put("pvp_3_vectory", 0);
-		items.put("pvp_9_vectory", 0);
+		RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
 
-		Map<String,Integer> archives = new HashMap<>();
-		archives.put("daily_skill_upgrade", 0);
-		archives.put("daily_monster_kill", 0);
-		archives.put("daily_pvp_times", 0);
-		archives.put("daily_exp_book_consume", 0);
-		archives.put("daily_buy_hero", 0);
-		archives.put("daily_type_1_monster_kill", 0);
-		archives.put("daily_type_2_monster_kill", 0);
-		archives.put("daily_type_3_monster_kill", 0);
-		archives.put("daily_store_buy_times", 0);
+		Map<byte[],byte[]> items = new HashMap<>();
+		items.put(serializer.serialize("buy_hero_1_times"), serializer.serialize("0"));
+		items.put(serializer.serialize("buy_hero_2_times"), serializer.serialize("0"));
+		items.put(serializer.serialize("buy_hero_3_times"), serializer.serialize("0"));
+		items.put(serializer.serialize("pvp_1_vectory"), serializer.serialize("0"));
+		items.put(serializer.serialize("pvp_3_vectory"), serializer.serialize("0"));
+		items.put(serializer.serialize("pvp_9_vectory"), serializer.serialize("0"));
 
-		Map<String,String> strings = new HashMap<>();
-		strings.put("finished_daily_promotions", Helper.hexEncode("{}"));
+		Map<byte[],byte[]> archives = new HashMap<>();
+		archives.put(serializer.serialize("daily_skill_upgrade"), serializer.serialize("0"));
+		archives.put(serializer.serialize("daily_monster_kill"), serializer.serialize("0"));
+		archives.put(serializer.serialize("daily_pvp_times"), serializer.serialize("0"));
+		archives.put(serializer.serialize("daily_exp_book_consume"), serializer.serialize("0"));
+		archives.put(serializer.serialize("daily_buy_hero"), serializer.serialize("0"));
+		archives.put(serializer.serialize("daily_type_1_monster_kill"), serializer.serialize("0"));
+		archives.put(serializer.serialize("daily_type_2_monster_kill"), serializer.serialize("0"));
+		archives.put(serializer.serialize("daily_type_3_monster_kill"), serializer.serialize("0"));
+		archives.put(serializer.serialize("daily_store_buy_times"), serializer.serialize("0"));
+
+		Map<byte[],byte[]> strings = new HashMap<>();
+		strings.put(serializer.serialize("finished_daily_promotions"), serializer.serialize(Helper.hexEncode("{}")));
 
 		int maxPlayerId = NumberUtil.parseInt(String.valueOf(redisTemplate.opsForValue().get("user:max:player_identifier")));
-		// TODO: 2021/9/10 源代码是从1001开始的
-		for (int identifier = 1; identifier <= maxPlayerId; identifier++) {
-			if (redisTemplate.hasKey("u:"+identifier+":items")) {
-				redisTemplate.opsForHash().putAll("u:"+identifier+":items",items);
-				redisTemplate.opsForHash().putAll("u:"+identifier+":strings",strings);
-				redisTemplate.opsForHash().putAll("u:"+identifier+":archives",archives);
+		//用户是否存在集合
+		List existsList = redisTemplate.executePipelined((RedisCallback<Object>) connection -> {
+			for (int identifier = 1; identifier <= maxPlayerId; identifier++) {
+				connection.keyCommands().exists(serializer.serialize("u:" + identifier + ":items"));
 			}
-		}
+			return null;
+		});
+
+		redisTemplate.executePipelined((RedisCallback<Object>) connection -> {
+			for (int i = 0; i < existsList.size(); i++) {
+				if (BooleanUtil.toBoolean(existsList.get(i).toString())) {
+					Integer identifier = i+1;
+					connection.hashCommands().hMSet(serializer.serialize("u:"+identifier+":items"),items);
+					connection.hashCommands().hMSet(serializer.serialize("u:"+identifier+":strings"),strings);
+					connection.hashCommands().hMSet(serializer.serialize("u:"+identifier+":archives"),archives);
+				}
+			}
+			return null;
+		});
 	}
 
 	public void awardRanklist(){

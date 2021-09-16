@@ -221,23 +221,16 @@ public class Helper {
 		PlayerItemProtobuf.PlayerItem.Builder builder = PlayerItemProtobuf.PlayerItem
 				.newBuilder()
 				.setKey(name);
-		if (delta > 0) {
-			Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
-			long current = Long.parseLong(result + "");
-			builder.setValue(current);
-			return builder.build();
-		} else if (delta < 0) {
-			Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
-			long current = Long.parseLong(result + "");
+		Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
+		long current = Long.parseLong(result + "");
+		if (delta <= 0) {
 			if (current < 0) {
 				Long increment = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta * -1);
 				builder.setValue(increment);
 				return null;
 			}
-			builder.setValue(current);
-			return builder.build();
 		}
-		builder.setValue(0);
+		builder.setValue(current);
 		return builder.build();
 	}
 

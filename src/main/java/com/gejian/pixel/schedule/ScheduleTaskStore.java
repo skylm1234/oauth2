@@ -1,23 +1,29 @@
 package com.gejian.pixel.schedule;
 
+import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.gejian.pixel.entity.NewStore;
 import com.gejian.pixel.entity.NewStoreDiscount;
+import com.gejian.pixel.entity.NewStoreHot;
 import com.gejian.pixel.entity.NewStoreTimeLimit;
 import com.gejian.pixel.proto.CommWorldEventUpdateProtobuf;
 import com.gejian.pixel.proto.MessageBaseProtobuf;
 import com.gejian.pixel.service.NewStoreDiscountService;
-import com.gejian.pixel.service.NewStoreService;
+import com.gejian.pixel.service.NewStoreHotService;
 import com.gejian.pixel.service.NewStoreTimeLimitService;
 import com.gejian.pixel.utils.BroadcastUtil;
 import com.gejian.pixel.utils.Helper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.connection.RedisKeyCommands;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author ljb
@@ -38,7 +45,7 @@ public class ScheduleTaskStore {
 
 	private final RedisTemplate redisTemplate;
 
-	private final NewStoreService newStoreService;
+	private final NewStoreHotService newStoreHotService;
 
 	private final NewStoreDiscountService newStoreDiscountService;
 
@@ -47,7 +54,6 @@ public class ScheduleTaskStore {
 	@Scheduled(cron = "0 0 9,12,18,22 * * ?")
 	public void refreshStore(){
 		scheduleTaskStore();
-
 		CommWorldEventUpdateProtobuf.CommWorldEventUpdate event = CommWorldEventUpdateProtobuf.CommWorldEventUpdate
 				.newBuilder()
 				.setType(3)
@@ -64,18 +70,18 @@ public class ScheduleTaskStore {
 	}
 
 	public void scheduleTaskStore(){
-		List<NewStore> newStoreList = newStoreService.list();
+		List<NewStoreHot> newStoreHotList = newStoreHotService.list();
 		List<NewStoreDiscount> newStoreDiscountList = newStoreDiscountService.list();
 		List<NewStoreTimeLimit> newStoreTimeLimitList = newStoreTimeLimitService.list();
 
-		JSONArray newStoreJSONArray = JSONUtil.parseArray(newStoreList);
+		JSONArray newStoreHotJSONArray = JSONUtil.parseArray(newStoreHotList);
 		JSONArray newStoreDiscountJSONArray = JSONUtil.parseArray(newStoreDiscountList);
 		JSONArray newStoreTimeLimitJSONArray = JSONUtil.parseArray(newStoreTimeLimitList);
 
 		List stores = new ArrayList();
 
 		JSONArray tables = new JSONArray();
-		tables.add(newStoreJSONArray);
+		tables.add(newStoreHotJSONArray);
 		tables.add(newStoreDiscountJSONArray);
 		tables.add(newStoreTimeLimitJSONArray);
 
@@ -89,20 +95,46 @@ public class ScheduleTaskStore {
 		}
 
 		Integer maxPlayerId = NumberUtil.parseInt(redisTemplate.opsForValue().get("user:max:player_identifier")+"");
-		for (int identifier = 1; identifier < maxPlayerId; identifier++) {
-			if (redisTemplate.hasKey("u:"+identifier+":items")) {
-				log.info("refreshing "+identifier+"'s store  ... ");
-				for (int i = 0; i < 10; i++) {
-					redisTemplate.delete("u:"+identifier+":store:"+(i+1));
-					Map<String, String> items = new HashMap();
-					List store = (List) stores.get(i);
-					for (int j = 0; j < NumberUtil.parseInt(store.get(0)+""); j++) {
-						JSONObject randomJSONObj = (JSONObject) store.get(RandomUtil.randomInt(store.size()));
-						items.put(String.valueOf((j+1)), String.valueOf(randomJSONObj));
+
+		RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
+		//用户是否存在集合
+		List existsList = redisTemplate.executePipelined((RedisCallback<Object>) connection -> {
+			for (int identifier = 1; identifier <= maxPlayerId; identifier++) {
+				connection.keyCommands().exists(serializer.serialize("u:" + identifier + ":items"));
+			}
+			return null;
+		});
+
+		redisTemplate.executePipelined((RedisCallback<Object>) connection -> {
+			//所有用户刷新后的商店数据
+			Map<String,String> allUserStoreData = new HashMap<>();
+			for (int i = 0; i < existsList.size(); i++) {
+				if (BooleanUtil.toBoolean(existsList.get(i).toString())) {
+					Integer identifier = i+1;
+					log.info("refreshing "+identifier+"'s store  ... ");
+					for (int j = 0; j < tables.size(); j++) {
+						connection.del(serializer.serialize("u:"+identifier+":store:"+(i+1)));
+						Map<String, String> items = new HashMap();
+
+						JSONArray storesJSONArray = JSONUtil.parseArray(stores.get(j));
+						JSONArray storeJSONArray = JSONUtil.parseArray(storesJSONArray.get(0).toString());
+						for (int k = 0; k < storeJSONArray.size(); k++) {
+							JSONArray storeRandomJSONArray = JSONUtil.parseArray(storesJSONArray.get(RandomUtil.randomInt(storesJSONArray.size())));
+							items.put(String.valueOf(k+1), JSONUtil.toJsonStr(storeRandomJSONArray.get(k)));
+						}
+						allUserStoreData.put("u:"+identifier+":store:"+(j+1), JSONUtil.toJsonStr(items));
 					}
-					redisTemplate.opsForHash().putAll("u:"+identifier+":store:"+(i+1), items);
 				}
 			}
-		}
+			allUserStoreData.forEach((k,v)->{
+				Map<byte[], byte[]> valueMap = new HashMap<>();
+				JSONObject valueJSONObj = JSONUtil.parseObj(v);
+				valueJSONObj.forEach((key,value)->{
+					valueMap.put(serializer.serialize(key),serializer.serialize(value.toString()));
+				});
+				connection.hashCommands().hMSet(serializer.serialize(k),valueMap);
+			});
+			return null;
+		});
 	}
 }

@@ -48,15 +48,15 @@ public class CommEnterDungeonRequestImpl implements Process<CommEnterDungeonRequ
 		int type = request.getType();
 		int stage = request.getStage();
 		if (type == 1) {
-			if (stage <= 1 || stage >= 80) {
+			if (stage < 1 || stage > 80) {
 				return builder.setResult(ErrorEnum.ERROR_INVALID_STAGE).build();
 			}
 		} else if (type == 2) {
-			if (stage <= 1001 || stage >= 1080) {
+			if (stage < 1001 || stage > 1080) {
 				return builder.setResult(ErrorEnum.ERROR_INVALID_STAGE).build();
 			}
 		} else if (type == 3) {
-			if (stage <= 2001 || stage >= 2080) {
+			if (stage < 2001 || stage > 2080) {
 				return builder.setResult(ErrorEnum.ERROR_INVALID_STAGE).build();
 			}
 		} else {
