@@ -159,4 +159,19 @@
 		<finalName>${project.artifactId}</finalName>
 	</build>
 
+	<distributionManagement>
+		<repository>
+			<id>maven-releases</id>
+			<url>
+				http://116.62.79.110:8081/repository/maven-releases/
+			</url>
+		</repository>
+		<snapshotRepository>
+			<id>maven-snapshots</id>
+			<url>
+				http://116.62.79.110:8081/repository/maven-snapshots/
+			</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 </project>
