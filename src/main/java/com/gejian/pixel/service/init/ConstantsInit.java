@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.text.ParseException;
 import java.util.List;
@@ -42,6 +43,13 @@ public class ConstantsInit {
 			item.init();
 			item.build(builder);
 		});
+		byte[] binBytes = FileUtil.readBytes("consts/consts.bin");
+		FileUtil.writeBytes(binBytes,BIN_FILE);
+		String md5String = FileUtil.readUtf8String("consts/consts.md5");
+		FileUtil.writeUtf8String(md5String,CONSTANTS_DIR_PATH +"/" + "consts.md5");
+		String sha1String = FileUtil.readUtf8String("consts/consts.sha1");
+		FileUtil.writeUtf8String(sha1String,CONSTANTS_DIR_PATH +"/" + "consts.sha1");
+
 		/*ConstTablesProtobuf.ConstTables constTables = builder.build();
 		FileUtil.writeUtf8String(constTables.toString(),CONSTANTS_DIR_PATH +"/" + "consts.txt");
 		byte[] bytes = constTables.toByteArray();
