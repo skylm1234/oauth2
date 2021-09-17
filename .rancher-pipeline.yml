@@ -8,7 +8,6 @@ stages:
         mvn clean package -DskipTests=true
         # 上传到私服
         mvn deploy
-        cd ./
         mvn compile
         mvn package spring-boot:repackage
         ls -la ./target/

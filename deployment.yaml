@@ -41,6 +41,7 @@ spec:
           value: "1"
         ports:
         - containerPort: 8080
+        - containerPort: 19999
         resources:
           limits:
             cpu: 0

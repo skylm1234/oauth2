@@ -6,4 +6,6 @@ ENV TZ=Asia/Shanghai JAVA_OPTS="-Xms256m -Xmx256m -Djava.security.egd=file:/dev/
 
 EXPOSE 8080
 
+EXPOSE 19999
+
 CMD java -jar  ${JAVA_OPTS} /app.jar
