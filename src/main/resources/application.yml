@@ -7,20 +7,33 @@ socket:
     port: 19999
     debug: true
 
+# 数据库配置
+dbConfig:
+  # 用户名
+  username: ${DB_USERNAME:root}
+  # 密码
+  password: ${DB_PASSWORD:%Fv3oSK8mzonBP^k}
+  # 主机
+  host: ${DB_HOST:110.40.133.131}
+  # 端口
+  port: ${DB_PORT:13306}
+  # 数据库名称
+  dbname: ${DB_DBNAME:ourgame}
+
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: "%Fv3oSK8mzonBP^k"
-    url: jdbc:mysql://110.40.133.131:13306/ourgame?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&autoReconnect=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    username: ${dbConfig.username}
+    password: ${dbConfig.password}
+    url: jdbc:mysql://${dbConfig.host}:${dbConfig.port}/${dbConfig.dbname}?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&autoReconnect=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
     hikari:
       max-lifetime: 500000
   redis:
-    host: 110.40.133.131
-    port: 16379
-    password: 2JIY3SsfTNr8
-    database: 1
+    host: ${REDIS_HOST:110.40.133.131}
+    port: ${REDIS_PORT:16379}
+    password: ${REDIS_PASSWORD:2JIY3SsfTNr8}
+    database: ${REDIS_DATABASE:1}
 
 # mybaits-plus配置
 mybatis-plus:

@@ -1,0 +1,51 @@
+#deploy
+apiVersion: apps/v1
+kind: Deployment
+#kind: StatefulSet
+metadata:
+  name: java-pixel
+  namespace: pixel-server
+spec:
+  selector:
+    matchLabels:
+      app: java-pixel
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: java-pixel
+    spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
+      containers:
+      - name: java-pixel
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        env:
+        - name: DB_USERNAME
+          value: "root"
+        - name: DB_PASSWORD
+          value: "%Fv3oSK8mzonBP^k"
+        - name: DB_HOST
+          value: "172.17.0.14"
+        - name: DB_PORT
+          value: "13306"
+        - name: DB_DBNAME
+          value: "ourgame"
+        - name: REDIS_HOST
+          value: "172.17.0.14"
+        - name: REDIS_PORT
+          value: "16379"
+        - name: REDIS_PASSWORD
+          value: "2JIY3SsfTNr8"
+        - name: REDIS_DATABASE
+          value: "1"
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 0
+            memory: 0
+          requests:
+            cpu: 0
+            memory: 0
+
