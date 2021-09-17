@@ -1,6 +1,7 @@
 package com.gejian.pixel.service.init;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
@@ -43,11 +44,11 @@ public class ConstantsInit {
 			item.init();
 			item.build(builder);
 		});
-		byte[] binBytes = FileUtil.readBytes("consts/consts.bin");
+		byte[] binBytes = ResourceUtil.readBytes("consts/consts.bin");
 		FileUtil.writeBytes(binBytes,BIN_FILE);
-		String md5String = FileUtil.readUtf8String("consts/consts.md5");
+		String md5String = ResourceUtil.readUtf8Str("consts/consts.md5");
 		FileUtil.writeUtf8String(md5String,CONSTANTS_DIR_PATH +"/" + "consts.md5");
-		String sha1String = FileUtil.readUtf8String("consts/consts.sha1");
+		String sha1String = ResourceUtil.readUtf8Str("consts/consts.sha1");
 		FileUtil.writeUtf8String(sha1String,CONSTANTS_DIR_PATH +"/" + "consts.sha1");
 
 		/*ConstTablesProtobuf.ConstTables constTables = builder.build();
