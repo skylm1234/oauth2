@@ -14,8 +14,6 @@ import com.gejian.pixel.utils.BroadcastUtil;
 import com.gejian.pixel.utils.Helper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
@@ -26,7 +24,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * @author ljb
@@ -120,7 +117,7 @@ public class ScheduleTaskPvpBattleSettle {
 
 					for (int j = 0; j < itemsKeys.size(); j++) {
 						String key = serializer.deserialize(itemsKeys.get(j));
-						String value = String.valueOf(itemsValue.get(j));
+						Object value = itemsValue.get(j);
 						if (value==null) {
 							Map<byte[],byte[]> initDataMap = new HashMap();
 							if (key.equals("should_refresh_pvp_chanllege_ranklist")) {
@@ -129,10 +126,10 @@ public class ScheduleTaskPvpBattleSettle {
 							}else {
 								value = "0";
 							}
-							initDataMap.put(serializer.serialize(key), serializer.serialize(value));
+							initDataMap.put(serializer.serialize(key), serializer.serialize(String.valueOf(value)));
 							connection.hashCommands().hMSet(serializer.serialize("u:"+identifier+":items"), initDataMap);
 						}
-						items.put(key, NumberUtil.parseInt(value));
+						items.put(key, NumberUtil.parseInt(String.valueOf(value)));
 					}
 
 					if (items.get("pvp_vectory_times")>0) {
