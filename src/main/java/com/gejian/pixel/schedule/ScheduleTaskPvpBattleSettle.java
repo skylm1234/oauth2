@@ -118,30 +118,21 @@ public class ScheduleTaskPvpBattleSettle {
 
 					Map<String, Integer> items = new HashMap<>();
 
-					int num = 0;
-					String value1 = "";
-					try {
-						for (int j = 0; j < itemsKeys.size(); j++) {
-							num = j;
-							String key = serializer.deserialize(itemsKeys.get(j));
-							String value = String.valueOf(itemsValue.get(j));
-							if (value==null) {
-								Map<byte[],byte[]> initDataMap = new HashMap();
-								if (key.equals("should_refresh_pvp_chanllege_ranklist")) {
-									//该状态初始值为1,其他默认是0
-									value = "1";
-								}else {
-									value = "0";
-								}
-								initDataMap.put(serializer.serialize(key), serializer.serialize(value));
-								connection.hashCommands().hMSet(serializer.serialize("u:"+identifier+":items"), initDataMap);
+					for (int j = 0; j < itemsKeys.size(); j++) {
+						String key = serializer.deserialize(itemsKeys.get(j));
+						String value = String.valueOf(itemsValue.get(j));
+						if (value==null) {
+							Map<byte[],byte[]> initDataMap = new HashMap();
+							if (key.equals("should_refresh_pvp_chanllege_ranklist")) {
+								//该状态初始值为1,其他默认是0
+								value = "1";
+							}else {
+								value = "0";
 							}
-							value1 = value;
-							items.put(key, NumberUtil.parseInt(value));
+							initDataMap.put(serializer.serialize(key), serializer.serialize(value));
+							connection.hashCommands().hMSet(serializer.serialize("u:"+identifier+":items"), initDataMap);
 						}
-					}catch (Exception e) {
-						log.error("num:{}   value1:{}",num,value1);
-						e.printStackTrace();
+						items.put(key, NumberUtil.parseInt(value));
 					}
 
 					if (items.get("pvp_vectory_times")>0) {
