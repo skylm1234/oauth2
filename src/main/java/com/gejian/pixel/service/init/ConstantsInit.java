@@ -44,14 +44,14 @@ public class ConstantsInit {
 			item.init();
 			item.build(builder);
 		});
-		byte[] binBytes = ResourceUtil.readBytes("consts/consts.bin");
+		/*byte[] binBytes = ResourceUtil.readBytes("consts/consts.bin");
 		FileUtil.writeBytes(binBytes,BIN_FILE);
 		String md5String = ResourceUtil.readUtf8Str("consts/consts.md5");
 		FileUtil.writeUtf8String(md5String,CONSTANTS_DIR_PATH +"/" + "consts.md5");
 		String sha1String = ResourceUtil.readUtf8Str("consts/consts.sha1");
-		FileUtil.writeUtf8String(sha1String,CONSTANTS_DIR_PATH +"/" + "consts.sha1");
+		FileUtil.writeUtf8String(sha1String,CONSTANTS_DIR_PATH +"/" + "consts.sha1");*/
 
-		/*ConstTablesProtobuf.ConstTables constTables = builder.build();
+		ConstTablesProtobuf.ConstTables constTables = builder.build();
 		FileUtil.writeUtf8String(constTables.toString(),CONSTANTS_DIR_PATH +"/" + "consts.txt");
 		byte[] bytes = constTables.toByteArray();
 		FileUtil.writeBytes(bytes,BIN_FILE);
@@ -61,7 +61,7 @@ public class ConstantsInit {
 		String md5 = SecureUtil.md5(new File(BIN_FILE));
 		String sha1 = SecureUtil.sha1(new File(BIN_FILE));
 		FileUtil.writeUtf8String(md5,CONSTANTS_DIR_PATH +"/" + "consts.md5");
-		FileUtil.writeUtf8String(sha1,CONSTANTS_DIR_PATH +"/" + "consts.sha1");*/
+		FileUtil.writeUtf8String(sha1,CONSTANTS_DIR_PATH +"/" + "consts.sha1");
 	}
 
 	public static void main(String[] args) throws Exception {
