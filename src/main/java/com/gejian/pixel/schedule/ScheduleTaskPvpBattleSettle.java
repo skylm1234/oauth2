@@ -1,5 +1,6 @@
 package com.gejian.pixel.schedule;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.NumberUtil;
@@ -44,7 +45,6 @@ public class ScheduleTaskPvpBattleSettle {
 	@Scheduled(cron = "0 0 */2 * * ?")
 	public void refreshPvpBattleSettle(){
 		scheduleTaskPvpBattleSettle();
-		System.out.println("竞技场已刷新");
 		CommWorldEventUpdateProtobuf.CommWorldEventUpdate event = CommWorldEventUpdateProtobuf.CommWorldEventUpdate
 				.newBuilder()
 				.setType(1)
@@ -58,6 +58,7 @@ public class ScheduleTaskPvpBattleSettle {
 				.setData(event.toByteString())
 				.build();
 		BroadcastUtil.broadcast(base);
+		log.info("竞技场已经刷新,当前时间:{}", DateUtil.now());
 	}
 
 	public void scheduleTaskPvpBattleSettle(){
@@ -117,8 +118,30 @@ public class ScheduleTaskPvpBattleSettle {
 
 					Map<String, Integer> items = new HashMap<>();
 
-					for (int j = 0; j < itemsKeys.size(); j++) {
-						items.put(serializer.deserialize(itemsKeys.get(j)), NumberUtil.parseInt(String.valueOf(itemsValue.get(j))));
+					int num = 0;
+					String value1 = "";
+					try {
+						for (int j = 0; j < itemsKeys.size(); j++) {
+							num = j;
+							String key = serializer.deserialize(itemsKeys.get(j));
+							String value = String.valueOf(itemsValue.get(j));
+							if (value==null) {
+								Map<byte[],byte[]> initDataMap = new HashMap();
+								if (key.equals("should_refresh_pvp_chanllege_ranklist")) {
+									//该状态初始值为1,其他默认是0
+									value = "1";
+								}else {
+									value = "0";
+								}
+								initDataMap.put(serializer.serialize(key), serializer.serialize(value));
+								connection.hashCommands().hMSet(serializer.serialize("u:"+identifier+":items"), initDataMap);
+							}
+							value1 = value;
+							items.put(key, NumberUtil.parseInt(value));
+						}
+					}catch (Exception e) {
+						log.error("num:{}   value1:{}",num,value1);
+						e.printStackTrace();
 					}
 
 					if (items.get("pvp_vectory_times")>0) {

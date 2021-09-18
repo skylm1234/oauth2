@@ -83,6 +83,8 @@ public class ScheduleTaskDaily {
 			}
 			return null;
 		});
+
+		log.info("每日任务已刷新,当前时间:{}", DateUtil.now());
 	}
 
 	public void awardRanklist(){

@@ -1,5 +1,6 @@
 package com.gejian.pixel.schedule;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
@@ -67,6 +68,7 @@ public class ScheduleTaskStore {
 				.setData(event.toByteString())
 				.build();
 		BroadcastUtil.broadcast(base);
+		log.info("商店已刷新,当前时间:{}", DateUtil.now());
 	}
 
 	public void scheduleTaskStore(){
