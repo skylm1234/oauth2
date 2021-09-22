@@ -1,8 +1,5 @@
 package com.gejian.pixel.service.process;
 
-import cn.hutool.core.util.NumberUtil;
-import cn.hutool.json.JSONArray;
-import cn.hutool.json.JSONObject;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.entity.BuyHero;
 import com.gejian.pixel.proto.CommQueryBuyHeroPriceRequestProtobuf;
@@ -68,9 +65,9 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 
 				if (cooldown!=0 && Helper.currentTimestamp()-items.get("buy_hero_"+x+"_timestamp") >= cooldown) {
 					prices.put("buy_hero_"+x+"_price", 0);
+					redisTemplate.opsForHash().put("u:"+identifier+":items", "buy_hero_"+x+"_price", "0");
 				}else {
-					double fomula = buyHeroService.calculation(x, 0);
-					prices.put("buy_hero_"+x+"_price", NumberUtil.parseInt(fomula+""));
+					prices.put("buy_hero_"+x+"_price", Helper.itemCount(redisTemplate,identifier,"buy_hero_"+x+"_price"));
 				}
 			}
 		}
