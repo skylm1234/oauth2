@@ -98,12 +98,12 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 					.addAllArchives(playerInfo.getArchivesList())
 					.addAllHeros(playerInfo.getHerosList());
 		} else {
-
-			if (null != Helper.decreaseItemValue(redisTemplate, identifier, typeInfo.getConsume()
+			PlayerItemProtobuf.PlayerItem decreaseItem = Helper.decreaseItemValue(redisTemplate, identifier, typeInfo.getConsume()
 					, (long) buyHeroService.calculation(
 							type,
 							Helper.itemCount(redisTemplate, identifier,
-									StrUtil.format(BUY_HERO_TYPE_TIMES, type))))) {
+									StrUtil.format(BUY_HERO_TYPE_TIMES, type))));
+			if (null != decreaseItem) {
 
 				PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(BUY_HERO_TYPE_TIMES
 						, type), Helper.itemCount(redisTemplate, identifier, StrUtil.format(BUY_HERO_TYPE_TIMES,
@@ -117,6 +117,8 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 						.addAllTeamsPvp(playerInfo.getTeamsPvpList())
 						.addAllArchives(playerInfo.getArchivesList())
 						.addAllHeros(playerInfo.getHerosList());
+				//返回消耗后的剩余物资数量
+				response.addItems(decreaseItem);
 			} else {
 				return response.setResult(resar.get(type-1)).build();
 			}
@@ -132,25 +134,6 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 
 		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, MOSTHIRE, 1, identifier));
 		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, DAILY_BUY_HERO, 1, identifier));
-		//返回金币
-		PlayerItemProtobuf.PlayerItem honorItem = PlayerItemProtobuf.PlayerItem
-				.newBuilder()
-				.setKey("honor")
-				.setValue(Helper.itemCount(redisTemplate, identifier, "honor"))
-				.build();
-		PlayerItemProtobuf.PlayerItem goldItem = PlayerItemProtobuf.PlayerItem
-				.newBuilder()
-				.setKey("gold")
-				.setValue(Helper.itemCount(redisTemplate, identifier, "gold"))
-				.build();
-		PlayerItemProtobuf.PlayerItem stoneItem = PlayerItemProtobuf.PlayerItem
-				.newBuilder()
-				.setKey("stone")
-				.setValue(Helper.itemCount(redisTemplate, identifier, "stone"))
-				.build();
-		response.addItems(honorItem);
-		response.addItems(goldItem);
-		response.addItems(stoneItem);
 
 		return response.build();
 	}
