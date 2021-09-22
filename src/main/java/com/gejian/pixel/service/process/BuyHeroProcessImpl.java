@@ -2,10 +2,8 @@ package com.gejian.pixel.service.process;
 
 import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.CommandConstants;
-import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.BuyHero;
 import com.gejian.pixel.enums.ErrorEnum;
-import com.gejian.pixel.model.DropItem;
 import com.gejian.pixel.proto.CommBuyHeroRequestProtobuf;
 import com.gejian.pixel.proto.CommBuyHeroResponseProtobuf;
 import com.gejian.pixel.proto.PlayerInfoProtobuf;
@@ -20,7 +18,6 @@ import com.google.protobuf.util.JsonFormat;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.scheduling.support.SimpleTriggerContext;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -135,6 +132,25 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 
 		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, MOSTHIRE, 1, identifier));
 		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, DAILY_BUY_HERO, 1, identifier));
+		//返回金币
+		PlayerItemProtobuf.PlayerItem honorItem = PlayerItemProtobuf.PlayerItem
+				.newBuilder()
+				.setKey("honor")
+				.setValue(Helper.itemCount(redisTemplate, identifier, "honor"))
+				.build();
+		PlayerItemProtobuf.PlayerItem goldItem = PlayerItemProtobuf.PlayerItem
+				.newBuilder()
+				.setKey("gold")
+				.setValue(Helper.itemCount(redisTemplate, identifier, "gold"))
+				.build();
+		PlayerItemProtobuf.PlayerItem stoneItem = PlayerItemProtobuf.PlayerItem
+				.newBuilder()
+				.setKey("stone")
+				.setValue(Helper.itemCount(redisTemplate, identifier, "stone"))
+				.build();
+		response.addItems(honorItem);
+		response.addItems(goldItem);
+		response.addItems(stoneItem);
 
 		return response.build();
 	}
