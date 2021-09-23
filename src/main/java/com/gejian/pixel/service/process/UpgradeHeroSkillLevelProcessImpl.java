@@ -4,9 +4,9 @@ import cn.hutool.core.util.NumberUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.UpgradeConsumeFomula;
 import com.gejian.pixel.enums.ErrorEnum;
-import com.gejian.pixel.proto.CommUnlockHeroSkillResponseProtobuf;
 import com.gejian.pixel.proto.CommUpgradeHeroSkillLevelRequestProtobuf;
 import com.gejian.pixel.proto.CommUpgradeHeroSkillLevelResponseProtobuf;
 import com.gejian.pixel.proto.PlayerItemProtobuf;
@@ -45,11 +45,11 @@ public class UpgradeHeroSkillLevelProcessImpl implements Process<CommUpgradeHero
 				= CommUpgradeHeroSkillLevelResponseProtobuf.CommUpgradeHeroSkillLevelResponse.newBuilder()
 				.setRequest(request).setResult(ErrorEnum.ERROR_SUCCESS);
 		String hero = request.getHero();
-		if (!redisTemplate.hasKey(String.format("u:%s:%s:attributes", identifier, hero))) {
+		if (!redisTemplate.hasKey(String.format(RedisKeyConstants.USER_HERO_ATTRIBUTES, identifier, hero))) {
 			result.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND);
 			return result.build();
 		}
-		Map<String, Object> skillMap = redisTemplate.opsForHash().entries(String.format("u:%s:%s:skills", identifier, hero));
+		Map<String, Object> skillMap = redisTemplate.opsForHash().entries(String.format(RedisKeyConstants.USER_HERO_SKILLS, identifier, hero));
 		String skill = request.getSkill();
 		if (!skillMap.containsKey(skill)) {
 			return result.setResult(ErrorEnum.ERROR_SKILL_NOT_FOUND).build();
@@ -96,7 +96,7 @@ public class UpgradeHeroSkillLevelProcessImpl implements Process<CommUpgradeHero
 				result.addItems(bookSkill0000Item);
 			}
 
-			Long level = redisTemplate.opsForHash().increment(String.format("u:%s:%s:skills", identifier, hero), skill, 1);
+			Long level = redisTemplate.opsForHash().increment(String.format(RedisKeyConstants.USER_HERO_SKILLS, identifier, hero), skill, 1);
 			if (level > 10) {
 				PlayerItemProtobuf.PlayerItem playerItem = Helper.onNotifyEventOfPromotions(redisTemplate, "maxtopskills", 1, identifier);
 				result.addArchives(playerItem);

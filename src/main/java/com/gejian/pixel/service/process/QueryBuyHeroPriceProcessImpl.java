@@ -1,6 +1,8 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.text.StrFormatter;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.BuyHero;
 import com.gejian.pixel.proto.CommQueryBuyHeroPriceRequestProtobuf;
 import com.gejian.pixel.proto.CommQueryBuyHeroPriceResponseProtobuf;
@@ -47,7 +49,7 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 				"buy_hero_2_timestamp", "buy_hero_3_times",
 				"buy_hero_3_timestamp");
 
-		List itemsValue = redisTemplate.opsForHash().multiGet("u:" + identifier + ":items", itemsKey);
+		List itemsValue = redisTemplate.opsForHash().multiGet(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier), itemsKey);
 		Map<String,Integer> items = new HashMap<>();
 		for (int i = 0; i < itemsKey.size(); i++) {
 			items.put(itemsKey.get(i), Integer.parseInt(itemsValue.get(i)+""));
@@ -63,11 +65,11 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 				BuyHero buyHero = buyHeroes.get(x - 1);
 				Integer cooldown = buyHero.getCooldown();
 
-				if (cooldown!=0 && Helper.currentTimestamp()-items.get("buy_hero_"+x+"_timestamp") >= cooldown) {
-					prices.put("buy_hero_"+x+"_price", 0);
-					redisTemplate.opsForHash().put("u:"+identifier+":items", "buy_hero_"+x+"_price", "0");
+				if (cooldown!=0 && Helper.currentTimestamp()-items.get(StrFormatter.format(RedisKeyConstants.BUY_HERO_TIMESTAMP,x)) >= cooldown) {
+					prices.put(StrFormatter.format(RedisKeyConstants.BUY_HERO_PRICE,x), 0);
+					redisTemplate.opsForHash().put(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier), StrFormatter.format(RedisKeyConstants.BUY_HERO_PRICE,x), "0");
 				}else {
-					prices.put("buy_hero_"+x+"_price", Helper.itemCount(redisTemplate,identifier,"buy_hero_"+x+"_price"));
+					prices.put(StrFormatter.format(RedisKeyConstants.BUY_HERO_PRICE,x), Helper.itemCount(redisTemplate,identifier,StrFormatter.format(RedisKeyConstants.BUY_HERO_PRICE,x)));
 				}
 			}
 		}
@@ -77,7 +79,7 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 
 		log.info("{}",responseBuilder.getPricesList());
 
-		redisTemplate.opsForHash().putAll("u:"+identifier+":items", items);
+		redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_ITEMS), items);
 
 		responseBuilder.setRequest(request);
 

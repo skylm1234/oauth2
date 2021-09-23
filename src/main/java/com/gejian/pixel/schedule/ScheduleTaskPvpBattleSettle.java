@@ -6,6 +6,7 @@ import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.PvpAward;
 import com.gejian.pixel.proto.CommWorldEventUpdateProtobuf;
 import com.gejian.pixel.proto.MessageBaseProtobuf;
@@ -60,13 +61,13 @@ public class ScheduleTaskPvpBattleSettle {
 
 	public void scheduleTaskPvpBattleSettle(){
 		Map<Integer, PvpAward> awardHash = pvpAwardService.getHash();
-		Integer maxPlayerId = NumberUtil.parseInt(redisTemplate.opsForValue().get("user:max:player_identifier")+"");
+		Integer maxPlayerId = NumberUtil.parseInt(redisTemplate.opsForValue().get(RedisKeyConstants.USER_MAX_PLAYER_IDENTIFIER)+"");
 
 		RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
 		//用户是否存在集合
 		List existsList = redisTemplate.executePipelined((RedisCallback<Object>) connection -> {
 			for (int identifier = 1; identifier <= maxPlayerId; identifier++) {
-				connection.keyCommands().exists(serializer.serialize("u:" + identifier + ":items"));
+				connection.keyCommands().exists(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier)));
 			}
 			return null;
 		});
@@ -86,7 +87,7 @@ public class ScheduleTaskPvpBattleSettle {
 			for (int i = 0; i < existsList.size(); i++) {
 				if (BooleanUtil.toBoolean(existsList.get(i).toString())) {
 					Integer identifier = i + 1;
-					connection.hashCommands().hMGet(serializer.serialize("u:" + identifier + ":items"),
+					connection.hashCommands().hMGet(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier)),
 							serializer.serialize("pvp_1_vectory"),
 							serializer.serialize("pvp_3_vectory"),
 							serializer.serialize("pvp_9_vectory"),
@@ -127,7 +128,7 @@ public class ScheduleTaskPvpBattleSettle {
 								value = "0";
 							}
 							initDataMap.put(serializer.serialize(key), serializer.serialize(String.valueOf(value)));
-							connection.hashCommands().hMSet(serializer.serialize("u:"+identifier+":items"), initDataMap);
+							connection.hashCommands().hMSet(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier)), initDataMap);
 						}
 						items.put(key, NumberUtil.parseInt(String.valueOf(value)));
 					}
@@ -145,8 +146,8 @@ public class ScheduleTaskPvpBattleSettle {
 									items.get("pvp_9_vectory")>0?String.valueOf(awardFomulaObj.get("other")):String.valueOf(awardFomulaObj.get("firstofday")),
 									"gift_package.png");
 							Map<byte[],byte[]> userAwardGiftbagDesc = getAwardGiftbagDesc(serializer,giftbagIdentifier,"PVP战场礼包（高级）");
-							allUserAwardGiftbags.put(StrFormatter.format("u:{}:giftbag:{}", String.valueOf(identifier), giftbagIdentifier),userAwardGiftbags);
-							allUserAwardGiftbagDesc.put(StrFormatter.format("u:{}:giftbags", String.valueOf(identifier)), userAwardGiftbagDesc);
+							allUserAwardGiftbags.put(StrFormatter.format(RedisKeyConstants.USER_GIFTBAG, String.valueOf(identifier), giftbagIdentifier),userAwardGiftbags);
+							allUserAwardGiftbagDesc.put(StrFormatter.format(RedisKeyConstants.USER_GIFTBAGS, String.valueOf(identifier)), userAwardGiftbagDesc);
 							//增加胜利次数
 							items.put("pvp_9_vectory", items.get("pvp_9_vectory")+1);
 						}else if (items.get("pvp_vectory_times")>=3) {
@@ -161,8 +162,8 @@ public class ScheduleTaskPvpBattleSettle {
 									items.get("pvp_3_vectory")>0?String.valueOf(awardFomulaObj.get("other")):String.valueOf(awardFomulaObj.get("firstofday")),
 									"gift_package.png");
 							Map<byte[],byte[]> userAwardGiftbagDesc = getAwardGiftbagDesc(serializer,giftbagIdentifier,"PVP战场礼包（中级）");
-							allUserAwardGiftbags.put(StrFormatter.format("u:{}:giftbag:{}", String.valueOf(identifier), giftbagIdentifier),userAwardGiftbags);
-							allUserAwardGiftbagDesc.put(StrFormatter.format("u:{}:giftbags", String.valueOf(identifier)), userAwardGiftbagDesc);
+							allUserAwardGiftbags.put(StrFormatter.format(RedisKeyConstants.USER_GIFTBAG, String.valueOf(identifier), giftbagIdentifier),userAwardGiftbags);
+							allUserAwardGiftbagDesc.put(StrFormatter.format(RedisKeyConstants.USER_GIFTBAGS, String.valueOf(identifier)), userAwardGiftbagDesc);
 							//增加胜利次数
 							items.put("pvp_3_vectory", items.get("pvp_3_vectory")+1);
 						}else if (items.get("pvp_vectory_times")>=1) {
@@ -177,8 +178,8 @@ public class ScheduleTaskPvpBattleSettle {
 									items.get("pvp_1_vectory")>0?String.valueOf(awardFomulaObj.get("other")):String.valueOf(awardFomulaObj.get("firstofday")),
 									"gift_package.png");
 							Map<byte[],byte[]> userAwardGiftbagDesc = getAwardGiftbagDesc(serializer,giftbagIdentifier,"PVP战场礼包（初级）");
-							allUserAwardGiftbags.put(StrFormatter.format("u:{}:giftbag:{}", String.valueOf(identifier), giftbagIdentifier),userAwardGiftbags);
-							allUserAwardGiftbagDesc.put(StrFormatter.format("u:{}:giftbags", String.valueOf(identifier)), userAwardGiftbagDesc);
+							allUserAwardGiftbags.put(StrFormatter.format(RedisKeyConstants.USER_GIFTBAG, String.valueOf(identifier), giftbagIdentifier),userAwardGiftbags);
+							allUserAwardGiftbagDesc.put(StrFormatter.format(RedisKeyConstants.USER_GIFTBAGS, String.valueOf(identifier)), userAwardGiftbagDesc);
 							//增加胜利次数
 							items.put("pvp_1_vectory", items.get("pvp_1_vectory")+1);
 						}

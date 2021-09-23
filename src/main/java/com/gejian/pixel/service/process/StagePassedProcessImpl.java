@@ -1,19 +1,15 @@
 package com.gejian.pixel.service.process;
 
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.entity.Stage;
 import com.gejian.pixel.entity.StageBossAwardFomula;
-import com.gejian.pixel.entity.VipDaily;
 import com.gejian.pixel.enums.ErrorEnum;
-import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.service.StageService;
-import com.gejian.pixel.service.VipDailyService;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +18,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * @author : zhouqiang

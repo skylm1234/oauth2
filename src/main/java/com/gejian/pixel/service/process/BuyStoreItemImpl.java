@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service(CommandConstants.BUY_STORE_ITEM)
-public class L32BuyStoreItemImpl implements Process<CommBuyStoreItemRequestProtobuf.CommBuyStoreItemRequest
+public class BuyStoreItemImpl implements Process<CommBuyStoreItemRequestProtobuf.CommBuyStoreItemRequest
 		, CommBuyStoreItemResponseProtobuf.CommBuyStoreItemResponse> {
 
 	@Autowired

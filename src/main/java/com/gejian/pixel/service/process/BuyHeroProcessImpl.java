@@ -2,6 +2,7 @@ package com.gejian.pixel.service.process;
 
 import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.BuyHero;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommBuyHeroRequestProtobuf;
@@ -43,12 +44,6 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 	@Autowired
 	private RedisTemplate redisTemplate;
 
-	private static final String BUY_HERO_TYPE_TIMES = "buy_hero_{}_times";
-
-	private static final String BUY_HERO_TYPE_TIMESTAMP = "buy_hero_{}_timestamp";
-
-	private static final String BUY_HERO_NUM_PRICE = "buy_hero_{}_price";
-
 	private static final String MOSTHIRE = "mosthire";
 
 	private static final String DAILY_BUY_HERO = "daily_buy_hero";
@@ -71,7 +66,7 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 		Integer identifier = UserHolder.get().getIdentifier();
 
 		if (typeInfo.getDayLimit().intValue() != 0 && Helper.itemCount(redisTemplate, identifier,
-				StrUtil.format(BUY_HERO_TYPE_TIMES, type)) >= typeInfo.getDayLimit()) {
+				StrUtil.format(RedisKeyConstants.BUY_HERO_TIMES, type)) >= typeInfo.getDayLimit()) {
 			return response.setResult(ErrorEnum.ERROR_EXCEED_DAILY_LIMIT).build();
 		}
 
@@ -82,13 +77,13 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 
 		if ((typeInfo.getCooldown() != 0 && Helper.currentTimestamp() -
 				Helper.itemCount(redisTemplate, identifier,
-						StrUtil.format(BUY_HERO_TYPE_TIMESTAMP, type)) >= typeInfo.getCooldown())
+						StrUtil.format(RedisKeyConstants.BUY_HERO_TIMESTAMP, type)) >= typeInfo.getCooldown())
 				|| buyHeroService.calculation(
 				type,
 				Helper.itemCount(redisTemplate, identifier,
-						StrUtil.format(BUY_HERO_TYPE_TIMES, type))) == 0
+						StrUtil.format(RedisKeyConstants.BUY_HERO_TIMES, type))) == 0
 		) {
-			PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(BUY_HERO_TYPE_TIMESTAMP, type), (int) Helper
+			PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(RedisKeyConstants.BUY_HERO_TIMESTAMP, type), (int) Helper
 					.currentTimestamp());
 			response.addItems(playerItem);
 			PlayerInfoProtobuf.PlayerInfo playerInfo = dropService.dropItem(buyHeroFf, identifier, false, String.valueOf(type));
@@ -102,11 +97,11 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 					, (long) buyHeroService.calculation(
 							type,
 							Helper.itemCount(redisTemplate, identifier,
-									StrUtil.format(BUY_HERO_TYPE_TIMES, type))));
+									StrUtil.format(RedisKeyConstants.BUY_HERO_TIMES, type))));
 			if (null != decreaseItem) {
 
-				PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(BUY_HERO_TYPE_TIMES
-						, type), Helper.itemCount(redisTemplate, identifier, StrUtil.format(BUY_HERO_TYPE_TIMES,
+				PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(RedisKeyConstants.BUY_HERO_TIMES
+						, type), Helper.itemCount(redisTemplate, identifier, StrUtil.format(RedisKeyConstants.BUY_HERO_TIMES,
 						type)) + 1);
 				response.addItems(playerItem);
 
@@ -125,9 +120,9 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 		}
 
 		for (int i = 1; i <= 3; i++) {
-			PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(BUY_HERO_NUM_PRICE, i),
+			PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), StrUtil.format(RedisKeyConstants.BUY_HERO_PRICE, i),
 					(int) buyHeroService.calculation(i,
-							Helper.itemCount(redisTemplate, identifier, StrUtil.format(BUY_HERO_TYPE_TIMES
+							Helper.itemCount(redisTemplate, identifier, StrUtil.format(RedisKeyConstants.BUY_HERO_TIMES
 									, i))));
 			response.addItems(playerItem);
 		}

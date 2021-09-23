@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service(CommandConstants.HARVEST_TEMPORARY_BACKPACK)
-public class L26HarvestTemporaryBackpackImpl implements Process<CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest
+public class HarvestTemporaryBackpackImpl implements Process<CommHarvestTemporaryBackpackRequestProtobuf.CommHarvestTemporaryBackpackRequest
 		, CommHarvestTemporaryBackpackResponseProtobuf.CommHarvestTemporaryBackpackResponse> {
 
 	@Autowired

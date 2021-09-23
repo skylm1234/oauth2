@@ -1,7 +1,9 @@
 package com.gejian.pixel.utils;
 
+import cn.hutool.core.text.StrFormatter;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.NewStoreDiscountService;
@@ -200,15 +202,15 @@ public class StoreHelper {
 	}
 
 	private String getStoreKey(Integer identifier, int type) {
-		return "u:" + identifier.toString() + ":store:" + type;
+		return StrFormatter.format(RedisKeyConstants.USER_STORE,identifier,type);
 	}
 
 	private String getGiftBagKey(Integer identifier, String type) {
-		return "u:" + identifier.toString() + ":giftbag:" + type;
+		return StrFormatter.format(RedisKeyConstants.USER_GIFTBAG,identifier,type);
 	}
 
 	private String getGiftBagsKey(Integer identifier) {
-		return "u:" + identifier.toString() + ":giftbags";
+		return StrFormatter.format(RedisKeyConstants.USER_GIFTBAGS,identifier);
 	}
 
 	public Long parseLong(Object o) {

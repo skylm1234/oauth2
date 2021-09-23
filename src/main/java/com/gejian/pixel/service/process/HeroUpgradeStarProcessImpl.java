@@ -5,6 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.*;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommHeroUpgradeStarRequestProtobuf;
@@ -27,6 +28,7 @@ import java.util.Objects;
 /**
  * @author tangtao
  * @since 2021/9/7
+ * @description 英雄升星
  */
 @Service(CommandConstants.HERO_UPGRADE_STAR)
 @Slf4j
@@ -53,10 +55,10 @@ public class HeroUpgradeStarProcessImpl implements Process<CommHeroUpgradeStarRe
 				= CommHeroUpgradeStarResponseProtobuf.CommHeroUpgradeStarResponse.newBuilder()
 				.setRequest(request).setResult(ErrorEnum.ERROR_SUCCESS);
 		String hero = request.getHero();
-		if (!redisTemplate.hasKey(String.format("u:%s:%s:attributes", identifier, hero))) {
+		if (!redisTemplate.hasKey(String.format(RedisKeyConstants.USER_HERO_ATTRIBUTES, identifier, hero))) {
 			return result.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
 		}
-		Map<String, Object> heroMap = redisTemplate.opsForHash().entries(String.format("u:%s:%s:attributes", identifier, hero));
+		Map<String, Object> heroMap = redisTemplate.opsForHash().entries(String.format(RedisKeyConstants.USER_HERO_ATTRIBUTES, identifier, hero));
 		if (NumberUtil.parseInt(heroMap.get("level") + "") != 99) {
 			return result.setResult(ErrorEnum.ERROR_HERO_LEVEL_NOT_EQUAL_99).build();
 		}
@@ -124,8 +126,8 @@ public class HeroUpgradeStarProcessImpl implements Process<CommHeroUpgradeStarRe
 			heroMap.put("grow_def", starAttribute.getDefenseUpgrade());
 			heroMap.put("grow_speed", starAttribute.getSpeedUpgrade());
 			int power = (NumberUtil.parseInt(heroMap.get("hp") + "") + NumberUtil.parseInt(heroMap.get("attack") + "") + NumberUtil.parseInt(heroMap.get("def") + "") + NumberUtil.parseInt(heroMap.get("speed") + ""));
-			redisTemplate.opsForHash().put(String.format("u:%s:heros", identifier), type, power);
-			redisTemplate.opsForHash().putAll(String.format("u:%s:%s:attributes", identifier, type), heroMap);
+			redisTemplate.opsForHash().put(String.format(RedisKeyConstants.USER_HEROS, identifier), type, power);
+			redisTemplate.opsForHash().putAll(String.format(RedisKeyConstants.USER_HERO_ATTRIBUTES, identifier, type), heroMap);
 			Helper.updateRanklistPower(redisTemplate, identifier);
 			Hero heroNow = heroService.getHash().get(id);
 			String desc = "";

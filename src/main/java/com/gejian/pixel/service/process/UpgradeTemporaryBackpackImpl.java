@@ -1,6 +1,8 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.text.StrFormatter;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.BackpackService;
@@ -23,7 +25,7 @@ import java.util.Map;
  */
 @Slf4j
 @Service(CommandConstants.UPGRADE_TEMPORARY_BACKPACK)
-public class L27UpgradeTemporaryBackpackImpl implements Process<CommUpgradeTemporaryBackpackRequestProtobuf.CommUpgradeTemporaryBackpackRequest
+public class UpgradeTemporaryBackpackImpl implements Process<CommUpgradeTemporaryBackpackRequestProtobuf.CommUpgradeTemporaryBackpackRequest
 		, CommUpgradeTemporaryBackpackResponseProtobuf.CommUpgradeTemporaryBackpackResponse> {
 
 	@Autowired
@@ -87,7 +89,7 @@ public class L27UpgradeTemporaryBackpackImpl implements Process<CommUpgradeTempo
 	}
 
 	private String getTempBackpackKey(Integer identifier) {
-		return "u:#{identifier}:temp_backpack".replace("#{identifier}", identifier.toString());
+		return StrFormatter.format(RedisKeyConstants.USER_TEMP_PACK,identifier);
 	}
 
 }

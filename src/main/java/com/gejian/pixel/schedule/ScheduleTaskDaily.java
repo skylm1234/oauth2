@@ -1,12 +1,14 @@
 package com.gejian.pixel.schedule;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.RanklistHonor;
 import com.gejian.pixel.service.RanklistHonorService;
 import com.gejian.pixel.utils.Helper;
@@ -63,11 +65,11 @@ public class ScheduleTaskDaily {
 		Map<byte[],byte[]> strings = new HashMap<>();
 		strings.put(serializer.serialize("finished_daily_promotions"), serializer.serialize(Helper.hexEncode("{}")));
 
-		int maxPlayerId = NumberUtil.parseInt(String.valueOf(redisTemplate.opsForValue().get("user:max:player_identifier")));
+		int maxPlayerId = NumberUtil.parseInt(String.valueOf(redisTemplate.opsForValue().get(RedisKeyConstants.USER_MAX_PLAYER_IDENTIFIER)));
 		//用户是否存在集合
 		List existsList = redisTemplate.executePipelined((RedisCallback<Object>) connection -> {
 			for (int identifier = 1; identifier <= maxPlayerId; identifier++) {
-				connection.keyCommands().exists(serializer.serialize("u:" + identifier + ":items"));
+				connection.keyCommands().exists(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier)));
 			}
 			return null;
 		});
@@ -76,9 +78,9 @@ public class ScheduleTaskDaily {
 			for (int i = 0; i < existsList.size(); i++) {
 				if (BooleanUtil.toBoolean(existsList.get(i).toString())) {
 					Integer identifier = i+1;
-					connection.hashCommands().hMSet(serializer.serialize("u:"+identifier+":items"),items);
-					connection.hashCommands().hMSet(serializer.serialize("u:"+identifier+":strings"),strings);
-					connection.hashCommands().hMSet(serializer.serialize("u:"+identifier+":archives"),archives);
+					connection.hashCommands().hMSet(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier)),items);
+					connection.hashCommands().hMSet(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_STRINGS)),strings);
+					connection.hashCommands().hMSet(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_ARCHIVES,identifier)),archives);
 				}
 			}
 			return null;
@@ -113,13 +115,13 @@ public class ScheduleTaskDaily {
 
         end
 		 */
-		int max = NumberUtil.parseInt(String.valueOf(redisTemplate.opsForValue().get("user:max:player_identifier")));
+		int max = NumberUtil.parseInt(String.valueOf(redisTemplate.opsForValue().get(RedisKeyConstants.USER_MAX_PLAYER_IDENTIFIER)));
 
-		Map nicknames = redisTemplate.opsForHash().entries("user:set:nickname");
+		Map nicknames = redisTemplate.opsForHash().entries(RedisKeyConstants.USER_SET_NICKNAME);
 
-		Set ranklistHonor = redisTemplate.opsForZSet().reverseRange("ranklist:honor", 1, max);
-		Set ranklistPower = redisTemplate.opsForZSet().reverseRange("ranklist:power", 1, max);
-		Set ranklistRich = redisTemplate.opsForZSet().reverseRange("ranklist:rich", 1, max);
+		Set ranklistHonor = redisTemplate.opsForZSet().reverseRange(StrFormatter.format(RedisKeyConstants.RANKLIST,"honor"), 1, max);
+		Set ranklistPower = redisTemplate.opsForZSet().reverseRange(StrFormatter.format(RedisKeyConstants.RANKLIST,"power"), 1, max);
+		Set ranklistRich = redisTemplate.opsForZSet().reverseRange(StrFormatter.format(RedisKeyConstants.RANKLIST,"rich"), 1, max);
 
 		String[] har = {};
 		String[] par = {};

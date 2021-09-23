@@ -20,7 +20,7 @@ import java.util.Objects;
  */
 @Slf4j
 @Service(CommandConstants.RANKLIST)
-public class L28RankListImpl implements Process<CommRanklistRequestProtobuf.CommRanklistRequest
+public class RankListImpl implements Process<CommRanklistRequestProtobuf.CommRanklistRequest
 		, CommRanklistResponseProtobuf.CommRanklistResponse> {
 
 	@Autowired

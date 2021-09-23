@@ -1,7 +1,9 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.NumberUtil;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.Process;
@@ -24,7 +26,7 @@ import java.util.Map;
  */
 @Slf4j
 @Service(CommandConstants.GET_PVP_DATA)
-public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.CommGetPvpDataRequest
+public class GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.CommGetPvpDataRequest
 		, CommGetPvpDataResponseProtobuf.CommGetPvpDataResponse> {
 
 	@Autowired
@@ -152,27 +154,27 @@ public class L34GetPvpDataImpl implements Process<CommGetPvpDataRequestProtobuf.
 	}
 
 	private String getNicknameKey() {
-		return "user:set:nickname";
+		return RedisKeyConstants.USER_SET_NICKNAME;
 	}
 
 	private String getAttributesKey(Integer identifier, String s) {
-		return "u:" + identifier + ":" + s + ":attributes";
+		return StrFormatter.format(RedisKeyConstants.USER_HERO_ATTRIBUTES,identifier,s);
 	}
 
 	private String getHeroKey(Integer identifier, String s) {
-		return "u:" + identifier + ":" + s;
+		return StrFormatter.format(RedisKeyConstants.USER_HERO,identifier,s);
 	}
 
 	private String getTeamsKey(Integer identifier) {
-		return "u:" + identifier + ":teams";
+		return StrFormatter.format(RedisKeyConstants.USER_TEAMS,identifier);
 	}
 
 	private String getHerosKey(Integer identifier) {
-		return "u:" + identifier + ":heros";
+		return StrFormatter.format(RedisKeyConstants.USER_HEROS,identifier);
 	}
 
 	private String getSkillsKey(Integer identifier, String s) {
-		return "u:" + identifier + ":" + s + ":skills";
+		return StrFormatter.format(RedisKeyConstants.USER_HERO_SKILLS,identifier,s);
 	}
 
 	public Long parseLong(Object o) {

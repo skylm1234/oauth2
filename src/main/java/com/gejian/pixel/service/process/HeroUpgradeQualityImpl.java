@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.*;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
@@ -16,17 +17,18 @@ import com.gejian.pixel.service.QualityUpgradeService;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.ToUtil;
 import com.gejian.pixel.utils.UserHolder;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 英雄进阶
+ */
 @Service(CommandConstants.HERO_UPGRADE_QUALITY)
 @CommandResponse(CommandConstants.HERO_UPGRADE_QUALITY)
 @Slf4j
@@ -65,7 +67,7 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 		//当前方法名
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
 
-		String redisKey = String.format("u:%d:%s:attributes", identifier, hero);
+		String redisKey = String.format(RedisKeyConstants.USER_HERO_ATTRIBUTES, identifier, hero);
 		if (!redisTemplate.hasKey(redisKey)) {
 			log.error("FAILED: {}=>{}:{}", identifier, methodName, Thread.currentThread().getStackTrace()[1].getLineNumber());
 			return reply.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
@@ -112,11 +114,9 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 				heroMap.put(qualityStr, quality);
 
 				//获取rate0
-				//QualityUpgradeRate qualityUpgradeRate0 = qualityUpgradeRateService.getById(quality.intValue() - 2);
 				QualityUpgradeRate qualityUpgradeRate0 = qualityUpgradeRateService.getById(quality.intValue() - 1);
 				float rate0 = quality > 2 ? Float.parseFloat(qualityUpgradeRate0.getUp()) : 0f;
 				//获取rate
-				//QualityUpgradeRate qualityUpgradeRate = qualityUpgradeRateService.getById(quality.intValue() - 1);
 				QualityUpgradeRate qualityUpgradeRate = qualityUpgradeRateService.getById(quality.intValue());
 				float rate = Float.parseFloat(qualityUpgradeRate.getUp());
 				log.info(heroMap.toString());

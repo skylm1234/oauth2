@@ -1,7 +1,8 @@
 package com.gejian.pixel.service.process;
 
-import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.text.StrFormatter;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.proto.CommRanklistRelativePowerRequestProtobuf;
 import com.gejian.pixel.proto.CommRanklistRelativePowerResponseProtobuf;
 import com.gejian.pixel.proto.CommRanklistResponseProtobuf;
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service(CommandConstants.RANKLIST_RELATIVE_POWER)
-public class L29RankListRelativePowerImpl implements Process<CommRanklistRelativePowerRequestProtobuf.CommRanklistRelativePowerRequest
+public class RankListRelativePowerImpl implements Process<CommRanklistRelativePowerRequestProtobuf.CommRanklistRelativePowerRequest
 		, CommRanklistRelativePowerResponseProtobuf.CommRanklistRelativePowerResponse> {
 
 
@@ -60,7 +61,7 @@ public class L29RankListRelativePowerImpl implements Process<CommRanklistRelativ
 
 
 	private String getItemsKey(Integer identifier) {
-		return "u:" + identifier.toString() + ":items";
+		return StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier);
 	}
 
 

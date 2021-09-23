@@ -1,7 +1,9 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.ReUtil;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.Hero;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommCompoundHeroRequestProtobuf;
@@ -16,9 +18,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author ljb
@@ -41,7 +40,7 @@ public class CompoundHeroProcessImpl implements Process<CommCompoundHeroRequestP
 
 		Integer identifier = UserHolder.get().getIdentifier();
 
-		if (redisTemplate.opsForHash().hasKey("u:"+identifier+":heros", request.getHero())) {
+		if (redisTemplate.opsForHash().hasKey(StrFormatter.format(RedisKeyConstants.USER_HEROS,identifier), request.getHero())) {
 			log.error("FAILED: {}={}:{}",identifier, Thread.currentThread().getStackTrace()[1].getMethodName(), Thread.currentThread().getStackTrace()[1].getLineNumber());
 			replyBuilder.setResult(ErrorEnum.ERROR_HERO_ALREADY_EXISTS);
 		}else {
@@ -73,10 +72,10 @@ public class CompoundHeroProcessImpl implements Process<CommCompoundHeroRequestP
 		PlayerItemProtobuf.PlayerItem.Builder builder = PlayerItemProtobuf.PlayerItem
 				.newBuilder()
 				.setKey(name);
-		Object result = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta);
+		Object result = redisTemplate.opsForHash().increment(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier), name, delta);
 		long current = Long.parseLong(result + "");
 		if (current < 0) {
-			Long increment = redisTemplate.opsForHash().increment("u:" + identifier + ":items", name, delta * -1);
+			Long increment = redisTemplate.opsForHash().increment(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier), name, delta * -1);
 			builder.setValue(increment);
 			PlayerItemProtobuf.PlayerItem item = builder.build();
 			reply.addItems(item);

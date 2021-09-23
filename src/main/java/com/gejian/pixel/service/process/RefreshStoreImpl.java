@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service(CommandConstants.REFRESH_STORE)
-public class L30RefreshStoreImpl implements Process<CommRefreshStoreRequestProtobuf.CommRefreshStoreRequest
+public class RefreshStoreImpl implements Process<CommRefreshStoreRequestProtobuf.CommRefreshStoreRequest
 		, CommRefreshStoreResponseProtobuf.CommRefreshStoreResponse> {
 
 	@Autowired

@@ -2,10 +2,10 @@ package com.gejian.pixel.service.process;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.NumberUtil;
-import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.ext.SkillUpgradeDO;
 import com.gejian.pixel.proto.CommUnlockHeroSkillRequestProtobuf;
@@ -13,19 +13,14 @@ import com.gejian.pixel.proto.CommUnlockHeroSkillResponseProtobuf;
 import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.service.SkillService;
-import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
-import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
-import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
-import org.bouncycastle.util.test.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.Cipher;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +28,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
+ * 解锁英雄技能
  * @author tangtao
  * @since 2021/8/31
  */
@@ -61,11 +57,11 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 
 		String hero = request.getHero();
 		String skill = request.getSkill();
-		String heroKey = String.format("u:%s:%s:attributes", identifier, hero);
+		String heroKey = String.format(RedisKeyConstants.USER_HERO_ATTRIBUTES, identifier, hero);
 		if (!redisTemplate.hasKey(heroKey)) {
 			return result.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
 		}
-		String skillKey = String.format("u:%s:%s:skills", identifier, hero);
+		String skillKey = String.format(RedisKeyConstants.USER_HERO_SKILLS, identifier, hero);
 
 		Map<String, Object> skillsMap = redisTemplate.opsForHash().entries(skillKey);
 		if (!skillsMap.containsKey(skill)) {
@@ -88,7 +84,7 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 		PlayerItemProtobuf.PlayerItem gold = Helper.decreaseItemValue(redisTemplate, identifier, "gold", jsonObject.getLong("gold"));
 
 		PlayerItemProtobuf.PlayerItem playerItem = Helper.decreaseItemValue(redisTemplate, identifier, String.format("book_%s", skill), jsonObject.getLong("book"));
-		redisTemplate.opsForHash().increment(String.format("u:%s:%s:skills", identifier, hero), skill, 1);
+		redisTemplate.opsForHash().increment(String.format(RedisKeyConstants.USER_HERO_SKILLS, identifier, hero), skill, 1);
 
 		return result.setRequest(request)
 				.setResult(ErrorEnum.ERROR_SUCCESS)

@@ -1,12 +1,14 @@
 package com.gejian.pixel.schedule;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.NewStoreDiscount;
 import com.gejian.pixel.entity.NewStoreHot;
 import com.gejian.pixel.entity.NewStoreTimeLimit;
@@ -96,13 +98,13 @@ public class ScheduleTaskStore {
 			stores.add(store);
 		}
 
-		Integer maxPlayerId = NumberUtil.parseInt(redisTemplate.opsForValue().get("user:max:player_identifier")+"");
+		Integer maxPlayerId = NumberUtil.parseInt(redisTemplate.opsForValue().get(RedisKeyConstants.USER_MAX_PLAYER_IDENTIFIER)+"");
 
 		RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
 		//用户是否存在集合
 		List existsList = redisTemplate.executePipelined((RedisCallback<Object>) connection -> {
 			for (int identifier = 1; identifier <= maxPlayerId; identifier++) {
-				connection.keyCommands().exists(serializer.serialize("u:" + identifier + ":items"));
+				connection.keyCommands().exists(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier)));
 			}
 			return null;
 		});
@@ -115,7 +117,7 @@ public class ScheduleTaskStore {
 					Integer identifier = i+1;
 					log.info("refreshing "+identifier+"'s store  ... ");
 					for (int j = 0; j < tables.size(); j++) {
-						connection.del(serializer.serialize("u:"+identifier+":store:"+(i+1)));
+						connection.del(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_STORE,identifier,(i+1))));
 						Map<String, String> items = new HashMap();
 
 						JSONArray storesJSONArray = JSONUtil.parseArray(stores.get(j));
@@ -124,7 +126,7 @@ public class ScheduleTaskStore {
 							JSONArray storeRandomJSONArray = JSONUtil.parseArray(storesJSONArray.get(RandomUtil.randomInt(storesJSONArray.size())));
 							items.put(String.valueOf(k+1), JSONUtil.toJsonStr(storeRandomJSONArray.get(k)));
 						}
-						allUserStoreData.put("u:"+identifier+":store:"+(j+1), JSONUtil.toJsonStr(items));
+						allUserStoreData.put(StrFormatter.format(RedisKeyConstants.USER_STORE,identifier,(j+1)), JSONUtil.toJsonStr(items));
 					}
 				}
 			}

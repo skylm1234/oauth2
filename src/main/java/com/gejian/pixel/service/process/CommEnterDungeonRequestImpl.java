@@ -2,6 +2,7 @@ package com.gejian.pixel.service.process;
 
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.*;
@@ -74,7 +75,7 @@ public class CommEnterDungeonRequestImpl implements Process<CommEnterDungeonRequ
 		backpack.put("stage", request.getStage());
 		backpack.put("dungeon_enter_timestamp", Helper.currentTimestamp());
 
-		redisTemplate.opsForHash().putAll(String.format("u:%d:temp_backpack", identifier), backpack);
+		redisTemplate.opsForHash().putAll(String.format(RedisKeyConstants.USER_TEMP_PACK, identifier), backpack);
 		builder.setResult(ErrorEnum.ERROR_SUCCESS);
 		return builder.build();
 	}

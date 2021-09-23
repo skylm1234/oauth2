@@ -79,13 +79,13 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			return replyBuilder.build();
 		}
 		//判断是否开启禁止任何人访问
-		Object systemBanAnyone = redisTemplate.opsForValue().get("system:ban_anyone");
+		Object systemBanAnyone = redisTemplate.opsForValue().get(RedisKeyConstants.SYSTEM_BAN_ANYONE);
 		if (systemBanAnyone != null) {
 			if (NumberUtil.parseInt(systemBanAnyone + "") == 1) {
 				log.error("FAILED: {}=>{}:{}", request.getIdentifier(), CommandConstants.LOGIN_REQUEST, Thread.currentThread().getStackTrace()[1].getLineNumber());
 				replyBuilder.setResult(ErrorEnum.ERROR_BANNED);
 				//返回禁止登陆原因
-				String systemBanyoneReason = String.valueOf(redisTemplate.opsForValue().get("system:ban_anyone_reason"));
+				String systemBanyoneReason = String.valueOf(redisTemplate.opsForValue().get(RedisKeyConstants.SYSTEM_BAN_ANYONE_REASON));
 				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(systemBanyoneReason).build());
 				return replyBuilder.build();
 			}
@@ -148,8 +148,8 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			}
 
 			if (redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier, identifier+"")) {
-				redisTemplate.opsForHash().putAll("u:"+identifier+":items", items);
-				redisTemplate.opsForHash().putAll("u:"+identifier+":strings", strings);
+				redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier), items);
+				redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_STRINGS,identifier), strings);
 				redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_CLEAR_TEXT, identifier+"", identifier);
 			} else {
 				throw new RuntimeException("failed");
@@ -165,7 +165,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			tempbackpack.put("stage", 1);
 			tempbackpack.put("dungeon_enter_timestamp", NumberUtil.parseInt(Helper.currentTimestamp()+""));
 
-			redisTemplate.opsForHash().putAll("u:"+identifier+":temp_backpack",tempbackpack);
+			redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_TEMP_PACK,identifier),tempbackpack);
 
 			Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), 1);
 			Helper.refreshStore(redisTemplate, Integer.valueOf(identifier), 2);
@@ -173,11 +173,11 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		}else {
 			identifier = NumberUtil.parseInt(request.getIdentifier());
-			if (redisTemplate.opsForHash().hasKey("user:set:ban", hexEncodedIdentifier)) {
+			if (redisTemplate.opsForHash().hasKey(RedisKeyConstants.USER_SET_BAN, hexEncodedIdentifier)) {
 
 				identifier = UserHolder.get().getIdentifier();
 				log.error("FAILED: {}=>{}:{}",identifier,Thread.currentThread().getStackTrace()[1].getMethodName(),Thread.currentThread().getStackTrace()[1].getLineNumber());
-				Map reason = (Map) redisTemplate.opsForHash().get("user:set:ban", hexEncodedIdentifier);
+				Map reason = (Map) redisTemplate.opsForHash().get(RedisKeyConstants.USER_SET_BAN, hexEncodedIdentifier);
 
 				replyBuilder.setResult(ErrorEnum.ERROR_BANNED);
 				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(reason.get(hexEncodedIdentifier)+"").build());
@@ -188,9 +188,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			}
 			String boardcast = "";
 			if (request.getVersion() >= 11) {
-				boardcast = String.valueOf(redisTemplate.opsForValue().get("system:boardcast11"));
+				boardcast = String.valueOf(redisTemplate.opsForValue().get(RedisKeyConstants.SYSTEM_BOARDCAST11));
 			}else {
-				boardcast = String.valueOf(redisTemplate.opsForValue().get("system:boardcast"));
+				boardcast = String.valueOf(redisTemplate.opsForValue().get(RedisKeyConstants.SYSTEM_BOARDCAST));
 			}
 			if (Helper.stringValue(redisTemplate, NumberUtil.parseInt(request.getIdentifier()), "nickname") != null) {
 				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.parseFrom(request.toByteString()).toBuilder().setData(boardcast).build());
@@ -199,16 +199,16 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		log.info("on_handle_COMM_LOGIN_REQUEST -> {}",request.getIdentifier());
 
-		Helper.setItemValue(redisTemplate, identifier+"", "giftbags", Integer.valueOf(redisTemplate.opsForHash().size("u:" + identifier + ":giftbags")+""));
+		Helper.setItemValue(redisTemplate, identifier+"", "giftbags", Integer.valueOf(redisTemplate.opsForHash().size(StrFormatter.format(RedisKeyConstants.USER_GIFTBAGS, identifier))+""));
 
 		playerBuilder.setIdentifier(identifier+"");
 
-		identifier = NumberUtil.parseInt(redisTemplate.opsForHash().get("user:set:identifier", hexEncodedIdentifier)+"");
+		identifier = NumberUtil.parseInt(redisTemplate.opsForHash().get(RedisKeyConstants.USER_SET_IDENTIFIER, hexEncodedIdentifier)+"");
 
-		Map heros = redisTemplate.opsForHash().entries("u:" + identifier + ":heros");
+		Map heros = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_HEROS));
 		Integer finalIdentifier = identifier;
 		heros.forEach((k, v)->{
-			Map hero = redisTemplate.opsForHash().entries("u:" + finalIdentifier + ":" + k + ":attributes");
+			Map hero = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_HERO_ATTRIBUTES,finalIdentifier,k));
 			HeroBasicInfoProtobuf.HeroBasicInfo.Builder hBuilder = HeroBasicInfoProtobuf.HeroBasicInfo.newBuilder();
 			hBuilder.setId(NumberUtil.parseInt(hero.get("id") + ""));
 			hBuilder.setType(hero.get("type") + "");
@@ -226,16 +226,13 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			hBuilder.setSpeed(NumberUtil.parseInt(hero.get("speed") + ""));
 			hBuilder.setNumber(NumberUtil.parseInt(hero.get("number") + ""));
 
-			Map skills = redisTemplate.opsForHash().entries("u:" + finalIdentifier + ":" + k + ":skills");
-			int[] currentSkillsIndex = {0};
+			Map skills = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_HERO_SKILLS,finalIdentifier,k));
 			skills.forEach((kk,vv)->{
 				HeroSkillProtobuf.HeroSkill heroSkill = HeroSkillProtobuf.HeroSkill
 						.newBuilder()
 						.setType(kk+"")
 						.setLevel(NumberUtil.parseInt(vv+""))
 						.build();
-				//hBuilder.addSkills(currentSkillsIndex[0], heroSkill);
-				//currentSkillsIndex[0]++;
 				hBuilder.addSkills(heroSkill);
 			});
 
@@ -243,7 +240,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			playerBuilder.addHeros(h);
 		});
 
-		Map items = redisTemplate.opsForHash().entries("u:" + identifier + ":items");
+		Map items = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier));
 		items.forEach((k,v)->{
 			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
 					.newBuilder()
@@ -253,7 +250,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			playerBuilder.addItems(item);
 		});
 
-		Map teams = redisTemplate.opsForHash().entries("u:" + identifier + ":teams");
+		Map teams = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_TEAMS,identifier));
 		teams.forEach((k,v)->{
 			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
 					.newBuilder()
@@ -263,7 +260,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			playerBuilder.addTeams(item);
 		});
 
-		Map teamsPvp = redisTemplate.opsForHash().entries("u:" + identifier + ":teams_pvp");
+		Map teamsPvp = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_TEAMS_PVP,identifier));
 		teamsPvp.forEach((k,v)->{
 			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
 					.newBuilder()
@@ -273,7 +270,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			playerBuilder.addTeamsPvp(item);
 		});
 
-		Map archives = redisTemplate.opsForHash().entries("u:" + identifier + ":archives");
+		Map archives = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_ARCHIVES,identifier));
 		archives.forEach((k,v)->{
 			PlayerItemProtobuf.PlayerItem item = PlayerItemProtobuf.PlayerItem
 					.newBuilder()
@@ -283,7 +280,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			playerBuilder.addArchives(item);
 		});
 
-		Map strings = redisTemplate.opsForHash().entries("u:" + identifier + ":strings");
+		Map strings = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_STRINGS,identifier));
 		strings.forEach((k,v)->{
 			PlayerStringProtobuf.PlayerString item = PlayerStringProtobuf.PlayerString
 					.newBuilder()
@@ -293,7 +290,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			playerBuilder.addStrings(item);
 		});
 
-		Map tempbackpack = redisTemplate.opsForHash().entries("u:" + identifier + ":temp_backpack");
+		Map tempbackpack = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_TEMP_PACK,identifier));
 		if (tempbackpack.size()!=0) {
 			PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack tbp = PlayerTemporaryBackpackProtobuf.PlayerTemporaryBackpack
 					.newBuilder()
@@ -326,12 +323,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		playerBuilder.setStore(store);
 
 		if (Helper.stringValue(redisTemplate, identifier, "nickname") != null) {
-			// r = COMM_RANKLIST_RELATIVE_POWER_RESPONSE.new
 			helperResreshPvp(identifier, request, playerBuilder, true);
 		}
 
-		//reply.ping_interval = settings.CLIENT_PING_INTERVAL
-		// TODO: 2021/9/1 需要修改成上面的
 		replyBuilder.setPingInterval(1);
 
 		Helper.increaseItemValue(redisTemplate, identifier, "total_login_times", 1L);
@@ -345,11 +339,10 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		log.info("on_handle_COMM_LOGIN_REQUEST -> "+request.getIdentifier()+" done");
 		//这里session用uuid
 		String session = IdUtil.fastSimpleUUID();
-		redisTemplate.opsForValue().set("u:"+identifier+":session", session);
+		redisTemplate.opsForValue().set(StrFormatter.format(RedisKeyConstants.USER,identifier), session);
 		Map<String,Integer> itemsMap = new HashMap<>();
 		items.put("online",System.currentTimeMillis()/1000);
-		redisTemplate.opsForHash().putAll("u:"+identifier+":items",itemsMap);
-
+		redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier),itemsMap);
 		playerBuilder.setSession(session);
 
 		PlayerInfoProtobuf.PlayerInfo player = playerBuilder.build();
@@ -375,14 +368,14 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			}
 		}
 
-		redisTemplate.opsForHash().hasKey("u:"+identifier+":items","should_refresh_pvp_chanllege_ranklist");
+		redisTemplate.opsForHash().hasKey(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier),"should_refresh_pvp_chanllege_ranklist");
 
-		log.info("helper_resresh_pvp => "+redisTemplate.opsForHash().hasKey("u:"+identifier+":items","should_refresh_pvp_chanllege_ranklist")+"refresh_challage_ranklist => "+refresh_challage_ranklist);
+		log.info("helper_resresh_pvp => "+redisTemplate.opsForHash().hasKey(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier),"should_refresh_pvp_chanllege_ranklist")+"refresh_challage_ranklist => "+refresh_challage_ranklist);
 
-		if (redisTemplate.opsForHash().hasKey("u:"+identifier+":items", "should_refresh_pvp_chanllege_ranklist") && refresh_challage_ranklist) {
+		if (redisTemplate.opsForHash().hasKey(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier), "should_refresh_pvp_chanllege_ranklist") && refresh_challage_ranklist) {
 			log.info("pvp fill data");
 			ranklistHelper(redisTemplate, identifier, reply, 10, true);
-			redisTemplate.opsForHash().delete("u:"+identifier+":items","should_refresh_pvp_chanllege_ranklist");
+			redisTemplate.opsForHash().delete(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier),"should_refresh_pvp_chanllege_ranklist");
 			return ErrorEnum.ERROR_SUCCESS;
 		}else {
 			return ErrorEnum.ERROR_NOT_COOLDOWN;
@@ -417,7 +410,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		if (centerN!=null) {
 			if (centerN) {
-				Long ranklistByNickname = redisTemplate.opsForZSet().reverseRank("ranklist:" + ranklist, Helper.hexEncode(Helper.stringValue(redisTemplate, identifier, "nickname")));
+				Long ranklistByNickname = redisTemplate.opsForZSet().reverseRank(StrFormatter.format(RedisKeyConstants.RANKLIST,ranklist), Helper.hexEncode(Helper.stringValue(redisTemplate, identifier, "nickname")));
 				if (ranklistByNickname==null) {
 					myrank = -1;
 				}else {
@@ -430,7 +423,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 		}
 
 		log.info("__top_n_of_ranklist from {} to {}",from,to);
-		Set ar = redisTemplate.opsForZSet().reverseRangeByScoreWithScores("ranklist:" + ranklist, from, to);
+		Set ar = redisTemplate.opsForZSet().reverseRangeByScoreWithScores(StrFormatter.format(RedisKeyConstants.RANKLIST,ranklist), from, to);
 		for (Object o : ar) {
 			// TODO: 2021/9/10 排名列表可能有问题
 			/*
@@ -464,7 +457,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 	private List<StoreItemProtobuf.StoreItem> fooCall(Integer identifier, Integer type) {
 		List<StoreItemProtobuf.StoreItem> storeItems = new ArrayList<>();
 		List items = new ArrayList<>();
-		Map storeByType = redisTemplate.opsForHash().entries("u:" + identifier + ":store:" + type);
+		Map storeByType = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_STORE,identifier,type));
 		Map storeByTypeSort = new LinkedHashMap();
 		storeByType.forEach((k,v)->{
 			storeByTypeSort.put(Integer.parseInt(k+""), v);

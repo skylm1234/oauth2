@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service(CommandConstants.UPDATE_TEMPORARY_BACKPACK)
-public class L25UpdateTemporaryBackpackImpl implements Process<CommUpdateTemporaryBackpackRequestProtobuf.CommUpdateTemporaryBackpackRequest
+public class UpdateTemporaryBackpackImpl implements Process<CommUpdateTemporaryBackpackRequestProtobuf.CommUpdateTemporaryBackpackRequest
 		, CommUpdateTemporaryBackpackResponseProtobuf.CommUpdateTemporaryBackpackResponse> {
 
 	@Autowired

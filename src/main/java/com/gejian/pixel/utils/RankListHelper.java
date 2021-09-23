@@ -1,6 +1,8 @@
 package com.gejian.pixel.utils;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.text.StrFormatter;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.CommRanklistRelativePowerResponseProtobuf;
 import com.gejian.pixel.proto.CommRanklistResponseProtobuf;
@@ -90,11 +92,11 @@ public class RankListHelper {
 	}
 
 	private String getRankListKey(String rankName) {
-		return "ranklist:" + rankName;
+		return StrFormatter.format(RedisKeyConstants.RANKLIST,rankName);
 	}
 
 	private String getItemsKey(Integer identifier) {
-		return "u:" + identifier.toString() + ":items";
+		return StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier);
 	}
 
 	public Long parseLong(Object o) {

@@ -1,6 +1,8 @@
 package com.gejian.pixel.utils;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.text.StrFormatter;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.Backpack;
 import com.gejian.pixel.entity.LevelUpgrade;
 import com.gejian.pixel.proto.*;
@@ -299,35 +301,31 @@ public class TemporaryBackpackHelper {
 
 
 	private String getHeroAttributesKey(Integer identifier, String hero) {
-		return "u:#{identifier}:#{k_hero}:attributes"
-				.replace("#{identifier}", identifier.toString())
-				.replace("#{k_hero}", hero);
+		return StrFormatter.format(RedisKeyConstants.USER_HERO_ATTRIBUTES,identifier,hero);
 	}
 
 	private String getHerosKey(Integer identifier) {
-		return "u:#{identifier}:heros".replace("#{identifier}", identifier.toString());
+		return StrFormatter.format(RedisKeyConstants.USER_HEROS,identifier);
 	}
 
 	private String getSkillsKey(Integer identifier, String hero) {
-		return "u:#{identifier}:#{k_hero}:skills"
-				.replace("#{identifier}", identifier.toString())
-				.replace("#{k_hero}", hero);
+		return StrFormatter.format(RedisKeyConstants.USER_HERO_SKILLS,identifier,hero);
 	}
 
 	private String getTeamsKey(Integer identifier) {
-		return "u:#{identifier}:teams".replace("#{identifier}", identifier.toString());
+		return StrFormatter.format(RedisKeyConstants.USER_TEAMS,identifier);
 	}
 
 	private String getItemKey(Integer identifier) {
-		return "u:#{identifier}:items".replace("#{identifier}", identifier.toString());
+		return StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier);
 	}
 
 	private String getTempBackpackKey(Integer identifier) {
-		return "u:#{identifier}:temp_backpack".replace("#{identifier}", identifier.toString());
+		return StrFormatter.format(RedisKeyConstants.USER_TEMP_PACK,identifier);
 	}
 
 	private String getTempBackpackItemsKey(Integer identifier) {
-		return "u:#{identifier}:temp_backpack_items".replace("#{identifier}", identifier.toString());
+		return StrFormatter.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS,identifier);
 	}
 
 	public Long parseLong(Object o) {

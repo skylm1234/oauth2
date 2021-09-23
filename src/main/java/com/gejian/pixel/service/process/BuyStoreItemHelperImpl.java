@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service(CommandConstants.BUY_STORE_ITEM_HELPER)
-public class L31BuyStoreItemHelperImpl implements Process<CommBuyStoreItemRequestProtobuf.CommBuyStoreItemRequest
+public class BuyStoreItemHelperImpl implements Process<CommBuyStoreItemRequestProtobuf.CommBuyStoreItemRequest
 		, CommBuyStoreItemResponseProtobuf.CommBuyStoreItemResponse> {
 
 

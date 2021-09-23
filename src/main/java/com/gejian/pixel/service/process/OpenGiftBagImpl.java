@@ -1,6 +1,8 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.text.StrFormatter;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.DropService;
@@ -22,7 +24,7 @@ import java.util.Map;
  */
 @Slf4j
 @Service(CommandConstants.OPEN_GIFTBAG)
-public class L36OpenGiftBagImpl implements Process<CommOpenGiftbagRequestProtobuf.CommOpenGiftbagRequest
+public class OpenGiftBagImpl implements Process<CommOpenGiftbagRequestProtobuf.CommOpenGiftbagRequest
 		, CommOpenGiftbagResponseProtobuf.CommOpenGiftbagResponse> {
 
 	@Autowired
@@ -79,15 +81,15 @@ public class L36OpenGiftBagImpl implements Process<CommOpenGiftbagRequestProtobu
 	}
 
 	private String getGiftBagsKey(Integer identifier) {
-		return "u:" + identifier + ":giftbags";
+		return StrFormatter.format(RedisKeyConstants.USER_GIFTBAGS,identifier);
 	}
 
 	private String getTeamsKey(Integer identifier) {
-		return "u:" + identifier + ":teams";
+		return StrFormatter.format(RedisKeyConstants.USER_TEAMS,identifier);
 	}
 
 	private String getGiftBagKey(Integer identifier, String s) {
-		return "u:" + identifier + ":giftbag:" + s;
+		return StrFormatter.format(RedisKeyConstants.USER_GIFTBAG,identifier,s);
 	}
 
 	public Long parseLong(Object o) {

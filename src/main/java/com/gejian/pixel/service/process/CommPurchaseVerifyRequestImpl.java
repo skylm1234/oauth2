@@ -1,9 +1,11 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.HexUtil;
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
+import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.InGamePurchase;
 import com.gejian.pixel.entity.Vip;
 import com.gejian.pixel.enums.ErrorEnum;
@@ -76,20 +78,20 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 					PlayerItemProtobuf.PlayerItem increaseItemValue = Helper.increaseItemValue(redisTemplate, identifier, productId, 1L);
 					builder.addItems(increaseItemValue);
 					Map<String, Object> gb = new HashMap<>(4);
-					gb.put("identifier", "giftbag_identifier_" + redisTemplate.opsForValue().increment("user:max:giftbag_identifier"));
+					gb.put("identifier", "giftbag_identifier_" + redisTemplate.opsForValue().increment(RedisKeyConstants.USER_MAX_GIFTBAG_IDENTIFIER));
 					//转16进制
 					gb.put("icon", HexUtil.encodeHexStr("gift_package.png", CharsetUtil.CHARSET_UTF_8));
 					gb.put("desc", HexUtil.encodeHexStr("初次购买" + inGamePurchase.getDesc() + "，赠送" + inGamePurchase.getDesc() + "。", CharsetUtil.CHARSET_UTF_8));
 					gb.put("action", productId);
 
-					redisTemplate.opsForHash().putAll(String.format("u:%d:giftbag:%s", identifier, gb.get("identifier")), gb);
+					redisTemplate.opsForHash().putAll(String.format(RedisKeyConstants.USER_GIFTBAG, identifier, gb.get("identifier")), gb);
 
 					PlayerItemProtobuf.PlayerItem giftbagsItem = Helper.increaseItemValue(redisTemplate, identifier, "giftbags", 1L);
 					builder.addItems(giftbagsItem);
 
 					Map<String,String> giftbagsData = new HashMap<>();
 					giftbagsData.put(String.valueOf(gb.get("identifier")),"初次购买"+inGamePurchase.getDesc()+"，赠送"+inGamePurchase.getDesc());
-					redisTemplate.opsForHash().putAll("u:"+identifier+":giftbags",giftbagsData);
+					redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_GIFTBAGS,identifier),giftbagsData);
 				}
 
 				PlayerItemProtobuf.PlayerItem stoneItem = Helper.increaseItemValue(redisTemplate, identifier, "stone", (long) inGamePurchase.getStone());
@@ -121,16 +123,16 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 						Vip vip2 = vipService.getById(origin_vip);
 
 						Map<String, Object> gb = new HashMap<>();
-						gb.put("identifier", "giftbag_identifier_" + redisTemplate.opsForValue().increment("user:max:giftbag_identifier"));
+						gb.put("identifier", "giftbag_identifier_" + redisTemplate.opsForValue().increment(RedisKeyConstants.USER_MAX_GIFTBAG_IDENTIFIER));
 						gb.put("icon", HexUtil.encodeHexStr("gift_package.png", CharsetUtil.CHARSET_UTF_8));
 						gb.put("desc", HexUtil.encodeHexStr("达到vip等级" + vip2.getLevel() + "，好礼相送。"));
 						gb.put("action", vip2.getItemid());
 
-						redisTemplate.opsForHash().putAll(String.format("u:%d:giftbag:%s", identifier, gb.get("identifier")), gb);
+						redisTemplate.opsForHash().putAll(String.format(RedisKeyConstants.USER_GIFTBAG, identifier, gb.get("identifier")), gb);
 
 						PlayerItemProtobuf.PlayerItem giftbagsItem = Helper.increaseItemValue(redisTemplate, identifier, "giftbags", 1L);
 						builder.addItems(giftbagsItem);
-						redisTemplate.opsForHash().put(String.format("u:%d:giftbags", identifier),
+						redisTemplate.opsForHash().put(String.format(RedisKeyConstants.USER_GIFTBAGS, identifier),
 								gb.get("identifier"),
 								String.format("达到vip等级%d，好礼相送。", vip2.getLevel()));
 						dirty = true;
@@ -141,8 +143,6 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 				if (dirty) {
 					PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), "vip", currentVip.getLevel());
 					PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "vip", currentVip.getLevel(), identifier);
-					/*PlayerItemProtobuf.PlayerItem playerItem = Helper.setItemValue(redisTemplate, String.valueOf(identifier), "vip",  origin_vip);
-					PlayerItemProtobuf.PlayerItem playerItem1 = Helper.onNotifyEventOfPromotions(redisTemplate, "vip", origin_vip, identifier);*/
 					builder.addItems(playerItem)
 							.addArchives(playerItem1);
 				}

@@ -2,27 +2,17 @@ package com.gejian.pixel.service.process;
 
 import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.CommandConstants;
-import com.gejian.pixel.constants.NicknameRedisKeyConstants;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
-import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.service.init.IllegalityVocabularyDataInit;
-import com.gejian.pixel.utils.BroadcastUtil;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
-
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author : Hyb
@@ -68,9 +58,9 @@ public class SetNickNameProcessImpl implements Process<CommSetNicknameRequestPro
 
 		String hexNickname = Helper.hexEncode(nickname);
 
-		redisTemplate.opsForHash().putIfAbsent(NicknameRedisKeyConstants.USER_SET_NICKNAME_CLEARTEXT, nickname, identifier);
+		redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_SET_NICKNAME_CLEARTEXT, nickname, identifier);
 
-		if (!redisTemplate.opsForHash().putIfAbsent(NicknameRedisKeyConstants.USER_SET_NICKNAME, hexNickname, identifier)) {
+		if (!redisTemplate.opsForHash().putIfAbsent(RedisKeyConstants.USER_SET_NICKNAME, hexNickname, identifier)) {
 			return response.setResult(ErrorEnum.ERROR_NICKNAME_ALREADY_EXISTS).build();
 		}
 

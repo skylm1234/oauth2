@@ -22,8 +22,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -135,7 +133,7 @@ public class LetHeroConsumeExpBookProcessImpl implements Process<CommLetHeroCons
 		if (dirty) {
 			int power = (int) heroMap.get("hp") + (int) heroMap.get("def") + (int) heroMap.get("attack")
 					+ (int) heroMap.get("speed");
-			redisTemplate.opsForHash().put(StrUtil.format(RedisKeyConstants.USER_HEARO, identifier)
+			redisTemplate.opsForHash().put(StrUtil.format(RedisKeyConstants.USER_HEROS, identifier)
 					, hero, power);
 			PlayerItemProtobuf.PlayerItem playerItem = Helper.updateRanklistPower(redisTemplate, identifier);
 			response.addItems(playerItem);
