@@ -24,6 +24,6 @@ public interface RedisKeyConstants {
 
 	String USER_HEARO = "u:{}:heros";
 
-
+	String SYSTEM_BAN_ANYONE = "system:ban_anyone";
 
 }

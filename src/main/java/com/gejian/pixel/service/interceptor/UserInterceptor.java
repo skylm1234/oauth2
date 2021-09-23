@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.interceptor;
 
+import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.AttributeKeyConstants;
 import com.gejian.pixel.constants.CommandConstants;
@@ -42,6 +43,12 @@ public class UserInterceptor {
 		UserInfo userInfo = channel.attr(AttributeKeyConstants.USER_INFO_ATTRIBUTE_KEY).get();
 		if (Objects.isNull(userInfo) || Objects.isNull(userInfo.getIdentifier())
 				|| StrUtil.isBlank(userInfo.getSession())){
+			return false;
+		}
+		int systemBanAnyone = NumberUtil.parseInt(stringRedisTemplate.opsForValue().get(RedisKeyConstants.SYSTEM_BAN_ANYONE));
+		if (systemBanAnyone==1) {
+			//开启了禁止登陆
+			log.error("禁止任何用户登录");
 			return false;
 		}
 		String key = StrUtil.format(RedisKeyConstants.USER,userInfo.getIdentifier());
