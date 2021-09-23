@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.NumberUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -67,7 +68,7 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 		//当前方法名
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
 
-		String redisKey = String.format(RedisKeyConstants.USER_HERO_ATTRIBUTES, identifier, hero);
+		String redisKey = StrFormatter.format(RedisKeyConstants.USER_HERO_ATTRIBUTES, identifier, hero);
 		if (!redisTemplate.hasKey(redisKey)) {
 			log.error("FAILED: {}=>{}:{}", identifier, methodName, Thread.currentThread().getStackTrace()[1].getLineNumber());
 			return reply.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();

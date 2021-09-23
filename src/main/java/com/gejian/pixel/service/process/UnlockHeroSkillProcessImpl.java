@@ -1,6 +1,7 @@
 package com.gejian.pixel.service.process;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
@@ -57,11 +58,11 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 
 		String hero = request.getHero();
 		String skill = request.getSkill();
-		String heroKey = String.format(RedisKeyConstants.USER_HERO_ATTRIBUTES, identifier, hero);
+		String heroKey = StrFormatter.format(RedisKeyConstants.USER_HERO_ATTRIBUTES, identifier, hero);
 		if (!redisTemplate.hasKey(heroKey)) {
 			return result.setResult(ErrorEnum.ERROR_HERO_NOT_FOUND).build();
 		}
-		String skillKey = String.format(RedisKeyConstants.USER_HERO_SKILLS, identifier, hero);
+		String skillKey = StrFormatter.format(RedisKeyConstants.USER_HERO_SKILLS, identifier, hero);
 
 		Map<String, Object> skillsMap = redisTemplate.opsForHash().entries(skillKey);
 		if (!skillsMap.containsKey(skill)) {
@@ -84,7 +85,7 @@ public class UnlockHeroSkillProcessImpl implements Process<CommUnlockHeroSkillRe
 		PlayerItemProtobuf.PlayerItem gold = Helper.decreaseItemValue(redisTemplate, identifier, "gold", jsonObject.getLong("gold"));
 
 		PlayerItemProtobuf.PlayerItem playerItem = Helper.decreaseItemValue(redisTemplate, identifier, String.format("book_%s", skill), jsonObject.getLong("book"));
-		redisTemplate.opsForHash().increment(String.format(RedisKeyConstants.USER_HERO_SKILLS, identifier, hero), skill, 1);
+		redisTemplate.opsForHash().increment(StrFormatter.format(RedisKeyConstants.USER_HERO_SKILLS, identifier, hero), skill, 1);
 
 		return result.setRequest(request)
 				.setResult(ErrorEnum.ERROR_SUCCESS)

@@ -205,7 +205,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		identifier = NumberUtil.parseInt(redisTemplate.opsForHash().get(RedisKeyConstants.USER_SET_IDENTIFIER, hexEncodedIdentifier)+"");
 
-		Map heros = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_HEROS));
+		Map heros = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_HEROS,identifier));
 		Integer finalIdentifier = identifier;
 		heros.forEach((k, v)->{
 			Map hero = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_HERO_ATTRIBUTES,finalIdentifier,k));

@@ -1032,9 +1032,9 @@ public class Helper {
 		long gold_delta = duration * constStr.getBasicAwardFomula().getGold();
 
 		Integer gold_max = backpackService.getByLevel(level).getGoldMax();
-		if (redisTemplate.opsForHash().increment(String.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS, identifier), "gold", gold_delta) >
+		if (redisTemplate.opsForHash().increment(StrFormatter.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS, identifier), "gold", gold_delta) >
 				gold_max) {
-			redisTemplate.opsForHash().put(String.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS, identifier), "gold", gold_max);
+			redisTemplate.opsForHash().put(StrFormatter.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS, identifier), "gold", gold_max);
 		}
 
 		//计算小怪收益
@@ -1065,7 +1065,7 @@ public class Helper {
 			}
 		}
 
-		Map<String, Object> items = redisTemplate.opsForHash().entries(String.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS, identifier));
+		Map<String, Object> items = redisTemplate.opsForHash().entries(StrFormatter.format(RedisKeyConstants.USER_TEMP_PACK_ITEMS, identifier));
 		Set<String> itemsKey = items.keySet();
 		for (String s : itemsKey) {
 			PlayerItemProtobuf.PlayerItem.Builder builder = PlayerItemProtobuf.PlayerItem.newBuilder();
@@ -1074,7 +1074,7 @@ public class Helper {
 			resultBuilder.addItems(builder.build());
 		}
 
-		redisTemplate.opsForHash().put(String.format(RedisKeyConstants.USER_TEMP_PACK, identifier), "dungeon_enter_timestamp", current_timestamp());
+		redisTemplate.opsForHash().put(StrFormatter.format(RedisKeyConstants.USER_TEMP_PACK, identifier), "dungeon_enter_timestamp", current_timestamp());
 
 		return resultBuilder.build();
 	}

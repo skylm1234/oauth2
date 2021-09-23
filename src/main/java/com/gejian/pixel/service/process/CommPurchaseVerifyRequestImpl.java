@@ -84,7 +84,7 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 					gb.put("desc", HexUtil.encodeHexStr("初次购买" + inGamePurchase.getDesc() + "，赠送" + inGamePurchase.getDesc() + "。", CharsetUtil.CHARSET_UTF_8));
 					gb.put("action", productId);
 
-					redisTemplate.opsForHash().putAll(String.format(RedisKeyConstants.USER_GIFTBAG, identifier, gb.get("identifier")), gb);
+					redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_GIFTBAG, identifier, gb.get("identifier")), gb);
 
 					PlayerItemProtobuf.PlayerItem giftbagsItem = Helper.increaseItemValue(redisTemplate, identifier, "giftbags", 1L);
 					builder.addItems(giftbagsItem);
@@ -128,11 +128,11 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 						gb.put("desc", HexUtil.encodeHexStr("达到vip等级" + vip2.getLevel() + "，好礼相送。"));
 						gb.put("action", vip2.getItemid());
 
-						redisTemplate.opsForHash().putAll(String.format(RedisKeyConstants.USER_GIFTBAG, identifier, gb.get("identifier")), gb);
+						redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_GIFTBAG, identifier, gb.get("identifier")), gb);
 
 						PlayerItemProtobuf.PlayerItem giftbagsItem = Helper.increaseItemValue(redisTemplate, identifier, "giftbags", 1L);
 						builder.addItems(giftbagsItem);
-						redisTemplate.opsForHash().put(String.format(RedisKeyConstants.USER_GIFTBAGS, identifier),
+						redisTemplate.opsForHash().put(StrFormatter.format(RedisKeyConstants.USER_GIFTBAGS, identifier),
 								gb.get("identifier"),
 								String.format("达到vip等级%d，好礼相送。", vip2.getLevel()));
 						dirty = true;

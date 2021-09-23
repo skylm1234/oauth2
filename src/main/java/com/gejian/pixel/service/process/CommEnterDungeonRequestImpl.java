@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.text.StrFormatter;
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.RedisKeyConstants;
@@ -75,7 +76,7 @@ public class CommEnterDungeonRequestImpl implements Process<CommEnterDungeonRequ
 		backpack.put("stage", request.getStage());
 		backpack.put("dungeon_enter_timestamp", Helper.currentTimestamp());
 
-		redisTemplate.opsForHash().putAll(String.format(RedisKeyConstants.USER_TEMP_PACK, identifier), backpack);
+		redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_TEMP_PACK, identifier), backpack);
 		builder.setResult(ErrorEnum.ERROR_SUCCESS);
 		return builder.build();
 	}

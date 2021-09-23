@@ -79,7 +79,7 @@ public class ScheduleTaskDaily {
 				if (BooleanUtil.toBoolean(existsList.get(i).toString())) {
 					Integer identifier = i+1;
 					connection.hashCommands().hMSet(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier)),items);
-					connection.hashCommands().hMSet(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_STRINGS)),strings);
+					connection.hashCommands().hMSet(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_STRINGS,identifier)),strings);
 					connection.hashCommands().hMSet(serializer.serialize(StrFormatter.format(RedisKeyConstants.USER_ARCHIVES,identifier)),archives);
 				}
 			}
