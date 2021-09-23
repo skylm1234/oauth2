@@ -25,7 +25,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -79,12 +78,15 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			replyBuilder.setResult(ErrorEnum.ERROR_INVALID_PARAMETER);
 			return replyBuilder.build();
 		}
+		//判断是否开启禁止任何人访问
 		Object systemBanAnyone = redisTemplate.opsForValue().get("system:ban_anyone");
 		if (systemBanAnyone != null) {
 			if (NumberUtil.parseInt(systemBanAnyone + "") == 1) {
 				log.error("FAILED: {}=>{}:{}", request.getIdentifier(), CommandConstants.LOGIN_REQUEST, Thread.currentThread().getStackTrace()[1].getLineNumber());
 				replyBuilder.setResult(ErrorEnum.ERROR_BANNED);
-				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(systemBanAnyone + "").build());
+				//返回禁止登陆原因
+				String systemBanyoneReason = String.valueOf(redisTemplate.opsForValue().get("system:ban_anyone_reason"));
+				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(systemBanyoneReason).build());
 				return replyBuilder.build();
 			}
 		}
@@ -184,14 +186,14 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				//return 0, nil
 				return replyBuilder.build();
 			}
-			Boolean boardcast = Boolean.FALSE;
+			String boardcast = "";
 			if (request.getVersion() >= 11) {
-				boardcast = (Boolean) redisTemplate.opsForValue().get("system:boardcast11");
+				boardcast = String.valueOf(redisTemplate.opsForValue().get("system:boardcast11"));
 			}else {
-				boardcast = (Boolean) redisTemplate.opsForValue().get("system:boardcast");
+				boardcast = String.valueOf(redisTemplate.opsForValue().get("system:boardcast"));
 			}
 			if (Helper.stringValue(redisTemplate, NumberUtil.parseInt(request.getIdentifier()), "nickname") != null) {
-				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(boardcast+"").build());
+				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(boardcast).build());
 			}
 		}
 
