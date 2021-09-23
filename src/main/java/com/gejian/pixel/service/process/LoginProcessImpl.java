@@ -193,7 +193,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				boardcast = String.valueOf(redisTemplate.opsForValue().get("system:boardcast"));
 			}
 			if (Helper.stringValue(redisTemplate, NumberUtil.parseInt(request.getIdentifier()), "nickname") != null) {
-				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(boardcast).build());
+				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.parseFrom(request.toByteString()).toBuilder().setData(boardcast).build());
 			}
 		}
 
@@ -357,7 +357,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 
 		replyBuilder.setTimestamp(NumberUtil.parseInt(Helper.currentTimestamp()+""));
-		replyBuilder.setRequest(request);
+		//replyBuilder.setRequest(request);
 		return replyBuilder.build();
 	}
 
