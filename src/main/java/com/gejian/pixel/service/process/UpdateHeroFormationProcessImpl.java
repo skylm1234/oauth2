@@ -52,7 +52,7 @@ public class UpdateHeroFormationProcessImpl implements Process<CommUpdateHeroFor
 			int type = request.getType();
 
 			if (type == 1) {
-				redisTemplate.delete(StrUtil.format(UpdateHeroFoRedisKeyConstants.USER_TEAMS_PVP, identifier));
+				redisTemplate.delete(StrUtil.format(RedisKeyConstants.USER_TEAMS_PVP, identifier));
 
 				HashMap<String, Long> teams = new HashMap<>();
 
@@ -60,16 +60,16 @@ public class UpdateHeroFormationProcessImpl implements Process<CommUpdateHeroFor
 					teams.put(playerItem.getKey(), playerItem.getValue());
 				});
 
-				redisTemplate.opsForHash().putAll(StrUtil.format(UpdateHeroFoRedisKeyConstants.USER_TEAMS_PVP, identifier), teams);
+				redisTemplate.opsForHash().putAll(StrUtil.format(RedisKeyConstants.USER_TEAMS_PVP, identifier), teams);
 
 			} else {
-				redisTemplate.delete(StrUtil.format(UpdateHeroFoRedisKeyConstants.USER_TEAMS_PVP, identifier));
+				redisTemplate.delete(StrUtil.format(RedisKeyConstants.USER_TEAMS, identifier));
 				HashMap<String, Long> teams = new HashMap<>();
 
 				formationsList.forEach(playerItem -> {
 					teams.put(playerItem.getKey(), playerItem.getValue());
 				});
-				redisTemplate.opsForHash().putAll(StrUtil.format(RedisKeyConstants.USER_ITEMS, identifier), teams);
+				redisTemplate.opsForHash().putAll(StrUtil.format(RedisKeyConstants.USER_TEAMS, identifier), teams);
 				Helper.updateRanklistPower(redisTemplate, identifier, null);
 			}
 

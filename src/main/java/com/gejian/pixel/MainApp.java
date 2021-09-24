@@ -41,10 +41,9 @@ public class MainApp implements ApplicationRunner {
 	/**
 	 * 启动Netty服务
 	 * @param args
-	 * @throws Exception
 	 */
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
+	public void run(ApplicationArguments args) {
 
 		// 创建网络服务器
 		EventLoopGroup boss = new NioEventLoopGroup();

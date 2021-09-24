@@ -79,7 +79,7 @@ public class QueryBuyHeroPriceProcessImpl implements Process<CommQueryBuyHeroPri
 
 		log.info("{}",responseBuilder.getPricesList());
 
-		redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_ITEMS), items);
+		redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier), items);
 
 		responseBuilder.setRequest(request);
 
