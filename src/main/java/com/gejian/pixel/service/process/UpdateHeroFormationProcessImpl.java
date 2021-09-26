@@ -3,7 +3,6 @@ package com.gejian.pixel.service.process;
 import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.RedisKeyConstants;
-import com.gejian.pixel.constants.UpdateHeroFoRedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.Process;
@@ -20,7 +19,7 @@ import java.util.List;
 /**
  * @author : Hyb
  * @date : 2021/9/3 14:24
- * @description:
+ * @description: 更新英雄队列
  */
 @Service(CommandConstants.UPDATE_HERO_FORMATION)
 @Slf4j

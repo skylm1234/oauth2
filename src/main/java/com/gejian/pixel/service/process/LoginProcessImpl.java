@@ -370,7 +370,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		redisTemplate.opsForHash().hasKey(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier),"should_refresh_pvp_chanllege_ranklist");
 
-		log.info("helper_resresh_pvp => "+redisTemplate.opsForHash().hasKey(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier),"should_refresh_pvp_chanllege_ranklist")+"refresh_challage_ranklist => "+refresh_challage_ranklist);
+		log.info("helper_resresh_pvp => {}  refresh_challage_ranklist => {}",redisTemplate.opsForHash().hasKey(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier),"should_refresh_pvp_chanllege_ranklist"),refresh_challage_ranklist);
 
 		if (redisTemplate.opsForHash().hasKey(StrFormatter.format(RedisKeyConstants.USER_ITEMS,identifier), "should_refresh_pvp_chanllege_ranklist") && refresh_challage_ranklist) {
 			log.info("pvp fill data");
