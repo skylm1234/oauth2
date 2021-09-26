@@ -129,7 +129,8 @@ public class HeroUpgradeStarProcessImpl implements Process<CommHeroUpgradeStarRe
 			int power = (NumberUtil.parseInt(heroMap.get("hp") + "") + NumberUtil.parseInt(heroMap.get("attack") + "") + NumberUtil.parseInt(heroMap.get("def") + "") + NumberUtil.parseInt(heroMap.get("speed") + ""));
 			redisTemplate.opsForHash().put(StrFormatter.format(RedisKeyConstants.USER_HEROS, identifier), type, power);
 			redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_HERO_ATTRIBUTES, identifier, type), heroMap);
-			Helper.updateRanklistPower(redisTemplate, identifier);
+			PlayerItemProtobuf.PlayerItem powerItem = Helper.updateRanklistPower(redisTemplate, identifier);
+			result.addItems(powerItem);
 			Hero heroNow = heroService.getHash().get(id);
 			String desc = "";
 			if (star <= 5) {
