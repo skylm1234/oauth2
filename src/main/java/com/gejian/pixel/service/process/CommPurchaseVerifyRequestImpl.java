@@ -111,6 +111,7 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 				Vip currentVip = new Vip();
 
 				while (true) {
+				//while (origin_vip<vipService.getById(vipService.list().size()).getLevel()) {
 					Vip vip = vipService.getById(origin_vip+1);
 					if (vip == null) {
 						log.error("unknow vip level");
@@ -120,22 +121,28 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 					if (total_charged_money >= vip.getCharge()) {
 						origin_vip = origin_vip + 1;
 
-						Vip vip2 = vipService.getById(origin_vip);
+						Vip vip2 = vipService.getById(origin_vip+1);
 
-						Map<String, Object> gb = new HashMap<>();
-						gb.put("identifier", "giftbag_identifier_" + redisTemplate.opsForValue().increment(RedisKeyConstants.USER_MAX_GIFTBAG_IDENTIFIER));
-						gb.put("icon", HexUtil.encodeHexStr("gift_package.png", CharsetUtil.CHARSET_UTF_8));
-						gb.put("desc", HexUtil.encodeHexStr("达到vip等级" + vip2.getLevel() + "，好礼相送。"));
-						gb.put("action", vip2.getItemid());
+						if (vip2!=null) {
+							//如果无法获取到下次升级的vip等级，则代表已经升级到最高等级
+							//如果可以获取到，则代表是第一次升级到该等级，只有第一次达到等级才会进行赠送等级礼包
+							Map<String, Object> gb = new HashMap<>();
+							gb.put("identifier", "giftbag_identifier_" + redisTemplate.opsForValue().increment(RedisKeyConstants.USER_MAX_GIFTBAG_IDENTIFIER));
+							gb.put("icon", HexUtil.encodeHexStr("gift_package.png", CharsetUtil.CHARSET_UTF_8));
+							gb.put("desc", HexUtil.encodeHexStr("达到vip等级" + vip2.getLevel() + "，好礼相送。"));
+							gb.put("action", vip2.getItemid());
 
-						redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_GIFTBAG, identifier, gb.get("identifier")), gb);
+							redisTemplate.opsForHash().putAll(StrFormatter.format(RedisKeyConstants.USER_GIFTBAG, identifier, gb.get("identifier")), gb);
 
-						PlayerItemProtobuf.PlayerItem giftbagsItem = Helper.increaseItemValue(redisTemplate, identifier, "giftbags", 1L);
-						builder.addItems(giftbagsItem);
-						redisTemplate.opsForHash().put(StrFormatter.format(RedisKeyConstants.USER_GIFTBAGS, identifier),
-								gb.get("identifier"),
-								String.format("达到vip等级%d，好礼相送。", vip2.getLevel()));
-						dirty = true;
+							PlayerItemProtobuf.PlayerItem giftbagsItem = Helper.increaseItemValue(redisTemplate, identifier, "giftbags", 1L);
+							builder.addItems(giftbagsItem);
+							redisTemplate.opsForHash().put(StrFormatter.format(RedisKeyConstants.USER_GIFTBAGS, identifier),
+									gb.get("identifier"),
+									String.format("达到vip等级%d，好礼相送。", vip2.getLevel()));
+							dirty = true;
+						}else {
+							break;
+						}
 					} else {
 						break;
 					}
