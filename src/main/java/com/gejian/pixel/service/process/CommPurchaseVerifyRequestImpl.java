@@ -12,14 +12,12 @@ import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.CommPurchaseVerifyRequestProtobuf;
 import com.gejian.pixel.proto.CommPurchaseVerifyResponseProtobuf;
-import com.gejian.pixel.proto.InGamePurchaseProtobuf;
 import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.InGamePurchaseService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.service.VipService;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -111,7 +109,6 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 				Vip currentVip = new Vip();
 
 				while (true) {
-				//while (origin_vip<vipService.getById(vipService.list().size()).getLevel()) {
 					Vip vip = vipService.getById(origin_vip+1);
 					if (vip == null) {
 						log.error("unknow vip level");
