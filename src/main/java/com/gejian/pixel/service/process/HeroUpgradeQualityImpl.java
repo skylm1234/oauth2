@@ -101,7 +101,8 @@ public class HeroUpgradeQualityImpl implements Process<CommHeroUpgradeQualityReq
 
 			if (Helper.itemCount(redisTemplate, identifier, "private_soulchip_" + id) >= item.getConsumeExpand().getPrivateSoulchip()) {
 				//减少物品个数
-				Helper.decreaseItemValue(redisTemplate, identifier, "private_soulchip_" + id, (long) item.getConsumeExpand().getPrivateSoulchip());
+				PlayerItemProtobuf.PlayerItem decreaseItem = Helper.decreaseItemValue(redisTemplate, identifier, "private_soulchip_" + id, (long) item.getConsumeExpand().getPrivateSoulchip());
+				reply.addItems(decreaseItem);
 				//自增加一
 				Long quality = redisTemplate.opsForHash().increment(redisKey, "quality", 1);
 				if (quality >= qualityNoMoreThanNumber) {
