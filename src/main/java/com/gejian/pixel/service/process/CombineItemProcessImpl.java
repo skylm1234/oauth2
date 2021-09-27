@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * 资源合成
  * @author ZhouQiang
  * @date 2021/9/2$
  */
@@ -43,34 +44,34 @@ public class CombineItemProcessImpl implements
 	@Override
 	public CommCombineItemResponseProtobuf.CommCombineItemResponse
 	doProcess(CommCombineItemRequestProtobuf.CommCombineItemRequest request) throws Exception {
-		if (!MAPPING.containsKey(request.getItem()) || !existsItem(request.getItem())) {
-			return null;
-		}
-		String to = MAPPING.get(request.getItem());
-		long fromNum;
-		long toNum = 0L;
-		while (true){
-			long num = incrItem(request.getItem(), -10);
-			if (num >= 0)  {
+		CommCombineItemResponseProtobuf.CommCombineItemResponse.Builder reply = CommCombineItemResponseProtobuf.CommCombineItemResponse.newBuilder();
+		if (MAPPING.containsKey(request.getItem()) && existsItem(request.getItem())) {
+			Integer identifier = UserHolder.get().getIdentifier();
+			String to = MAPPING.get(request.getItem());
+			long fromNum;
+			long toNum = 0L;
+			//当前资源数量
+			Integer itemCount = Helper.itemCount(redisTemplate, identifier, request.getItem());
+			if (itemCount<10) {
+				//小于10个不允许合成，返回资源不足提示
+				reply.setResult(ErrorEnum.ERROR_NOT_ENOUGH_RESOURCES);
+			}else {
+				fromNum = incrItem(request.getItem(), -10);
 				toNum = incrItem(to,1);
-			} else {
-				fromNum = incrItem(request.getItem(),10);
-				break;
+				PlayerItemProtobuf.PlayerItem fromItem = PlayerItemProtobuf.PlayerItem.newBuilder()
+						.setKey(request.getItem())
+						.setValue(fromNum)
+						.build();
+				PlayerItemProtobuf.PlayerItem toItem = PlayerItemProtobuf.PlayerItem.newBuilder()
+						.setKey(to)
+						.setValue(toNum)
+						.build();
+				reply.addItems(fromItem).addItems(toItem);
 			}
+		}else {
+			reply.setResult(ErrorEnum.ERROR_NOT_ENOUGH_RESOURCES);
 		}
-		PlayerItemProtobuf.PlayerItem fromItem = PlayerItemProtobuf.PlayerItem.newBuilder()
-				.setKey(request.getItem())
-				.setValue(fromNum)
-				.build();
-		PlayerItemProtobuf.PlayerItem toItem = PlayerItemProtobuf.PlayerItem.newBuilder()
-				.setKey(to)
-				.setValue(toNum)
-				.build();
-		return CommCombineItemResponseProtobuf.CommCombineItemResponse
-				.newBuilder()
-				.addItems(fromItem)
-				.addItems(toItem)
-				.build();
+		return reply.build();
 	}
 
 	private boolean existsItem(String item) {
