@@ -6,14 +6,11 @@ import com.gejian.pixel.constants.AttributeKeyConstants;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.enums.ErrorEnum;
-import com.gejian.pixel.exception.RedisLockException;
 import com.gejian.pixel.model.UserInfo;
 import com.gejian.pixel.proto.CommLoginResponseProtobuf;
 import com.gejian.pixel.proto.MessageBaseProtobuf;
 import com.gejian.pixel.service.Process;
-import com.gejian.pixel.service.interceptor.RedisLockInterceptor;
 import com.gejian.pixel.service.interceptor.UserInterceptor;
-import com.gejian.pixel.service.process.LoginProcessImpl;
 import com.gejian.pixel.utils.ChannelHolder;
 import com.gejian.pixel.utils.ChannelManager;
 import com.google.protobuf.AbstractMessageLite;
@@ -113,9 +110,14 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 
 			channelHandlerContext.channel()
 					.writeAndFlush(reply);
+			if (!flag) {
+				//需要断开与客户端的连接
+				channelHandlerContext.channel().close();
+			}
 		} catch (Exception e) {
 			log.error("处理请求时发生错误！", e);
 			channelHandlerContext.channel().close();
+			ChannelManager.remove(channelHandlerContext.channel());
 		} finally {
 			MDC.remove("processName");
 			ChannelHolder.clear();
