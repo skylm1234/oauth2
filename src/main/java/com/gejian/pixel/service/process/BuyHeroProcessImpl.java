@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.process;
 
+import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.StrUtil;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.RedisKeyConstants;
@@ -45,6 +46,9 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 	private RedisTemplate redisTemplate;
 
 	private static final String MOSTHIRE = "mosthire";
+
+
+	private static final String MOSTHEROS = "mostheros";
 
 	private static final String DAILY_BUY_HERO = "daily_buy_hero";
 
@@ -129,6 +133,7 @@ public class BuyHeroProcessImpl implements Process<CommBuyHeroRequestProtobuf.Co
 
 		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, MOSTHIRE, 1, identifier));
 		response.addArchives(Helper.onNotifyEventOfPromotions(redisTemplate, DAILY_BUY_HERO, 1, identifier));
+		response.addArchives(PlayerItemProtobuf.PlayerItem.newBuilder().setKey(MOSTHEROS).setValue(Long.parseLong(String.valueOf(redisTemplate.opsForHash().get(StrFormatter.format(RedisKeyConstants.USER_ARCHIVES,identifier), MOSTHEROS)))));
 
 		return response.build();
 	}
