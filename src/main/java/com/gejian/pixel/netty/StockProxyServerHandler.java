@@ -163,5 +163,11 @@ public class StockProxyServerHandler extends SimpleChannelInboundHandler<Message
 		return new Type[]{Object.class, Object.class};
 	}
 
+	@Override
+	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+		//出现异常时，当前channel处于激活状态就主动关闭
+		if (ctx.channel().isActive()) ctx.close();
+	}
+
 }
 
