@@ -1,6 +1,3 @@
-server:
-  port: 8080
-
 # Netty 服务配置 (自定义端口)
 socket:
   netty:
@@ -20,6 +17,11 @@ dbConfig:
   # 数据库名称
   dbname: ${DB_DBNAME:ourgame}
 
+
+cors:
+  allowedOrigins: "*"
+  allowedMethods: GET,POST,PUT,DELETE,HEAD,PATCH,OPTIONS
+  allowCredentials: true
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
@@ -34,6 +36,15 @@ spring:
     port: ${REDIS_PORT:16379}
     password: ${REDIS_PASSWORD:2JIY3SsfTNr8}
     database: ${REDIS_DATABASE:1}
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  security:
+    user:
+      name: admin
+      password: Gejian@2021
+  session:
+    timeout: 30m
 
 # mybaits-plus配置
 mybatis-plus:

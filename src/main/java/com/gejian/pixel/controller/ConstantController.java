@@ -1,15 +1,19 @@
 package com.gejian.pixel.controller;
 
-import cn.hutool.Hutool;
-import cn.hutool.core.io.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-
-import static org.springframework.core.io.ResourceLoader.CLASSPATH_URL_PREFIX;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * @author fengliang
@@ -17,8 +21,8 @@ import static org.springframework.core.io.ResourceLoader.CLASSPATH_URL_PREFIX;
 @RestController
 @RequestMapping("/consts")
 @Slf4j
+@ApiIgnore
 public class ConstantController {
-
 
 	private final static String CONSTANT_PARENT_PATH =  System.getProperty("user.dir") + "/" + "consts" + "/";
 

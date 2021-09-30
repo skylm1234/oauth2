@@ -1,6 +1,7 @@
 package com.gejian.pixel;
 
 import com.gejian.pixel.netty.StockProxyServerInitializer;
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
@@ -14,8 +15,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 
 /**
  * @author ljb
@@ -26,6 +28,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @MapperScan("com.gejian.pixel.mapper")
+@EnableRedisHttpSession(redisNamespace = "web:session")
+@EnableOpenApi
+@EnableKnife4j
 public class MainApp implements ApplicationRunner {
 
 	@Value("${socket.netty.port}")
