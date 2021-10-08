@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.antMatchers( "/v3/**").permitAll()
 					.antMatchers( "/webjars/**").permitAll()
 					.antMatchers("/swagger-resources/**").permitAll()
+					.antMatchers("/consts/**").permitAll()
 					.anyRequest().authenticated()
 			.and()
 				.formLogin().permitAll().successHandler(loginSuccessHandler).failureHandler(loginFailureHandler)
