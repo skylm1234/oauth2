@@ -67,9 +67,7 @@ public class CommEnterDungeonRequestImpl implements Process<CommEnterDungeonRequ
 
 		UserInfo userInfo = UserHolder.get();
 		Integer identifier = userInfo.getIdentifier();
-		PlayerInfoProtobuf.PlayerInfo playerInfo = Helper
-				.updateTemporaryBackpack(dropService, stageService, backpackService, redisTemplate, identifier, 0, 0);
-		builder.addAllItems(playerInfo.getItemsList());
+		Helper.updateTemporaryBackpack(dropService, stageService, backpackService, redisTemplate, identifier, 0, 0);
 
 		Map<String, Object> backpack = new HashMap<>(3);
 		backpack.put("type", request.getType());
