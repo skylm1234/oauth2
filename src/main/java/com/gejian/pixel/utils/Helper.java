@@ -405,17 +405,17 @@ public class Helper {
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
 				skillBuilder.setType(record.getSkill2());
-				skillBuilder.setLevel(1);
+				skillBuilder.setLevel(0);
 				heroBuilder.addSkills(skillBuilder.build());
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
 				skillBuilder.setType(record.getSkill3());
-				skillBuilder.setLevel(1);
+				skillBuilder.setLevel(0);
 				heroBuilder.addSkills(skillBuilder.build());
 
 				skillBuilder = HeroSkillProtobuf.HeroSkill.newBuilder();
 				skillBuilder.setType(record.getSkill4());
-				skillBuilder.setLevel(1);
+				skillBuilder.setLevel(0);
 				heroBuilder.addSkills(skillBuilder.build());
 
 				Integer power = heroBuilder.getHp() + heroBuilder.getDef() + heroBuilder.getAttack() + heroBuilder.getSpeed();
