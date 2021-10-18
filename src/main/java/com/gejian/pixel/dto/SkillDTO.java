@@ -2,8 +2,10 @@ package com.gejian.pixel.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author ：lijianghuai
@@ -14,6 +16,8 @@ import lombok.Data;
 @ApiModel("技能简单属性")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class SkillDTO {
 
 	@ApiModelProperty("技能id")
