@@ -34,12 +34,19 @@ public class HeroUtil {
 	public static final String SPEED_UPGRADE = SPEED + UPGRADE_SUFFIX;
 	public static final String ATTACK_UPGRADE = ATTACK + UPGRADE_SUFFIX;
 	public static final String DEFENSE_UPGRADE = DEFENSE + UPGRADE_SUFFIX;
+	public static final String BASIC_FIXED = "basic_attributes_upgrade_fixed";
+	public static final String UPGRADE_FIXED = "basic_attributes_growup_upgrade_fixed";
 
 
-	public static final Map<Integer,String> LEVEL_MAP;
+	public static final Map<Integer,String> LEVEL_CN_MAP;
+
+	public static final Map<Integer,String> LEVEL_EN_MAP;
 	static {
-		LEVEL_MAP =  ImmutableMap.<Integer,String>builder().put(1,STAR_1_5_REP).put(6,STAR_6_10_REP).put(11,STAR_11_15_REP)
+		LEVEL_CN_MAP =  ImmutableMap.<Integer,String>builder().put(1,STAR_1_5_REP).put(6,STAR_6_10_REP).put(11,STAR_11_15_REP)
 				.put(16,STAR_16_20_REP).put(21,STAR_21_25_REP).build();
+
+		LEVEL_EN_MAP =  ImmutableMap.<Integer,String>builder().put(1,STAR_1_5).put(6,STAR_6_10).put(11,STAR_11_15)
+				.put(16,STAR_16_20).put(21,STAR_21_25).build();
 	}
 
 	public static String replaceHeroData(String source){

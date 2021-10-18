@@ -23,4 +23,6 @@ public interface HeroService extends IService<Hero> {
 	IPage<HeroListResponseDTO> selectPage(HeroListRequestDTO heroListRequestDTO);
 
 	Optional<HeroDTO> selectById(Integer id);
+
+	void update(HeroDTO heroDTO);
 }

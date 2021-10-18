@@ -2,6 +2,7 @@ package com.gejian.pixel.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -29,6 +30,8 @@ import com.gejian.pixel.proto.ConstTablesProtobuf;
 import com.gejian.pixel.service.ConstantsProto;
 import com.gejian.pixel.service.HeroService;
 import com.gejian.pixel.utils.HeroUtil;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -37,6 +40,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 /**
@@ -212,6 +216,92 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 		}
 	}
 
+	@Override
+	public void update(HeroDTO heroDTO) {
+		this.updateById(convertToHero(heroDTO));
+	}
+
+	private Hero convertToHero(HeroDTO heroDTO){
+		Hero hero = new Hero();
+		hero.setId(heroDTO.getId());
+		hero.setAlive(heroDTO.getAlivePrice());
+		hero.setColor(heroDTO.getColor().getCode());
+		hero.setType(heroDTO.getRole().getCode());
+		hero.setName(heroDTO.getName());
+		hero.setSkill1(heroDTO.getSkill1().getId());
+		hero.setSkill1Name(heroDTO.getSkill1().getName());
+		hero.setSkill2(heroDTO.getSkill2().getId());
+		hero.setSkill2Name(heroDTO.getSkill2().getName());
+		hero.setSkill3(heroDTO.getSkill3().getId());
+		hero.setSkill3Name(heroDTO.getSkill3().getName());
+		hero.setSkill4(heroDTO.getSkill4().getId());
+		hero.setSkill4Name(heroDTO.getSkill4().getName());
+		ImmutableMap<Object, Object> basicExpand = ImmutableMap.builder().put(HeroUtil.HP, heroDTO.getBasicData().getHp())
+				.put(HeroUtil.ATTACK, heroDTO.getBasicData().getAttack())
+				.put(HeroUtil.DEFENSE, heroDTO.getBasicData().getDefense()).put(HeroUtil.SPEED, heroDTO.getBasicData().getSpeed()).build();
+		hero.setBasicExpand(JSONObject.toJSONString(basicExpand));
+		ImmutableList<Integer> basic = ImmutableList.of(heroDTO.getBasicData().getHp(), heroDTO.getBasicData().getAttack(),
+				heroDTO.getBasicData().getDefense(), heroDTO.getBasicData().getSpeed());
+		hero.setBasic(JSONArray.toJSONString(basic));
+
+		ImmutableMap<Object, Object> upgradeExpand = ImmutableMap.builder().put(HeroUtil.HP, heroDTO.getUpgradeData().getHp())
+				.put(HeroUtil.ATTACK, heroDTO.getUpgradeData().getAttack())
+				.put(HeroUtil.DEFENSE, heroDTO.getUpgradeData().getDefense()).put(HeroUtil.SPEED, heroDTO.getUpgradeData().getSpeed()).build();
+		hero.setBasicUpgradeExpand(JSONObject.toJSONString(upgradeExpand));
+		ImmutableList<Integer> upgrade = ImmutableList.of(heroDTO.getUpgradeData().getHp(), heroDTO.getUpgradeData().getAttack(),
+				heroDTO.getUpgradeData().getDefense(), heroDTO.getUpgradeData().getSpeed());
+		hero.setBasicUpgrade(JSONArray.toJSONString(upgrade));
+		hero.setStarUpgradeFomula(buildUpgradeFomula(heroDTO));
+		hero.setStarUpgrade(buildUpgrade(heroDTO));
+		System.out.println(JSONObject.toJSONString(hero));
+		return hero;
+	}
+
+	private List<HeroAttributeDTO> allOfAttributes(HeroDTO heroDTO){
+		return ImmutableList.<HeroAttributeDTO>builder().add(heroDTO.getBasic1_5Data()).add(heroDTO.getUpgrade1_5Data())
+				.add(heroDTO.getBasic6_10Data()).add(heroDTO.getUpgrade6_10Data())
+				.add(heroDTO.getBasic11_15Data()).add(heroDTO.getUpgrade11_15Data())
+				.add(heroDTO.getBasic16_20Data()).add(heroDTO.getUpgrade16_20Data())
+				.add(heroDTO.getBasic21_25Data()).add(heroDTO.getUpgrade21_25Data()).build();
+	}
+
+	private String buildUpgradeFomula(HeroDTO heroDTO){
+		List<HeroAttributeDTO> list = allOfAttributes(heroDTO);
+		Map<String, Map<String,Integer>> map = new TreeMap<>();
+		for(int i = 0; i < list.size(); i += 2){
+			for(int j = 1; j <= 5; j++){
+				HeroAttributeDTO basic = list.get(i);
+				HeroAttributeDTO upgrade = list.get(i + 1);
+				ImmutableMap<String,Integer> basicMap = ImmutableMap.<String,Integer>builder().put(HeroUtil.HP, basic.getHp()).put(HeroUtil.ATTACK, basic.getAttack())
+						.put(HeroUtil.DEFENSE, basic.getDefense()).put(HeroUtil.SPEED, basic.getSpeed())
+						.put(HeroUtil.HP_UPGRADE, upgrade.getHp()).put(HeroUtil.ATTACK_UPGRADE, upgrade.getAttack())
+						.put(HeroUtil.DEFENSE_UPGRADE, upgrade.getDefense()).put(HeroUtil.SPEED_UPGRADE, upgrade.getSpeed()).build();
+				int index =  (i / 2) * 5 +  j;
+				map.put(HeroUtil.STAR_PREFIX + index,basicMap);
+			}
+		}
+		return JSONObject.toJSONString(map);
+	}
+
+	private String buildUpgrade(HeroDTO heroDTO){
+		StringBuilder stringBuilder = new StringBuilder();
+		List<HeroAttributeDTO> list = allOfAttributes(heroDTO);
+		for(int i = 0; i < list.size(); i += 2){
+			int index = (i / 2) * 5 + 1;
+			stringBuilder.append("[").append(HeroUtil.LEVEL_EN_MAP.get(index)).append(",").append(HeroUtil.BASIC_FIXED);
+			HeroAttributeDTO basic = list.get(i);
+			HeroAttributeDTO upgrade = list.get(i + 1);
+			ImmutableList<Integer> basicList = ImmutableList.of(basic.getHp(), basic.getAttack(), basic.getDefense(), basic.getSpeed());
+			ImmutableList<Integer> upgradeList = ImmutableList.of(upgrade.getHp(),upgrade.getAttack(), upgrade.getDefense(), upgrade.getSpeed());
+			stringBuilder.append(JSONArray.toJSONString(basicList)).append(",");
+			stringBuilder.append(HeroUtil.UPGRADE_FIXED).append(JSONArray.toJSONString(upgradeList)).append("]");
+			if( i != list.size() - 2){
+				stringBuilder.append("$");
+			}
+		}
+		return stringBuilder.toString();
+	}
+
 	private HeroDTO convertToHeroDTO(Hero hero){
 		HeroDTO heroDTO = new HeroDTO();
 		heroDTO.setId(hero.getId());
@@ -279,11 +369,11 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 			JSONObject jsonObject = JSONObject.parseObject(starUpgradeFomula);
 			for(int i = 1; i <= 25; i += 5 ){
 				JSONObject numerical = jsonObject.getJSONObject(HeroUtil.STAR_PREFIX + i);
-				basicStrBuilder.append(HeroUtil.LEVEL_MAP.get(i));
+				basicStrBuilder.append(HeroUtil.LEVEL_CN_MAP.get(i));
 				basicStrBuilder.append("[").append(numerical.get(HeroUtil.HP)).append(",").append(numerical.get(HeroUtil.ATTACK))
 								.append(",").append(numerical.get(HeroUtil.DEFENSE)).append(",").append(numerical.get(HeroUtil.SPEED))
 								.append("]").append(" ");
-				upgradeStrBuilder.append(HeroUtil.LEVEL_MAP.get(i));
+				upgradeStrBuilder.append(HeroUtil.LEVEL_CN_MAP.get(i));
 				upgradeStrBuilder.append("[").append(numerical.get(HeroUtil.HP_UPGRADE)).append(",").append(numerical.get(HeroUtil.ATTACK_UPGRADE))
 						.append(",").append(numerical.get(HeroUtil.DEFENSE_UPGRADE)).append(",").append(numerical.get(HeroUtil.SPEED_UPGRADE))
 						.append("]").append(" ");
