@@ -58,6 +58,7 @@ mybatis-plus:
       logic-not-delete-value: 0
   configuration:
     map-underscore-to-camel-case: true
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 config-url:
   MACOSX-IAP-VERIFY-URL: https://sandbox.itunes.apple.com/verifyReceipt
