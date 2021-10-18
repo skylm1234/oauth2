@@ -39,7 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.anyRequest().authenticated()
 			.and()
 				.formLogin().permitAll().successHandler(loginSuccessHandler).failureHandler(loginFailureHandler)
-				.and().rememberMe()
 			.and()
 				.logout().logoutUrl("/logout").deleteCookies("SESSION")
 				//.and().exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)

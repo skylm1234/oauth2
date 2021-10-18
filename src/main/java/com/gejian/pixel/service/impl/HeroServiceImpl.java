@@ -1,13 +1,27 @@
 package com.gejian.pixel.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.gejian.pixel.dto.HeroListRequestDTO;
+import com.gejian.pixel.dto.HeroListResponseDTO;
 import com.gejian.pixel.entity.BasicExpand;
 import com.gejian.pixel.entity.BasicUpgradeExpand;
 import com.gejian.pixel.entity.Hero;
 import com.gejian.pixel.entity.StarUpgradeFomula;
+import com.gejian.pixel.enums.HeroLevelColorEnum;
+import com.gejian.pixel.enums.HeroRoleEnum;
 import com.gejian.pixel.mapper.HeroMapper;
-import com.gejian.pixel.proto.*;
+import com.gejian.pixel.proto.ConstHeroTableItemExBasicExpandProtobuf;
+import com.gejian.pixel.proto.ConstHeroTableItemExBasicUpgradeExpandProtobuf;
+import com.gejian.pixel.proto.ConstHeroTableItemExProtobuf;
+import com.gejian.pixel.proto.ConstHeroTableItemExStarUpgradeFomulaProtobuf;
+import com.gejian.pixel.proto.ConstHeroTableProtobuf;
+import com.gejian.pixel.proto.ConstTablesProtobuf;
 import com.gejian.pixel.service.ConstantsProto;
 import com.gejian.pixel.service.HeroService;
 import org.springframework.stereotype.Service;
@@ -17,6 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Auto created by codeAppend plugin
@@ -141,5 +156,42 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 	@Override
 	public ConstHeroTableItemExProtobuf.ConstHeroTableItemEx getItem(Integer id) {
 		return this.convert(hash.get(id));
+	}
+
+	@Override
+	public IPage<HeroListResponseDTO> selectPage(HeroListRequestDTO heroListRequestDTO) {
+		if(heroListRequestDTO == null){
+			heroListRequestDTO = new HeroListRequestDTO();
+		}
+		LambdaQueryWrapper<Hero> queryWrapper = Wrappers.lambdaQuery();
+		if(heroListRequestDTO.getColor() != null){
+			queryWrapper.eq(Hero::getColor,heroListRequestDTO.getColor().getCode());
+		}
+		if(heroListRequestDTO.getRole() != null){
+			queryWrapper.eq(Hero::getType,heroListRequestDTO.getRole().getCode());
+		}
+		if(StrUtil.isNotBlank(heroListRequestDTO.getName())){
+			queryWrapper.like(Hero::getName,heroListRequestDTO.getName());
+		}
+		Page<Hero> page = this.page(heroListRequestDTO.getPage(), queryWrapper);
+		if(page.getRecords().isEmpty()){
+			return new Page<>(heroListRequestDTO.getCurrent(),heroListRequestDTO.getSize());
+		}
+		List<HeroListResponseDTO> responseDTOList = page.getRecords().stream().map(hero -> {
+			HeroListResponseDTO heroListResponseDTO = new HeroListResponseDTO();
+			heroListResponseDTO.setId(hero.getId());
+			heroListResponseDTO.setName(hero.getName());
+			heroListResponseDTO.setRole(HeroRoleEnum.valueOf(hero.getType()));
+			heroListResponseDTO.setColor(HeroLevelColorEnum.valueOf(hero.getColor()));
+			heroListResponseDTO.setSkill1(hero.getSkill1Name());
+			heroListResponseDTO.setSkill2(hero.getSkill2Name());
+			heroListResponseDTO.setSkill3(hero.getSkill3Name());
+			heroListResponseDTO.setSkill4(hero.getSkill4Name());
+			heroListResponseDTO.setAlivePrice(hero.getAlive());
+			return heroListResponseDTO;
+		}).collect(Collectors.toList());
+		Page<HeroListResponseDTO> resultPage = new Page<>(heroListRequestDTO.getCurrent(), heroListRequestDTO.getSize(), page.getTotal());
+		resultPage.setRecords(responseDTOList);
+		return resultPage;
 	}
 }
