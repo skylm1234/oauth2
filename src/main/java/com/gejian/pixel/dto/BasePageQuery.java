@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.Min;
 import java.io.Serializable;
 
 /**
@@ -15,7 +14,6 @@ import java.io.Serializable;
 @Data
 public class BasePageQuery implements Serializable {
 
-	@Min(1)
 	@ApiModelProperty("页码")
 	private Integer current = 1;
 
@@ -28,7 +26,7 @@ public class BasePageQuery implements Serializable {
 	 * @return
 	 */
 	public <T> Page<T> getPage(){
-		return new Page<T>(current,size);
+		return new Page<>(current, size);
 	}
 
 

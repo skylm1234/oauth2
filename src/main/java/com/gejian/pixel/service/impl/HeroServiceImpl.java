@@ -2,13 +2,17 @@ package com.gejian.pixel.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.gejian.pixel.dto.HeroAttributeDTO;
+import com.gejian.pixel.dto.HeroDTO;
 import com.gejian.pixel.dto.HeroListRequestDTO;
 import com.gejian.pixel.dto.HeroListResponseDTO;
+import com.gejian.pixel.dto.SkillDTO;
 import com.gejian.pixel.entity.BasicExpand;
 import com.gejian.pixel.entity.BasicUpgradeExpand;
 import com.gejian.pixel.entity.Hero;
@@ -24,6 +28,7 @@ import com.gejian.pixel.proto.ConstHeroTableProtobuf;
 import com.gejian.pixel.proto.ConstTablesProtobuf;
 import com.gejian.pixel.service.ConstantsProto;
 import com.gejian.pixel.service.HeroService;
+import com.gejian.pixel.utils.HeroUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -31,6 +36,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -188,10 +194,102 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 			heroListResponseDTO.setSkill3(hero.getSkill3Name());
 			heroListResponseDTO.setSkill4(hero.getSkill4Name());
 			heroListResponseDTO.setAlivePrice(hero.getAlive());
+			replaceData(heroListResponseDTO,hero);
 			return heroListResponseDTO;
 		}).collect(Collectors.toList());
 		Page<HeroListResponseDTO> resultPage = new Page<>(heroListRequestDTO.getCurrent(), heroListRequestDTO.getSize(), page.getTotal());
 		resultPage.setRecords(responseDTOList);
 		return resultPage;
+	}
+
+	@Override
+	public Optional<HeroDTO> selectById(Integer id) {
+		Hero hero = getById(id);
+		if(hero == null){
+			return Optional.empty();
+		}else{
+			return Optional.of(convertToHeroDTO(hero));
+		}
+	}
+
+	private HeroDTO convertToHeroDTO(Hero hero){
+		HeroDTO heroDTO = new HeroDTO();
+		heroDTO.setId(hero.getId());
+		heroDTO.setName(hero.getName());
+		heroDTO.setRole(HeroRoleEnum.valueOf(hero.getType()));
+		heroDTO.setColor(HeroLevelColorEnum.valueOf(hero.getColor()));
+		JSONObject basic = JSONObject.parseObject(hero.getBasicExpand());
+		JSONObject upgrade = JSONObject.parseObject(hero.getBasicUpgradeExpand());
+		heroDTO.setBasicData(HeroAttributeDTO.builder().hp(basic.getInteger(HeroUtil.HP)).attack(basic.getInteger(HeroUtil.ATTACK))
+				.defense(basic.getInteger(HeroUtil.DEFENSE)).speed(basic.getInteger(HeroUtil.SPEED)).build());
+		heroDTO.setUpgradeData(HeroAttributeDTO.builder().hp(upgrade.getInteger(HeroUtil.HP)).attack(upgrade.getInteger(HeroUtil.ATTACK))
+				.defense(upgrade.getInteger(HeroUtil.DEFENSE)).speed(upgrade.getInteger(HeroUtil.SPEED)).build());
+		JSONObject starUpgrade = JSONObject.parseObject(hero.getStarUpgradeFomula());
+		for(int i = 1; i <= 25; i += 5 ){
+			JSONObject numerical = starUpgrade.getJSONObject(HeroUtil.STAR_PREFIX + i);
+			switch (i){
+				case 1:
+					heroDTO.setBasic1_5Data(HeroAttributeDTO.builder().hp(numerical.getInteger(HeroUtil.HP)).attack(numerical.getInteger(HeroUtil.ATTACK))
+							.defense(numerical.getInteger(HeroUtil.DEFENSE)).speed(numerical.getInteger(HeroUtil.SPEED)).build());
+					heroDTO.setUpgrade1_5Data(HeroAttributeDTO.builder().hp(numerical.getInteger(HeroUtil.HP_UPGRADE)).attack(numerical.getInteger(HeroUtil.ATTACK_UPGRADE))
+							.defense(numerical.getInteger(HeroUtil.DEFENSE_UPGRADE)).speed(numerical.getInteger(HeroUtil.SPEED_UPGRADE)).build());
+					break;
+				case 6:
+					heroDTO.setBasic6_10Data(HeroAttributeDTO.builder().hp(numerical.getInteger(HeroUtil.HP)).attack(numerical.getInteger(HeroUtil.ATTACK))
+							.defense(numerical.getInteger(HeroUtil.DEFENSE)).speed(numerical.getInteger(HeroUtil.SPEED)).build());
+					heroDTO.setUpgrade6_10Data(HeroAttributeDTO.builder().hp(numerical.getInteger(HeroUtil.HP_UPGRADE)).attack(numerical.getInteger(HeroUtil.ATTACK_UPGRADE))
+							.defense(numerical.getInteger(HeroUtil.DEFENSE_UPGRADE)).speed(numerical.getInteger(HeroUtil.SPEED_UPGRADE)).build());
+					break;
+				case 11:
+					heroDTO.setBasic11_15Data(HeroAttributeDTO.builder().hp(numerical.getInteger(HeroUtil.HP)).attack(numerical.getInteger(HeroUtil.ATTACK))
+							.defense(numerical.getInteger(HeroUtil.DEFENSE)).speed(numerical.getInteger(HeroUtil.SPEED)).build());
+					heroDTO.setUpgrade11_15Data(HeroAttributeDTO.builder().hp(numerical.getInteger(HeroUtil.HP_UPGRADE)).attack(numerical.getInteger(HeroUtil.ATTACK_UPGRADE))
+							.defense(numerical.getInteger(HeroUtil.DEFENSE_UPGRADE)).speed(numerical.getInteger(HeroUtil.SPEED_UPGRADE)).build());
+					break;
+				case 16:
+					heroDTO.setBasic16_20Data(HeroAttributeDTO.builder().hp(numerical.getInteger(HeroUtil.HP)).attack(numerical.getInteger(HeroUtil.ATTACK))
+							.defense(numerical.getInteger(HeroUtil.DEFENSE)).speed(numerical.getInteger(HeroUtil.SPEED)).build());
+					heroDTO.setUpgrade16_20Data(HeroAttributeDTO.builder().hp(numerical.getInteger(HeroUtil.HP_UPGRADE)).attack(numerical.getInteger(HeroUtil.ATTACK_UPGRADE))
+							.defense(numerical.getInteger(HeroUtil.DEFENSE_UPGRADE)).speed(numerical.getInteger(HeroUtil.SPEED_UPGRADE)).build());
+					break;
+				case 21:
+					heroDTO.setBasic21_25Data(HeroAttributeDTO.builder().hp(numerical.getInteger(HeroUtil.HP)).attack(numerical.getInteger(HeroUtil.ATTACK))
+							.defense(numerical.getInteger(HeroUtil.DEFENSE)).speed(numerical.getInteger(HeroUtil.SPEED)).build());
+					heroDTO.setUpgrade21_25Data(HeroAttributeDTO.builder().hp(numerical.getInteger(HeroUtil.HP_UPGRADE)).attack(numerical.getInteger(HeroUtil.ATTACK_UPGRADE))
+							.defense(numerical.getInteger(HeroUtil.DEFENSE_UPGRADE)).speed(numerical.getInteger(HeroUtil.SPEED_UPGRADE)).build());
+					break;
+				default:break;
+			}
+		}
+		heroDTO.setSkill1(SkillDTO.builder().id(hero.getSkill1()).name(hero.getSkill1Name()).build());
+		heroDTO.setSkill2(SkillDTO.builder().id(hero.getSkill2()).name(hero.getSkill2Name()).build());
+		heroDTO.setSkill3(SkillDTO.builder().id(hero.getSkill3()).name(hero.getSkill3Name()).build());
+		heroDTO.setSkill4(SkillDTO.builder().id(hero.getSkill4()).name(hero.getSkill4Name()).build());
+		heroDTO.setAlivePrice(hero.getAlive());
+		return heroDTO;
+	}
+
+	private void replaceData(HeroListResponseDTO heroListResponseDTO,Hero hero){
+		String starUpgradeFomula = hero.getStarUpgradeFomula();
+		if(StrUtil.isNotBlank(starUpgradeFomula)){
+			StringBuilder basicStrBuilder = new StringBuilder(HeroUtil.BASIC_REP);
+			StringBuilder upgradeStrBuilder = new StringBuilder(HeroUtil.BASIC_REP);
+			basicStrBuilder.append(hero.getBasic()).append(" ");
+			upgradeStrBuilder.append(hero.getBasicUpgrade()).append(" ");
+			JSONObject jsonObject = JSONObject.parseObject(starUpgradeFomula);
+			for(int i = 1; i <= 25; i += 5 ){
+				JSONObject numerical = jsonObject.getJSONObject(HeroUtil.STAR_PREFIX + i);
+				basicStrBuilder.append(HeroUtil.LEVEL_MAP.get(i));
+				basicStrBuilder.append("[").append(numerical.get(HeroUtil.HP)).append(",").append(numerical.get(HeroUtil.ATTACK))
+								.append(",").append(numerical.get(HeroUtil.DEFENSE)).append(",").append(numerical.get(HeroUtil.SPEED))
+								.append("]").append(" ");
+				upgradeStrBuilder.append(HeroUtil.LEVEL_MAP.get(i));
+				upgradeStrBuilder.append("[").append(numerical.get(HeroUtil.HP_UPGRADE)).append(",").append(numerical.get(HeroUtil.ATTACK_UPGRADE))
+						.append(",").append(numerical.get(HeroUtil.DEFENSE_UPGRADE)).append(",").append(numerical.get(HeroUtil.SPEED_UPGRADE))
+						.append("]").append(" ");
+			}
+			heroListResponseDTO.setBasicData(basicStrBuilder.toString());
+			heroListResponseDTO.setUpgradeData(upgradeStrBuilder.toString());
+		}
 	}
 }
