@@ -253,7 +253,6 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 		hero.setBasicUpgrade(JSONArray.toJSONString(upgrade));
 		hero.setStarUpgradeFomula(buildUpgradeFomula(heroDTO));
 		hero.setStarUpgrade(buildUpgrade(heroDTO));
-		System.out.println(JSONObject.toJSONString(hero));
 		return hero;
 	}
 

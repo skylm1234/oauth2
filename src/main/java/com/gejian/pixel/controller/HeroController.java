@@ -1,5 +1,6 @@
 package com.gejian.pixel.controller;
 
+import cn.hutool.http.HttpStatus;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.gejian.pixel.dto.HeroDTO;
 import com.gejian.pixel.dto.HeroListRequestDTO;
@@ -11,12 +12,15 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 /**
  * @author ：lijianghuai
@@ -46,9 +50,11 @@ public class HeroController {
 	}
 
 	@PutMapping(value = "/{id}",consumes = {MediaType.APPLICATION_JSON_VALUE})
-	@ApiOperation(value = "修改人物",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void update(@ApiParam(name = "id", value = "人物id", required = true) @PathVariable("id")Integer id,@RequestBody HeroDTO heroDTO){
+	@ApiOperation(value = "修改人物",code = HttpStatus.HTTP_NO_CONTENT)
+	public ResponseEntity<Void> update(@ApiParam(name = "id", value = "人物id", required = true) @PathVariable("id")Integer id,
+								 @Valid @RequestBody HeroDTO heroDTO){
 		heroDTO.setId(id);
 		heroService.update(heroDTO);
+		return ResponseEntity.noContent().build();
 	}
 }

@@ -14,23 +14,23 @@ import javax.validation.constraints.NotNull;
  * @date ：2021-10-15 16:38
  * @description：
  */
-@ApiModel("英雄DTO")
 @Data
+@ApiModel("人物DTO")
 public class HeroDTO {
 
 	@ApiModelProperty("id")
 	private Integer id;
 
 	@NotBlank
-	@ApiModelProperty("人物")
+	@ApiModelProperty(value = "人物",required = true)
 	private String name;
 
 	@NotNull
-	@ApiModelProperty(value = "职业",allowableValues = "1：战士；2：刺客；4：辅助")
+	@ApiModelProperty(value = "职业",allowableValues = "1：战士；2：刺客；4：辅助",required = true)
 	private HeroRoleEnum role;
 
 	@NotNull
-	@ApiModelProperty(value = "初始颜色",allowableValues = "1：绿；2：蓝，3：紫；4：橙")
+	@ApiModelProperty(value = "初始颜色",allowableValues = "1：绿；2：蓝，3：紫；4：橙",required = true)
 	private HeroLevelColorEnum color;
 
 	@NotNull

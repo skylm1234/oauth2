@@ -20,9 +20,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SkillDTO {
 
-	@ApiModelProperty("技能id")
+	@ApiModelProperty(value = "技能id",required = true)
 	private String id;
 
-	@ApiModelProperty("技能名称")
+	@ApiModelProperty(value = "技能名称",required = true)
 	private String name;
 }
