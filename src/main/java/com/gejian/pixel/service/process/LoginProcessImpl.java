@@ -8,14 +8,17 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.customType.TopRangePower;
 import com.gejian.pixel.entity.InGamePurchase;
+import com.gejian.pixel.entity.NewStoreRefresh;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.InGamePurchaseService;
+import com.gejian.pixel.service.NewStoreRefreshService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.utils.Helper;
 import com.gejian.pixel.utils.UserHolder;
@@ -47,6 +50,8 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 	private final DropService dropService;
 
 	private final InGamePurchaseService inGamePurchaseService;
+
+	private final NewStoreRefreshService refreshService;
 
 	@Override
 	public CommLoginResponseProtobuf.CommLoginResponse
@@ -95,6 +100,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 
 		Integer identifier = null;
 
+		//商店刷新时间
+		NewStoreRefresh storeRefresh = refreshService.getBaseMapper().selectOne(Wrappers.<NewStoreRefresh>lambdaQuery().eq(NewStoreRefresh::isCheckFlag,true));
+
 		if (StrUtil.hasBlank(request.getIdentifier()) || !redisTemplate.opsForHash().hasKey(RedisKeyConstants.USER_IDENTIFIER, hexEncodedIdentifier)) {
 			log.info("new player register");
 
@@ -138,7 +146,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			items.put("buy_hero_3_price", 0);
 
 			Map<String, Object> strings = new HashMap<>();
-			strings.put("new_store_refresh_desc", Helper.hexEncode("商店刷新时间：每日09:00、12:00、18:00、22：00"));
+			//strings.put("new_store_refresh_desc", Helper.hexEncode(storeRefresh.getRefreshTime()));
 			strings.put("finished_promotions", Helper.hexEncode("{}"));
 			strings.put("finished_daily_promotions", Helper.hexEncode("{}"));
 
@@ -182,8 +190,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				replyBuilder.setResult(ErrorEnum.ERROR_BANNED);
 				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.newBuilder().setData(reason.get(hexEncodedIdentifier)+"").build());
 
-				//这里还有个返回空指针，但是如果返回空指针就不能返回登录的响应对象了
-				//return 0, nil
 				return replyBuilder.build();
 			}
 			String boardcast = "";
@@ -196,6 +202,9 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 				replyBuilder.setRequest(CommLoginRequestProtobuf.CommLoginRequest.parseFrom(request.toByteString()).toBuilder().setData(boardcast).build());
 			}
 		}
+
+		//设置商店刷新的显示文本
+		redisTemplate.opsForHash().put(StrFormatter.format(RedisKeyConstants.USER_STRINGS,identifier),"new_store_refresh_desc",Helper.hexEncode(storeRefresh.getRefreshTime()));
 
 		log.info("on_handle_COMM_LOGIN_REQUEST -> {}",request.getIdentifier());
 
