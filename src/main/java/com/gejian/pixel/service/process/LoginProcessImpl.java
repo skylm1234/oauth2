@@ -146,7 +146,6 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			items.put("buy_hero_3_price", 0);
 
 			Map<String, Object> strings = new HashMap<>();
-			//strings.put("new_store_refresh_desc", Helper.hexEncode(storeRefresh.getRefreshTime()));
 			strings.put("finished_promotions", Helper.hexEncode("{}"));
 			strings.put("finished_daily_promotions", Helper.hexEncode("{}"));
 
@@ -203,7 +202,7 @@ public class LoginProcessImpl implements Process<CommLoginRequestProtobuf.CommLo
 			}
 		}
 
-		//设置商店刷新的显示文本
+		//设置商店显示的刷新信息
 		redisTemplate.opsForHash().put(StrFormatter.format(RedisKeyConstants.USER_STRINGS,identifier),"new_store_refresh_desc",Helper.hexEncode(storeRefresh.getRefreshTime()));
 
 		log.info("on_handle_COMM_LOGIN_REQUEST -> {}",request.getIdentifier());
