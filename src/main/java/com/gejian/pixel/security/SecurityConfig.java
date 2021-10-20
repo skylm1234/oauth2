@@ -1,10 +1,13 @@
 package com.gejian.pixel.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
 /**
@@ -23,6 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private CustomizeAuthenticationSuccessHandler loginSuccessHandler;
 
+	@Autowired
+	private CustomizeUserDetailService customizeUserDetailService;
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable()
@@ -38,13 +44,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.antMatchers("/swagger-resources/**").permitAll()
 					.antMatchers("/consts/**").permitAll()
 					.anyRequest().authenticated()
-			.and()
+				.and().userDetailsService(customizeUserDetailService)
 				.formLogin().permitAll().successHandler(loginSuccessHandler).failureHandler(loginFailureHandler)
 			.and()
 				.logout().logoutUrl("/logout").deleteCookies("SESSION")
 				//.and().exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)
 			.and().sessionManagement().invalidSessionUrl("/login").maximumSessions(5);
-
 	}
 
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		return new BCryptPasswordEncoder();
+	}
 }

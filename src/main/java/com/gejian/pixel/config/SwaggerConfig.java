@@ -3,7 +3,7 @@ package com.gejian.pixel.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -19,7 +19,7 @@ import springfox.documentation.spring.web.plugins.Docket;
  */
 
 @Configuration
-public class SwaggerConfig extends WebMvcConfigurationSupport {
+public class SwaggerConfig implements WebMvcConfigurer {
 
 	@Bean
 	public Docket createRestApi() {
@@ -35,9 +35,9 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("Knife4j接口文档")
+				.title("像素游戏后端接口文档")
 				.description("像素游戏后台管理接口")
-				.contact(new Contact("lijianghuai","",""))
+				.contact(new Contact("gejian","",""))
 				.version("1.0.0")
 				.build();
 	}
