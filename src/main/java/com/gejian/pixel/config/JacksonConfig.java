@@ -55,13 +55,14 @@ public class JacksonConfig implements WebMvcConfigurer {
 
 	@Bean
 	@ConditionalOnMissingBean
-	public Jackson2ObjectMapperBuilderCustomizer customizer(JavaTimeModule javaTimeModule) {
+	public Jackson2ObjectMapperBuilderCustomizer customizer(ObjectMapper objectMapper,JavaTimeModule javaTimeModule) {
 		return builder -> {
 			builder.locale(Locale.CHINA);
 			builder.timeZone(TimeZone.getTimeZone(ASIA_SHANGHAI));
 			builder.simpleDateFormat(DatePattern.NORM_DATETIME_PATTERN);
 			builder.serializerByType(Long.class, ToStringSerializer.instance);
 			builder.modules(javaTimeModule);
+			builder.configure(objectMapper);
 		};
 	}
 
@@ -100,6 +101,7 @@ public class JacksonConfig implements WebMvcConfigurer {
 	@Bean
 	public ObjectMapper objectMapper(JavaTimeModule javaTimeModule) {
 		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 		objectMapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
 		objectMapper.registerModule(javaTimeModule).registerModule(new ParameterNamesModule());

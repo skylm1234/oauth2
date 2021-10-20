@@ -2,10 +2,12 @@ package com.gejian.pixel.service;
 
 import cn.hutool.core.lang.tree.Tree;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.gejian.pixel.dto.SysMenuAddDTO;
 import com.gejian.pixel.dto.SysMenuQueryDTO;
 import com.gejian.pixel.entity.SysMenu;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -31,7 +33,9 @@ public interface SysMenuService extends IService<SysMenu> {
 	 * @param sysMenu 菜单信息
 	 * @return 成功、失败
 	 */
-	Boolean updateMenuById(SysMenu sysMenu);
+	Boolean updateMenuById(SysMenuAddDTO sysMenu);
+
+	Optional<SysMenu> selectById(Integer id);
 
 	/**
 	 * 构建树

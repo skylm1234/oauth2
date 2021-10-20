@@ -1,8 +1,12 @@
 package com.gejian.pixel.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.tree.Tree;
+import com.gejian.pixel.dto.SysMenuAddDTO;
+import com.gejian.pixel.dto.SysMenuDTO;
 import com.gejian.pixel.dto.SysMenuQueryDTO;
 import com.gejian.pixel.entity.SysMenu;
+import com.gejian.pixel.exception.ResourceNotFoundException;
 import com.gejian.pixel.service.SysMenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -55,19 +59,20 @@ public class MenuController {
 	 */
 	@GetMapping("/{id}")
 	@ApiOperation("菜单明细")
-	public SysMenu getById(@ApiParam(name = "id", value = "菜单id", required = true) @PathVariable Integer id) {
-		return sysMenuService.getById(id);
+	public SysMenuDTO getById(@ApiParam(name = "id", value = "菜单id", required = true) @PathVariable Integer id) {
+		SysMenu sysMenu = sysMenuService.selectById(id).orElseThrow(ResourceNotFoundException::new);
+		return BeanUtil.copyProperties(sysMenu, SysMenuDTO.class);
 	}
 
 	/**
 	 * 新增菜单
-	 * @param sysMenu 菜单信息
+	 * @param menuAddDTO 菜单信息
 	 * @return 含ID 菜单信息
 	 */
 	@PostMapping("")
 	@ApiOperation("新增菜单")
-	public ResponseEntity<Void> save(@Valid @RequestBody SysMenu sysMenu) {
-		sysMenuService.save(sysMenu);
+	public ResponseEntity<Void> save(@Valid @RequestBody SysMenuAddDTO menuAddDTO) {
+		sysMenuService.save( BeanUtil.copyProperties(menuAddDTO,SysMenu.class));
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
@@ -85,14 +90,14 @@ public class MenuController {
 
 	/**
 	 * 更新菜单
-	 * @param sysMenu
+	 * @param menuAddDTO
 	 * @return
 	 */
 	@PutMapping("/{id}")
 	@ApiOperation("更新菜单")
-	public ResponseEntity<Void> update(@ApiParam(name = "id", value = "菜单id", required = true) @PathVariable Integer id, @Valid @RequestBody SysMenu sysMenu) {
-		sysMenu.setMenuId(id);
-		sysMenuService.updateMenuById(sysMenu);
+	public ResponseEntity<Void> update(@ApiParam(name = "id", value = "菜单id", required = true) @PathVariable Integer id, @Valid @RequestBody SysMenuAddDTO menuAddDTO) {
+		menuAddDTO.setMenuId(id);
+		sysMenuService.updateMenuById(menuAddDTO);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

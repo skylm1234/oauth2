@@ -20,7 +20,7 @@ public class SysMenuQueryDTO {
 	 * 父菜单ID
 	 */
 	@ApiModelProperty(value = "菜单父id")
-	private Integer parentId;
+	private Integer parentId = -1;
 
 	/**
 	 * 是否是懒加载

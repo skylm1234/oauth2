@@ -1,5 +1,6 @@
 package com.gejian.pixel.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNode;
@@ -7,6 +8,7 @@ import cn.hutool.core.lang.tree.TreeUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gejian.pixel.constants.CommonConstants;
+import com.gejian.pixel.dto.SysMenuAddDTO;
 import com.gejian.pixel.dto.SysMenuQueryDTO;
 import com.gejian.pixel.entity.SysMenu;
 import com.gejian.pixel.enums.MenuTypeEnum;
@@ -22,6 +24,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -55,8 +58,13 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 	}
 
 	@Override
-	public Boolean updateMenuById(SysMenu sysMenu) {
-		return this.updateById(sysMenu);
+	public Boolean updateMenuById(SysMenuAddDTO menuAddDTO) {
+		return this.updateById(BeanUtil.copyProperties(menuAddDTO,SysMenu.class));
+	}
+
+	@Override
+	public Optional<SysMenu> selectById(Integer id) {
+		return Optional.ofNullable(this.getById(id));
 	}
 
 	/**
@@ -71,7 +79,6 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 			List<TreeNode<Integer>> collect = baseMapper
 					.selectList(Wrappers.<SysMenu>lambdaQuery().orderByAsc(SysMenu::getSort)).stream()
 					.map(getNodeFunction()).collect(Collectors.toList());
-
 			return TreeUtil.build(collect, CommonConstants.MENU_TREE_ROOT_ID);
 		}
 
