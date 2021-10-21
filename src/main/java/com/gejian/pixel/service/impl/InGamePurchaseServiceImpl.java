@@ -1,6 +1,13 @@
 package com.gejian.pixel.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.gejian.pixel.dto.InGamePurchase.InGamePurchaseDTO;
+import com.gejian.pixel.dto.InGamePurchase.InGamePurchasePageDTO;
 import com.gejian.pixel.entity.InGamePurchase;
 import com.gejian.pixel.mapper.InGamePurchaseMapper;
 import com.gejian.pixel.proto.ConstInGamePurchaseTableItemExProtobuf;
@@ -11,11 +18,8 @@ import com.gejian.pixel.service.InGamePurchaseService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Auto created by codeAppend plugin
@@ -33,6 +37,29 @@ public class InGamePurchaseServiceImpl extends ServiceImpl<InGamePurchaseMapper,
 	@Override
 	public InGamePurchase getById(String id){
 		return hash.get(id);
+	}
+
+	@Override
+	public IPage<InGamePurchaseDTO> getPage(InGamePurchasePageDTO inGamePurchasePageDTO) {
+		LambdaQueryWrapper<InGamePurchase> wrapper = Wrappers.<InGamePurchase>lambdaQuery()
+				.orderByAsc(InGamePurchase::getId);
+		Page<InGamePurchase> page = baseMapper.selectPage(inGamePurchasePageDTO.getPage(), wrapper);
+		if (CollectionUtils.isEmpty(page.getRecords())){
+			return new Page<>(inGamePurchasePageDTO.getCurrent(), inGamePurchasePageDTO.getSize());
+		}
+		List<InGamePurchaseDTO> responseDTOList = page.getRecords().stream()
+				.map(inGamePurchase -> {
+					InGamePurchaseDTO inGamePurchaseDTO = new InGamePurchaseDTO();
+					inGamePurchaseDTO.setCost(inGamePurchase.getCost());
+					inGamePurchaseDTO.setDesc(inGamePurchase.getDesc());
+					inGamePurchaseDTO.setIcon(inGamePurchase.getIcon());
+					inGamePurchaseDTO.setId(inGamePurchase.getId());
+					inGamePurchaseDTO.setStone(inGamePurchase.getStone());
+					return inGamePurchaseDTO;
+				}).collect(Collectors.toList());
+		Page<InGamePurchaseDTO> resultPage = new Page<>(inGamePurchasePageDTO.getCurrent(), inGamePurchasePageDTO.getSize(), page.getTotal());
+		resultPage.setRecords(responseDTOList);
+		return resultPage;
 	}
 
 	@Override

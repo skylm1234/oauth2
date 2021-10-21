@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.NewStoreGoodsMapper">
+
+    <resultMap id="NewStoreGoodsRM" type="com.gejian.pixel.entity.NewStoreGoods">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="desc" column="desc"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`name`,`desc`
+	</sql>
+	<select id="selectPageByQuery" resultType="com.gejian.pixel.entity.ext.StorePageDO">
+		SELECT
+			items,good_fomula AS goodFomula,table_name,id
+		FROM
+			(
+			SELECT
+				items,good_fomula,'new_store_discount' AS table_name,id
+			FROM
+				new_store_discount UNION ALL
+			SELECT
+				items,good_fomula,'new_store_hot' AS table_name,id
+			FROM
+				new_store_hot UNION ALL
+			SELECT
+				items,good_fomula,'new_store_time_limit' AS table_name,id
+			FROM
+				new_store_time_limit
+			) AS a
+		<where>
+			<if test="shop != null ">
+				table_name = #{store.shop}
+			</if>
+			<if test="skill != null and skill.size > 0">
+				AND items LIKE concat( "[book_skill_" ,"%")
+				<foreach collection="skill" item="item" open="AND(" close=")" separator="OR">
+					#{item} BETWEEN substring_index( substring_index( items, '(', - 2 ), '-', 1 )
+					AND substring_index( substring_index( items, '-', - 1 ), ')', 1 )
+				</foreach>
+			</if>
+			<if test="soul != null and soul.size > 0">
+				AND items LIKE concat( "private_soulchip_" ,"%")
+				<foreach collection="soul" item="item" open="AND(" close=")" separator="OR">
+					#{item} BETWEEN substring_index( substring_index( items, '(', - 2 ), '-', 1 )
+					AND substring_index( substring_index( items, '-', - 1 ), ')', 1 )
+				</foreach>
+			</if>
+			<if test="exp != null and exp.size > 0">
+				AND items LIKE concat( "[exp_book_" ,"%")
+				<foreach collection="exp" item="item" open="AND(" close=")" separator="OR">
+					#{item} BETWEEN substring_index( substring_index( items, '(', - 2 ), '-', 1 )
+					AND substring_index( substring_index( items, '-', - 1 ), ')', 1 )
+				</foreach>
+			</if>
+			<if test="count > 0">
+				AND items LIKE concat( "[gold_" ,"%")
+			</if>
+		</where>
+		LIMIT  #{size} ,  #{current}
+	</select>
+	<select id="selectCountByQuery" resultType="java.lang.Integer">
+		SELECT
+			COUNT(1)
+		FROM
+		(
+		SELECT
+		items,good_fomula,'new_store_discount' AS table_name
+		FROM
+		new_store_discount UNION ALL
+		SELECT
+		items,good_fomula,'new_store_hot' AS table_name
+		FROM
+		new_store_hot UNION ALL
+		SELECT
+		items,good_fomula,'new_store_time_limit' AS table_name
+		FROM
+		new_store_time_limit
+		) AS a
+		<where>
+		<if test="shop != null ">
+			table_name = #{shop }
+		</if>
+		<if test="skill != null and skill.size > 0">
+			AND items LIKE concat( "[book_skill_" ,"%")
+			<foreach collection="skill" item="item" open="AND(" close=")" separator="OR">
+				#{item} BETWEEN substring_index( substring_index( items, '(', - 2 ), '-', 1 )
+				AND substring_index( substring_index( items, '-', - 1 ), ')', 1 )
+			</foreach>
+		</if>
+		<if test="soul != null and soul.size > 0">
+			AND items LIKE concat( "private_soulchip_" ,"%")
+			<foreach collection="soul" item="item" open="AND(" close=")" separator="OR">
+				#{item} BETWEEN substring_index( substring_index( items, '(', - 2 ), '-', 1 )
+				AND substring_index( substring_index( items, '-', - 1 ), ')', 1 )
+			</foreach>
+		</if>
+		<if test="exp != null and exp.size > 0">
+			AND items LIKE concat( "[exp_book_" ,"%")
+			<foreach collection="exp" item="item" open="AND(" close=")" separator="OR">
+				#{item} BETWEEN substring_index( substring_index( items, '(', - 2 ), '-', 1 )
+				AND substring_index( substring_index( items, '-', - 1 ), ')', 1 )
+			</foreach>
+		</if>
+		<if test="count > 0">
+			AND items LIKE concat( "[gold_" ,"%")
+		</if>
+		</where>
+	</select>
+	<select id="selectnewStoreGoodsList" resultType="com.gejian.pixel.entity.NewStoreGoods">
+		SELECT
+			id,
+			NAME,
+			`desc`
+		FROM
+			new_store_goods
+		WHERE
+			id LIKE concat( #{goodPrefix} ,"%")
+			AND substring_index( id, '_', - 1 ) BETWEEN #{from} AND #{to}
+	</select>
+
+</mapper>
