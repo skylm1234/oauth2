@@ -8,13 +8,18 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gejian.pixel.dto.InGamePurchase.InGamePurchaseDTO;
 import com.gejian.pixel.dto.InGamePurchase.InGamePurchasePageDTO;
+import com.gejian.pixel.dto.InGamePurchase.OrderDTO;
+import com.gejian.pixel.dto.InGamePurchase.OrderPageDTO;
 import com.gejian.pixel.entity.InGamePurchase;
+import com.gejian.pixel.entity.Order;
 import com.gejian.pixel.mapper.InGamePurchaseMapper;
 import com.gejian.pixel.proto.ConstInGamePurchaseTableItemExProtobuf;
 import com.gejian.pixel.proto.ConstInGamePurchaseTableProtobuf;
 import com.gejian.pixel.proto.ConstTablesProtobuf;
 import com.gejian.pixel.service.ConstantsProto;
 import com.gejian.pixel.service.InGamePurchaseService;
+import com.gejian.pixel.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -27,6 +32,9 @@ import java.util.stream.Collectors;
 @Service
 public class InGamePurchaseServiceImpl extends ServiceImpl<InGamePurchaseMapper, InGamePurchase>
 		implements InGamePurchaseService, ConstantsProto {
+
+	@Autowired
+	private OrderService orderService;
 
 	private Map<String, InGamePurchase> hash = new HashMap<>();
 
@@ -60,6 +68,19 @@ public class InGamePurchaseServiceImpl extends ServiceImpl<InGamePurchaseMapper,
 		Page<InGamePurchaseDTO> resultPage = new Page<>(inGamePurchasePageDTO.getCurrent(), inGamePurchasePageDTO.getSize(), page.getTotal());
 		resultPage.setRecords(responseDTOList);
 		return resultPage;
+	}
+
+	@Override
+	public IPage<OrderDTO> getPageOrder(OrderPageDTO orderPageDTO) {
+		LambdaQueryWrapper<Order> wrapper = Wrappers.<Order>lambdaQuery();
+		if (Objects.nonNull(orderPageDTO.getOrderId())){
+			wrapper.eq(Order::getOrderId, orderPageDTO.getOrderId());
+		}
+		if (Objects.nonNull(orderPageDTO.getUser())){
+			wrapper.like(Order::getUserId, orderPageDTO.getUser());
+		}
+		Page<Order> page = orderService.page(orderPageDTO.getPage(), wrapper);
+		return page.convert(order -> BeanUtil.copyProperties(order, OrderDTO.class));
 	}
 
 	@Override

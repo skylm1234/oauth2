@@ -3,10 +3,13 @@ package com.gejian.pixel.service.process;
 import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.HexUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.gejian.pixel.annotation.CommandResponse;
 import com.gejian.pixel.constants.CommandConstants;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.InGamePurchase;
+import com.gejian.pixel.entity.Order;
 import com.gejian.pixel.entity.Vip;
 import com.gejian.pixel.enums.ErrorEnum;
 import com.gejian.pixel.model.UserInfo;
@@ -14,6 +17,7 @@ import com.gejian.pixel.proto.CommPurchaseVerifyRequestProtobuf;
 import com.gejian.pixel.proto.CommPurchaseVerifyResponseProtobuf;
 import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.InGamePurchaseService;
+import com.gejian.pixel.service.OrderService;
 import com.gejian.pixel.service.Process;
 import com.gejian.pixel.service.VipService;
 import com.gejian.pixel.utils.Helper;
@@ -52,6 +56,9 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 
 	@Autowired
 	private VipService vipService;
+
+	@Autowired
+	private OrderService orderService;
 
 	@Override
 	public CommPurchaseVerifyResponseProtobuf.CommPurchaseVerifyResponse doProcess(CommPurchaseVerifyRequestProtobuf.CommPurchaseVerifyRequest request) throws Exception {
@@ -150,10 +157,14 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 					builder.addItems(playerItem)
 							.addArchives(playerItem1);
 				}
+				String nickname = Helper.stringValue(redisTemplate, identifier, "nickname");
+				Order order = new Order();
+				order.setUserId(identifier);
+				order.setUser(nickname);
+				order.setMoney(inGamePurchase.getCost());
+				order.setStatus(true);
+				orderService.save(order);
 			}
-
-			
-
 		} else {
 			builder.setResult(ErrorEnum.ERROR_INVALID_PARAMETER);
 			return builder.build();

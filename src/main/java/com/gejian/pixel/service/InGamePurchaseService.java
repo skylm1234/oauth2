@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gejian.pixel.dto.InGamePurchase.InGamePurchaseDTO;
 import com.gejian.pixel.dto.InGamePurchase.InGamePurchasePageDTO;
+import com.gejian.pixel.dto.InGamePurchase.OrderDTO;
+import com.gejian.pixel.dto.InGamePurchase.OrderPageDTO;
 import com.gejian.pixel.entity.InGamePurchase;
 
 /**
@@ -20,4 +22,10 @@ public interface InGamePurchaseService extends IService<InGamePurchase> {
 	 */
 	IPage<InGamePurchaseDTO> getPage(InGamePurchasePageDTO inGamePurchasePageDTO);
 
+	/**
+	 * 充值记录分页查询
+	 * @param orderPageDTO  分页条件
+	 * @return  IPage
+	 */
+	IPage<OrderDTO> getPageOrder(OrderPageDTO orderPageDTO);
 }

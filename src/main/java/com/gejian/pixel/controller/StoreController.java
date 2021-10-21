@@ -1,16 +1,8 @@
 package com.gejian.pixel.controller;
 
-import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.gejian.pixel.dto.InGamePurchase.InGamePurchaseDTO;
-import com.gejian.pixel.dto.InGamePurchase.InGamePurchaseUpdateDTO;
 import com.gejian.pixel.dto.store.*;
-import com.gejian.pixel.entity.InGamePurchase;
-import com.gejian.pixel.entity.NewStoreHot;
-import com.gejian.pixel.service.NewStoreDiscountService;
 import com.gejian.pixel.service.NewStoreGoodsService;
-import com.gejian.pixel.service.NewStoreHotService;
-import com.gejian.pixel.service.NewStoreTimeLimitService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +60,18 @@ public class StoreController {
 	@PostMapping("/delete")
 	public Boolean delete(@Valid @RequestBody StoreDTO storeDTO){
 		return this.newStoreGoodsService.deleteByStore(storeDTO);
+	}
+
+	@ApiOperation("商品刷新时间下拉")
+	@PostMapping("/refresh")
+	public List<StoreRefreshDTO> getListRefresh(){
+		return this.newStoreGoodsService.getListRefresh();
+	}
+
+	@ApiOperation("修改商店刷新")
+	@PostMapping("/updateRefresh")
+	public Boolean updateRefresh(@Valid @RequestBody StoreRefreshDTO storeRefreshDTO){
+		return this.newStoreGoodsService.updateRefresh(storeRefreshDTO);
 	}
 
 }

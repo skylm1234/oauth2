@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.plugins.pagination.PageDto;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,6 +44,8 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 	private NewStoreHotService newStoreHotService;
 	@Autowired
 	private NamedService namedService;
+	@Autowired
+	private NewStoreRefreshService newStoreRefreshService;
 
 	@Override
 	public List<StoreTypeDTO> getType() {
@@ -245,5 +246,24 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 			default: boo =  newStoreTimeLimitService.deleteByStore(storeDTO.getId()); break;
 		}
 		return boo;
+	}
+
+	@Override
+	public List<StoreRefreshDTO> getListRefresh() {
+		List<NewStoreRefresh> list = newStoreRefreshService.list();
+		return BeanUtil.copyToList(list, StoreRefreshDTO.class);
+	}
+
+	@Override
+	public Boolean updateRefresh(StoreRefreshDTO storeRefreshDTO) {
+		List<NewStoreRefresh> list = newStoreRefreshService.list();
+		list.forEach(newStoreRefresh -> {
+			if (Objects.equals(newStoreRefresh.getId(), storeRefreshDTO.getId())){
+				newStoreRefresh.setCheckFlag(true);
+			} else {
+				newStoreRefresh.setCheckFlag(false);
+			}
+		});
+		return newStoreRefreshService.updateBatchById(list);
 	}
 }

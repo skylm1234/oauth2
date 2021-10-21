@@ -1,19 +1,18 @@
 package com.gejian.pixel.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gejian.pixel.entity.Stage;
+import com.gejian.pixel.dto.stage.StageTypeDTO;
 import com.gejian.pixel.entity.StageClass;
 import com.gejian.pixel.mapper.StageClassMapper;
 import com.gejian.pixel.proto.ConstStageClassTableItemExProtobuf;
 import com.gejian.pixel.proto.ConstStageClassTableProtobuf;
-import com.gejian.pixel.proto.ConstStageTableItemExProtobuf;
 import com.gejian.pixel.proto.ConstTablesProtobuf;
 import com.gejian.pixel.service.ConstantsProto;
 import com.gejian.pixel.service.StageClassService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,4 +55,12 @@ public class StageClassServiceImpl extends ServiceImpl<StageClassMapper, StageCl
 				.addAllItems(table).build();
 		builder.setStageClass(build);
 	}
+
+	@Override
+	public List<StageTypeDTO> getType() {
+		List<StageClass> list = this.list();
+		return BeanUtil.copyToList(list, StageTypeDTO.class);
+	}
+
+
 }

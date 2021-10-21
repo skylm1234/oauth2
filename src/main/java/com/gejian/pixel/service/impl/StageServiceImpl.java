@@ -1,8 +1,15 @@
 package com.gejian.pixel.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.gejian.pixel.dto.stage.*;
 import com.gejian.pixel.entity.*;
+import com.gejian.pixel.enums.BackgroundEnum;
+import com.gejian.pixel.enums.ModeTypeEnum;
 import com.gejian.pixel.mapper.StageMapper;
 import com.gejian.pixel.proto.*;
 import com.gejian.pixel.service.ConstantsProto;
@@ -10,10 +17,7 @@ import com.gejian.pixel.service.StageService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Auto created by codeAppend plugin
@@ -33,6 +37,33 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 	@Override
 	public ConstStageTableItemExProtobuf.ConstStageTableItemEx getItem(Integer id){
 		return this.convert(hash.get(id));
+	}
+
+	@Override
+	public IPage<StagePageDTO> getPage(StageQueryDTO stageQueryDTO) {
+		return null;
+	}
+
+	@Override
+	public List<PreRequestDTO> getPreRequest() {
+		ArrayList<PreRequestDTO> preRequestDTOS = new ArrayList<>();
+		for (ModeTypeEnum modeTypeEnum : ModeTypeEnum.values()) {
+			PreRequestDTO preRequestDTO = new PreRequestDTO();
+			preRequestDTO.setClassType(modeTypeEnum.getCode());
+			LambdaQueryWrapper<Stage> wrapper = Wrappers.<Stage>lambdaQuery()
+					.select(Stage::getId, Stage::getMode)
+					.eq(Stage::getMode, modeTypeEnum.getCode());
+			List<Stage> list = this.list(wrapper);
+			List<PreRequestTypeDTO> preRequestTypeDTOS = BeanUtil.copyToList(list, PreRequestTypeDTO.class);
+			preRequestDTO.setPreRequests(preRequestTypeDTOS);
+			preRequestDTOS.add(preRequestDTO);
+		}
+		return preRequestDTOS;
+	}
+
+	@Override
+	public List<BackGroundDTO> getBackground() {
+		return BeanUtil.copyToList(Arrays.asList(BackgroundEnum.values()), BackGroundDTO.class);
 	}
 
 	@Override

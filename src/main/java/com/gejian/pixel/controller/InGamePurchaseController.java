@@ -2,9 +2,7 @@ package com.gejian.pixel.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.gejian.pixel.dto.InGamePurchase.InGamePurchaseDTO;
-import com.gejian.pixel.dto.InGamePurchase.InGamePurchasePageDTO;
-import com.gejian.pixel.dto.InGamePurchase.InGamePurchaseUpdateDTO;
+import com.gejian.pixel.dto.InGamePurchase.*;
 import com.gejian.pixel.entity.InGamePurchase;
 import com.gejian.pixel.service.InGamePurchaseService;
 import io.swagger.annotations.Api;
@@ -40,6 +38,12 @@ public class InGamePurchaseController {
 	public Boolean update(@Valid @RequestBody InGamePurchaseUpdateDTO inGamePurchaseUpdateDTO){
 		InGamePurchase inGamePurchase = BeanUtil.copyProperties(inGamePurchaseUpdateDTO, InGamePurchase.class);
 		return this.inGamePurchaseService.updateById(inGamePurchase);
+	}
+
+	@ApiOperation("充值记录查询")
+	@PostMapping("/pageOrder")
+	public IPage<OrderDTO> getPageOrder(@Valid @RequestBody OrderPageDTO orderPageDTO){
+		return this.inGamePurchaseService.getPageOrder(orderPageDTO);
 	}
 
 }

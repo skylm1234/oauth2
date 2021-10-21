@@ -3,7 +3,6 @@ package com.gejian.pixel.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gejian.pixel.dto.InGamePurchase.InGamePurchaseDTO;
 import com.gejian.pixel.dto.store.*;
 import com.gejian.pixel.entity.NewStoreGoods;
 
@@ -53,4 +52,17 @@ public interface NewStoreGoodsService extends IService<NewStoreGoods>{
 	 * @return Boolean
 	 */
 	Boolean deleteByStore(StoreDTO storeDTO);
+
+	/**
+	 * 获取刷新时间
+	 * @return list
+	 */
+	List<StoreRefreshDTO> getListRefresh();
+
+	/**
+	 * 修改商店刷新时间
+	 * @param storeRefreshDTO 刷新时间dto
+	 * @return boolean
+	 */
+	Boolean updateRefresh(StoreRefreshDTO storeRefreshDTO);
 }
