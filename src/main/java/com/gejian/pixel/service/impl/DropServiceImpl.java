@@ -1,34 +1,48 @@
 package com.gejian.pixel.service.impl;
 
-import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.math.Calculator;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gejian.pixel.constants.RedisKeyConstants;
+import com.gejian.pixel.dto.DropDTO;
+import com.gejian.pixel.dto.DropQueryDTO;
 import com.gejian.pixel.entity.Backpack;
 import com.gejian.pixel.entity.Drop;
 import com.gejian.pixel.entity.LevelUpgrade;
 import com.gejian.pixel.ext.DropExt;
 import com.gejian.pixel.mapper.DropMapper;
 import com.gejian.pixel.model.DropItem;
-import com.gejian.pixel.proto.*;
+import com.gejian.pixel.proto.ConstDropTableItemExProtobuf;
+import com.gejian.pixel.proto.ConstDropTableProtobuf;
+import com.gejian.pixel.proto.ConstTablesProtobuf;
+import com.gejian.pixel.proto.HeroBasicInfoProtobuf;
+import com.gejian.pixel.proto.HeroSkillProtobuf;
+import com.gejian.pixel.proto.PlayerInfoProtobuf;
+import com.gejian.pixel.proto.PlayerItemProtobuf;
 import com.gejian.pixel.service.BackpackService;
 import com.gejian.pixel.service.ConstantsProto;
 import com.gejian.pixel.service.DropService;
 import com.gejian.pixel.service.LevelUpgradeService;
 import com.gejian.pixel.utils.Helper;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.util.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.PostConstruct;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Auto created by codeAppend plugin
@@ -113,6 +127,24 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 			}
 		}
 		return builder.build();
+	}
+
+	@Override
+	public IPage<DropDTO> selectPage(DropQueryDTO dropQueryDTO) {
+		LambdaQueryWrapper<Drop> queryWrapper = Wrappers.lambdaQuery();
+		if(StrUtil.isNotBlank(dropQueryDTO.getId())){
+			queryWrapper.like(Drop::getId,dropQueryDTO.getId());
+		}
+		if(StrUtil.isNotBlank(dropQueryDTO.getContent())){
+			queryWrapper.like(Drop::getContent,dropQueryDTO.getContent());
+		}
+		Page<Drop> page = this.page(dropQueryDTO.getPage(), queryWrapper);
+		return page.convert(record -> BeanUtil.copyProperties(record,DropDTO.class));
+	}
+
+	@Override
+	public Optional<Drop> selectById(String id) {
+		return Optional.ofNullable(this.getById(id));
 	}
 
 
