@@ -5,48 +5,56 @@ import cn.hutool.core.text.StrFormatter;
 import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.gejian.pixel.constants.RedisKeyConstants;
 import com.gejian.pixel.entity.NewStoreDiscount;
 import com.gejian.pixel.entity.NewStoreHot;
+import com.gejian.pixel.entity.NewStoreRefresh;
 import com.gejian.pixel.entity.NewStoreTimeLimit;
 import com.gejian.pixel.proto.CommWorldEventUpdateProtobuf;
 import com.gejian.pixel.proto.MessageBaseProtobuf;
 import com.gejian.pixel.service.NewStoreDiscountService;
 import com.gejian.pixel.service.NewStoreHotService;
+import com.gejian.pixel.service.NewStoreRefreshService;
 import com.gejian.pixel.service.NewStoreTimeLimitService;
 import com.gejian.pixel.utils.BroadcastUtil;
 import com.gejian.pixel.utils.Helper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.connection.RedisKeyCommands;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.SchedulingConfigurer;
+import org.springframework.scheduling.config.ScheduledTaskRegistrar;
+import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * @author ljb
  * @date 2021年09月10日 14:58
- * @description 商店刷新  9、12、18、22点刷新
+ * @description 商店刷新  根据数据库配置的时间
  */
 @Service
 @Slf4j
+@Configuration
+@EnableScheduling
 @RequiredArgsConstructor
-public class ScheduleTaskStore {
+public class ScheduleTaskStore implements SchedulingConfigurer {
 
 	private final RedisTemplate redisTemplate;
+
+	private final NewStoreRefreshService refreshService;
 
 	private final NewStoreHotService newStoreHotService;
 
@@ -54,7 +62,21 @@ public class ScheduleTaskStore {
 
 	private final NewStoreTimeLimitService newStoreTimeLimitService;
 
-	@Scheduled(cron = "0 0 9,12,18,22 * * ?")
+	@Override
+	public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+		taskRegistrar.addTriggerTask(
+				this::refreshStore,
+				triggerContext -> {
+					NewStoreRefresh storeRefresh = refreshService.getBaseMapper().selectOne(Wrappers.<NewStoreRefresh>lambdaQuery().eq(NewStoreRefresh::isCheckFlag,true));
+					String cron = storeRefresh.getCron();
+					if (StrUtil.isNotEmpty(cron)) {
+						return new CronTrigger(cron).nextExecutionTime(triggerContext);
+					}
+					return null;
+				}
+		);
+	}
+
 	public void refreshStore(){
 		scheduleTaskStore();
 		CommWorldEventUpdateProtobuf.CommWorldEventUpdate event = CommWorldEventUpdateProtobuf.CommWorldEventUpdate
@@ -136,6 +158,9 @@ public class ScheduleTaskStore {
 				valueJSONObj.forEach((key,value)->{
 					valueMap.put(serializer.serialize(key),serializer.serialize(value.toString()));
 				});
+				//先清空之前的商店商品
+				connection.del(serializer.serialize(k));
+				//再填充新的商品数据
 				connection.hashCommands().hMSet(serializer.serialize(k),valueMap);
 			});
 			return null;

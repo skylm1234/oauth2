@@ -19,16 +19,28 @@ public class NewStoreRefresh {
 	private Long id;
 
 	/**
-	 * 
+	 * 刷新时间名称
 	 */
 	@TableField("name")
 	private String name;
 
 	/**
-	 * 
+	 * 商店刷新时间描述
 	 */
 	@TableField("refresh_time")
 	private String refreshTime;
+
+	/**
+	 * cron表达式
+	 */
+	@TableField("cron")
+	private String cron;
+
+	/**
+	 * 是否选择 0:false  1:true
+	 */
+	@TableField("check_flag")
+	private boolean checkFlag;
 
 
 }

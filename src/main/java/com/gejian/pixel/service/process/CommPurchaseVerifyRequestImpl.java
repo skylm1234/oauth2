@@ -152,6 +152,8 @@ public class CommPurchaseVerifyRequestImpl implements Process<CommPurchaseVerify
 				}
 			}
 
+			
+
 		} else {
 			builder.setResult(ErrorEnum.ERROR_INVALID_PARAMETER);
 			return builder.build();
