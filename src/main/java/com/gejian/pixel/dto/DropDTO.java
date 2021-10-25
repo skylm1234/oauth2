@@ -13,15 +13,15 @@ import lombok.Data;
 @Data
 public class DropDTO {
 
-	@ApiModelProperty("掉落id")
+	@ApiModelProperty(value = "掉落id",required = true)
 	private String id;
 
-	@ApiModelProperty("掉落内容")
+	@ApiModelProperty(value = "掉落内容",required = true)
 	private String content;
 
-	@ApiModelProperty("掉落描述")
+	@ApiModelProperty(value = "掉落描述",required = true)
 	private String desc;
 
-	@ApiModelProperty("掉落描述2")
+	@ApiModelProperty(value = "掉落描述2",required = true)
 	private String desc2;
 }

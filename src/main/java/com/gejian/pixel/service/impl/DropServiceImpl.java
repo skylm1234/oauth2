@@ -437,12 +437,6 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 		return one;
 	}
 
-
-
-
-
-
-
 	@Override
 	public void build(ConstTablesProtobuf.ConstTables.Builder builder) {
 		ConstDropTableProtobuf.ConstDropTable build = ConstDropTableProtobuf.ConstDropTable
@@ -450,5 +444,17 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 				.addAllItems(table)
 				.build();
 		builder.setDrops(build);
+	}
+
+	@Override
+	public boolean save(Drop entity) {
+		 baseMapper.save(entity);
+		 return true;
+	}
+
+	@Override
+	public boolean updateById(Drop entity) {
+		baseMapper.update(entity);
+		return true;
 	}
 }
