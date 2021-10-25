@@ -30,6 +30,11 @@ public class NewStoreTimeLimitServiceImpl extends ServiceImpl<NewStoreTimeLimitM
 		return this.updateById(newStoreTimeLimit);
 	}
 
+	@Override
+	public int maxPlaces() {
+		return baseMapper.maxPlaces();
+	}
+
 	// use "baseMapper" to call jdbc
     // example: baseMapper.insert(entity);
     // example: baseMapper.selectByPage(params);

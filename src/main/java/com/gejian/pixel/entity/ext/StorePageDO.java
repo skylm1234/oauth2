@@ -16,7 +16,7 @@ public class StorePageDO implements Serializable {
 	/**
 	 * id
 	 */
-	private Long id;
+	private String id;
 
 	/**
 	 * items
@@ -31,16 +31,20 @@ public class StorePageDO implements Serializable {
 	/**
 	 * 表名
 	 */
-	private String tableName;
+	private String prefix;
 
 	/**
 	 *
 	 */
-	private Integer places;
+	private Integer from;
+
+	private Integer to;
 
 	/**
 	 *
 	 */
 	private Integer type;
+
+	private Integer places;
 
 }

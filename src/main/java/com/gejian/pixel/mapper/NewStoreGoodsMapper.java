@@ -33,4 +33,6 @@ public interface NewStoreGoodsMapper  extends BaseMapper<NewStoreGoods> {
 	 * @return
 	 */
 	List<NewStoreGoods> selectnewStoreGoodsList(GoodsFomula goodsFomula);
+
+	StorePageDO selectViewById(String id);
 }

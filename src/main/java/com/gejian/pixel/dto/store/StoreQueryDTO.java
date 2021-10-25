@@ -1,7 +1,6 @@
 package com.gejian.pixel.dto.store;
 
 import com.gejian.pixel.dto.BasePageQuery;
-import com.gejian.pixel.enums.ShopTypeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,8 +18,8 @@ public class StoreQueryDTO extends BasePageQuery {
 	/**
 	 * 商品类型名字
 	 */
-	@ApiModelProperty("商品类型名字")
-	private String type;
+	@ApiModelProperty("物品名称")
+	private String name;
 
 	/**
 	 * 商品类型名字

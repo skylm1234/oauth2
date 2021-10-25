@@ -2,8 +2,8 @@ package com.gejian.pixel.entity.ext;
 
 import com.gejian.pixel.dto.BasePageQuery;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,12 +13,13 @@ import java.util.List;
  * @Description 商品管理
  * @createTime 2021-10-19 15:22:00
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class StoreQueryDO extends BasePageQuery {
-	private String shop;
-	private List<String> skill;
-	private List<String> soul;
-	private List<String> exp;
+	private Integer type;
+	private List<Integer> skill;
+	private List<Integer> soul;
+	private List<Integer> exp;
 	private Long count;
 
 	@Override

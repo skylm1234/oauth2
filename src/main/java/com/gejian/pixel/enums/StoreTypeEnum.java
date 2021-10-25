@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 @AllArgsConstructor
 @Getter
-public enum StoreTypeEnum {
+public enum StoreTypeEnum implements CodeToJsonEnums {
 	/**
 	 *  0：手动技能 1：自动技能 2：被动技能 3：一阶经验书 4：二阶经验书 5：三阶经验书  6：四阶经验书 7：绿色英雄碎片 8：蓝色英雄碎片 9：紫色英雄碎片 10：金色英雄碎片 11：金币
 	 */
@@ -61,7 +61,6 @@ public enum StoreTypeEnum {
 		return VALUE_MAP.get(code);
 	}
 
-	@JsonCreator
 	public static StoreTypeEnum valueOfByPrefix(String prefix) {
 		return PREFIX_MAP.get(prefix);
 	}

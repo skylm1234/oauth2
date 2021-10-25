@@ -14,7 +14,7 @@ import java.util.Map;
  */
 @AllArgsConstructor
 @Getter
-public enum ModeTypeEnum {
+public enum ModeTypeEnum implements CodeToJsonEnums{
 	/**
 	 * 1:普通 2：噩梦 3：折磨
 	 */

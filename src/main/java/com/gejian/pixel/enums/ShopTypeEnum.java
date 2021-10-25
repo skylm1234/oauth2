@@ -14,7 +14,7 @@ import java.util.Map;
  */
 @AllArgsConstructor
 @Getter
-public enum ShopTypeEnum {
+public enum ShopTypeEnum implements CodeToJsonEnums {
 	/**
 	 * 1:折扣 2：热卖 3：限时
 	 */
@@ -43,7 +43,7 @@ public enum ShopTypeEnum {
 	public static ShopTypeEnum valueOf(Integer code) {
 		return VALUE_MAP.get(code);
 	}
-	@JsonCreator
+
 	public static ShopTypeEnum valueOfByType(String type) {
 		return TYPE_MAP.get(type);
 	}

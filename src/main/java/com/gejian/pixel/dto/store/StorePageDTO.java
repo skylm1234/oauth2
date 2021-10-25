@@ -1,8 +1,6 @@
 package com.gejian.pixel.dto.store;
 
 import com.gejian.pixel.entity.NewStoreGoods;
-import com.gejian.pixel.enums.ShopTypeEnum;
-import com.gejian.pixel.enums.StoreTypeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -18,19 +16,23 @@ import java.util.List;
  * @createTime 2021-10-19 15:22:00
  */
 @Data
-@ApiModel("商店管理查询条件")
+@ApiModel("商店管理列表Model")
 public class StorePageDTO implements Serializable {
 	/**
 	 * id
 	 */
 	@ApiModelProperty("id")
-	private Long id;
+	private String id;
 
 	/**
 	 * 物品
 	 */
-	@ApiModelProperty("物品")
+	@ApiModelProperty("物品明细")
 	private List<NewStoreGoods> goods;
+
+
+	@ApiModelProperty("物品")
+	private String content;
 
 	/**
 	 * 物品类型
@@ -42,7 +44,7 @@ public class StorePageDTO implements Serializable {
 	/**
 	 * 商店 1:折扣 2：热卖 3：限时
 	 */
-	@ApiModelProperty("商店 1:折扣 2：热卖 3：限时")
+	@ApiModelProperty("所属商店 1:折扣 2：热卖 3：限时")
 	private Integer shop;
 
 	/**

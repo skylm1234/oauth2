@@ -24,4 +24,12 @@ public class SecurityUtils {
 		}
 		return Optional.empty();
 	}
+
+	public Optional<PrincipalUser> getSysUser(Authentication authentication) {
+		Object principal = authentication.getPrincipal();
+		if (principal instanceof PrincipalUser) {
+			return Optional.of((PrincipalUser) principal);
+		}
+		return Optional.empty();
+	}
 }

@@ -15,7 +15,7 @@ import java.util.Map;
 
 @AllArgsConstructor
 @Getter
-public enum HeroLevelColorEnum implements TwoConstructEnums{
+public enum HeroLevelColorEnum implements CodeToJsonEnums {
 
 	/** 绿色 **/
 	GREEN(1,"绿色"),

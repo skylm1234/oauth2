@@ -1,7 +1,6 @@
 package com.gejian.pixel.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gejian.pixel.dto.store.StoreDTO;
 import com.gejian.pixel.entity.NewStoreHot;
 import com.gejian.pixel.entity.ext.StorePageDO;
 
@@ -30,4 +29,6 @@ public interface NewStoreHotService extends IService<NewStoreHot> {
 	 * @return Booleanc
 	 */
 	Boolean updateByStore(StorePageDO storePageDO);
+
+	int maxPlaces();
 }

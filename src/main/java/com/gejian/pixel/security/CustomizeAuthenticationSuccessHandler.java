@@ -1,8 +1,11 @@
 package com.gejian.pixel.security;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.CharsetUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gejian.pixel.dto.SysUserDTO;
+import com.gejian.pixel.service.SysUserService;
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +59,9 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
 	@Autowired
 	private AuthorizationServerTokenServices defaultAuthorizationServerTokenServices;
 
+	@Autowired
+	private SysUserService sysUserService;
+
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
 		String header = request.getHeader(HttpHeaders.AUTHORIZATION);
@@ -74,21 +80,21 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
 				throw new InvalidClientException("Given client ID does not match authenticated client");
 			}
 			TokenRequest tokenRequest = new TokenRequest(MapUtil.newHashMap(), clientId, clientDetails.getScope(),
-					"mobile");
+					"web");
 			// 校验scope
 			new DefaultOAuth2RequestValidator().validateScope(tokenRequest, clientDetails);
 			OAuth2Request oAuth2Request = tokenRequest.createOAuth2Request(clientDetails);
 			OAuth2Authentication oAuth2Authentication = new OAuth2Authentication(oAuth2Request, authentication);
 			OAuth2AccessToken oAuth2AccessToken = defaultAuthorizationServerTokenServices
 					.createAccessToken(oAuth2Authentication);
-			log.info("获取token 成功：{}", oAuth2AccessToken.getValue());
-
 			response.setCharacterEncoding(CharsetUtil.UTF_8);
 			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 			PrintWriter printWriter = response.getWriter();
-			Optional<PrincipalUser> optionalPrincipalUser = SecurityUtils.getSysUser();
-			optionalPrincipalUser.ifPresent(principalUser -> ((DefaultOAuth2AccessToken) oAuth2AccessToken).setAdditionalInformation(ImmutableMap.of("user_info", principalUser)));
-
+			Optional<PrincipalUser> optionalPrincipalUser = SecurityUtils.getSysUser(authentication);
+			optionalPrincipalUser.ifPresent(principalUser -> {
+				SysUserDTO sysUserDTO = BeanUtil.copyProperties(principalUser, SysUserDTO.class);
+				((DefaultOAuth2AccessToken) oAuth2AccessToken).setAdditionalInformation(ImmutableMap.of("user_info", sysUserDTO));
+			});
 			printWriter.append(objectMapper.writeValueAsString(oAuth2AccessToken));
 		}
 		catch (IOException e) {

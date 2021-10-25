@@ -23,6 +23,6 @@ public class CustomizeUserDetailService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		SysUser sysUser = sysUserService.getInfoByUsername(username).orElseThrow(() -> new UsernameNotFoundException("用户未找到"));
-		return new PrincipalUser(sysUser.getUserId(),sysUser.getUsername(),sysUser.getPassword(), sysUser.getDelFlag(),sysUser.getLockFlag());
+		return new PrincipalUser(sysUser.getUserId(),sysUser.getUsername(),sysUser.getPassword(), sysUser.getDelFlag(),sysUser.getLockFlag(),sysUser.getRealName(),sysUser.getPhone());
 	}
 }

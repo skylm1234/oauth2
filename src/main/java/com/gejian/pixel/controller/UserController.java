@@ -1,8 +1,10 @@
 package com.gejian.pixel.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.gejian.pixel.dto.SysUserDTO;
 import com.gejian.pixel.dto.SysUserQueryDTO;
+import com.gejian.pixel.entity.SysUser;
 import com.gejian.pixel.exception.ResourceNotFoundException;
 import com.gejian.pixel.security.PrincipalUser;
 import com.gejian.pixel.security.SecurityUtils;
@@ -20,10 +22,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author lengleng
@@ -134,4 +138,15 @@ public class UserController {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
+	/**
+	 * 根据用户名查询用户信息
+	 * @param username 用户名
+	 * @return
+	 */
+	@GetMapping("/check")
+	@ApiOperation("根据用户名查询用户信息")
+	public ResponseEntity<SysUserDTO> getInfoByUsername(@ApiParam(value = "用户名",required = true) @RequestParam("username") String  username) {
+		Optional<SysUser> optionalSysUser = userService.getInfoByUsername(username);
+		return optionalSysUser.map(sysUser -> ResponseEntity.ok(BeanUtil.copyProperties(sysUser, SysUserDTO.class))).orElseGet(() -> ResponseEntity.noContent().build());
+	}
 }

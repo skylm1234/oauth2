@@ -14,7 +14,7 @@ import java.util.Map;
  */
 @AllArgsConstructor
 @Getter
-public enum BackgroundEnum {
+public enum BackgroundEnum implements CodeToJsonEnums{
 	/**
 	 *
 	 */

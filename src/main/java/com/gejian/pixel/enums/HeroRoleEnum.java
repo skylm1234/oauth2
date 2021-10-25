@@ -15,7 +15,7 @@ import java.util.Map;
 
 @AllArgsConstructor
 @Getter
-public enum HeroRoleEnum implements TwoConstructEnums{
+public enum HeroRoleEnum implements CodeToJsonEnums {
 
 	/** 战士 **/
 	ZHAN_SHI(1,"战士"),

@@ -1,5 +1,6 @@
 package com.gejian.pixel.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
@@ -12,10 +13,8 @@ public class GoodsFomula {
 	private Long from;
 	private String factor;
 	private Long number;
+	@JsonProperty("cost_number")
 	private Long costNumber;
+	@JsonProperty("good_prefix")
 	private String goodPrefix;
-
-
-
-
 }

@@ -10,7 +10,7 @@ import lombok.Getter;
  * @date ：2021-10-18 9:49
  * @description：
  */
-public interface TwoConstructEnums {
+public interface CodeToJsonEnums {
 
 	@JsonValue
 	default Integer toJson(){

@@ -27,6 +27,10 @@ public class PrincipalUser implements UserDetails {
 
 	private Boolean locked;
 
+	private String realName;
+
+	private String phone;
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return Collections.emptyList();

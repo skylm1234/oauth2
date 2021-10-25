@@ -1,6 +1,6 @@
 package com.gejian.pixel.config;
 
-import com.gejian.pixel.enums.TwoConstructEnums;
+import com.gejian.pixel.enums.CodeToJsonEnums;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
 
@@ -14,12 +14,12 @@ import java.util.WeakHashMap;
  * @description：暂时不用
  */
 
-public class EnumConvertFactory implements ConverterFactory<String, TwoConstructEnums> {
+public class EnumConvertFactory implements ConverterFactory<String, CodeToJsonEnums> {
 
 	private static final Map<Class<?>, Converter> CONVERTER_MAP = new WeakHashMap<>();
 
 	@Override
-	public <T extends TwoConstructEnums> Converter<String, T> getConverter(Class<T> targetType) {
+	public <T extends CodeToJsonEnums> Converter<String, T> getConverter(Class<T> targetType) {
 		Converter result = CONVERTER_MAP.get(targetType);
 		if(result == null) {
 			result = new IntegerCodeToEnum<>(targetType);
@@ -28,7 +28,7 @@ public class EnumConvertFactory implements ConverterFactory<String, TwoConstruct
 		return result;
 	}
 
-	 static class IntegerCodeToEnum<T extends TwoConstructEnums> implements Converter<String, T> {
+	 static class IntegerCodeToEnum<T extends CodeToJsonEnums> implements Converter<String, T> {
 		 private final Map<String, T> ENUM_MAP = new HashMap<>();
 		 public IntegerCodeToEnum(Class<T> enumType) {
 			T[] enums = enumType.getEnumConstants();

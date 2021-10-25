@@ -9,15 +9,30 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gejian.pixel.dto.store.*;
-import com.gejian.pixel.entity.*;
+import com.gejian.pixel.dto.store.StoreDTO;
+import com.gejian.pixel.dto.store.StoreGoodsDTO;
+import com.gejian.pixel.dto.store.StorePageDTO;
+import com.gejian.pixel.dto.store.StoreQueryDTO;
+import com.gejian.pixel.dto.store.StoreRefreshDTO;
+import com.gejian.pixel.dto.store.StoreTypeDTO;
+import com.gejian.pixel.entity.GoodsFomula;
+import com.gejian.pixel.entity.Named;
+import com.gejian.pixel.entity.NewStoreGoods;
+import com.gejian.pixel.entity.NewStoreRefresh;
 import com.gejian.pixel.entity.ext.StorePageDO;
 import com.gejian.pixel.entity.ext.StoreQueryDO;
 import com.gejian.pixel.enums.ShopTypeEnum;
 import com.gejian.pixel.enums.StoreCurrencyTypeEnum;
 import com.gejian.pixel.enums.StoreTypeEnum;
+import com.gejian.pixel.exception.ResourceNotFoundException;
 import com.gejian.pixel.mapper.NewStoreGoodsMapper;
-import com.gejian.pixel.service.*;
+import com.gejian.pixel.service.NamedService;
+import com.gejian.pixel.service.NewStoreDiscountService;
+import com.gejian.pixel.service.NewStoreGoodsService;
+import com.gejian.pixel.service.NewStoreHotService;
+import com.gejian.pixel.service.NewStoreRefreshService;
+import com.gejian.pixel.service.NewStoreTimeLimitService;
+import com.gejian.pixel.service.StoreViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +43,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -47,6 +63,9 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 	@Autowired
 	private NewStoreRefreshService newStoreRefreshService;
 
+	@Autowired
+	private StoreViewService storeViewService;
+
 	@Override
 	public List<StoreTypeDTO> getType() {
 		List<StoreTypeEnum> storeTypeEnums = Arrays.asList(StoreTypeEnum.values());
@@ -54,13 +73,12 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 	}
 
 	@Override
-	public List<StoreGoodsDTO> getListByType(StoreTypeDTO storeTypeDTO) {
-		StoreTypeEnum storeTypeEnum = StoreTypeEnum.valueOf(storeTypeDTO.getCode());
-		if (Objects.equals(storeTypeEnum, StoreTypeEnum.GOLD)){
+	public List<StoreGoodsDTO> getListByType(StoreTypeEnum type) {
+		if (type == StoreTypeEnum.GOLD){
 			return new ArrayList<>();
 		}
-		String[] range = storeTypeEnum.getRange().split("-");
-		String prefix = storeTypeEnum.getPrefix();
+		String[] range = type.getRange().split("-");
+		String prefix = type.getPrefix();
 		GoodsFomula goodsFomula = new GoodsFomula();
 		goodsFomula.setFrom(Long.parseLong(range[0]));
 		goodsFomula.setTo(Long.parseLong(range[1]));
@@ -74,39 +92,38 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 
 	@Override
 	public IPage<StorePageDTO> getPage(StoreQueryDTO storeQueryDTO) {
-		//商品对应的名字
-		List<String> skill = new ArrayList<>();
-		List<String> soul = new ArrayList<>();
-		List<String> exp = new ArrayList<>();
+		//商品对应的id
+		List<Integer> skill = new ArrayList<>();
+		List<Integer> soul = new ArrayList<>();
+		List<Integer> exp = new ArrayList<>();
 		long count = 0;
-		if (Objects.nonNull(storeQueryDTO.getType())){
-			LambdaQueryWrapper<NewStoreGoods> wrapper = Wrappers.<NewStoreGoods>lambdaQuery()
-					.like(NewStoreGoods::getName, storeQueryDTO.getType());
-			List<NewStoreGoods> newStoreGoodsList = baseMapper.selectList(wrapper);
+		List<NewStoreGoods> newStoreGoodsList;
+		LambdaQueryWrapper<NewStoreGoods> wrapper = new LambdaQueryWrapper<>();
+		if (Objects.nonNull(storeQueryDTO.getName())){
+			wrapper.like(NewStoreGoods::getName, storeQueryDTO.getName());
+			newStoreGoodsList = baseMapper.selectList(wrapper);
 			if (!CollectionUtils.isEmpty(newStoreGoodsList)){
 				skill = newStoreGoodsList.stream()
 						.filter(newStoreGoods -> newStoreGoods.getId().contains(StoreTypeEnum.BOOK_SKILL_AUTO.getPrefix()))
-						.map(newStoreGoods -> newStoreGoods.getId().substring(newStoreGoods.getId().lastIndexOf("_")))
+						.map(newStoreGoods -> Integer.parseInt(newStoreGoods.getId().substring(newStoreGoods.getId().lastIndexOf("_") + 1)))
 						.collect(Collectors.toList());
 				soul = newStoreGoodsList.stream()
 						.filter(newStoreGoods -> newStoreGoods.getId().contains(StoreTypeEnum.PRIVATE_SOULCHIP_BLUE.getPrefix()))
-						.map(newStoreGoods -> newStoreGoods.getId().substring(newStoreGoods.getId().lastIndexOf("_")))
+						.map(newStoreGoods -> Integer.parseInt(newStoreGoods.getId().substring(newStoreGoods.getId().lastIndexOf("_") +1 )))
 						.collect(Collectors.toList());
 				exp = newStoreGoodsList.stream()
 						.filter(newStoreGoods -> newStoreGoods.getId().contains(StoreTypeEnum.EXP_BOOK_1.getPrefix()))
-						.map(newStoreGoods -> newStoreGoods.getId().substring(newStoreGoods.getId().lastIndexOf("_")))
+						.map(newStoreGoods -> Integer.parseInt(newStoreGoods.getId().substring(newStoreGoods.getId().lastIndexOf("_") + 1 )))
 						.collect(Collectors.toList());
 				count = newStoreGoodsList.stream().filter(newStoreGoods -> newStoreGoods.getId().contains(StoreTypeEnum.GOLD.getPrefix())).count();
 			}
-		}
-		String shop = null;
-		if (Objects.nonNull(storeQueryDTO.getShop())){
-			shop = ShopTypeEnum.valueOf(storeQueryDTO.getShop()).getType();
+		}else {
+			newStoreGoodsList = baseMapper.selectList(wrapper);
 		}
 		StoreQueryDO storeQueryDO = new StoreQueryDO();
 		storeQueryDO.setCount(count);
 		storeQueryDO.setExp(exp);
-		storeQueryDO.setShop(shop);
+		storeQueryDO.setType(storeQueryDTO.getShop());
 		storeQueryDO.setSkill(skill);
 		storeQueryDO.setSoul(soul);
 		storeQueryDO.setCurrent(storeQueryDTO.getCurrent());
@@ -117,24 +134,29 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 			List<StorePageDO> listStore = baseMapper.selectPageByQuery(storeQueryDO);
 			listStore.forEach(storePageDO -> {
 				GoodsFomula goodsFomula = JSONObject.parseObject(storePageDO.getGoodFomula()).toJavaObject(GoodsFomula.class);
-				List<NewStoreGoods> newStoreGoodsList;
+				List<NewStoreGoods> subList;
 				if (Objects.equals(goodsFomula.getGoodPrefix(), StoreTypeEnum.GOLD.getPrefix())){
 					NewStoreGoods newStoreGoods = new NewStoreGoods();
 					DecimalFormat df = new DecimalFormat("#,###");
 					String format = df.format(goodsFomula.getFrom());
 					newStoreGoods.setName(StoreTypeEnum.GOLD.getType() + format);
-					newStoreGoodsList = new ArrayList<>();
-					newStoreGoodsList.add(newStoreGoods);
+					subList = new ArrayList<>();
+					subList.add(newStoreGoods);
 				} else {
-					newStoreGoodsList = baseMapper.selectnewStoreGoodsList(goodsFomula);
+					subList = newStoreGoodsList.stream().filter(newStoreGoods -> !newStoreGoods.getId().contains(StoreTypeEnum.GOLD.getPrefix())).filter(newStoreGoods -> {
+						String prefix = goodsFomula.getGoodPrefix();
+						int id = Integer.parseInt(newStoreGoods.getId().substring(newStoreGoods.getId().lastIndexOf("_" ) + 1));
+						return newStoreGoods.getId().contains(prefix) && id >= goodsFomula.getFrom() && id <= goodsFomula.getTo();
+					}).collect(Collectors.toList());
 				}
 				StorePageDTO storePageDTO = new StorePageDTO();
-				storePageDTO.setGoods(newStoreGoodsList);
+				storePageDTO.setGoods(subList);
 				storePageDTO.setCount(goodsFomula.getNumber());
 				storePageDTO.setPrice(goodsFomula.getCostNumber());
-				storePageDTO.setShop(ShopTypeEnum.valueOfByType(storePageDO.getTableName()).getCode());
+				storePageDTO.setShop(storePageDO.getType());
 				storePageDTO.setStoreType(StoreTypeEnum.valueOfByPrefix(goodsFomula.getGoodPrefix() + "_" + goodsFomula.getFrom().toString().charAt(0)).getCode());
 				storePageDTO.setId(storePageDO.getId());
+				storePageDTO.setContent(subList.get(0).getName());
 				records.add(storePageDTO);
 			});
 		}
@@ -145,72 +167,74 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 	}
 
 	@Override
-	public Boolean saveByStore(StoreDTO storeDTO) {
-		boolean boo;
+	public void saveByStore(StoreDTO storeDTO) {
 		StorePageDO storePageDO = getStoreDetails(storeDTO);
-		Integer places;
+		int places;
 		switch (storeDTO.getShop()){
-			case 1:
-				places = newStoreDiscountService.list().stream().map(NewStoreDiscount::getPlaces).max(Integer::compareTo).get();
+			case NEW_STORE_DISCOUNT:
+				places = newStoreDiscountService.maxPlaces() + 1;
+				storePageDO.setPlaces(places);
+				newStoreDiscountService.saveByStore(storePageDO);
 				break;
-			case 2:
-				places = newStoreHotService.list().stream().map(NewStoreHot::getPlaces).max(Integer::compareTo).get();
+			case NEW_STORE_HOT:
+				places = newStoreHotService.maxPlaces() + 1;
+				storePageDO.setPlaces(places);
+				newStoreHotService.saveByStore(storePageDO);
 				break;
+			case NEW_STORE_TIME_LIMIT:
+				places = newStoreTimeLimitService.maxPlaces() + 1;
+				storePageDO.setPlaces(places);
+				newStoreTimeLimitService.saveByStore(storePageDO);
 			default:
-				places = newStoreTimeLimitService.list().stream().map(NewStoreTimeLimit::getPlaces).max(Integer::compareTo).get();
 				break;
 		}
-		storePageDO.setPlaces(places + 1);
-		switch (storeDTO.getShop()){
-			case 1: boo = newStoreDiscountService.saveByStore(storePageDO); break;
-			case 2: boo = newStoreHotService.saveByStore(storePageDO);break;
-			default: boo =  newStoreTimeLimitService.saveByStore(storePageDO); break;
-		}
-		return boo;
-
 	}
 
 	private StorePageDO getStoreDetails(StoreDTO storeDTO) {
 		StorePageDO storePageDO = new StorePageDO();
 		try {
 			GoodsFomula goodsFomula = new GoodsFomula();
-			goodsFomula.setCost(StoreCurrencyTypeEnum.valueOf(storeDTO.getCost()).getType());
-			goodsFomula.setCostNumber(storeDTO.getCostNumber());
+			goodsFomula.setCost(storeDTO.getCost().getType());
+			goodsFomula.setCostNumber(storeDTO.getPrice());
 			goodsFomula.setFactor("100");
-			long form;
+			long from;
 			long to;
-			if (Objects.equals(StoreTypeEnum.GOLD.getCode(), storeDTO.getType())){
-				form = storeDTO.getGoldNumber();
+			if (StoreTypeEnum.GOLD == storeDTO.getType()){
+				if(storeDTO.getGoldNumber() == null || storeDTO.getGoldNumber() <= 0){
+					throw  new RuntimeException("金币数量(goldNumber)输入异常！");
+				}
+				from = storeDTO.getGoldNumber();
 				to = storeDTO.getGoldNumber();
 				//若是金币需添加物品资源
 				LambdaQueryWrapper<Named> wrapper = Wrappers.<Named>lambdaQuery()
 						.like(Named::getName, StoreTypeEnum.GOLD.getPrefix());
 				List<Named> list = namedService.list(wrapper);
-				long count = list.stream().filter(named -> Objects.equals(named.getName(), StoreTypeEnum.GOLD.getCode() + "_" + form)).count();
+				long count = list.stream().filter(named -> Objects.equals(named.getName(), StoreTypeEnum.GOLD.getCode() + "_" + from)).count();
 				if (count == 0){
 					Named named = list.get(0);
 					Named newNamed = BeanUtil.copyProperties(named, Named.class);
-					newNamed.setName(StoreTypeEnum.GOLD.getCode() + "_" + form);
+					newNamed.setName(StoreTypeEnum.GOLD.getCode() + "_" + from);
 					DecimalFormat df = new DecimalFormat("#,###");
-					String format = df.format(form);
+					String format = df.format(from);
 					newNamed.setDesc(StoreTypeEnum.GOLD.getType() + format);
 					namedService.save(newNamed);
 				}
 			} else {
-				form = Integer.parseInt(storeDTO.getForm().substring(storeDTO.getForm().lastIndexOf("_") + 1));
+				from = Integer.parseInt(storeDTO.getFrom().substring(storeDTO.getFrom().lastIndexOf("_") + 1));
 				to = Integer.parseInt(storeDTO.getTo().substring(storeDTO.getTo().lastIndexOf("_") + 1));
 			}
-			goodsFomula.setFrom(Math.min(form,to));
-			goodsFomula.setTo(Math.max(form,to));
-			goodsFomula.setGoodPrefix(StoreTypeEnum.valueOf(storeDTO.getType()).getPrefix());
+			goodsFomula.setFrom(Math.min(from,to));
+			goodsFomula.setTo(Math.max(from,to));
+			goodsFomula.setGoodPrefix(storeDTO.getType().getPrefix());
 			goodsFomula.setNumber(storeDTO.getNumber());
 			ObjectMapper mapper = new ObjectMapper();
 			String goodsFomulaStr = mapper.writeValueAsString(goodsFomula);
 			storePageDO.setGoodFomula(goodsFomulaStr);
-			String items = "[" + StoreTypeEnum.valueOf(storeDTO.getType()).getPrefix() + "_("  + Math.min(form,to) + "-" +
-					Math.max(form,to) + ")*100*" + storeDTO.getNumber()+",cost_"+ StoreCurrencyTypeEnum.valueOf(storeDTO.getCost()).getType() +
-					"_(" + storeDTO.getCostNumber() + ")]";
+			String items = "[" + storeDTO.getType().getPrefix() + "_("  + Math.min(from,to) + "-" +
+					Math.max(from,to) + ")*100*" + storeDTO.getNumber()+",cost_"+ storeDTO.getCost().getType() +
+					"_(" + storeDTO.getPrice() + ")]";
 			storePageDO.setItems(items);
+			storePageDO.setType(0);
 			return storePageDO;
 		} catch (JsonProcessingException e) {
 			return storePageDO;
@@ -218,34 +242,40 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 	}
 
 	@Override
-	@Transactional
-	public Boolean updateByStore(StoreDTO storeDTO) {
+	@Transactional(rollbackFor = Exception.class)
+	public void updateByStore(StoreDTO storeDTO) {
+		StorePageDO storePageDO = baseMapper.selectViewById(storeDTO.getId());
+		if(storePageDO == null){
+			throw new ResourceNotFoundException();
+		}
 		//判断有没有修改商店
-		if (Objects.nonNull(storeDTO.getOldShop()) && !Objects.equals(storeDTO.getOldShop(), storeDTO.getShop())){
-			Boolean delete = deleteByStore(storeDTO);
-			Boolean save = saveByStore(storeDTO);
-			return delete && save;
+		ShopTypeEnum oldShop = ShopTypeEnum.valueOfByType(storeDTO.getId().substring(0, storeDTO.getId().lastIndexOf("_")));
+		if (oldShop != storeDTO.getShop()){
+			deleteByStore(storeDTO.getId());
+			saveByStore(storeDTO);
+			return;
 		}
-		boolean boo;
-		StorePageDO storePageDO = getStoreDetails(storeDTO);
-		storePageDO.setId(Long.parseLong(storeDTO.getId()));
+		storePageDO = getStoreDetails(storeDTO);
+		storePageDO.setId(storeDTO.getId().substring(storeDTO.getId().lastIndexOf("_") + 1));
 		switch (storeDTO.getShop()){
-			case 1: boo = newStoreDiscountService.updateByStore(storePageDO); break;
-			case 2: boo = newStoreHotService.updateByStore(storePageDO);break;
-			default: boo =  newStoreTimeLimitService.updateByStore(storePageDO); break;
+			case NEW_STORE_DISCOUNT: newStoreDiscountService.updateByStore(storePageDO); break;
+			case NEW_STORE_HOT: newStoreHotService.updateByStore(storePageDO);break;
+			case NEW_STORE_TIME_LIMIT: newStoreTimeLimitService.updateByStore(storePageDO); break;
+			default: break;
 		}
-		return boo;
 	}
 
 	@Override
-	public Boolean deleteByStore(StoreDTO storeDTO) {
-		boolean boo;
-		switch (storeDTO.getShop()){
-			case 1: boo = newStoreDiscountService.deleteByStore(storeDTO.getId()); break;
-			case 2: boo = newStoreHotService.deleteByStore(storeDTO.getId());break;
-			default: boo =  newStoreTimeLimitService.deleteByStore(storeDTO.getId()); break;
+	public void deleteByStore(String id) {
+		String tableId = id.substring(id.lastIndexOf("_") + 1);
+		String shopType = id.substring(0,id.lastIndexOf("_"));
+		ShopTypeEnum shopTypeEnum = ShopTypeEnum.valueOfByType(shopType);
+		switch (shopTypeEnum){
+			case NEW_STORE_DISCOUNT:  newStoreDiscountService.deleteByStore(tableId); break;
+			case NEW_STORE_HOT: newStoreHotService.deleteByStore(tableId);break;
+			case NEW_STORE_TIME_LIMIT:  newStoreTimeLimitService.deleteByStore(tableId); break;
+			default: break;
 		}
-		return boo;
 	}
 
 	@Override
@@ -257,13 +287,26 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 	@Override
 	public Boolean updateRefresh(StoreRefreshDTO storeRefreshDTO) {
 		List<NewStoreRefresh> list = newStoreRefreshService.list();
-		list.forEach(newStoreRefresh -> {
-			if (Objects.equals(newStoreRefresh.getId(), storeRefreshDTO.getId())){
-				newStoreRefresh.setCheckFlag(true);
-			} else {
-				newStoreRefresh.setCheckFlag(false);
-			}
-		});
+		list.forEach(newStoreRefresh -> newStoreRefresh.setCheckFlag(Objects.equals(newStoreRefresh.getId(), storeRefreshDTO.getId())));
 		return newStoreRefreshService.updateBatchById(list);
+	}
+
+	@Override
+	public Optional<StoreDTO> selectById(String id) {
+		StorePageDO storePageDO = baseMapper.selectViewById(id);
+		if(storePageDO == null){
+			return Optional.empty();
+		}
+		StoreDTO storeDTO = new StoreDTO();
+		GoodsFomula goodsFomula = JSONObject.parseObject(storePageDO.getGoodFomula()).toJavaObject(GoodsFomula.class);
+		storeDTO.setType(StoreTypeEnum.valueOfByPrefix(storePageDO.getPrefix() + "_" + storePageDO.getFrom().toString().charAt(0)));
+		storeDTO.setId(id);
+		storeDTO.setFrom(storePageDO.getPrefix() + "_" + storePageDO.getFrom());
+		storeDTO.setTo(storePageDO.getPrefix() + "_" + storePageDO.getTo());
+		storeDTO.setCost(StoreCurrencyTypeEnum.valueOf(goodsFomula.getCost().toUpperCase()));
+		storeDTO.setPrice(goodsFomula.getCostNumber());
+		storeDTO.setShop(ShopTypeEnum.valueOf(id.substring(0,id.lastIndexOf("_")).toUpperCase()));
+		storeDTO.setNumber(goodsFomula.getNumber());
+		return Optional.of(storeDTO);
 	}
 }

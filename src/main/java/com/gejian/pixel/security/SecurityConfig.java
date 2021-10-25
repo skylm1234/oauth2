@@ -69,6 +69,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	@Qualifier("redisTokenStore")
 	public TokenStore redisTokenStore(RedisConnectionFactory redisConnectionFactory) {
-		return new RedisTokenStore(redisConnectionFactory);
+		RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+		redisTokenStore.setPrefix("oauth2:");
+		return redisTokenStore;
 	}
 }

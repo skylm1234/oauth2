@@ -52,6 +52,12 @@ public class MenuController {
 		return sysMenuService.treeMenu(menuQueryDTO.isLazy(), menuQueryDTO.getParentId());
 	}
 
+	@GetMapping("/navigation")
+	@ApiOperation("菜单列表")
+	public List<Tree<Integer>> listLeft() {
+		return sysMenuService.getUserMenu(new SysMenuQueryDTO());
+	}
+
 
 	/**
 	 * 通过ID查询菜单的详细信息

@@ -30,6 +30,11 @@ public class NewStoreHotServiceImpl extends ServiceImpl<NewStoreHotMapper, NewSt
 		return this.updateById(newStoreHot);
 	}
 
+	@Override
+	public int maxPlaces() {
+		return baseMapper.maxPlaces();
+	}
+
 	// use "baseMapper" to call jdbc
     // example: baseMapper.insert(entity);
     // example: baseMapper.selectByPage(params);

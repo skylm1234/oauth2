@@ -1,5 +1,8 @@
 package com.gejian.pixel.dto.store;
 
+import com.gejian.pixel.enums.ShopTypeEnum;
+import com.gejian.pixel.enums.StoreCurrencyTypeEnum;
+import com.gejian.pixel.enums.StoreTypeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -27,7 +30,7 @@ public class StoreDTO implements Serializable {
 	 * 物品
 	 */
 	@ApiModelProperty("物品范围开始")
-	private String form;
+	private String from;
 
 	/**
 	 * 物品
@@ -38,39 +41,33 @@ public class StoreDTO implements Serializable {
 	/**
 	 * 物品类型
 	 */
-	@ApiModelProperty("物品类型 0：手动技能 1：自动技能 2：被动技能 3：一阶经验书 4：二阶经验书 5：三阶经验书  6：四阶经验书 " +
-			"7：绿色英雄碎片 8：蓝色英雄碎片 9：紫色英雄碎片 10：金色英雄碎片 11：金币")
-	private Integer type;
+	@ApiModelProperty(value = "分类",allowableValues = " 0：手动技能, 1：自动技能, 2：被动技能, 3：一阶经验书, 4：二阶经验书, 5：三阶经验书,  6：四阶经验书, " +
+			"7：绿色英雄碎片, 8：蓝色英雄碎片, 9：紫色英雄碎片, 10：金色英雄碎片, 11：金币",required = true)
+	private StoreTypeEnum type;
 
 	/**
 	 * 商店
 	 */
-	@ApiModelProperty("商店 1:折扣 2：热卖 3：限时")
-	private Integer shop;
-
-	/**
-	 * 修改前商店
-	 */
-	@ApiModelProperty("修改前商店 1:折扣 2：热卖 3：限时")
-	private Integer oldShop;
+	@ApiModelProperty(value = "所属商店",allowableValues = "1:折扣, 2：热卖, 3：限时",required = true)
+	private ShopTypeEnum shop;
 
 	/**
 	 * 数量
 	 */
-	@ApiModelProperty("数量")
+	@ApiModelProperty("库存")
 	private Long number;
 
 	/**
 	 * 价格
 	 */
 	@ApiModelProperty("价格")
-	private Long costNumber;
+	private Long price;
 
 	/**
-	 * 价格单位
+	 * 货币类型
 	 */
-	@ApiModelProperty("价格单位 0: stone-钻石  1：honor-荣耀  2：gold-金币")
-	private Integer cost;
+	@ApiModelProperty(value = "货币类型",allowableValues = " 0: stone-钻石,1：honor-荣耀,2：gold-金币",required = true)
+	private StoreCurrencyTypeEnum cost;
 
 	/**
 	 * 金币个数

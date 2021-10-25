@@ -14,7 +14,7 @@ import java.util.Map;
  */
 @AllArgsConstructor
 @Getter
-public enum StoreCurrencyTypeEnum {
+public enum StoreCurrencyTypeEnum implements CodeToJsonEnums{
 	/**
 	 * 0: stone-钻石  1：honor-荣耀  2：gold-金币
 	 */

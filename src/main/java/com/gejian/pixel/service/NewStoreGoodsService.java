@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gejian.pixel.dto.store.*;
 import com.gejian.pixel.entity.NewStoreGoods;
+import com.gejian.pixel.enums.StoreTypeEnum;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  *  Auto created by codeAppend plugin
@@ -20,10 +22,10 @@ public interface NewStoreGoodsService extends IService<NewStoreGoods>{
 
 	/**
 	 * 通过类型获取具体商品
-	 * @param storeTypeDTO  类型dto
+	 * @param type  类型dto
 	 * @return List
 	 */
-	List<StoreGoodsDTO> getListByType(StoreTypeDTO storeTypeDTO);
+	List<StoreGoodsDTO> getListByType(StoreTypeEnum type);
 
 	/**
 	 * 分页查询
@@ -37,21 +39,20 @@ public interface NewStoreGoodsService extends IService<NewStoreGoods>{
 	 * @param storeDTO dto
 	 * @return Boolean
 	 */
-	Boolean saveByStore(StoreDTO storeDTO);
+	void saveByStore(StoreDTO storeDTO);
 
 	/**
 	 * 编辑商店管理
 	 * @param storeDTO dto
 	 * @return Boolean
 	 */
-	Boolean updateByStore(StoreDTO storeDTO);
+	void updateByStore(StoreDTO storeDTO);
 
 	/**
 	 * 删除
-	 * @param storeDTO dto
-	 * @return Boolean
+	 * @param id 商品id
 	 */
-	Boolean deleteByStore(StoreDTO storeDTO);
+	void deleteByStore(String id);
 
 	/**
 	 * 获取刷新时间
@@ -65,4 +66,6 @@ public interface NewStoreGoodsService extends IService<NewStoreGoods>{
 	 * @return boolean
 	 */
 	Boolean updateRefresh(StoreRefreshDTO storeRefreshDTO);
+
+	Optional<StoreDTO> selectById(String id);
 }
