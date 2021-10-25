@@ -84,6 +84,12 @@ public class InGamePurchaseServiceImpl extends ServiceImpl<InGamePurchaseMapper,
 	}
 
 	@Override
+	public Optional<InGamePurchase> selectById(String id) {
+		InGamePurchase inGamePurchase = baseMapper.selectById(id);
+		return Optional.ofNullable(inGamePurchase);
+	}
+
+	@Override
 	public void init(){
 		List<InGamePurchase> list = this.list();
 		if (!CollectionUtils.isEmpty(list)){

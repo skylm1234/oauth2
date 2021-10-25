@@ -8,6 +8,8 @@ import com.gejian.pixel.dto.InGamePurchase.OrderDTO;
 import com.gejian.pixel.dto.InGamePurchase.OrderPageDTO;
 import com.gejian.pixel.entity.InGamePurchase;
 
+import java.util.Optional;
+
 /**
  *  Auto created by codeAppend plugin
  */
@@ -28,4 +30,6 @@ public interface InGamePurchaseService extends IService<InGamePurchase> {
 	 * @return  IPage
 	 */
 	IPage<OrderDTO> getPageOrder(OrderPageDTO orderPageDTO);
+
+	Optional<InGamePurchase> selectById(String id);
 }

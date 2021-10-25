@@ -3,6 +3,7 @@ package com.gejian.pixel.dto.InGamePurchase;
 import com.gejian.pixel.dto.BasePageQuery;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author yuanxue
@@ -11,6 +12,7 @@ import lombok.Data;
  * @Description 充值管理分页条件入参
  * @createTime 2021-08-19 15:22:00
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class OrderPageDTO extends BasePageQuery {
 
