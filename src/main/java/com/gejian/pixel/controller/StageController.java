@@ -20,7 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/stage")
-@Api(value = "api-stage",tags = "关卡管理api")
+@Api(value = "api-stage",tags = "关卡管理")
 public class StageController {
 
 	@Autowired

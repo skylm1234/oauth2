@@ -117,10 +117,7 @@ public class UserController {
 	 */
 	@GetMapping("")
 	@ApiOperation(value = "分页查询用户")
-	public IPage<SysUserDTO> getUserPage(@RequestBody(required = false) SysUserQueryDTO sysUserQueryDTO) {
-		if(sysUserQueryDTO == null){
-			sysUserQueryDTO = new SysUserQueryDTO();
-		}
+	public IPage<SysUserDTO> getUserPage(SysUserQueryDTO sysUserQueryDTO) {
 		return userService.getUserPage(sysUserQueryDTO);
 	}
 

@@ -23,4 +23,35 @@
          `id`,`title`,`key`,`type`,`desc`,`compare_type`,`parameter`,`precondition`,`next`,`award`,`percent`
 	</sql>
 
+	<sql id="pageQuery">
+		from promotion p left join promotion_type_name t on p.`type` = t.`type`
+		<where>
+			<if test="q.title != null and q.title != ''">
+				and p.title like concat('%',#{q.title},'%')
+			</if>
+			<if test="q.type != null">
+				and p.type = #{q.type}
+			</if>
+		</where>
+	</sql>
+
+	<select id="selectActivityPage" resultType="com.gejian.pixel.dto.activity.ActivityPageDTO">
+		select p.*,concat(t.group_name,'-',t.name) as `typeName`,REPLACE(p.`desc`,'%d',p.parameter) as `condition`
+		<include refid="pageQuery"/>
+		limit #{start},#{size}
+	</select>
+
+	<select id="selectActivityCount" resultType="long">
+		select count(1)
+		<include refid="pageQuery"/>
+	</select>
+
+	<select id="selectActivityRefrence" resultType="long">
+		select count(1) from promotion
+		where precondition = #{id} or `next` = #{id}
+	</select>
+	<select id="selectByIdToDTO" resultType="com.gejian.pixel.dto.activity.ActivityDetailDTO">
+		select p.*,t.`name` as typeName,t.`group`,t.group_name as  groupName from promotion p left join promotion_type_name t on p.`type` = t.`type`
+		where p.id = #{id}
+	</select>
 </mapper>

@@ -1,7 +1,5 @@
 package com.gejian.pixel.dto;
 
-import com.gejian.pixel.enums.HeroLevelColorEnum;
-import com.gejian.pixel.enums.HeroRoleEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -21,8 +19,8 @@ public class HeroListRequestDTO extends BasePageQuery{
 	private String name;
 
 	@ApiModelProperty(value = "职业",allowableValues = "1：战士；2：刺客；4：辅助")
-	private HeroRoleEnum role;
+	private Integer role;
 
 	@ApiModelProperty(value = "初始颜色",allowableValues = "1：绿；2：蓝，3：紫；4：橙")
-	private HeroLevelColorEnum color;
+	private Integer color;
 }

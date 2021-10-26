@@ -43,10 +43,7 @@ public class DropController {
 	 */
 	@GetMapping("")
 	@ApiOperation("掉落列表")
-	public IPage<DropDTO> list(@RequestBody(required = false) DropQueryDTO dropQueryDTO) {
-		if(dropQueryDTO == null){
-			dropQueryDTO = new DropQueryDTO();
-		}
+	public IPage<DropDTO> list(DropQueryDTO dropQueryDTO) {
 		return dropService.selectPage(dropQueryDTO);
 	}
 

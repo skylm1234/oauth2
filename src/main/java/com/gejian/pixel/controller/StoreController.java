@@ -61,10 +61,7 @@ public class StoreController {
 	}
 	@ApiOperation("商品列表")
 	@GetMapping()
-	public IPage<StorePageDTO> getPage( @RequestBody(required = false) StoreQueryDTO storeQueryDTO){
-		if(storeQueryDTO == null){
-			storeQueryDTO = new StoreQueryDTO();
-		}
+	public IPage<StorePageDTO> getPage(StoreQueryDTO storeQueryDTO){
 		return this.newStoreGoodsService.getPage(storeQueryDTO);
 	}
 

@@ -17,6 +17,7 @@ import com.gejian.pixel.dto.SkillDTO;
 import com.gejian.pixel.entity.BasicExpand;
 import com.gejian.pixel.entity.BasicUpgradeExpand;
 import com.gejian.pixel.entity.Hero;
+import com.gejian.pixel.entity.Skill;
 import com.gejian.pixel.entity.StarUpgradeFomula;
 import com.gejian.pixel.enums.HeroLevelColorEnum;
 import com.gejian.pixel.enums.HeroRoleEnum;
@@ -29,9 +30,11 @@ import com.gejian.pixel.proto.ConstHeroTableProtobuf;
 import com.gejian.pixel.proto.ConstTablesProtobuf;
 import com.gejian.pixel.service.ConstantsProto;
 import com.gejian.pixel.service.HeroService;
+import com.gejian.pixel.service.SkillService;
 import com.gejian.pixel.utils.HeroUtil;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -48,6 +51,9 @@ import java.util.stream.Collectors;
  */
 @Service
 public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements HeroService, ConstantsProto {
+
+	@Autowired
+	private SkillService skillService;
 
 	private Map<Integer, Hero> hash = new HashMap<>();
 
@@ -170,15 +176,12 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 
 	@Override
 	public IPage<HeroListResponseDTO> selectPage(HeroListRequestDTO heroListRequestDTO) {
-		if(heroListRequestDTO == null){
-			heroListRequestDTO = new HeroListRequestDTO();
-		}
 		LambdaQueryWrapper<Hero> queryWrapper = Wrappers.lambdaQuery();
 		if(heroListRequestDTO.getColor() != null){
-			queryWrapper.eq(Hero::getColor,heroListRequestDTO.getColor().getCode());
+			queryWrapper.eq(Hero::getColor,heroListRequestDTO.getColor());
 		}
 		if(heroListRequestDTO.getRole() != null){
-			queryWrapper.eq(Hero::getType,heroListRequestDTO.getRole().getCode());
+			queryWrapper.eq(Hero::getType,heroListRequestDTO.getRole());
 		}
 		if(StrUtil.isNotBlank(heroListRequestDTO.getName())){
 			queryWrapper.like(Hero::getName,heroListRequestDTO.getName());
@@ -222,6 +225,7 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 	}
 
 	private Hero convertToHero(HeroDTO heroDTO){
+		Map<String, String> skills = skillService.list().stream().collect(Collectors.toMap(Skill::getId, Skill::getName));
 		Hero hero = new Hero();
 		hero.setId(heroDTO.getId());
 		hero.setAlive(heroDTO.getAlivePrice());
@@ -229,13 +233,13 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 		hero.setType(heroDTO.getRole().getCode());
 		hero.setName(heroDTO.getName());
 		hero.setSkill1(heroDTO.getSkill1().getId());
-		hero.setSkill1Name(heroDTO.getSkill1().getName());
+		hero.setSkill1Name(skills.get(heroDTO.getSkill1().getId()));
 		hero.setSkill2(heroDTO.getSkill2().getId());
-		hero.setSkill2Name(heroDTO.getSkill2().getName());
+		hero.setSkill2Name(skills.get(heroDTO.getSkill2().getId()));
 		hero.setSkill3(heroDTO.getSkill3().getId());
-		hero.setSkill3Name(heroDTO.getSkill3().getName());
+		hero.setSkill3Name(skills.get(heroDTO.getSkill3().getId()));
 		hero.setSkill4(heroDTO.getSkill4().getId());
-		hero.setSkill4Name(heroDTO.getSkill4().getName());
+		hero.setSkill4Name(skills.get(heroDTO.getSkill4().getId()));
 		ImmutableMap<Object, Object> basicExpand = ImmutableMap.builder().put(HeroUtil.HP, heroDTO.getBasicData().getHp())
 				.put(HeroUtil.ATTACK, heroDTO.getBasicData().getAttack())
 				.put(HeroUtil.DEFENSE, heroDTO.getBasicData().getDefense()).put(HeroUtil.SPEED, heroDTO.getBasicData().getSpeed()).build();

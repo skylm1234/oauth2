@@ -45,10 +45,7 @@ public class MenuController {
 	 */
 	@GetMapping("")
 	@ApiOperation("菜单列表")
-	public List<Tree<Integer>> list(@RequestBody(required = false) SysMenuQueryDTO menuQueryDTO) {
-		if(menuQueryDTO == null){
-			menuQueryDTO = new SysMenuQueryDTO();
-		}
+	public List<Tree<Integer>> list(SysMenuQueryDTO menuQueryDTO) {
 		return sysMenuService.treeMenu(menuQueryDTO.isLazy(), menuQueryDTO.getParentId());
 	}
 

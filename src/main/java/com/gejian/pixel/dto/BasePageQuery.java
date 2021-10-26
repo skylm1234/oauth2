@@ -1,8 +1,10 @@
 package com.gejian.pixel.dto;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.io.Serializable;
 
@@ -15,19 +17,20 @@ import java.io.Serializable;
 public class BasePageQuery implements Serializable {
 
 	@ApiModelProperty("页码")
-	private Integer current = 1;
+	protected Integer current = 1;
 
 	@ApiModelProperty("分页size")
-	private Integer size = 10;
+	protected Integer size = 10;
 
 	/**
 	 * 获取分页对象
 	 *
 	 * @return
 	 */
+	@JsonIgnore
+	@ApiIgnore
+	@ApiModelProperty(hidden = true)
 	public <T> Page<T> getPage(){
 		return new Page<>(current, size);
 	}
-
-
 }
