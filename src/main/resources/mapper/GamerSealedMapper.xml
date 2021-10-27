@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.GamerSealedMapper">
+
+    <resultMap id="SealedRM" type="com.gejian.pixel.entity.GamerSealed">
+		<result property="id" column="id"/>
+		<result property="gamerId" column="gamer_id"/>
+		<result property="startTime" column="start_time"/>
+		<result property="terminateTime" column="terminate_time"/>
+		<result property="days" column="days"/>
+		<result property="reason" column="reason"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`gamer_id`,`start_time`,`terminate_time`,`days`,`reason`
+	</sql>
+
+</mapper>

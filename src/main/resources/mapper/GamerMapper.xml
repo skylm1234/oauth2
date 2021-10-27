@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.GamerMapper">
+
+    <resultMap id="GamerRM" type="com.gejian.pixel.entity.Gamer">
+		<result property="id" column="id"/>
+		<result property="username" column="username"/>
+		<result property="nickname" column="nickname"/>
+		<result property="mobile" column="mobile"/>
+		<result property="vip" column="vip"/>
+		<result property="vipLevel" column="vip_level"/>
+		<result property="ce" column="ce"/>
+		<result property="gold" column="gold"/>
+		<result property="stone" column="stone"/>
+		<result property="honor" column="honor"/>
+		<result property="state" column="state"/>
+		<result property="tester" column="tester"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`username`,`nickname`,`mobile`,`vip`,`vip_level`,`ce`,`gold`,`stone`,`honor`,`state`,`tester`,`create_time`,`update_time`
+	</sql>
+</mapper>
