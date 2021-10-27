@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -173,5 +174,10 @@ public class PromotionTypeNameServiceImpl extends ServiceImpl<PromotionTypeNameM
 	@Override
 	public List<ActivityGroupTypeDTO> groups() {
 		return baseMapper.selectGroups();
+	}
+
+	@Override
+	public Optional<ActivityTypePageDTO> selectById(String id) {
+		return Optional.ofNullable(baseMapper.idOfView(id));
 	}
 }

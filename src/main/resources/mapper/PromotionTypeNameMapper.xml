@@ -39,6 +39,13 @@
 		limit #{start},#{size}
 	</select>
 
+	<select id="idOfView" resultType="com.gejian.pixel.dto.activity.type.ActivityTypePageDTO">
+		select v.type_id as typeId,v.type_name as typeName,v.`index`,v.`level`,CONCAT('group_',t.`group`) as parentTypeId,t.group_name as parentTypeName
+		from promotion_type_view v
+		LEFT JOIN promotion_type_name t on v.type_id = CONCAT('type_',t.type)
+		where v.type_id = #{typeId}
+	</select>
+
 	<select id="selectMaxGroupIndex" resultType="int">
 		SELECT * FROM (
 		SELECT `group` FROM promotion_type_name GROUP BY `group`) t ORDER BY t.`group` DESC LIMIT 1

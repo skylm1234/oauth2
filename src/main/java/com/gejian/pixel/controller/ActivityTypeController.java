@@ -5,6 +5,7 @@ import com.gejian.pixel.dto.activity.type.ActivityGroupTypeDTO;
 import com.gejian.pixel.dto.activity.type.ActivityTypeDTO;
 import com.gejian.pixel.dto.activity.type.ActivityTypePageDTO;
 import com.gejian.pixel.dto.activity.type.ActivityTypeQueryDTO;
+import com.gejian.pixel.exception.ResourceNotFoundException;
 import com.gejian.pixel.service.PromotionTypeNameService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -57,6 +58,13 @@ public class ActivityTypeController {
 		promotionTypeNameService.update(activityTypeQueryDTO);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+
+	@GetMapping("/{id}")
+	@ApiOperation("活动分类明细")
+	public ActivityTypePageDTO id(@ApiParam(value = "活动分类id",required = true) @PathVariable String id){
+		return promotionTypeNameService.selectById(id).orElseThrow(ResourceNotFoundException::new);
+	}
+
 
 	@DeleteMapping("/{id}")
 	@ApiOperation("删除活动分类")

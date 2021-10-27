@@ -10,6 +10,7 @@ import com.gejian.pixel.dto.activity.type.ActivityTypeQueryDTO;
 import com.gejian.pixel.entity.PromotionTypeName;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  *  Auto created by codeAppend plugin
@@ -27,4 +28,6 @@ public interface PromotionTypeNameService extends IService<PromotionTypeName> {
 	void delete(String id);
 
 	List<ActivityGroupTypeDTO> groups();
+
+	Optional<ActivityTypePageDTO> selectById(String id);
 }

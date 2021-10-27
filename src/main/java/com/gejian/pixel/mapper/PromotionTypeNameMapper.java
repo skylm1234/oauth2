@@ -17,6 +17,8 @@ public interface PromotionTypeNameMapper extends BaseMapper<PromotionTypeName> {
 
 	List<ActivityTypePageDTO> pageOfView(@Param("typeName")String typeName, @Param("start")int start, @Param("size") int size);
 
+	ActivityTypePageDTO idOfView(@Param("typeId")String typeId);
+
 	int selectMaxGroupIndex();
 
 	void updateGroupName(PromotionTypeName promotionTypeName);
