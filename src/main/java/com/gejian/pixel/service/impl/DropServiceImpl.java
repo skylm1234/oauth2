@@ -132,14 +132,18 @@ public class DropServiceImpl extends ServiceImpl<DropMapper, Drop> implements Dr
 	@Override
 	public IPage<DropDTO> selectPage(DropQueryDTO dropQueryDTO) {
 		LambdaQueryWrapper<Drop> queryWrapper = Wrappers.lambdaQuery();
-		if(StrUtil.isNotBlank(dropQueryDTO.getId())){
-			queryWrapper.like(Drop::getId,dropQueryDTO.getId());
+		if(StrUtil.isNotBlank(dropQueryDTO.getDropId())){
+			queryWrapper.like(Drop::getId,dropQueryDTO.getDropId());
 		}
 		if(StrUtil.isNotBlank(dropQueryDTO.getContent())){
 			queryWrapper.like(Drop::getContent,dropQueryDTO.getContent());
 		}
-		Page<Drop> page = this.page(dropQueryDTO.getPage(), queryWrapper);
-		return page.convert(record -> BeanUtil.copyProperties(record,DropDTO.class));
+		Page<Drop> page = this.page(dropQueryDTO.page(), queryWrapper);
+		return page.convert(record -> {
+			DropDTO dropDTO = BeanUtil.copyProperties(record, DropDTO.class);
+			dropDTO.setDropId(record.getId());
+			return dropDTO;
+		});
 	}
 
 	@Override

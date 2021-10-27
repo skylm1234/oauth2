@@ -51,7 +51,7 @@ public class InGamePurchaseServiceImpl extends ServiceImpl<InGamePurchaseMapper,
 	public IPage<InGamePurchaseDTO> getPage(InGamePurchasePageDTO inGamePurchasePageDTO) {
 		LambdaQueryWrapper<InGamePurchase> wrapper = Wrappers.<InGamePurchase>lambdaQuery()
 				.orderByAsc(InGamePurchase::getId);
-		Page<InGamePurchase> page = baseMapper.selectPage(inGamePurchasePageDTO.getPage(), wrapper);
+		Page<InGamePurchase> page = baseMapper.selectPage(inGamePurchasePageDTO.page(), wrapper);
 		if (CollectionUtils.isEmpty(page.getRecords())){
 			return new Page<>(inGamePurchasePageDTO.getCurrent(), inGamePurchasePageDTO.getSize());
 		}
@@ -79,7 +79,7 @@ public class InGamePurchaseServiceImpl extends ServiceImpl<InGamePurchaseMapper,
 		if (Objects.nonNull(orderPageDTO.getUser())){
 			wrapper.like(Order::getUserId, orderPageDTO.getUser());
 		}
-		Page<Order> page = orderService.page(orderPageDTO.getPage(), wrapper);
+		Page<Order> page = orderService.page(orderPageDTO.page(), wrapper);
 		return page.convert(order -> BeanUtil.copyProperties(order, OrderDTO.class));
 	}
 

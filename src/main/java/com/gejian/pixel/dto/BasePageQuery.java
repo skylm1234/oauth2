@@ -30,7 +30,7 @@ public class BasePageQuery implements Serializable {
 	@JsonIgnore
 	@ApiIgnore
 	@ApiModelProperty(hidden = true)
-	public <T> Page<T> getPage(){
+	public <T> Page<T> page(){
 		return new Page<>(current, size);
 	}
 }

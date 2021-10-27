@@ -57,7 +57,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	 */
 	@Override
 	public IPage<SysUserDTO> getUserPage(SysUserQueryDTO sysUserQueryDTO) {
-		return baseMapper.getUsersPage(sysUserQueryDTO.getPage(), sysUserQueryDTO).convert(record -> BeanUtil.copyProperties(record,SysUserDTO.class));
+		return baseMapper.getUsersPage(sysUserQueryDTO.page(), sysUserQueryDTO).convert(record -> BeanUtil.copyProperties(record,SysUserDTO.class));
 	}
 
 	/**

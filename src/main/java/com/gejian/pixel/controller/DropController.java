@@ -91,7 +91,7 @@ public class DropController {
 	@PutMapping("/{id}")
 	@ApiOperation("更新掉落")
 	public ResponseEntity<Void> update(@ApiParam(name = "id", value = "掉落id", required = true) @PathVariable String id, @Valid @RequestBody DropDTO dropDTO) {
-		dropDTO.setId(id);
+		dropDTO.setDropId(id);
 		dropService.updateById(BeanUtil.copyProperties(dropDTO,Drop.class));
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

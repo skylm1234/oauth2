@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
 public class DropQueryDTO extends BasePageQuery{
 
 	@ApiModelProperty("掉落id")
-	private String id;
+	private String dropId;
 
 	@ApiModelProperty("掉落内容")
 	private String content;

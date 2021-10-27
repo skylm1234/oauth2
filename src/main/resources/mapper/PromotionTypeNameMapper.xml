@@ -17,4 +17,40 @@
          `type`,`name`,`q`,`group`,`group_name`
 	</sql>
 
+	<select id="countOfView" resultType="long">
+		select count(1) from promotion_type_view
+		<where>
+			<if test="typeName != null and typeName != ''">
+				type_name like concat('%',#{typeName},'%')
+			</if>
+		</where>
+	</select>
+
+	<select id="pageOfView" resultType="com.gejian.pixel.dto.activity.type.ActivityTypePageDTO">
+		select v.type_id as typeId,v.type_name as typeName,v.`index`,v.`level`,CONCAT('group_',t.`group`) as parentTypeId,t.group_name as parentTypeName
+		from promotion_type_view v
+		LEFT JOIN promotion_type_name t on v.type_id = CONCAT('type_',t.type)
+		<where>
+			<if test="typeName != null and typeName != ''">
+				v.type_name like concat('%',#{typeName},'%')
+			</if>
+		</where>
+		order by `level`,`index`
+		limit #{start},#{size}
+	</select>
+
+	<select id="selectMaxGroupIndex" resultType="int">
+		SELECT * FROM (
+		SELECT `group` FROM promotion_type_name GROUP BY `group`) t ORDER BY t.`group` DESC LIMIT 1
+	</select>
+	<select id="selectGroups" resultType="com.gejian.pixel.dto.activity.type.ActivityGroupTypeDTO">
+		SELECT concat('group_',`group`) as typeId ,group_name as typeName FROM promotion_type_name GROUP BY `group`
+	</select>
+
+	<update id="updateGroupName" parameterType="com.gejian.pixel.entity.PromotionTypeName">
+		update promotion_type_name
+		set group_name = #{groupName}
+		where `group` = #{group}
+	</update>
+
 </mapper>

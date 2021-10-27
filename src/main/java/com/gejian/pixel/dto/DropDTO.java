@@ -14,7 +14,7 @@ import lombok.Data;
 public class DropDTO {
 
 	@ApiModelProperty(value = "掉落id",required = true)
-	private String id;
+	private String dropId;
 
 	@ApiModelProperty(value = "掉落内容",required = true)
 	private String content;

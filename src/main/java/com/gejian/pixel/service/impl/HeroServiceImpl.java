@@ -186,7 +186,7 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 		if(StrUtil.isNotBlank(heroListRequestDTO.getName())){
 			queryWrapper.like(Hero::getName,heroListRequestDTO.getName());
 		}
-		Page<Hero> page = this.page(heroListRequestDTO.getPage(), queryWrapper);
+		Page<Hero> page = this.page(heroListRequestDTO.page(), queryWrapper);
 		if(page.getRecords().isEmpty()){
 			return new Page<>(heroListRequestDTO.getCurrent(),heroListRequestDTO.getSize());
 		}

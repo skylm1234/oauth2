@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 public class ActivityGroupDTO {
 
-	private Integer id;
+	private Integer type;
 
 	private String name;
 
