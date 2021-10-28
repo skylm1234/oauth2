@@ -30,7 +30,13 @@ spring:
     password: ${dbConfig.password}
     url: jdbc:mysql://${dbConfig.host}:${dbConfig.port}/${dbConfig.dbname}?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&autoReconnect=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
     hikari:
-      max-lifetime: 100
+      connection-timeout: 30000
+      idle-timeout: 30000
+      max-lifetime: 120000
+      maximum-pool-size: 15
+      minimum-idle: 5
+      read-only: false
+      connection-test-query: SELECT 1
   redis:
     host: ${REDIS_HOST:110.40.133.131}
     port: ${REDIS_PORT:16379}

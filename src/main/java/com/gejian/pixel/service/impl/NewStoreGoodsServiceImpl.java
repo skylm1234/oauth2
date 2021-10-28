@@ -99,8 +99,8 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 		long count = 0;
 		List<NewStoreGoods> newStoreGoodsList;
 		LambdaQueryWrapper<NewStoreGoods> wrapper = new LambdaQueryWrapper<>();
-		if (Objects.nonNull(storeQueryDTO.getName())){
-			wrapper.like(NewStoreGoods::getName, storeQueryDTO.getName());
+		if (Objects.nonNull(storeQueryDTO.getContent())){
+			wrapper.like(NewStoreGoods::getName, storeQueryDTO.getContent());
 			newStoreGoodsList = baseMapper.selectList(wrapper);
 			if (!CollectionUtils.isEmpty(newStoreGoodsList)){
 				skill = newStoreGoodsList.stream()
@@ -137,9 +137,7 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 				List<NewStoreGoods> subList;
 				if (Objects.equals(goodsFomula.getGoodPrefix(), StoreTypeEnum.GOLD.getPrefix())){
 					NewStoreGoods newStoreGoods = new NewStoreGoods();
-					DecimalFormat df = new DecimalFormat("#,###");
-					String format = df.format(goodsFomula.getFrom());
-					newStoreGoods.setName(StoreTypeEnum.GOLD.getType() + format);
+					newStoreGoods.setName(StoreTypeEnum.GOLD.getType());
 					subList = new ArrayList<>();
 					subList.add(newStoreGoods);
 				} else {
@@ -154,7 +152,11 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 				storePageDTO.setCount(goodsFomula.getNumber());
 				storePageDTO.setPrice(goodsFomula.getCostNumber());
 				storePageDTO.setShop(storePageDO.getType());
-				storePageDTO.setStoreType(StoreTypeEnum.valueOfByPrefix(goodsFomula.getGoodPrefix() + "_" + goodsFomula.getFrom().toString().charAt(0)).getCode());
+				if(StoreTypeEnum.GOLD.getPrefix().equals(goodsFomula.getGoodPrefix())){
+					storePageDTO.setStoreType(StoreTypeEnum.GOLD.getCode());
+				}else{
+					storePageDTO.setStoreType(StoreTypeEnum.valueOfByPrefix(goodsFomula.getGoodPrefix() + "_" + goodsFomula.getFrom().toString().charAt(0)).getCode());
+				}
 				storePageDTO.setId(storePageDO.getId());
 				storePageDTO.setContent(subList.get(0).getName());
 				records.add(storePageDTO);
@@ -299,7 +301,12 @@ public class NewStoreGoodsServiceImpl extends ServiceImpl<NewStoreGoodsMapper, N
 		}
 		StoreDTO storeDTO = new StoreDTO();
 		GoodsFomula goodsFomula = JSONObject.parseObject(storePageDO.getGoodFomula()).toJavaObject(GoodsFomula.class);
-		storeDTO.setType(StoreTypeEnum.valueOfByPrefix(storePageDO.getPrefix() + "_" + storePageDO.getFrom().toString().charAt(0)));
+		if(StoreTypeEnum.GOLD.getPrefix().equals(goodsFomula.getGoodPrefix())){
+			storeDTO.setType(StoreTypeEnum.GOLD);
+			storeDTO.setGoldNumber(goodsFomula.getFrom());
+		}else{
+			storeDTO.setType(StoreTypeEnum.valueOfByPrefix(storePageDO.getPrefix() + "_" + storePageDO.getFrom().toString().charAt(0)));
+		}
 		storeDTO.setId(id);
 		storeDTO.setFrom(storePageDO.getPrefix() + "_" + storePageDO.getFrom());
 		storeDTO.setTo(storePageDO.getPrefix() + "_" + storePageDO.getTo());

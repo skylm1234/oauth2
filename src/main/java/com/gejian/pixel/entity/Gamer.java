@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -99,5 +100,8 @@ public class Gamer {
 	 */
 	@TableField("update_time")
 	private LocalDateTime updateTime;
+
+	@TableField("consume")
+	private BigDecimal consume;
 
 }

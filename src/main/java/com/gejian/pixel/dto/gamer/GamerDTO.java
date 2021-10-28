@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -39,6 +40,9 @@ public class GamerDTO {
 	 */
 	@ApiModelProperty("手机号")
 	private String mobile;
+
+	@ApiModelProperty("充值金额")
+	private BigDecimal consume;
 
 	/**
 	 * 0' COMMENT '是否vip

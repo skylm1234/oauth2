@@ -17,12 +17,13 @@
 		<result property="honor" column="honor"/>
 		<result property="state" column="state"/>
 		<result property="tester" column="tester"/>
+		<result property="consume" column="consume"/>
 		<result property="createTime" column="create_time"/>
 		<result property="updateTime" column="update_time"/>
     </resultMap>
 
     <!-- all sql columns -->
     <sql id="columns">
-         `id`,`username`,`nickname`,`mobile`,`vip`,`vip_level`,`ce`,`gold`,`stone`,`honor`,`state`,`tester`,`create_time`,`update_time`
+         `id`,`username`,`nickname`,`mobile`,`vip`,`vip_level`,`ce`,`gold`,`stone`,`honor`,`state`,`tester`,`consume`,`create_time`,`update_time`
 	</sql>
 </mapper>

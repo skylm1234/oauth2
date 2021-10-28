@@ -77,7 +77,7 @@ public class InGamePurchaseServiceImpl extends ServiceImpl<InGamePurchaseMapper,
 			wrapper.eq(Order::getOrderId, orderPageDTO.getOrderId());
 		}
 		if (Objects.nonNull(orderPageDTO.getUser())){
-			wrapper.like(Order::getUserId, orderPageDTO.getUser());
+			wrapper.like(Order::getUser, orderPageDTO.getUser());
 		}
 		Page<Order> page = orderService.page(orderPageDTO.page(), wrapper);
 		return page.convert(order -> BeanUtil.copyProperties(order, OrderDTO.class));

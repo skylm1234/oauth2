@@ -3,10 +3,14 @@ package com.gejian.pixel.controller;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.gejian.pixel.dto.gamer.GamerDTO;
+import com.gejian.pixel.dto.gamer.GamerDeleteDTO;
+import com.gejian.pixel.dto.gamer.GamerLogDTO;
+import com.gejian.pixel.dto.gamer.GamerLogQueryDTO;
 import com.gejian.pixel.dto.gamer.GamerPageQueryDTO;
 import com.gejian.pixel.dto.gamer.GamerSealedPatchDTO;
 import com.gejian.pixel.entity.Gamer;
 import com.gejian.pixel.exception.ResourceNotFoundException;
+import com.gejian.pixel.service.GamerLogService;
 import com.gejian.pixel.service.GamerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -39,6 +43,9 @@ public class GamerController {
 	@Autowired
 	private GamerService gamerService;
 
+	@Autowired
+	private GamerLogService gamerLogService;
+
 	@GetMapping()
 	@ApiOperation("玩家列表")
 	public IPage<GamerDTO> list(GamerPageQueryDTO gamerPageQueryDTO){
@@ -52,9 +59,16 @@ public class GamerController {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
+	@DeleteMapping()
+	@ApiOperation("批量删除玩家")
+	public ResponseEntity<Void> delete(@RequestBody GamerDeleteDTO gamerDeleteDTO){
+		gamerService.removeByIds(gamerDeleteDTO.getIds());
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
 	@GetMapping("/{id}")
 	@ApiOperation("玩家明细")
-	public GamerDTO id(@ApiParam(value = "活动id",required = true) @PathVariable Long id){
+	public GamerDTO id(@ApiParam(value = "玩家id",required = true) @PathVariable Long id){
 		return Optional.ofNullable(gamerService.getById(id)).map(gamer -> BeanUtil.copyProperties(gamer,GamerDTO.class)).orElseThrow(ResourceNotFoundException::new);
 	}
 
@@ -62,7 +76,6 @@ public class GamerController {
 	@ApiOperation("新增玩家")
 	public ResponseEntity<Void> create(@Valid @RequestBody GamerDTO gamerDTO){
 		Gamer gamer = BeanUtil.copyProperties(gamerDTO, Gamer.class);
-		gamerDTO.setVip(gamerDTO.getVipLevel() != null);
 		gamerService.save(gamer);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
@@ -83,5 +96,11 @@ public class GamerController {
 		gamerSealedPatchDTO.setId(id);
 		gamerService.seal(gamerSealedPatchDTO);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+	}
+
+	@GetMapping("/logs")
+	@ApiOperation("玩家操作记录列表")
+	public IPage<GamerLogDTO> logs(GamerLogQueryDTO gamerLogQueryDTO){
+		return gamerLogService.selectPage(gamerLogQueryDTO);
 	}
 }

@@ -1,14 +1,13 @@
 package com.gejian.pixel.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
 import lombok.Data;
+
 import java.util.Date;
 
 @Data
-@TableName("order")
+@TableName("`order`")
 public class Order {
 	/**
 	 * 订单编号
@@ -49,10 +48,4 @@ public class Order {
 	 */
 	@TableField("status")
 	private Boolean status;
-
-
-
-
-
-
 }

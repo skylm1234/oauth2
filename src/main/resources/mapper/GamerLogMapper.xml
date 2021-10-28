@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.GamerLogMapper">
+
+    <resultMap id="LogRM" type="com.gejian.pixel.entity.GamerLog">
+		<result property="id" column="id"/>
+		<result property="gamerId" column="gamer_id"/>
+		<result property="sysUserId" column="sys_user_id"/>
+		<result property="context" column="context"/>
+		<result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`gamer_id`,`sys_user_id`,`context`,`create_time`
+	</sql>
+
+	<sql id="pageQuery">
+		<where>
+			<if test="q.username != null and q.username != ''">
+				and g.username like concat('%,#{q.username},'%')
+			</if>
+
+			<if test="q.mobile != null and q.mobile != ''">
+				and g.mobile like concat('%,#{q.mobile},'%')
+			</if>
+		</where>
+	</sql>
+
+	<select id="pageOfLog" resultType="com.gejian.pixel.dto.gamer.GamerLogDTO">
+		select l.id,l.context,l.create_time as createTime,
+		g.id as gamerId,g.username as gamerUsername,g.mobile,g.consume,g.tester,g.vip_level as vipLevel,
+		u.user_id as sysUserId,u.real_name as sysUserRealName
+		from gamer_log l
+		LEFT JOIN gamer g on g.id = l.gamer_id
+		LEFT JOIN sys_user u on u.user_id = l.sys_user_id
+		<include refid="pageQuery"/>
+		order by l.gamer_id,l.create_time desc
+		limit #{start},#{size}
+	</select>
+
+	<select id="countOfLog" resultType="long">
+		select count(1) from gamer_log l
+		LEFT JOIN gamer g on g.id = l.gamer_id
+		LEFT JOIN sys_user u on u.user_id = l.sys_user_id
+		<include refid="pageQuery"/>
+	</select>
+
+</mapper>

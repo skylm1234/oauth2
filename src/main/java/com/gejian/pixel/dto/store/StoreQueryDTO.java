@@ -19,7 +19,7 @@ public class StoreQueryDTO extends BasePageQuery {
 	 * 商品类型名字
 	 */
 	@ApiModelProperty("物品名称")
-	private String name;
+	private String content;
 
 	/**
 	 * 商品类型名字

@@ -61,10 +61,7 @@ public class InGamePurchaseController {
 
 	@ApiOperation("充值记录")
 	@GetMapping("/orders")
-	public IPage<OrderDTO> getPageOrder(@RequestBody(required = false) OrderPageDTO orderPageDTO){
-		if(orderPageDTO == null){
-			orderPageDTO = new OrderPageDTO();
-		}
+	public IPage<OrderDTO> getPageOrder(OrderPageDTO orderPageDTO){
 		return this.inGamePurchaseService.getPageOrder(orderPageDTO);
 	}
 
