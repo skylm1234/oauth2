@@ -19,15 +19,30 @@ import java.util.List;
 public class PreRequestDTO implements Serializable {
 
 	/**
-	 * 关卡分类
+	 * 关卡难度
 	 */
 	@ApiModelProperty("关卡难度 1:普通 2：噩梦 3：折磨")
-	private Integer classType;
+	private Integer type;
+
+	/**
+	 * 关卡难度名称
+	 */
+	@ApiModelProperty("关卡难度 1:普通 2：噩梦 3：折磨")
+	private String name;
 
 	/**
 	 * 前置关卡
 	 */
 	@ApiModelProperty("前置关卡")
-	private List<PreRequestTypeDTO> PreRequests;
+	private List<PreRequestTypeDTO> items;
+
+	public PreRequestDTO(){
+
+	}
+
+	public PreRequestDTO(Integer type,String name){
+		this.type = type;
+		this.name = name;
+	}
 
 }

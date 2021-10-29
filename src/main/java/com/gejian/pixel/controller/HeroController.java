@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.gejian.pixel.dto.HeroDTO;
 import com.gejian.pixel.dto.HeroListRequestDTO;
 import com.gejian.pixel.dto.HeroListResponseDTO;
+import com.gejian.pixel.dto.store.HeroTreeDTO;
 import com.gejian.pixel.exception.ResourceNotFoundException;
 import com.gejian.pixel.service.HeroService;
 import io.swagger.annotations.Api;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @author ：lijianghuai
@@ -55,5 +57,11 @@ public class HeroController {
 		heroDTO.setId(id);
 		heroService.update(heroDTO);
 		return ResponseEntity.noContent().build();
+	}
+
+	@GetMapping(value = "/groups")
+	@ApiOperation(value = "人物分组")
+	public List<HeroTreeDTO> groups(){
+		return heroService.groups();
 	}
 }

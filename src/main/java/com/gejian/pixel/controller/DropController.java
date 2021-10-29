@@ -2,6 +2,7 @@ package com.gejian.pixel.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.gejian.pixel.constants.DropConstant;
 import com.gejian.pixel.dto.DropDTO;
 import com.gejian.pixel.dto.DropQueryDTO;
 import com.gejian.pixel.entity.Drop;
@@ -23,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author lengleng
@@ -94,5 +97,59 @@ public class DropController {
 		dropDTO.setDropId(id);
 		dropService.updateById(BeanUtil.copyProperties(dropDTO,Drop.class));
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	@GetMapping("/activities")
+	@ApiOperation("活动掉落")
+	public List<DropDTO> activities() {
+		return dropService.lambdaQuery().likeRight(Drop::getId, DropConstant.DROP_ACTIVITY).list()
+				.stream().map(drop ->{
+					DropDTO dropDTO = BeanUtil.copyProperties(drop, DropDTO.class);
+					dropDTO.setDropId(drop.getId());
+					return dropDTO;}).collect(Collectors.toList());
+	}
+
+	@GetMapping("/boss")
+	@ApiOperation("Boss收益")
+	public List<DropDTO> boss() {
+		return dropService.lambdaQuery().likeRight(Drop::getId, DropConstant.DROP_PVE_BOSS).list()
+				.stream().map(drop ->{
+					DropDTO dropDTO = BeanUtil.copyProperties(drop, DropDTO.class);
+					dropDTO.setDropId(drop.getId());
+					return dropDTO;}).collect(Collectors.toList());
+	}
+
+	@GetMapping("/pvemon")
+	@ApiOperation("小怪收益")
+	public List<DropDTO> pvemon() {
+		return dropService.lambdaQuery().likeRight(Drop::getId, DropConstant.DROP_PVE_MON).list()
+				.stream().map(drop ->{
+					DropDTO dropDTO = BeanUtil.copyProperties(drop, DropDTO.class);
+					dropDTO.setDropId(drop.getId());
+					return dropDTO;}).collect(Collectors.toList());
+	}
+
+	@GetMapping("/pvebk")
+	@ApiOperation("怪物击杀收益")
+	public List<DropDTO> pvebk() {
+		return dropService.lambdaQuery().likeRight(Drop::getId, DropConstant.DROP_PVE_BK).list()
+				.stream().map(drop ->{
+					DropDTO dropDTO = BeanUtil.copyProperties(drop, DropDTO.class);
+					dropDTO.setDropId(drop.getId());
+					return dropDTO;}).collect(Collectors.toList());
+	}
+
+	@GetMapping("/goblins")
+	@ApiOperation("goblins掉落")
+	public List<DropDTO> goblins() {
+		return dropService.lambdaQuery().likeRight(Drop::getId, DropConstant.DROP_GOBLINS).list()
+				.stream().map(drop ->{
+					DropDTO dropDTO = BeanUtil.copyProperties(drop, DropDTO.class);
+					dropDTO.setDropId(drop.getId());
+					return dropDTO;}).collect(Collectors.toList());
 	}
 }

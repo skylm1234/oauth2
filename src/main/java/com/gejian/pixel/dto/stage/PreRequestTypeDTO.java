@@ -2,6 +2,7 @@ package com.gejian.pixel.dto.stage;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.io.Serializable;
  */
 @Data
 @ApiModel("前置关卡dto")
+@AllArgsConstructor
 public class PreRequestTypeDTO implements Serializable {
 
 	/**

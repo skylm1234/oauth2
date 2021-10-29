@@ -19,7 +19,7 @@ public class StageQueryDTO extends BasePageQuery {
 	 * 关卡分类
 	 */
 	@ApiModelProperty("关卡分类")
-	private Integer type;
+	private Integer classType;
 
 	/**
 	 * 关卡名字

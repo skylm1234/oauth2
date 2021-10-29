@@ -14,6 +14,7 @@ import com.gejian.pixel.dto.HeroDTO;
 import com.gejian.pixel.dto.HeroListRequestDTO;
 import com.gejian.pixel.dto.HeroListResponseDTO;
 import com.gejian.pixel.dto.SkillDTO;
+import com.gejian.pixel.dto.store.HeroTreeDTO;
 import com.gejian.pixel.entity.BasicExpand;
 import com.gejian.pixel.entity.BasicUpgradeExpand;
 import com.gejian.pixel.entity.Hero;
@@ -222,6 +223,16 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 	@Override
 	public void update(HeroDTO heroDTO) {
 		this.updateById(convertToHero(heroDTO));
+	}
+
+	@Override
+	public List<HeroTreeDTO> groups() {
+		LambdaQueryWrapper<Hero> queryWrapper = new LambdaQueryWrapper<>();
+		queryWrapper.select(Hero::getId,Hero::getColor,Hero::getName);
+		List<Hero> list = this.list(queryWrapper);
+		Map<HeroTreeDTO, List<HeroTreeDTO>> listMap = list.stream().collect(Collectors.groupingBy(hero -> new HeroTreeDTO(hero.getColor(), HeroLevelColorEnum.valueOf(hero.getColor()).getType()),
+				Collectors.mapping(hero -> new HeroTreeDTO(hero.getId(), hero.getName()), Collectors.toList())));
+		return listMap.keySet().stream().peek(heroTreeDTO -> heroTreeDTO.setChildren(listMap.get(heroTreeDTO))).collect(Collectors.toList());
 	}
 
 	private Hero convertToHero(HeroDTO heroDTO){

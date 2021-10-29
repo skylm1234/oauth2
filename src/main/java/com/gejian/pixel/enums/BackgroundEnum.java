@@ -1,11 +1,15 @@
 package com.gejian.pixel.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.gejian.pixel.dto.stage.BackGroundDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author yuanxue
@@ -44,6 +48,11 @@ public enum BackgroundEnum implements CodeToJsonEnums{
 	@JsonCreator
 	public static BackgroundEnum valueOf(Integer code) {
 		return VALUE_MAP.get(code);
+	}
+
+	public static List<BackGroundDTO> toBackGroundDTO(){
+		return Arrays.stream(BackgroundEnum.values())
+				.map(background -> new BackGroundDTO(background.type,background.type)).collect(Collectors.toList());
 	}
 
 }

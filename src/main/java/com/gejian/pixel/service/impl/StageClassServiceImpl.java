@@ -1,6 +1,5 @@
 package com.gejian.pixel.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gejian.pixel.dto.stage.StageTypeDTO;
 import com.gejian.pixel.entity.StageClass;
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Auto created by codeAppend plugin
@@ -59,8 +59,7 @@ public class StageClassServiceImpl extends ServiceImpl<StageClassMapper, StageCl
 	@Override
 	public List<StageTypeDTO> getType() {
 		List<StageClass> list = this.list();
-		return BeanUtil.copyToList(list, StageTypeDTO.class);
+		return list.stream().map(stageClass -> new StageTypeDTO(stageClass.getClassType(),stageClass.getName()))
+				.collect(Collectors.toList());
 	}
-
-
 }

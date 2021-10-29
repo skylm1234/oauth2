@@ -1,11 +1,15 @@
 package com.gejian.pixel.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.gejian.pixel.dto.stage.StageDifficultyDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author yuanxue
@@ -18,11 +22,9 @@ public enum ModeTypeEnum implements CodeToJsonEnums{
 	/**
 	 * 1:普通 2：噩梦 3：折磨
 	 */
-	ORDINARY(1,"ordinary"),
-	NIGHTMARE(2,"nightmare"),
-	TORMENT(3,"torment");
-
-
+	ORDINARY(1,"普通关卡"),
+	NIGHTMARE(2,"噩梦关卡"),
+	TORMENT(3,"折磨关卡");
 
 	private Integer code;
 	private String type;
@@ -38,6 +40,11 @@ public enum ModeTypeEnum implements CodeToJsonEnums{
 	@JsonCreator
 	public static ModeTypeEnum valueOf(Integer code) {
 		return VALUE_MAP.get(code);
+	}
+
+	public static List<StageDifficultyDTO> toDifficultyDTO(){
+		return Arrays.stream(ModeTypeEnum.values()).map(modeType -> new StageDifficultyDTO(modeType.code,modeType.type))
+				.collect(Collectors.toList());
 	}
 
 }
