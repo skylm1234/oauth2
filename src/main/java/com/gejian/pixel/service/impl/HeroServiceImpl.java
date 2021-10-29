@@ -40,6 +40,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -229,10 +230,12 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero> implements He
 	public List<HeroTreeDTO> groups() {
 		LambdaQueryWrapper<Hero> queryWrapper = new LambdaQueryWrapper<>();
 		queryWrapper.select(Hero::getId,Hero::getColor,Hero::getName);
+		queryWrapper.orderByAsc(Hero::getColor);
 		List<Hero> list = this.list(queryWrapper);
 		Map<HeroTreeDTO, List<HeroTreeDTO>> listMap = list.stream().collect(Collectors.groupingBy(hero -> new HeroTreeDTO(hero.getColor(), HeroLevelColorEnum.valueOf(hero.getColor()).getType()),
 				Collectors.mapping(hero -> new HeroTreeDTO(hero.getId(), hero.getName()), Collectors.toList())));
-		return listMap.keySet().stream().peek(heroTreeDTO -> heroTreeDTO.setChildren(listMap.get(heroTreeDTO))).collect(Collectors.toList());
+		return listMap.keySet().stream().peek(heroTreeDTO -> heroTreeDTO.setChildren(listMap.get(heroTreeDTO)))
+				.sorted(Comparator.comparing(HeroTreeDTO::getId)).collect(Collectors.toList());
 	}
 
 	private Hero convertToHero(HeroDTO heroDTO){
