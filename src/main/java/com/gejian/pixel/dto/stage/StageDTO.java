@@ -29,10 +29,10 @@ public class StageDTO implements Serializable {
 	@ApiModelProperty(value = "分类",required = true)
 	private Integer classType;
 
-	@ApiModelProperty(value = "前置关卡",required = true)
+	@ApiModelProperty(value = "前置关卡")
 	private String prerequest;
 
-	@ApiModelProperty(value = "前置关卡级联数据",required = true)
+	@ApiModelProperty(value = "前置关卡级联数据")
 	private String[] prerequestRef;
 
 	@NotNull
@@ -115,12 +115,10 @@ public class StageDTO implements Serializable {
 	@ApiModelProperty(value = "怪物技能4等级",required = true)
 	private Integer monsterSkil4Level;
 
-	@NotNull
-	@Min(10000)
-	@ApiModelProperty(value = "bossId",required = true)
+	@ApiModelProperty(value = "bossId")
 	private Integer bossId;
 
-	@ApiModelProperty(value = "boss级联数据",required = true)
+	@ApiModelProperty(value = "boss级联数据")
 	private Integer[] bossref;
 
 	@NotNull
@@ -182,9 +180,8 @@ public class StageDTO implements Serializable {
 	@ApiModelProperty(value = "基础收益-经验",required = true)
 	private Integer basicExpIncome;
 
-	@NotNull
-	@ApiModelProperty(value = "基础收益-次数",required = true)
-	private Integer basicTimeIncome;
+	@ApiModelProperty(value = "基础收益-次数")
+	private Integer basicTimeIncome = 1;
 
 	@NotBlank
 	@ApiModelProperty(value = "击杀小怪收益",required = true)
