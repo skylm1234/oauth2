@@ -24,7 +24,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,7 +94,10 @@ public class GamerServiceImpl extends ServiceImpl<GamerMapper, Gamer> implements
 		if(CollectionUtils.isEmpty(gamerSealeds)){
 			return;
 		}
-		gamerSealeds.forEach(gamerSealed ->  gamerSealedMapper.deleteById(gamerSealed.getId()));
+		gamerSealeds.forEach(gamerSealed -> {
+			gamerSealed.setEnabled(false);
+			gamerSealedMapper.updateById(gamerSealed);
+		});
 		gamer.setState(true);
 		baseMapper.updateById(gamer);
 		GamerLog gamerLog = new GamerLog();
@@ -205,5 +210,49 @@ public class GamerServiceImpl extends ServiceImpl<GamerMapper, Gamer> implements
 			stringBuilder.append("战力：").append(gamer.getCe()).append(" ");
 		}
 		return stringBuilder.toString();
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public boolean removeById(Serializable id) {
+		LambdaQueryWrapper<GamerSealed> wrapper = new LambdaQueryWrapper<>();
+		wrapper.eq(GamerSealed::getGamerId,id);
+		wrapper.eq(GamerSealed::getEnabled,true);
+		List<GamerSealed> gamerSealeds = gamerSealedMapper.selectList(wrapper);
+		if(!CollectionUtils.isEmpty(gamerSealeds)){
+			gamerSealeds.forEach(gamerSealed -> {
+				gamerSealed.setEnabled(false);
+				gamerSealedMapper.updateById(gamerSealed);
+			});
+		}
+		GamerLog gamerLog = new GamerLog();
+		gamerLog.setGamerId((Long) id);
+		gamerLog.setSysUserId(SecurityUtils.getSysUser().map(PrincipalUser::getUserId).orElseThrow(() -> new AuthenticationCredentialsNotFoundException("401")));
+		gamerLog.setContext("删除玩家");
+		gamerLogMapper.insert(gamerLog);
+		return super.removeById(id);
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public boolean removeByIds(Collection<? extends Serializable> idList) {
+		LambdaQueryWrapper<GamerSealed> wrapper = new LambdaQueryWrapper<>();
+		wrapper.in(GamerSealed::getGamerId,idList);
+		wrapper.eq(GamerSealed::getEnabled,true);
+		List<GamerSealed> gamerSealeds = gamerSealedMapper.selectList(wrapper);
+		if(!CollectionUtils.isEmpty(gamerSealeds)){
+			gamerSealeds.forEach(gamerSealed -> {
+				gamerSealed.setEnabled(false);
+				gamerSealedMapper.updateById(gamerSealed);
+			});
+		}
+		idList.forEach(id -> {
+			GamerLog gamerLog = new GamerLog();
+			gamerLog.setGamerId((Long) id);
+			gamerLog.setSysUserId(SecurityUtils.getSysUser().map(PrincipalUser::getUserId).orElseThrow(() -> new AuthenticationCredentialsNotFoundException("401")));
+			gamerLog.setContext("删除玩家");
+			gamerLogMapper.insert(gamerLog);
+		});
+		return super.removeByIds(idList);
 	}
 }
