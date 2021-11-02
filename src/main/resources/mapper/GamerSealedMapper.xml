@@ -11,11 +11,13 @@
 		<result property="terminateTime" column="terminate_time"/>
 		<result property="days" column="days"/>
 		<result property="reason" column="reason"/>
-    </resultMap>
+		<result property="enabled" column="enabled"/>
+
+	</resultMap>
 
     <!-- all sql columns -->
     <sql id="columns">
-         `id`,`gamer_id`,`start_time`,`terminate_time`,`days`,`reason`
+         `id`,`gamer_id`,`start_time`,`terminate_time`,`days`,`reason`,`enabled`
 	</sql>
 
 </mapper>

@@ -35,7 +35,7 @@ public interface StageService extends IService<Stage> {
 	 * 获取前置关卡
 	 * @return List
 	 */
-	List<PreRequestDTO> getPreRequest(Integer difficulty);
+	List<PreRequestDTO> getPreRequest();
 
 	/**
 	 * 获取背景

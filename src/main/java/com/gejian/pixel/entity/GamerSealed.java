@@ -48,4 +48,8 @@ public class GamerSealed {
 	private String reason;
 
 
+	@TableField("enabled")
+	private Boolean enabled;
+
+
 }

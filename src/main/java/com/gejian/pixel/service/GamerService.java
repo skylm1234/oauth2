@@ -16,4 +16,6 @@ public interface GamerService extends IService<Gamer> {
 	IPage<GamerDTO> selectPage(GamerPageQueryDTO gamerPageQueryDTO);
 
 	void seal(GamerSealedPatchDTO gamerSealedPatchDTO);
+
+	void unSeal(Long id);
 }

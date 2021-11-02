@@ -91,10 +91,17 @@ public class GamerController {
 	}
 
 	@PatchMapping("/{id}/sealed")
-	@ApiOperation("封禁玩家")
+	@ApiOperation("封禁/玩家")
 	public ResponseEntity<Void> state(@ApiParam(value = "玩家id",required = true) @PathVariable Long id, @Valid @RequestBody GamerSealedPatchDTO gamerSealedPatchDTO){
 		gamerSealedPatchDTO.setId(id);
 		gamerService.seal(gamerSealedPatchDTO);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+	}
+
+	@PatchMapping("/{id}/unSeal")
+	@ApiOperation("解封/玩家")
+	public ResponseEntity<Void> unSeal(@ApiParam(value = "玩家id",required = true) @PathVariable Long id){
+		gamerService.unSeal(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 

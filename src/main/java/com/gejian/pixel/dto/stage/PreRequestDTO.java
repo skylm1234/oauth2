@@ -1,5 +1,6 @@
 package com.gejian.pixel.dto.stage;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -21,28 +22,41 @@ public class PreRequestDTO implements Serializable {
 	/**
 	 * 关卡难度
 	 */
-	@ApiModelProperty("关卡难度 1:普通 2：噩梦 3：折磨")
-	private Integer type;
+	@JsonIgnore
+	private Integer stageId;
+
+	@JsonIgnore
+	private Integer stageClassType;
+
+	@ApiModelProperty("type id")
+	private String id;
 
 	/**
 	 * 关卡难度名称
 	 */
-	@ApiModelProperty("关卡难度 1:普通 2：噩梦 3：折磨")
+	@ApiModelProperty("名字")
 	private String name;
 
 	/**
 	 * 前置关卡
 	 */
 	@ApiModelProperty("前置关卡")
-	private List<PreRequestTypeDTO> items;
+	private List<PreRequestDTO> items;
 
 	public PreRequestDTO(){
 
 	}
 
-	public PreRequestDTO(Integer type,String name){
-		this.type = type;
+	public PreRequestDTO(String id,String name){
+		this.id = id;
 		this.name = name;
+	}
+
+	public PreRequestDTO(Integer stageId,Integer stageClassType,String id,String name){
+		this.id = id;
+		this.name = name;
+		this.stageId = stageId;
+		this.stageClassType = stageClassType;
 	}
 
 }

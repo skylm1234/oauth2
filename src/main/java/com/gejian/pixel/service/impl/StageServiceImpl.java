@@ -12,17 +12,20 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gejian.pixel.dto.stage.BackGroundDTO;
 import com.gejian.pixel.dto.stage.PreRequestDTO;
-import com.gejian.pixel.dto.stage.PreRequestTypeDTO;
 import com.gejian.pixel.dto.stage.StageDTO;
 import com.gejian.pixel.dto.stage.StageQueryDTO;
+import com.gejian.pixel.entity.Hero;
 import com.gejian.pixel.entity.Stage;
 import com.gejian.pixel.entity.StageBasicAwardFomula;
 import com.gejian.pixel.entity.StageBossAwardFomula;
+import com.gejian.pixel.entity.StageClass;
 import com.gejian.pixel.entity.StageGoblinFomula;
 import com.gejian.pixel.entity.StageMonsterKillFomula;
 import com.gejian.pixel.enums.BackgroundEnum;
 import com.gejian.pixel.enums.HeroLevelColorEnum;
 import com.gejian.pixel.enums.ModeTypeEnum;
+import com.gejian.pixel.mapper.HeroMapper;
+import com.gejian.pixel.mapper.StageClassMapper;
 import com.gejian.pixel.mapper.StageMapper;
 import com.gejian.pixel.proto.ConstStageTableItemExBasicAwardFomulaProtobuf;
 import com.gejian.pixel.proto.ConstStageTableItemExBossAwardFomulaProtobuf;
@@ -36,11 +39,14 @@ import com.gejian.pixel.service.StageService;
 import com.gejian.pixel.utils.StageUtil;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +58,12 @@ import java.util.stream.Collectors;
  */
 @Service
 public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements StageService, ConstantsProto {
+
+	@Autowired
+	private HeroMapper heroMapper;
+
+	@Autowired
+	private StageClassMapper stageClassMapper;
 
 	private static final int ATTR_SIZE = 4;
 
@@ -75,15 +87,20 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 	}
 
 	@Override
-	public List<PreRequestDTO> getPreRequest(Integer difficulty) {
-
+	public List<PreRequestDTO> getPreRequest() {
+		Map<Integer, String> stageClasses = stageClassMapper.selectList(Wrappers.emptyWrapper()).stream().collect(Collectors.toMap(StageClass::getClassType, StageClass::getName));
 		LambdaQueryWrapper<Stage> wrapper = Wrappers.<Stage>lambdaQuery()
-				.select(Stage::getId,Stage::getName, Stage::getMode)
-				.le(Stage::getMode, difficulty);
+				.select(Stage::getId,Stage::getName, Stage::getMode,Stage::getClassType);
 		List<Stage> list = this.list(wrapper);
-		Map<PreRequestDTO, List<PreRequestTypeDTO>> collect = list.stream().collect(Collectors.groupingBy(stage -> new PreRequestDTO(stage.getMode(), ModeTypeEnum.valueOf(stage.getMode()).getType()),
-				Collectors.mapping(stage -> new PreRequestTypeDTO(stage.getId(), stage.getName()), Collectors.toList())));
-		return collect.keySet().stream().peek(preRequestDTO -> preRequestDTO.setItems(collect.get(preRequestDTO))).collect(Collectors.toList());
+		Map<PreRequestDTO, List<PreRequestDTO>> classTypeMap = list.stream().collect(Collectors.groupingBy(stage -> new PreRequestDTO(stage.getClassType().toString(), stageClasses.get(stage.getClassType())),
+				Collectors.mapping(stage -> new PreRequestDTO(stage.getId(), stage.getClassType(), stage.getMode().toString(), stage.getName()), Collectors.toList())));
+		classTypeMap.keySet().forEach(preRequestDTO -> {
+			Map<PreRequestDTO, List<PreRequestDTO>> modeMap = classTypeMap.get(preRequestDTO).stream().collect(Collectors.groupingBy(dto -> new PreRequestDTO(preRequestDTO.getId() + "-" + dto.getId(), ModeTypeEnum.valueOf(Integer.parseInt(dto.getId())).getType()),
+					Collectors.mapping(dto -> new PreRequestDTO(preRequestDTO.getId() + "-" + dto.getId() + "-" + dto.getStageId(), dto.getName()), Collectors.toList())));
+			List<PreRequestDTO> modeList = modeMap.keySet().stream().peek(mode -> mode.setItems(modeMap.get(mode))).sorted(Comparator.comparing(PreRequestDTO::getId)).collect(Collectors.toList());
+			classTypeMap.put(preRequestDTO,modeList);
+		});
+		return classTypeMap.keySet().stream().peek(classType -> classType.setItems(classTypeMap.get(classType))).sorted(Comparator.comparing(PreRequestDTO::getId)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -131,6 +148,13 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 
 	private Stage convertToEntity(StageDTO stageDTO){
 		Stage stage	 = BeanUtil.copyProperties(stageDTO,Stage.class);
+		if(StringUtils.hasText(stageDTO.getPrerequest())){
+			stage.setPrerequest(Integer.parseInt(stageDTO.getPrerequest().split("-")[2]));
+		}else{
+			if(stageDTO.getPrerequestRef() != null && stageDTO.getPrerequestRef().length == 3){
+				stage.setPrerequest(Integer.parseInt(stageDTO.getPrerequestRef()[2].split("-")[2]));
+			}
+		}
 		buildMonster(stageDTO,stage);
 		buildBoss(stageDTO,stage);
 		buildGoblin(stageDTO,stage);
@@ -140,6 +164,15 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 
 	private StageDTO convertToDTO(Stage stage){
 		StageDTO stageDTO = BeanUtil.copyProperties(stage,StageDTO.class);
+		if(stage.getPrerequest() != null && stage.getPrerequest() != 0){
+			Stage preEntity = baseMapper.selectById(stage.getPrerequest());
+			if(preEntity != null){
+				String type = preEntity.getClassType().toString();
+				String mode = type + "-" + preEntity.getMode().toString();
+				String pre = mode + "-" + preEntity.getId();
+				stageDTO.setPrerequestRef(new String[]{type,mode,pre});
+			}
+		}
 		buildMonster(stage,stageDTO);
 		buildBoss(stage,stageDTO);
 		buildGoblin(stage,stageDTO);
@@ -188,7 +221,14 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 		stage.setGoblin(StageUtil.formatGoblinDrop(stageDTO.getGoblinHp(),stageDTO.getGoblinDrop()));
 	}
 	private void buildBoss(StageDTO stageDTO,Stage stage){
-		stage.setBoss(StageUtil.formatBoss(stageDTO.getBossId()));
+		if(stageDTO.getBossId() == null){
+			if(stageDTO.getBossref() != null && stageDTO.getBossref().length == 2){
+				stage.setBoss(StageUtil.formatBoss(stageDTO.getBossref()[1]));
+			}
+		}else{
+			stage.setBoss(StageUtil.formatBoss(stageDTO.getBossId()));
+
+		}
 		stage.setBossAttributes(JSONArray.toJSONString(ImmutableList.of(stageDTO.getBossHp(),
 				stageDTO.getBossAttack(),stageDTO.getBossDefense(),stageDTO.getBossSpeed())));
 		stage.setBossSkillLevel(JSONArray.toJSONString(ImmutableList.of(stageDTO.getBossSkil1Level(),
@@ -205,6 +245,10 @@ public class StageServiceImpl extends ServiceImpl<StageMapper, Stage> implements
 
 	private void buildBoss(Stage stage,StageDTO stageDTO){
 		stageDTO.setBossId(StageUtil.regBoss(stage.getBoss()));
+		Hero hero = heroMapper.selectById(stageDTO.getBossId());
+		if(hero != null){
+			stageDTO.setBossref(new Integer[]{hero.getColor(),stageDTO.getBossId()});
+		}
 		JSONArray bossAttr = JSONArray.parseArray(stage.getBossAttributes());
 		if(bossAttr != null && bossAttr.size() == ATTR_SIZE){
 			stageDTO.setBossHp(bossAttr.getInteger(0));

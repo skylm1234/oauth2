@@ -11,6 +11,7 @@ import com.gejian.pixel.dto.gamer.GamerSealedPatchDTO;
 import com.gejian.pixel.entity.Gamer;
 import com.gejian.pixel.entity.GamerLog;
 import com.gejian.pixel.entity.GamerSealed;
+import com.gejian.pixel.exception.ResourceNotFoundException;
 import com.gejian.pixel.mapper.GamerLogMapper;
 import com.gejian.pixel.mapper.GamerMapper;
 import com.gejian.pixel.mapper.GamerSealedMapper;
@@ -21,9 +22,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Auto created by codeAppend plugin
@@ -69,6 +73,32 @@ public class GamerServiceImpl extends ServiceImpl<GamerMapper, Gamer> implements
 		gamerLog.setGamerId(gamer.getId());
 		gamerLog.setSysUserId(SecurityUtils.getSysUser().map(PrincipalUser::getUserId).orElseThrow(() -> new AuthenticationCredentialsNotFoundException("401")));
 		gamerLog.setContext("封禁：" + gamerSealed.getDays() + "天，原因：" + gamerSealed.getReason());
+		gamerLogMapper.insert(gamerLog);
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public void unSeal(Long id) {
+		Gamer gamer = Optional.ofNullable(this.getById(id)).orElseThrow(ResourceNotFoundException::new);
+		if(gamer.getState()){
+			return;
+		}
+		LambdaQueryWrapper<GamerSealed> wrapper = new LambdaQueryWrapper<>();
+		wrapper.eq(GamerSealed::getGamerId,id);
+		wrapper.eq(GamerSealed::getEnabled,true);
+		wrapper.ge(GamerSealed::getTerminateTime,LocalDateTime.now());
+		wrapper.orderByDesc(GamerSealed::getTerminateTime);
+		List<GamerSealed> gamerSealeds = gamerSealedMapper.selectList(wrapper);
+		if(CollectionUtils.isEmpty(gamerSealeds)){
+			return;
+		}
+		gamerSealeds.forEach(gamerSealed ->  gamerSealedMapper.deleteById(gamerSealed.getId()));
+		gamer.setState(true);
+		baseMapper.updateById(gamer);
+		GamerLog gamerLog = new GamerLog();
+		gamerLog.setGamerId(gamer.getId());
+		gamerLog.setSysUserId(SecurityUtils.getSysUser().map(PrincipalUser::getUserId).orElseThrow(() -> new AuthenticationCredentialsNotFoundException("401")));
+		gamerLog.setContext("手动解封");
 		gamerLogMapper.insert(gamerLog);
 	}
 

@@ -1,10 +1,8 @@
+
 package com.gejian.pixel.service.init;
 
 import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.crypto.SecureUtil;
-import cn.hutool.json.JSON;
-import cn.hutool.json.JSONUtil;
 import com.gejian.pixel.proto.ConstTablesProtobuf;
 import com.gejian.pixel.service.ConstantsProto;
 import com.google.protobuf.Message;
@@ -15,9 +13,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.text.ParseException;
 import java.util.List;
 
 /**

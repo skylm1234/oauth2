@@ -30,7 +30,10 @@ public class StageDTO implements Serializable {
 	private Integer classType;
 
 	@ApiModelProperty(value = "前置关卡",required = true)
-	private Integer prerequest = 0;
+	private String prerequest;
+
+	@ApiModelProperty(value = "前置关卡级联数据",required = true)
+	private String[] prerequestRef;
 
 	@NotNull
 	@Min(1)
@@ -116,6 +119,9 @@ public class StageDTO implements Serializable {
 	@Min(10000)
 	@ApiModelProperty(value = "bossId",required = true)
 	private Integer bossId;
+
+	@ApiModelProperty(value = "boss级联数据",required = true)
+	private Integer[] bossref;
 
 	@NotNull
 	@Min(1)

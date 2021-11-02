@@ -26,15 +26,27 @@
 		</where>
 	</select>
 
-	<select id="pageOfView" resultType="com.gejian.pixel.dto.activity.type.ActivityTypePageDTO">
-		select v.type_id as typeId,v.type_name as typeName,v.`index`,v.`level`,CONCAT('group_',t.`group`) as parentTypeId,t.group_name as parentTypeName
-		from promotion_type_view v
-		LEFT JOIN promotion_type_name t on v.type_id = CONCAT('type_',t.type)
+	<sql id="page_columns">
+		type_id as typeId,type_name as typeName,`index`,`level`,parent_id as parentTypeId,parent_name as parentTypeName
+	</sql>
+	<sql id="pageQuery">
 		<where>
 			<if test="typeName != null and typeName != ''">
-				v.type_name like concat('%',#{typeName},'%')
+				type_name like concat('%',#{typeName},'%')
 			</if>
 		</where>
+	</sql>
+
+	<select id="pageOfView" resultType="com.gejian.pixel.dto.activity.type.ActivityTypePageDTO">
+		SELECT <include refid="page_columns"/> FROM promotion_type_view WHERE parent_id in (SELECT DISTINCT type_id from promotion_type_view <include
+			refid="pageQuery"/>)
+		UNION
+		SELECT <include refid="page_columns"/> FROM promotion_type_view WHERE type_id in (SELECT DISTINCT type_id from promotion_type_view <include
+			refid="pageQuery"/>)
+		UNION
+		SELECT <include refid="page_columns"/> FROM promotion_type_view WHERE type_id in
+		(SELECT DISTINCT parent_id FROM promotion_type_view WHERE type_id in (SELECT DISTINCT type_id from promotion_type_view <include
+			refid="pageQuery"/>))
 		order by `level`,`index`
 		limit #{start},#{size}
 	</select>

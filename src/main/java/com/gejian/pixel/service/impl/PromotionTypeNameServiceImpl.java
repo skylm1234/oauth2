@@ -114,15 +114,21 @@ public class PromotionTypeNameServiceImpl extends ServiceImpl<PromotionTypeNameM
 	@Override
 	public void save(ActivityTypeDTO activityTypeDTO) {
 		PromotionTypeName promotionTypeName = new PromotionTypeName();
-		List<PromotionTypeName> list = this.lambdaQuery().eq(PromotionTypeName::getGroupName, activityTypeDTO.getParentTypeName()).list();
 		promotionTypeName.setName(activityTypeDTO.getTypeName());
 		promotionTypeName.setQ(activityTypeDTO.getIndex());
-		promotionTypeName.setGroupName(activityTypeDTO.getParentTypeName());
-		if(org.springframework.util.CollectionUtils.isEmpty(list)){
+		if(StringUtils.isNotBlank(activityTypeDTO.getParentTypeId())){
+			String[] idSplit = StringUtils.split(activityTypeDTO.getParentTypeId(), "_");
+			int realId = Integer.parseInt(idSplit[1]);
+			List<PromotionTypeName> list = this.lambdaQuery().eq(PromotionTypeName::getGroup, realId).list();
+			if(org.springframework.util.CollectionUtils.isEmpty(list)){
+				throw new RuntimeException("未查询到父级分类！");
+			}
+			promotionTypeName.setGroup(realId);
+			promotionTypeName.setGroupName(list.get(0).getGroupName());
+		}else{
+			promotionTypeName.setGroupName(activityTypeDTO.getParentTypeName());
 			int index = baseMapper.selectMaxGroupIndex() + 1;
 			promotionTypeName.setGroup(index);
-		}else{
-			promotionTypeName.setGroup(list.get(0).getGroup());
 		}
 		this.save(promotionTypeName);
 	}

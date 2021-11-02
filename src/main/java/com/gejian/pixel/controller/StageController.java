@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -58,8 +57,8 @@ public class StageController {
 
 	@ApiOperation("前置关卡")
 	@GetMapping("/precondition")
-	public List<PreRequestDTO> getPreRequest(@ApiParam(required = true,value = "难度编号") @RequestParam("difficulty") Integer difficulty){
-		return this.stageService.getPreRequest(difficulty);
+	public List<PreRequestDTO> getPreRequest(){
+		return this.stageService.getPreRequest();
 	}
 
 	@ApiOperation("查询背景")
