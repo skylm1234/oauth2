@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Auto created by codeAppend plugin -->
+<mapper namespace="com.gejian.pixel.mapper.SysUpgradeMapper">
+
+    <resultMap id="UpgradeRM" type="com.gejian.pixel.entity.SysUpgrade">
+		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="upgradeTime" column="upgrade_time"/>
+		<result property="createTime" column="create_time"/>
+		<result property="status" column="status"/>
+    </resultMap>
+
+    <!-- all sql columns -->
+    <sql id="columns">
+         `id`,`title`,`upgrade_time`,`create_time`,`status`
+	</sql>
+
+</mapper>

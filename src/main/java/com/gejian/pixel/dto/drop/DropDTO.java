@@ -1,4 +1,4 @@
-package com.gejian.pixel.dto;
+package com.gejian.pixel.dto.drop;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

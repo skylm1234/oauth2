@@ -1,5 +1,6 @@
-package com.gejian.pixel.dto;
+package com.gejian.pixel.dto.drop;
 
+import com.gejian.pixel.dto.BasePageQuery;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +13,7 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class DropQueryDTO extends BasePageQuery{
+public class DropQueryDTO extends BasePageQuery {
 
 	@ApiModelProperty("掉落id")
 	private String dropId;

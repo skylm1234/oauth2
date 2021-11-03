@@ -3,7 +3,7 @@ package com.gejian.pixel.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.gejian.pixel.dto.SysUserQueryDTO;
+import com.gejian.pixel.dto.user.SysUserQueryDTO;
 import com.gejian.pixel.entity.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

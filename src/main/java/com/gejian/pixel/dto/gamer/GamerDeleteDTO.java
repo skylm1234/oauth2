@@ -18,5 +18,5 @@ public class GamerDeleteDTO {
 
 	@ApiModelProperty(value = "id集合",required = true)
 	@NotNull
-	private List<Integer> ids;
+	private List<Long> ids;
 }

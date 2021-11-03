@@ -4,7 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.CharsetUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gejian.pixel.dto.SysUserDTO;
+import com.gejian.pixel.dto.user.SysUserDTO;
 import com.gejian.pixel.service.SysUserService;
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;

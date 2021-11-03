@@ -1,4 +1,4 @@
-package com.gejian.pixel.dto;
+package com.gejian.pixel.dto.hero;
 
 import com.gejian.pixel.enums.HeroLevelColorEnum;
 import com.gejian.pixel.enums.HeroRoleEnum;

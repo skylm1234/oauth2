@@ -1,5 +1,6 @@
-package com.gejian.pixel.dto;
+package com.gejian.pixel.dto.hero;
 
+import com.gejian.pixel.dto.BasePageQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -13,7 +14,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ApiModel("英雄列表查询参数")
-public class HeroListRequestDTO extends BasePageQuery{
+public class HeroListRequestDTO extends BasePageQuery {
 
 	@ApiModelProperty("人物")
 	private String name;

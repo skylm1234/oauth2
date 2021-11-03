@@ -2,8 +2,8 @@ package com.gejian.pixel.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.gejian.pixel.dto.SysUserDTO;
-import com.gejian.pixel.dto.SysUserQueryDTO;
+import com.gejian.pixel.dto.user.SysUserDTO;
+import com.gejian.pixel.dto.user.SysUserQueryDTO;
 import com.gejian.pixel.entity.SysUser;
 import com.gejian.pixel.exception.ResourceNotFoundException;
 import com.gejian.pixel.security.PrincipalUser;

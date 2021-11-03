@@ -1,12 +1,11 @@
 package com.gejian.pixel.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gejian.pixel.entity.Gamer;
+import com.gejian.pixel.entity.SysUpgrade;
 
 /**
  * Auto created by codeAppend plugin
  */
-public interface GamerMapper extends BaseMapper<Gamer> {
+public interface SysUpgradeMapper extends BaseMapper<SysUpgrade> {
 
-    void updateState(Gamer gamer);
 }

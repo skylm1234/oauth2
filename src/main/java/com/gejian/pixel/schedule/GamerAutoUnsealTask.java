@@ -1,6 +1,5 @@
 package com.gejian.pixel.schedule;
 
-import com.gejian.pixel.entity.Gamer;
 import com.gejian.pixel.entity.GamerLog;
 import com.gejian.pixel.entity.GamerSealed;
 import com.gejian.pixel.service.GamerLogService;
@@ -42,14 +41,11 @@ public class GamerAutoUnsealTask {
 		List<GamerSealed> list = gamerSealedService.lambdaQuery().eq(GamerSealed::getEnabled,true).gt(GamerSealed::getTerminateTime, last5Second)
 				.le(GamerSealed::getTerminateTime, current).list();
 		for(GamerSealed gamerSealed: list){
-			Gamer gamer = new Gamer();
-			gamer.setState(true);
-			gamer.setId(gamerSealed.getGamerId());
-			gamerService.updateById(gamer);
+			gamerService.updateState(gamerSealed.getGamerId(),true);
 			gamerSealed.setEnabled(false);
 			gamerSealedService.updateById(gamerSealed);
 			GamerLog gamerLog = new GamerLog();
-			gamerLog.setGamerId(gamer.getId());
+			gamerLog.setGamerId(gamerSealed.getGamerId());
 			gamerLog.setContext("自动解封");
 			gamerLogService.save(gamerLog);
 		}

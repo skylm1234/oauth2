@@ -2,8 +2,8 @@ package com.gejian.pixel.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gejian.pixel.dto.SysUserDTO;
-import com.gejian.pixel.dto.SysUserQueryDTO;
+import com.gejian.pixel.dto.user.SysUserDTO;
+import com.gejian.pixel.dto.user.SysUserQueryDTO;
 import com.gejian.pixel.entity.SysUser;
 
 import java.util.List;

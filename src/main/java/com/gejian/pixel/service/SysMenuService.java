@@ -2,8 +2,8 @@ package com.gejian.pixel.service;
 
 import cn.hutool.core.lang.tree.Tree;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gejian.pixel.dto.SysMenuAddDTO;
-import com.gejian.pixel.dto.SysMenuQueryDTO;
+import com.gejian.pixel.dto.menu.SysMenuAddDTO;
+import com.gejian.pixel.dto.menu.SysMenuQueryDTO;
 import com.gejian.pixel.entity.SysMenu;
 
 import java.util.List;

@@ -109,6 +109,15 @@ public class GamerServiceImpl extends ServiceImpl<GamerMapper, Gamer> implements
 
 	@Transactional(rollbackFor = Exception.class)
 	@Override
+	public void updateState(Long id, Boolean state) {
+		Gamer gamer = new Gamer();
+		gamer.setId(id);
+		gamer.setState(state);
+		baseMapper.updateState(gamer);
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	@Override
 	public boolean save(Gamer gamer) {
 		gamer.setVip(gamer.getVipLevel() != null && gamer.getVipLevel() > 0);
 		baseMapper.insert(gamer);

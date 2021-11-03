@@ -1,5 +1,6 @@
-package com.gejian.pixel.dto;
+package com.gejian.pixel.dto.hero;
 
+import com.gejian.pixel.dto.SkillDTO;
 import com.gejian.pixel.enums.HeroLevelColorEnum;
 import com.gejian.pixel.enums.HeroRoleEnum;
 import io.swagger.annotations.ApiModel;

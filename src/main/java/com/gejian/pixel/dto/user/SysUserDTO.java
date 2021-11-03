@@ -1,4 +1,4 @@
-package com.gejian.pixel.dto;
+package com.gejian.pixel.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;

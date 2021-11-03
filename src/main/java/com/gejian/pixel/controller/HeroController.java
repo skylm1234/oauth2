@@ -2,9 +2,9 @@ package com.gejian.pixel.controller;
 
 import cn.hutool.http.HttpStatus;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.gejian.pixel.dto.HeroDTO;
-import com.gejian.pixel.dto.HeroListRequestDTO;
-import com.gejian.pixel.dto.HeroListResponseDTO;
+import com.gejian.pixel.dto.hero.HeroDTO;
+import com.gejian.pixel.dto.hero.HeroListRequestDTO;
+import com.gejian.pixel.dto.hero.HeroListResponseDTO;
 import com.gejian.pixel.dto.store.HeroTreeDTO;
 import com.gejian.pixel.exception.ResourceNotFoundException;
 import com.gejian.pixel.service.HeroService;

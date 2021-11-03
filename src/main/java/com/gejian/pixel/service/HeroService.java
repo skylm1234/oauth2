@@ -2,9 +2,9 @@ package com.gejian.pixel.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gejian.pixel.dto.HeroDTO;
-import com.gejian.pixel.dto.HeroListRequestDTO;
-import com.gejian.pixel.dto.HeroListResponseDTO;
+import com.gejian.pixel.dto.hero.HeroDTO;
+import com.gejian.pixel.dto.hero.HeroListRequestDTO;
+import com.gejian.pixel.dto.hero.HeroListResponseDTO;
 import com.gejian.pixel.dto.store.HeroTreeDTO;
 import com.gejian.pixel.entity.Hero;
 import com.gejian.pixel.proto.ConstHeroTableItemExProtobuf;

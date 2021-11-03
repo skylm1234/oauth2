@@ -18,4 +18,6 @@ public interface GamerService extends IService<Gamer> {
 	void seal(GamerSealedPatchDTO gamerSealedPatchDTO);
 
 	void unSeal(Long id);
+
+	void updateState(Long id,Boolean state);
 }

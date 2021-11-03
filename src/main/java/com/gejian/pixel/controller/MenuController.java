@@ -2,9 +2,9 @@ package com.gejian.pixel.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.tree.Tree;
-import com.gejian.pixel.dto.SysMenuAddDTO;
-import com.gejian.pixel.dto.SysMenuDTO;
-import com.gejian.pixel.dto.SysMenuQueryDTO;
+import com.gejian.pixel.dto.menu.SysMenuAddDTO;
+import com.gejian.pixel.dto.menu.SysMenuDTO;
+import com.gejian.pixel.dto.menu.SysMenuQueryDTO;
 import com.gejian.pixel.entity.SysMenu;
 import com.gejian.pixel.exception.ResourceNotFoundException;
 import com.gejian.pixel.service.SysMenuService;

@@ -20,11 +20,11 @@
 	<sql id="pageQuery">
 		<where>
 			<if test="q.username != null and q.username != ''">
-				and g.username like concat('%,#{q.username},'%')
+				and g.username like concat('%',#{q.username},'%')
 			</if>
 
 			<if test="q.mobile != null and q.mobile != ''">
-				and g.mobile like concat('%,#{q.mobile},'%')
+				and g.mobile like concat('%',#{q.mobile},'%')
 			</if>
 		</where>
 	</sql>

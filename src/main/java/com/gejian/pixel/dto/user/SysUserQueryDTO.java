@@ -1,5 +1,6 @@
-package com.gejian.pixel.dto;
+package com.gejian.pixel.dto.user;
 
+import com.gejian.pixel.dto.BasePageQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -13,7 +14,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ApiModel("搜索用户Model")
-public class SysUserQueryDTO extends BasePageQuery{
+public class SysUserQueryDTO extends BasePageQuery {
 
 	@ApiModelProperty("用户名")
 	private String username;

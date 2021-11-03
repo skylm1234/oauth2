@@ -2,8 +2,8 @@ package com.gejian.pixel.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gejian.pixel.dto.DropDTO;
-import com.gejian.pixel.dto.DropQueryDTO;
+import com.gejian.pixel.dto.drop.DropDTO;
+import com.gejian.pixel.dto.drop.DropQueryDTO;
 import com.gejian.pixel.entity.Drop;
 import com.gejian.pixel.proto.PlayerInfoProtobuf;
 
